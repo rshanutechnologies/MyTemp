@@ -71,6 +71,7 @@ body {
   height: auto;               /* FIX: remove fixed height */
   margin-bottom: 25px;
   text-align: center;
+  margin-top: -10%;
 }
 
 /* Image */
@@ -124,7 +125,22 @@ body {
   cursor: pointer;
   font-size: 20px;
 }
+.checkBtn {
+  background: #1fb36b;
+  color: #fff;
+  border: none;
+  padding: 10px 28px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 20px;
+   position: relative;
+   top:480px;
+}
 
+.checkBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 /* Prev/Next directly below answer */
 .question .nav {
   position: static;
@@ -296,6 +312,18 @@ button:disabled {
     padding: 12px;
     font-size: 16px;
   }
+
+}
+.checkBtn {
+  background: #1fb36b;
+  color: #fff;
+  border: none;
+  padding: 10px 28px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 20px;
+   position: relative;
+   top:530px;
 }
 #finalPopup {
   position: fixed;

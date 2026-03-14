@@ -1,27 +1,27 @@
 const questions = [
   {
     q: "Q.1 The ________ are the thick-walled blood vessels that carry blood from the heart to the different parts of the body.",
-    a: "arteries",
+    a: ["arteries"],
     img: "../assets/images/heart1-img.png",
   },
   {
     q: "Q.2 The heart makes the sound ________ when it pumps blood.",
-    a: "lub-dub",
+    a: ["lub-dub"],
     img: "../assets/images/heart2-img.png",
   },
   {
     q: "Q.3 The ________ divides into two branches called the bronchi.",
-    a: "windpipe",
+    a: ["windpipe"],
     img: "../assets/images/heart3-img.png",
   },
   {
     q: "Q.4 The lower two chambers of the heart are the ________.",
-    a: "ventricles",
+    a: ["ventricles"],
     img: "../assets/images/heart1-img.png",
   },
   {
     q: "Q.5 The air that we breathe out also contains ________ and ________.",
-    a: "carbon dioxide and water vapour",
+    a: ["carbon dioxide", "water vapour"],
     img: "../assets/images/heart5-img.png",
   },
 ];
@@ -126,8 +126,8 @@ function loadPage() {
 
     const img      = clone.querySelector(".question-img");
     const text     = clone.querySelector(".question-sentence");
-    const input    = clone.querySelector(".input-row input");
-    const checkBtn = clone.querySelector(".input-row button");
+   const inputsContainer = clone.querySelector("#inputsContainer");
+const checkBtn = clone.querySelector(".checkBtn");
     const row      = clone.querySelector(".input-row");
 
     // Prev/Next live INSIDE the template
@@ -138,27 +138,59 @@ function loadPage() {
     img.src = q.img;
     img.alt = "";
     text.textContent = q.q;
+    q.a.forEach(() => {
 
+const input = document.createElement("input");
+input.type = "text";
+input.placeholder = "Type answer here...";
+
+inputsContainer.appendChild(input);
+
+});
     // Restore answered state
-    if (answers[index]) {
-      input.value = answers[index];
-      input.disabled = true;
-      checkBtn.disabled = true;
-      row.classList.add("correct");
-    } else {
-      checkBtn.disabled = !input.value.trim();
-    }
+   const inputs = inputsContainer.querySelectorAll("input");
 
-    // Live enable/disable of Check
+// Restore answered state
+if (answers[index]) {
+
+  inputs.forEach((input,i)=>{
+    input.value = answers[index][i];
+    input.disabled = true;
+  });
+
+  checkBtn.disabled = true;
+  row.classList.add("correct");
+
+} else {
+
+  checkBtn.disabled = true;
+
+  inputs.forEach(input=>{
     input.addEventListener("input", () => {
-      checkBtn.disabled = !input.value.trim();
+
+      const allFilled = [...inputs].every(i=>i.value.trim());
+      checkBtn.disabled = !allFilled;
+
     });
+  });
+
+}
 
     // Check handler
     checkBtn.addEventListener("click", () => {
-      const userOk = isCorrect(input.value, q.a);
+   const inputs = inputsContainer.querySelectorAll("input");
 
-      if (userOk) {
+let correct = true;
+
+inputs.forEach((input,i)=>{
+
+if(!isCorrect(input.value,q.a[i])){
+correct = false;
+}
+
+});
+
+     if (correct) {
         if (answers[index] === null) { // only first success counts
           answers[index] = q.a;
           score++;
@@ -176,8 +208,8 @@ function loadPage() {
       } else {
         speak("Wrong ");
         showPopup(false);
-        input.value = "";
-        checkBtn.disabled = true;
+        inputs.forEach(input => input.value = "");
+checkBtn.disabled = true;
       }
     });
 
@@ -245,15 +277,32 @@ function showFinal() {
 
 /* ---------- Feedback popup ---------- */
 function showPopup(correct) {
+
   const popup = document.getElementById("answerPopup");
   if (!popup) return;
 
-  popup.style.display = "flex";
-  document.getElementById("popupIcon").textContent = correct ? "🎉" : "😔";
-  document.getElementById("popupTitle").textContent = correct ? "Correct!" : "Wrong!";
-  document.getElementById("popupMsg").textContent = correct ? "Well done!" : "Try again!";
+  popup.classList.remove("correct","wrong");
 
-  setTimeout(() => (popup.style.display = "none"), 900);
+  if(correct){
+    popup.classList.add("correct");
+  }else{
+    popup.classList.add("wrong");
+  }
+
+  popup.style.display = "flex";
+
+  document.getElementById("popupIcon").textContent =
+    correct ? "🎉" : "😔";
+
+  document.getElementById("popupTitle").textContent =
+    correct ? "Correct!" : "Wrong!";
+
+  document.getElementById("popupMsg").textContent =
+    correct ? "Well done!" : "Try again!";
+
+  setTimeout(()=>{
+    popup.style.display = "none";
+  },900);
 }
 
 /* ---------- Start ---------- */
