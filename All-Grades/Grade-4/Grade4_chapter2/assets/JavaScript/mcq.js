@@ -6,7 +6,7 @@ const quizData = [
     title: "Q1. Cacti are ____________.",
     image: "../assets/images/Cactus1.png",
     options: [
-      { text: "Mangroves", img: "../assets/images/mangrove.png" },
+      { text: "Mangroves", img: "../assets/images/Mangrove.png" },
       { text: "Desert plants", img: "../assets/images/desertak.png" },
       { text: "Conifers", img: "../assets/images/evergreen-plant.png" },
       { text: "Aquatic plants", img: "../assets/images/aquatic.png" },

@@ -689,7 +689,8 @@ button:disabled {
   .letters input {
     width: 55px;
     height: 55px;
-    font-size: 22px;
+    font-size: 30px;
+    color:#2f4f4f;
   }
 
   .nav {
