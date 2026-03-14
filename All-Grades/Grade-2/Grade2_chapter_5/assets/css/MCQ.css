@@ -1,0 +1,250 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.quiz-container {
+    width: 360px;
+    text-align: center
+}
+
+/* PROGRESS */
+.level-progress {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.progress-line {
+    position: absolute;
+    top: 50%;
+    left: 6%;
+    width: 88%;
+    height: 8px;
+    background: #d9f2ef;
+    border-radius: 10px;
+    transform: translateY(-50%);
+}
+
+.level {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #cfd8dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+    transition: .4s;
+    overflow: hidden;
+}
+
+.level img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.level.active img {
+    display: block;
+}
+
+.level.current {
+    box-shadow: 0 0 16px #0284c7;
+    transform: scale(1.2);
+}
+
+#question {
+    font-size: 18px;
+    margin: 10px 0;
+    min-height: 60px;
+    font-size: 28px;
+    color: #0b4a6f;
+}
+
+.img-container {
+    width: 220px;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    margin-inline: auto;
+}
+
+.question-img {
+    width: 100%;
+    height: 100%;
+    transition: .6s;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.option {
+    padding: 12px;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.option:nth-child(1) {
+    background: #2196f3
+}
+
+.option:nth-child(2) {
+    background: #ffc107
+}
+
+.option:nth-child(3) {
+    background: #f44336
+}
+
+.option.correct {
+    background: #4caf50 !important;
+    border: 3px solid yellow
+}
+
+.option.disabled {
+    pointer-events: none;
+    opacity: .4
+}
+
+.controls {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 8px;
+}
+
+.controls button {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.prev {
+    background: linear-gradient(135deg, #26c6da, #0097a7);
+}
+
+.next {
+    background: linear-gradient(135deg, #ffb74d, #f57c00);
+}
+
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    padding: 22px 40px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    animation: bounceIn .5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-box.correct {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.popup-box.wrong {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.popup-box.final {
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    font-size: 22px;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(.2);
+        opacity: 0
+    }
+
+    60% {
+        transform: scale(1.15)
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.fly {
+    position: absolute;
+    z-index: 999;
+    pointer-events: none;
+    transition: all 0.9s cubic-bezier(.2, .8, .2, 1);
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+/* DISABLED BUTTON STYLE */
+/* Disabled button (keep color but light) */
+.controls button:disabled {
+    opacity: 0.35;
+    /* makes color light */
+    cursor: not-allowed;
+    transform: scale(0.95);
+    filter: brightness(1.3);
+    /* slightly washed look */
+}
+
+@media (max-width:768px) {
+    h3 {
+        display: none;
+    }
+}
+
+/* ===== DESKTOP SCALE (-10%) ===== */
+@media (min-width:800px) {
+    .quiz-container {
+        transform: scale(0.9);
+        /* 10% smaller */
+        transform-origin: center top;
+        margin-top: 5%;
+    }
+}

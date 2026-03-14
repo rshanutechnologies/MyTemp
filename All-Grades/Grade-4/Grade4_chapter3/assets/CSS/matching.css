@@ -1,0 +1,449 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Livvic', sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* ===== GAME WRAPPER ===== */
+.game {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    position: relative;
+}
+
+/* ===== PROGRESS ===== */
+/* .progress {
+    position: absolute;
+    right: 0%;
+    top: -2%;
+    background: linear-gradient(#eaf7ff, #ffffff);
+    padding: 14px 22px;
+    border-radius: 25px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.progress .item {
+    width: 25px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.progress .active {
+    color: #ff9800;
+    animation: pop .4s ease;
+}
+
+.progress .lock {
+    color: #90a4ae;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(.6);
+        opacity: 0
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+} */
+
+.quiz {
+    position: relative;
+}
+
+#lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.match-line {
+    fill: none;
+    stroke: #22c55e;
+    stroke-width: 4;
+    stroke-linecap: round;
+}
+
+.lines-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.match-line {
+    stroke: #4ade80;
+    stroke-width: 4;
+    fill: none;
+    stroke-linecap: round;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+    border-radius: 26px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.section h2 {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* ===== LEFT: CONCEPT BADGES ===== */
+.concept {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 26px 18px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #fff, #fef3c7);
+    cursor: pointer;
+    font-size: 22px;
+    color: #2f4f4f;
+    transition: .25s ease;
+    margin-bottom: 14px;
+}
+
+.concept .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #a5b4fc;
+}
+
+.concept:hover {
+    transform: translateX(6px);
+}
+
+.concept.active {
+    outline: 3px solid #facc15;
+    background: #fffbeb;
+}
+
+.concept.matched {
+    background: #bbf7d0;
+    color: #14532d;
+    pointer-events: none;
+}
+
+/* ===== CENTER: KNOWLEDGE FLOW ===== */
+.flow {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.flow-item {
+    height: 56px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #e0f2fe, #dcfce7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 100;
+    position: relative;
+    overflow: hidden;
+}
+
+.flow-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #67ff9f, #67ff9f);
+    transform: translateX(-100%);
+    transition: .5s ease;
+}
+
+.flow-item.filled::after {
+    transform: translateX(0);
+}
+
+.flow-item span {
+    position: relative;
+    z-index: 2;
+    font-weight: 600;
+}
+
+/* ===== RIGHT: EXAMPLE TILES ===== */
+.example {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 21px 12px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid #c7d2fe;
+    cursor: pointer;
+    transition: .25s ease;
+    margin-bottom: 14px;
+    font-size: 18px;
+    color: #2f4f4f;
+}
+
+.example .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.example .text {
+    font-size: 22px;
+}
+
+.example:hover {
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.25);
+    transform: translateY(-4px);
+}
+
+.example.matched {
+    background: #dcfce7;
+    border-color: #22c55e;
+    color: #14532d;
+    pointer-events: none;
+}
+
+.example.wrong {
+    background: #fee2e2;
+    border-color: #ef4444;
+    animation: shake .3s;
+}
+
+@keyframes shake {
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+}
+
+/*final score POPUPS */
+#finalPopup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .0);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.finalpopup-box {
+    background: #fff;
+    padding: 25px 35px;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.final-heading {
+    display: block;
+    font-size: 2em;
+    margin: 20px;
+    font-weight: bold;
+}
+
+#stars {
+    font-size: 40px;
+    margin-top: 10px;
+}
+
+.playAgain-btn {
+    background: #1fb36b;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 20px;
+    font-size: 16px;
+    margin-block: 10px;
+    cursor: pointer;
+}
+
+/* ================================
+   📱 TABLETS (≤ 1024px)
+   Same layout, tighter spacing
+================================ */
+@media (max-width: 850px) {
+
+  body {
+    padding: 16px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .game {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 50px;
+  }
+
+  .section {
+    padding: 16px;
+  }
+
+  .concept {
+    font-size: 20px;
+    padding: 22px 16px;
+  }
+
+  .example {
+    font-size: 18px;
+    padding: 18px 12px;
+  }
+
+  .example .text {
+    font-size: 20px;
+  }
+
+  .flow-item {
+    height: 52px;
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  body {
+    padding: 12px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  /* KEEP 2 COLUMNS */
+  .game {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    max-width: 100%;
+    margin-top: 60px;
+  }
+
+  /* MAKE BOTH SIDES SAME WIDTH */
+  .section {
+    padding: 14px 0px;
+    align-items: center;
+  }
+
+  .section > * {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .section h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  /* LEFT CONCEPT BOXES */
+  .concept {
+    width: 100%;
+    height: 60px;
+    font-size: 16px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .concept .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* FLOW */
+  .flow {
+    width: 100%;
+    gap: 14px;
+  }
+
+  .flow-item {
+    width: 100%;
+    height: 44px;
+    font-size: 14px;
+    border-radius: 14px;
+  }
+
+  /* RIGHT EXAMPLE BOXES */
+  .example {
+    width: 100%;
+    height: 60px;
+    font-size: 15px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+
+  .example .icon {
+    font-size: 20px;
+  }
+
+  .example .text {
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* LINES – thinner */
+  .match-line {
+    stroke-width: 2.5;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .game {
+    gap: 14px;
+    margin-top: 50px;
+  }
+
+  .section > * {
+    max-width: 300px;
+  }
+
+  .concept,
+  .example {
+    min-height: 44px;
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .example .text {
+    font-size: 14px;
+  }
+
+  .flow-item {
+    height: 40px;
+    font-size: 13px;
+  }
+}

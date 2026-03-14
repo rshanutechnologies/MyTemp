@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Two Example Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/CSS/two-example.css">
+</head>
+
+<body>
+
+
+    <div class="page">
+        <div class="top-row">
+            <div class="header">
+                <span class="two-examples">✏️Two Examples</span>
+            </div>
+
+            <div class="quiz-card">
+                <div class="question-pill">
+                    A river flows through.......
+                </div>
+
+                <div class="options">
+                    <div class="option">
+                        <img src="" alt="">
+                        <span></span>
+                    </div>
+
+                    <div class="option">
+                        <img src="" alt="">
+                        <span></span>
+                    </div>
+
+                    <div class="option">
+                        <img src="" alt="">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="answer-box">
+            <div class="answer-title">Your answers here</div>
+
+
+            <div class="answer-lines">
+                <div class="line">
+                    <div class="circle purple">1</div>
+                    <input class="answer-input" placeholder="Type your answer ....">
+
+
+                </div>
+                <div class="line">
+                    <div class="circle green">2</div>
+                    <input class="answer-input" placeholder="Type your answer ....">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn prev">← Prev</button>
+            <button class="btn check" id="checkBtn" disabled>✔ Check Answer</button>
+            <button class="btn next">Next →</button>
+        </div>
+
+    </div>
+
+    <!-- CORRECT / WRONG POPUP -->
+    <div id="answerPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-icon" id="popupIcon"></div>
+            <h3 id="popupTitle"></h3>
+            <p id="popupMsg"></p>
+        </div>
+    </div>
+
+    <!-- FINAL POPUP -->
+    <div id="finalPopup""> <div class=" finalpopup-box">
+        <h2 class="final-heading">🎉 Congratulations!</h2>
+        <p id="finalScore"></p>
+        <div id="stars"></div><br> <button onclick="location.reload()" class="playAgain-btn"> Play Again </button>
+    </div>
+    </div>
+
+    <script src="../assets/JavaScript/two-example.js"></script>
+</body>
+
+</html>

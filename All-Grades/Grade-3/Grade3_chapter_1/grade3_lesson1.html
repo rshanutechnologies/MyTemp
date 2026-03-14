@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grade3_lession_1</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Livvic';}
+
+body{
+  display:flex;
+  height:100vh;        /* exact screen height */
+  overflow:hidden;     /* ❌ no scroll */
+  position:relative;
+  z-index:0;
+}
+
+/* BACKGROUND IMAGE */
+body::before{
+content:"";
+position:absolute;
+inset:0;
+
+filter:blur(2px);
+transform:scale(1.05);
+z-index:-2;
+pointer-events:none;   /* IMPORTANT FIX */
+}
+
+body::after{
+content:"";
+position:absolute;
+inset:0;
+background: linear-gradient(
+135deg,
+rgba(82, 157, 232, 0.45),
+rgba(88, 163, 237, 0.45)
+);
+z-index:-1;
+pointer-events:none;
+}
+.main{
+  flex:1;
+  height:100vh;      
+  
+  border-radius:20px 0 0 20px;
+  display:flex;
+}
+iframe{
+  width:100%;
+  height:100%;
+  border:none;
+ 
+}
+
+.sidebar{
+  width:380px;
+  height:100vh;          /* exact screen height */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;  /* auto balance */
+  align-items:center;
+  padding:20px 10px;
+  margin-top: 0px;
+  gap: 10px;
+}
+.kid-img{
+width:140px;
+
+}
+.menu{
+  margin-top:auto;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:20px 30px 30px;
+  align-items:center;   /* center buttons */
+  margin-top: -55px;
+ 
+}
+
+.menu button{
+all:unset;
+width:240px;      /* smaller width */
+height:60px;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+font-size:19px;
+font-weight:600;
+color:#ffffff;
+background:linear-gradient(180deg,var(--c1),var(--c2));
+box-shadow:0 8px 16px rgba(0,0,0,0.15);
+clip-path: polygon(8% 0, 92% 0, 100% 30%, 100% 80%, 92% 100%, 8% 100%, 0 80%, 0 20%);
+border-radius:16px;
+transition:0.2s ease;
+}
+.menu button:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 20px rgba(0,0,0,0.18);
+}
+
+.menu button.active{
+border:3px solid #641515 !important;
+}
+
+/* PERFECT BALANCED PASTEL COLORS */
+
+.menu button:nth-child(1){ --c1:#f06292; --c2:#f48fb1; }   /* warm pink */
+.menu button:nth-child(2){ --c1:#64dace; --c2:#4db6ac; }   /* teal green */
+.menu button:nth-child(3){ --c1:#af8ceb; --c2:#9575cd; }   /* soft purple */
+.menu button:nth-child(4){ --c1:#88def8; --c2:#64c7e3; }   /* sky blue */
+.menu button:nth-child(5){ --c1:#f4b942; --c2:#f7c76b; }   /* warm yellow */
+
+/* ================= MOBILE MENU ================= */
+
+.menu-btn{
+display:none;
+position:fixed;
+top:20px;
+right:20px;
+background:#22c55e;
+color:#fff;
+border:none;
+font-size:22px; 
+padding:10px 14px;
+border-radius:12px;
+cursor:pointer;
+z-index:3000;
+}
+
+/* overlay */
+.offcanvas{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.4);
+display:none;
+z-index:2500;
+}
+
+.offcanvas.show{
+display:block;
+}
+
+.offcanvas-panel{
+position:absolute;
+right:0;
+top:0;
+width:260px;
+height:100%;
+background:#f0fdf4;
+padding:90px 20px 20px;
+transform:translateX(100%);
+transition:.3s ease;
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.offcanvas.show .offcanvas-panel{
+transform:translateX(0);
+}
+
+.offcanvas-panel button{
+all:unset;
+cursor:pointer;
+padding:12px;
+border-radius:12px;
+background:#fff;
+box-shadow:0 4px 10px rgba(0,0,0,.15);
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:600;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+  body{
+    flex-direction:column;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  .sidebar{
+    display:none;   /* 🔥 sidebar removed */
+  }
+
+  .menu-btn{
+    display:block;  /* 🔥 show button */
+  }
+
+  .main{
+    width:100%;
+    min-height:100vh;
+    border-radius:0;
+  }
+
+  iframe{
+    width:100%;
+    height:100vh;
+  }
+
+  .offcanvas-panel{
+    width:85%;
+    max-width:320px;
+  }
+
+}
+@media (max-width:1024px){
+   .sidebar{
+      display:none;
+   }
+
+   .menu-btn{
+      display:block;
+   }
+  
+}
+/* Hide scrollbar but keep scroll working */
+
+body {
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;          /* Chrome */
+}
+.menu button.active{
+  box-shadow:
+    0 0 0 4px #ffffff,
+    0 8px 18px rgba(0,0,0,0.25);
+  transform: translateY(-2px);
+}
+</style>
+</head>
+
+<body>
+
+<!-- MOBILE BUTTON -->
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+<div class="main">
+<iframe id="frame" src="./exercises/mcq.html"></iframe>
+</div>
+
+<!-- OFFCANVAS (OUTSIDE SIDEBAR) -->
+<div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
+  <div class="offcanvas-panel" onclick="event.stopPropagation()">
+
+    <button data-file="./exercises/mcq.html">🎯 Correct Option</button>
+    <button data-file="./exercises/FTB.html">✏️ Fill the Blanks</button>
+    <button data-file="./exercises/true_false.html">✅ True / False</button>
+    <button data-file="./exercises/matching.html">🔗 Matching</button>
+    <button data-file="./exercises/two-example.html">🧩 Two Examples</button>
+   
+    
+
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+<img src="assets/images/kid.png" class="kid-img" />
+
+<div class="menu">
+<button class="active" data-file="./exercises/mcq.html">🎯 Correct Option</button>
+<button data-file="./exercises/FTB.html">✏️ Fill the Blanks</button>
+<button data-file="./exercises/true_false.html">✅ True / False</button>
+<button data-file="./exercises/matching.html">🔗 Matching</button>
+<button data-file="./exercises/two-example.html">🧩 Two Examples</button>
+
+
+</div>
+
+</div>
+
+<script>
+const desktopBtns = document.querySelectorAll(".menu button");
+const mobileBtns = document.querySelectorAll(".offcanvas-panel button");
+const frame = document.getElementById("frame");
+const offcanvas = document.getElementById("offcanvas");
+
+function activate(index){
+desktopBtns.forEach(b=>b.classList.remove("active"));
+mobileBtns.forEach(b=>b.classList.remove("active"));
+
+desktopBtns[index]?.classList.add("active");
+mobileBtns[index]?.classList.add("active");
+
+frame.src = desktopBtns[index]?.dataset.file;
+}
+
+desktopBtns.forEach((btn,i)=>{
+btn.addEventListener("click",()=>activate(i));
+});
+
+mobileBtns.forEach((btn,i)=>{
+btn.addEventListener("click",()=>{
+activate(i);
+toggleMenu();
+});
+});
+
+function toggleMenu(){
+offcanvas.classList.toggle("show");
+}
+</script>
+
+</body>
+</html>

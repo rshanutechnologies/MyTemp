@@ -1,0 +1,512 @@
+* {
+    box-sizing: border-box;
+    font-family: Livvic;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.main-content {
+    width: 100%;
+    position: relative;
+}
+
+/* ✅ progress circles (same like true/false) */
+.progress-wrap {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, .75);
+    padding: 10px 12px;
+    border-radius: 50px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
+    z-index: 999;
+    backdrop-filter: blur(6px);
+}
+
+.circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.circle.active {
+    background: #22c55e;
+    animation: popCircle .25s ease;
+}
+
+@keyframes popCircle {
+    from {
+        transform: scale(.75)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* ✅ flying tick */
+.fly-tick {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #22c55e;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 900;
+    z-index: 10000;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+/* layout */
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+h1 {
+    text-align: center;
+    color: #6b6fdc;
+    margin: 0;
+}
+
+.sub {
+    text-align: center;
+    color: #777;
+    margin: 10px 0 32px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 140px;
+    align-items: center;
+}
+
+/* LEFT PUZZLES */
+.puzzle {
+    width: 160px;
+    height: 120px;
+    border-radius: 26px;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    margin: 5px;
+}
+
+.puzzle img {
+    width: 90px;
+    height: 60px;
+}
+
+.puzzle span {
+    margin-top: 8px;
+    background: #fff;
+    color: #2f5d57;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.puzzle.disabled {
+    opacity: .45;
+    pointer-events: none;
+}
+
+/* RIGHT SLOT */
+.slot {
+    width: 170px;
+    height: 120px;
+    border-radius: 26px;
+    background: #f3f5ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    position: relative;
+}
+
+.lock {
+    font-size: 44px;
+}
+
+.label {
+    background: #fff;
+    padding: 6px 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #2f5d57;
+}
+
+.slot img {
+    width: 90px;
+    height: 60px;
+}
+
+/* ✅ Correct/Wrong popup (same like true/false) */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .35);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.feedback-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 86px;
+    color: white;
+    font-weight: 900;
+    animation: pop .25s ease;
+}
+
+.feedback-circle.correct {
+    background: #22c55e;
+}
+
+.feedback-circle.wrong {
+    background: #ef4444;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(.6);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+/* ✅ FINAL POPUP same */
+.final-popup-box {
+    width: 400px;
+    height: 250px;
+    background: white;
+    border-radius: 22px;
+    display: flex;
+    overflow: hidden;
+    animation: finalZoom .5s ease;
+}
+
+@keyframes finalZoom {
+    from {
+        opacity: 0;
+        transform: scale(.75);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.final-left {
+    width: 150px;
+    background: linear-gradient(#fef08a, #fde047);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.final-left img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    animation: trophyMove 1.1s ease-in-out infinite;
+}
+
+@keyframes trophyMove {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.final-right {
+    flex: 1;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.final-right h2 {
+    font-size: 22px;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0;
+}
+
+.final-score {
+    font-size: 16px;
+    font-weight: 900;
+    color: #2563eb;
+}
+
+.final-stars {
+    font-size: 22px;
+}
+
+.restart-btn {
+    padding: 10px 18px;
+    border-radius: 18px;
+    border: none;
+    background: #ff9800;
+    color: white;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+    width: max-content;
+}
+
+/* ===============================
+   🔹 HINT BUTTON (ABSOLUTE)
+   =============================== */
+.hint-btn-abs {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    transform: translateY(-50%);
+    background: #ffc13b;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 22px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+}
+
+/* Small hint popup */
+.hint-box {
+    width: 400px;
+    animation: pop .25s ease;
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.hint-box h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.hint-box p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #334155;
+}
+
+
+/* =====================================================
+   ✅ GLOBAL RESPONSIVE FIX
+===================================================== */
+
+body {
+    min-height: 100vh;
+    height: auto;
+    /* margin-top: -50px; */
+    padding: 0px 20px;
+}
+
+/* wrapper flexible */
+.wrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    /* padding-top: 40px; */
+}
+
+/* grid responsive */
+.grid {
+    width: 100%;
+    gap: clamp(20px, 6vw, 140px);
+}
+
+/* LEFT & RIGHT columns align */
+#leftList,
+#rightList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* puzzle responsive */
+.puzzle {
+    width: clamp(120px, 22vw, 160px);
+    height: clamp(95px, 18vw, 120px);
+}
+
+.puzzle img {
+    width: clamp(65px, 14vw, 90px);
+    height: auto;
+}
+
+/* slot responsive */
+.slot {
+    width: clamp(130px, 24vw, 170px);
+    height: clamp(95px, 18vw, 120px);
+}
+
+.slot img {
+    width: clamp(65px, 14vw, 90px);
+    height: auto;
+}
+
+/* labels scale */
+.label {
+    font-size: clamp(12px, 2.2vw, 16px);
+}
+
+/* progress wrap scale */
+.progress-wrap {
+    transform: scale(.95);
+}
+
+/* hint button responsive */
+.hint-btn-abs {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    transform: none;
+    font-size: 14px;
+    padding: 8px 14px;
+}
+
+/* popup responsive */
+.final-popup-box {
+    width: min(92vw, 400px);
+    height: auto;
+}
+
+/* =====================================================
+   ✅ TABLET
+===================================================== */
+@media (max-width:1024px) {
+
+    .grid {
+        gap: 40px;
+    }
+
+}
+
+/* =====================================================
+   ✅ MOBILE
+===================================================== */
+@media (max-width:768px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        justify-items: center;
+        margin-top: 5%;
+    }
+
+    #leftList,
+    #rightList {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .puzzle,
+    .slot {
+        margin: 6px;
+    }
+
+    .progress-wrap {
+        top: -2px;
+        right: 10px;
+        transform: scale(.85);
+    }
+
+    .hint-btn-abs {
+        top: 10px;
+        left: 10px;
+    }
+
+}
+
+/* =====================================================
+   ✅ SMALL MOBILE
+===================================================== */
+@media (max-width:420px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .grid {
+        gap: 20px;
+    }
+
+    .hint-btn-abs {
+        font-size: 13px;
+        padding: 7px 12px;
+    }
+
+}
+
+/* =====================================
+   GLOBAL SCALE (-20% UI SIZE)
+===================================== */
+
+.wrapper {
+    transform: scale(0.8);
+    /* 80% = reduce 20% */
+    transform-origin: center center;
+    margin-top: -3%;
+
+}

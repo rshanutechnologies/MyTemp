@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduLearn Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:#f4f6f9;}
+.container{display:flex;height:100vh;}
+
+.sidebar{
+    width:260px;
+    background:linear-gradient(180deg,#0f2027,#203a43);
+    color:white;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.logo{font-size:20px;font-weight:600;margin-bottom:30px;}
+.logo p{font-size:12px;font-weight:300;}
+
+.menu{list-style:none;}
+
+.menu-title{
+    padding:10px 10px;
+    border-radius:8px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.menu-title:hover{background:rgba(255,255,255,0.1);}
+
+.arrow{font-size:12px;}
+
+.submenu{
+    list-style:none;
+    padding-left:15px;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+}
+
+.submenu.open{max-height:1000px;}
+
+.submenu li{
+    padding:8px 10px;
+    font-size:14px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.submenu li:hover{background:rgba(255,255,255,0.1);}
+
+.menu li a{text-decoration:none;color:white;cursor:pointer;}
+.menu li a:hover{color:yellow;}
+
+.main{flex:1;padding:40px;overflow-y:auto;}
+
+.top-header{margin-bottom:15px;}
+.header-logo{font-size:28px;font-weight:600;color:#2563eb;}
+
+.welcome{
+    background:linear-gradient(90deg,#2563eb,#d946ef);
+    padding:40px;
+    border-radius:20px;
+    color:white;
+    margin-bottom:40px;
+}
+
+.section-title{font-size:20px;margin-bottom:20px;}
+
+.curriculum{display:flex;gap:30px;margin-bottom:40px;}
+
+.curr-card{
+    flex:1;
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    padding:40px;
+    border-radius:20px;
+    color:white;
+}
+
+.breadcrumbs{
+    margin-bottom:15px;
+    font-size:14px;
+    color:#555;
+}
+
+.breadcrumbs span{margin-right:5px;}
+.breadcrumbs span::after{content:"→";margin-left:5px;}
+.breadcrumbs span:last-child::after{content:"";}
+
+.top-header1 h1{
+    background-color:blue;
+    color:white;
+    border-radius:20px;
+    padding:40px;
+    font-size:40px;
+}
+
+.progress-container{
+    width:400px;
+    height:20px;
+    border:1px solid black;
+    border-radius:10px;
+    overflow:hidden;
+    margin-top:15px;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:black;
+}
+
+input[type="range"]{
+    width:400px;
+}
+
+.B{
+    color:white;
+    background-color: rgb(106, 190, 106);
+    padding: 15px;
+    border:none;
+    cursor:pointer;
+}
+.i{
+    height: 70%;
+    width:35%;
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ===== Sidebar ===== -->
+<aside class="sidebar">
+    <div class="logo">📘 EduLearn<p>Interactive Learning Platform</p></div>
+    <ul class="menu">
+        <li><div class="menu-title" onclick="showHome()"> 🏠 Home</div></li>
+
+        <!-- State Syllabus -->
+        <li>
+            <div class="menu-title" onclick="toggleMenu(this)"><img src="c:\Users\KhasimValiKatla\Downloads\image (5).png" alt="img" class="i"/>State Syllabus<span class="arrow">▶</span></div>
+            <ul class="submenu">
+                <script>
+                const grades = ['Grade 1','Grade 2','Grade 3','Grade 4','Grade 5'];
+                for(let g=0; g<grades.length; g++){
+                    document.write(`
+                    <li>
+                        <div class="menu-title" onclick="toggleMenu(this)">🎓 ${grades[g]} <span class="arrow">▶</span></div>
+                        <ul class="submenu">
+                            ${[1,2,3,4,5].map(l=>`<li><a onclick="loadLesson('State Syllabus','${grades[g]}','Lesson ${l}')">Lesson ${l}</a></li>`).join('')}
+                        </ul>
+                    </li>
+                    `);
+                }
+                </script>
+            </ul>
+        </li>
+
+        <!-- CBSE -->
+        <li>
+            <div class="menu-title" onclick="toggleMenu(this)"><img src="c:\Users\KhasimValiKatla\Downloads\image (6).png" alt="img" class="i"/> CBSE<span class="arrow">▶</span></div>
+            <ul class="submenu">
+                <script>
+                for(let g=0; g<grades.length; g++){
+                    document.write(`
+                    <li>
+                        <div class="menu-title" onclick="toggleMenu(this)">🎓 ${grades[g]} <span class="arrow">▶</span></div>
+                        <ul class="submenu">
+                            ${[1,2,3,4,5].map(l=>`<li><a onclick="loadLesson('CBSE','${grades[g]}','Lesson ${l}')">Lesson ${l}</a></li>`).join('')}
+                        </ul>
+                    </li>
+                    `);
+                }
+                </script>
+            </ul>
+        </li>
+    </ul>
+</aside>
+
+<!-- ===== Main Content ===== -->
+<main class="main">
+
+<div id="homeContent">
+    <div class="top-header">
+        <div class="header-logo">🏠 Home</div>
+    </div>
+
+    <div class="welcome">
+        <h1>Welcome to EduLearn</h1>
+        <p>Your complete educational platform</p>
+    </div>
+
+    <div class="section-title">Choose Your Curriculum</div>
+
+    <div class="curriculum">
+        <div class="curr-card">
+            <img src="c:\Users\KhasimValiKatla\Downloads\image (1).png" alt="img" class="i"/>
+            <h2>State Syllabus</h2>
+            <p>State Board Curriculum</p>
+        </div>
+
+        <div class="curr-card">
+             <img src="c:\Users\KhasimValiKatla\Downloads\image (1).png" alt="img" class="i"/>
+            <h2>CBSE</h2>
+            <p>Central Board of Secondary Education</p>
+        </div>
+    </div>
+</div>
+
+<div id="lessonContent" style="display:none;"></div>
+
+</main>
+</div>
+
+<script>
+function toggleMenu(el){
+    const submenu = el.nextElementSibling;
+    const arrow = el.querySelector(".arrow");
+    if(submenu){
+        submenu.classList.toggle("open");
+        arrow.textContent = submenu.classList.contains("open") ? "▼" : "▶";
+    }
+}
+
+function showHome(){
+    document.getElementById('homeContent').style.display = 'block';
+    document.getElementById('lessonContent').style.display = 'none';
+}
+
+function loadLesson(curriculum, grade, lesson){
+    document.getElementById('homeContent').style.display = 'none';
+    const lessonDiv = document.getElementById('lessonContent');
+    lessonDiv.style.display = 'block';
+
+    lessonDiv.innerHTML = `
+        <div class="breadcrumbs">
+            <span>Home</span>
+            <span>${curriculum}</span>
+            <span>${grade}</span>
+            <span>${lesson}</span>
+        </div>
+
+        <div class="top-header1">
+            <h1>${lesson}</h1>
+        </div>
+
+        <h2>${lesson} Content</h2>
+
+        <br>
+
+        <label>Your Progress:</label><br>
+        <input type="range" min="0" max="100" step="10" value="0" id="rangeBar">
+        <p id="percentText">0%</p>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <br><br>
+
+        <h2>
+        <a href="#" onclick="loadSubject('${curriculum}','${grade}','${lesson}','Mathematics')">
+        Mathematics - ${lesson}
+        </a>
+        </h2>
+
+        <br>
+
+        <button onclick="showHome()" class="B">Back to Home</button>
+    `;
+
+    attachProgress();
+}
+
+function loadSubject(curriculum, grade, lesson, subject){
+    const lessonDiv = document.getElementById('lessonContent');
+
+    lessonDiv.innerHTML = `
+        <div class="breadcrumbs">
+            <span>Home</span>
+            <span>${curriculum}</span>
+            <span>${grade}</span>
+            <span>${lesson}</span>
+            <span>${subject}-${lesson}</span>
+        </div>
+
+        <div class="top-header1">
+            <h1>${subject} - ${lesson}</h1>
+        </div>
+
+        <h2>${subject} Detailed Content</h2>
+
+        <br>
+
+        <label>Your Progress:</label><br>
+        <input type="range" min="0" max="100" step="10" value="0" id="rangeBar">
+        <p id="percentText">0%</p>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <br>
+
+        <button onclick="showHome()" class="B">Back to Home</button>
+    `;
+
+    attachProgress();
+}
+
+function attachProgress(){
+    const range = document.getElementById("rangeBar");
+    const progressBar = document.getElementById("progressBar");
+    const percentText = document.getElementById("percentText");
+
+    range.addEventListener("input", function(){
+        progressBar.style.width = this.value + "%";
+        percentText.innerText = this.value + "%";
+    });
+}
+</script>
+
+</body>
+</html>

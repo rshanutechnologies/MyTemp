@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Magic Fill in the Blanks — Letter Boxes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --correct: #28a745;
+      --wrong: #dc3545;
+      --q-text-color: #2F4F4F;
+      --blue: #4cc9f0;
+      --pink: #f778a1;
+      --gold: #FFC312;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+      font-family: 'Livvic', sans-serif;
+      background: "../uploads/bg.png";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .wrap {
+      width: 100%;
+      height: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      padding: 2vh 20px;
+    }
+
+    .question-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5vh;
+      width: 100%;
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 5px;
+    }
+
+    .q-number {
+      font-weight: 700;
+      font-size: clamp(16px, 2.5vh, 24px);
+      color: var(--q-text-color);
+      background: rgba(255, 255, 255, 0.6);
+      padding: 5px 20px;
+      border-radius: 20px;
+    }
+
+    .bird-btn {
+      background: var(--gold);
+      border: 4px solid #F79F1F;
+      border-radius: 50%;
+      width: clamp(50px, 7.5vh, 75px);
+      height: clamp(50px, 7.5vh, 75px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 0 #e58e26;
+    }
+
+    .bird-btn svg {
+      width: 60%;
+      height: 60%;
+      fill: #333;
+    }
+
+    .question-text {
+      font-size: clamp(20pt, 3.5vh, 32pt);
+      color: var(--q-text-color);
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .answer-area {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .sentence {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-size: clamp(20pt, 3.5vh, 32pt);
+      color: var(--q-text-color);
+      text-align: center;
+      width: 100%;
+    }
+
+    .blank-group {
+      display: inline-flex;
+      gap: clamp(5px, 1vw, 10px);
+      padding: 5px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .blank-box {
+      width: clamp(45px, 7vh, 70px);
+      height: clamp(50px, 8vh, 80px);
+      border-radius: 12px;
+      border: 3px dashed var(--q-text-color);
+      background: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      font-weight: 900;
+      font-size: clamp(20px, 4vh, 32px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .blank-box.pulse {
+      animation: pulseGlow 1.5s infinite;
+      border-color: #4cc9f0;
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 rgba(76, 201, 240, 0);
+      }
+
+      50% {
+        box-shadow: 0 0 15px rgba(76, 201, 240, 0.4);
+      }
+    }
+
+    .blank-box.filled {
+      border-style: solid;
+      background: #fff;
+    }
+
+    .blank-box.correct {
+      border-color: var(--correct);
+      background: #dff9fb;
+      pointer-events: none;
+    }
+
+    .blank-box.wrong {
+      border-color: var(--wrong);
+      border-style: solid;
+    }
+
+    .clue-box {
+      width: min(300px, 80vw);
+      height: clamp(200px, 25vh, 250px);
+      border-radius: 20px;
+      border: 4px solid white;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .clue-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mini-popup {
+      position: absolute;
+      top: 105%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border: 3px solid #333;
+      border-radius: 15px;
+      padding: 8px;
+      display: none;
+      gap: 8px;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .mini-popup.show {
+      display: flex;
+      animation: popIn 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8);
+      }
+    }
+
+    .letter-choice {
+      width: clamp(40px, 6vh, 60px);
+      height: clamp(40px, 6vh, 60px);
+      border-radius: 10px;
+      border: 2px solid #333;
+      font-size: clamp(18px, 3vh, 26px);
+      font-weight: 900;
+      cursor: pointer;
+      background: white;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px 5%;
+    }
+
+    .nav-btn {
+      padding: clamp(15px, 1.8vh, 18px) 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: clamp(14px, 2vh, 22px);
+      border: 4px solid white;
+      cursor: pointer;
+      font-family: 'Livvic';
+      min-width: 140px;
+    }
+
+    #prevBtn {
+      background: var(--pink);
+      color: #2F4F4F;
+    }
+
+    #nextBtn {
+      background: var(--blue);
+      color: #2F4F4F;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* Teacher Popup */
+    .teacher-popup {
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      width: clamp(200px, 30vw, 300px);
+      background: white;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transform: translateX(130%);
+      transition: 0.4s;
+      z-index: 2500;
+    }
+
+    .teacher-popup.show {
+      transform: translateX(0);
+    }
+
+    .teacher-img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
+
+    .teacher-msg {
+      font-weight: 700;
+      font-size: 16px;
+      margin-left: 10px;
+      color: #2F4F4F;
+    }
+
+    #feedbackSmiley {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 150px;
+      opacity: 0;
+      z-index: 2000;
+      pointer-events: none;
+    }
+
+    #feedbackSmiley.show {
+      opacity: 1;
+      transition: 0.2s;
+    }
+
+    .final-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3500;
+      backdrop-filter: blur(8px);
+    }
+
+    .final-modal {
+      background: white;
+      padding: 40px;
+      border-radius: 30px;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    canvas.confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1500;
+    }
+
+
+    /* ================================= */
+    /* 📱 MOBILE RESPONSIVE ONLY */
+    /* ================================= */
+
+    @media (max-width: 768px) {
+
+      body {
+        overflow-y: auto;
+        /* Allow scroll */
+        height: auto;
+      }
+
+      .wrap {
+        height: auto;
+        padding: 20px 15px 30px;
+      }
+
+      .question-area {
+        gap: 20px;
+        justify-content: flex-start;
+        margin-top: 20px;
+      }
+
+      .header-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .q-number {
+        font-size: 16px;
+      }
+
+      .sentence {
+        font-size: 20px;
+        gap: 8px;
+        line-height: 1.4;
+      }
+
+      /* Make blank boxes smaller */
+      .blank-box {
+        width: 30px;
+        height: 40px;
+        font-size: 20px;
+      }
+
+      .blank-group {
+        gap: 6px;
+        padding: 5px 8px;
+      }
+
+      /* Clue image smaller */
+      .clue-box {
+        width: 80%;
+        height: 200px;
+      }
+
+      /* Letter popup better fit */
+      .mini-popup {
+        top: 110%;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .letter-choice {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+
+      /* Navigation buttons stacked */
+      /* .controls {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 0;
+  }
+
+  .nav-btn {
+    width: 90%;
+    min-width: unset;
+    font-size: 16px;
+    padding: 12px;
+  } */
+
+      /* Teacher popup move to bottom for mobile */
+      .teacher-popup {
+        right: 50%;
+        transform: translate(50%, 150%);
+        top: auto;
+        bottom: 20px;
+        width: 90%;
+      }
+
+      .teacher-popup.show {
+        transform: translate(50%, 0);
+      }
+
+      #feedbackSmiley {
+        font-size: 90px;
+      }
+
+    }
+
+    /* First blank popup slightly right */
+    .blank-box.first-box .mini-popup {
+      left: 65%;
+      transform: translateX(-20%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="question-area">
+      <div class="header-row">
+        <div class="q-number" id="qNumber">Question 1 of 5</div>
+        <button id="readBtn" class="bird-btn">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+          </svg>
+        </button>
+      </div>
+      <!-- <div class="sentence" id="sentenceLine">Loading...</div> -->
+      <div class="question-text" id="questionText"></div>
+      <div class="answer-area" id="answerArea"></div>
+      <div class="clue-box"><img id="clueImg" src="" alt="Clue"></div>
+    </div>
+    <div class="controls">
+      <button id="prevBtn" class="nav-btn">◀ PREV</button>
+      <button id="nextBtn" class="nav-btn">NEXT ▶</button>
+    </div>
+  </div>
+
+  <div id="teacherPopup" class="teacher-popup">
+    <img id="teacherImg" class="teacher-img" src="../uploads/yes.png" alt="Teacher">
+    <div id="teacherMsg" class="teacher-msg">Great job! 🎉</div>
+  </div>
+
+  <div id="feedbackSmiley"></div>
+  <canvas id="confettiCanvas" class="confetti"></canvas>
+
+  <script>
+    const questions = [
+      { prefix: "People who belong to a family are called______", blank: "FAMILY MEMBERS", suffix: ".", img: "../uploads/members.png", solved: false, currentInput: [] },
+      { prefix: "Father, mother and ______", blank: "CHILDREN", suffix: " live in a small family.", img: "../uploads/children.png", solved: false, currentInput: [] },
+      { prefix: "We brush our teeth and have bath in the ______", blank: "BATHROOM", suffix: ".", img: "../uploads/bathroom.png", solved: false, currentInput: [] },
+      { prefix: "We watch TV in the ______", blank: "LIVING ROOM", suffix: ".", img: "../uploads/livingroom.png", solved: false, currentInput: [] },
+      { prefix: "We cook food in the ______", blank: "KITCHEN", suffix: ".", img: "../uploads/kitchen.png", solved: false, currentInput: [] }
+    ];
+
+    let idx = 0, filled = [], isAnimating = false, audioCtx = null;
+    const qNumber = document.getElementById("qNumber");
+    const questionText = document.getElementById("questionText");
+    const answerArea = document.getElementById("answerArea");
+    const clueImg = document.getElementById("clueImg"), nextBtn = document.getElementById("nextBtn"), prevBtn = document.getElementById("prevBtn");
+    const teacherPopup = document.getElementById("teacherPopup"), teacherImg = document.getElementById("teacherImg"), teacherMsg = document.getElementById("teacherMsg");
+    const feedbackSmiley = document.getElementById("feedbackSmiley"), confettiCanvas = document.getElementById("confettiCanvas"), ctx = confettiCanvas.getContext("2d");
+
+    function playTone(freqs, dur = 0.6, type = 'sine') {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const now = audioCtx.currentTime;
+      const g = audioCtx.createGain();
+      g.gain.setValueAtTime(0, now); g.gain.linearRampToValueAtTime(0.2, now + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+      freqs.forEach(f => {
+        const o = audioCtx.createOscillator(); o.type = type; o.frequency.value = f; o.connect(g); o.start(now); o.stop(now + dur);
+      });
+      g.connect(audioCtx.destination);
+    }
+
+    let particles = [];
+    function resize() { confettiCanvas.width = window.innerWidth; confettiCanvas.height = window.innerHeight; }
+    window.onresize = resize; resize();
+
+    function launchConfetti(count = 80) {
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * confettiCanvas.width, y: -20,
+        vx: (Math.random() - 0.5) * 10, vy: 2 + Math.random() * 5,
+        s: 5 + Math.random() * 8, c: `hsl(${Math.random() * 360},80%,60%)`
+      }));
+      if (!isAnimating) { isAnimating = true; renderConfetti(); }
+    }
+
+    function renderConfetti() {
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      particles.forEach((p, i) => {
+        ctx.fillStyle = p.c; ctx.fillRect(p.x, p.y, p.s, p.s);
+        p.x += p.vx; p.y += p.vy; p.vy += 0.1;
+        if (p.y > confettiCanvas.height) particles.splice(i, 1);
+      });
+      if (particles.length) requestAnimationFrame(renderConfetti); else isAnimating = false;
+    }
+
+    function showQuestion(i) {
+
+      const q = questions[i];
+      idx = i;
+
+      qNumber.textContent = `Question ${i + 1} of ${questions.length}`;
+      clueImg.src = q.img;
+      questionText.innerHTML = "";
+      answerArea.innerHTML = "";
+
+      const words = q.blank.toUpperCase().split(" ");
+
+      if (q.currentInput.length === 0) {
+        q.currentInput = new Array(q.blank.replaceAll(" ", "").length).fill(null);
+      }
+
+      filled = [...q.currentInput];
+
+      questionText.textContent = q.prefix + " " + q.suffix;
+      let globalIndex = 0;
+
+      words.forEach(word => {
+
+        const group = document.createElement("span");
+        group.className = "blank-group";
+
+        word.split("").forEach((char) => {
+
+          const letterIndex = globalIndex;
+
+          const box = document.createElement("span");
+          box.className = "blank-box";
+
+          if (filled[letterIndex]) {
+            box.textContent = filled[letterIndex];
+            box.classList.add("filled");
+
+            if (q.solved) {
+              box.classList.add("correct");
+            }
+          }
+
+          const popup = document.createElement("div");
+          popup.className = "mini-popup";
+
+          const choices = [char];
+
+          while (choices.length < 3) {
+            let r = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[Math.floor(Math.random() * 26)];
+            if (!choices.includes(r)) choices.push(r);
+          }
+
+          choices.sort(() => Math.random() - 0.5).forEach(c => {
+
+            const btn = document.createElement("button");
+            btn.className = "letter-choice";
+            btn.textContent = c;
+
+            btn.onclick = (e) => {
+
+              if (q.solved) return;
+
+              e.stopPropagation();
+
+              box.textContent = c;
+              box.classList.add("filled");
+
+              filled[letterIndex] = c;
+              q.currentInput[letterIndex] = c;
+
+              popup.classList.remove("show");
+              box.appendChild(popup);
+
+              checkAnswer();
+            };
+
+            popup.appendChild(btn);
+
+          });
+
+          box.onclick = (e) => {
+
+            if (q.solved) return;
+
+            if (box.classList.contains("filled")) return;
+
+            e.stopPropagation();
+            document.querySelectorAll(".mini-popup").forEach(p => p.classList.remove("show"));
+            popup.classList.add("show");
+          };
+          box.appendChild(popup);
+          group.appendChild(box);
+
+          globalIndex++;
+        });
+
+        answerArea.appendChild(group);
+
+      });
+
+      // sentenceLine.appendChild(suffix);
+
+      updateNav();
+    }
+
+    function checkAnswer() {
+
+      if (filled.includes(null)) return;
+
+      const currentQ = questions[idx];
+
+      const correctAnswer = currentQ.blank.replaceAll(" ", "").toUpperCase();
+
+      if (filled.join("") === correctAnswer) {
+
+        currentQ.solved = true;
+
+        document.querySelectorAll(".blank-box").forEach(b => {
+          b.classList.add("correct");
+          b.classList.remove("pulse");
+        });
+
+        playTone([880, 1100]);
+        launchConfetti();
+
+        feedbackSmiley.textContent = "😃";
+        feedbackSmiley.classList.add("show");
+
+        teacherImg.src = '../uploads/yes.png';
+        teacherMsg.textContent = "Great job! 🎉";
+        teacherPopup.classList.add('show');
+
+        updateNav();
+
+        if (idx === questions.length - 1)
+          setTimeout(finishQuiz, 1500);
+
+      } else {
+
+        document.querySelectorAll(".blank-box").forEach(b => b.classList.add("wrong"));
+
+        playTone([180], 0.4, 'square');
+
+        feedbackSmiley.textContent = "😭";
+        feedbackSmiley.classList.add("show");
+
+        teacherImg.src = '../uploads/no.png';
+        teacherMsg.textContent = "Try again! ✍️";
+        teacherPopup.classList.add('show');
+
+        setTimeout(() => {
+          currentQ.currentInput =
+            new Array(currentQ.blank.replaceAll(" ", "").length).fill(null);
+
+          showQuestion(idx);
+
+        }, 1200);
+      }
+
+      setTimeout(() => {
+        feedbackSmiley.classList.remove("show");
+        teacherPopup.classList.remove('show');
+      }, 2000);
+    }
+
+    function updateNav() {
+      const currentQ = questions[idx];
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = !currentQ.solved;
+      nextBtn.style.visibility = (idx === questions.length - 1 && currentQ.solved) ? "hidden" : "visible";
+      nextBtn.textContent = idx === questions.length - 1 ? "FINISH" : "NEXT ▶";
+    }
+
+    function finishQuiz() {
+      playTone([660, 880, 1320], 1.2);
+      const div = document.createElement("div");
+      div.className = "final-modal-overlay";
+      div.innerHTML = `<div class="final-modal">
+        <h2 style="color:#2c7a4b; font-size:40px; margin:0; font-weight:700;">🎉 YOU WON! 🎉</h2>
+        <p style="font-size:22px; margin:20px 0;">Superstar! You finished the quiz!</p>
+        <button class="nav-btn" style="background:var(--blue); color:white; border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
+      </div>`;
+      document.body.appendChild(div);
+      launchConfetti(150);
+    }
+
+    document.getElementById("readBtn").onclick = () => {
+      const q = questions[idx];
+      const u = new SpeechSynthesisUtterance(`${q.prefix} blank ${q.suffix}`);
+      u.lang = "en-IN"; window.speechSynthesis.speak(u);
+    };
+
+    prevBtn.onclick = () => showQuestion(idx - 1);
+    nextBtn.onclick = () => { if (idx < questions.length - 1) showQuestion(idx + 1); else finishQuiz(); };
+    document.onclick = () => document.querySelectorAll(".mini-popup").forEach(p => p.classList.remove("show"));
+
+    showQuestion(0);
+  </script>
+</body>
+
+</html>

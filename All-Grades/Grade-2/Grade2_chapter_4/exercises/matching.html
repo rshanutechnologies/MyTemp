@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Plant Matching Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/Matching.css">
+</head>
+
+<body>
+
+  <button class="home-btn">Matching</button>
+
+  <div class="wrapper">
+    <div class="progress" id="progress"></div>
+
+    <div class="grid" id="grid">
+      <canvas id="canvas"></canvas>
+
+      <div class="column">
+        <div class="item left" data-key="stem" data-img="../assets/images/M-1.png" data-color="#f28482">
+          <div class="left-content"><img src="../assets/images/M-1.png">Stem</div>
+        </div>
+        <div class="item left" data-key="roots" data-img="../assets/images/M-2.png" data-color="#4bb6b7">
+          <div class="left-content"><img src="../assets/images/M-2.png">Roots</div>
+        </div>
+        <div class="item left" data-key="leaves" data-img="../assets/images/M-3.png" data-color="#8ac926">
+          <div class="left-content"><img src="../assets/images/M-3.png">Leaves</div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="item right" data-key="roots"> They absorb water and
+ minerals from the soil. <div class="slot"></div>
+        </div>
+        <div class="item right" data-key="leaves">They prepare food for the
+ plant<div class="slot position"></div>
+        </div>
+        <div class="item right" data-key="stem">It transports food and water
+to all the parts of a plant. <div class="slot"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="popup hidden" id="popup">
+    <div class="popup-box">
+      <div class="popup-emoji" id="popupEmoji">👍</div>
+      <h3 id="popupTitle"></h3>
+      <p id="popupText"></p>
+      <button class="restart hidden" id="restart">Play Again</button>
+
+    </div>
+  </div>
+
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <script src="../assets/js/Matching.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade3_Animal_Quiz</title>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@100;200;300;400;500;600;700;900&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+<style>
+
+*{
+box-sizing:border-box;
+ font-family:'Livvic';
+}
+body{
+margin:0;
+height:100vh;
+display:flex;
+overflow:hidden;
+position:relative;
+
+}
+
+/* BACKGROUND IMAGE */
+
+
+
+/* VERY LIGHT PASTEL OVERLAY */
+
+.tree-area{
+  width:260px;
+  position:relative;
+  margin-left: -60px;   /* 🔥 move left */
+  margin-top: -60px;
+}
+/* TREE TRUNK */
+.trunk{
+  width:40px;
+  height:90%;
+  position:absolute;
+  left:95px;
+  bottom:0;
+  border-radius:50px;
+
+  /* Wood Base Color */
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #8b5e3c 0px,
+      #8b5e3c 8px,
+      #7a4f2f 8px,
+      #7a4f2f 16px
+    );
+
+  /* Soft vertical shine */
+  box-shadow:
+    inset -6px 0 8px rgba(0,0,0,0.25),
+    inset 6px 0 8px rgba(255,255,255,0.15);
+}
+/* PUFFY BRANCH */
+.branch{
+  width:150px;
+  height:17px;
+  position:absolute;
+  border-radius:40px;
+
+  /* Wood grain base */
+  background:
+    repeating-linear-gradient(
+      to right,
+      #8b5e3c 0px,
+      #8b5e3c 6px,
+      #7a4f2f 6px,
+      #7a4f2f 12px
+    );
+
+  /* Rounded depth effect */
+  box-shadow:
+    inset 0 3px 5px rgba(255,255,255,0.2),
+    inset 0 -4px 6px rgba(0,0,0,0.25);
+}
+/* BRANCHES - ALL RIGHT SIDE */
+.b1{top:90px; left:120px;}
+
+/* CLOUD BOARD */
+.board{
+  position:absolute;
+  width:180px;
+  height:60px;
+  border-radius:40px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;   /* 🔥 important */
+  gap:10px;                     /* 🔥 spacing between icon & text */
+  padding-left:25px;            /* 🔥 move content inside nicely */
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.2s ease;
+  color: #111111;
+}
+/* Increase width for all boards except bd1 */
+.bd2,
+.bd3,
+.bd4,
+.bd5{
+  width: 210px;   /* adjust size as you like */
+}
+/* Fill Blanks - Warm Mustard */
+.bd2{
+  background:#f4a261;
+  color:#000;
+}
+
+/* Examples - Soft Purple */
+.bd3{
+  background:#c77dff;
+  color:#000;
+}
+
+/* True/False - Coral Red */
+.bd4{
+  background:#ff6b6b;
+  color:#000;
+}
+
+/* Matching - Fresh Mint Green */
+.bd5{
+  background:#52b788;
+  color:#000;
+}
+/* ROPE */
+/* Rope only for MCQ */
+.bd1::before{
+  content:"";
+  position:absolute;
+  top:-22px;
+  left:50%;
+  transform:translateX(-50%);
+  width:6px;
+  height:22px;
+  background:#6d4c41;
+  border-radius:10px;
+}
+
+/* HOVER BOUNCE */
+
+.board:hover{
+transform:scale(1) rotate(2deg);
+}
+
+
+
+.board.active{
+background:linear-gradient(#caffbf,#9bf6ff);
+box-shadow:
+
+
+0 18px 25px rgba(0,0,0,0.25);
+ border:4px solid #316dc1;   /* Deep navy */
+}
+
+/* POSITIONS */
+/* BOARDS - ALL RIGHT SIDE */
+.bd1{top:125px; left:120px;}
+.bd2{top:210px; left:70px;}
+.bd3{top:290px; left:70px;}
+.bd4{top:380px; left:70px;}
+.bd5{top:470px; left:70px;}
+/* MAIN */
+.bd1{
+  background:linear-gradient(#a8dadc,#74c0fc);
+  box-shadow:
+  0 6px 0 #3a86ff,
+  0 12px 25px rgba(0,0,0,0.25);
+}
+
+.main{
+flex:1;
+}
+
+iframe{
+width:100%;
+height:100%;
+border:0;
+}
+
+/* MOBILE */
+
+
+
+@media (min-width:1400px){
+
+  .tree-area{
+    width:320px;
+  }
+
+  .board{
+    width:200px;
+    height:80px;
+    font-size:21px;
+  }
+
+  .trunk{
+    left:120px;
+  }
+
+}
+
+
+/* ================= MOBILE MENU ================= */
+
+.menu-btn{
+  display:none;
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:#22c55e;
+  color:#fff;
+  border:none;
+  font-size:22px;
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  z-index:3000;
+}
+
+.offcanvas{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  display:none;
+  z-index:2500;
+}
+
+.offcanvas.show{
+  display:block;
+}
+
+.offcanvas-panel{
+  position:absolute;
+  right:0;
+  top:0;
+  width:260px;
+  height:100%;
+  background:#ffffff;
+  padding:90px 20px 20px;
+  transform:translateX(100%);
+  transition:.3s ease;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.offcanvas.show .offcanvas-panel{
+  transform:translateX(0);
+}
+
+.mobile-item{
+  padding:14px;
+  border-radius:12px;
+  background:#fef3c7;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+@media(max-width:1024px){
+
+  .tree-area{
+    display:none;   /* hide sidebar */
+  }
+
+  .menu-btn{
+    display:block;  /* show menu button */
+  }
+
+  body{
+    flex-direction:column;
+  }
+
+  .main{
+    flex:1;
+    height:100vh;
+  }
+
+}
+</style>
+</head>
+
+<body>
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<div class="tree-area">
+
+<div class="trunk"></div>
+
+<div class="branch b1"></div>
+
+
+<div class="board bd1 active" data-file="./exercises/mcq.html"><div class="icon"><i class="fa-solid fa-check-double"></i></div><div class="label">MCQ</div></div>
+<div class="board bd2" data-file="./exercises/fillblanks.html">  <div class="icon"><i class="fa-solid fa-pen"></i></div> <div class="label">Fill the Blanks</div></div>
+<div class="board bd3" data-file="./exercises/true_false.html">
+  <div class="icon">
+    <i class="fa-solid fa-scale-balanced"></i>
+  </div>
+  <div class="label">True / False</div>
+</div>
+<div class="board bd4" data-file="./exercises/matching.html"><div class="icon"><i class="fa-solid fa-link"></i></div> <div class="label">Matching</div></div>
+<div class="board bd5" data-file="./exercises/two_example.html">
+  <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+  <div class="label">Examples</div>
+</div>
+
+
+
+</div>
+
+<div class="main">
+<iframe id="frame" src="./exercises/mcq.html"></iframe>
+</div>
+<!-- OFFCANVAS MENU -->
+<div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
+  <div class="offcanvas-panel" onclick="event.stopPropagation()">
+
+    <div class="mobile-item" onclick="mobileSelect(0)">🐶 MCQ</div>
+    <div class="mobile-item" onclick="mobileSelect(1)">🐱 Fill Blanks</div>
+    <div class="mobile-item" onclick="mobileSelect(2)">🐵 True/False</div>
+    <div class="mobile-item" onclick="mobileSelect(3)">🐰 Matching</div>
+    <div class="mobile-item" onclick="mobileSelect(4)">🦁 Examples</div>
+    
+    
+
+  </div>
+</div>
+<script>
+const buttons = document.querySelectorAll(".board");
+const frame = document.getElementById("frame");
+const offcanvas = document.getElementById("offcanvas");
+
+function activate(index){
+  buttons.forEach(b=>b.classList.remove("active"));
+  buttons[index].classList.add("active");
+  frame.src = buttons[index].dataset.file;
+}
+
+buttons.forEach((btn,i)=>{
+  btn.addEventListener("click",()=>activate(i));
+});
+
+function toggleMenu(){
+  offcanvas.classList.toggle("show");
+}
+
+function mobileSelect(index){
+  activate(index);
+  toggleMenu();
+}
+</script>
+
+</body>
+</html>

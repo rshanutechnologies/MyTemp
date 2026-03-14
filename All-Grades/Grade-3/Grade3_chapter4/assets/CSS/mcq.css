@@ -1,0 +1,461 @@
+
+      *{
+        box-sizing:border-box;
+        font-family:"Livvic" !important;
+      }
+
+      html,body{
+        height:100%;
+        overflow:hidden; /* ✅ No scrolling */
+      }
+
+  body{
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+  padding-top:20px;
+  
+
+}
+
+
+      /* ✅ Full screen app fit */
+      .app{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between; /* key fix */
+    padding:18px;
+  }
+  .app{
+   
+    border-radius:24px;
+   
+  }
+
+  .opt-label{
+    font-size:22px;
+    font-weight:500;
+    color:#334155;
+  }
+
+
+      /* ✅ Title bar */
+    
+
+
+      /* ✅ Question bar */
+      .question-pill{
+        width:min(980px, 96vw);
+        /* background:linear-gradient(180deg,#ffd16d,#f5b63f); */
+        border-radius:12px;
+        padding:16px 26px;
+        height:120px;
+        display:flex;
+        align-items:flex-start;
+        justify-content:flex-start;
+        overflow:hidden;
+        /* box-shadow:0 12px 16px rgba(0,0,0,0.08); */
+        flex:0 0 auto;
+      }
+
+      .question-text{
+        margin:0;
+        width:100%;
+        font-size:30px;
+        
+        color: #274c77;
+        line-height:1.2;
+        text-align:left;
+
+        /* ✅ long text safe */
+        word-break:break-word;
+        overflow-wrap:break-word;
+
+        display:-webkit-box;
+        -webkit-box-orient:vertical;
+        overflow:hidden;
+      
+      }
+
+      /* ✅ Options row */
+      .options{
+        width:min(700px, 96vw);
+        display:grid;
+        grid-template-columns:repeat(4, 1fr);
+        gap:18px;
+        flex:0 0 auto;
+      
+        
+      }
+
+      .option{
+       
+        border-radius:12px;
+       
+        min-height:140px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
+        transition:0.2s ease;
+        overflow:hidden;
+        user-select:none;
+      }
+
+   
+      .option.disabled{
+        opacity:0.35;
+        cursor:not-allowed;
+        transform:none !important;
+      }
+
+      .option.correct-highlight{
+        opacity:1 !important;
+        cursor:not-allowed;
+        border:2px solid #22c55e !important;
+       
+      }
+
+      .opt-emoji{
+        font-size:70px;
+        line-height:70px;
+        margin-bottom:14px;
+      }
+
+      .opt-label{
+        font-size:22px;
+        font-weight:500;
+        color: #274c77;
+      }
+
+      /* ✅ Progress Boxes */
+      .progress-boxes{
+        display:flex;
+        gap:14px;
+        margin-top:8px;
+        flex:0 0 auto;
+      }
+
+      .step{
+        width:70px;
+        height:70px;
+        border-radius:10px;
+        border:2px solid rgba(0,0,0,0.12);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:34px;
+        font-weight:500;
+        color:#5b6877;
+        background:#f5f7ff;
+        box-shadow:0 10px 14px rgba(0,0,0,0.06);
+        transition:0.2s ease;
+      }
+
+      .step.active{
+        border:3px solid #5e8bff;
+       
+        box-shadow:0 0 0 4px rgba(94,139,255,0.18), 0 10px 14px rgba(0,0,0,0.06);
+        color:#111827;
+      }
+
+      /* ✅ Nav Buttons */
+      .nav{
+        width:min(980px, 96vw);
+        display:flex;
+        justify-content:space-between;
+        margin-top:10px;
+        flex:0 0 auto;
+      }
+        .nav-btn{
+      width:160px;
+      padding:12px 16px;
+      border:none;
+      border-radius:30px;
+      font-size:20px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      /* box-shadow:0px 6px 0px rgba(0,0,0,0.08); */
+      transition:0.15s;
+      margin-bottom: 10px;
+    }
+  
+    .prev-btn{ background:#f29b1d; color:white; }
+    .next-btn{ background:#8fb1e8; color:white; }
+  
+    .nav-btn:disabled{
+      opacity:0.45;
+      cursor:not-allowed;
+      transform:none;
+    }
+  
+
+      /* ✅ Popup */
+      .popup{
+        position:fixed;
+        inset:0;
+      
+        display:none;
+        justify-content:center;
+        align-items:center;
+        z-index:9999;
+        padding:20px;
+      }
+
+      .popup-box{
+       background:white;
+  padding:28px;
+  border-radius:22px;
+  width:300px;
+  border:2px solid #d7ee0d;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+      }
+
+/* ✅ FINAL POPUP WIDER */
+.popup-box.final-wide{
+  width:520px;  /* ✅ increased width */
+}
+.popup-correct{
+  background-color:white;
+  color:#2e7d32;
+  border-radius:22px;
+  padding:20px;
+  font-size:24px;
+  text-align:center;
+  width:100%;
+}
+.popup-correct .check{
+  font-size:25px;
+  display:block;
+  margin-bottom:6px;
+}
+.popup-correct .happy{
+  font-size:60px;
+  display:block;
+  margin:6px 0;
+}
+.popup-correct .stars{
+  font-size:30px;
+  color:#ffca28;
+  margin-top:6px;
+}
+
+/* ✅ WRONG POPUP */
+.popup-wrong{
+  background-color:white;
+  color:#c62828;
+  border-radius:22px;
+  padding:20px;
+  font-size:24px;
+  text-align:center;
+  width:100%;
+}
+.popup-wrong .cross{
+  font-size:25px;
+  display:block;
+  margin-bottom:6px;
+}
+.popup-wrong .sad{
+  font-size:60px;
+  display:block;
+  margin:6px 0;
+}
+.popup-wrong .tip{
+  font-size:18px;
+  color:#555;
+  margin-top:6px;
+}
+      .popup-final{
+        width:420px !important;
+      }
+
+      .popup-title{
+        font-weight:900;
+        font-size:24px;
+        margin-bottom:8px;
+      }
+
+      .popup-emoji{
+        font-size:70px;
+        margin:10px 0;
+        display:block;
+      }
+
+      .popup-tip{
+        font-size:18px;
+        font-weight:700;
+        color:#555;
+        margin-top:6px;
+      }
+.popup-final-content{
+  width:100%;
+  text-align:center;
+  font-size:24px;
+  font-weight:900;
+  color:#2e7d32;
+}
+.popup-final-content .emoji{
+  font-size:60px;
+  display:block;
+  margin:10px 0;
+}
+.popup-final-content .stars{
+  font-size:30px;
+  color:#ffca28;
+  margin:12px 0;
+}
+.final-score{
+  margin-top:14px;
+}
+
+/* ✅ restart button */
+.restart{
+  margin-top:15px;
+  padding:10px 16px;
+  background:orange;
+  color:white;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  font-size:22px;
+}
+      .restart{
+        margin-top:14px;
+        /* background:linear-gradient(180deg,#87b5ff,#4a7fe6); */
+        background-color: orange;
+        color:#fff;
+        padding:12px 18px;
+        border-radius:999px;
+        font-size:18px;
+        font-weight:500;
+        cursor:pointer;
+        border:none;
+        box-shadow:0 10px 16px rgba(0,0,0,0.12);
+      }
+
+      
+
+     
+      /* ✅ Option Image */
+  .opt-img{
+    width:110px;
+    height:110px;
+    object-fit:contain;
+    display:block;
+  }
+
+ .header-bar{
+  position:relative;
+  width:min(980px,96vw);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom:8px;
+}
+
+
+
+
+
+
+
+
+
+/* 🖥 LARGE MONITOR IMPROVEMENT */
+@media (min-width:1400px){
+
+  .app{
+    max-width:1200px;
+    margin:auto;
+  }
+
+  .question-text{
+    font-size:36px;
+  }
+
+  .options{
+    width:900px;
+  }
+
+  .option{
+    min-height:170px;
+  }
+
+  .opt-emoji{
+    font-size:90px;
+  }
+
+  .step{
+    width:80px;
+    height:80px;
+    font-size:36px;
+  }
+
+}
+
+@media (max-width:600px){
+
+  body{
+    align-items:flex-start;
+    overflow: auto;
+    
+    
+  }
+
+  .app{
+    justify-content:flex-start;
+    gap:16px;
+  }
+
+  .question-text{
+    font-size:30px;
+    line-height:1.4;
+  }
+
+  .options{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .option{
+    flex-direction:row;
+    justify-content:flex-start;
+    gap:14px;
+    padding:12px;
+    min-height:80px;
+  }
+
+  .opt-emoji{
+    font-size:45px;
+    margin:0;
+  }
+
+  .opt-label{
+    font-size:16px;
+  }
+
+  .step{
+    width:45px;
+    height:45px;
+    font-size:18px;
+  }
+
+  .nav-btn{
+    width:110px;
+    font-size:14px;
+  }
+
+}

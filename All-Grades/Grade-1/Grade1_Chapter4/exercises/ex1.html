@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Tick the Correct Answer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* 1. FLEXBOX ROOT LOGIC */
+    body {
+      font-family: "Livvic", sans-serif;
+      background: url(./uploads/bg4.png) no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .header {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .header h1 {
+      font-weight: 500;
+      color: #ff7a00;
+      font-size: clamp(20px, 5vw, 30px);
+      margin: 0;
+    }
+
+    /* READ BUTTON STYLE */
+    .read-btn {
+      background: white;
+      border: 2px solid #ff7a00;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .read-btn:hover {
+      transform: scale(1.1);
+      background: #ff7a00;
+      color: white;
+    }
+
+    .q-number {
+      text-align: center;
+      font-size: 18px;
+      color: #eff2f2;
+      font-weight: 500;
+    }
+
+    .q-text {
+      text-align: center;
+      font-size: clamp(1.2rem, 4vw, 2.5rem);
+      color: #f0f6f6;
+      margin: 10px 0;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    /* 2. RESPONSIVE OPTIONS GRID */
+    .options {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: clamp(15px, 5vw, 40px);
+      width: 100%;
+    }
+
+    .option {
+      text-align: center;
+      flex: 0 1 auto;
+    }
+
+    .option-img {
+      width: clamp(120px, 25vw, 180px);
+      height: clamp(120px, 25vw, 180px);
+      background: white;
+      border-radius: 30px;
+      border: 6px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, .2);
+      transition: transform 0.2s;
+    }
+
+    .option-img img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+      border-radius: 15px;
+    }
+
+    .option.correct .option-img {
+      border-color: #2ed573;
+      background: #dff9fb;
+    }
+
+    .option.wrong .option-img {
+      border-color: #dc3545;
+      background: #ffe6e6;
+    }
+
+    .option-label {
+      margin-top: 10px;
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    /* 3. UNDER-OPTIONS NAVIGATION */
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      margin-top: 20px;
+      min-height: 60px;
+    }
+
+    .nav-btn {
+      font-size: 18px;
+      font-weight: 700;
+      padding: 12px 25px;
+      border-radius: 50px;
+      border: 4px solid white;
+      cursor: pointer;
+      color: white;
+      transition: 0.3s;
+    }
+
+    #nextBtn {
+      background: #4cc9f0;
+      display: none;
+    }
+
+    #prevBtn {
+      background: #ff758c;
+      display: none;
+    }
+
+    .nav-btn:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    /* 4. SPLASH CONFETTI */
+    .smiley {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(.4);
+      font-size: clamp(100px, 20vw, 200px);
+      opacity: 0;
+      transition: .45s cubic-bezier(.17, .89, .32, 1.49);
+      z-index: 100;
+    }
+
+    .smiley.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      top: 50%;
+      left: 50%;
+      animation: splash 1s ease-out forwards;
+    }
+
+    @keyframes splash {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translate(var(--tx), var(--ty)) rotate(var(--rot));
+        opacity: 0;
+      }
+    }
+
+    /* FINAL CARD */
+    .final-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .final-card {
+      background: #C2F4FF;
+      padding: clamp(20px, 5vw, 50px);
+      border-radius: 40px;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .final-card h1 {
+      margin: 0 0 15px;
+      font-size: clamp(24px, 5vw, 36px);
+    }
+
+    .final-card button {
+      padding: 12px 30px;
+      border-radius: 40px;
+      border: none;
+      background: #4cc9f0;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+    <div class="header">
+      <h1>Tick (✓) the Correct Answer</h1>
+      <button class="read-btn" onclick="readQuestion()">🔊</button>
+    </div>
+
+    <div id="quiz" style="width: 100%; display: flex; flex-direction: column; align-items: center;"></div>
+
+    <div class="nav-container">
+      <button id="prevBtn" class="nav-btn">◀ PREV</button>
+      <button id="nextBtn" class="nav-btn">NEXT ▶</button>
+    </div>
+
+    <div id="smiley" class="smiley"></div>
+    <div id="confetti" class="confetti"></div>
+  </div>
+
+  <script>
+    const quiz = [
+      {
+        text: "Radish is an example of a ____ that we eat.",
+        options: [
+          { txt: "Stem", img: "../uploads/stem.png" },
+          { txt: "Root", img: "../uploads/radish.png" },
+          { txt: "Leaf", img: "../uploads/leaf.png" }
+        ],
+        answer: 1
+      },
+      {
+        text: "Broccoli is an example of a ____ that we eat.",
+        options: [
+          { txt: "Stem", img: "../uploads/stem.png" },
+          { txt: "Root", img: "../uploads/roots.png" },
+          { txt: "Flower", img: "../uploads/br.png" }
+        ],
+        answer: 2
+      },
+      {
+        text: "Plants need ____ to grow.",
+        options: [
+          { txt: "Water", img: "../uploads/water.png" },
+          { txt: "Butter", img: "../uploads/butter.png" },
+          { txt: "Eggs", img: "../uploads/eggs.png" }
+        ],
+        answer: 0
+      },
+      {
+        text: "Plants that are tall and woody are called ____.",
+        options: [
+          { txt: "Shrubs", img: "../uploads/shrubs.png" },
+          { txt: "Trees", img: "../uploads/trees.png" },
+          { txt: "Herbs", img: "../uploads/herbs.png" }
+        ],
+        answer: 1
+      },
+      {
+        text: "An example of a leaf that we eat is ____.",
+        options: [
+          { txt: "Mango", img: "../uploads/mango.png" },
+          { txt: "Spinach", img: "../uploads/spinach.png" },
+          { txt: "Apple", img: "../uploads/apple.png" }
+        ],
+        answer: 1
+      }
+    ];
+
+    const quizBox = document.getElementById("quiz");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const smiley = document.getElementById("smiley");
+    const confettiBox = document.getElementById("confetti");
+
+    let current = 0;
+    let locked = false;
+    const userAnswers = Array(quiz.length).fill(null);
+
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    // INDIAN ENGLISH READING LOGIC
+    function readQuestion() {
+      const textToRead = quiz[current].text.replace("____", "blank");
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      const voices = window.speechSynthesis.getVoices();
+      const indianVoice = voices.find(v => v.lang === 'en-IN' || v.name.includes('India'));
+      if (indianVoice) utterance.voice = indianVoice;
+      utterance.rate = 0.9;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+
+    function playSound(type) {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      if (type === 'correct') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.5);
+      } else {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(110, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.3);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+      }
+    }
+
+    // SPLASH TYPE CONFETTI
+    function confetti() {
+      confettiBox.innerHTML = "";
+      const colors = ["#f778a1", "#4cc9f0", "#ffaa00", "#2ed573"];
+      for (let i = 0; i < 60; i++) {
+        const p = document.createElement("div");
+        p.className = "confetti-piece";
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 100 + Math.random() * 200;
+        p.style.setProperty('--tx', (Math.cos(angle) * dist) + 'px');
+        p.style.setProperty('--ty', (Math.sin(angle) * dist) + 'px');
+        p.style.setProperty('--rot', (Math.random() * 360) + 'deg');
+        p.style.background = colors[Math.random() * colors.length | 0];
+        confettiBox.appendChild(p);
+      }
+      setTimeout(() => confettiBox.innerHTML = "", 1200);
+    }
+
+    function showSmiley(e) {
+      smiley.textContent = e;
+      smiley.classList.add("show");
+      setTimeout(() => smiley.classList.remove("show"), 1200);
+    }
+
+    function finishQuiz() {
+      confetti();
+      playSound('correct');
+      const f = document.createElement("div");
+      f.className = "final-overlay";
+      f.innerHTML = `
+   <div class="final-card">
+     <h1>🏆 QUIZ COMPLETED!</h1>
+     <p>Great Job!</p>
+     <button onclick="location.reload()">PLAY AGAIN</button>
+   </div>
+ `;
+      document.body.appendChild(f);
+    }
+
+    function render() {
+      locked = false;
+      const q = quiz[current];
+
+      quizBox.innerHTML = `
+ <div class="q-number">Question ${current + 1} of ${quiz.length}</div>
+ <div class="q-text" id="qText">${q.text}</div>
+ <div class="options">
+ ${q.options.map((o, i) => `
+  <div class="option" data-i="${i}">
+   <div class="option-img"><img src="${o.img}"></div>
+   <div class="option-label">${o.txt}</div>
+  </div>`).join("")}
+ </div>`;
+
+      nextBtn.style.display = "none";
+      prevBtn.style.display = current > 0 ? "block" : "none";
+
+      document.querySelectorAll(".option").forEach(opt => {
+        opt.onclick = () => {
+          if (locked) return;
+          const idx = +opt.dataset.i;
+          if (idx === q.answer) {
+            locked = true;
+            userAnswers[current] = idx;
+            opt.classList.add("correct");
+            playSound('correct');
+            document.getElementById("qText").innerHTML =
+              q.text.replace("____", `<b style="color:#2ed573">${q.options[idx].txt}</b>`);
+            showSmiley("😄");
+            confetti();
+            if (current === quiz.length - 1) {
+              setTimeout(finishQuiz, 1000);
+            } else {
+              nextBtn.style.display = "block";
+            }
+          } else {
+            opt.classList.add("wrong");
+            playSound('wrong');
+            showSmiley("😢");
+            setTimeout(() => opt.classList.remove("wrong"), 700);
+          }
+        };
+      });
+
+      if (userAnswers[current] !== null) {
+        locked = true;
+        const idx = userAnswers[current];
+        const opt = document.querySelector(`.option[data-i="${idx}"]`);
+        opt.classList.add("correct");
+        document.getElementById("qText").innerHTML =
+          q.text.replace("____", `<b style="color:#2ed573">${q.options[idx].txt}</b>`);
+        nextBtn.style.display = "block";
+      }
+    }
+
+    nextBtn.onclick = () => {
+      window.speechSynthesis.cancel();
+      current++;
+      if (current < quiz.length) { render(); }
+      else { finishQuiz(); }
+    };
+
+    prevBtn.onclick = () => {
+      window.speechSynthesis.cancel();
+      if (current > 0) { current--; render(); }
+    };
+
+    render();
+  </script>
+</body>
+
+</html>

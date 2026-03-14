@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Chapter Quiz Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sidebar-width: 280px;
+      --active-pink: #f778a1;
+      --text-blue: #1F3C5B;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Livvic', sans-serif;
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      /* Fixed height */
+      width: 100vw;
+      overflow: hidden;
+      /* Strictly no page scrolling */
+      background: url('./uploads/bg.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .toggle-btn {
+      display: none;
+    }
+
+    /* --- SIDEBAR FLEX --- */
+    .sidebar {
+      width: var(--sidebar-width);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      z-index: 10;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .l-name {
+      text-align: center;
+      margin: 10px 0 25px 0;
+      font-size: clamp(16pt, 3vw, 24pt);
+      color: var(--text-blue);
+      font-weight: 700;
+    }
+
+    .menu-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .menu-btn {
+      display: flex;
+      align-items: center;
+      padding: 15px 18px;
+      border: 3px solid transparent;
+      border-radius: 20px;
+      font-family: 'Livvic';
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-blue);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: white;
+      text-align: left;
+    }
+
+    .sticker-icon {
+      font-size: 24px;
+      margin-right: 12px;
+    }
+
+    /* Button Variants */
+    .btn-1 {
+      background: #e4c7e2;
+      border-color: #f3d5f1;
+    }
+
+    .btn-2 {
+      background: #CFE8B3;
+      border-color: #dff5c5;
+    }
+
+    .btn-3 {
+      background: #FFD84D;
+      border-color: #ffe894;
+    }
+
+    .btn-4 {
+      background: #86BCD5;
+      border-color: #a4d4eb;
+    }
+
+    .menu-btn.active {
+      border-color: var(--active-pink);
+      transform: translateY(-2px);
+    }
+
+    /* --- CONTENT AREA FLEX --- */
+    .content {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .iframe-wrapper {
+      flex: 1;
+      height: 100%;
+      width: 100%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* --- MOBILE RESPONSIVE (NO SCROLL) --- */
+    @media (max-width: 850px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        /* Shrinks to fit buttons */
+        padding: 10px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .l-name {
+        display: none;
+      }
+
+      .menu-container {
+        flex-direction: row;
+        overflow-x: auto;
+        /* Allow side-swiping of buttons only */
+        overflow-y: hidden;
+        width: 100%;
+        padding-bottom: 5px;
+      }
+
+      /* Hide mobile scrollbar for cleaner look */
+      .menu-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      .menu-btn {
+        border: 3px solid transparent;
+        transition: all 0.25s ease;
+      }
+
+      /* CLEAN ACTIVE STYLE */
+      .menu-btn.active {
+        border-color: var(--active-pink);
+        background-clip: padding-box;
+        box-shadow: 0 0 0 3px rgba(247, 120, 161, 0.25);
+        transform: none;
+      }
+
+      .sticker-icon {
+        font-size: 18px;
+        margin-right: 5px;
+      }
+    }
+
+    /* ==========================
+   📱 MOBILE RESPONSIVE ONLY
+========================== */
+    @media (max-width: 900px) {
+
+      body {
+        flex-direction: column;
+        background: url('./uploads/bg.png') no-repeat center center fixed;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 380px;
+        transform: translateX(40);
+        transition: transform 0.3s ease;
+        background: url('./uploads/bg.png') no-repeat center center fixed;
+        z-index: 1000;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.hide {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      /* 👇 KEEP BUTTONS IN COLUMN */
+      .menu-container {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        align-items: center;
+        margin-top: 30%;
+
+
+
+      }
+
+      .menu-btn {
+        width: 100%;
+        font-size: 16px;
+        padding: 14px 16px;
+      }
+
+      .toggle-btn {
+        display: block;
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        background: #ff9f3f;
+        color: white;
+        border: none;
+        padding: 10px 14px;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 1100;
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        display: none;
+        z-index: 900;
+      }
+
+      .overlay.active {
+        display: block;
+      }
+
+      .content {
+        width: 100%;
+        height: 100%;
+      }
+
+      .toggle-btn {
+        display: block;
+      }
+
+      .menu-btn {
+        border: 3px solid transparent;
+      }
+
+      .menu-btn.active {
+        outline: 3px solid var(--active-pink);
+        outline-offset: -3px;
+        background: rgba(247, 120, 161, 0.15);
+        box-shadow: 0 4px 12px rgba(247, 120, 161, 0.25);
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <button class="toggle-btn" id="toggleBtn">☰</button>
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar hide">
+    <h2 class="l-name">Chapter 1 Quiz</h2>
+    <div class="menu-container">
+      <button class="menu-btn btn-1 active" data-file="exercises/ex1.html">
+        <span class="sticker-icon">✅</span> Correct Answer
+      </button>
+      <button class="menu-btn btn-2" data-file="exercises/ex2.html">
+        <span class="sticker-icon">📝</span> Fill Blanks
+      </button>
+      <button class="menu-btn btn-3" data-file="exercises/ex3.html">
+        <span class="sticker-icon">🔍</span> True or False
+      </button>
+      <button class="menu-btn btn-4" data-file="exercises/ex4.html">
+        <span class="sticker-icon">🔤</span> Unscramble
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="iframe-wrapper">
+      <iframe id="quizFrame" src="exercises/ex1.html"></iframe>
+    </div>
+  </div>
+
+  <script>
+    const iframe = document.getElementById('quizFrame');
+    const buttons = document.querySelectorAll('.menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const overlay = document.getElementById('overlay');
+
+    // 📱 On first mobile load → show index
+    // if (window.innerWidth <= 900) {
+    //   sidebar.classList.remove('hide');
+    // }
+
+    // Button click
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+
+        // Load selected content
+        iframe.src = btn.getAttribute('data-file');
+
+        // Active highlight
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // 📱 On mobile → hide index after click
+        if (window.innerWidth <= 900) {
+          sidebar.classList.remove('active');
+          overlay.classList.remove('active');
+        }
+      });
+    });
+
+    // Toggle button click
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    // Overlay click
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+  </script>
+
+</body>
+
+</html>

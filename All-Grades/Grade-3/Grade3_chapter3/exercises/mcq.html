@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animal Quiz Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="../assets/CSS/mcq.css">
+
+</head>
+
+<body>
+    <div class="screen">
+        <div class="container">
+
+            <div class="train-area">
+                
+            </div>
+
+            <div class="question-box">
+                <div class="question-text" id="questionText">Loading...</div>
+            </div>
+
+            <div class="options-row" id="optionsRow"></div>
+
+            <div class="nav fancy-nav">
+  <!-- PREV -->
+  <button class="nav-btn prev-btn" id="prevBtn">
+    <span class="circle">❮❮</span>
+    <span class="label">PREV</span>
+  </button>
+
+  <!-- NEXT -->
+  <button class="nav-btn next-btn" id="nextBtn">
+    <span class="label">NEXT</span>
+    <span class="circle">❯❯</span>
+  </button>
+</div>
+
+
+        </div>
+    </div>
+
+    <!-- <div class="popup" id="popup">
+        <div class="popup-box" id="popupText"></div>
+    </div> -->
+
+    <!-- CORRECT / WRONG POPUP -->
+    <div id="answerPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-icon" id="popupIcon"></div>
+            <h3 id="popupTitle"></h3>
+            <p id="popupMsg"></p>
+        </div>
+    </div>
+
+    <!-- FINAL POPUP -->
+    <div id="finalPopup">
+        <div class=" finalpopup-box">
+            <h2 class="final-heading">🎉 Congratulations!</h2>
+            <p id="finalScore"></p>
+            <div id="stars"></div><br> <button onclick="location.reload()" class="playAgain-btn"> Play Again </button>
+        </div>
+    </div>
+    <script src="../assets/JavaScript/mcq.js"></script>
+
+</body>
+
+</html>

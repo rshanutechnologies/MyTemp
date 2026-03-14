@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>True / False – States of Matter</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/CSS/true_false.css">
+
+</head>
+
+<body>
+
+<div class="screen">
+
+ <div class="header-bar">
+  <div class="home-btn" id="homeBtn"></div>
+  
+</div>
+
+
+  <div class="question" id="qText"></div>
+
+  <div class="nest">
+  <img id="qImage" class="question-image" src="" />
+</div>
+
+
+  <div class="controls">
+    <div class="btn false" id="btnFalse" onclick="answer(false)">FALSE</div>
+    <div class="btn true" id="btnTrue" onclick="answer(true)">TRUE</div>
+  </div>
+
+ <!-- <div class="nav">
+  <button class="prev" id="prevBtn" onclick="prev()" disabled>⬅ Prev</button>
+  <button class="next" id="nextBtn" onclick="next()" disabled>Next ➡</button>
+</div> -->
+
+<div class="nav">
+  <button class="prev" id="prevBtn" onclick="prev()" disabled>←  Prev</button>
+  <button class="next" id="nextBtn" onclick="next()" disabled>Next →</button>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-box" id="popupText"></div>
+</div>
+
+</div>
+<script src="../assets/JavaScript/true_false.js"></script>
+
+</body>
+</html>

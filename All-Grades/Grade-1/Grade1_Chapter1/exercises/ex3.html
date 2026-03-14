@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>True or False — Fun Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --true: #28a745;
+            --false: #dc3545;
+            --q-text-color: #2F4F4F;
+            --blue: #4cc9f0;
+            --pink: #f778a1;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            font-family: 'Livvic', sans-serif;
+            background: "../uploads/bg.png"; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            padding: 2vh 20px;
+        }
+
+        .question-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2vh;
+            width: 100%;
+        }
+
+        .header-row { display: flex; align-items: center; gap: 15px; }
+
+        .q-number {
+            font-weight: 700;
+            font-size: clamp(16px, 2.5vh, 24px);
+            color: var(--q-text-color);
+            background: rgba(255,255,255,0.6);
+            padding: 5px 20px;
+            border-radius: 20px;
+        }
+
+        .bird-btn {
+            background: #FFC312;
+            border: 4px solid #F79F1F;
+            border-radius: 50%;
+            width: clamp(50px, 7.5vh, 75px);
+            height: clamp(50px, 7.5vh, 75px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 0 #e58e26;
+        }
+        .bird-btn svg { width: 60%; height: 60%; fill: #333; }
+
+        .q-text {
+            font-size: clamp(25pt, 3.8vh, 32pt);
+            color: var(--q-text-color);
+            text-align: center;
+            line-height: 1.1;
+            max-width: 850px;
+        }
+
+        .clue-box {
+            width: clamp(180px, 22vh, 250px);
+            height: clamp(180px, 22vh, 250px);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .clue-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .opts {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .big-btn {
+            flex: 1;
+            padding: clamp(12px, 2.5vh, 25px);
+            border-radius: 18px;
+            border: 4px solid #333;
+            font-size: clamp(20px, 3.5vh, 32px);
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Livvic';
+            transition: 0.2s;
+            box-shadow: 0 6px 0 #333;
+        }
+
+        #btnTrue { background: #BEE8C3; }
+        #btnFalse { background: #FFDA9A; }
+        
+        .big-btn.selected { color: white; border-color: white; transform: translateY(4px); box-shadow: 0 2px 0 #333; }
+        .btn-true.selected { background: var(--true) !important; }
+        .btn-false.selected { background: var(--false) !important; }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 5%;
+        }
+
+        .nav-btn {
+            padding: clamp(15px, 1.8vh, 18px) 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: clamp(14px, 2vh, 22px);
+            border: 4px solid white;
+            cursor: pointer;
+            font-family: 'Livvic';
+            min-width: 140px;
+        }
+        #prevBtn { background: var(--pink); color: #2F4F4F; }
+        #nextBtn { background: var(--blue); color: #2F4F4F; }
+        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        /* Overlays & Popups */
+        #feedbackSmiley {
+            position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 150px; opacity: 0; z-index: 2000; pointer-events: none;
+        }
+        #feedbackSmiley.show { opacity: 1; transition: 0.2s; }
+
+        .teacher-popup {
+            position: fixed; right: 20px; top: 20px;
+            width: clamp(250px, 30vw, 300px); 
+            background: white; border-radius: 15px;
+            display: flex; align-items: center; padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translateX(130%); transition: 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28); 
+            z-index: 2500;
+        }
+        .teacher-popup.show { transform: translateX(0); }
+        .teacher-img { width: 170px; height: 170px; object-fit: contain; }
+        .teacher-msg { font-weight: 700; font-size: 16px; margin-left: 10px; color: #2F4F4F; }
+
+        .final-modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 3500; backdrop-filter: blur(8px);
+        }
+        .final-modal { background: white; padding: 40px; border-radius: 30px; text-align: center; width: 90%; max-width: 500px; }
+        
+        canvas.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 1500; }
+
+        /* ================================= */
+/* 📱 MOBILE RESPONSIVE STYLES */
+/* ================================= */
+
+@media (max-width: 768px) {
+
+    body {
+        overflow-y: auto;
+        height: auto;
+    }
+
+    .wrap {
+        height: auto;
+        padding: 20px 15px 30px;
+    }
+
+    .question-area {
+        justify-content: flex-start;
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .header-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .q-number {
+        font-size: 16px;
+    }
+
+   
+    /* Teacher popup move to bottom */
+    .teacher-popup {
+        top: auto;
+        bottom: 20px;
+        right: 50%;
+        transform: translate(50%, 150%);
+        width: 90%;
+    }
+
+    .teacher-popup.show {
+        transform: translate(50%, 0);
+    }
+
+    .teacher-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .teacher-msg {
+        font-size: 14px;
+    }
+
+    #feedbackSmiley {
+        font-size: 90px;
+    }
+
+}
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="question-area">
+            <div class="header-row">
+                <div class="q-number" id="qNumber">Question 1 of 5</div>
+                <button id="readBtn" class="bird-btn">
+                    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                </button>
+            </div>
+            <div class="q-text" id="qText">Loading question...</div>
+            <div class="clue-box"><img id="clueImg" src="" alt="Clue"></div>
+            <div class="opts">
+                <button id="btnTrue" class="big-btn btn-true">True</button>
+                <button id="btnFalse" class="big-btn btn-false">False</button>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="prevBtn" class="nav-btn">◀ PREV</button>
+            <button id="nextBtn" class="nav-btn">NEXT ▶</button>
+        </div>
+    </div>
+
+    <div id="teacherPopup" class="teacher-popup">
+        <img id="teacherImg" class="teacher-img" src="../uploads/yes.png" alt="Teacher">
+        <div id="teacherMsg" class="teacher-msg">Great job! 🎉</div>
+    </div>
+
+    <div id="feedbackSmiley"></div>
+    <canvas id="confettiCanvas" class="confetti"></canvas>
+
+    <script>
+        const questions = [
+            { text: "All families are small.", answer: false, img: "../uploads/joint.png", isCorrect: false, userChoice: null },
+            { text: "Cousins live together in a small family.", answer: false, img: "../uploads/jfam.png", isCorrect: false, userChoice: null },
+            { text: "Members of a family love, care and help one another.", answer: true, img: "../uploads/care.png", isCorrect: false, userChoice: null },
+            { text: "We take rest in the kitchen.", answer: false, img: "../uploads/kitchen2.png", isCorrect: false, userChoice: null },
+            { text: "We eat food in the dining room.", answer: true, img: "../uploads/dining.png", isCorrect: false, userChoice: null }
+        ];
+
+        let idx = 0, audioCtx = null, isAnimating = false;
+        const qNumber = document.getElementById('qNumber'), qText = document.getElementById('qText');
+        const clueImg = document.getElementById('clueImg'), btnTrue = document.getElementById('btnTrue'), btnFalse = document.getElementById('btnFalse');
+        const nextBtn = document.getElementById('nextBtn'), prevBtn = document.getElementById('prevBtn'), feedbackSmiley = document.getElementById('feedbackSmiley');
+        const teacherPopup = document.getElementById('teacherPopup'), teacherImg = document.getElementById('teacherImg'), teacherMsg = document.getElementById('teacherMsg');
+        const confettiCanvas = document.getElementById('confettiCanvas'), ctx = confettiCanvas.getContext('2d');
+
+        function playTone(freqs, dur=0.6, type='sine') {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const now = audioCtx.currentTime;
+            const g = audioCtx.createGain();
+            g.gain.setValueAtTime(0, now); g.gain.linearRampToValueAtTime(0.2, now + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+            freqs.forEach(f => {
+                const o = audioCtx.createOscillator(); o.type = type; o.frequency.value = f; o.connect(g); o.start(now); o.stop(now + dur);
+            });
+            g.connect(audioCtx.destination);
+        }
+
+        let particles = [];
+        function resize() { confettiCanvas.width = window.innerWidth; confettiCanvas.height = window.innerHeight; }
+        window.onresize = resize; resize();
+
+        function launchConfetti(count=100) {
+            particles = Array.from({length: count}, () => ({
+                x: Math.random() * confettiCanvas.width, y: -20,
+                vx: (Math.random()-0.5)*10, vy: 2+Math.random()*5,
+                s: 5+Math.random()*10, c: `hsl(${Math.random()*360},80%,60%)`
+            }));
+            if (!isAnimating) { isAnimating = true; render(); }
+        }
+
+        function render() {
+            ctx.clearRect(0,0,confettiCanvas.width, confettiCanvas.height);
+            particles.forEach((p,i) => {
+                ctx.fillStyle = p.c; ctx.fillRect(p.x, p.y, p.s, p.s);
+                p.x += p.vx; p.y += p.vy; p.vy += 0.1;
+                if(p.y > confettiCanvas.height) particles.splice(i,1);
+            });
+            if(particles.length) { requestAnimationFrame(render); } else { isAnimating = false; }
+        }
+
+        function showQuestion(i) {
+            const q = questions[i]; idx = i;
+            qNumber.textContent = `Question ${i + 1} of ${questions.length}`;
+            qText.textContent = q.text; clueImg.src = q.img;
+            
+            btnTrue.classList.remove('selected'); btnFalse.classList.remove('selected');
+            
+            if (q.isCorrect) {
+                btnTrue.disabled = true; btnFalse.disabled = true;
+                q.userChoice === true ? btnTrue.classList.add('selected') : btnFalse.classList.add('selected');
+                nextBtn.disabled = false;
+            } else {
+                btnTrue.disabled = false; btnFalse.disabled = false;
+                nextBtn.disabled = true;
+            }
+            prevBtn.disabled = i === 0;
+            nextBtn.textContent = i === questions.length - 1 ? 'FINISH' : 'NEXT ▶';
+        }
+
+        function selectAnswer(isTrue) {
+            const q = questions[idx];
+            if(q.isCorrect) return;
+
+            btnTrue.classList.remove('selected'); btnFalse.classList.remove('selected');
+            isTrue ? btnTrue.classList.add('selected') : btnFalse.classList.add('selected');
+
+            if(q.answer === isTrue) {
+                playTone([880, 1100]);
+                q.isCorrect = true; q.userChoice = isTrue;
+                feedbackSmiley.textContent = "😃"; feedbackSmiley.classList.add('show');
+                
+                teacherImg.src = '../uploads/yes.png';
+                teacherMsg.textContent = "Great job! 🎉";
+                teacherPopup.classList.add('show');
+                
+                launchConfetti(80);
+                btnTrue.disabled = true; btnFalse.disabled = true;
+                
+                if (idx === questions.length - 1) {
+                    setTimeout(showFinalModal, 1500);
+                } else {
+                    nextBtn.disabled = false;
+                }
+            } else {
+                playTone([180], 0.4, 'square');
+                feedbackSmiley.textContent = "😭"; feedbackSmiley.classList.add('show');
+                
+                teacherImg.src = '../uploads/no.png';
+                teacherMsg.textContent = "Try again! ✍️";
+                teacherPopup.classList.add('show');
+                
+                setTimeout(() => {
+                    btnTrue.classList.remove('selected'); btnFalse.classList.remove('selected');
+                }, 800);
+            }
+            setTimeout(() => { 
+                feedbackSmiley.classList.remove('show'); 
+                teacherPopup.classList.remove('show');
+            }, 2000);
+        }
+
+        function showFinalModal() {
+            playTone([660, 880, 1320], 1.2);
+            const div = document.createElement('div');
+            div.className = 'final-modal-overlay';
+            div.innerHTML = `<div class="final-modal">
+                <h2 style="color:#2c7a4b; margin:0; font-size:40px; font-weight:700;">🎉 YOU WON! 🎉</h2>
+                <p style="font-size:22px; margin:20px 0;">Superstar! You are a True or False expert!</p>
+                <button class="nav-btn" style="background:var(--blue); border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
+            </div>`;
+            document.body.appendChild(div);
+            launchConfetti(150);
+        }
+
+        btnTrue.onclick = () => selectAnswer(true);
+        btnFalse.onclick = () => selectAnswer(false);
+        nextBtn.onclick = () => { if(idx < questions.length-1) showQuestion(++idx); };
+        prevBtn.onclick = () => showQuestion(--idx);
+        document.getElementById('readBtn').onclick = () => {
+            const u = new SpeechSynthesisUtterance(questions[idx].text);
+            u.lang = 'en-IN'; window.speechSynthesis.speak(u);
+        };
+
+        showQuestion(0);
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>True or False Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/True_false.css">
+</head>
+
+<canvas id="confetti"></canvas>
+<body>
+<h3 style="position: absolute; top:5px;left:20px; color:#0284c7; padding:10px 28px;background:#ff9f2f;color:#fff;border-radius:25px;font-size:20px;font-weight:600;">True / False</h3>
+
+<div class="container">
+ 
+<button class="nav-btn prev" id="prevBtn">❮</button>
+<button class="nav-btn next" id="nextBtn">❯</button>
+
+<div class="image-circle"><img id="questionImg"></div>
+
+<div class="content">
+  <div class="level-progress">
+    <div class="progress-line"></div>
+    <div class="level"></div><div class="level"></div><div class="level"></div><div class="level"></div><div class="level"></div>
+  </div>
+
+  <div class="question-box" id="question"></div>
+
+  <div class="tf-buttons">
+    <button class="tf-btn true-btn" onclick="checkAnswer(true)">TRUE</button>
+    <button class="tf-btn false-btn" onclick="checkAnswer(false)">FALSE</button>
+  </div>
+  <div class="nav-wrapper">
+  <button class="nav-btn prev" id="prevBtnMobile">❮</button>
+  <button class="nav-btn next" id="nextBtnMobile">❯</button>
+</div>
+</div>
+</div>
+
+<div class="popup" id="popup"><div class="popup-box" id="popupText"></div></div>
+<audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+<script src="../assets/js/True_false.js"></script>
+</body>
+</html>

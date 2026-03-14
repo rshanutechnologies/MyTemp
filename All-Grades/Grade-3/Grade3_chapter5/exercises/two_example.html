@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Two Example Quiz - Drag Drop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/CSS/two_example.css">
+
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="title">Two Examples Quiz</div>
+
+  <div class="content">
+
+    <!-- LEFT -->
+    <div class="left">
+      <div class="question-box" id="questionText"></div>
+
+      <div class="drop-zone" id="dropZone">
+        <div id="dropHint">Drop your answers here</div>
+        <div class="dropped-row" id="droppedRow"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right" id="options"></div>
+
+  </div>
+
+  <div class="nav">
+    <button class="prev" id="prevBtn" disabled>← Prev</button>
+    <button class="next" id="nextBtn" disabled>Next →</button>
+  </div>
+
+</div>
+
+<!-- ✅ POPUP -->
+<!-- CORRECT / WRONG POPUP -->
+<div id="answerPopup" class="popup">
+  <div class="popup-content">
+    <div class="popup-icon" id="popupIcon"></div>
+    <h3 id="popupTitle"></h3>
+    <p id="popupMsg"></p>
+  </div>
+</div>
+
+<!-- FINAL POPUP -->
+<!-- FINAL POPUP (same as MCQ quiz) -->
+<div id="finalPopup" class="popup">
+  <div class="popup-content">
+    <div class="popup-icon">🎉</div>
+    <h3>Quiz Completed!</h3>
+
+    <div id="stars">⭐⭐⭐⭐⭐</div>
+    <p id="finalScore"></p>
+
+    <button class="restart" onclick="location.reload()">Play Again</button>
+  </div>
+</div>
+  
+
+<script src="../assets/JavaScript/two_example.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Correct Options Quiz</title>
+  <link rel="stylesheet" href="../assets/css/MCQ.css">
+</head>
+
+<body>
+
+  <div class="quiz-box">
+    <!-- <div class="title">🎯 Correct Options Quiz</div> -->
+    <div class="progress" id="progress"></div>
+
+    <div class="content">
+      <div class="image-box">
+        <img id="questionImage" src="" alt="question image">
+      </div>
+      <div>
+        <div class="question" id="question"></div>
+
+        <div class="options">
+          <button class="option A" id="opt0" onclick="checkAnswer(0)">
+            <span class="opt-label">A</span><span></span>
+          </button>
+          <button class="option B" id="opt1" onclick="checkAnswer(1)">
+            <span class="opt-label">B</span><span></span>
+          </button>
+          <button class="option C" id="opt2" onclick="checkAnswer(2)">
+            <span class="opt-label">C</span><span></span>
+          </button>
+          <!-- <button class="option D" id="opt3" onclick="checkAnswer(3)">
+          <span class="opt-label">D</span><span></span>
+        </button> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="nav">
+      <button class="prev" id="prevBtn" onclick="prevQuestion()" disabled>⬅ Prev</button>
+      <button class="next" id="nextBtn" onclick="nextQuestion()" disabled>Next ➡</button>
+    </div>
+  </div>
+
+  <!-- ✅ Correct/Wrong popup -->
+  <div class="popup" id="feedbackPopup">
+    <div id="feedbackCircle" class="feedback-circle correct">✔</div>
+  </div>
+
+  <!-- ✅ Flying tick -->
+  <div class="flying-tick" id="flyingTick">✔</div>
+
+  <!-- 🏆 FINAL POPUP -->
+  <div class="popup" id="finalPopup">
+    <div class="final-popup-box">
+      <div class="final-left">
+        <img src="../assets/images/boy-trophy.png" alt="Winner">
+      </div>
+      <div class="final-right">
+        <h2>🎉 Congratulations!</h2>
+        <div class="final-score" id="finalScoreText"></div>
+        <div class="final-stars" id="finalStars"></div>
+        <button class="restart-btn" onclick="restartQuiz()">🔁 Restart</button>
+      </div>
+    </div>
+  </div>
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+  <audio id="wrongSound"
+    src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <script src="../assets/js/MCQ.js"></script>
+</body>
+
+</html>

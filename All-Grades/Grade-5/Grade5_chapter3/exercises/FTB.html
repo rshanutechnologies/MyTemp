@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fill in the Blanks</title>
+
+  <!-- Fonts and page CSS -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../assets/CSS/FTB.css" />
+</head>
+
+<body>
+  <div class="main">
+    <div class="home" onclick="location.href='../index.html'">🏠 Home</div>
+    <div class="title">Fill in the Blanks</div>
+    <!-- <div class="train-track" id="progress"></div> -->
+
+    <div class="main-questionContainer">
+      <div id="questionsContainer"></div>
+    </div>
+  </div>
+
+  <!-- Question Template -->
+  <template id="questionTemplate">
+  <div class="question">
+
+    <!-- Question text FIRST -->
+    <div class="question-text">
+      <span class="question-sentence"></span>
+    </div>
+
+    <!-- Image SECOND -->
+    <img class="question-img" alt="" />
+
+    <!-- Input THIRD -->
+    <div class="input-row">
+      <input type="text" placeholder="Type your Answer here...." />
+      <button>Check</button>
+    </div>
+
+    <!-- Navigation LAST -->
+    <div class="nav">
+      <button id="prevBtn">← Prev</button>
+      <button id="nextBtn">Next →</button>
+    </div>
+
+  </div>
+</template>
+
+  <!-- Correct / Wrong Popup -->
+  <div id="answerPopup" class="popup">
+    <div class="popup-content">
+      <div class="popup-icon" id="popupIcon"></div>
+      <h3 id="popupTitle"></h3>
+      <p id="popupMsg"></p>
+    </div>
+  </div>
+
+  <!-- Final Score -->
+  <div id="finalPopup">
+    <div class="finalpopup-box">
+      <h2>🎉 Congratulations!</h2>
+      <p id="finalScore"></p>
+      <div id="stars"></div>
+      <br />
+      <button onclick="location.reload()" class="playAgain-btn">Play Again</button>
+    </div>
+  </div>
+
+  <!-- Page JS -->
+   <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <script src="../assets/JavaScript/FTB.js"></script>
+</body>
+</html>

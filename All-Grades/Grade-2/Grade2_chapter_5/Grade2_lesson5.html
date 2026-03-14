@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Learning Station</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Livvic',sans-serif;
+}
+
+body{
+  display:flex;
+  height:100vh;
+  overflow:hidden;
+  background:linear-gradient(#e0f7fa,#ffffff);
+  background-image:url("assets/images/BG.png");
+}
+
+/* ================= TOGGLE BUTTON ================= */
+.menu-toggle{
+  position:fixed;
+  top:15px;
+  left:15px;
+  z-index:1001;
+  font-size:26px;
+  background:#ffffff;
+  border:none;
+  padding:8px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,.2);
+  display:none;
+}
+
+/* ===== LEFT NAVIGATION ===== */
+.sidebar{
+  width:240px;
+  padding:30px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;   /* ⭐ CENTER VERTICALLY */
+  align-items:center;
+  gap:25px;
+  height:100vh;             /* ⭐ take full height */
+  transition:.4s ease;
+}
+/* NAV BOX */
+.nav-box{
+  width:220px;
+  height:160px;
+  border-radius:30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  cursor:pointer;
+  font-weight:600;
+  font-size:18px;
+  transition:.3s ease;
+  color:#2f4f4f;
+  border:3px solid rgba(255,255,255,0.9);
+}
+
+.nav-box span{
+  font-size:50px;
+  margin-bottom:10px;
+}
+
+/* COLORS */
+.c1{background:#f6cbd9;}
+.c2{background:#bde5c8;}
+.c3{background:#f7e28c;}
+.c4{background:#cfc9e8;}
+
+.nav-box:hover{
+  transform:translateY(-12px) scale(1.05);
+  box-shadow:0 20px 45px rgba(0,0,0,.25);
+}
+
+.nav-box.active{
+  transform:scale(1.05);
+  box-shadow:0 25px 55px rgba(0,0,0,.35);
+  border:4px solid #ffffff;
+}
+
+/* ===== RIGHT CONTENT ===== */
+.content{
+  flex:1;
+  height:100vh;
+  overflow:hidden;
+}
+
+iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width:1024px){
+  .nav-box{
+    width:180px;
+    height:140px;
+    font-size:16px;
+  }
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  body{
+    flex-direction:row;
+  }
+
+  .sidebar{
+    position:fixed;
+    left:-260px;
+    top:0;
+    height:100%;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+  }
+
+  .sidebar.show{
+    left:0;
+  }
+
+  .content{
+    width:100%;
+  }
+
+  .nav-box{
+    width:200px;
+    height:130px;
+  }
+}
+</style>
+</head>
+
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<!-- LEFT VERTICAL NAVIGATION -->
+<div class="sidebar">
+
+  <div class="nav-box c1 active" onclick="loadPage('exercises/MCQ.html', this)">
+    <span>🐳</span>
+    Choose Answer
+  </div>
+
+  <div class="nav-box c2" onclick="loadPage('exercises/FITB.html', this)">
+    <span>🐿️</span>
+    Fill Blanks
+  </div>
+
+  <div class="nav-box c3" onclick="loadPage('exercises/True_false.html', this)">
+    <span>🦆</span>
+    True / False
+  </div>
+
+  <div class="nav-box c4" onclick="loadPage('exercises/Matching.html', this)">
+    <span>🦚</span>
+    Picture Match
+  </div>
+
+</div>
+
+<!-- RIGHT CONTENT AREA -->
+<div class="content">
+  <iframe id="frame" src="exercises/MCQ.html"></iframe>
+</div>
+
+<script>
+function loadPage(page, element){
+
+  // change iframe page
+  document.getElementById("frame").src = page;
+
+  // active button highlight
+  document.querySelectorAll(".nav-box").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+  element.classList.add("active");
+
+  // ✅ AUTO CLOSE SIDEBAR ON SMALL SCREENS
+  if(window.innerWidth <= 768){
+    document.querySelector(".sidebar").classList.remove("show");
+  }
+}
+
+function toggleMenu(){
+  document.querySelector(".sidebar").classList.toggle("show");
+}
+</script>
+</body>
+</html>

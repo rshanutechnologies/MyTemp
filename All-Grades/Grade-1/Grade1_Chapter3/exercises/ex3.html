@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>True or False Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4cc9f0;
+      --secondary: #f778a1;
+      --correct: #2ed573;
+      --wrong: #dc3545;
+      --dark: #2F4F4F;
+    }
+
+    body {
+      font-family: "Livvic", sans-serif;
+      /* background-image: url("../uploads/bg2.png");
+  background-size: cover;
+  background-position: center; */
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .app {
+      width: 95%;
+      max-width: 1000px;
+      height: 100vh;
+      border-radius: 40px;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* HEADER WITH READ BUTTON */
+    .header-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .read-btn {
+      background: white;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .read-btn:hover {
+      transform: scale(1.1);
+      background: var(--primary);
+      color: white;
+    }
+
+    #slides-viewport {
+      flex: 1;
+      display: flex;
+      position: relative;
+      /* overflow: hidden; */
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    .q-number {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dark);
+      opacity: 0.7;
+    }
+
+    .q-wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .q-text {
+      font-size: clamp(1.2rem, 3.5vw, 2.5rem);
+      color: var(--dark);
+      font-weight: 600;
+      line-height: 1.2;
+      text-align: left;
+      flex: 1;
+    }
+
+    .hint-sticker {
+      width: clamp(70px, 11vw, 130px);
+      height: auto;
+      flex-shrink: 0;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+    }
+
+    .tf-box {
+      display: flex;
+      justify-content: center;
+      gap: clamp(20px, 8vw, 60px);
+      width: 100%;
+    }
+
+    .tf-btn {
+      width: clamp(100px, 15vw, 170px);
+      aspect-ratio: 1/1;
+      border-radius: 30px;
+      border: 6px solid white;
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(40px, 6vw, 70px);
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .tf-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .tf-true {
+      background: #e8f8e8;
+      color: var(--correct);
+    }
+
+    .tf-false {
+      background: #fde2e4;
+      color: var(--wrong);
+    }
+
+    .tf-btn.correct {
+      background: #dff9fb;
+      border-color: var(--correct);
+      pointer-events: none;
+    }
+
+    .tf-btn.wrong {
+      background: #ffe6e6;
+      border-color: var(--wrong);
+      animation: shake 0.4s;
+    }
+
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .nav-btn {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      padding: 12px 30px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      color: rgb(0, 0, 0);
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #backBtn {
+      background: var(--secondary);
+      visibility: hidden;
+    }
+
+    #nextBtn {
+      background: var(--primary);
+      visibility: hidden;
+    }
+
+    @keyframes shake {
+      25% {
+        transform: translateX(-8px);
+      }
+
+      75% {
+        transform: translateX(8px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .smiley {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      font-size: 150px;
+      opacity: 0;
+      transition: 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      pointer-events: none;
+      z-index: 4000;
+    }
+
+    .smiley.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .final-overlay {
+      position: absolute;
+      inset: 0;
+      background: #C2F4FF;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 40px;
+      z-index: 3000;
+      text-align: center;
+    }
+
+    /* ==================================================
+   📱 SMALL MOBILES (≤480px)
+================================================== */
+    @media (max-width: 480px) {
+
+      body {
+        overflow-y: auto;
+        align-items: flex-start;
+      }
+
+      .app {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 16px;
+        border-radius: 0;
+      }
+
+      .q-wrap {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .q-text {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+
+      .hint-sticker {
+        width: 90px;
+      }
+
+      .tf-box {
+        gap: 24px;
+      }
+
+      .tf-btn {
+        width: 100px;
+        font-size: 42px;
+        border-radius: 22px;
+      }
+
+      .nav-footer {
+        margin-top: 20px;
+      }
+
+      .nav-btn {
+        padding: 10px 22px;
+        font-size: 0.95rem;
+      }
+
+      .smiley {
+        font-size: 90px;
+      }
+
+      /* 🎉 FINAL POPUP */
+      .final-overlay {
+        border-radius: 0;
+        padding: 20px;
+      }
+
+      .final-overlay h1 {
+        font-size: 2rem;
+      }
+
+      .final-overlay p {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* ==================================================
+   📱 MOBILES (≤768px)
+================================================== */
+    @media (max-width: 768px) {
+
+      body {
+        overflow-y: auto;
+      }
+
+      .app {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 20px;
+        border-radius: 0;
+      }
+
+      .q-wrap {
+        gap: 20px;
+        margin-bottom: 30px;
+        flex-direction: column;
+      }
+
+      .q-text {
+        font-size: 1.4rem;
+        text-align: center;
+      }
+
+      .hint-sticker {
+        width: 110px;
+      }
+
+      .tf-box {
+        gap: 30px;
+      }
+
+      .tf-btn {
+        width: 120px;
+        font-size: 50px;
+      }
+
+      .nav-btn {
+        padding: 12px 26px;
+        font-size: 1rem;
+      }
+
+      .smiley {
+        font-size: 110px;
+      }
+
+      /* 🎉 FINAL POPUP */
+      .final-overlay {
+        border-radius: 0;
+        padding: 30px;
+      }
+
+      .final-overlay h1 {
+        font-size: 2.4rem;
+      }
+
+      .final-overlay p {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* ==================================================
+   📱 TABLETS (769px – 1024px)
+================================================== */
+    @media (min-width: 769px) and (max-width: 900px) {
+
+      .app {
+        width: 95%;
+        height: 92vh;
+        padding: 26px;
+      }
+
+      .q-wrap {
+        gap: 30px;
+        margin-bottom: 35px;
+      }
+
+      .q-text {
+        font-size: 2rem;
+      }
+
+      .hint-sticker {
+        width: 130px;
+      }
+
+      .tf-btn {
+        width: 150px;
+        font-size: 60px;
+      }
+
+      .nav-btn {
+        padding: 14px 30px;
+        font-size: 1.05rem;
+      }
+
+      /* 🎉 FINAL POPUP */
+      .final-overlay {
+        border-radius: 40px;
+        padding: 40px;
+      }
+
+      .final-overlay h1 {
+        font-size: 3rem;
+      }
+
+      .final-overlay p {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <div class="header-top">
+      <div id="progress-text" class="q-number">Question 1 of 5</div>
+      <button class="read-btn" onclick="readQuestion()">🔊</button>
+    </div>
+
+    <div id="slides-viewport"></div>
+
+    <div class="nav-footer">
+      <button id="backBtn" class="nav-btn">◀ PREV</button>
+      <button id="nextBtn" class="nav-btn">NEXT ▶</button>
+    </div>
+
+    <div id="smiley" class="smiley"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    const quiz = [
+      { text: "Living things need food and water to live.", answer: "T", img: "../uploads/drink.png" },
+      { text: "Living things do not move on their own.", answer: "F", img: "../uploads/move.png" },
+      { text: "Living things need air to breathe.", answer: "T", img: "../uploads/breathe.png" },
+      { text: "Non-living things grow.", answer: "F", img: "../uploads/non-living.png" },
+      { text: "A rock is a man-made thing.", answer: "F", img: "../uploads/rock-img.png" }
+    ];
+
+    const viewport = document.getElementById("slides-viewport");
+    const nextBtn = document.getElementById("nextBtn");
+    const backBtn = document.getElementById("backBtn");
+    const smiley = document.getElementById("smiley");
+    const progressText = document.getElementById("progress-text");
+
+    let current = 0, audioCtx = null;
+
+    function ensureAudio() {
+      audioCtx ??= new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+    }
+
+    // TEXT TO SPEECH LOGIC
+    function readQuestion() {
+      const utterance = new SpeechSynthesisUtterance(quiz[current].text);
+      const voices = window.speechSynthesis.getVoices();
+      const indianVoice = voices.find(v => v.lang === 'en-IN' || v.name.includes('India'));
+      if (indianVoice) utterance.voice = indianVoice;
+      utterance.rate = 0.9;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
+    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+
+    function playSuccess() {
+      ensureAudio();
+      const t = audioCtx.currentTime;
+      [880, 1100, 1320].forEach((f, i) => {
+        const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+        o.type = "sine"; o.frequency.value = f;
+        g.gain.setValueAtTime(.001, t + i * .12);
+        g.gain.linearRampToValueAtTime(.25, t + .05 + i * .12);
+        g.gain.exponentialRampToValueAtTime(.0001, t + .8 + i * .12);
+        o.connect(g); g.connect(audioCtx.destination);
+        o.start(t + i * .12); o.stop(t + .9 + i * .12);
+      });
+    }
+
+    function playZzz() {
+      ensureAudio();
+      const t = audioCtx.currentTime;
+      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+      o.type = "sine"; o.frequency.setValueAtTime(220, t);
+      o.frequency.exponentialRampToValueAtTime(140, t + .4);
+      g.gain.setValueAtTime(.001, t);
+      g.gain.linearRampToValueAtTime(.18, t + .05);
+      g.gain.exponentialRampToValueAtTime(.0001, t + .5);
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start(t); o.stop(t + .5);
+    }
+
+    function showSmiley(e) {
+      smiley.textContent = e;
+      smiley.classList.add("show");
+      setTimeout(() => smiley.classList.remove("show"), 1200);
+    }
+
+    quiz.forEach((q, i) => {
+      const s = document.createElement("div");
+      s.className = "slide" + (i === 0 ? " active" : "");
+      s.id = `slide-${i}`;
+      s.innerHTML = `
+    <div class="question-container" style="width:100%" data-answered="false">
+      <div class="q-wrap" style="margin-top: 20px;">
+        <div class="q-text">${q.text}</div>
+        <img src="${q.img}" class="hint-sticker" alt="hint">
+      </div>
+      <div class="tf-box">
+        <button class="tf-btn tf-true" data-val="T">T</button>
+        <button class="tf-btn tf-false" data-val="F">F</button>
+      </div>
+    </div>`;
+      viewport.appendChild(s);
+
+      s.querySelectorAll(".tf-btn").forEach(btn => {
+        btn.onclick = () => {
+          const qEl = s.querySelector(".question-container");
+          if (qEl.dataset.answered === "true") return;
+
+          if (btn.dataset.val === q.answer) {
+            btn.classList.add("correct");
+            qEl.dataset.answered = "true";
+            showSmiley("😄");
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            playSuccess();
+
+            if (i === quiz.length - 1) {
+              setTimeout(showFinal, 1300);
+            } else {
+              updateNav();
+            }
+          } else {
+            btn.classList.add("wrong");
+            showSmiley("😢"); playZzz();
+            setTimeout(() => btn.classList.remove("wrong"), 700);
+          }
+        };
+      });
+    });
+
+    function showSlide(i) {
+      window.speechSynthesis.cancel();
+      document.querySelectorAll(".slide").forEach((s, idx) => s.classList.toggle("active", idx === i));
+      current = i;
+      updateNav();
+    }
+
+    function updateNav() {
+      const currentSlide = document.getElementById(`slide-${current}`);
+      const isAnswered = currentSlide.querySelector(".question-container").dataset.answered === "true";
+      progressText.textContent = `Question ${current + 1} of ${quiz.length}`;
+      backBtn.style.visibility = current === 0 ? "hidden" : "visible";
+      nextBtn.style.visibility = (isAnswered && current < quiz.length - 1) ? "visible" : "hidden";
+    }
+
+    nextBtn.onclick = () => {
+      if (current < quiz.length - 1) showSlide(current + 1);
+    };
+    backBtn.onclick = () => showSlide(current - 1);
+
+    function showFinal() {
+      confetti({ particleCount: 250, spread: 100, origin: { y: 0.5 } });
+      playSuccess(); showSmiley("🥳");
+      const d = document.createElement("div");
+      d.className = "final-overlay";
+      d.innerHTML = `
+      <h1 style="font-family:'Fredoka One';font-size:clamp(2rem, 8vw, 4rem); color: var(--primary)">🎉 WELL DONE! 🎉</h1>
+      <p style="font-size:1.5rem;color:var(--dark);">You completed the quiz successfully!</p>
+      <button class="nav-btn" style="background:var(--secondary); margin-top:20px"
+        onclick="location.reload()">PLAY AGAIN ↺</button>`;
+      document.querySelector(".app").appendChild(d);
+      d.style.display = "flex";
+    }
+
+    showSlide(0);
+  </script>
+</body>
+
+</html>

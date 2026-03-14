@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Fill in the Blanks</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/CSS/fillblanks.css">
+
+</head>
+
+<body>
+
+  <div class="quiz-container">
+
+    <!-- <div class="quiz-type">🎯 Fill The Blanks Quiz</div>
+  <button class="home-btn" onclick="location.href='../index.html'">Back Home</button> -->
+
+    <div class="content-section">
+      <div class="content-left">
+        <div class="question">
+          <span class="q-no" id="qNo"></span>
+          <span class="q-text" id="question"></span>
+        </div>
+        <img id="questionImage">
+      </div>
+
+      <div class="content-right">
+        <input id="answerInput" placeholder="Type your answer...">
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="prev" id="prevBtn" disabled>← Prev</button>
+      <button class="submit" id="submitBtn" disabled>Submit</button>
+      <button class="next" id="nextBtn" disabled>Next →</button>
+    </div>
+
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-box" id="popupText"></div>
+  </div>
+
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <script src="../assets/JavaScript/fillblanks.js"></script>
+</body>
+
+</html>

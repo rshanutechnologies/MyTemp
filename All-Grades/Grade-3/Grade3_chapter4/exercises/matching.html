@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Match the Following</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/CSS/matching.css">
+
+</head>
+
+<body>
+
+<div class="game">
+
+  <div class="header-bar">
+   
+    <div class="home-btn" id="homeBtn"></div>
+  </div>
+
+  <div class="topbar">
+    <div></div>
+    <div class="progress-pill" id="progressPill"></div>
+  </div>
+
+  <div class="board">
+
+    <!-- ✅ LEFT TOKENS -->
+    <div class="tokens" id="tokens">
+      <div class="token" draggable="true" data-match="Solid">
+  <span>🧊</span> Solid
+</div>
+
+<div class="token" draggable="true" data-match="Liquid">
+  <span>💧</span> Liquid
+</div>
+
+<div class="token" draggable="true" data-match="Gas">
+  <span>💨</span> Gas
+</div>
+
+<div class="token" draggable="true" data-match="Metal">
+  <span>🔩</span> Metal
+</div>
+
+      
+    </div>
+
+    <!-- ✅ RIGHT SLOTS -->
+    <div class="slots" id="slots">
+      <div class="slot" data-match="Metal"> Gold, silver <div class="drop"></div></div>
+      <div class="slot" data-match="Gas">Nitrogen, oxygen <div class="drop"></div></div>
+      <div class="slot" data-match="Solid">Wood, plastic <div class="drop"></div></div>
+      <div class="slot" data-match="Liquid"> Kerosene, oil <div class="drop"></div></div>
+      
+    </div>
+
+  </div>
+</div>
+
+<!-- ✅ POPUP HTML -->
+<div class="popup" id="popup">
+  <div class="popup-box" id="popupText"></div>
+</div>
+<script src="../assets/JavaScript/matching.js"></script>
+
+</body>
+</html>

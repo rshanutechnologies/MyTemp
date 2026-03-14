@@ -1,0 +1,481 @@
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Livvic';
+}
+
+body{
+  margin:0;
+  height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  overflow-x:hidden;
+  overflow-y:auto;   /* ✅ allow scroll if needed */
+
+  padding:16px;
+}
+.game{
+  width:100%;
+  max-width:720px;
+  text-align:center;
+ max-height: 100%;
+
+
+}
+
+/* HEADER */
+.header{ margin-bottom:24px; }
+
+/* ✅ removed progress */
+.count{ display:none; }
+
+.question{
+  font-size:35px !important;
+  font-weight:400;
+  color:#2f4f4f;
+}
+
+/* CARDS */
+.cards{
+  display:flex;
+  gap:30px;
+  justify-content:center;
+  /* margin:40px 0; */
+  margin-bottom: -55px;
+}
+
+.card{
+  width:200px;
+  height:200px;
+  perspective:1000px;
+  cursor:pointer;
+}
+
+.inner{
+  width:100%;
+  height:100%;
+  border-radius:24px;
+  position:relative;
+  transition:transform .6s;
+  transform-style:preserve-3d;
+  box-shadow:0 18px 35px rgba(0,0,0,0.2);
+}
+
+.card.flip .inner{ transform:rotateY(180deg); }
+
+.face{
+  position:absolute;
+  inset:0;
+  border-radius:24px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  backface-visibility:hidden;
+  font-size:23pt;
+  font-weight:600;
+}
+
+/* LIGHT STATES (after click) */
+.card.light-true .inner{
+  background:#ecfdf5;
+  border:2px solid #a7f3d0;
+}
+
+.card.light-false .inner{
+  background:#fef2f2;
+  border:2px solid #fecaca;
+}
+
+/* FINAL RESULT */
+.card.correct .inner{
+  border:3px solid #22c55e;
+  box-shadow:0 0 0 4px #bbf7d0;
+}
+
+.card.wrong .inner{
+  border:3px solid #ef4444;
+  box-shadow:0 0 0 4px #fecaca;
+}
+
+.front{
+  background:#ffffff;
+  color:#0f172a;
+}
+
+.back{
+  transform:rotateY(180deg);
+  color:#2f4f2f;
+}
+
+.true{ background:#a2fec4; }
+.false{ background:#a2fec4; }
+
+/* FEEDBACK */
+.feedback{
+  min-height:30px;
+  font-size:22px;
+  font-weight:900;
+  /* margin-top: 70px; */
+  /* position: relative;
+  top:60px; */
+  display: none;
+}
+
+/* NAV */
+/* .nav{
+  margin-top:20px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+button{
+  padding:12px 30px;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  color:#fff;
+  cursor:pointer;
+  font-weight:900;
+}
+
+#prevBtn{ background:#64748b; }
+#nextBtn{ background:#0284c7; }
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+} */
+
+/* .nav {
+    
+    display: flex;
+    justify-content: space-between;
+} */
+.nav{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 10px;
+}
+.nav button {
+    height: 80px;
+    width: 80px;
+    padding: 10px;
+    border-radius: 50%;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.nav{
+  margin-top:auto;   /* ⭐ MAGIC LINE */
+}
+#prevBtn {
+    background: linear-gradient(#ff9aa2, #ff6f91);
+}
+
+#nextBtn {
+    background: linear-gradient(#b39ddb, #9575cd);
+}
+
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+/* MOBILE */
+@media(max-width:640px){
+  .cards{ flex-direction:column; gap:20px; }
+  .card{ width:100%; max-width:260px; margin:auto; }
+  .question{ font-size:24px; }
+}
+
+/* ✅ POPUP (same like MCQ/FITB) */
+.popup{
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.popup-content{
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 255, 240, 0.98) 100%);
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes popIn {
+  0%{ transform: scale(0.5); opacity: 0; }
+  100%{ transform: scale(1); opacity: 1; }
+}
+
+.popup-icon{
+  font-size: 5.5em;
+  margin-bottom: 10px;
+  animation: iconBounce 0.8s ease;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes iconBounce {
+  0%,100% { transform: translateY(0) scale(1) rotate(0deg); }
+  25%     { transform: translateY(-30px) scale(1.2) rotate(-10deg); }
+  50%     { transform: translateY(-15px) scale(1.1) rotate(10deg); }
+  75%     { transform: translateY(-25px) scale(1.15) rotate(-5deg); }
+}
+
+.popup.correct .popup-icon{ animation: iconBounce 0.8s ease, correctSpin 0.8s ease; }
+.popup.wrong .popup-icon{ animation: iconBounce 0.8s ease, wrongShake 0.6s ease; }
+
+@keyframes correctSpin {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.3); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes wrongShake {
+  0%,100% { transform: rotate(0deg); }
+  10%,30%,50%,70%,90% { transform: rotate(-15deg); }
+  20%,40%,60%,80% { transform: rotate(15deg); }
+}
+
+.popup-content h3{ font-size: 2em; margin-bottom: 10px; font-weight: 900; }
+.popup-content p{ font-size: 1.3em; font-weight: 800; line-height: 1.6; }
+
+.popup.correct h3{ color: #22543d; }
+.popup.wrong h3{ color: #742a2a; }
+.popup.correct p{ color: #276749; }
+.popup.wrong p{ color: #9b2c2c; }
+
+.restart{
+  margin-top: 12px;
+  background: #fdba3b;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+}
+
+
+
+
+.q-img{
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin: auto;
+  display: block;
+  border-radius: 18px;
+  margin-top: -13px;
+}
+
+
+
+
+/* =====================================================
+   ✅ GLOBAL MOBILE FLOW FIX
+===================================================== */
+
+@media (max-width:900px){
+  body{
+    display:block;
+    overflow-y:auto;
+    padding:14px;
+  }
+
+  .game{
+    margin:auto;
+  }
+}
+
+/* =====================================================
+   ✅ TABLET RESPONSIVE (≤ 900px)
+===================================================== */
+
+@media (max-width:900px){
+  body{
+    overflow: auto;
+  }
+  .question{
+    font-size:28px !important;
+    line-height:1.3;
+  }
+
+  .cards{
+    gap:22px;
+    margin-bottom:0;
+  }
+
+  .card{
+    width:170px;
+    height:170px;
+  }
+
+  .face{
+    font-size:20px;
+  }
+
+  .q-img{
+    width:150px;
+    height:150px;
+  }
+
+  .nav button{
+    width:70px;
+    height:70px;
+  }
+}
+
+/* =====================================================
+   ✅ MOBILE RESPONSIVE (≤ 640px)
+===================================================== */
+
+@media (max-width:640px){
+ body{
+    overflow: auto;
+  }
+  .cards{
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+  }
+
+  .card{
+    width:100%;
+    max-width:260px;
+    height:180px;
+  }
+
+  .question{
+    font-size:22px !important;
+  }
+
+  .q-img{
+    width:130px;
+  }
+
+  /* navigation centered */
+  .nav{
+    justify-content:space-around;
+    margin-top:20px;
+  }
+
+  .nav button{
+    width:60px;
+    height:60px;
+    font-size:14px;
+  }
+
+  /* popup scaling */
+  .popup-content{
+    width:92vw;
+    padding:18px;
+  }
+
+  .popup-icon{
+    font-size:4rem;
+  }
+
+  .popup-content h3{
+    font-size:1.5rem;
+  }
+
+  .popup-content p{
+    font-size:1.1rem;
+  }
+}
+
+/* =====================================================
+   ✅ SMALL MOBILE (≤ 380px)
+===================================================== */
+
+@media (max-width:380px){
+ body{
+    overflow: auto;
+  }
+  .question{
+    font-size:18px !important;
+  }
+ 
+  .card{
+    height:130px;
+  } 
+
+  .face{
+    font-size:18px;
+  }
+  
+  .nav button{
+    width:52px;
+    height:52px;
+   margin-top: -20px;
+  }
+
+  .q-img{
+    width:110px;
+  }
+}
+
+/* =====================================================
+   ✅ LARGE SCREEN POLISH
+===================================================== */
+
+/* @media (min-width:1400px){
+ body{
+    display:block;
+    overflow-y:auto;
+  }
+  .game{
+    max-width:900px;
+  }
+
+  .question{
+    font-size:40px !important;
+  }
+
+  .card{
+    width:220px;
+    height:220px;
+  }
+} */
+
+
+
+
+/* =====================================================
+   ✅ KEEP TRUE/FALSE IN ONE LINE (ALL SCREENS)
+===================================================== */
+
+
+/* =====================================================
+   ✅ SMALL MOBILE SAFETY (NO BREAK)
+===================================================== */
+
+@media (max-width:420px){
+
+  .game{
+    padding:0 6px;
+  }
+
+  .cards{
+    gap:10px;
+  }
+}

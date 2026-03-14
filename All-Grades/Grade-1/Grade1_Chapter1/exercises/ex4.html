@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Unscramble Quiz — Grade 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --correct: #28a745;
+      --wrong: #dc3545;
+      --q-text-color: #2F4F4F;
+      --blue: #4cc9f0;
+      --pink: #f778a1;
+      --gold: #FFC312;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+      font-family: 'Livvic', sans-serif;
+      background: "../uploads/bg.png"; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .wrap {
+      width: 100%;
+      height: 100%;
+      max-width: 1000px;
+      display: flex;
+      flex-direction: column;
+      padding: 2vh 20px;
+    }
+
+    .question-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5vh;
+      width: 100%;
+    }
+
+    .header-row { display: flex; align-items: center; gap: 15px; }
+
+    .q-number {
+      font-weight: 700;
+      font-size: clamp(16px, 2.5vh, 24px);
+      color: var(--q-text-color);
+      background: rgba(255,255,255,0.6);
+      padding: 5px 20px;
+      border-radius: 20px;
+    }
+
+    /* Clue Image Sticker */
+    .clue-box {
+      width: clamp(180px, 18vh, 180px);
+      height: clamp(180px, 18vh, 180px);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .clue-box img { width: 100%; height: 100%; object-fit: cover; display: block;}
+
+    .q-text {
+      font-size: clamp(25pt, 3vh, 24pt);
+      color: var(--q-text-color);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    /* Drop Zone (Target) */
+    .drop-zone {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .drop-box {
+      width: clamp(45px, 7vh, 70px);
+      height: clamp(50px, 8vh, 80px);
+      border: 3px dashed var(--q-text-color);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(20px, 4vh, 32px);
+      font-weight: 800;
+      color: var(--q-text-color);
+      cursor: pointer;
+    }
+
+    .drop-box.filled { border-style: solid; background: #fff; }
+    .drop-box.correct { border-color: var(--correct); }
+
+    /* Letters Area (Choices) */
+    .letters-area {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .letter-tile {
+      width: clamp(40px, 6.5vh, 65px);
+      height: clamp(40px, 6.5vh, 65px);
+      background: #fff;
+      border: 3px solid #000;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(25px, 3vh, 28px);
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .letter-tile.used { opacity: 0.2; pointer-events: none; }
+
+    .small-btn {
+      padding: 10px 25px;
+      border-radius: 50px;
+      border: 3px solid #333;
+      background: #FFDA9A;
+      font-size: 16px;
+      font-family: "Livvic";
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px 5%;
+    }
+
+    .nav-btn {
+      padding: clamp(15px, 1.8vh, 18px) 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: clamp(14px, 2vh, 22px);
+      border: 4px solid white;
+      cursor: pointer;
+      font-family: 'Livvic';
+      min-width: 140px;
+      margin-top: -3%;
+    }
+    #prevBtn { background: var(--pink); color: #2F4F4F; }
+    #nextBtn { background: var(--blue); color: #2F4F4F; }
+    .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    /* Popups */
+    .teacher-popup {
+      position: fixed; right: 20px; top: 20px;
+      width: 250px; background: white; border-radius: 15px;
+      display: flex; align-items: center; padding: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transform: translateX(130%); transition: 0.4s; z-index: 2500;
+    }
+    .teacher-popup.show { transform: translateX(0); }
+    .teacher-img { width: 70px; height: 70px; object-fit: contain; }
+
+    #feedbackSmiley {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 150px; opacity: 0; z-index: 2000; pointer-events: none;
+    }
+    #feedbackSmiley.show { opacity: 1; transition: 0.2s; }
+
+    .final-modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 3000; backdrop-filter: blur(8px);
+    }
+    .final-modal { background: white; padding: 40px; border-radius: 30px; text-align: center; width: 90%; max-width: 500px; }
+    
+    canvas.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 1500; }
+
+    /* ================================= */
+/* 📱 MOBILE RESPONSIVE STYLES */
+/* ================================= */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-y: auto;
+    height: auto;
+  }
+
+  .wrap {
+    height: auto;
+    padding: 20px 15px 30px;
+  }
+
+  .question-area {
+    justify-content: flex-start;
+    margin-top: 20px;
+    gap: 20px;
+  }
+
+  .header-row {
+    justify-content: center;
+  }
+
+  
+
+
+  /* Smaller clue image */
+  .clue-box {
+    width: 150px;
+    height: 150px;
+  }
+
+  /* Drop zone better fit */
+  .drop-zone {
+    gap: 6px;
+  }
+
+  .drop-box {
+    width: 40px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  /* Letter tiles smaller */
+  .letters-area {
+    gap: 8px;
+  }
+
+  .letter-tile {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+
+  /* Clear button centered */
+  .actions-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .small-btn {
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+
+
+
+  /* Teacher popup bottom for mobile */
+  .teacher-popup {
+    top: auto;
+    bottom: 20px;
+    right: 50%;
+    transform: translate(50%, 150%);
+    width: 90%;
+  }
+
+  .teacher-popup.show {
+    transform: translate(50%, 0);
+  }
+
+  .teacher-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  #feedbackSmiley {
+    font-size: 90px;
+  }
+
+}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="question-area">
+      <div class="header-row">
+        <div class="q-number" id="qNumber">Word 1 of 5</div>
+      </div>
+
+      <div class="clue-box">
+        <img id="clueImg" src="../uploads/word_sticker.png" alt="Clue Sticker">
+      </div>
+
+      <div class="q-text" id="qText">Unscramble: Loading...</div>
+
+      <div id="dropZone" class="drop-zone"></div>
+      <div id="lettersArea" class="letters-area"></div>
+
+      <div class="actions-row">
+        <button id="clearBtn" class="small-btn">CLEAR ↺</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="prevBtn" class="nav-btn">◀ PREV</button>
+      <button id="nextBtn" class="nav-btn">NEXT ▶</button>
+    </div>
+  </div>
+
+  <div id="teacherPopup" class="teacher-popup">
+    <img id="teacherImg" class="teacher-img" src="../uploads/yes.png" alt="Teacher">
+    <div id="teacherMsg" style="font-weight:700; margin-left:10px; color:#2F4F4F;">Great! 🎉</div>
+  </div>
+
+  <div id="feedbackSmiley"></div>
+  <canvas id="confettiCanvas" class="confetti"></canvas>
+
+  <script>
+    const words = [
+      { scrambled: "I L F M Y A", answer: "FAMILY", img: "../uploads/newfam.png", solved: false },
+      { scrambled: "L S A M L", answer: "SMALL", img: "../uploads/fam2.png", solved: false },
+      { scrambled: "N T J I O", answer: "JOINT", img: "../uploads/joint.png", solved: false },
+      { scrambled: "O U H E S", answer: "HOUSE", img: "../uploads/house.png", solved: false },
+      { scrambled: "T K C H I N E", answer: "KITCHEN", img: "../uploads/kitchen.png", solved: false },
+    ];
+
+    let idx = 0, audioCtx = null, isAnimating = false;
+    const qNumber = document.getElementById("qNumber"), qText = document.getElementById("qText"), clueImg = document.getElementById("clueImg");
+    const lettersArea = document.getElementById("lettersArea"), dropZone = document.getElementById("dropZone");
+    const nextBtn = document.getElementById("nextBtn"), prevBtn = document.getElementById("prevBtn"), clearBtn = document.getElementById("clearBtn");
+    const teacherPopup = document.getElementById("teacherPopup"), feedbackSmiley = document.getElementById("feedbackSmiley");
+    const confettiCanvas = document.getElementById("confettiCanvas"), ctx = confettiCanvas.getContext("2d");
+
+    function playTone(freqs, dur=0.6, type='sine') {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const now = audioCtx.currentTime;
+      const g = audioCtx.createGain();
+      g.gain.setValueAtTime(0, now); g.gain.linearRampToValueAtTime(0.2, now + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+      freqs.forEach(f => {
+        const o = audioCtx.createOscillator(); o.type = type; o.frequency.value = f; o.connect(g); o.start(now); o.stop(now + dur);
+      });
+      g.connect(audioCtx.destination);
+    }
+
+    let particles = [];
+    function resize() { confettiCanvas.width = window.innerWidth; confettiCanvas.height = window.innerHeight; }
+    window.onresize = resize; resize();
+
+    function launchConfetti(count=100) {
+      particles = Array.from({length: count}, () => ({
+        x: Math.random() * confettiCanvas.width, y: -20,
+        vx: (Math.random()-0.5)*10, vy: 2+Math.random()*5,
+        s: 5+Math.random()*10, c: `hsl(${Math.random()*360},80%,60%)`
+      }));
+      if (!isAnimating) { isAnimating = true; render(); }
+    }
+
+    function render() {
+      ctx.clearRect(0,0,confettiCanvas.width, confettiCanvas.height);
+      particles.forEach((p,i) => {
+        ctx.fillStyle = p.c; ctx.fillRect(p.x, p.y, p.s, p.s);
+        p.x += p.vx; p.y += p.vy; p.vy += 0.1;
+        if(p.y > confettiCanvas.height) particles.splice(i,1);
+      });
+      if(particles.length) requestAnimationFrame(render); else isAnimating = false;
+    }
+
+    function showQuestion(i) {
+      const item = words[i]; idx = i;
+      qNumber.textContent = `Word ${i + 1} of ${words.length}`;
+      qText.textContent = `Unscramble: ${item.scrambled}`;
+      clueImg.src = item.img;
+      
+      dropZone.innerHTML = "";
+      lettersArea.innerHTML = "";
+      const ansLetters = item.answer.split("");
+      const scrambledLetters = item.scrambled.split(" ");
+
+      ansLetters.forEach((_, bIdx) => {
+        const box = document.createElement("div");
+        box.className = "drop-box";
+        if (item.solved) {
+            box.textContent = ansLetters[bIdx];
+            box.classList.add("filled", "correct");
+        }
+        box.onclick = () => {
+            if (!item.solved && box.classList.contains("filled")) {
+                const tileId = box.dataset.tileId;
+                document.getElementById(tileId).classList.remove("used");
+                box.textContent = ""; box.classList.remove("filled");
+            }
+        };
+        dropZone.appendChild(box);
+      });
+
+      scrambledLetters.forEach((char, tIdx) => {
+        const tile = document.createElement("div");
+        tile.className = "letter-tile";
+        tile.id = `tile-${i}-${tIdx}`;
+        tile.textContent = char;
+        if (item.solved) tile.classList.add("used");
+        tile.onclick = () => {
+          if (!item.solved && !tile.classList.contains("used")) {
+            const emptyBox = [...dropZone.querySelectorAll(".drop-box")].find(b => !b.classList.contains("filled"));
+            if (emptyBox) {
+              emptyBox.textContent = char;
+              emptyBox.classList.add("filled");
+              emptyBox.dataset.tileId = tile.id;
+              tile.classList.add("used");
+              checkAnswer();
+            }
+          }
+        };
+        lettersArea.appendChild(tile);
+      });
+
+      prevBtn.disabled = i === 0;
+      nextBtn.disabled = !item.solved;
+      clearBtn.style.visibility = item.solved ? "hidden" : "visible";
+      nextBtn.textContent = i === words.length - 1 ? 'FINISH' : 'NEXT ▶';
+    }
+
+    function checkAnswer() {
+      const boxes = [...dropZone.querySelectorAll(".drop-box")];
+      if (boxes.some(b => !b.classList.contains("filled"))) return;
+
+      const attempt = boxes.map(b => b.textContent).join("");
+      const correct = words[idx].answer;
+
+      if (attempt === correct) {
+        words[idx].solved = true;
+        boxes.forEach(b => b.classList.add("correct"));
+        playTone([880, 1100]); launchConfetti(80);
+        feedbackSmiley.textContent = "😃"; feedbackSmiley.classList.add("show");
+        document.getElementById('teacherImg').src = '../uploads/yes.png';
+        document.getElementById('teacherMsg').textContent = "Great job! 🎉";
+        teacherPopup.classList.add('show');
+        
+        if (idx === words.length - 1) setTimeout(showFinalModal, 1500);
+        else nextBtn.disabled = false;
+      } else {
+        playTone([180], 0.4, 'square');
+        feedbackSmiley.textContent = "😭"; feedbackSmiley.classList.add("show");
+        document.getElementById('teacherImg').src = '../uploads/no.png';
+        document.getElementById('teacherMsg').textContent = "Try again! ✍️";
+        teacherPopup.classList.add('show');
+        setTimeout(clearInput, 1000);
+      }
+      setTimeout(() => { feedbackSmiley.classList.remove("show"); teacherPopup.classList.remove('show'); }, 2000);
+    }
+
+    function clearInput() {
+        if(words[idx].solved) return;
+        dropZone.querySelectorAll(".drop-box").forEach(b => {
+            b.textContent = ""; b.classList.remove("filled", "wrong");
+        });
+        lettersArea.querySelectorAll(".letter-tile").forEach(t => t.classList.remove("used"));
+    }
+
+    function showFinalModal() {
+      playTone([660, 880, 1320], 1.2);
+      const div = document.createElement("div");
+      div.className = "final-modal-overlay";
+      div.innerHTML = `<div class="final-modal">
+          <h2 style="font-family:'Livvic', sans-serif; color:#2c7a4b; font-size:40px; font-weight:700; margin:0;">🎉 YOU WON! 🎉</h2>
+          <p style="font-size:22px; margin:20px 0;">Superstar! You unscrambled all the words!</p>
+          <button class="nav-btn" style="background:var(--blue); border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
+      </div>`;
+      document.body.appendChild(div);
+      launchConfetti(150);
+    }
+
+    clearBtn.onclick = clearInput;
+    prevBtn.onclick = () => showQuestion(idx - 1);
+    nextBtn.onclick = () => { if(idx < words.length - 1) showQuestion(idx + 1); else showFinalModal(); };
+
+    showQuestion(0);
+  </script>
+</body>
+</html>

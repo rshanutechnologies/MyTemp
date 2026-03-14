@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Correct Option</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/MCQ.css">
+</head>
+
+<body>
+
+  <div class="quiz-container">
+
+    <!-- ✅ TOP BAR -->
+    <div class="topbar" style="font-weight: 400;">
+      <div class="title">⭐ Choose Correct Option</div>
+      <div class="score" id="scoreBox">Score: 0</div>
+    </div>
+
+    <!-- ✅ MAIN CONTENT -->
+    <div class="content">
+
+      <!-- ✅ LEFT QUESTION -->
+      <div class="left">
+        <img id="qImage" src="" alt="">
+        <div class="question-text" id="qText"></div>
+      </div>
+
+      <!-- ✅ RIGHT OPTIONS -->
+      <div class="right" id="options"></div>
+
+    </div>
+
+    <!-- ✅ NAV -->
+    <div class="nav">
+      <button class="prev" id="prevBtn">← Prev</button>
+      <button class="next" id="nextBtn" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- ✅ POPUP -->
+  <div class="popup" id="popup">
+    <div class="popup-box">
+      <div id="popupMedia"></div>
+      <div id="popupText" class="popup-msg"></div>
+    </div>
+  </div>
+  <!-- ✅ FINAL POPUP -->
+  <!-- ✅ FINAL POPUP -->
+  <div class="popup" id="finalPopup">
+    <div class="popup-box final-box">
+
+      <!-- ✅ BOY LIFT TROPHY IMAGE -->
+      <img id="winnerImg" class="winner-img" src="../assets/images/boy-trophy.png" alt="Winner">
+
+      <h2 class="final-title">🎉 Congratulations!</h2>
+      <p class="final-score" id="finalScore"></p>
+      <div class="final-stars" id="finalStars"></div>
+
+      <button class="restart-btn" onclick="restartQuiz()">🔄 Play Again</button>
+    </div>
+  </div>
+
+<audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+
+ <script src="../assets/js/MCQ.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Quiz Menu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  user-select:none;
+  font-family:'Livvic';
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  overflow:hidden;
+  position:relative;
+}
+
+/* Background */
+body::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("./assets/images/bgbg.png") center/cover no-repeat;
+  /* filter: blur(6px); */
+  /* opacity:0.7; */
+  z-index:-1;
+}
+
+.sidebar{
+  width:300px;
+  height:100vh;                 /* FULL HEIGHT */
+  display:flex;
+  justify-content:center;       /* VERTICAL CENTER */
+  align-items:center;
+  position:relative;
+  margin-top: 5%;
+}
+
+.menu-title{
+  font-size:23px;
+  font-weight:600;
+  color:#47633d;
+  text-align:center;
+}
+
+.sidebar-img{
+  width:100%;
+  margin-bottom:-15px;
+  display:flex;
+  justify-content:flex-start;
+  padding-left:30px;
+}
+
+.sidebar-img img{
+  width:200px;
+  height:160px;
+}
+
+
+
+/* ===== MENU BUTTON ===== */
+.menu-btn{
+  position:absolute;
+  width:210px;
+  padding:12px 18px;
+  border-radius:40px;   /* full round pill */
+  font-size:17px;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#fff;
+  transition:0.2s ease;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  margin-top: 13%
+
+}
+
+.menu-btn:hover{
+  transform:scale(1.05);
+}
+/* ===== ACTIVE MENU BUTTON (SOFT STYLE) ===== */
+.menu-btn.active{
+  /* filter: saturate(1.3) brightness(1.15); */
+  transform: scale(1.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  border: 1px solid #2f4f4f;
+  
+}
+.pos1{ top:10px; left:10px; background:#ff3b30; }
+.pos2{ top:85px; left:10px; background:#00a8e8; }
+.pos3{ top:160px; left:10px; background:#2ecc71; }
+.pos4{ top:235px; left:10px; background:#ffb400; }
+.pos5{ top:310px; left:10px; background:#ff3b30; }
+
+
+
+.menu-btn:hover{
+  transform:scale(1.05);
+}
+
+/* ===== CONTENT ===== */
+.content{
+  flex:1;
+}
+
+iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+  body{
+    flex-direction:column;
+  }
+
+  .content{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#fff;
+    z-index:999;
+  }
+
+  .content.active{
+    display:block;
+  }
+
+  .sidebar{
+    width:100%;
+    height:100vh;
+    align-items:center;
+  }
+
+  .sidebar-img{
+    justify-content:center;
+    padding-left:0;
+  }
+
+  .zigzag-layout{
+    width:90%;
+    max-width:320px;
+    height:420px;
+  }
+
+  .pos1{ top:10px; left:0; }
+  .pos2{ top:90px; right:0; }
+  .pos3{ top:170px; left:0; }
+  .pos4{ top:250px; right:0; }
+  .pos5{ top:330px; left:0; }
+}
+
+/* Mobile Toggle */
+.mobile-toggle{
+  display:none;
+  position:fixed;
+  top:15px;
+  right:15px;
+  background:#00cfff;
+  color:#fff;
+  font-size:22px;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  z-index:1001;
+}
+
+.mobile-toggle.show{
+  display:block;
+}
+.menu-btn i{
+  font-size:20px;
+}
+@media(max-width:768px){
+
+  body{
+    flex-direction:column;
+    overflow:hidden;
+     background:url("../images/bgbg.png") center/cover no-repeat !important;
+  
+  }
+ 
+  /* Hide iframe initially */
+  .content{
+    display:none;
+    position:fixed;
+    inset:0;
+    /* background:#fff; */
+    z-index:999;
+   
+  }
+
+  .content.active{
+    display:block;
+  }
+
+  /* Sidebar full width */
+  .sidebar{
+    width:100%;
+    height:auto;
+    padding:20px;
+    align-items:center;
+   
+  }
+
+  /* Remove absolute positioning */
+  .menu-btn{
+    position:relative;
+    top:auto !important;
+    left:auto !important;
+    right:auto !important;
+    width:90%;
+    margin:15px 0;
+    justify-content:center;
+    font-size:18px;
+  }
+
+  /* Remove zigzag layout height */
+  .zigzag-layout{
+    width:100%;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  /* Adjust sidebar image */
+  .sidebar-img{
+    justify-content:center;
+    padding-left:0;
+  }
+
+  .sidebar-img img{
+    width:160px;
+    height:auto;
+  }
+
+  /* Show toggle button */
+  .mobile-toggle{
+    display:block;
+  }
+}
+.mobile-toggle{
+  display:none;
+  position:fixed;
+  top:15px;
+  right:15px;
+  background:#00cfff;
+  color:#fff;
+  font-size:22px;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  z-index:1001;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="mobile-toggle" id="toggleBtn">☰</div>
+
+<div class="sidebar">
+
+
+  <div class="zigzag-layout">
+
+   
+<div class="menu-btn pos1" data-url="./exercises/mcq.html">
+  <i class="fa-solid fa-list-check"></i> Choose Options
+</div>
+
+<div class="menu-btn pos2" data-url="./exercises/fillblanks.html">
+  <i class="fa-solid fa-pen"></i> Fill in Blanks
+</div>
+
+<div class="menu-btn pos3" data-url="./exercises/true_false.html">
+  <i class="fa-solid fa-check-circle"></i> True / False
+</div>
+
+<div class="menu-btn pos4" data-url="./exercises/matching.html">
+  <i class="fa-solid fa-link"></i> Matching
+</div>
+
+<div class="menu-btn pos5" data-url="./exercises/two_example.html">
+  <i class="fa-solid fa-keyboard"></i> One Word
+</div>
+  </div>
+</div>
+
+<div class="content" id="content">
+  <iframe id="contentFrame" src="./exercises/mcq.html"></iframe>
+</div>
+
+<script>
+const lines = document.querySelectorAll(".path-line");
+const buttons = document.querySelectorAll(".menu-btn");
+const iframe = document.getElementById("contentFrame");
+const content = document.getElementById("content");
+const toggleBtn = document.getElementById("toggleBtn");
+buttons[0].classList.add("active");
+/* Activate lines function */
+function activateLines(index){
+  lines.forEach(line => line.classList.remove("active"));
+  for(let i=0; i<index; i++){
+    if(lines[i]) lines[i].classList.add("active");
+  }
+}
+
+/* Button click */
+buttons.forEach((btn,index)=>{
+  btn.addEventListener("click",()=>{
+
+    // 🔥 Remove active from all buttons
+    buttons.forEach(b => b.classList.remove("active"));
+
+    // 🔥 Add active to clicked button
+    btn.classList.add("active");
+
+    // Change iframe
+    iframe.src = btn.dataset.url;
+
+    activateLines(index);
+
+    if(window.innerWidth <= 768){
+      content.classList.add("active");
+      toggleBtn.classList.add("show");
+    }
+  });
+});
+
+/* Mobile back */
+toggleBtn.addEventListener("click",()=>{
+  content.classList.remove("active");
+  toggleBtn.classList.remove("show");
+});
+</script>
+
+</body>
+</html>

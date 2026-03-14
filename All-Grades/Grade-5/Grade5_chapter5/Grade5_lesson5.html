@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 2: Animals</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon"
+href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:'Livvic',sans-serif;
+}
+
+body{
+display:flex;
+height:100vh;
+overflow:hidden;
+background:#b4f0d6;
+
+}
+
+/* ================= TOGGLE BUTTON ================= */
+
+.menu-toggle{
+display:none;
+position:fixed;
+top:12px;
+left:12px;
+z-index:1001;
+background:#1F3C5B;
+color:white;
+border:none;
+font-size:22px;
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+width:300px;
+background:#b4f0d6;
+display:flex;
+justify-content: center;
+align-items: center;
+flex-direction:column;
+padding:25px 20px;
+transition:0.35s ease;
+z-index:1000;
+}
+
+.brand{
+text-align:center;
+margin-bottom:30px;
+font-size:clamp(18pt,4vw,30pt);
+color:#1F3C5B;
+font-weight:600;
+}
+
+.sidebar ul{
+list-style:none;
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+/* ================= ✏️ PENCIL BUTTON ================= */
+
+.sidebar ul li a{
+position:relative;
+display:flex;
+align-items:center;
+padding:20px 21px 20px 30px;
+text-decoration:none;
+color:#1F3C5B;
+border-radius:60px;
+font-size:clamp(12pt,2vw,17pt);
+font-weight:600;
+border:2px solid rgba(0,0,0,0.1);
+box-shadow:0 6px 0 rgba(0,0,0,0.15);
+transition:.25s ease;
+}
+
+/* pencil tip */
+.sidebar ul li a::before{
+content:"";
+position:absolute;
+left:-30px;
+top:50%;
+transform:translateY(-50%);
+border-top:24px solid transparent;
+border-bottom:24px solid transparent;
+border-right:30px solid currentColor;
+}
+
+.sidebar ul li a::after{
+content:"";
+position:absolute;
+left:-40px;
+top:50%;
+transform:translateY(-50%);
+border-top:18px solid transparent;
+border-bottom:18px solid transparent;
+border-right:18px solid #f5d6a1;
+}
+
+.sticker{
+font-size:22px;
+margin-right:15px;
+transition:.3s;
+}
+
+.sidebar ul li a:hover{
+transform:translateX(6px) translateY(-2px);
+}
+
+.sidebar ul li a.active{
+transform:translateX(6px) translateY(4px);
+box-shadow:none;
+outline:4px solid rgba(10,108,43,.4);
+}
+
+/* colors */
+.sidebar ul li:nth-child(1) a{background:#FFB37A;}
+.sidebar ul li:nth-child(2) a{background:#CFE8B3;}
+.sidebar ul li:nth-child(3) a{background:#FFD84D;}
+.sidebar ul li:nth-child(4) a{background:#86BCD5;}
+
+/* ================= CONTENT ================= */
+
+.content{
+flex:1;
+height:100%;
+}
+
+iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width:1024px){
+
+.sidebar{
+width:240px;
+}
+
+.sidebar ul li a{
+font-size:14pt;
+}
+
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:800px){
+
+.menu-toggle{
+display:block;
+}
+
+/* sidebar hidden */
+.sidebar{
+position:fixed;
+left:-260px;
+top:0;
+height:100%;
+width:260px;
+box-shadow:4px 0 20px rgba(0,0,0,.2);
+}
+
+/* open state */
+.sidebar.open{
+left:0;
+}
+
+body{
+flex-direction:column;
+}
+
+.brand{
+margin-top:40px;
+}
+
+/* remove pencil tip on mobile */
+.sidebar ul li a::before,
+.sidebar ul li a::after{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<button class="menu-toggle">☰</button>
+
+<nav class="sidebar">
+<div class="brand">Body Quiz</div>
+
+<ul>
+<li><a href="exercises/mcq.html" target="quiz-frame"><span class="sticker">🐶</span>Correct Option</a></li>
+<li><a href="exercises/fillblanks.html" target="quiz-frame"><span class="sticker">🦜</span>Fill The Blanks</a></li>
+<li><a href="exercises/matching.html" target="quiz-frame"><span class="sticker">🐹</span>Matching</a></li>
+<li><a href="exercises/true_false.html" target="quiz-frame"><span class="sticker">🐱</span>True or False</a></li>
+</ul>
+</nav>
+
+<main class="content">
+<iframe name="quiz-frame" src="exercises/mcq.html"></iframe>
+</main>
+
+<script>
+
+const toggleBtn=document.querySelector('.menu-toggle');
+const sidebar=document.querySelector('.sidebar');
+
+toggleBtn.addEventListener('click',()=>{
+sidebar.classList.toggle('open');
+});
+
+/* active button logic */
+const links=document.querySelectorAll('.sidebar a');
+
+links[0].classList.add('active');
+
+links.forEach(link=>{
+link.addEventListener('click',e=>{
+links.forEach(l=>l.classList.remove('active'));
+e.currentTarget.classList.add('active');
+
+/* auto close on mobile */
+if(window.innerWidth<=800){
+sidebar.classList.remove('open');
+}
+});
+});
+
+</script>
+
+</body>
+</html>

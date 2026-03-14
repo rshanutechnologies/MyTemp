@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Biology Match Master</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="../assets/CSS/matching.css">
+</head>
+
+<body>
+
+  <div class="game">
+    <div class="home" onclick="location.href='../index.html'">🏠 Home</div>
+    <div class="title" style="margin-bottom:0%;">Match the Following </div>
+    <div class="match-area">
+      <svg id="lines"></svg>
+
+      <div class="column left" id="leftCol">
+        <div class="item" data-id="e"><span class="emoji">🫀</span> Heart</div>
+        <div class="item" data-id="a"><span class="emoji">🫁</span> Lungs</div>
+        <div class="item" data-id="d"><span class="emoji">🩸</span> Veins</div>
+        <div class="item" data-id="c"><span class="emoji">👃</span> Nose</div>
+        <div class="item" data-id="b"><span class="emoji">🔴</span> Arteries</div>
+      </div>
+
+      <div class="column right" id="rightCol">
+        <div class="item" data-id="a"><span class="emoji">💨</span>The exchange of gases takes place here</div>
+        <div class="item" data-id="b"><span class="emoji">🚀</span>They carry oxygen rich blood to all the body parts
+        </div>
+        <div class="item" data-id="c"><span class="emoji">🌬️</span>It helps in taking in oxygen rich air and expelling
+          carbon dioxide rich air out of the body</div>
+        <div class="item" data-id="e"><span class="emoji">🫀</span>It pumps the blood</div>
+        <div class="item" data-id="d"><span class="emoji">🔵</span>They carry carbon dioxide rich blood back to the
+          heart</div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL POPUP -->
+  <div id="finalPopup">
+    <div class=" finalpopup-box">
+      <h2 class="final-heading">🎉 Congratulations!</h2>
+      <p id="finalScore"></p>
+      <div id="stars"></div><br> <button onclick="location.reload()" class="playAgain-btn"> Play Again </button>
+    </div>
+  </div>
+
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+  <audio id="wrongSound"
+    src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <script src="../assets/JavaScript/matching.js"></script>
+</body>
+
+</html>

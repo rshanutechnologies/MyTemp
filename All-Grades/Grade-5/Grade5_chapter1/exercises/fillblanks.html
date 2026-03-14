@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fill in the Blank</title>
+   <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/CSS/fillblanks.css">
+</head>
+
+<body>
+    <div class="main">
+         <div class="home" onclick="location.href='../index.html'">🏠 Home</div>
+        <div class="top">
+            <div class="badge">Plant Quiz </div>
+            <div class="qcount" id="qCount">Question 1 of 5</div>
+        </div>
+
+        <div class="question" id="qText"></div>
+<div class="question" id="qText"></div>
+
+<div class="content">
+    <div class="center-layout">
+
+        <img id="qImg" src="../assets/images/q5-img.png" class="center-img">
+
+        <div class="input-box" id="inputBox">
+            <input id="answerInput" placeholder="Type your answer...">
+            <button class="submit" id="submitBtn">Submit</button>
+        </div>
+
+    </div>
+</div>
+
+        <div class="dots" id="dots"></div>
+        <button class="prev" id="prevBtn">← Prev</button>
+        <button class="next" id="nextBtn">Next →</button>
+    </div>
+
+    <!-- CORRECT / WRONG POPUP -->
+   <div id="answerPopup" class="popup">
+  <div class="popup-box" id="popupText"></div>
+</div>
+
+
+    <!-- FINAL POPUP -->
+  <div id="finalPopup" class="popup"></div>
+
+<audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+    <script src="../assets/JavaScript/fillblanks.js"></script>
+</body>
+
+</html>

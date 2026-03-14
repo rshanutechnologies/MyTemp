@@ -1,0 +1,298 @@
+/* SAME CSS — unchanged */
+body {
+    margin: 0;
+    font-family: 'Livvic', sans-serif;
+    background: transparent;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.main-title {
+    background: linear-gradient(135deg, #ffbf3f, #f9a825);
+    padding: 10px 34px;
+    border-radius: 40px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #fff;
+}
+
+.quiz {
+    width: 95%;
+    max-width: 1100px;
+}
+
+.progress {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 14px;
+}
+
+.step {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #d7b6c0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.step.active {
+    background: #ffb300;
+}
+
+.step.correct {
+    background: #4caf50;
+}
+
+.question {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400 !important;
+    margin-bottom: 12px;
+    height: 80px;
+    color: #2f4f4f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.image-wrap {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid white;
+}
+
+.image-wrap span {
+    font-size: 150px;
+}
+
+.options {
+    flex: 1;
+    color: #2f4f4f;
+    font-size: 20px !important;
+}
+
+.option {
+    height: 64px;
+    border-radius: 18px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.option span {
+    font-size: 36px;
+    margin-right: 16px;
+}
+
+.option.correct {
+    background: #d9f5dc;
+    border-color: #4caf50;
+}
+
+.option.wrong {
+    background: #ffdcdc;
+    border-color: #f44336;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2px;
+}
+
+.nav button {
+    padding: 10px 26px;
+    border-radius: 22px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.prev {
+    background: #ffbf3f;
+}
+
+.next {
+    background: #64b5f6;
+    color: white;
+}
+
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.popup-box {
+    background: white;
+    padding: 28px;
+    border-radius: 28px;
+    width: 300px;
+    text-align: center;
+    animation: pop .4s ease;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(.5);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.popup-emoji {
+    font-size: 90px;
+    margin-bottom: 10px;
+}
+
+/* .final-board{width:200px;height:200px;border-radius:50%;margin:auto;background:radial-gradient(circle,red 0%, red 15%,white 15%, white 30%,red 30%, red 45%,white 45%, white 60%,red 60%, red 75%,white 75%, white 90%,red 90%);}
+.pins{font-size:26px;margin-top:10px;animation:pins 1s infinite alternate;}
+@keyframes pins{from{transform:translateY(0)}to{transform:translateY(-10px)}}*/
+.restart {
+    margin-top: 12px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 16px;
+    background: #4caf50;
+    color: white;
+}
+
+
+
+.final-board {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    background: radial-gradient(circle,
+            red 0%, red 15%,
+            white 15%, white 30%,
+            red 30%, red 45%,
+            white 45%, white 60%,
+            red 60%, red 75%,
+            white 75%, white 90%,
+            red 90%);
+    animation: spinBoard 4s linear infinite;
+}
+
+/* Spinning animation */
+@keyframes spinBoard {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pins container center */
+.pins {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 26px;
+    display: flex;
+    gap: 4px;
+}
+
+/* Each pin */
+.pin {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.5);
+    animation: dropPin 0.6s forwards;
+}
+
+/* Drop animation */
+@keyframes dropPin {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+.option img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-right: 14px;
+}
+
+.question-img {
+    width: 60px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+
+.home-btn {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 22px;
+    background: #fff;
+    font-weight: 700;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    z-index: 999;
+    padding: 10px 28px;
+    background: #ff9f2f;
+    color: #fff;
+    border-radius: 25px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.image-wrap img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.option {
+    transition: all .25s ease;
+}

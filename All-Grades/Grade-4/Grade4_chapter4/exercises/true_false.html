@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>True / False Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/CSS/true_false.css">
+
+</head>
+
+<body>
+
+  <div class="quiz-box">
+
+    <div class="question">
+      <span class="q-no" id="qNo"></span>
+      <span class="q-text" id="question"></span>
+    </div>
+
+    <div class="image-box">
+      <img id="questionImage">
+    </div>
+
+    <!-- TRUE / FALSE -->
+    <div class="tf-buttons">
+      <button class="tf true" id="trueBtn" onclick="checkAnswer(true)">TRUE</button>
+      <button class="tf false" id="falseBtn" onclick="checkAnswer(false)">FALSE</button>
+    </div>
+
+    <div class="buttons">
+      <button class="prev" id="prevBtn" disabled>← Prev</button>
+      <button class="next" id="nextBtn" disabled>Next →</button>
+    </div>
+
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-box" id="popupText"></div>
+  </div>
+
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <script src="../assets/JavaScript/true_false.js"></script>
+
+</body>
+
+</html>

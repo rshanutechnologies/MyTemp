@@ -1,0 +1,505 @@
+ * {
+     box-sizing: border-box;
+     font-family: 'Livvic', sans-serif;
+     user-select: none;
+ }
+
+ body {
+     margin: 0;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background: linear-gradient(70deg, rgb(255, 227, 227), rgb(233, 253, 249));
+     background-size: 5px 5px;
+     overflow: hidden;
+ }
+
+ .quiz {
+     width: 100%;
+     max-width: 1000px;
+     padding: 20px;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     position: relative;
+     gap: 10px;
+ }
+
+ .quiz-type {
+     position: absolute;
+     font-size: 25px;
+     font-weight: 500;
+     color: rgb(23, 99, 73);
+     top: 3%;
+     left: -10%;
+ }
+
+ .title-wrap {
+     text-align: center;
+     margin-bottom: 12px;
+ }
+
+ .title {
+     background: #f6b84c;
+     padding: 10px 30px;
+     border-radius: 30px;
+     font-size: 26px;
+     font-weight: 700;
+     color: #fff;
+     display: inline-block;
+ }
+
+ /* 🟨 QUESTION TEXT FULL WIDTH */
+ .question-box {
+     border-radius: 20px;
+     padding: 20px;
+     font-size: 30px;
+     color: #2f4f4f;
+     height: 110px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin-top: 30px;
+ }
+
+ /* 🔹 IMAGE + OPTIONS PARALLEL */
+ .card {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 30px;
+ }
+
+ /* 🖼 IMAGE BOX */
+ .image-box {
+     flex: 1;
+     text-align: center;
+ }
+
+ .image-box img {
+     width: 300px;
+     height: 300px;
+     object-fit: fill;
+ }
+
+ /* 🟦 OPTIONS BOX */
+ .options-box {
+     flex: 1.5;
+     border-radius: 20px;
+     display: flex;
+     flex-direction: column;
+     gap: 14px;
+     color: #2f4f4f;
+ }
+
+ .option {
+     background: #ffffff;
+     border-radius: 16px;
+     padding: 20px 15px;
+     display: flex;
+     align-items: center;
+     gap: 12px;
+     cursor: pointer;
+     border: 4px solid transparent;
+     font-size: 20px;
+     text-transform: capitalize;
+ }
+
+ .option.correct {
+     border-color: #4caf50;
+     background: #e8f5e9;
+     pointer-events: none;
+ }
+
+ .option.disabled {
+     opacity: 0.4;
+     pointer-events: none;
+ }
+
+ .option:nth-child(1) {
+     background: #fac4c8;
+ }
+
+ .option:nth-child(2) {
+     background: #e3ffb7;
+ }
+
+ .option:nth-child(3) {
+     background: #cfe3ff;
+ }
+
+ .option:nth-child(4) {
+     background: #ffefb8;
+ }
+
+ /* CONTROLS */
+ .controls {
+     width: 100%;
+     display: flex;
+     justify-content: space-between;
+     padding: 0 40px;
+     margin-top: 30px;
+ }
+
+ button {
+     padding: 12px 32px;
+     border-radius: 28px;
+     border: none;
+     font-size: 20px;
+     color: #fff;
+     cursor: pointer;
+ }
+
+ .prev {
+     background: #5fa8ff;
+ }
+
+ .next {
+     background: #ffa500;
+ }
+
+ button:disabled {
+     opacity: 0.5;
+     cursor: not-allowed;
+     ;
+ }
+
+ /* correct and wrong */
+ .popup {
+     position: fixed;
+     inset: 0;
+     background: rgba(0, 0, 0, 0.0);
+     display: none;
+     align-items: center;
+     justify-content: center;
+     z-index: 2000;
+ }
+
+ .popup-content {
+     background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 255, 240, 0.98) 100%);
+     padding: 20px;
+     border-radius: 20px;
+     text-align: center;
+     max-width: 400px;
+     width: 90%;
+     animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+     backdrop-filter: blur(15px);
+     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+ }
+
+ @keyframes popIn {
+     0% {
+         transform: scale(0.5);
+         opacity: 0;
+     }
+
+     100% {
+         transform: scale(1);
+         opacity: 1;
+     }
+ }
+
+ .popup-icon {
+     font-size: 5.5em;
+     margin-bottom: 10px;
+     animation: iconBounce 0.8s ease;
+     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+ }
+
+ @keyframes iconBounce {
+
+     0%,
+     100% {
+         transform: translateY(0) scale(1) rotate(0deg);
+     }
+
+     25% {
+         transform: translateY(-30px) scale(1.2) rotate(-10deg);
+     }
+
+     50% {
+         transform: translateY(-15px) scale(1.1) rotate(10deg);
+     }
+
+     75% {
+         transform: translateY(-25px) scale(1.15) rotate(-5deg);
+     }
+ }
+
+ .popup-content h3 {
+     font-family: "Livvic";
+     font-size: 2em;
+     margin-bottom: 10px;
+     font-weight: 600;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+ }
+
+ .popup-content p {
+     font-size: 1.3em;
+     font-family: "Livvic";
+     font-weight: 600;
+     line-height: 1.6;
+ }
+
+ .popup.correct .popup-icon {
+     animation: iconBounce 0.8s ease, correctSpin 0.8s ease;
+ }
+
+ .popup.wrong .popup-icon {
+     animation: iconBounce 0.8s ease, wrongShake 0.6s ease;
+ }
+
+ .popup.correct .popup-content {
+     background-color: #ffffff;
+ }
+
+ .popup.wrong .popup-content {
+     background-color: #ffffff;
+ }
+
+ .popup.correct h3 {
+     color: #22543d;
+ }
+
+ .popup.wrong h3 {
+     color: #742a2a;
+ }
+
+ .popup.correct p {
+     color: #276749;
+ }
+
+ .popup.wrong p {
+     color: #9b2c2c;
+ }
+
+ @keyframes correctSpin {
+     0% {
+         transform: rotate(0deg) scale(1);
+     }
+
+     50% {
+         transform: rotate(180deg) scale(1.3);
+     }
+
+     100% {
+         transform: rotate(360deg) scale(1);
+     }
+ }
+
+ @keyframes wrongShake {
+
+     0%,
+     100% {
+         transform: rotate(0deg);
+     }
+
+     10%,
+     30%,
+     50%,
+     70%,
+     90% {
+         transform: rotate(-15deg);
+     }
+
+     20%,
+     40%,
+     60%,
+     80% {
+         transform: rotate(15deg);
+     }
+ }
+
+ /*final score POPUPS */
+ #finalPopup {
+     position: fixed;
+     inset: 0;
+     background: rgba(0, 0, 0, .0);
+     display: none;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .finalpopup-box {
+     background: #fff;
+     padding: 25px 35px;
+     border-radius: 18px;
+     text-align: center;
+ }
+
+ .final-heading {
+     display: block;
+     font-size: 2em;
+     margin: 20px;
+     font-weight: bold;
+ }
+
+ #stars {
+     font-size: 40px;
+     margin-top: 10px;
+ }
+
+ .playAgain-btn {
+     background: #1fb36b;
+     color: #fff;
+     border: none;
+     padding: 12px 28px;
+     border-radius: 20px;
+     font-size: 16px;
+     margin-block: 10px;
+     cursor: pointer;
+ }
+
+ /* ================================
+📱 TABLETS (≤ 900px)
+Desktop-like but tighter
+================================ */
+ @media (max-width: 800px) {
+     body {
+         /* padding: 12px; */
+         align-items: flex-start;
+         overflow-y: hidden;
+     }
+
+     .quiz {
+         width: 100%;
+         max-width: 900px;
+         padding: 16px;
+         margin-top: 50px;
+     }
+
+     .quiz-type {
+         position: static;
+         text-align: center;
+         margin-bottom: 10px;
+     }
+
+     .question-box {
+         font-size: 26px;
+         height: auto;
+         padding: 18px;
+         margin-top: 20px;
+         text-align: left;
+     }
+
+     .card {
+         gap: 24px;
+         flex-direction: column;
+     }
+
+     .image-box img {
+         width: 240px;
+         height: 240px;
+     }
+
+     .options-box {
+         width: 70%;
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 14px;
+     }
+
+     .option {
+         font-size: 18px;
+         padding: 30px 14px;
+         text-align: center;
+     }
+
+     .controls {
+         padding: 0 20px;
+         margin-top: 24px;
+     }
+
+     button {
+         font-size: 18px;
+         padding: 10px 26px;
+     }
+ }
+
+ /* ================================
+📱 MOBILE (≤ 768px)
+Stacked layout
+================================ */
+ @media (max-width: 768px) {
+     body {
+         padding: 0px 10px;
+         align-items: flex-start;
+         overflow-y: hidden;
+     }
+
+     .quiz {
+         width: 100%;
+         margin-top: 20px;
+         padding: 14px;
+     }
+
+     .question-box {
+         font-size: 22px;
+         margin-bottom: 20px;
+         text-align: left;
+     }
+
+     .card {
+         flex-direction: column;
+         gap: 20px;
+     }
+
+     .image-box img {
+         width: 200px;
+         height: 200px;
+     }
+
+     .options-box {
+         width: 100%;
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 14px;
+     }
+
+     .option {
+         font-size: 16px;
+         padding: 14px 12px;
+     }
+
+     .controls {
+         margin-top: 16px;
+         padding: 0 10px;
+     }
+
+     button {
+         font-size: 16px;
+         padding: 9px 20px;
+         margin-bottom: 30px;
+     }
+ }
+
+ /* ================================
+📱 SMALL MOBILES (≤ 480px)
+================================ */
+ @media (max-width: 480px) {
+
+    body {
+         overflow-y: auto;
+     }
+
+     .question-box {
+         font-size: 20px;
+         padding: 14px;
+     }
+
+     .image-box img {
+         width: 170px;
+         height: 170px;
+     }
+
+     .option {
+         font-size: 15px;
+         padding: 12px 6px;
+     }
+
+     button {
+         font-size: 15px;
+         padding: 8px 16px;
+     }
+ }

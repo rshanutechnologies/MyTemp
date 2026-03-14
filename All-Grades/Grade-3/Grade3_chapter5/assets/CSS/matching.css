@@ -1,0 +1,520 @@
+
+    :root {
+      --bank: #f8fafc;
+      --bridge: #a16207;
+
+      --c1: #fde68a;
+      --c2: #bfdbfe;
+      --c3: #bbf7d0;
+      --c4: #fecdd3;
+      --c5: #ddd6fe;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Livvic" !important;
+      
+    }
+
+    body {
+      min-height: 100vh;
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      overflow: hidden;
+      margin-top: -50px;
+      
+    }
+
+    .game {
+      width: 90%;
+      
+      max-width: 1100px;
+     
+      border-radius: 28px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+     margin-top: 20px;
+     
+    }
+ 
+    /* TITLE */
+    .title {
+    text-align:center;
+    font-size:28px;
+    font-weight:500;
+    background:#ffe2d5;
+    color:#444;
+    padding:8px 16px;
+    width:max-content;
+    margin:0 auto 14px;
+      border-radius:20px;
+    }
+
+.play {
+  display: grid;
+  grid-template-columns: 420px 420px;  /* fixed smaller width */
+  justify-content: center;             /* center both sides */
+  gap: 160px;                          /* 🔥 large middle space */
+  position: relative;
+}
+#lineLayer{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+.bank {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.bank .item {
+  width: 100%;   /* 🔥 ensures both sides same width */
+}
+  #rightBank .item {
+  min-height: 60px;   /* adjust 75–85px as needed */
+  display: flex;
+  align-items: center;
+}
+    /* ITEMS */
+    .item {
+      padding: 14px;
+      border-radius: 16px;
+      font-size: 22px;
+      
+      
+      cursor: pointer;
+      text-align: left;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, .15);
+      transition: .2s;
+      user-select: none;
+    }
+.item {
+  transition: background-color 0.4s ease;
+}
+    .item.active {
+      outline: 3px dashed #2563eb;
+    }
+
+    .item.used {
+      opacity: .35;
+      pointer-events: none;
+    }
+
+    /* ✅ right answer highlight */
+    .item.correct-highlight {
+      border: 3px solid #22c55e !important;
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.15), 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    /* ❌ wrong pick shake */
+    .item.wrong {
+      animation: shake .35s;
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-8px);
+      }
+
+      50% {
+        transform: translateX(8px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .a1 {
+      background: var(--c1)
+    }
+
+    .a2 {
+      background: var(--c2)
+    }
+
+    .a3 {
+      background: var(--c3)
+    }
+
+    .a4 {
+      background: var(--c4)
+    }
+
+    .a5 {
+      background: var(--c5)
+    }
+
+    
+
+    .plank.built {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .plank.fail {
+      animation: fall .4s;
+    }
+
+    @keyframes fall {
+      50% {
+        transform: translateY(8px) rotate(-5deg)
+      }
+    }
+
+    /* ✅ POPUP BACKDROP */
+    .popup {
+      position: fixed;
+      inset: 0;
+    
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 16px;
+    }
+
+    .popup-box {
+      background: white;
+      padding: 28px;
+      border-radius: 22px;
+      width: 300px;
+      
+      max-width: 92vw;
+      border: 2px solid #d7ee0d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.22);
+    }
+.popup-content{
+  background:#fff;
+  padding:20px;
+  border-radius:18px;
+  text-align:center;
+  width:300px;
+  
+   padding: 32px 30px;   /* increases height */
+  min-height: 260px;    /* ensures taller popup */
+  animation:popIn .35s ease;
+}
+.popup-content h3 { font-size: 2em; }
+.popup-content p { font-size: 1.3em; }
+
+    /* ✅ FINAL popup wider */
+    .popup-final {
+      width: 520px !important;
+    }
+
+    /* ✅ CORRECT POPUP */
+    .popup-correct {
+      background-color: white;
+      color: #2e7d32;
+      border-radius: 22px;
+      padding: 20px;
+      font-size: 24px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .popup-correct .check {
+      font-size: 25px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .popup-correct .happy {
+      font-size: 60px;
+      display: block;
+      margin: 6px 0;
+    }
+
+    .popup-correct .stars {
+      font-size: 30px;
+      color: #ffca28;
+      margin-top: 6px;
+    }
+
+    /* ✅ WRONG POPUP */
+    .popup-wrong {
+      background-color: white;
+      color: #c62828;
+      border-radius: 22px;
+      padding: 20px;
+      font-size: 24px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .popup-wrong .cross {
+      font-size: 25px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .popup-wrong .sad {
+      font-size: 60px;
+      display: block;
+      margin: 6px 0;
+    }
+
+    .popup-wrong .tip {
+      font-size: 18px;
+      color: #555;
+      margin-top: 6px;
+    }
+
+    /* ✅ FINAL POPUP */
+    .popup-final-content {
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 500;
+      color: #2e7d32;
+    }
+
+    .popup-final-content .emoji {
+      font-size: 60px;
+      display: block;
+      margin: 10px 0;
+    }
+
+    .popup-final-content .stars {
+      font-size: 30px;
+      color: #ffca28;
+      margin: 12px 0;
+    }
+    .popup-icon {
+    font-size: 5.5em;
+    margin-bottom: 10px;
+    animation: iconBounce 0.8s ease;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+
+
+.popup-content h3 {
+    font-family: "Livvic";
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popup-content p {
+    font-size: 1.3em;
+    font-family: "Livvic";
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+
+
+.popup.correct .popup-content {
+    background-color: #ffffff;
+}
+
+.popup.wrong .popup-content {
+    background-color: #ffffff;
+}
+
+.popup.correct h3 {
+    color: #22543d;
+}
+
+.popup.wrong h3 {
+    color: #742a2a;
+}
+
+.popup.correct p {
+    color: #276749;
+}
+
+.popup.wrong p {
+    color: #9b2c2c;
+}
+
+
+
+    .final-score {
+      margin-top: 14px;
+    }
+
+    .restart {
+      margin-top: 14px;
+      background: orange;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    
+  .popup {
+  position: fixed;
+  inset: 0;
+ 
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(240,255,240,.98));
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: popIn .4s cubic-bezier(.68,-0.55,.265,1.55);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+
+.popup-icon {
+  font-size: 5.5em;
+  margin-bottom: 10px;
+}
+
+.popup-content h3 { font-size: 2em; }
+.popup-content p { font-size: 1.3em; }
+
+.restart{
+   background:orange;
+  color:white;
+  border:none;
+  padding:12px 26px;
+  border-radius:999px;
+  font-size:16px;
+  margin-top:12px;
+  cursor:pointer;
+}
+
+@keyframes popIn{
+  0%{transform:scale(.5);opacity:0;}
+  100%{transform:scale(1);opacity:1;}
+}
+/* ===== LARGE MONITOR ===== */
+@media (min-width:1400px){
+  .game{
+    max-width:1200px;
+  }
+
+  .title{
+    font-size:30px;
+  }
+}
+
+@media (max-width:1000px){
+
+  .play{
+    grid-template-columns: 1fr 1fr;  /* keep side-by-side */
+    gap: 140px;
+  }
+
+}
+/* ===== MOBILE ===== */
+/* ===== MOBILE SPECIAL LAYOUT ===== */
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+.item img {
+  width: 50px;
+  height: 40px;
+  object-fit: contain;
+}
+.emoji {
+ 
+  font-size: 30px;   /* 🔥 Increase this value */
+}
+/* LEFT SIDE ITEMS */
+#leftBank .item {
+  position: relative;
+  padding: 20px 110px 20px 25px; /* extra space for emoji */
+  font-size: 22px;
+ 
+}
+
+/* EMOJI STYLE */
+#leftBank .emoji {
+  position: absolute;
+  right: 35px;          /* 🔥 SAME POSITION FOR ALL */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 55px;      /* big size */
+}
+#rightBank .item {
+  margin-bottom: 10px;
+}
+@media (max-width:768px){
+
+  .play{
+    grid-template-columns: 1fr 1fr !important;  /* keep side-by-side */
+    gap: 40px;                                  /* reduce middle gap */
+  }
+
+  .bank{
+    gap: 14px;
+  }
+
+  .item{
+    font-size:18px;
+    padding:12px;
+  }
+
+  #leftBank .emoji{
+    font-size:36px;
+    right:20px;
+  }
+
+}
+@media (max-width:480px){
+
+  .play{
+    grid-template-columns: 1fr 1fr !important; /* keep left-right */
+    gap: 20px;                                 /* smaller gap */
+  }
+
+  .item{
+    font-size:14px;
+    padding:10px;
+  }
+
+  #leftBank .item{
+    padding:14px 60px 14px 15px; /* reduce right padding */
+  }
+
+  #leftBank .emoji{
+    font-size:28px;
+    right:12px;
+  }
+
+}

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nature Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Livvic', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(70deg, rgb(255, 227, 227), rgb(233, 253, 249));
+      background-size: 5px 5px;
+      overflow: hidden;
+    }
+
+    /* ===== APP ===== */
+    .app {
+      display: flex;
+      height: 100%;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      width: 320px;
+      padding: 30px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .sidebar-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #0f766e;
+      margin-bottom: 10px;
+    }
+
+    /* ===== ZIG-ZAG PATH ===== */
+    .path {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .path .leaf:nth-child(odd) {
+      align-self: flex-start;
+    }
+
+    .path .leaf:nth-child(even) {
+      align-self: flex-end;
+    }
+
+    /* ===== LEAF BUTTON ===== */
+    .leaf {
+      position: relative;
+      width: 240px;
+      padding: 18px 22px;
+      cursor: pointer;
+      border-radius: 60% 40% 60% 40%;
+      color: #134e4a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-weight: 700;
+      box-shadow:
+        0 10px 18px rgba(0, 0, 0, .18),
+        inset 0 2px 0 rgba(255, 255, 255, .8);
+      transition: transform .4s cubic-bezier(.175, .885, .32, 1.275),
+        box-shadow .4s;
+      /* animation: floatLeaf 3.5s ease-in-out infinite; */
+    }
+
+    .leaf:hover {
+      transform: translateY(-6px) rotate(-1deg) scale(1.03);
+    }
+
+    .leaf.active {
+      box-shadow:
+        0 18px 30px rgba(0, 0, 0, .25),
+        0 0 0 4px rgba(255, 255, 255, .9),
+        0 0 25px rgba(34, 197, 94, .7);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0) !important;
+    }
+
+    /* ===== LEAF COLORS ===== */
+    .l1 {
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .l2 {
+      background: linear-gradient(135deg, #fde68a, #facc15);
+    }
+
+    .l3 {
+      background: linear-gradient(135deg, #bbf7d0, #4ade80);
+    }
+
+    .l4 {
+      background: linear-gradient(135deg, #ddd6fe, #a78bfa);
+    }
+
+    .l5 {
+      background: linear-gradient(135deg, #fecdd3, #fb7185);
+    }
+
+    /* ===== LEAF CONTENT ===== */
+    .leaf h3 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .leaf p {
+      font-size: 14px;
+      opacity: .85;
+      font-weight: 600;
+    }
+
+    /* ===== SPARKLES ===== */
+    .sparkles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .sparkles span {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: radial-gradient(circle, #fff 40%, transparent 70%);
+      opacity: 0;
+      animation: sparkle 2.5s infinite;
+    }
+
+    .sparkles span:nth-child(1) {
+      top: 18%;
+      left: 20%;
+    }
+
+    .sparkles span:nth-child(2) {
+      top: 22%;
+      right: 18%;
+      animation-delay: .8s;
+    }
+
+    .sparkles span:nth-child(3) {
+      bottom: 20%;
+      left: 30%;
+      animation-delay: 1.6s;
+    }
+
+    /* ===== FLOAT ===== */
+    @keyframes floatLeaf {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(.6);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    /* ===== MAIN ===== */
+    .main {
+      flex: 1;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      /* background: linear-gradient(135deg, #f0fdfa, #ecfeff); */
+    }
+
+    /* ================================
+   📱 MOBILE & SMALL TABLETS
+   SAME AS HUMAN BODY INDEX
+================================ */
+    .menu-btn {
+      display: none;
+    }
+
+    .offcanvas {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+
+      body {
+        overflow: hidden;
+      }
+
+      .app {
+        flex-direction: column;
+      }
+
+      /* Hide original sidebar */
+      .sidebar {
+        display: none;
+      }
+
+      /* Toggle button */
+      .menu-btn {
+        display: block;
+        position: fixed;
+        top: 14px;
+        right: 16px;
+        font-size: 26px;
+        background: #22c55e;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        padding: 6px 12px;
+        cursor: pointer;
+        z-index: 5000;
+      }
+
+      /* Overlay */
+      .offcanvas {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .45);
+        display: none;
+        z-index: 4000;
+      }
+
+      .offcanvas.show {
+        display: block;
+      }
+
+      /* Panel */
+      .offcanvas-panel {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 320px;
+        height: 100%;
+        background: #ecfdf5;
+        padding: 20px;
+        padding-top: 80px;
+        transform: translateX(100%);
+        transition: transform .3s ease;
+        overflow-y: auto;
+      }
+
+      .offcanvas.show .offcanvas-panel {
+        transform: translateX(0);
+      }
+
+      /* Leaf buttons inside panel */
+      .offcanvas-panel .leaf {
+        width: 100%;
+        margin-bottom: 18px;
+        animation: none;
+      }
+    }
+
+    /* ===================================================== */
+
+    @media (min-width: 950px) and (max-height: 900px) {
+      .app {
+        transform: scaleY(0.85);
+        transform-origin: top center;
+        height: calc(100vh / 0.95);
+      }
+    }
+
+    @media (min-width: 950px) and (max-height: 820px) {
+      .app {
+        transform: scaleY(0.85);
+        transform-origin: top center;
+        height: calc(100vh / 0.92);
+      }
+    }
+
+    @media (min-width: 950px) and (max-height: 760px) {
+      .app {
+        transform: scaleY(0.85);
+        transform-origin: top center;
+        height: calc(100vh / 0.9);
+      }
+    }
+
+    @media (min-width: 950px) and (max-height: 700px) {
+      .app {
+        transform: scaleY(0.85);
+        transform-origin: top center;
+        height: calc(100vh / 0.88);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-title">Learning Quiz</div>
+
+      <div class="path">
+        <div class="leaf l1 active" onclick="openPage(0)">
+          <div class="sparkles"><span></span><span></span><span></span></div>
+          <h3>Choose Answer</h3>
+          <p>Quick Thinking</p>
+        </div>
+
+        <div class="leaf l2" onclick="openPage(1)">
+          <div class="sparkles"><span></span><span></span><span></span></div>
+          <h3>Fill Blanks</h3>
+          <p>Word Power</p>
+        </div>
+
+        <div class="leaf l3" onclick="openPage(2)">
+          <div class="sparkles"><span></span><span></span><span></span></div>
+          <h3>True / False</h3>
+          <p>Fact Finder</p>
+        </div>
+
+        <div class="leaf l4" onclick="openPage(3)">
+          <div class="sparkles"><span></span><span></span><span></span></div>
+          <h3>Matching</h3>
+          <p>Picture Fun</p>
+        </div>
+
+        <div class="leaf l5" onclick="openPage(4)">
+          <div class="sparkles"><span></span><span></span><span></span></div>
+          <h3>Two Examples</h3>
+          <p>Think Smart</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <iframe id="quizFrame" src="./exercises/mcq.html"></iframe>
+    </div>
+
+  </div>
+
+  <div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
+    <div class="offcanvas-panel" onclick="event.stopPropagation()">
+
+      <div class="leaf l1 active" onclick="mobileOpen(0)">
+        <h3>Choose Answer</h3>
+        <p>Quick Thinking</p>
+      </div>
+
+      <div class="leaf l2" onclick="mobileOpen(1)">
+        <h3>Fill Blanks</h3>
+        <p>Word Power</p>
+      </div>
+
+      <div class="leaf l3" onclick="mobileOpen(2)">
+        <h3>True / False</h3>
+        <p>Fact Finder</p>
+      </div>
+
+      <div class="leaf l4" onclick="mobileOpen(3)">
+        <h3>Matching</h3>
+        <p>Picture Fun</p>
+      </div>
+
+      <div class="leaf l5" onclick="mobileOpen(4)">
+        <h3>Two Examples</h3>
+        <p>Think Smart</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const leaves = document.querySelectorAll(".leaf");
+    const frame = document.getElementById("quizFrame");
+
+    const pages = [
+      "./exercises/mcq.html",
+      "./exercises/FTB.html",
+      "./exercises/true_false.html",
+      "./exercises/matching.html",
+      "./exercises/two_example.html"
+    ];
+
+    function openPage(i) {
+      leaves.forEach(l => l.classList.remove("active"));
+      leaves[i].classList.add("active");
+      frame.src = pages[i];
+    }
+
+    function toggleMenu() {
+      if (window.innerWidth > 1150) return;
+      document.getElementById("offcanvas").classList.toggle("show");
+    }
+
+    function mobileOpen(i) {
+      openPage(i);
+      toggleMenu();
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Magic Magnet Quiz Board</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Livvic';
+}
+
+html,body{
+  height:100%;
+}
+
+body{
+  height:100vh;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  margin:0;
+
+  /* background:linear-gradient(180deg,#fdf4ff,#ecfeff);  background:
+    /* repeating-linear-gradient(
+      45deg,
+      #e6dbae,
+      #f9f9f7 20px,
+      #f1efed 20px,
+      #fff7ed 40px
+    ); */
+   background-image: url("assets/images/background3.png");
+   background-position: center center;
+   background-size: cover;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,0.35); /* increase = more soft */
+  backdrop-filter: blur(2px);        /* optional */
+  z-index:-1;
+}
+
+/* ===== APP ===== */
+.app{
+  height:100vh;
+  display:flex;
+  
+}
+
+
+/* ===== LEFT SIDEBAR ===== */
+.sidebar{
+  width:320px;
+  /* background:
+    repeating-linear-gradient(
+      45deg,
+      #e6dbae,
+      #f9f9f7 20px,
+      #f1efed 20px,
+      #fff7ed 40px
+    ); */
+      /* background-image: url("assests/images/background.png");
+   background-position: center center; */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* BOARD */
+.board{
+  width:240px;
+  height:350px;
+  background:#ffffff;
+  border-radius:26px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  box-shadow:
+    inset 0 0 0 6px #e5e7eb,
+    0 20px 40px rgba(0,0,0,.2);
+}
+
+/* MAGNET */
+.magnet{
+  background:var(--bg);
+  border-radius:20px;
+  padding:16px;
+  text-align:center;
+  font-size:16px;
+  font-weight:800;
+  color:#1f2937;
+  cursor:pointer;
+  box-shadow:
+    0 10px 20px rgba(0,0,0,.18),
+    inset 0 -4px 0 rgba(0,0,0,.15);
+  transition:.25s ease;
+  position:relative;
+
+  display:block;
+  text-decoration:none;
+}
+
+/* MAGNET PIN */
+.magnet::before{
+  content:"";
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:22px;
+}
+
+/* HOVER */
+.magnet:hover{
+  transform:scale(1.08) rotate(-1deg);
+}
+
+/* ACTIVE */
+.magnet.active{
+  animation:snap .35s ease;
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,.9),
+    0 0 30px rgba(0,0,0,.35);
+}
+
+@keyframes snap{
+  0%{ transform:scale(1); }
+  60%{ transform:scale(1.18) rotate(1deg); }
+  100%{ transform:scale(1); }
+}
+
+/* COLORS */
+.m1{ --bg:#fecaca; }
+.m2{ --bg:#bbf7d0; }
+.m3{ --bg:#bae6fd; }
+.m4{ --bg:#fde68a; }
+.m5{ --bg:#ddd6fe; }
+
+/* ===== MAIN AREA ===== */
+.main{
+  flex:1;
+  display:flex;
+  align-items:stretch;   /* ⭐ instead of center */
+  justify-content:center;
+  height:100%;
+
+}
+
+/* RIGHT SIDE QUIZ BOX */
+.quiz-container{
+  width:100%;
+ 
+ 
+
+ 
+  /* background:white; */
+  border-radius:22px;
+  /* overflow:hidden; */
+  /* box-shadow: 0 16px 40px rgba(0,0,0,.18); */
+  /* border: 1px solid rgba(0,0,0,.05); */
+  position:relative;
+}
+
+.quiz-header{
+  /* padding:14px 18px; */
+  /* background:linear-gradient(90deg,#ede9fe,#cffafe); */
+  font-weight:800;
+  color:#4c1d95;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.quiz-header span{
+  font-size:14px;
+  font-weight:800;
+  color:#0f172a;
+  background:rgba(255,255,255,.75);
+  padding:6px 10px;
+  border-radius:999px;
+}
+
+#quizFrame{
+  width:100%;
+  height:100%;
+  border:none;
+  overflow:auto;   /* ✅ IMPORTANT */
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:800px){
+
+  body{ overflow:auto; }
+
+  .app{ flex-direction:column; margin-top: 45px; }
+
+  .sidebar{
+    width:80%;
+    height:auto;
+    padding:18px;
+  }
+
+  .board{
+    flex-direction:row;
+    width:100%;
+    height:auto;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .magnet{
+    width:160px;
+  }
+
+  .magnet::before{ display:none; }
+
+  .main{
+    padding:18px;
+  }
+
+  .quiz-container{
+    height:660px;
+  }
+}
+
+/* ===============================
+   TOGGLE MENU (NEW ADDITION)
+=================================*/
+
+/* toggle button */
+.menu-toggle{
+  position:fixed;
+  top:15px;
+  left:15px;
+  z-index:9999;
+  background:#ffffff;
+  border:none;
+  font-size:26px;
+  padding:8px 14px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,.25);
+  cursor:pointer;
+  display:none;
+}
+
+/* overlay background */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:999;
+}
+
+/* show overlay */
+.overlay.show{
+  opacity:1;
+  visibility:visible;
+}
+
+/* MOBILE SIDEBAR MODE */
+@media(max-width:800px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .sidebar{
+    position:fixed;
+    top:0;
+    left:-700px;
+    height:100%;
+    z-index:1000;
+    transition:.35s ease;
+    background:white;
+  }
+
+  /* slide open */
+  .sidebar.open{
+    left:0;
+  }
+
+  .main{
+    width:100%;
+
+  }
+}
+@media(max-width:800px){
+
+  .main{
+    align-items:flex-start;
+  }
+
+  .quiz-container{
+    height:85vh;
+  }
+  .app{
+    display:block;   /* ⭐ MOST IMPORTANT FIX */
+  }
+
+}
+</style>
+</head>
+
+<body>
+<!-- ✅ TOGGLE BUTTON -->
+<button class="menu-toggle" id="menuToggle">☰</button>
+
+<!-- overlay -->
+<div class="overlay" id="overlay"></div>
+<div class="app">
+
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar">
+    <div class="board">
+
+      <a class="magnet m1" href="./exercises/MCQ.html" onclick="return loadQuiz(event,this,0,'MCQ Quiz')">
+        🎯 Choose the Correct Answer
+      </a>
+
+       <a class="magnet m2" href="./exercises/FITB.html" onclick="return loadQuiz(event,this,1,'Fill in the Blanks')">
+        🧠 Fill in the Blanks
+      </a>
+
+      <a class="magnet m3" href="./exercises/true_false.html" onclick="return loadQuiz(event,this,2,'True / False')">
+        👍 True or False Quiz
+      </a>
+
+      <a class="magnet m4" href="./exercises/twoExample.html" onclick="return loadQuiz(event,this,3,'One Examples Game')">
+        🔢 One Examples 
+      </a>
+
+      <!-- <a class="magnet m5" href="quiz3.html" onclick="return loadQuiz(event,this,3,'Picture Matching')">
+        🧩 Picture Matching
+      </a> -->
+
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE MAIN -->
+  <div class="main">
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <div id="quizTitle">👁️ MCQ Quiz</div>
+        <span id="stepInfo">Step 1 / 4</span>
+      </div>
+
+      <!-- ✅ QUIZ LOADS HERE -->
+      <iframe id="quizFrame" src="./exercises/MCQ.html"></iframe>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const magnets = document.querySelectorAll(".magnet");
+let current = 0; // ✅ MCQ default means step 0 already allowed
+
+function loadQuiz(event, el, index, title){
+  event.preventDefault();
+
+  // ❌ stop skipping (kid-safe)
+  if(index > current + 1) return false;
+
+  // ✅ allow open current step or next step
+  if(index === current + 1) current++;
+
+  // active magnet UI
+  magnets.forEach(m => m.classList.remove("active"));
+  el.classList.add("active");
+
+  // ✅ change iframe content
+  document.getElementById("quizFrame").src = el.getAttribute("href");
+
+  // ✅ update title
+  document.getElementById("quizTitle").innerText = "👁️ " + title;
+
+  // ✅ update step info
+  document.getElementById("stepInfo").innerText = `Step ${current + 1} / 4`;
+
+  return false;
+}
+
+/* ✅ default: MCQ active + loaded on right side */
+window.addEventListener("load", () => {
+  magnets.forEach(m => m.classList.remove("active"));
+  magnets[0].classList.add("active");         // ✅ MCQ magnet active
+  document.getElementById("quizFrame").src = "./exercises/MCQ.html"; // ✅ MCQ opens right side
+  document.getElementById("quizTitle").innerText = "👁️ MCQ Quiz";
+  document.getElementById("stepInfo").innerText = "Step 1 / 4";
+});
+
+
+const toggleBtn = document.getElementById("menuToggle");
+const sidebar = document.querySelector(".sidebar");
+const overlay = document.getElementById("overlay");
+
+toggleBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("open");
+  overlay.classList.toggle("show");
+});
+
+overlay.addEventListener("click", () => {
+  sidebar.classList.remove("open");
+  overlay.classList.remove("show");
+});
+</script>
+
+</body>
+</html>

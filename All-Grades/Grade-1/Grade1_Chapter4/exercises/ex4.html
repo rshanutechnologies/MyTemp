@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Match the Following</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* 1. VIEWPORT FLEX LOGIC - NO SCROLLBARS */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+}
+
+body {
+  font-family: "Livvic", sans-serif;
+  background: url(./uploads/bg4.png) center/cover no-repeat fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 1100px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+h4 {
+  text-align: center;
+  color: #ff7a00;
+  font-weight: 500;
+  margin: 10px 0;
+ font-size: clamp(1.2rem, 3vw, 2rem);
+  flex-shrink: 0;
+}
+.hint-title {
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  text-align: center;
+  color: #ff9800;
+  margin: 10px 0;
+}
+
+.bulb-icon {
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 2px gold); }
+  to   { filter: drop-shadow(0 0 8px orange); }
+}
+
+/* 2. FLEX TABLE LOGIC */
+.match-table {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 30px;
+  padding: clamp(10px, 2vw, 25px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.15);
+  display: flex;
+  flex: 1; /* Fills available height */
+  gap: 20px;
+  min-height: 0; /* Important for flex-child scrolling prevention */
+}
+
+/* LHS & RHS Column Logic */
+.left, .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; /* Distributes rows in same line/height */
+  height: 100%;
+}
+
+.left { flex: 1.6; }
+.right { flex: 1; gap: 10px; }
+
+/* 3. ROW DESIGN */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 8px 15px;
+  border-radius: 18px;
+  border: 2px solid transparent;
+}
+
+.lhs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.lhs-images { display: flex; gap: 8px; flex-shrink: 0; }
+.lhs-images img {
+  width: clamp(45px, 6vw, 65px);
+  height: clamp(45px, 6vw, 65px);
+  background: white;
+  border-radius: 12px;
+  padding: 4px;
+  object-fit: contain;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.lhs span {
+  font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+  font-weight: 500;
+  color: #2F4F4F;
+}
+
+/* 4. BLANK INPUT LOGIC */
+.mid input {
+  width: clamp(50px, 8vw, 75px);
+  height: clamp(45px, 6vh, 60px);
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  border-radius: 12px;
+  border: 3px solid #ccc;
+  outline: none;
+  caret-color: black; /* Blank cursor */
+  background: #fff;
+}
+
+.mid input:disabled {
+  background: #f0fff4;
+  border-color: #2ed573;
+  color: #2ed573;
+}
+
+/* RHS DESIGN */
+.option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(10px, 1.5vh, 20px) 20px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 6px 15px rgba(0,0,0,.08);
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 600;
+  color: #2F4F4F;
+  height: auto;
+}
+
+.bulb {
+  font-size: clamp(24px, 4vw, 36px);
+  filter: grayscale(1);
+  transition: .3s;
+}
+
+.bulb.on {
+  filter: none;
+  text-shadow: 0 0 20px gold;
+}
+
+/* 5. FEEDBACKS */
+#smiley {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(.4);
+  font-size: 150px;
+  opacity: 0;
+  transition: .4s cubic-bezier(.17,.89,.32,1.49);
+  pointer-events: none;
+  z-index: 2000;
+}
+#smiley.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+@keyframes fall { to { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+.confetti-piece {
+  position: absolute; width: 10px; height: 14px; top: -20px;
+  animation: fall 1.8s linear forwards;
+}
+@media (max-width: 768px) {
+
+  .app {
+    padding: 10px;
+  }
+
+  .match-table {
+    flex-direction: column;   /* Stack vertically */
+    gap: 10px;
+    overflow-y: auto;  
+    
+  }
+
+  .left, .right {
+    width: 100%;
+    height: auto;
+  }
+
+  .left {
+    gap: 30px;
+   
+    
+  }
+.left {
+    gap: 30px;
+   
+    
+  }
+
+  .row {
+    padding: 5px;
+  }
+
+  .lhs-images {
+    flex-wrap: wrap;          /* Prevent overflow */
+    gap: 6px;
+  }
+
+  .lhs-images img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .lhs-images p {
+    font-size: 10px;
+    margin: 0 4px;
+  }
+
+  .mid input {
+    width: 50px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .option-row {
+    padding: 12px 15px;
+    font-size: 16px;
+  }
+
+}
+@media (max-width: 480px) {
+
+  .match-table {
+    padding: 10px;
+    gap: 6px;
+  }
+  .left{
+    gap: 15px;
+  }
+.right{
+  gap: 7px;
+ 
+}
+  .row {
+    padding: 4px 6px;
+  }
+
+  .lhs-images img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .lhs-images p {
+    font-size: 9px;
+  }
+
+  .mid input {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .option-row {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+  <h4 class="hint-title">
+  <span class="bulb-icon">💡</span>
+  Type Your Answer To Match
+</h4>
+  <div class="match-table">
+    <div class="left">
+      <div class="row" data-answer="c">
+        <div class="lhs">
+          <div class="lhs-images"><p>Greengram</p><img src="../uploads/gg.jpg"><p>Blackgram</p><img src="../uploads/blg.jpg"></div>
+        </div>
+        <div class="mid"><input maxlength="1"></div>
+      </div>
+
+      <div class="row" data-answer="a">
+        <div class="lhs">
+          <div class="lhs-images"><p>Cumin</p><img src="../uploads/cumin.png"><p>Coriander</p><img src="../uploads/coriander.png"></div>
+        </div>
+        <div class="mid"><input maxlength="1"></div>
+      </div>
+
+      <div class="row" data-answer="b">
+        <div class="lhs">
+          <div class="lhs-images"><p>Rice</p><img src="../uploads/rice.png"><p>Wheat</p><img src="../uploads/wheat.png"></div>
+        </div>
+        <div class="mid"><input maxlength="1"></div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="option-row" data-key="a">a) Spices <span class="bulb">💡</span></div>
+      <div class="option-row" data-key="b">b) Cereals <span class="bulb">💡</span></div>
+      <div class="option-row" data-key="c">c) Pulses <span class="bulb">💡</span></div>
+    </div>
+  </div>
+</div>
+
+<div id="smiley"></div>
+<div id="confetti" style="position:fixed;inset:0;pointer-events:none;z-index:9999;"></div>
+
+<script>
+let audioCtx=null;
+function ensureAudio(){
+  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==="suspended") audioCtx.resume();
+  return audioCtx;
+}
+
+function playZzzSound(){
+  const c=ensureAudio(), t=c.currentTime;
+  const o=c.createOscillator(), g=c.createGain();
+  o.type="square"; o.frequency.value=180;
+  g.gain.setValueAtTime(0,t);
+  g.gain.linearRampToValueAtTime(.12,t+.01);
+  g.gain.exponentialRampToValueAtTime(.0001,t+.35);
+  o.connect(g); g.connect(c.destination);
+  o.start(t); o.stop(t+.35);
+}
+
+function playSuccessSound(){
+  const c=ensureAudio(), t=c.currentTime;
+  const g=c.createGain();
+  g.gain.setValueAtTime(.0001,t);
+  g.gain.linearRampToValueAtTime(.18,t+.02);
+  g.gain.exponentialRampToValueAtTime(.0001,t+.65);
+  g.connect(c.destination);
+  [660,880,1100,1320].forEach((f,i)=>{
+    const o=c.createOscillator();
+    o.type="sine"; o.frequency.setValueAtTime(f,t+i*.02);
+    o.connect(g); o.start(t+i*.02); o.stop(t+.65);
+  });
+}
+
+function triggerConfetti(count=80){
+  const box=document.getElementById("confetti");
+  const colors=["#f778a1","#4cc9f0","#ffaa00","#2ed573","#ff4fd8"];
+  for(let i=0;i<count;i++){
+    const p=document.createElement("div");
+    p.className="confetti-piece";
+    p.style.left=Math.random()*100+"%";
+    p.style.background=colors[Math.random()*colors.length|0];
+    p.style.animationDuration=(1.2+Math.random())+"s";
+    box.appendChild(p);
+  }
+}
+
+function showSmiley(e){
+  const s=document.getElementById("smiley");
+  s.textContent=e;
+  s.classList.add("show");
+  setTimeout(()=>s.classList.remove("show"),900);
+}
+
+const bulbs=document.querySelectorAll(".option-row");
+
+document.querySelectorAll(".left .row").forEach(row=>{
+  const input=row.querySelector("input");
+  const correct=row.dataset.answer;
+
+  input.addEventListener("input",()=>{
+    const val=input.value.toLowerCase();
+    if(val===correct){
+      const target=[...bulbs].find(b=>b.dataset.key===val);
+      target.querySelector(".bulb").classList.add("on"); 
+      input.disabled=true;
+      playSuccessSound();
+      triggerConfetti();
+      showSmiley("😄");
+    } else if(val.length > 0) {
+      playZzzSound();
+      showSmiley("😴");
+      input.value="";
+    }
+  });
+});
+</script>
+</body>
+</html>

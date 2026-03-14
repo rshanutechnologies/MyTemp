@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Label the Heart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="../assets/CSS/label.css">
+</head>
+
+<body>
+    <div class="mobile-block">
+    🚫 This activity is not available on mobile devices.  
+    Please open on a desktop or laptop.
+</div> 
+    <div class="wrapper">
+        <div class="home" onclick="location.href='../index.html'">🏠 Home</div>
+        <div class="title">Label the Diagram of the Heart</div>
+
+        <div class="heart">
+            <img src="../assets/images/heart.png">
+        </div>
+
+        <button id="checkBtn" class="check-btn" disabled>✔ Check</button>
+
+        <!-- LEFT -->
+        <div class="label l1"><input data-answer="Superior vena cava" data-line="line1" placeholder="Label"></div>
+        <div class="label l2"><input data-answer="Right auricle" data-line="line2" placeholder="Label"></div>
+        <div class="label l3"><input data-answer="Inferior vena cava" data-line="line3" placeholder="Label"></div>
+        <div class="label l4"><input data-answer="Right ventricle" data-line="line8" placeholder="Label"></div>
+
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+        <div class="line line8"></div>
+
+        <!-- RIGHT -->
+        <div class="label r1"><input data-answer="Aorta" data-line="line4" placeholder="Label"></div>
+        <div class="label r2"><input data-answer="Pulmonary artery" data-line="line5" placeholder="Label"></div>
+        <div class="label r3"><input data-answer="Pulmonary vein" data-line="line6" placeholder="Label"></div>
+        <div class="label r4"><input data-answer="Left auricle" data-line="line7" placeholder="Label"></div>
+        <div class="label r5"><input data-answer="Left ventricle" data-line="line9" placeholder="Label"></div>
+
+        <div class="line line4"></div>
+        <div class="line line5"></div>
+        <div class="line line6"></div>
+        <div class="line line7"></div>
+        <div class="line line9"></div>
+    </div>
+
+    <!-- CORRECT / WRONG POPUP -->
+    <div id="answerPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-icon" id="popupIcon"></div>
+            <h3 id="popupTitle"></h3>
+            <p id="popupMsg"></p>
+        </div>
+    </div>
+
+    <!-- FINAL POPUP -->
+    <div id="finalPopup">
+        <div class=" finalpopup-box">
+            <h2 class="final-heading">🎉 Congratulations!</h2>
+            <p id="finalScore"></p>
+            <div id="stars"></div><br> <button onclick="location.reload()" class="playAgain-btn"> Play Again </button>
+        </div>
+    </div>
+ <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+    <script src="../assets/JavaScript/label.js"></script>
+
+</body>
+
+</html>

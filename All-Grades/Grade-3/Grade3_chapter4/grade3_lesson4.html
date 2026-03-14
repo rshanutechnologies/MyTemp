@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Livvic';
+}
+
+body{
+  height:100dvh;
+  display:flex;
+  flex-direction:column; 
+
+  overflow:hidden;
+}
+
+/* ===== APP LAYOUT ===== */
+.app{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+/* ===== TOP TAB CONTAINER (Exact Style) ===== */
+
+.sidebar{
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  
+}
+
+/* Single big rounded box */
+.board{
+  width:100%;
+  max-width:1100px;
+  display:flex;
+  background:#e8edf4;
+  border-radius:16px;
+ 
+   /* exact soft floating shadow */
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.08),
+    0 2px 4px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  overflow:hidden;
+  
+}
+
+/* Each tab */
+.card{
+  flex:1;
+  padding:10px 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+ 
+  font-size:18px;
+  font-weight:600;
+  color:#2b4c7e;
+
+  background:transparent;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.25s ease;
+  
+}
+
+/* Remove old gradients */
+.card span{
+  font-size:20px;
+}
+
+.card.active{
+  background:linear-gradient(
+    180deg,
+    #5bb1ff 0%,
+    #3b8eea 45%,
+    #1f6fd6 100%
+  );
+  color:#ffffff;
+  border-radius:12px;
+
+  box-shadow:
+    inset 0 2px 4px rgba(245, 234, 234, 0.35),
+    0 4px 10px rgba(31,111,214,0.35);
+
+  border:2px solid #2a78dc;
+}
+
+/* Hover effect (very light) */
+.card:hover:not(.active){
+  background:#dce6f5;
+}
+/* Make text position relative */
+.card.active{
+  position:relative;
+}
+
+/* White underline */
+.card.active::after{
+  content:"";
+  position:absolute;
+  bottom:8px;          /* distance from bottom */
+  left:60%;
+  transform:translateX(-50%);
+  width:60%;           /* underline width */
+  height:2px;
+  background:gainsboro;
+  border-radius:2px;
+}
+/* ===== MAIN CONTENT ===== */
+.main{
+  flex:1;
+  padding:10px 20px 20px;
+  display:flex;
+}
+
+iframe{
+  flex:1;
+  border:none;
+  border-radius:18px;
+  
+}
+
+.card{
+  color:#1f2937;
+}
+
+.card.active{
+  filter:brightness(0.95);
+  color:white;
+}
+/* ===== MENU BUTTON ===== */
+.menu-btn{
+  display:none;
+  position:fixed;   /* important */
+  top:20px;         /* distance from top */
+  right:20px;       /* distance from right */
+  background:#22c55e;
+  color:white;
+  border:none;
+  font-size:22px;
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  z-index:2000;
+}
+
+/* ===== OFFCANVAS ===== */
+.offcanvas{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  display:none;
+  z-index:1000;
+}
+
+.offcanvas.show{
+  display:block;
+}
+
+.offcanvas-panel{
+  position:absolute;
+  right:0;
+  top:0;
+  width:280px;
+  height:100%;
+  background:#ffffff;
+  padding:90px 20px 20px;
+  transform:translateX(100%);
+  transition:0.3s ease;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.offcanvas.show .offcanvas-panel{
+  transform:translateX(0);
+}
+
+/* ===== MOBILE BEHAVIOR ===== */
+@media(max-width:1150px){
+
+  .board{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+}
+.card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+ 
+
+
+/* Blue rounded background */
+.icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+/* 3D blue gradient */
+  background: linear-gradient(
+    180deg,
+    #5bb1ff 0%,
+    #3b8eea 50%,
+    #1f6fd6 100%
+  );
+  border-radius: 10px;
+  
+
+   box-shadow:
+    0 4px 8px rgba(0,0,0,0.15),
+    inset 0 2px 3px rgba(255,255,255,0.35);
+
+  font-size: 20px;
+}
+.icon i {
+  color: white;
+  font-size: 20px;
+}
+.camera-icon {
+  position: relative;
+  width: 42px;
+  height: 30px;
+  border-radius: 8px;
+
+  /* 3D blue body */
+  background: linear-gradient(
+    180deg,
+    #5bb1ff 0%,
+    #3b8eea 50%,
+    #1f6fd6 100%
+  );
+
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.15),
+    inset 0 2px 3px rgba(255,255,255,0.35);
+}
+
+/* Camera top bump */
+.camera-icon::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  width: 22px;
+  height: 10px;
+  border-radius: 4px;
+
+  background: linear-gradient(
+    180deg,
+    #5bb1ff,
+    #1f6fd6
+  );
+}
+
+/* Camera lens */
+.camera-icon::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+  circle at 35% 35%,
+  #ffffff 10%,
+  #bfdbfe 40%,
+  #60a5fa 70%,
+  #3b82f6 100%
+);
+
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.4);
+}
+.question-bubble {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Blue 3D gradient */
+  background: linear-gradient(
+    180deg,
+    #5bb1ff 0%,
+    #3b8eea 50%,
+    #1f6fd6 100%
+  );
+
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.15),
+    inset 0 3px 5px rgba(255,255,255,0.35);
+}
+
+
+/* Question mark */
+.qmark {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+/* ============================= */
+/* SMALL MOBILE RESPONSIVE FIX  */
+/* ============================= */
+
+@media (max-width: 600px){
+
+  body{
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  .app{
+    height:auto;
+  }
+
+  .sidebar{
+    padding:12px;
+  }
+
+  .menu-btn{
+    top:12px;
+    right:12px;
+    padding:8px 12px;
+    font-size:18px;
+  }
+
+  .main{
+    padding:70px 10px 15px;
+  }
+
+  iframe{
+    width:100%;
+    height:calc(100vh - 90px);
+    min-height:auto;
+    border-radius:12px;
+  }
+
+  /* Offcanvas full width for small phones */
+  .offcanvas-panel{
+    width:85%;
+    padding:80px 16px 20px;
+  }
+
+  /* Cards smaller for small screens */
+  .card{
+    font-size:16px;
+    padding:8px;
+  }
+
+  .icon,
+  .question-bubble{
+    width:34px;
+    height:34px;
+  }
+
+  .camera-icon{
+    width:38px;
+    height:26px;
+  }
+
+}
+/* ================= */
+/* REAL MOBILE FIX   */
+/* ================= */
+
+@media (max-width: 600px){
+
+  body{
+    min-height:100vh;
+    height:auto;
+    overflow-x:hidden;
+  }
+
+  .app{
+    height:auto;
+  }
+
+  .main{
+    padding:60px 12px 15px;
+  }
+
+  iframe{
+    width:100%;
+    height:calc(100vh - 80px);
+    border-radius:14px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+ 
+
+  <div class="app">
+<!-- OFFCANVAS MOBILE MENU -->
+<div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
+  <div class="offcanvas-panel" onclick="event.stopPropagation()">
+  <div class="card c1 active" onclick="openPage(0)">
+        <span class="icon">
+    <i class="fa-solid fa-check"></i>
+  </span>
+      Choose Answer
+    </div>
+
+    <div class="card c2" onclick="mobileOpen(1)">
+      <span>✍️</span>
+      Fill the Blanks
+    </div>
+
+      <div class="card c3" onclick="openPage(2)">
+      <span class="question-bubble">
+  <span class="qmark">?</span>
+</span>
+      True or False
+    </div>
+
+      <div class="card c4" onclick="openPage(3)">
+       <span class="camera-icon"></span>
+      Picture Match
+    </div>
+
+
+    <div class="card c5" onclick="mobileOpen(4)">
+      <span>🤔</span>
+      Two Examples
+    </div>
+
+  </div>
+</div>
+    <!-- TOP SIDEBAR -->
+<!-- HEADER -->
+<div class="sidebar">
+
+  <!-- ☰ MENU BUTTON -->
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+  <div class="board">
+
+    <div class="card c1 active" onclick="openPage(0)">
+        <span class="icon">
+    <i class="fa-solid fa-check"></i>
+  </span>
+      Choose Answer
+    </div>
+
+    <div class="card c2" onclick="openPage(1)">
+      <span>✍️</span>
+      Fill the Blanks
+    </div>
+
+    <div class="card c3" onclick="openPage(2)">
+      <span class="question-bubble">
+  <span class="qmark">?</span>
+</span>
+      True or False
+    </div>
+
+    <div class="card c4" onclick="openPage(3)">
+       <span class="camera-icon"></span>
+      Picture Match
+    </div>
+
+    <div class="card c5" onclick="openPage(4)">
+      <span>🤔</span>
+      Two Examples
+    </div>
+
+  </div>
+</div>
+    <!-- MAIN CONTENT -->
+    <div class="main">
+      <iframe id="quizFrame" src="./exercises/mcq.html"></iframe>
+    </div>
+
+  </div>
+
+<script>
+const desktopCards = document.querySelectorAll(".board .card");
+const mobileCards = document.querySelectorAll(".offcanvas .card");
+const frame = document.getElementById("quizFrame");
+const offcanvas = document.getElementById("offcanvas");
+
+const pages = [
+  "./exercises/mcq.html",
+  "./exercises/fillblanks.html",
+  "./exercises/true_false.html",
+  "./exercises/matching.html",
+  "./exercises/two_example.html"
+];
+
+function openPage(i){
+  desktopCards.forEach(c => c.classList.remove("active"));
+  mobileCards.forEach(c => c.classList.remove("active"));
+
+  desktopCards[i].classList.add("active");
+  mobileCards[i].classList.add("active");
+
+  frame.src = pages[i];
+}
+
+function toggleMenu(){
+  offcanvas.classList.toggle("show");
+}
+
+function mobileOpen(i){
+  openPage(i);
+  if(window.innerWidth <= 1150){
+    toggleMenu();
+  }
+}
+</script>
+
+</body>
+
+</html>

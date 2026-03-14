@@ -1,0 +1,144 @@
+
+body {
+  margin: 0;
+  font-family: 'Livvic', sans-serif;
+  background: radial-gradient(circle, #e8fff6, #cdeee3);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* 🌟 TOP CENTER TITLE */
+.page-title {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #97b48b;
+  color: #ffffff;
+  padding: 14px 44px;
+  border-radius: 40px;
+  font-size: 32px;
+  font-weight: 600;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* MAIN LAYOUT */
+.quiz-wrapper {
+  width: 900px;
+  display: flex;
+  gap: 40px;
+  position: relative;
+}
+
+/* LEFT QUESTION CARD */
+.question-card {
+  flex: 1;
+  background: white;
+  border-radius: 30px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.question-card h2 {
+  font-size: 30px;
+  color: #2d6f7a;
+  height: 90px;
+}
+
+.animal-emoji {
+  font-size: 180px;
+  margin-top: 2px;
+}
+
+/* RIGHT OPTIONS */
+.options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 4%;
+}
+
+.option {
+  background: white;
+  border-radius: 60px;
+  padding: 18px 26px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 32px;
+  cursor: pointer;
+  border: 3px solid #b9baeb;
+  transition: 0.3s;
+}
+
+.option span {
+  font-size: 44px;
+}
+
+.option:hover:not(.disabled) {
+  transform: scale(1.03);
+}
+
+.option.correct {
+  border-color: #7ed957;
+}
+
+.option.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* NAV BUTTONS */
+.nav {
+  position: absolute;
+  bottom: -90px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 40px;
+}
+
+button {
+  padding: 14px 36px;
+  font-size: 22px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.prev {
+  background: #7cc6a4;
+}
+
+.next {
+  background: #f6b93b;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: white;
+  padding: 40px;
+  border-radius: 30px;
+  font-size: 30px;
+  text-align: center;
+}

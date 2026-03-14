@@ -1,0 +1,486 @@
+* {
+  box-sizing: border-box;
+  font-family: "Livvic" !important;
+}
+
+body {
+  /* background: linear-gradient(135deg, #cfe9ff, #eaf4ff); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ONE WHITE BOX */
+.quiz-box {
+  width: 950px;
+  height: 600px;
+  border-radius: 26px;
+  padding: 40px 50px;
+  position: relative;
+}
+
+.quiz-type {
+  position: absolute;
+  top: 2%;
+  left: -15%;
+  font-size: 25px;
+  font-weight: 500;
+  color: rgb(0, 134, 151);
+  border-radius: 10px;
+}
+
+.home-btn {
+  position: absolute;
+  top: 2%;
+  right: -15%;
+  font-size: 18px;
+  font-weight: 500;
+  background: pink;
+  color: rgb(66, 83, 66);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+/* QUESTION */
+
+.question {
+  height: 70px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  font-size: 30px;
+  font-weight: 200;
+  margin-top: 35px;
+  margin-bottom: 10px;
+  color: #2f4f4f;
+}
+
+/* IMAGE */
+.image-box {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.image-box img {
+  width: 420px;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 18px;
+}
+
+/* TRUE FALSE BUTTONS */
+.tf-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.tf {
+  padding: 14px 60px;
+  border-radius: 30px;
+  border: none;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+}
+
+.true {
+  background: #02bd9e;
+}
+
+.false {
+  background: #db4d29;
+}
+
+.tf.active {
+  /* box-shadow: 0 0 0 4px #4caf50 inset; */
+  background: rgb(10, 190, 10);
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+.tf:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+
+/* NAV BUTTONS */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+button {
+  padding: 12px 28px;
+  border-radius: 28px;
+  border: none;
+  font-size: 20px;
+  font-weight: 200;
+  cursor: pointer;
+  color: #fff;
+}
+
+.prev {
+  background: #6bc6d8;
+}
+
+.next {
+  background: #ffb347;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed
+}
+
+/* ❌ WRONG POPUP — FIX LINE BREAKS */
+.popup-wrong {
+  color: #c62828;
+  font-size: 24px;
+  text-align: center;
+  width: 100%;
+}
+
+/* ❌ Wrong text — FIRST LINE */
+.popup-wrong .wrong-text {
+  display: block;
+  /* 🔑 forces new line */
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+/* 😢 Emoji — SECOND LINE */
+.popup-wrong .sad {
+  display: block;
+  /* 🔑 forces new line */
+  font-size: 60px;
+}
+
+/* POPUP (UNCHANGED) */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.0);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-box {
+  background: white;
+  padding: 28px;
+  border-radius: 22px;
+  width: 260px;
+  border: 2px solid #d7ee0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* CORRECT */
+.popup-correct {
+  color: #2e7d32;
+  font-size: 24px;
+}
+
+.popup-correct .happy {
+  font-size: 60px;
+}
+
+.popup-correct .stars {
+  font-size: 30px;
+  color: #ffca28;
+}
+
+/* WRONG */
+.popup-wrong {
+  color: #c62828;
+  font-size: 24px;
+}
+
+.popup-wrong .sad {
+  font-size: 60px;
+}
+
+.popup-wrong .tip {
+  font-size: 18px;
+  color: #555;
+}
+
+/* FINAL */
+.popup-box.popup-final {
+  width: 600px;
+  max-width: 90vw;
+}
+
+.popup-final-content {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #2e7d32;
+}
+
+.popup-final-content .emoji {
+  font-size: 60px;
+}
+
+.popup-final-content .stars {
+  font-size: 30px;
+  color: #ffca28;
+}
+
+.final-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.restart,
+.home {
+  padding: 10px 22px;
+  border-radius: 24px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+}
+
+.restart {
+  background: #ff9800;
+}
+
+.home {
+  background: #3b82f6;
+}
+
+/* 🏆 FINAL POPUP — SEPARATE LINES FIX */
+.popup-final-content {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #2e7d32;
+}
+
+/* Line 1: Congratulations */
+.popup-final-content .title {
+  display: block;
+  /* 🔑 new line */
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+/* Line 2: Trophy */
+.popup-final-content .emoji {
+  display: block;
+  /* 🔑 new line */
+  font-size: 60px;
+  margin: 8px 0;
+}
+
+/* Line 3: Message */
+.popup-final-content .message {
+  display: block;
+  /* 🔑 new line */
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Line 4: Score */
+.popup-final-content .final-score {
+  display: block;
+  /* 🔑 new line */
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* Line 5: Stars */
+.popup-final-content .stars {
+  display: block;
+  /* 🔑 new line */
+  font-size: 30px;
+  color: #ffca28;
+  margin: 12px 0;
+}
+
+/* Buttons row */
+.final-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* Wider FINAL popup */
+.popup-box.popup-final {
+  width: 600px;
+  max-width: 90vw;
+  min-height: 320px;
+}
+
+/* ================================
+   📱 TABLETS (≤ 900px)
+   Desktop-like but tighter
+================================ */
+@media (max-width: 900px) {
+
+  body {
+    padding: 12px;
+    align-items: flex-start;
+    overflow-y: hidden;
+  }
+
+  .quiz-box {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    padding: 30px 36px;
+    margin-top: 120px;
+  }
+
+  .question {
+    font-size: 26px;
+    height: auto;
+    text-align: center;
+  }
+
+  .question .q-text {
+    text-align: left;
+  }
+
+  .image-box img {
+    width: 360px;
+    height: 220px;
+  }
+
+  .tf {
+    font-size: 20px;
+    padding: 12px 48px;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 10px 24px;
+  }
+}
+
+
+/* ================================
+   📱 MOBILE (≤ 768px)
+   Stacked & centered
+================================ */
+@media (max-width: 768px) {
+
+  body {
+    padding: 10px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .quiz-box {
+    width: 100%;
+    padding: 24px;
+    border-radius: 22px;
+    margin-top: 40px;
+  }
+
+  .question {
+    font-size: 22px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .question .q-text {
+    text-align: left;
+  }
+
+  .image-box img {
+    width: 300px;
+    height: 190px;
+  }
+
+  /* STACK TRUE / FALSE */
+  .tf-buttons {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tf {
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  .buttons {
+    margin-top: 16px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 9px 18px;
+  }
+}
+
+
+/* ================================
+   📱 SMALL MOBILES (≤ 480px)
+================================ */
+@media (max-width: 480px) {
+
+  .quiz-box {
+    padding: 18px;
+  }
+
+  .question {
+    font-size: 20px;
+    justify-content: flex-start;
+  }
+
+  .question .q-text {
+    text-align: left;
+  }
+
+  .image-box img {
+    width: 240px;
+    height: 160px;
+  }
+
+  .tf {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 8px 16px;
+  }
+}
+
+
+/* ================================
+   📱 EXTRA SMALL (≤ 360px)
+================================ */
+@media (max-width: 360px) {
+
+  .question {
+    font-size: 18px;
+  }
+
+  .tf {
+    font-size: 15px;
+  }
+}

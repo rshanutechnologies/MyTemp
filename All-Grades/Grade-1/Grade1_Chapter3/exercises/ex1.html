@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Living & Non-Living Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;700&family=Fredoka+One&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4cc9f0;
+      --secondary: #f778a1;
+      --dark: #2F4F4F;
+      --correct: #2ed573;
+      --wrong: #dc3545;
+    }
+
+    body {
+      font-family: "Livvic", sans-serif;
+      /* background-image: url("../uploads/bgimg.png");
+      background-size: cover; */
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .app-container {
+      width: 95%;
+      max-width: 1000px;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      border-radius: 40px;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      padding: 10px;
+    }
+
+    .q-number {
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 1.2rem;
+      opacity: 0.7;
+    }
+
+    .read-btn {
+      background: white;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .read-btn:hover {
+      transform: scale(1.1);
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Question & Blank Logic */
+    #slides-viewport {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    .q-text {
+      font-size: clamp(1.1rem, 5vw, 2.8rem);
+      color: var(--dark);
+      margin-bottom: 50px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* The Single Dashed Blank */
+    .blank {
+      display: inline-block;
+      min-width: 150px;
+      border-bottom: 4px dashed var(--dark);
+      margin: 0 10px;
+      color: var(--secondary);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      vertical-align: middle;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .blank.filled {
+      border-bottom-color: transparent;
+      font-weight: 500;
+      transform: scale(1.1);
+    }
+
+    /* Options UI */
+    .opts-row {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .opt-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .opt-box {
+      background: white;
+      width: clamp(130px, 18vw, 190px);
+      aspect-ratio: 1/1;
+      border-radius: 30px;
+      border: 6px solid white;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .opt-box img {
+      width: 75%;
+      height: 75%;
+      object-fit: contain;
+    }
+
+    .opt-label {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--dark);
+      letter-spacing: 0.5px;
+    }
+
+    /* States */
+    .opt-box.correct {
+      border-color: var(--correct);
+      background: #f0fff4;
+    }
+
+    .opt-box.wrong {
+      border-color: var(--wrong);
+      background: #fff5f5;
+      animation: shake 0.4s;
+    }
+
+    .disabled {
+      pointer-events: none;
+    }
+
+    .faded {
+      opacity: 0.4;
+      filter: grayscale(0.5);
+    }
+
+    /* Navigation */
+    .footer-nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+
+    .btn {
+      padding: 16px 40px;
+      border-radius: 50px;
+      border: none;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #backBtn {
+      background: var(--secondary);
+      color: white;
+      visibility: hidden;
+    }
+
+    #nextBtn {
+      background: var(--primary);
+      color: white;
+      visibility: hidden;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Results */
+    #result-card {
+      position: absolute;
+      inset: 0;
+      background: white;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 40px;
+      z-index: 100;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-8px);
+      }
+
+      75% {
+        transform: translateX(8px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .smiley {
+      position: fixed;
+      font-size: 150px;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 200;
+      transition: 0.5s;
+    }
+
+    /* ==================================================
+   📱 SMALL MOBILES (≤480px)
+================================================== */
+    @media (max-width: 480px) {
+
+      body {
+        overflow: auto;
+        align-items: flex-start;
+      }
+
+      .app-container {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 14px;
+        border-radius: 0;
+      }
+
+      .q-text {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+      }
+
+      .opts-row {
+        gap: 18px;
+      }
+
+      .opt-box {
+        width: 120px;
+        border-radius: 22px;
+      }
+
+      .opt-label {
+        font-size: 1rem;
+      }
+
+      .footer-nav {
+        padding: 12px 0;
+      }
+
+      .btn {
+        padding: 12px 26px;
+        font-size: 0.95rem;
+      }
+
+      .smiley {
+        font-size: 100px;
+      }
+
+      #result-card {
+        padding: 20px;
+        border-radius: 0;
+      }
+
+      #result-card h1 {
+        font-size: 2.2rem !important;
+        text-align: center;
+      }
+
+      #result-card p {
+        font-size: 1.1rem !important;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+
+      #result-card .btn {
+        padding: 12px 26px;
+        font-size: 1rem;
+      }
+    }
+
+    /* ==================================================
+   📱 MOBILES (≤768px)
+================================================== */
+    @media (max-width: 768px) {
+
+      body {
+        overflow: auto;
+      }
+
+      .app-container {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 18px;
+        border-radius: 0;
+      }
+
+      .header {
+        gap: 10px;
+      }
+
+      .q-text {
+        font-size: 1.4rem;
+        margin-bottom: 30px;
+      }
+
+      .opts-row {
+        gap: 22px;
+      }
+
+      .opt-box {
+        width: 140px;
+      }
+
+      .opt-label {
+        font-size: 1.05rem;
+      }
+
+      .btn {
+        padding: 14px 30px;
+        font-size: 1rem;
+        margin-top: 0px;
+      }
+
+      .smiley {
+        font-size: 120px;
+      }
+
+      #result-card {
+        padding: 25px;
+        border-radius: 0;
+      }
+
+      #result-card h1 {
+        font-size: 2.8rem !important;
+      }
+
+      #result-card p {
+        font-size: 1.25rem !important;
+        margin-bottom: 30px;
+      }
+
+      #result-card .btn {
+        padding: 14px 30px;
+        font-size: 1.05rem;
+      }
+    }
+
+    /* ==================================================
+   📱 TABLETS (769px – 1024px)
+================================================== */
+    @media (min-width: 769px) and (max-width: 1024px) {
+
+      .app-container {
+        width: 95%;
+        height: 92vh;
+        padding: 20px;
+        justify-content: center;
+      }
+
+      .q-text {
+        font-size: 2rem;
+        margin-bottom: 40px;
+      }
+
+      .opt-box {
+        width: 160px;
+      }
+
+      .opt-label {
+        font-size: 1.1rem;
+      }
+
+      .btn {
+        padding: 15px 34px;
+        /* margin-top: 30px; */
+      }
+
+      #result-card {
+        padding: 40px;
+        border-radius: 30px;
+      }
+
+      #result-card h1 {
+        font-size: 3.5rem !important;
+      }
+
+      #result-card p {
+        font-size: 1.4rem !important;
+      }
+
+      #result-card .btn {
+        padding: 15px 34px;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app-container">
+    <div class="header">
+      <div id="progress" class="q-number">Question 1 of 5</div>
+      <button class="read-btn" onclick="readQuestion()" title="Read Question">🔊</button>
+    </div>
+
+    <div id="slides-viewport"></div>
+
+    <div class="footer-nav">
+      <button id="backBtn" class="btn">◀ PREV</button>
+      <button id="nextBtn" class="btn">NEXT ▶</button>
+    </div>
+
+    <div id="result-card">
+      <h1 style="font-family: 'Fredoka One'; color: var(--primary); font-size: clamp(3rem, 10vw, 5rem); margin: 0;">
+        GENIUS!</h1>
+      <p style="font-size: 1.5rem; color: var(--dark); margin-bottom: 40px;">You know your living things!</p>
+      <button class="btn" style="background:var(--secondary); color:white" onclick="location.reload()">START
+        OVER</button>
+    </div>
+  </div>
+
+  <div id="smiley" class="smiley"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    const quizData = [
+      { text: "Living things need water to <span class='blank' id='blank-0'></span>.", options: ["drink", "move", "fly"], correct: 0, imgs: ["../uploads/drink.png", "../uploads/move.png", "../uploads/fly.png"] },
+      { text: "Non-living things <span class='blank' id='blank-1'></span>.", options: ["breathe", "don't breathe", "eat"], correct: 1, imgs: ["../uploads/breathe.png", "../uploads/dontb.png", "../uploads/eat.png"] },
+      { text: "A book is a <span class='blank' id='blank-2'></span> thing.", options: ["man-made", "natural", "living"], correct: 0, imgs: ["../uploads/book.png", "../uploads/mountain-img.png", "../uploads/living.png"] },
+      { text: "Living things <span class='blank' id='blank-3'></span>.", options: ["don't die", "don't grow", "die"], correct: 2, imgs: ["../uploads/dontd.png", "../uploads/dontgrow.png", "../uploads/die.png"] },
+      { text: "Human beings are <span class='blank' id='blank-4'></span> things.", options: ["non-living", "living", "man-made"], correct: 1, imgs: ["../uploads/non-living.png", "../uploads/living.png", "../uploads/mm.png"] }
+    ];
+
+    let currentIdx = 0;
+    const results = new Array(quizData.length).fill(null);
+
+    // Audio Context Setup
+    let audioCtx = null;
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    // TEXT TO SPEECH LOGIC
+    function readQuestion() {
+      const textToRead = quizData[currentIdx].text.replace(/<[^>]*>/g, "blank");
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+
+      // Find Indian English voice
+      const voices = window.speechSynthesis.getVoices();
+      const indianVoice = voices.find(v => v.lang === 'en-IN' || v.name.includes('India'));
+
+      if (indianVoice) utterance.voice = indianVoice;
+      utterance.rate = 0.9; // Slightly slower for clarity
+
+      window.speechSynthesis.cancel(); // Stop any current speech
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // Pre-load voices for Chrome/Safari
+    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+
+    function playSuccessSound() {
+      initAudio();
+      const t = audioCtx.currentTime;
+      const freqs = [523.25, 659.25, 783.99];
+      freqs.forEach((f, i) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(f, t + i * 0.1);
+        gain.gain.setValueAtTime(0.1, t + i * 0.1);
+        gain.gain.exponentialRampToValueAtTime(0.01, t + i * 0.1 + 0.3);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(t + i * 0.1);
+        osc.stop(t + i * 0.1 + 0.3);
+      });
+    }
+
+    function playZzzSound() {
+      initAudio();
+      const t = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(100, t);
+      osc.frequency.linearRampToValueAtTime(50, t + 0.4);
+      gain.gain.setValueAtTime(0.1, t);
+      gain.gain.linearRampToValueAtTime(0.01, t + 0.4);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(t);
+      osc.stop(t + 0.4);
+    }
+
+    function createQuiz() {
+      const viewport = document.getElementById('slides-viewport');
+      quizData.forEach((q, i) => {
+        const slide = document.createElement('div');
+        slide.className = `slide ${i === 0 ? 'active' : ''}`;
+        slide.id = `slide-${i}`;
+        slide.innerHTML = `
+      <div class="q-text">${q.text}</div>
+      <div class="opts-row">
+        ${q.options.map((opt, idx) => `
+          <div class="opt-wrapper">
+            <div class="opt-box" id="opt-${i}-${idx}" onclick="handleChoice(${i}, ${idx})">
+              <img src="${q.imgs[idx]}" alt="${opt}">
+            </div>
+            <div class="opt-label">${opt}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+        viewport.appendChild(slide);
+      });
+      refreshUI();
+    }
+
+    window.handleChoice = (qIdx, optIdx) => {
+      if (results[qIdx] !== null) return;
+
+      const isCorrect = optIdx === quizData[qIdx].correct;
+      const box = document.getElementById(`opt-${qIdx}-${optIdx}`);
+      const blank = document.getElementById(`blank-${qIdx}`);
+
+      if (isCorrect) {
+        results[qIdx] = optIdx;
+        box.classList.add('correct');
+        blank.textContent = quizData[qIdx].options[optIdx];
+        blank.classList.add('filled');
+        playSuccessSound();
+
+        const slide = document.getElementById(`slide-${qIdx}`);
+        slide.querySelectorAll('.opt-box').forEach((b, i) => {
+          b.classList.add('disabled');
+          if (i !== optIdx) b.classList.add('faded');
+        });
+
+        playFeedback("😄");
+        confetti({ origin: { y: 0.8 } });
+
+        if (qIdx === quizData.length - 1) {
+          setTimeout(() => {
+            finishQuiz();
+          }, 1200);
+        }
+
+      } else {
+        box.classList.add('wrong');
+        playZzzSound();
+        playFeedback("😢");
+        setTimeout(() => box.classList.remove('wrong'), 500);
+      }
+      refreshUI();
+    };
+
+    function changeSlide(dir) {
+      window.speechSynthesis.cancel();
+      document.querySelectorAll('.slide')[currentIdx].classList.remove('active');
+      currentIdx += dir;
+      document.querySelectorAll('.slide')[currentIdx].classList.add('active');
+      refreshUI();
+    }
+
+    function refreshUI() {
+      document.getElementById('progress').textContent = `Question ${currentIdx + 1} of ${quizData.length}`;
+      document.getElementById('backBtn').style.visibility = currentIdx === 0 ? 'hidden' : 'visible';
+      document.getElementById('nextBtn').style.visibility = (results[currentIdx] !== null && currentIdx < quizData.length - 1) ? 'visible' : 'hidden';
+    }
+
+    function playFeedback(emoji) {
+      const s = document.getElementById('smiley');
+      s.textContent = emoji;
+      s.style.left = "50%"; s.style.top = "50%";
+      s.style.transform = "translate(-50%, -50%) scale(1.3)";
+      s.style.opacity = "1";
+      setTimeout(() => {
+        s.style.opacity = "0";
+        s.style.transform = "translate(-50%, -50%) scale(0.6)";
+      }, 900);
+    }
+
+    function finishQuiz() {
+      document.getElementById('result-card').style.display = 'flex';
+      confetti({ particleCount: 250, spread: 100, origin: { y: 0.5 } });
+    }
+
+    document.getElementById('nextBtn').onclick = () => changeSlide(1);
+    document.getElementById('backBtn').onclick = () => changeSlide(-1);
+
+    createQuiz();
+  </script>
+</body>
+
+</html>

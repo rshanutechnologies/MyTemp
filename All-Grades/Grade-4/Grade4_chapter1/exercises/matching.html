@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Food Match Board</title>
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="../assets/CSS/matching.css">
+</head>
+
+<body>
+
+    <div class="game">
+
+        <!-- ANIMALS -->
+        <div class="column">
+            <h2 class="colunm-heading">🌿 Concepts</h2>
+            <div class="card animal" data-answer="guava">🍃 Reticulate venation</div>
+            <div class="card animal" data-answer="grass">🌾 Parallel venation</div>
+            <div class="card animal" data-answer="hibiscus">🌺 Alternate phyllotaxy</div>
+            <div class="card animal" data-answer="peas">🫘 Opposite phyllotaxy</div>
+            <div class="card animal" data-answer="oleander">🌸 Whorl phyllotaxy</div>
+        </div>
+
+        <!-- CENTER MATCH BOARD -->
+        <div class="column">
+            <h2 class="colunm-heading">📋 Match Board</h2>
+            <div class="board">
+                <div class="match-row"><span>🍃</span><span>→</span><span>?</span></div>
+                <div class="match-row"><span>🌾</span><span>→</span><span>?</span></div>
+                <div class="match-row"><span>🌺</span><span>→</span><span>?</span></div>
+                <div class="match-row"><span>🫘</span><span>→</span><span>?</span></div>
+                <div class="match-row"><span>🌸</span><span>→</span><span>?</span></div>
+            </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="column">
+            <h2 class="colunm-heading">🌱 Examples</h2>
+
+            <div class="card action" data-value="oleander" data-text="Oleander">
+                <span>Oleander</span>
+                <img src="../assets/images/oleander-img.png" alt="Oleander">
+            </div>
+
+            <div class="card action" data-value="hibiscus" data-text="Hibiscus">
+                <span>Hibiscus</span>
+                <img src="../assets/images/hibiscus-img.png" alt="Hibiscus">
+            </div>
+
+            <div class="card action" data-value="guava" data-text="Guava">
+                <span>Guava</span>
+                <img src="../assets/images/guava.png" alt="Guava">
+            </div>
+
+            <div class="card action" data-value="grass" data-text="Grass">
+                <span>Grass</span>
+                <img src="../assets/images/grass-img.png" alt="Grass">
+            </div>
+
+            <div class="card action" data-value="peas" data-text="Peas">
+                <span>Peas</span>
+                <img src="../assets/images/peas-img.png" alt="Peas">
+            </div>
+    </div>
+    </div>
+
+    <!-- FINAL POPUP -->
+    <div id="finalPopup">
+        <div class=" finalpopup-box">
+            <h2 class="final-heading">🎉 Congratulations!</h2>
+            <p id="finalScore"></p>
+            <div id="stars"></div><br> <button onclick="location.reload()" class="playAgain-btn"> Play Again </button>
+        </div>
+    </div>
+
+    <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+    <script src="../assets/JavaScript/matching.js"></script>
+
+</body>
+
+</html>

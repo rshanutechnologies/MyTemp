@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Animal World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Livvic', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      /* background: url('./assets/images/bg2.png');
+      background-size: 100% 100%; */
+      background: rgba(225, 253, 255, 0.788);
+      overflow: hidden;
+    }
+
+    /* ===== APP ===== */
+    .app {
+      display: flex;
+      height: 100%;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      width: 320px;
+      padding-top: 20px;
+      padding-inline: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .heading-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 600;
+      color: #2f4f4f;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      opacity: .7;
+    }
+
+    /* ===== BUBBLE ROW ===== */
+    .bubbles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .bubble {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      transition: .2s cubic-bezier(.175, .885, .32, 1.275);
+      background: var(--b1);
+      border: 6px solid #fff;
+      box-shadow:
+        0 10px 0 var(--b2),
+        0 15px 25px rgba(0, 0, 0, .15);
+      animation: jelly 8s ease-in-out infinite;
+    }
+
+    .bubble {
+      background: linear-gradient(145deg, #dbdbdb, #cecece);
+      border: 5px solid #ffffff;
+      box-shadow:
+        0 10px 0 #b6b6b6,
+        0 18px 30px rgba(0, 0, 0, 0.18);
+      color: #1f2933;
+      transition:
+        background .35s ease,
+        box-shadow .35s ease,
+        transform .25s cubic-bezier(.175, .885, .32, 1.275);
+    }
+
+    .bubble:hover {
+      transform: scale(1.04);
+    }
+
+    /* 
+    .bubble:nth-child(even) {
+      transform: translateY(30px);
+    }
+
+    .bubble:nth-child(odd) {
+      transform: translateY(-30px);
+    } */
+
+    .bubble:nth-child(1) {
+      --b1: #ffb6d5;
+      --b2: #e06096;
+    }
+
+    .bubble:nth-child(2) {
+      --b1: #a7f3d0;
+      --b2: #059669;
+    }
+
+    .bubble:nth-child(3) {
+      --b1: #fde68a;
+      --b2: #d97706;
+    }
+
+    .bubble:nth-child(4) {
+      --b1: #c4b5fd;
+      --b2: #7c3aed;
+    }
+
+    .bubble:nth-child(5) {
+      --b1: #bbf7d0;
+      --b2: #16a34a;
+    }
+
+    .bubble::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 15%;
+      width: 35%;
+      height: 15%;
+      background: rgba(255, 255, 255, .4);
+      border-radius: 50px;
+      transform: rotate(-15deg);
+    }
+
+    .bubble span {
+      font-size: 36px;
+    }
+
+    /* 🖤 DEFAULT ICON = BLACK & WHITE */
+    .bubble span {
+      filter: grayscale(80%) brightness(1);
+      transition: filter .3s ease;
+    }
+
+    .bubble p {
+      margin-top: 8px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .bubble.press {
+      box-shadow: 0 3px 0 var(--b2), 0 6px 12px rgba(0, 0, 0, .2);
+    }
+
+    /* .bubble.active {
+      background: #a6ff8b;
+      --b1: #a6ff8b;
+      --b2: rgb(119, 189, 6);
+    } */
+
+    .bubble.active {
+      background: var(--b1) !important;
+      box-shadow:
+        0 10px 0 var(--b2),
+        0 15px 25px rgba(0, 0, 0, .2);
+      color: #000;
+    }
+
+    /* 🎨 ACTIVE ICON = ORIGINAL COLOR */
+    .bubble.active span {
+      filter: none;
+    }
+
+    @keyframes activePulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes jelly {
+
+      0%,
+      100% {
+        border-radius: 50%;
+      }
+
+      40% {
+        border-radius: 45% 55% 45% 55%;
+      }
+
+      60% {
+        border-radius: 55% 45% 55% 45%;
+      }
+    }
+
+    /* ===== MAIN ===== */
+    .main {
+      flex: 1;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      /* background: linear-gradient(#dbe9f3, #e1fff8); */
+    }
+
+    .menu-btn {
+      display: none;
+      /* 🔒 hide menu button on laptop */
+    }
+
+    .offcanvas {
+      display: none;
+      /* 🔒 disable offcanvas on laptop */
+    }
+
+    /* ================================
+   📱 MOBILE & SMALL TABLETS
+   ================================ */
+    @media (max-width: 900px) {
+
+      /* BODY */
+      body {
+        overflow: hidden;
+      }
+
+      /* APP STACK */
+      .app {
+        flex-direction: column;
+      }
+
+      /* HIDE SIDEBAR */
+      .sidebar {
+        display: none;
+      }
+
+      /* MAIN FULL SIZE */
+      .main {
+        flex: 1;
+        width: 100%;
+      }
+
+      /* ☰ MENU BUTTON */
+      .menu-btn {
+        display: block;
+        position: fixed;
+        top: 14px;
+        right: 16px;
+        font-size: 26px;
+        background: #22c55e;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        padding: 6px 12px;
+        cursor: pointer;
+        z-index: 5000;
+      }
+
+      /* OFFCANVAS OVERLAY */
+      .offcanvas {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .45);
+        display: none;
+        z-index: 4000;
+      }
+
+      .offcanvas.show {
+        display: block;
+      }
+
+      /* OFFCANVAS PANEL */
+      .offcanvas-panel {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        background: #ecfdf5;
+        padding: 20px;
+        transform: translateX(100%);
+        transition: transform .3s ease;
+        overflow-y: auto;
+      }
+
+      .offcanvas.show .offcanvas-panel {
+        transform: translateX(0);
+      }
+
+      /* BUBBLES INSIDE OFFCANVAS */
+      .offcanvas-panel .bubbles {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .offcanvas-panel .bubble {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        padding: 14px;
+        animation: none;
+        font-size: 20px
+      }
+
+      .offcanvas-panel .bubble span {
+        font-size: 28px;
+      }
+
+      .offcanvas-panel .bubble p {
+        font-size: 16px;
+      }
+    }
+
+    /* ==========================================
+   DESKTOP SMALL-LAPTOP HEIGHT SCALING
+   SAME LOGIC AS NATURE SCIENCE
+   (NO MISALIGNMENT, NO CENTER SHIFT)
+========================================== */
+
+    @media (min-width: 901px) and (max-height: 800px) {
+      .app {
+        transform: scaleY(0.95);
+        transform-origin: top center;
+        height: calc(100vh / 0.95);
+      }
+    }
+
+    @media (min-width: 901px) and (max-height: 700px) {
+      .app {
+        transform: scaleY(0.9);
+        transform-origin: top center;
+        height: calc(100vh / 0.9);
+      }
+    }
+
+    @media (min-width: 901px) and (max-height: 620px) {
+      .app {
+        transform: scaleY(0.85);
+        transform-origin: top center;
+        height: calc(100vh / 0.85);
+      }
+    }
+
+    @media (min-width: 901px) and (max-height: 520px) {
+      .app {
+        transform: scaleY (0.8);
+        transform-origin: top center;
+        height: calc(100vh / 0.8);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="heading-box">
+        <h1>🐾 Animal World</h1>
+        <p class="subtitle">Choose an activity</p>
+      </div>
+
+      <div class="bubbles">
+        <div class="bubble" onclick="openPage(0,this)">
+          <span>🐳</span>
+          <p>Choose Option</p>
+        </div>
+        <div class="bubble" onclick="openPage(1,this)">
+          <span>🐿️</span>
+          <p>Fill The Blanks</p>
+        </div>
+        <div class="bubble" onclick="openPage(2,this)">
+          <span>🦆</span>
+          <p>True / False</p>
+        </div>
+        <div class="bubble" onclick="openPage(3,this)">
+          <span>🦋</span>
+          <p>Two Examples</p>
+        </div>
+        <div class="bubble" onclick="openPage(4,this)">
+          <span>🦚</span>
+          <p>Matching</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <iframe id="quizFrame" src="./exercises/mcq.html"></iframe>
+    </div>
+
+  </div>
+
+  <div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
+    <div class="offcanvas-panel" onclick="event.stopPropagation()">
+      <div class="bubbles">
+        <div class="bubble" onclick="mobileOpen(0,this)">🐳 <p>Choose Option</p>
+        </div>
+        <div class="bubble" onclick="mobileOpen(1,this)">🐿️ <p>Fill The Blanks</p>
+        </div>
+        <div class="bubble" onclick="mobileOpen(2,this)">🦆 <p>True / False</p>
+        </div>
+        <div class="bubble" onclick="mobileOpen(3,this)">🦋 <p>Two Examples</p>
+        </div>
+        <div class="bubble" onclick="mobileOpen(4,this)">🦚 <p>Matching</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const pages = [
+      "./exercises/mcq.html",
+      "./exercises/FTB.html",
+      "./exercises/true_false.html",
+      "./exercises/two_example.html",
+      "./exercises/matching.html",
+    ];
+
+    const frame = document.getElementById("quizFrame");
+    const offcanvas = document.getElementById("offcanvas");
+
+    const sidebarBubbles = document.querySelectorAll(".sidebar .bubble");
+    const mobileBubbles = document.querySelectorAll(".offcanvas-panel .bubble");
+
+    function setActive(index) {
+      sidebarBubbles.forEach(b => b.classList.remove("active"));
+      mobileBubbles.forEach(b => b.classList.remove("active"));
+
+      if (sidebarBubbles[index]) sidebarBubbles[index].classList.add("active");
+      if (mobileBubbles[index]) mobileBubbles[index].classList.add("active");
+
+      frame.src = pages[index];
+    }
+
+    function openPage(index, el) {
+      setActive(index);
+      el.classList.add("press");
+      setTimeout(() => el.classList.remove("press"), 150);
+    }
+
+    function mobileOpen(index, el) {
+      setActive(index);
+      toggleMenu();
+    }
+
+    function toggleMenu() {
+      if (window.innerWidth > 1150) return;
+      offcanvas.classList.toggle("show");
+    }
+
+  </script>
+
+</body>
+
+</html>

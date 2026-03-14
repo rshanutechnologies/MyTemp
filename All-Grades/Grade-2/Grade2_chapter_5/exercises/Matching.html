@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Matching Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/Matching.css">
+</head>
+
+<canvas id="confetti"></canvas>
+<body>
+<h3 style="position: absolute; top:5px;left:-1px; color:#0284c7; padding:10px 10px;background:#ff9f2f;color:#fff;border-radius:25px;font-size:20px;font-weight:600;">Matching</h3>
+<div class="game">
+
+<div class="level-progress">
+  <div class="progress-line"></div>
+  <div class="level"></div>
+  <div class="level"></div>
+  <div class="level"></div>
+  <div class="level"></div>
+</div>
+
+<div class="container">
+  <div class="column" id="leftCol"></div>
+  <div class="column" id="rightCol"></div>
+</div>
+
+</div>
+
+<div class="popup" id="popup"><div class="popup-box" id="popupText"></div></div>
+<audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+<script src="../assets/js/Matching.js"></script>
+
+</body>
+</html>

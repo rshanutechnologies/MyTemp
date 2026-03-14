@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>III Chapter Quiz</title>
+
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===============================
+       BASE LAYOUT (UNCHANGED)
+    =============================== */
+    body {
+      margin: 0;
+      font-family: 'Livvic', sans-serif;
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      /* background-image: url('./uploads/bgimg.png');
+      background-size: cover; */
+      background: #c7d4f9a9;
+    }
+
+    .sidebar {
+      flex: 0 0 300px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      border-right: 1px solid rgba(0, 0, 0, 0.05);
+      z-index: 10;
+      box-sizing: border-box;
+    }
+
+    .l-name {
+      margin: 0 0 25px 0;
+      font-size: 1.8rem;
+      color: #1F3C5B;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .menu-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .menu-btn {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 15px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1F3C5B;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .sticker-icon {
+      font-size: 24px;
+      margin-right: 12px;
+    }
+
+    .btn-1 {
+      background-color: #e4c7e2;
+    }
+
+    .btn-2 {
+      background-color: #CFE8B3;
+    }
+
+    .btn-3 {
+      background-color: #FFD84D;
+    }
+
+    .btn-5 {
+      background-color: #FFE6A7;
+    }
+
+    .btn-6 {
+      background-color: #B8B5FF;
+    }
+
+    .menu-btn:hover {
+      transform: translateX(5px);
+    }
+
+    .menu-btn.active {
+      outline: 3px solid #f778a1;
+    }
+
+    /* ===============================
+       CONTENT AREA (KEY FIX HERE)
+    =============================== */
+    .content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .iframe-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* TOGGLE BUTTON */
+    .menu-toggle {
+      display: none;
+    }
+
+    /* OFFCANVAS BASE */
+    .offcanvas {
+      display: none;
+    }
+
+    /* =========================================
+   📱 MOBILE RESPONSIVE (CSS ONLY)
+   Matches behavior of second example
+========================================= */
+    @media (max-width: 900px) {
+
+      /* Stack layout vertically */
+      body {
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      /* Hide sidebar completely (like offcanvas closed state) */
+      .sidebar {
+        display: none;
+      }
+
+      /* Content takes full screen */
+      .content {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+      }
+
+      .iframe-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Toggle button */
+      .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 14px;
+        right: 16px;
+        font-size: 26px;
+        background: #7c6cf4;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        padding: 6px 12px;
+        cursor: pointer;
+        z-index: 5000;
+      }
+
+      /* Overlay */
+      .offcanvas {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .45);
+        display: none;
+        z-index: 4000;
+      }
+
+      .offcanvas.show {
+        display: block;
+      }
+
+      /* Panel */
+      .offcanvas-panel {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 320px;
+        height: 100%;
+        background: #f3f0ff;
+        padding: 20px;
+        padding-top: 80px;
+        transform: translateX(100%);
+        transition: transform .3s ease;
+        overflow-y: auto;
+      }
+
+      .offcanvas.show .offcanvas-panel {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  <div class="sidebar">
+    <h2 class="l-name">Chapter 3 Quiz</h2>
+
+    <div class="menu-container">
+      <button class="menu-btn btn-1" data-file="exercises/ex1.html">
+        <span class="sticker-icon">✅</span> Tick Correct
+      </button>
+      <button class="menu-btn btn-2" data-file="exercises/ex2.html">
+        <span class="sticker-icon">📝</span> Fill Blanks
+      </button>
+      <button class="menu-btn btn-3" data-file="exercises/ex3.html">
+        <span class="sticker-icon">🔍</span> True / False
+      </button>
+      <button class="menu-btn btn-5" data-file="exercises/ex4.html">
+        <span class="sticker-icon">🔗</span> Match
+      </button>
+      <button class="menu-btn btn-6" data-file="exercises/ex5.html">
+        <span class="sticker-icon">🌟</span> Examples
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="iframe-wrapper">
+      <iframe id="quizFrame"></iframe>
+    </div>
+  </div>
+
+  <div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
+    <div class="offcanvas-panel" onclick="event.stopPropagation()">
+      <h3 class="l-name">Chapter 3 Quiz</h3>
+
+      <div class="menu-container">
+        <button class="menu-btn btn-1" onclick="openQuiz('./exercises/ex1.html', this)">✅ Tick Correct</button>
+        <button class="menu-btn btn-2" onclick="openQuiz('exercises/ex2.html', this)">📝 Fill Blanks</button>
+        <button class="menu-btn btn-3" onclick="openQuiz('exercises/ex3.html', this)">🔍 True / False</button>
+        <button class="menu-btn btn-5" onclick="openQuiz('exercises/ex4.html', this)">🔗 Match</button>
+        <button class="menu-btn btn-6" onclick="openQuiz('exercises/ex5.html', this)">🌟 Examples</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const iframe = document.getElementById('quizFrame');
+
+    const sidebarButtons = document.querySelectorAll('.sidebar .menu-btn');
+    const offcanvasButtons = document.querySelectorAll('.offcanvas .menu-btn');
+
+    function openQuiz(file, btn) {
+      if (!file) return;
+
+      iframe.src = file;
+
+      // Remove active from ALL buttons
+      sidebarButtons.forEach(b => b.classList.remove('active'));
+      offcanvasButtons.forEach(b => b.classList.remove('active'));
+
+      // Activate clicked button
+      if (btn) btn.classList.add('active');
+
+      // Sync active state between sidebar & offcanvas
+      sidebarButtons.forEach(b => {
+        if (b.dataset.file === file) b.classList.add('active');
+      });
+
+      offcanvasButtons.forEach(b => {
+        if (b.textContent.trim() === btn?.textContent.trim()) {
+          b.classList.add('active');
+        }
+      });
+
+      // Close offcanvas on mobile
+      const offcanvas = document.getElementById('offcanvas');
+      if (offcanvas.classList.contains('show')) {
+        offcanvas.classList.remove('show');
+      }
+    }
+
+    // Sidebar click handling
+    sidebarButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        openQuiz(btn.dataset.file, btn);
+      });
+    });
+
+    // Default load (SYNC BOTH)
+    document.addEventListener('DOMContentLoaded', () => {
+      const defaultBtn = sidebarButtons[0];
+      openQuiz(defaultBtn.dataset.file, defaultBtn);
+    });
+
+    function toggleMenu() {
+      document.getElementById('offcanvas').classList.toggle('show');
+    }
+  </script>
+
+</body>
+
+</html>

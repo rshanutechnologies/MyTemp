@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Drag & Drop Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;700&family=Fredoka+One&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4cc9f0;
+      --secondary: #f778a1;
+      --dark: #2F4F4F;
+      --correct: #2ed573;
+    }
+
+    body {
+      font-family: "Livvic", sans-serif;
+      /* background-image: url('../uploads/bg2.png');
+  background-size: cover;
+  background-position: center; */
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .app {
+      width: 95%;
+      max-width: 1000px;
+      height: 90vh;
+      border-radius: 40px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    /* HEADER WITH READ BUTTON */
+    .header-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+
+    .read-btn {
+      background: white;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .read-btn:hover {
+      transform: scale(1.1);
+      background: var(--primary);
+      color: white;
+    }
+
+    /* SLIDE LOGIC */
+    #slides-viewport {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    /* HINT IMAGE */
+    .hint-container {
+      width: 100%;
+      max-width: 280px;
+      height: 200px;
+      background: white;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .hint-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* TEXT STYLES */
+    .q-number {
+      font-weight: 700;
+      color: var(--dark);
+      opacity: 0.6;
+    }
+
+    .i-text {
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .q-text {
+      font-size: clamp(1.4rem, 4vw, 2.4rem);
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.4;
+    }
+
+    /* DRAG BLANK */
+    .blank {
+      display: inline-block;
+      min-width: 160px;
+      height: 1.2em;
+      border-bottom: 4px dashed var(--dark);
+      margin: 0 10px;
+      vertical-align: middle;
+      text-align: center;
+      color: var(--primary);
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+
+    .blank.correct {
+      border-bottom: 4px solid var(--correct);
+      color: var(--correct);
+    }
+
+    /* WORD GRID */
+    .word-box {
+      width: 100%;
+      max-width: 800px;
+      background: white;
+      padding: 20px;
+      border-radius: 25px;
+      box-sizing: border-box;
+    }
+
+    .word-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .word {
+      background: #f8f9fa;
+      padding: 12px 20px;
+      border-radius: 15px;
+      border: 3px solid white;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 700;
+      color: var(--dark);
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      user-select: none;
+      touch-action: none;
+    }
+
+    .word:active {
+      cursor: grabbing;
+    }
+
+    .word.dragging {
+      opacity: 0.4;
+      cursor: grabbing;
+    }
+
+    .word.used {
+      pointer-events: none;
+      opacity: 0.2;
+    }
+
+    .word-grid.locked {
+      pointer-events: none;
+    }
+
+    /* NAVIGATION FOOTER */
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 20px;
+    }
+
+    .nav-btn {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      padding: 12px 30px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      color: rgb(0, 0, 0);
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #backBtn {
+      background: var(--secondary);
+    }
+
+    #nextBtn {
+      background: var(--primary);
+      visibility: hidden;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.1);
+    }
+
+    /* FEEDBACK OVERLAYS */
+    .smiley {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      font-size: 150px;
+      opacity: 0;
+      transition: 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .smiley.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* UPDATED FINAL POPUP CARD */
+    .final-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .final-card {
+      background: white;
+      padding: 50px;
+      border-radius: 40px;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 90%;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==================================================
+   📱 SMALL MOBILES (≤480px)
+================================================== */
+    @media (max-width: 480px) {
+
+      body {
+        overflow-y: auto;
+        align-items: flex-start;
+      }
+
+      .app {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 14px;
+        border-radius: 0;
+      }
+
+      .q-text {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+      }
+
+      .hint-container {
+        max-width: 220px;
+        height: 160px;
+      }
+
+      .blank {
+        min-width: 120px;
+      }
+
+      .word-box {
+        padding: 14px;
+      }
+
+      .word {
+        font-size: 1rem;
+        padding: 10px 16px;
+      }
+
+      .nav-footer {
+        padding-top: 12px;
+      }
+
+      .nav-btn {
+        padding: 10px 22px;
+        font-size: 0.95rem;
+      }
+
+      .smiley {
+        font-size: 100px;
+      }
+
+      .final-card {
+        padding: 30px 20px;
+        border-radius: 25px;
+      }
+    }
+
+    /* ==================================================
+   📱 MOBILES (≤768px)
+================================================== */
+    @media (max-width: 768px) {
+
+      body {
+        overflow-y: auto;
+      }
+
+      .app {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 18px;
+        border-radius: 0;
+      }
+
+      .q-text {
+        font-size: 1.4rem;
+        margin-bottom: 24px;
+      }
+
+      .hint-container {
+        max-width: 240px;
+        height: 170px;
+      }
+
+      .blank {
+        min-width: 140px;
+      }
+
+      .word {
+        font-size: 1.05rem;
+      }
+
+      .nav-btn {
+        padding: 12px 26px;
+        font-size: 1rem;
+      }
+
+      .smiley {
+        font-size: 120px;
+      }
+    }
+
+    /* ==================================================
+   📱 TABLETS (769px – 1024px)
+================================================== */
+    @media (min-width: 769px) and (max-width: 1024px) {
+
+      .app {
+        width: 95%;
+        height: 92vh;
+        padding: 20px;
+      }
+
+      .q-text {
+        font-size: 2rem;
+        margin-bottom: 28px;
+      }
+
+      .hint-container {
+        max-width: 260px;
+        height: 190px;
+      }
+
+      .word {
+        font-size: 1.15rem;
+      }
+
+      .nav-btn {
+        padding: 14px 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <div class="header-top">
+      <div id="progress-text" class="q-number">Question 1 of 5</div>
+      <button class="read-btn" onclick="readQuestion()">🔊</button>
+    </div>
+
+    <div id="slides-viewport"></div>
+
+    <div class="nav-footer">
+      <button id="backBtn" class="nav-btn">◀ PREV</button>
+      <button id="nextBtn" class="nav-btn">NEXT ▶</button>
+    </div>
+
+    <div id="smiley" class="smiley"></div>
+    <canvas id="confetti-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:5"></canvas>
+
+    <div id="final-overlay" class="final-overlay">
+      <div class="final-card">
+        <h1 style="font-family:'Fredoka One'; font-size: 3rem; color: var(--primary); margin: 0;">GREAT JOB!</h1>
+        <p style="font-size: 1.3rem; color: var(--dark); margin: 20px 0;">Quiz Completed Successfully!</p>
+        <button class="nav-btn" style="background: var(--secondary);" onclick="location.reload()">PLAY AGAIN ↺</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    /* AUDIO SYSTEM */
+    let audioCtx = null;
+
+    function ensureAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    // TEXT TO SPEECH 
+    function readQuestion() {
+      const textToRead = quiz[current].text.replace("_____", "blank");
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      const voices = window.speechSynthesis.getVoices();
+      const indianVoice = voices.find(v => v.lang === 'en-IN' || v.name.includes('India'));
+      if (indianVoice) utterance.voice = indianVoice;
+      utterance.rate = 0.9;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
+    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+
+    function playSuccessSound() {
+      ensureAudio();
+      const t = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(523.25, t);
+      osc.frequency.exponentialRampToValueAtTime(783.99, t + 0.1);
+      gain.gain.setValueAtTime(0.1, t);
+      gain.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(t + 0.3);
+    }
+
+    function playWrongSound() {
+      ensureAudio();
+      const t = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(150, t);
+      osc.frequency.linearRampToValueAtTime(100, t + 0.2);
+      gain.gain.setValueAtTime(0.1, t);
+      gain.gain.linearRampToValueAtTime(0.01, t + 0.2);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(t + 0.2);
+    }
+
+    const quiz = [
+      {
+        text: "Animals are _____ things.",
+        answer: "living",
+        hint: "../uploads/cow-img.png",
+        words: ["leving", "living", "liivng"]
+      },
+      {
+        text: "A pencil is a _____ thing.",
+        answer: "non-living",
+        hint: "../uploads/pencil.png",
+        words: ["non-living", "non-leving", "none-living"]
+      },
+      {
+        text: "Plants don't _____ from one place to another.",
+        answer: "move",
+        hint: "../uploads/plants.png",
+        words: ["moove", "mov", "move"]
+      },
+      {
+        text: "_____ things have young ones.",
+        answer: "Living",
+        hint: "../uploads/yo.png",
+        words: ["Liiving", "Livin", "Living"]
+      },
+      {
+        text: "A mountain is a _____ thing.",
+        answer: "non-living",
+        hint: "../uploads/mountain-img.png",
+        words: ["non-leving", "non-living", "none-living"]
+      }
+    ];
+
+    const viewport = document.getElementById("slides-viewport");
+    const nextBtn = document.getElementById("nextBtn");
+    const backBtn = document.getElementById("backBtn");
+    const smiley = document.getElementById("smiley");
+    const finalOverlay = document.getElementById("final-overlay");
+    const progressText = document.getElementById("progress-text");
+
+    let current = 0;
+    let draggedWord = null;
+
+    function init() {
+      quiz.forEach((q, i) => {
+        const slide = document.createElement("div");
+        slide.className = `slide ${i === 0 ? 'active' : ''}`;
+        slide.id = `slide-${i}`;
+        slide.innerHTML = `
+      <div class="i-text">Drag and Drop the correct word into the blank space</div>
+      <div class="hint-container">
+        <img src="${q.hint}" class="hint-img" alt="hint">
+      </div>
+      <div class="q-text" data-answered="false">
+        ${q.text.replace("_____", `<span class="blank" data-correct="${q.answer}"></span>`)}
+      </div>
+      <div class="word-box">
+        <div class="word-grid">
+          ${q.words.map(w => `<div class="word" draggable="true">${w}</div>`).join('')}
+        </div>
+      </div>
+    `;
+        viewport.appendChild(slide);
+
+        const blank = slide.querySelector(".blank");
+        const words = slide.querySelectorAll(".word");
+
+        words.forEach(w => {
+          w.addEventListener("dragstart", () => {
+            ensureAudio();
+            draggedWord = w;
+            w.classList.add("dragging");
+          });
+          w.addEventListener("dragend", () => w.classList.remove("dragging"));
+        });
+
+        blank.addEventListener("dragover", e => e.preventDefault());
+        blank.addEventListener("drop", () => {
+          if (!draggedWord) return;
+          if (draggedWord.textContent === blank.dataset.correct) {
+            handleCorrect(blank, draggedWord, slide);
+          } else {
+            handleWrong();
+          }
+        });
+      });
+      updateNav();
+    }
+
+    function handleCorrect(blank, word, slide) {
+      blank.textContent = word.textContent;
+      blank.classList.add("correct");
+      slide.querySelector(".word-grid").classList.add("locked");
+      slide.querySelector(".q-text").dataset.answered = "true";
+
+      playSuccessSound();
+      showSmiley("😄");
+      confetti();
+      updateNav();
+
+      if (current === quiz.length - 1) {
+        setTimeout(() => {
+          finalOverlay.style.display = "flex";
+          confetti({ particleCount: 200, spread: 70, origin: { y: 0.6 } });
+        }, 1500);
+      }
+    }
+
+    function handleWrong() {
+      playWrongSound();
+      showSmiley("😢");
+    }
+
+    function showSmiley(char) {
+      smiley.textContent = char;
+      smiley.classList.add("show");
+      setTimeout(() => smiley.classList.remove("show"), 1000);
+    }
+
+    function updateNav() {
+      const currentSlide = document.getElementById(`slide-${current}`);
+      const isAnswered = currentSlide.querySelector(".q-text").dataset.answered === "true";
+      progressText.textContent = `Question ${current + 1} of ${quiz.length}`;
+      backBtn.style.visibility = current === 0 ? "hidden" : "visible";
+      nextBtn.style.visibility = isAnswered ? "visible" : "hidden";
+    }
+
+    nextBtn.onclick = () => {
+      if (current < quiz.length - 1) {
+        window.speechSynthesis.cancel();
+        document.getElementById(`slide-${current}`).classList.remove("active");
+        current++;
+        document.getElementById(`slide-${current}`).classList.add("active");
+        updateNav();
+      }
+    };
+
+    backBtn.onclick = () => {
+      if (current > 0) {
+        window.speechSynthesis.cancel();
+        document.getElementById(`slide-${current}`).classList.remove("active");
+        current--;
+        document.getElementById(`slide-${current}`).classList.add("active");
+        updateNav();
+      }
+    };
+
+    init();
+  </script>
+</body>
+
+</html>

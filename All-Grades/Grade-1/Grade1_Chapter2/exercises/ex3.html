@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>True or False Quiz ✨🦋</title>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1:#fde2e4; --bg2:#e2f0fb; --bg3:#e8f8e8;
+      --true: #2ecc71; --false: #e74c3c;
+      --q-text-color: #2F4F4F;
+      --blue: #4cc9f0; --pink: #f778a1;
+      --card-radius: 30px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+      font-family: 'Livvic', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at top left, var(--bg1), transparent 55%),
+        radial-gradient(circle at bottom right, var(--bg2), transparent 55%),
+        radial-gradient(circle at center, var(--bg3), #ffffff 60%);
+      overflow: hidden;
+    }
+
+    .wrap {
+      width: 100%;
+      height: 100%;
+      max-width: 950px;
+      display: flex;
+      flex-direction: column;
+      padding: 2vh 20px;
+    }
+
+    .question-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2vh;
+      width: 100%;
+    }
+
+    .q-number {
+      font-weight: 700;
+      font-size: clamp(16px, 2.5vh, 22px);
+      color: var(--q-text-color);
+      background: rgba(255, 255, 255, 0.5);
+      padding: 5px 25px;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .question-card {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: var(--card-radius);
+      padding: 3vh;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border: 2px solid #fff;
+    }
+
+    .hint-img-box {
+      width: clamp(100px, 18vh, 160px);
+      height: clamp(100px, 18vh, 160px);
+      border-radius: 20px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #fff;
+      border: 5px solid #fff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .hint-img-box img { width: 100%; height: 100%; object-fit: contain; }
+
+    .q-text {
+      font-size: clamp(18pt, 4vh, 32pt);
+      color: var(--q-text-color);
+      line-height: 1.2;
+      flex: 1;
+    }
+
+    .bird-btn {
+      background: #FFD54F; border: none; width: clamp(50px, 7vh, 70px); height: clamp(50px, 7vh, 70px);
+      border-radius: 50%; cursor: pointer; box-shadow: 0 6px 0 #E0B93F; flex-shrink: 0;
+    }
+    .bird-btn svg { width: 50%; fill: #2C3E50; }
+
+    .opts {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .choice-wrap { position: relative; flex: 1; max-width: 250px; }
+
+    .big-btn {
+      width: 100%;
+      padding: clamp(15px, 3vh, 30px);
+      border-radius: 20px;
+      border: 4px solid #fff;
+      font-size: clamp(24px, 4vh, 40px);
+      font-weight: 900;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    #btnT { background: #d4edda; color: #155724; }
+    #btnF { background: #f8d7da; color: #721c24; }
+    .big-btn.correct { background: var(--true) !important; color: white !important; }
+    .big-btn.wrong { background: var(--false) !important; color: white !important; animation: shake 0.4s; }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Butterfly Effect */
+    .butterfly { position: absolute; font-size: 35px; pointer-events: none; z-index: 100; animation: flyAway 2s ease-out forwards; }
+    .butterfly-inner { display: inline-block; animation: flutter 0.2s infinite alternate ease-in-out; }
+    @keyframes flyAway { 0% { transform: translate(0, 0) rotate(0deg); opacity: 1; } 100% { transform: translate(var(--randX), -250px) rotate(var(--randRot)); opacity: 0; } }
+    @keyframes flutter { from { transform: scaleX(1); } to { transform: scaleX(0.3); } }
+
+    .controls { display: flex; justify-content: space-between; width: 100%; padding: 10px 0; }
+
+    .nav-btn {
+      padding: clamp(12px, 2.5vh, 25px) clamp(25px, 5vw, 50px);
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: clamp(16px, 2.5vh, 25px);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    #prevBtn { background: #ec85b2; color: var(--q-text-color); }
+    #nextBtn { background: var(--blue); color: white; }
+    .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    #feedbackSmiley {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 150px; z-index: 2000;
+      transition: 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+    #feedbackSmiley.show { transform: translate(-50%, -50%) scale(1); }
+
+    .final-modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 3000;
+    }
+    .final-modal { background: white; padding: 5vh; border-radius: 40px; text-align: center; width: min(600px, 90%); }
+
+    @media (max-width: 600px) {
+      .question-card { flex-direction: column; text-align: center; gap: 10px; }
+      .opts { gap: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="question-area">
+      <div class="q-number" id="qNumber">Question 1 of 5</div>
+      <div class="question-card">
+        <div class="hint-img-box"><img id="hintImg" src="" alt="Hint"></div>
+        <p class="q-text" id="qText">Loading...</p>
+        <button id="readBtn" class="bird-btn">
+          <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        </button>
+      </div>
+      <div class="opts">
+        <div class="choice-wrap" id="wrapT"><button id="btnT" class="big-btn">TRUE</button></div>
+        <div class="choice-wrap" id="wrapF"><button id="btnF" class="big-btn">FALSE</button></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="prevBtn" class="nav-btn">◀ PREV</button>
+      <button id="nextBtn" class="nav-btn" disabled>NEXT ▶</button>
+    </div>
+  </div>
+  <div id="feedbackSmiley"></div>
+  <script>
+    const questions = [
+      { text: "Our eyes help us to listen.", answer: false, img: "../uploads/eyes.png", solved: false },
+      { text: "Each hand has ten fingers.", answer: false, img: "../uploads/hand.png", solved: false },
+      { text: "We have five sense organs.", answer: true, img: "../uploads/senseorgans.png", solved: false },
+      { text: "Our legs help us to eat and hold things.", answer: false, img: "../uploads/leg.png", solved: false },
+      { text: "Our skin helps us to feel things.", answer: true, img: "../uploads/skin.png", solved: false }
+    ];
+
+    let idx = 0, audioCtx = null;
+    const qNumber = document.getElementById("qNumber"), qText = document.getElementById("qText"), hintImg = document.getElementById("hintImg");
+    const btnT = document.getElementById("btnT"), btnF = document.getElementById("btnF"), feedbackSmiley = document.getElementById("feedbackSmiley");
+    const prevBtn = document.getElementById("prevBtn"), nextBtn = document.getElementById("nextBtn"), readBtn = document.getElementById("readBtn");
+
+    function ensureAudio(){ if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); return audioCtx; }
+
+    function playTone(freq, dur) {
+      const ctx = ensureAudio(); const now = ctx.currentTime; const o = ctx.createOscillator(); const g = ctx.createGain();
+      o.type = freq < 200 ? 'square' : 'sine'; o.frequency.setValueAtTime(freq, now);
+      g.gain.setValueAtTime(0.1, now); g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+      o.connect(g); g.connect(ctx.destination); o.start(); o.stop(now + dur);
+    }
+
+    function spawnButterflies(containerId) {
+      const container = document.getElementById(containerId);
+      for (let i = 0; i < 6; i++) {
+        const b = document.createElement('div'); b.className = 'butterfly';
+        const inner = document.createElement('span'); inner.className = 'butterfly-inner'; inner.textContent = '🦋';
+        b.appendChild(inner); b.style.left = Math.random() * 60 + 20 + '%'; b.style.top = '10%';
+        b.style.setProperty('--randX', (Math.random() * 300 - 150) + 'px');
+        b.style.setProperty('--randRot', (Math.random() * 120 - 60) + 'deg');
+        b.style.animationDelay = (Math.random() * 0.3) + 's';
+        container.appendChild(b); setTimeout(() => b.remove(), 2500);
+      }
+    }
+
+    function showQuestion(i){
+      const q = questions[i]; idx = i;
+      qNumber.textContent = `Question ${i + 1} of ${questions.length}`;
+      qText.textContent = q.text; hintImg.src = q.img;
+      btnT.classList.remove("correct","wrong"); btnF.classList.remove("correct","wrong");
+      if(q.solved) {
+        (q.answer ? btnT : btnF).classList.add("correct");
+        btnT.disabled = true; btnF.disabled = true;
+      } else {
+        btnT.disabled = false; btnF.disabled = false;
+      }
+      nextBtn.disabled = !q.solved; prevBtn.disabled = i === 0;
+      nextBtn.textContent = (i === questions.length - 1) ? "FINISH 🏁" : "NEXT ▶";
+    }
+
+    function selectAnswer(userChoice){
+      const q = questions[idx]; if(q.solved) return;
+      if(q.answer === userChoice){
+        q.solved = true; (userChoice ? btnT : btnF).classList.add("correct");
+        spawnButterflies(userChoice ? 'wrapT' : 'wrapF');
+        playTone(880, 0.6); feedbackSmiley.textContent = "😃"; feedbackSmiley.classList.add("show");
+        setTimeout(() => feedbackSmiley.classList.remove("show"), 1200);
+        if (idx === questions.length - 1) setTimeout(finishQuiz, 1500);
+        else nextBtn.disabled = false;
+      } else {
+        const wb = userChoice ? btnT : btnF; wb.classList.add("wrong");
+        playTone(180, 0.4); feedbackSmiley.textContent = "😭"; feedbackSmiley.classList.add("show");
+        setTimeout(() => { feedbackSmiley.classList.remove("show"); wb.classList.remove("wrong"); }, 800);
+      }
+    }
+
+    function finishQuiz(){
+      const modal = document.createElement("div"); modal.className = "final-modal-overlay";
+      modal.innerHTML = `<div class="final-modal">
+        <h1 style="font-size:clamp(30px, 6vh, 54px); color:#2c7a4b;">🏆 SUPERSTAR!</h1>
+        <p style="font-size:clamp(18px, 3vh, 24px);">You finished all questions 🎉</p>
+        <button class="nav-btn" onclick="location.reload()" style="background:var(--pink); color:white; margin-top:20px;">PLAY AGAIN ↺</button>
+      </div>`;
+      document.body.appendChild(modal); playTone(1100, 1);
+    }
+
+    btnT.onclick = () => selectAnswer(true); btnF.onclick = () => selectAnswer(false);
+    prevBtn.onclick = () => showQuestion(idx - 1);
+    nextBtn.onclick = () => { if(idx < questions.length - 1) showQuestion(idx + 1); else finishQuiz(); };
+    readBtn.onclick = () => { const u = new SpeechSynthesisUtterance(questions[idx].text); u.lang = "en-IN"; window.speechSynthesis.speak(u); };
+    showQuestion(0);
+  </script>
+</body>
+</html>

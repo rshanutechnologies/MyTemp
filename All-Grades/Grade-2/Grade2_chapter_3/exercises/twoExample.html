@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Identify the Monuments Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/twoExample.css">
+</head>
+
+<body>
+
+  <!-- ✅ PROGRESS -->
+  <div class="progress-wrap" id="progressWrap"></div>
+  <div class="fly-tick" id="flyTick">✔</div>
+
+  <div class="quiz-box">
+    <div class="header">
+      <!-- <h1>🏛️ Identify the Monuments</h1> -->
+      <p>Type the correct name for each picture.</p>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <!-- ✅ Feedback Popup -->
+  <div class="popup" id="feedbackPopup">
+    <div id="feedbackCircle" class="feedback-circle correct">✔</div>
+  </div>
+
+  <!-- ✅ Final Popup -->
+  <div class="popup" id="finalPopup">
+    <div class="final-popup-box">
+      <div class="final-left">
+        <img src="../assets/images/boy-trophy.png" alt="Winner">
+      </div>
+      <div class="final-right">
+        <h2>🎉 Congratulations!</h2>
+        <div class="final-score" id="finalScoreText"></div>
+        <div class="final-stars" id="finalStars"></div>
+        <button class="restart-btn" onclick="restartQuiz()">🔁 Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+  <audio id="wrongSound"
+    src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+
+  <script src="../assets/js/twoExample.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Fill in the Blanks — Type Letters</title>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #fde2e4;
+      --bg2: #e2f0fb;
+      --bg3: #e8f8e8;
+      --correct: #28a745;
+      --wrong: #dc3545;
+      --q-text-color: #2F4F4F;
+      --blue: #4cc9f0;
+      --pink: #f778a1;
+      --magic2: #00c2ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+      font-family: 'Livvic', sans-serif;
+      background:
+        radial-gradient(circle at top left, var(--bg1), transparent 55%),
+        radial-gradient(circle at bottom right, var(--bg2), transparent 55%),
+        radial-gradient(circle at center, var(--bg3), #ffffff 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .wrap {
+      width: 100%;
+      height: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      padding: 2vh 20px;
+    }
+
+    .question-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5vh;
+      width: 100%;
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 5px;
+    }
+
+    .q-number {
+      font-weight: 700;
+      font-size: clamp(16px, 2.5vh, 24px);
+      color: var(--q-text-color);
+      background: rgba(255, 255, 255, 0.6);
+      padding: 5px 20px;
+      border-radius: 20px;
+    }
+
+    .bird-btn {
+      background: #FFC312;
+      border: 4px solid #F79F1F;
+      border-radius: 50%;
+      width: clamp(50px, 7.5vh, 75px);
+      height: clamp(50px, 7.5vh, 75px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 0 #e58e26;
+      transition: transform 0.1s;
+    }
+
+    .bird-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 #e58e26;
+    }
+
+    .bird-btn svg {
+      width: 60%;
+      height: 60%;
+      fill: #333;
+    }
+
+    .hint-text {
+      font-size: clamp(14pt, 2.5vh, 22pt);
+      color: var(--q-text-color);
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    .sentence {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-size: clamp(18pt, 3.2vh, 32pt);
+      color: var(--q-text-color);
+      text-align: center;
+      width: 100%;
+    }
+
+    .blank-group {
+      display: inline-flex;
+      gap: clamp(5px, 1vw, 10px);
+      padding: 5px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .blank-input {
+      width: clamp(45px, 7.5vh, 70px);
+      height: clamp(50px, 8.5vh, 80px);
+      border-radius: 12px;
+      border: 3px dashed var(--q-text-color);
+      background: rgba(255, 255, 255, 0.85);
+      font-weight: 900;
+      font-size: clamp(20px, 4.5vh, 34px);
+      color: var(--q-text-color);
+      text-align: center;
+      outline: none;
+      caret-color: transparent;
+    }
+
+    .blank-input:focus {
+      border-color: var(--magic2);
+      box-shadow: 0 0 15px rgba(0, 194, 255, 0.3);
+      border-style: solid;
+    }
+
+    .blank-input.correct {
+      border-style: solid;
+      border-color: var(--correct);
+      background: #fff;
+    }
+
+    .blank-input.wrong {
+      border-style: solid;
+      border-color: var(--wrong);
+      background: #fff;
+    }
+
+    /* Clue Box Styling */
+    .clue-box {
+      width: min(300px, 80vw);
+      height: clamp(200px, 25vh, 220px);
+      border-radius: 20px;
+      border: 4px solid white;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      margin: 10px 0;
+    }
+
+    .clue-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px 5%;
+      margin-top: -8%;
+    }
+
+    .nav-btn, .btn {
+      padding: clamp(15px, 1.8vh, 18px) 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: clamp(14px, 2vh, 22px);
+      border: 4px solid white;
+      cursor: pointer;
+      font-family: 'Livvic';
+      min-width: 140px;
+    }
+
+    #prevBtn {
+      background: var(--pink);
+      color: var(--q-text-color);
+    }
+
+    #nextBtn {
+      background: var(--blue);
+      color: var(--q-text-color);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .small-btn {
+      padding: 10px 25px;
+      border-radius: 50px;
+      border: 3px solid #fff;
+      font-family: "Livvic";
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .btn{
+      background: rgba(19, 184, 19, 0.753);
+      color: #2f4f4f;
+    }
+
+    #feedbackSmiley {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 150px;
+      opacity: 0;
+      z-index: 2600;
+      pointer-events: none;
+    }
+
+    #feedbackSmiley.show {
+      opacity: 1;
+      transition: 0.2s;
+    }
+
+    canvas.confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1500;
+    }
+
+    .final-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      backdrop-filter: blur(8px);
+    }
+
+    .final-modal {
+      background: white;
+      padding: 40px;
+      border-radius: 30px;
+      text-align: center;
+      width: 90%;
+      max-width: 550px;
+    }
+    /* =========================
+   📱 MOBILE OPTIMIZATION
+   ========================= */
+
+@media (max-width: 600px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .wrap {
+    padding: 12px;
+  }
+
+  .question-area {
+    gap: 18px;
+  }
+
+  .header-row {
+    gap: 10px;
+  }
+
+  .q-number {
+    font-size: 16px;
+    padding: 4px 14px;
+  }
+
+  .bird-btn {
+    width: 55px;
+    height: 55px;
+    border-width: 3px;
+  }
+
+  .hint-text {
+    font-size: 16px;
+  }
+
+  .sentence {
+    font-size: 20px;
+    gap: 8px;
+  }
+
+  .blank-group {
+    gap: 6px;
+    padding: 4px;
+  }
+
+  .blank-input {
+    width: 42px;
+    height: 55px;
+    font-size: 22px;
+    border-width: 2px;
+  }
+
+  .clue-box {
+    width: 85vw;
+    height: 180px;
+  }
+
+  .controls {
+    padding: 15px 10px;
+    margin-top: 10px;
+  }
+
+  .nav-btn {
+    padding: 12px 18px;
+    font-size: 14px;
+    min-width: 110px;
+  }
+
+  .small-btn {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+
+  .final-modal {
+    padding: 25px;
+  }
+
+  .final-modal h2 {
+    font-size: 22px;
+  }
+    .blank-group {
+    display: grid;
+    grid-template-columns: repeat(5, auto); /* 5 boxes per row */
+    justify-content: center;  /* centers the whole grid */
+    gap: 8px;
+  }
+
+  .blank-input {
+    width: 48px;
+    height: 58px;
+    font-size: 22px;
+  }
+  
+}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="question-area">
+      <div class="header-row">
+        <div class="q-number" id="qNumber">Question 1 of 5</div>
+        <button id="readBtn" class="bird-btn">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="hint-text">Type the missing word ✨</div>
+
+      <div class="sentence" id="sentenceLine">Loading...</div>
+
+      <div class="clue-box">
+        <img id="clueImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          alt="Clue Image">
+      </div>
+
+      <div class="mini-controls">
+        <button id="clearBtn" class="small-btn">🧽 CLEAR</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="prevBtn" class="nav-btn">◀ PREV</button>
+      <button id="nextBtn" class="nav-btn">NEXT ▶</button>
+    </div>
+  </div>
+
+  <div id="feedbackSmiley"></div>
+  <canvas id="confettiCanvas" class="confetti"></canvas>
+
+  <script>
+    const questions = [
+      { prefix: "Each part of our body has different", blank: "FUNCTIONS", suffix: "to perform.", status: false, img: "../uploads/work.png" },
+      { prefix: "We must wipe our body with a clean", blank: "TOWEL", suffix: ".", status: false, img: "../uploads/towel.png" },
+      { prefix: "Eyes, ears, nose, tongue and skin are called the", blank: "SENSE", suffix: ".", status: false, img: "../uploads/senseorgans.png" },
+      { prefix: "The", blank: "TONGUE", suffix: "is the sense organ that helps us to taste.", status: false, img: "../uploads/tongue.png" },
+      { prefix: "We hold things with our", blank: "HANDS", suffix: ".", status: false, img: "../uploads/hands.png" }
+    ];
+
+    let idx = 0, inputs = [], audioCtx = null, isAnimating = false;
+    const qNumber = document.getElementById("qNumber"), sentenceLine = document.getElementById("sentenceLine");
+    const clueImg = document.getElementById("clueImg"), nextBtn = document.getElementById("nextBtn"), prevBtn = document.getElementById("prevBtn");
+    const feedbackSmiley = document.getElementById("feedbackSmiley"), confettiCanvas = document.getElementById("confettiCanvas");
+    const ctx = confettiCanvas.getContext("2d");
+
+    function ensureAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); return audioCtx; }
+
+    function playTone(freqs, dur = 0.6, type = 'sine') {
+      const a = ensureAudio(); const now = a.currentTime; const g = a.createGain();
+      g.gain.setValueAtTime(0, now); g.gain.linearRampToValueAtTime(0.2, now + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+      freqs.forEach(f => { const o = a.createOscillator(); o.type = type; o.frequency.value = f; o.connect(g); o.start(now); o.stop(now + dur); });
+      g.connect(a.destination);
+    }
+
+    let particles = [];
+    function resize() { confettiCanvas.width = window.innerWidth; confettiCanvas.height = window.innerHeight; }
+    window.onresize = resize; resize();
+
+    function launchConfetti(count = 100) {
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * confettiCanvas.width, y: -20,
+        vx: (Math.random() - 0.5) * 10, vy: 2 + Math.random() * 5,
+        s: 5 + Math.random() * 10, c: `hsl(${Math.random() * 360},80%,60%)`
+      }));
+      if (!isAnimating) { isAnimating = true; render(); }
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      particles.forEach((p, i) => {
+        ctx.fillStyle = p.c; ctx.fillRect(p.x, p.y, p.s, p.s);
+        p.x += p.vx; p.y += p.vy; p.vy += 0.1;
+        if (p.y > confettiCanvas.height) particles.splice(i, 1);
+      });
+      if (particles.length) requestAnimationFrame(render); else isAnimating = false;
+    }
+
+    function showSmiley(emoji) {
+      feedbackSmiley.textContent = emoji; feedbackSmiley.classList.add("show");
+      setTimeout(() => feedbackSmiley.classList.remove("show"), 1200);
+    }
+
+    function updateNav() {
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = !questions[idx].status;
+      nextBtn.textContent = (idx === questions.length - 1) ? "FINISH" : "NEXT ▶";
+    }
+
+    function buildTypingBoxes(word) {
+      const blankGroup = document.createElement("span");
+      blankGroup.className = "blank-group";
+      blankGroup.id = "blankGroup";
+      inputs = [];
+
+      for (let i = 0; i < word.length; i++) {
+        const inp = document.createElement("input");
+        inp.className = "blank-input";
+        inp.maxLength = 1;
+        inp.autocomplete = "off";
+
+        if (questions[idx].status) {
+          inp.value = word[i].toUpperCase();
+          inp.disabled = true;
+          inp.classList.add("correct");
+        }
+
+        inp.addEventListener("input", () => {
+          if (questions[idx].status) return;
+          inp.value = inp.value.toUpperCase().replace(/[^A-Z]/g, "");
+          if (inp.value && inputs[i + 1]) inputs[i + 1].focus();
+          tryAutoCheck();
+        });
+
+        inp.addEventListener("keydown", (e) => {
+          if (e.key === "Backspace" && !inp.value && inputs[i - 1]) inputs[i - 1].focus();
+        });
+
+        inputs.push(inp);
+        blankGroup.appendChild(inp);
+      }
+      if (!questions[idx].status) setTimeout(() => inputs[0]?.focus(), 150);
+      return blankGroup;
+    }
+
+    function tryAutoCheck() {
+      if (inputs.some(i => !i.value)) return;
+      const correct = questions[idx].blank.toUpperCase();
+      const typed = inputs.map(i => i.value).join("");
+
+      if (typed === correct) {
+        questions[idx].status = true;
+        inputs.forEach(i => { i.classList.add("correct"); i.disabled = true; });
+        playTone([880, 1100]); launchConfetti(80); showSmiley("😃");
+        updateNav();
+        if (questions.every(q => q.status)) setTimeout(showCompletePopup, 1500);
+      } else {
+        inputs.forEach(i => i.classList.add("wrong"));
+        playTone([180], 0.4, 'square'); showSmiley("😭");
+        const bg = document.getElementById("blankGroup");
+        bg.classList.add("shake");
+        setTimeout(() => {
+          bg.classList.remove("shake");
+          inputs.forEach(i => { i.value = ""; i.classList.remove("wrong"); });
+          inputs[0].focus();
+        }, 800);
+      }
+    }
+
+    function showQuestion(i) {
+      const q = questions[i]; idx = i;
+      qNumber.textContent = `Question ${i + 1} of ${questions.length}`;
+      clueImg.src = q.img; // Update the hint image
+      sentenceLine.innerHTML = "";
+      const pre = document.createElement("span"); pre.textContent = q.prefix + " ";
+      const suf = document.createElement("span"); suf.textContent = " " + q.suffix;
+      sentenceLine.append(pre, buildTypingBoxes(q.blank), suf);
+      updateNav();
+    }
+
+    function showCompletePopup() {
+      playTone([660, 880, 1320], 1.2); launchConfetti(150);
+      const div = document.createElement("div");
+      div.className = "final-modal-overlay";
+      div.innerHTML = `<div class="final-modal"><h2>🎉 YOU WON! 🎉</h2><p style="font-size:22px; color:#555;">Superstar! You finished the quiz!</p><button class="btn" onclick="location.reload()">PLAY AGAIN ↺</button></div>`;
+      document.body.appendChild(div);
+    }
+
+    document.getElementById("readBtn").onclick = () => {
+      const q = questions[idx];
+      const u = new SpeechSynthesisUtterance(`${q.prefix} blank ${q.suffix}`);
+      u.lang = "en-IN"; window.speechSynthesis.speak(u);
+    };
+
+    document.getElementById("clearBtn").onclick = () => {
+      if (questions[idx].status) return;
+      inputs.forEach(i => i.value = ""); inputs[0].focus();
+    };
+
+    prevBtn.onclick = () => showQuestion(--idx);
+    nextBtn.onclick = () => { if (idx < questions.length - 1) showQuestion(++idx); else showCompletePopup(); };
+
+    showQuestion(0);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Livvic', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    overflow: hidden;
+/* background: linear-gradient(180deg, #baddfd 0%, #e5e3ff 100%) !important; */
+background: transparent;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.home {
+    position: absolute;
+    top: 2%;
+    left: -3%;
+    background: #7ab7f5;
+    color: #fff;
+    padding: 10px 45px;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    display: none;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 24px;
+    color: #04c585;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    display: none;
+}
+
+.sub-title {
+    color: #51776a;
+    font-size: 25px;
+}
+
+.progress-container {
+    width: 400px;
+    height: 8px;
+    background: #929292;
+    border-radius: 5px;
+    margin: 8px auto;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #28ce36;
+    transition: width 0.5s ease;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.tokens,
+.slots {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+    justify-content: center;
+}
+
+.token,
+.slot {
+    height: 70px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.token {
+    padding: 0 20px;
+    cursor: grab;
+    font-size: 20px;
+    gap: 15px;
+    color: #2f4f4f;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Disabled State for Left Column */
+.token.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
+}
+
+.t1 {
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+}
+
+.t2 {
+    background: linear-gradient(45deg, #a18cd1, #fbc2eb);
+}
+
+.t3 {
+    background: linear-gradient(45deg, #84fab0, #8fd3f4);
+}
+
+.t4 {
+    background: linear-gradient(45deg, #fccb90, #d57eeb);
+}
+
+.t5 {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+}
+
+.slot {
+    background: white;
+    border: 2px dashed #d1d5db;
+    padding: 0 15px;
+    justify-content: space-between;
+    font-size: 18px;
+    color: #2f4f4f;
+}
+
+.slot.drag-over {
+    background: #f0f9ff;
+    border-color: #4facfe;
+}
+
+.slot.filled {
+    border: none;
+    background: #f0fdf4;
+}
+
+.drop-zone {
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    background: #f3f4f6;
+    border: 1px dashed #9ca3af;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* Dropped item small width */
+.token.correct-token {
+    height: 45px;
+    max-width: 200px;
+    font-size: 15px;
+    padding: 0 5px;
+    box-shadow: none;
+    cursor: default;
+}
+
+/*final score POPUPS */
+#finalPopup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.finalpopup-box {
+    background: #fff;
+    padding: 25px 35px;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.final-heading {
+    display: block;
+    font-size: 2em;
+    margin: 20px;
+    font-weight: bold;
+}
+
+#stars {
+    font-size: 40px;
+    margin-top: 10px;
+}
+
+.playAgain-btn {
+    background: #1fb36b;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 20px;
+    font-size: 16px;
+    margin-block: 10px;
+    cursor: pointer;
+}
+.slot img.correct-token-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.slot-img {
+    width: 90px;
+    height: 80px;
+    object-fit: contain;
+    margin-left: auto;
+    margin-right: 10px;
+}
+.slot-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.progress-container{
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    body {
+        height: 100vh;
+        overflow: auto;
+        align-items: flex-start;
+        padding: 15px 10px;
+        background-image: url("../images/L2bg.png");
+  background-size: cover;        /* ✅ Makes image full screen */
+  background-position: center;   /* ✅ Center the image */
+  background-repeat: no-repeat;  /* ✅ Prevent repeat */
+    }
+
+    .container {
+        position: relative;
+        padding: 15px;
+        margin-top: 40px;
+    }
+
+    /* KEEP TWO COLUMNS ON MOBILE */
+    .board {
+        grid-template-columns: 1fr 1fr;   /* side-by-side */
+        gap: 15px;
+    }
+
+    /* Make items smaller so both fit */
+    .token,
+    .slot {
+        height: 55px;
+        font-size: 14px;
+    }
+
+    .token {
+        padding: 0 10px;
+    }
+
+    .drop-zone {
+        width: 70px;
+        height: 30px;
+        font-size: 9px;
+    }
+
+    .slot-img {
+        width: 50px;
+        height: 50px;
+    }
+
+}
+
+/* ========================================= */
+/* 💻 DESKTOP – SCALE WHOLE MATCHING UI -20% */
+/* ========================================= */
+
+@media (min-width: 800px) {
+
+    .container {
+        transform: scale(0.8);     /* 🔥 20% smaller */
+        transform-origin: center;
+    }
+
+}

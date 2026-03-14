@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Puzzle Lock Matching</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/matching.css">
+</head>
+
+<body>
+
+  <div class="main-content">
+    <div class="progress-wrap" id="progressWrap"></div>
+    <button class="hint-btn-abs" onclick="openHintPopup()">❓ How to Play</button>
+
+    <div class="fly-tick" id="flyTick">✔</div>
+
+    <div class="wrapper">
+      <div class="grid">
+
+        <!-- LEFT -->
+        <div id="leftList">
+          <div class="puzzle" draggable="true" data-key="visakhapatnam" data-img="../assets/images/M-1.png">
+            <img src="../assets/images/M-1.png"><span>Borra Caves</span>
+          </div>
+
+          <div class="puzzle" draggable="true" data-key="delhi" data-img="../assets/images/M-2.png">
+            <img src="../assets/images/M-2.png"><span>Red Fort</span>
+          </div>
+
+          <div class="puzzle" draggable="true" data-key="bengaluru" data-img="../assets/images/M-3.png">
+            <img src="../assets/images/M-3.png"><span>Lalbagh</span>
+          </div>
+
+          <div class="puzzle" draggable="true" data-key="hyderabad" data-img="../assets/images/M-4.png">
+            <img src="../assets/images/M-4.png"><span>Golconda Fort</span>
+          </div>
+        </div>
+
+
+        <!-- RIGHT -->
+        <div id="rightList">
+          <div class="slot" data-key="hyderabad">
+            <div class="lock">🔒</div>
+            <div class="label">Hyderabad</div>
+          </div>
+
+          <div class="slot" data-key="bengaluru">
+            <div class="lock">🔒</div>
+            <div class="label">Bengaluru</div>
+          </div>
+
+          <div class="slot" data-key="delhi">
+            <div class="lock">🔒</div>
+            <div class="label">Delhi</div>
+          </div>
+
+          <div class="slot" data-key="visakhapatnam">
+            <div class="lock">🔒</div>
+            <div class="label">Visakhapatnam</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Feedback Popup -->
+  <div class="popup" id="feedbackPopup">
+    <div id="feedbackCircle" class="feedback-circle correct">✔</div>
+  </div>
+
+  <!-- ✅ Final Popup -->
+  <div class="popup" id="finalPopup">
+    <div class="final-popup-box">
+      <div class="final-left">
+        <img src="../assets/images/boy-trophy.png" alt="Winner">
+      </div>
+      <div class="final-right">
+        <h2>🎉 Congratulations!</h2>
+        <div class="final-score" id="finalScoreText"></div>
+        <div class="final-stars" id="finalStars"></div>
+        <button class="restart-btn" onclick="restartGame()">🔁 Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 HINT POPUP -->
+  <div class="popup" id="hintPopup" onclick="closeHintPopup(event)">
+    <div class="popup-box hint-box">
+      <h3>🧠 How to Play</h3>
+      <p>
+        👉 Drag the puzzle from the left<br>
+        👉 Drop it on the correct place name<br>
+        👉 Correct match unlocks the lock 🔓<br>
+        👉 Match all to win 🎉
+      </p>
+    </div>
+  </div>
+
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+  <audio id="wrongSound"
+    src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+
+  <script src="../assets/js/matching.js"></script>
+
+</body>
+
+</html>

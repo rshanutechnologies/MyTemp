@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology Match Master</title>
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="../assets/CSS/matching.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="home" onclick="location.href='../index.html'">🏠 Home</div>
+        <div class="header">
+            <h1 class="title">Matching</h1>
+            <p class="sub-title">Drop the correct option in drop zone</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="board">
+            <div class="tokens" id="tokens">
+                <div class="token t1" draggable="true" data-match="a"><span>🦆</span> Egg laying mammals</div>
+                <div class="token t2" draggable="true" data-match="b"><span>🐟</span> Frogs and fishes</div>
+                <div class="token t3" draggable="true" data-match="c"><span>🌡️</span> Incubation</div>
+                <div class="token t4" draggable="true" data-match="d"><span>⚪</span> Egg white</div>
+                <div class="token t5" draggable="true" data-match="e"><span>🐚</span> Egg shell</div>
+            </div>
+
+           <div class="slots">
+
+    <div class="slot" data-match="c">
+        <div class="slot-left">
+            <img src="../assets/images/Warmth.png" class="slot-img">
+            <span>Process that provides warmth</span>
+        </div>
+        <div class="drop-zone">Drop here</div>
+    </div>
+
+    <div class="slot" data-match="a">
+        <div class="slot-left">
+            <img src="../assets/images/Duck.png" class="slot-img">
+            <span>Duck-billed platypus and echidna</span>
+        </div>
+        <div class="drop-zone">Drop here</div>
+    </div>
+
+    <div class="slot" data-match="d">
+        <div class="slot-left">
+            <img src="../assets/images/Eggak.png" class="slot-img">
+            <span>Albumen</span>
+        </div>
+        <div class="drop-zone">Drop here</div>
+    </div>
+
+    <div class="slot" data-match="e">
+        <div class="slot-left">
+            <img src="../assets/images/Calsium.png" class="slot-img">
+            <span>Calcium carbonate</span>
+        </div>
+        <div class="drop-zone">Drop here</div>
+    </div>
+
+    <div class="slot" data-match="b">
+        <div class="slot-left">
+            <img src="../assets/images/LayEggs.png" class="slot-img">
+            <span>Lay adhesive eggs</span>
+        </div>
+        <div class="drop-zone">Drop here</div>
+    </div>
+
+</div>
+
+
+    <!-- FINAL POPUP -->
+    <div id="finalPopup">
+        <div class=" finalpopup-box">
+            <h2 class="final-heading">🎉 Congratulations!</h2>
+            <p id="finalScore"></p>
+            <div id="stars"></div><br> <button onclick="location.reload()" class="playAgain-btn"> Play Again </button>
+        </div>
+    </div>
+ <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+    <script src="../assets/JavaScript/matching.js"></script>
+</body>
+
+</html>

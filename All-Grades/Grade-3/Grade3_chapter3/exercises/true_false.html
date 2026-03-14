@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True / False – Flower Feedback</title>
+
+     <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="../assets/CSS/true-false.css">
+</head>
+
+<body>
+
+    <div class="screen">
+        <div class="board">
+
+            <!-- TRAIN PROGRESS BAR -->
+            <div class="train-area">
+               
+            </div>
+
+            <div class="text" id="questionText"></div>
+            <div class="question-image">
+    <img id="questionImage" src="" alt="Question Image">
+</div>
+
+
+            <div class="actions ribbons">
+                <button class="ribbon fact" id="trueBtn" onclick="answer(true)">
+                    <span class="icon">✔</span>
+                    <span class="label">TRUE</span>
+                </button>
+
+                <button class="ribbon myth" id="falseBtn" onclick="answer(false)">
+                    <span class="icon">✖</span>
+                    <span class="label">FALSE</span>
+                </button>
+            </div>
+
+
+            <!-- FLOWERS -->
+            <div class="flowers">
+                <div class="flower" id="correctFlower" data-open="" data-closed=""></div>
+                <div class="flower" id="wrongFlower" data-open="" data-closed=""></div>
+            </div>
+
+            <div class="nav fancy-nav">
+
+                <!-- PREV -->
+                <button class="nav-btn prev-btn" id="prevBtn" onclick="prev()">
+                    <span class="circle">❮❮</span>
+                    <span class="label">PREV</span>
+                </button>
+
+                <!-- NEXT -->
+                <button class="nav-btn next-btn" id="nextBtn" onclick="next()">
+                    <span class="label">NEXT</span>
+                    <span class="circle" id="nextArrow">❯❯</span>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="quizeComplete" id="quiz-complete">
+            <h3>🎉 Greate job! Quiz completed</h3>
+    </div> -->
+
+    <!-- CORRECT / WRONG POPUP -->
+<div id="answerPopup" class="popup">
+  <div class="popup-content">
+    <div class="popup-icon" id="popupIcon"></div>
+    <h3 id="popupTitle"></h3>
+    <p id="popupMsg"></p>
+  </div>
+</div>
+
+    <!-- FINAL POPUP -->
+    <div id="finalPopup""> <div class=" finalpopup-box">
+        <h2 class="final-heading">🎉 Congratulations!</h2>
+        <p id="finalScore"></p>
+        <div id="stars"></div><br> <button onclick="location.reload()" class="playAgain-btn"> Play Again </button>
+    </div>
+    </div>
+
+    <script src="../assets/JavaScript/true_false.js"></script>
+
+</body>
+
+</html>

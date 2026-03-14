@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Matching Quiz with Popup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+ <link rel="stylesheet" href="../assets/css/matching.css">
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="title">🧩 Match the Following</div>
+      <div class="score" id="scoreBox">Score: 0</div>
+    </div>
+
+    <div class="board">
+      <!-- 🔹 HINT BUTTON (ABSOLUTE CENTER) -->
+      <button class="hint-btn-abs" onclick="openHint()">❓ How to Play</button>
+
+      <div class="col">
+        <div class="col-title">Questions</div>
+        <div class="stack" id="questions"></div>
+      </div>
+
+      <div class="col">
+        <div class="col-title">Answers</div>
+        <div class="answers-bay stack" id="answers"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ POPUP -->
+  <div class="popup" id="popup">
+    <div class="popup-box">
+      <div id="popupMedia"></div>
+      <div id="popupText" class="popup-msg"></div>
+    </div>
+  </div>
+
+  <!-- ✅ FINAL POPUP -->
+  <div class="popup" id="finalPopup">
+    <div class="final-box">
+      <!-- ✅ keep same as your projects (assests) -->
+      <img class="winner-img" id="winnerImg" src="../assets/images/boy-trophy.png" alt="Winner">
+      <h2 class="final-title">🎉 Congratulations!</h2>
+      <p class="final-score" id="finalScore"></p>
+      <div class="final-stars" id="finalStars"></div>
+      <button class="restart-btn" onclick="restartQuiz()">🔄 Play Again</button>
+    </div>
+  </div>
+
+  <!-- 🔹 HINT POPUP -->
+  <div class="popup" id="hintPopup">
+    <div class="popup-box" style="width:320px;">
+      <h3 style="margin-bottom:12px;">🧠 How to Play</h3>
+      <p style="font-size:16px; line-height:1.5;">
+        👉 Drag answers from right side<br>
+        👉 Drop near correct question<br>
+        👉 Each correct match gives 1 point ⭐<br>
+        👉 Match all to win 🎉
+      </p>
+      <br>
+      <button class="restart-btn" onclick="closeHint()">Got it</button>
+    </div>
+  </div>
+<audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <script src="../assets/js/matching.js"></script>
+</body>
+
+</html>

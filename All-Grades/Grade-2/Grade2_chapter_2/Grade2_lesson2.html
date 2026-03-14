@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ferris Wheel Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Livvic', sans-serif;
+    }
+
+    html,
+    body {
+      height: 100%;
+      min-height: 100vh;
+    }
+
+    body {
+      overflow-x: hidden;
+      background-image: url("assets/images/BG03.png");
+      background-position: center center;
+      background-size: cover;
+    }
+
+    /* ✅ APP LAYOUT */
+    .app {
+      height: 100%;
+      display: flex;
+      background: rgba(255, 255, 255, 0.705);
+    }
+
+    /* ✅ LEFT SIDE NAV */
+    .left-nav {
+      width: 360px;
+      min-width: 360px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 18px 12px;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      padding: 10px 10px 18px;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 800;
+      color: #0284c7;
+    }
+
+    .header p {
+      font-size: 16px;
+      color: #475569;
+      margin-top: 6px;
+    }
+
+    /* ✅ FAIR NAV */
+    .fair {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* ✅ WHEEL */
+    .wheel {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 10px solid #60a5fa;
+      position: relative;
+      animation: spin 18s linear infinite;
+    }
+
+    /* @keyframes spin{
+  from{ transform:rotate(0deg); }
+  to{ transform:rotate(360deg); }
+}  */
+
+    /* CENTER */
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 38px;
+      height: 38px;
+      background: #0284c7;
+      border-radius: 50%;
+      z-index: 3;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, .2);
+    }
+
+    /* CABIN */
+    .cabin {
+      position: absolute;
+      width: 120px;
+      height: 86px;
+      background: var(--bg);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .25);
+      cursor: pointer;
+      transition: .25s ease;
+
+      user-select: none;
+    }
+
+    .cabin:hover {
+      transform: scale(1.15);
+    }
+
+    /* KEEP CABINS UPRIGHT */
+    /* .wheel .cabin{
+  animation:counter-spin 18s linear infinite;
+} */
+
+    @keyframes counter-spin {
+      from {
+        transform: rotate(360deg);
+      }
+
+      to {
+        transform: rotate(0deg);
+      }
+    }
+
+    /* COLORS */
+    .c1 {
+      --bg: #fde68a;
+    }
+
+    .c2 {
+      --bg: #bbf7d0;
+    }
+
+    .c3 {
+      --bg: #bfdbfe;
+    }
+
+    .c4 {
+      --bg: #fbcfe8;
+    }
+
+    .c5 {
+      --bg: #ddd6fe;
+    }
+
+    /* POSITIONS */
+    .p1 {
+      top: 15px;
+      left: 160px;
+    }
+
+    .p2 {
+      top: 160px;
+      right: -30px;
+    }
+
+    .p3 {
+      top: 165px;
+      bottom: 0px;
+      left: 0px;
+    }
+
+    /* .p4{ top:80px; left:-30px; } */
+    .p5 {
+      top: 10px;
+      left: 0px;
+    }
+
+    .cabin.active {
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, .95), 0 25px 50px rgba(0, 0, 0, .35);
+    }
+
+    /* ✅ RIGHT SIDE QUIZ */
+    .right-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      /* ⭐ IMPORTANT FLEX FIX */
+    }
+
+    /* top bar */
+    .quiz-topbar {
+      height: 60px;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      background: linear-gradient(90deg, #ede9fe, #cffafe);
+    }
+
+    .quiz-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: #0f172a;
+    }
+
+    .quiz-badge {
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      background: rgba(255, 255, 255, .75);
+      color: #0f172a;
+    }
+
+    /* iframe full */
+    /* #quizFrame{
+  width:100%;
+  height:calc(100% - 60px);
+  border:none;
+} */
+    #quizFrame {
+      width: 100%;
+      flex: 1;
+      border: none;
+      display: block;
+    }
+
+    /* ✅ MOBILE */
+    @media(max-width:900px) {
+      body {
+        overflow: auto;
+      }
+
+      .app {
+        flex-direction: column;
+      }
+
+      .left-nav {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, .08);
+      }
+
+      .wheel {
+        width: 280px;
+        height: 280px;
+      }
+
+      .cabin {
+        width: 90px;
+        height: 62px;
+        font-size: 13px;
+      }
+
+      .right-main {
+        height: 75vh;
+      }
+    }
+
+    /* ================================
+   TOGGLE BUTTON
+================================ */
+    .menu-toggle {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 1001;
+      border: none;
+      background: #0284c7;
+      color: #fff;
+      font-size: 24px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
+    }
+
+    /* overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .4);
+      opacity: 0;
+      pointer-events: none;
+      transition: .3s;
+      z-index: 999;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* =================================
+   TABLET + MOBILE
+================================= */
+    @media(max-width:1024px) {
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .left-nav {
+        position: fixed;
+        left: -1000px;
+        top: 0;
+        height: 100%;
+        background: white;
+        z-index: 1000;
+        transition: .35s ease;
+        box-shadow: 5px 0 25px rgba(0, 0, 0, .2);
+
+      }
+
+      .left-nav.open {
+        left: 0;
+      }
+
+      .app {
+        flex-direction: column;
+      }
+
+      .right-main {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+    }
+
+    /* ===============================
+   SMALL MOBILE
+=============================== */
+    @media(max-width:600px) {
+      .app {
+        padding-top: 50px;
+        z-index: 9999;
+      }
+
+      .wheel {
+        width: 230px;
+        height: 230px;
+      }
+
+      .cabin {
+        width: 80px;
+        height: 55px;
+        font-size: 12px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ✅ MOBILE TOGGLE BUTTON -->
+  <button class="menu-toggle" id="menuToggle">
+    ☰
+  </button>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="app">
+
+    <!-- ✅ LEFT SIDE NAV -->
+    <div class="left-nav">
+
+      <div class="header">
+        <h1>🎡 Ferris Wheel Quiz</h1>
+        <p>Hop into a cabin and play!</p>
+      </div>
+
+      <div class="fair">
+        <div class="wheel">
+
+          <div class="center"></div>
+
+          <!-- ✅ CABINS (Add href quiz links) -->
+          <div class="cabin c1 p1" data-title="🎯 Choose Correct Answer" data-href="./exercises/MCQ.html">
+            🎯<br>Choose<br>Correct
+          </div>
+
+          <div class="cabin c4 p2" data-title="🧠 Fill in the Blanks" data-href="./exercises/FITB.html">
+            🧠<br>Fill in<br>Blanks
+          </div>
+
+          <div class="cabin c2 p3" data-title="👍 True / False Quiz" data-href="./exercises/true_false.html">
+            👍<br>True /<br>False
+          </div>
+
+          <div class="cabin c3 p4" data-title="🧩 Matching Quiz" data-href="./exercises/matching.html">
+            🧩<br>Matching<br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ RIGHT SIDE QUIZ -->
+    <div class="right-main">
+      <!-- <div class="quiz-topbar">
+      <div class="quiz-title" id="quizTitle">🎯 Choose Correct Answer</div>
+      <div class="quiz-badge" id="quizStatus">Ready ✅</div>
+    </div> -->
+
+      <!-- ✅ Quiz loads here -->
+      <iframe id="quizFrame" src="./exercises/MCQ.html"></iframe>
+    </div>
+
+  </div>
+
+  <script>
+    const cabins = document.querySelectorAll(".cabin");
+    const quizFrame = document.getElementById("quizFrame");
+
+    function selectCabin(cabin) {
+      cabins.forEach(c => c.classList.remove("active"));
+      cabin.classList.add("active");
+
+      const href = cabin.getAttribute("data-href");
+      quizFrame.src = href;
+    }
+
+    cabins.forEach(cabin => {
+      cabin.addEventListener("click", () => selectCabin(cabin));
+    });
+
+    window.addEventListener("load", () => {
+      selectCabin(cabins[0]);
+    });
+
+
+
+    const toggleBtn = document.getElementById("menuToggle");
+    const leftNav = document.querySelector(".left-nav");
+    const overlay = document.getElementById("overlay");
+
+    toggleBtn.addEventListener("click", () => {
+      leftNav.classList.toggle("open");
+      overlay.classList.toggle("show");
+    });
+
+    overlay.addEventListener("click", () => {
+      leftNav.classList.remove("open");
+      overlay.classList.remove("show");
+    });
+
+    /* close menu after selecting cabin (mobile UX) */
+    cabins.forEach(cabin => {
+      cabin.addEventListener("click", () => {
+        if (window.innerWidth <= 1024) {
+          leftNav.classList.remove("open");
+          overlay.classList.remove("show");
+        }
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>

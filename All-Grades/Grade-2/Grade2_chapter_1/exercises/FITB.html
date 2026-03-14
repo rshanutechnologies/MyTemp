@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fill the blanks</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/FITB.css">
+</head>
+
+<body>
+
+    <div class="main">
+
+        <!-- 1️⃣ HOME -->
+        <!-- <div class="home-btn" onclick="location.href='../index.html'">
+            <span class="home-icon">🏠</span>
+           
+            <span>Home</span>
+        </div> -->
+
+        <!-- 2️⃣ HEADING -->
+        <!-- <div class="heading">Plant Habitat Adventure</div> -->
+
+        <!-- 3️⃣ CARD -->
+        <div class="card">
+            <img id="questionImg" class="question-img" />
+            <p id="questionText"></p>
+
+
+            <div class="input-row" id="inputRow">
+                <input id="answerInput" placeholder="Type here...">
+            </div>
+
+            <button class="check-btn" id="checkBtn">Check Answer</button>
+        </div>
+
+        <!-- 4️⃣ NAV -->
+        <div class="nav">
+            <button id="prevBtn">◀ Prev</button>
+            <button id="nextBtn">Next ▶</button>
+        </div>
+    </div>
+
+    <!-- Popup  -->
+    <div id="answer-popup" class="popup">
+        <div class="popup-content">
+            <div class="popup-icon" id="popup-icon"></div>
+            <h3 id="popup-title"></h3>
+            <p id="popup-message"></p>
+        </div>
+    </div>
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+    <script src="../assets/js/FITB.js"></script>
+
+</body>
+
+</html>

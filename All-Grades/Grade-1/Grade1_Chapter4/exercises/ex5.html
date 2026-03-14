@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>One Word Quiz – Plant Life</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --pink: #ff758c;
+      --blue: #4cc9f0;
+    }
+
+    /* Flexbox Viewport Logic - Prevents Scrolling */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: "Livvic", sans-serif;
+      background: url(./uploads/bg4.png) center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 800px;
+      height: 100vh;
+      padding: 15px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      /* Distributes content evenly to fit screen */
+      box-sizing: border-box;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-shrink: 0;
+    }
+
+    .read-btn {
+      background: white;
+      border: 2px solid var(--blue);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .q-number {
+      font-size: 16px;
+      color: #f3f5f5;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .q-text {
+      font-size: clamp(1.1rem, 3.5vw, 2.2rem);
+      color: #f1f5f5;
+      font-weight: 600;
+      margin: 5px 0;
+      line-height: 1.2;
+    }
+
+    .hint-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-shrink: 1;
+      min-height: 0;
+    }
+
+    .big-hint-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 30vh;
+      /* Scalable image height */
+      object-fit: contain;
+      filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.1));
+      border-radius: 20px;
+      background: #ffffff55;
+    }
+
+    .letter-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    .char-box {
+      width: clamp(35px, 10vw, 50px);
+      height: clamp(45px, 12vw, 60px);
+      border: 3px solid #2F4F4F;
+      border-radius: 10px;
+      font-size: clamp(20px, 5vw, 32px);
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+      background: white;
+      color: #2F4F4F;
+      outline: none;
+    }
+
+    .char-box.correct {
+      background: #d4f4d4;
+      border-color: #8ac926;
+      color: #2d6a4f;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      flex-shrink: 0;
+    }
+
+    .nav-btn {
+      flex: 1;
+      padding: 15px 0;
+      border-radius: 50px;
+      border: none;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      color: white;
+    }
+
+    #prevBtn {
+      background: var(--pink)
+    }
+
+    #nextBtn {
+      background: var(--blue)
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    #smiley {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(.4);
+      font-size: 150px;
+      opacity: 0;
+      transition: .4s;
+      pointer-events: none;
+      z-index: 2000;
+    }
+
+    #smiley.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* ... Animations kept same as original ... */
+    .butterfly {
+      position: absolute;
+      font-size: 40px;
+      pointer-events: none;
+      animation: fly-out 1.5s ease-out forwards;
+    }
+
+    @keyframes fly-out {
+      from {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 1;
+      }
+
+      to {
+        transform: translate(var(--tx), var(--ty)) rotate(var(--tr)) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    #confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 12px;
+      height: 15px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      animation: splash 1.4s ease-out forwards;
+    }
+
+    @keyframes splash {
+      from {
+        transform: translate(-50%, -50%) scale(.3);
+        opacity: 1;
+      }
+
+      to {
+        transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .final-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+    }
+
+    .final-card {
+      background: white;
+      padding: 30px;
+      border-radius: 40px;
+      text-align: center;
+      width: 85%;
+      max-width: 400px;
+    }
+
+    @media (max-height: 500px) {
+      .big-hint-img {
+        display: none;
+      }
+
+      /* Hide image on very small landscape screens to keep space */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+    <div class="header-top">
+      <div class="q-number" id="qNum"></div>
+      <button class="read-btn" onclick="readQuestion()">🔊</button>
+    </div>
+
+    <div class="q-text" id="qText"></div>
+
+    <div class="hint-container">
+      <img id="hintImg" class="big-hint-img" src="">
+    </div>
+
+    <div id="letterRow" class="letter-row"></div>
+
+    <div class="controls">
+      <button id="prevBtn" class="nav-btn">◀ PREV</button>
+      <button id="nextBtn" class="nav-btn" disabled>NEXT ▶</button>
+    </div>
+  </div>
+
+  <div id="smiley"></div>
+  <div id="confetti"></div>
+
+  <script>
+    const quiz = [
+      { q: "Small plants like coriander with thin, soft and green stems.", a: "HERBS", img: "../uploads/herbs.png" },
+      { q: "The part of the plant that grows underground.", a: "ROOT", img: "../uploads/roots.png" },
+      { q: "The part of the plant that grows above the ground.", a: "STEM", img: "../uploads/stem.png" },
+      { q: "They are small and bushy plants.", a: "SHRUBS", img: "../uploads/shrubs.png" },
+      { q: "They grow from flowers.", a: "FRUITS", img: "../uploads/fruits.png" }
+    ];
+
+    let i = 0, audioCtx = null;
+    const answered = Array(quiz.length).fill(false);
+
+    // INDIAN ENGLISH TTS
+    function readQuestion() {
+      const utterance = new SpeechSynthesisUtterance(quiz[i].q);
+      const voices = window.speechSynthesis.getVoices();
+      const indianVoice = voices.find(v => v.lang === 'en-IN' || v.name.includes('India'));
+      if (indianVoice) utterance.voice = indianVoice;
+      utterance.rate = 0.9;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function getAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+    }
+
+    function playWin() {
+      getAudio();
+      const t = audioCtx.currentTime, g = audioCtx.createGain();
+      g.gain.setValueAtTime(.1, t); g.gain.exponentialRampToValueAtTime(.001, t + .8);
+      g.connect(audioCtx.destination);
+      [523, 659, 783, 1046].forEach((f, x) => {
+        const o = audioCtx.createOscillator(); o.frequency.value = f; o.connect(g);
+        o.start(t + x * .08); o.stop(t + .8);
+      });
+    }
+
+    function playZzz() {
+      getAudio();
+      const t = audioCtx.currentTime, o = audioCtx.createOscillator(), g = audioCtx.createGain();
+      o.type = "sawtooth";
+      o.frequency.setValueAtTime(110, t); o.frequency.linearRampToValueAtTime(40, t + .5);
+      g.gain.setValueAtTime(.12, t); g.gain.linearRampToValueAtTime(.001, t + .5);
+      o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(t + .5);
+    }
+
+    function fx(type) {
+      const s = document.getElementById("smiley");
+      if (type === "win") {
+        s.textContent = "😊"; s.classList.add("show");
+        playWin(); confetti(); butterflies();
+        setTimeout(() => s.classList.remove("show"), 1500);
+      } else {
+        s.textContent = "😢"; s.classList.add("show");
+        playZzz();
+        setTimeout(() => s.classList.remove("show"), 800);
+      }
+    }
+
+    function confetti() {
+      const box = document.getElementById("confetti");
+      box.innerHTML = "";
+      for (let j = 0; j < 140; j++) {
+        const p = document.createElement("div");
+        p.className = "confetti-piece";
+        p.style.background = ["#ff595e", "#ffca3a", "#8ac926", "#1982c4", "#6a4c93"][Math.random() * 5 | 0];
+        p.style.setProperty("--tx", (Math.random() * 600 - 300) + "px");
+        p.style.setProperty("--ty", (Math.random() * 600 - 300) + "px");
+        box.appendChild(p);
+      }
+    }
+
+    function butterflies() {
+      const row = document.getElementById("letterRow");
+      for (let j = 0; j < 10; j++) {
+        const b = document.createElement("div");
+        b.className = "butterfly"; b.textContent = "🦋";
+        b.style.setProperty('--tx', (Math.random() * 500 - 250) + 'px');
+        b.style.setProperty('--ty', (Math.random() * -400 - 150) + 'px');
+        b.style.setProperty('--tr', (Math.random() * 720 - 360) + 'deg');
+        b.style.left = "50%"; b.style.top = "0";
+        row.appendChild(b);
+        setTimeout(() => b.remove(), 1600);
+      }
+    }
+
+    function render() {
+      const q = quiz[i];
+      qNum.textContent = `Question ${i + 1} of ${quiz.length}`;
+      qText.textContent = q.q;
+      hintImg.src = q.img;
+      nextBtn.disabled = true;
+      prevBtn.disabled = (i === 0);
+      letterRow.innerHTML = "";
+
+      for (let k = 0; k < q.a.length; k++) {
+        const input = document.createElement("input");
+        input.className = "char-box";
+        input.maxLength = 1;
+        input.setAttribute('autocomplete', 'off');
+        letterRow.appendChild(input);
+
+        input.oninput = function () {
+          if (this.value.length === 1) {
+            const n = this.nextElementSibling;
+            if (n) n.focus(); else checkAnswer();
+          }
+        };
+
+        input.onkeydown = e => {
+          if (e.key === "Backspace" && !input.value) {
+            const p = input.previousElementSibling;
+            if (p) p.focus();
+          }
+        };
+      }
+
+      if (answered[i]) {
+        document.querySelectorAll(".char-box").forEach((b, x) => {
+          b.value = q.a[x];
+          b.disabled = true;
+          b.classList.add("correct");
+        });
+        nextBtn.disabled = false;
+      }
+
+      letterRow.firstChild.focus();
+    }
+
+    function checkAnswer() {
+      const boxes = document.querySelectorAll(".char-box");
+      let typed = "";
+      boxes.forEach(b => typed += b.value.toUpperCase());
+      if (typed === quiz[i].a) {
+        answered[i] = true;
+        boxes.forEach(b => { b.classList.add("correct"); b.disabled = true; });
+        fx("win");
+        if (i === quiz.length - 1) setTimeout(finish, 1800);
+        else nextBtn.disabled = false;
+      } else {
+        fx("sad");
+        boxes.forEach(b => b.value = "");
+        boxes[0].focus();
+      }
+    }
+
+    nextBtn.onclick = () => { window.speechSynthesis.cancel(); i++; render(); }
+    prevBtn.onclick = () => { window.speechSynthesis.cancel(); if (i > 0) { i--; render(); } }
+
+    function finish() {
+      playWin();
+      const d = document.createElement("div");
+      d.className = "final-overlay";
+      d.innerHTML = `<div class="final-card"><h1>🏆 CHAMPION!</h1><p>Quiz Completed!</p><button class="nav-btn" style="background:var(--blue); width:100%;" onclick="location.reload()">PLAY AGAIN</button></div>`;
+      document.body.appendChild(d);
+      confetti();
+    }
+
+    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    render();
+  </script>
+</body>
+
+</html>

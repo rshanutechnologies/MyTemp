@@ -1,0 +1,425 @@
+\
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Fill in the Blanks</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* 1. PREVENT SCROLLING */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: "Livvic", sans-serif;
+      background: url(./uploads/bg4.png) no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 1100px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      box-sizing: border-box;
+      gap: 10px;
+    }
+
+    /* HEADER STYLE WITH READ BUTTON */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header h1 {
+      font-weight: 500;
+      color: #ff7a00;
+      font-size: clamp(20px, 4vw, 30px);
+      margin: 0;
+    }
+
+    .read-btn {
+      background: white;
+      border: 2px solid #ff7a00;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .read-btn:hover {
+      transform: scale(1.1);
+      background: #ff7a00;
+      color: white;
+    }
+
+    .q-number {
+      font-size: 16px;
+      color: #e4ebeb;
+      margin-bottom: 5px;
+    }
+
+    /* 2. INLINE STICKER LOGIC */
+    .question-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .hint-sticker {
+      width: clamp(50px, 8vw, 80px);
+      height: clamp(50px, 8vw, 80px);
+      background: white;
+      border-radius: 12px;
+      padding: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
+      border: 2px solid #fff;
+    }
+
+    .hint-sticker img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .q-text {
+      font-size: clamp(1.2rem, 3.5vw, 2.5rem);
+      color: #ffffff;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .blank {
+      display: inline-block;
+      min-width: 80px;
+      border-bottom: 3px dashed #ffffff;
+      font-weight: 700;
+      padding: 0 5px;
+    }
+
+    .blank.correct {
+      border-color: #2ed573;
+      color: #2ed573;
+    }
+
+    .blank.wrong {
+      border-color: #dc3545;
+      color: #dc3545;
+      animation: shake .4s;
+    }
+
+    /* 3. RESPONSIVE OPTIONS */
+    .letter-box {
+      background: #ffffffcc;
+      padding: 12px;
+      border-radius: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      max-width: 90%;
+    }
+
+    .part {
+      padding: 8px 16px;
+      font-size: clamp(16px, 2.5vw, 22px);
+      font-weight: 700;
+      background: white;
+      border-radius: 12px;
+      border: 3px solid white;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 4. NAVIGATION BELOW */
+    .nav-container {
+      display: flex;
+      gap: 20px;
+      min-height: 50px;
+      margin-top: 5px;
+    }
+
+    .nav-btn {
+      font-size: 18px;
+      font-weight: 700;
+      padding: 10px 25px;
+      border-radius: 40px;
+      border: 3px solid white;
+      cursor: pointer;
+      color: white;
+      display: none;
+    }
+
+    #nextBtn {
+      background: #4cc9f0;
+    }
+
+    #prevBtn {
+      background: #ff758c;
+    }
+
+    /* ANIMATIONS & OVERLAYS */
+    .smiley {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(.4);
+      font-size: clamp(80px, 15vw, 150px);
+      opacity: 0;
+      transition: .45s cubic-bezier(.17, .89, .32, 1.49);
+      pointer-events: none;
+      z-index: 2000;
+    }
+
+    .smiley.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1500;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      animation: splash 1s ease-out forwards;
+    }
+
+    @keyframes splash {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translate(var(--tx), var(--ty)) rotate(var(--rot));
+        opacity: 0;
+      }
+    }
+
+    @keyframes shake {
+      25% {
+        transform: translateX(-6px);
+      }
+
+      75% {
+        transform: translateX(6px);
+      }
+    }
+
+    .final-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 4000;
+    }
+
+    .final-card {
+      background: white;
+      padding: 30px;
+      border-radius: 30px;
+      text-align: center;
+      width: 80%;
+      max-width: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <div class="header">
+      <h1>Fill in the Blanks</h1>
+      <button class="read-btn" onclick="readQuestion()">🔊</button>
+    </div>
+    <div id="quiz" style="width: 100%;"></div>
+    <div class="nav-container">
+      <button id="prevBtn" class="nav-btn">◀ PREV</button>
+      <button id="nextBtn" class="nav-btn">NEXT ▶</button>
+    </div>
+    <div id="smiley" class="smiley"></div>
+    <div id="confetti" class="confetti"></div>
+  </div>
+
+  <script>
+    const quiz = [
+      { text: "Carrot is a _____.", answer: "root", parts: ["ot", "ru", "ro", "to"], hint: "../uploads/carrot.png" },
+      { text: "_____ has many seeds.", answer: "watermelon", parts: ["wa", "ter", "mel", "on", "lon"], hint: "../uploads/Watermelon.png" },
+      { text: "Wheat is a _____.", answer: "cereal", parts: ["ce", "re", "al", "la", "cer"], hint: "../uploads/cereal.png" },
+      { text: "Green grams are _____.", answer: "pulses", parts: ["ses", "pu", "pul", "les"], hint: "../uploads/gg.jpg" },
+      { text: "Pepper is a _____.", answer: "spice", parts: ["spi", "ce", "si", "pe"], hint: "../uploads/pepper.png" }
+    ];
+
+    const quizBox = document.getElementById("quiz");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const smiley = document.getElementById("smiley");
+    const confettiBox = document.getElementById("confetti");
+
+    let current = 0, built = "", audioCtx = null;
+    const answered = Array(quiz.length).fill(false);
+
+    function ensureAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      return audioCtx;
+    }
+
+    // INDIAN ENGLISH READING LOGIC
+    function readQuestion() {
+      const textToRead = quiz[current].text.replace("_____", "blank");
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      const voices = window.speechSynthesis.getVoices();
+      const indianVoice = voices.find(v => v.lang === 'en-IN' || v.name.includes('India'));
+      if (indianVoice) utterance.voice = indianVoice;
+      utterance.rate = 0.9;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+
+    function playZzzSound() {
+      const c = ensureAudio(), t = c.currentTime, o = c.createOscillator(), g = c.createGain();
+      o.type = "square"; o.frequency.value = 180;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.12, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + .35);
+      o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + .35);
+    }
+
+    function successSound() {
+      const c = ensureAudio(), t = c.currentTime, g = c.createGain();
+      g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(.18, t + .02); g.gain.exponentialRampToValueAtTime(.0001, t + .65);
+      g.connect(c.destination);
+      [660, 880, 1100, 1320].forEach((f, i) => { const o = c.createOscillator(); o.frequency.value = f; o.connect(g); o.start(t + i * .02); o.stop(t + .65); });
+    }
+
+    function confetti() {
+      confettiBox.innerHTML = "";
+      const colors = ["#f778a1", "#4cc9f0", "#ffaa00", "#2ed573", "#ff4fd8"];
+      for (let i = 0; i < 50; i++) {
+        const p = document.createElement("div");
+        p.className = "confetti-piece";
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 80 + Math.random() * 150;
+        p.style.setProperty('--tx', (Math.cos(angle) * dist) + 'px');
+        p.style.setProperty('--ty', (Math.sin(angle) * dist) + 'px');
+        p.style.setProperty('--rot', (Math.random() * 360) + 'deg');
+        p.style.background = colors[Math.random() * colors.length | 0];
+        confettiBox.appendChild(p);
+      }
+      setTimeout(() => confettiBox.innerHTML = "", 1200);
+    }
+
+    function showSmiley(e) {
+      smiley.textContent = e;
+      smiley.classList.add("show");
+      setTimeout(() => smiley.classList.remove("show"), 1200);
+    }
+
+    function render() {
+      built = "";
+      nextBtn.style.display = "none";
+      prevBtn.style.display = current > 0 ? "block" : "none";
+      const q = quiz[current];
+
+      quizBox.innerHTML = `
+ <div style="display:flex; flex-direction:column; align-items:center;">
+   <div class="q-number">Question ${current + 1} of ${quiz.length}</div>
+   <div class="question-row">
+     <div class="hint-sticker"><img src="${q.hint}" alt="Hint"></div>
+     <div class="q-text">${q.text.replace("_____", "<span class='blank' id='blank'></span>")}</div>
+   </div>
+   <div class="letter-box">${q.parts.map(p => `<div class="part">${p}</div>`).join("")}</div>
+ </div>
+ `;
+
+      const blank = document.getElementById("blank");
+
+      document.querySelectorAll(".part").forEach(part => {
+        part.onclick = () => {
+          ensureAudio();
+          built += part.textContent;
+          blank.textContent = built;
+          part.classList.add("used");
+          if (built.length >= q.answer.length) {
+            if (built === q.answer) {
+              blank.classList.add("correct");
+              answered[current] = true;
+              showSmiley("😄");
+              confetti();
+              successSound();
+              current === quiz.length - 1 ? setTimeout(finishQuiz, 1200) : nextBtn.style.display = "block";
+            } else {
+              blank.classList.add("wrong");
+              showSmiley("😭");
+              playZzzSound();
+              setTimeout(render, 700);
+            }
+          }
+        };
+      });
+
+      if (answered[current]) {
+        blank.textContent = q.answer;
+        blank.classList.add("correct");
+        document.querySelectorAll(".part").forEach(p => p.classList.add("used"));
+        nextBtn.style.display = "block";
+      }
+    }
+
+    nextBtn.onclick = () => { window.speechSynthesis.cancel(); current++; render(); };
+    prevBtn.onclick = () => { window.speechSynthesis.cancel(); if (current > 0) { current--; render(); } };
+
+    function finishQuiz() {
+      confetti();
+      successSound();
+      const d = document.createElement("div");
+      d.className = "final-overlay";
+      d.innerHTML = `<div class="final-card"><h1>🏆 GREAT!</h1><p>Quiz Finished!</p><button onclick="location.reload()" style="padding:10px 30px;border-radius:30px;background:#4cc9f0;border:none;color:white;cursor:pointer">AGAIN</button></div>`;
+      document.body.appendChild(d);
+    }
+
+    render();
+  </script>
+</body>
+
+</html>

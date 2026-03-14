@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>3D Rolling Dice Quiz 🎲</title>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1:#fde2e4; --bg2:#e2f0fb; --bg3:#e8f8e8;
+      --ink:#2f4f4f; --btn1:#a0c4ff; --btn2:#bdb2ff; --btn3:#ee66aa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Livvic', sans-serif;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top left, var(--bg1), transparent 55%),
+                  radial-gradient(circle at bottom right, var(--bg2), transparent 55%),
+                  radial-gradient(circle at center, var(--bg3), #ffffff 60%);
+    }
+
+    .main-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      max-width: 1200px;
+      padding: 2vh 20px;
+    }
+
+    .quiz-area {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1vh;
+    }
+
+    #qNumber {
+      font-size: clamp(14px, 2vh, 18px);
+      color: var(--ink);
+      font-weight: 900;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 0.5vh 3vh;
+      border-radius: 50px;
+    }
+
+    .qRow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+    }
+
+    #qText {
+      font-size: clamp(25pt, 3.5vh, 28pt);
+      color: var(--ink);
+      line-height: 1.2;
+      max-width: 80%;
+    }
+
+    .bird-btn {
+      background: #E0B93F;
+      border: none;
+      width: clamp(45px, 6vh, 60px);
+      height: clamp(45px, 6vh, 60px);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #b39432;
+    }
+
+    /* Scene and Dice - Scalable */
+    .scene {
+      width: clamp(200px, 25vh, 240px);
+      height: clamp(200px, 25vh, 240px);
+      perspective: 1000px;
+      margin: 2vh 0;
+    }
+
+    .dice {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 2s cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+
+    .dice-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.98);
+      border-radius: 20px;
+      border: 4px solid #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    /* Transform logic based on 100% of container size */
+    .face-front { transform: rotateY(0deg) translateZ(clamp(75px, 12.5vh, 120px)); }
+    .face-back { transform: rotateY(180deg) translateZ(clamp(75px, 12.5vh, 120px)); }
+    .face-right { transform: rotateY(90deg) translateZ(clamp(75px, 12.5vh, 120px)); }
+    .face-left { transform: rotateY(-90deg) translateZ(clamp(75px, 12.5vh, 120px)); }
+    .face-top { transform: rotateX(90deg) translateZ(clamp(75px, 12.5vh, 120px)); }
+    .face-bottom { transform: rotateX(-90deg) translateZ(clamp(75px, 12.5vh, 120px)); }
+
+    .dice-face img { width: 80%; height: 80%; object-fit: contain; }
+    .dice-face span { font-weight: 900; font-size: clamp(14px, 2vh, 22px); color: var(--ink); }
+
+    .btn-container {
+      display: flex;
+      gap: 15px;
+      margin-top: 1vh;
+    }
+
+    .action-btn {
+      padding: clamp(10px, 2vh, 20px) clamp(20px, 4vw, 50px);
+      font-size: clamp(16px, 2.5vh, 24px);
+      font-weight: 900;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.1);
+    }
+
+    .nav-side-btn {
+      padding: 15px 25px;
+      border-radius: 15px;
+      border: 4px solid white;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    #rollBtn { background: var(--btn1); color: var(--ink); }
+    #checkBtn { background: var(--btn2); color: var(--ink); }
+    #prevBtn { background: #fff; color: var(--ink); }
+    #nextBtn { background: var(--btn3); color: white; }
+
+    #feedback {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);
+      font-size: 180px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 2000; pointer-events: none;
+    }
+    #feedback.show { transform: translate(-50%, -50%) scale(1); }
+
+    .overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none;
+      align-items: center; justify-content: center; z-index: 3000; backdrop-filter: blur(8px);
+    }
+    .completion-card { background: white; padding: 40px; border-radius: 40px; text-align: center; width: 90%; max-width: 500px; }
+
+    .confetti { position: fixed; top: -10px; width: 10px; height: 12px; animation: fall 1.5s linear forwards; z-index: 2500; }
+    @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+    @media (max-width: 700px) {
+      .main-container { flex-direction: column; justify-content: center; gap: 10px; }
+      .nav-side-btn { order: 3; padding: 10px 20px; font-size: 14px; margin: 5px; }
+      .quiz-area { order: 1; flex: none; height: auto; }
+      .scene { margin: 1vh 0; }
+      .qRow { margin-top: 5px; }
+      #qText { font-size: 18pt; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-container">
+    <button class="nav-side-btn" id="prevBtn">PREV</button>
+
+    <div class="quiz-area">
+      <div id="qNumber">QUESTION 1</div>
+      <div class="qRow">
+        <div id="qText">Loading...</div>
+        <button class="bird-btn" id="readBtn">
+          <svg viewBox="0 0 24 24" style="width:28px; fill:#2C3E50;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        </button>
+      </div>
+
+      <div class="scene">
+        <div class="dice" id="dice">
+          <div class="dice-face face-front"><span style="font-size:clamp(40px, 8vh, 80px);">🎲</span></div>
+          <div class="dice-face face-right" id="face-0"></div>
+          <div class="dice-face face-back" id="face-1"></div>
+          <div class="dice-face face-left" id="face-2"></div>
+          <div class="dice-face face-top" style="font-size:40px;">❓</div>
+          <div class="dice-face face-bottom" style="font-size:40px;">❓</div>
+        </div>
+      </div>
+
+      <div id="hint" style="font-size:clamp(14px, 2vh, 20px); font-weight:800; color:var(--ink); opacity:0.7;">Roll the dice 🎲</div>
+
+      <div class="btn-container">
+        <button class="action-btn" id="rollBtn">ROLL 🎲</button>
+        <button class="action-btn" id="checkBtn" disabled>CHECK ✅</button>
+      </div>
+    </div>
+
+    <button class="nav-side-btn" id="nextBtn" disabled>NEXT</button>
+  </div>
+
+  <div id="feedback"></div>
+
+  <div class="overlay" id="completionOverlay">
+    <div class="completion-card">
+      <h1 style="font-size:clamp(30px, 8vh, 50px); color:var(--ink); margin:0;">🏆 CHAMPION!</h1>
+      <p style="font-size:20px; color:#555; margin:15px 0;">You solved all the puzzles!</p>
+      <button class="action-btn" style="background:var(--btn1); box-shadow:none;" onclick="location.reload()">REPLAY 🔁</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      { q: "The part of the body that helps us to write and eat.", options: [{ name: "Legs", img: "../uploads/legs.png" }, { name: "Hands", img: "../uploads/hand.png" }, { name: "Teeth", img: "../uploads/teeth.png" }], correct: 1, solved: false },
+      { q: "We must wipe our body with this after we have a bath.", options: [{ name: "Soap", img: "../uploads/soap.png" }, { name: "Brush", img: "../uploads/brush.png" }, { name: "Towel", img: "../uploads/towel.png" }], correct: 2, solved: false },
+      { q: "The organ that helps us to see.", options: [{ name: "Eyes", img: "../uploads/eyes.png" }, { name: "Ears", img: "../uploads/ear.png" }, { name: "Nose", img: "../uploads/nose.png" }], correct: 0, solved: false }
+    ];
+
+    let currentIdx = 0, currentlyLanded = -1, rotationX = 0, rotationY = 0, audioCtx;
+    const dice = document.getElementById('dice'), rollBtn = document.getElementById('rollBtn'), checkBtn = document.getElementById('checkBtn');
+    const prevBtn = document.getElementById("prevBtn"), nextBtn = document.getElementById("nextBtn"), feedback = document.getElementById('feedback'), hint = document.getElementById('hint');
+
+    function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+    function playSound(freq, type, duration) {
+      initAudio(); const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+      osc.type = type; osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.1, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+      osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function loadQuestion(){
+      const q = questions[currentIdx];
+      document.getElementById("qNumber").textContent=`QUESTION ${currentIdx+1}`;
+      document.getElementById("qText").textContent=q.q;
+      q.options.forEach((opt,i)=>{ document.getElementById(`face-${i}`).innerHTML=`<img src="${opt.img}"><span>${opt.name}</span>`; });
+      dice.style.transform = `rotateX(0deg) rotateY(0deg)`;
+      rotationX = 0; rotationY = 0; currentlyLanded = -1;
+      rollBtn.disabled = q.solved; checkBtn.disabled = true;
+      nextBtn.disabled = !q.solved; prevBtn.disabled = (currentIdx === 0);
+      hint.textContent = q.solved ? "Great job! Move to NEXT." : "Roll the dice 🎲";
+    }
+
+    rollBtn.onclick = () => {
+      rollBtn.disabled = true;
+      let newLanding;
+      do { newLanding = Math.floor(Math.random() * 3); } while (newLanding === currentlyLanded);
+      currentlyLanded = newLanding;
+      const target = [{x:0,y:-90}, {x:0,y:-180}, {x:0,y:-270}][currentlyLanded];
+      rotationX += (Math.floor(Math.random()*2)+3)*360;
+      rotationY += (Math.floor(Math.random()*2)+3)*360;
+      dice.style.transform=`rotateX(${rotationX + target.x}deg) rotateY(${rotationY + target.y}deg)`;
+      setTimeout(()=>{
+        if(!questions[currentIdx].solved) {
+          rollBtn.disabled = false; checkBtn.disabled = false;
+          hint.textContent = "Check your answer ✅";
+        }
+      }, 2000);
+    };
+
+    checkBtn.onclick = () => {
+      const q = questions[currentIdx];
+      if(currentlyLanded === q.correct){
+        q.solved = true; feedback.textContent = "😄"; feedback.className = "show";
+        hint.textContent = "Correct! Well done. 🌟";
+        playSound(523, 'sine', 0.3); spawnConfetti();
+        rollBtn.disabled = true; checkBtn.disabled = true; nextBtn.disabled = false;
+        if(currentIdx === questions.length - 1) setTimeout(showFinalCard, 1500);
+      } else {
+        feedback.textContent = "😢"; feedback.className = "show";
+        hint.textContent = "Try rolling again! 🎲";
+        playSound(150, 'sawtooth', 0.4);
+      }
+      setTimeout(()=>feedback.className="", 1200);
+    };
+
+    function showFinalCard() {
+      document.getElementById("completionOverlay").style.display = "flex";
+      [523, 659, 783, 1046].forEach((n, i) => setTimeout(() => playSound(n, 'sine', 0.5), i * 150));
+      for(let i=0; i<3; i++) setTimeout(spawnConfetti, i*500);
+    }
+
+    nextBtn.onclick = () => { if(currentIdx < questions.length - 1) { currentIdx++; loadQuestion(); } };
+    prevBtn.onclick = () => { if(currentIdx > 0) { currentIdx--; loadQuestion(); } };
+    document.getElementById("readBtn").onclick = () => {
+      const u = new SpeechSynthesisUtterance(questions[currentIdx].q);
+      u.lang = "en-IN"; u.rate = 0.95; window.speechSynthesis.speak(u);
+    };
+
+    function spawnConfetti(){
+      for(let i=0;i<50;i++){
+        const c=document.createElement("div"); c.className="confetti";
+        c.style.left=Math.random()*100+"vw";
+        c.style.background=["#ffadad","#ffd6a5","#fdffb6","#caffbf","#9bf6ff","#ffc6ff"][Math.floor(Math.random()*6)];
+        c.style.animationDuration=(1+Math.random())+"s";
+        document.body.appendChild(c); setTimeout(()=>c.remove(),1500);
+      }
+    }
+    loadQuestion();
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fill in the Blanks - Swipe Chain</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/FITB.css">
+</head>
+
+<body>
+
+<div class="game-wrapper">
+
+  <!-- TOP -->
+  <div class="top-bar">
+    <h1 class="title-left"></h1>
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- IMAGE -->
+  <div class="character-section">
+    <img id="charImg" src="" alt="character">
+  </div>
+
+  <!-- QUESTION -->
+  <div class="question-text" id="questionText"></div>
+
+  <!-- ANSWER -->
+  <div class="answer-boxes" id="answerBoxes"></div>
+
+  <!-- controls -->
+  <div class="controls">
+     <button class="backspace" id="backBtn" disabled>⌫</button>
+         <button style="display:none;" class=""  id="backBtn" disabled></button>
+
+  </div>
+
+  <!-- ✅ letters wrap + canvas -->
+  <div class="letters-wrap" id="lettersWrap">
+    <canvas class="chain-canvas" style="display: none;" id="chainCanvas"></canvas>
+    <div class="letters" id="lettersBox"></div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-bar">
+    <button class="nav prev" id="prevBtn">⬅ Prev</button>
+    <button class="nav next" id="nextBtn" disabled>Next ➡</button>
+  </div>
+
+</div>
+
+<!-- ✅ Feedback Popup -->
+<div class="popup" id="feedbackPopup">
+  <div id="feedbackCircle" class="feedback-circle correct">✔</div>
+</div>
+
+<!-- ✅ fly tick -->
+<div class="fly-tick" id="flyTick">✔</div>
+
+<!-- ✅ Final Popup -->
+<div class="popup" id="finalPopup">
+  <div class="final-popup-box">
+    <div class="final-left">
+      <img src="../assets/images/boy-trophy.png" alt="Winner">
+    </div>
+    <div class="final-right">
+      <h2>🎉 Congratulations!</h2>
+      <div class="final-score" id="finalScoreText"></div>
+      <div class="final-stars" id="finalStars"></div>
+      <button class="restart-btn" id="restartBtn">🔁 Restart</button>
+    </div>
+  </div>
+</div>
+
+
+<audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+<script src="../assets/js/FITB.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+
+    *{
+      box-sizing:border-box;
+      font-family:"Livvic" !important;
+      
+    }
+
+   body{
+  margin:0;
+  min-height:100vh;
+   
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow: hidden;
+  margin-top: -10px;
+  
+}
+.progress{
+  font-size:18px;
+  color:#555;
+}
+
+.question{
+  font-size:30px;
+  color:#2f4f4f;
+  text-align:center;
+  max-width:700px;
+  margin-top: -90px;
+}
+
+.qimg{
+  width:200px;
+  display:block;
+}
+
+
+    .quiz-card{
+  width:980px;
+ height:480px;
+   
+  border-radius:18px;
+ 
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+ 
+}
+
+
+    .top-title{
+      font-size:28px;
+      background:#ffe2d5;
+      color:#444;
+      padding:8px 16px;
+      width:max-content;  
+      border-radius:20px;
+      margin-top: -20px;
+    }
+
+    .progress{
+      font-size:18px;
+      color:#555;
+      margin-bottom:10px;
+      margin-left: 80%;
+    }
+
+    .question{
+  min-height:230px;
+  font-size:30px;
+  color:#111111;
+  padding:0 40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;   /* add this */
+  line-height:1.3;
+  
+}
+
+    .tf-buttons{
+     
+      display:flex;
+      justify-content:center;
+      gap:60px;
+      margin-top: -50px;
+    }
+
+    .tf-buttons button{
+      font-size:28px;
+      padding:20px 50px;
+      border-radius:50px;
+      border:4px solid transparent;
+      cursor:pointer;
+      color:white;
+      transition:.15s;
+    }
+
+    .true{background:#4caf50;}
+    .false{background:#f44336;}
+
+    .disabled{
+      opacity:.45;
+      pointer-events:none;
+    }
+.tf-buttons button.correct{
+  border:4px solid #22c55e;
+  pointer-events:none;
+}
+
+    .correct{
+      border:4px solid #f59e0b !important;
+      pointer-events:none;
+    }
+
+    .nav{
+     
+      display:flex;
+      justify-content:center;
+      gap:400px;
+    }
+
+    .nav button{
+      width:160px;
+      padding:12px;
+      border:none;
+      border-radius:30px;
+      font-size:20px;
+      cursor:pointer;
+    }
+
+    .prev{background:#f29b1d;color:white;}
+    .next{background:#8fb1e8;color:white;}
+
+    .nav button:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+    }
+
+    .splash{
+      position:fixed;
+      top:50%;
+      left:50%;
+      width:20px;
+      height:20px;
+      border-radius:50%;
+      transform:translate(-50%,-50%);
+      animation:splash .8s ease-out forwards;
+      pointer-events:none;
+      z-index:10;
+    }
+
+    .green{background:#4caf50;}
+    .red{background:#f44336;}
+
+    @keyframes splash{
+      from{transform:translate(-50%,-50%) scale(1);opacity:1;}
+      to{transform:translate(-50%,-50%) scale(80);opacity:0;}
+    }
+
+    #finalPopup{
+      position:fixed;
+      inset:0;
+    
+      display:none;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .finalpopup-box{
+      background:white;
+      padding:25px 35px;
+      border-radius:18px;
+      text-align:center;
+    }
+
+    #stars{font-size:40px;margin-top:10px;}
+
+    .playAgain-btn{
+      background:#1fb36b;
+      color:white;
+      border:none;
+      padding:12px 28px;
+      border-radius:20px;
+      font-size:16px;
+      cursor:pointer;
+      margin-top:12px;
+    }
+  .popup {
+  position: fixed;
+  inset: 0;
+ 
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(240,255,240,.98));
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: popIn .4s cubic-bezier(.68,-0.55,.265,1.55);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+
+.popup-icon {
+  font-size: 5.5em;
+  margin-bottom: 10px;
+}
+
+.popup-content h3 { font-size: 2em; }
+.popup-content p { font-size: 1.3em; }
+
+.playAgain-btn{
+  background:orange;
+  color:white;
+  border:none;
+  padding:12px 26px;
+  border-radius:999px;
+  font-size:16px;
+  margin-top:12px;
+  cursor:pointer;
+}
+
+@keyframes popIn{
+  0%{ transform:scale(.5); opacity:0; }
+  100%{ transform:scale(1); opacity:1; }
+}
+.qimg{
+  width:280px;
+  height: 250px;
+  display:block;
+ 
+}
+/* ===== LARGE MONITOR ===== */
+@media (min-width:1400px){
+  .quiz-card{
+    width:1100px;
+  }
+}
+
+
+/* ===== MOBILE ===== */
+@media (max-width:600px){
+
+  body{
+    padding:0;
+  }
+
+  .quiz-card{
+    width:100%;
+    border-radius:0;
+    padding:16px;
+  }
+
+  .top-title{
+    font-size:22px;
+  }
+
+  .progress{
+    margin-left:0;
+    text-align:center;
+  }
+
+  .question{
+    font-size:30px;
+    margin-top:0;
+  }
+
+  .qimg{
+    width:160px;
+  }
+
+  .tf-buttons{
+    flex-direction:column;
+    gap:28px;
+    width:100%;
+    margin-top: 20px;
+  }
+
+  .tf-buttons button{
+    width:100%;
+    font-size:22px;
+    padding:16px;
+  }
+
+  .nav{
+    flex-direction:column;
+    gap:12px;
+    width:100%;
+    margin-top: 20px;
+  }
+
+  .nav button{
+    width:100%;
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Fill in the Blank – Tiles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/FITB.css">
+  
+</head>
+
+<body>
+
+  <div class="quiz-container">
+
+    <!-- <div class="quiz-header">
+      <h2>⭐ Fill in the Blank</h2>
+      <div class="score" id="scoreBox">Score: 0</div>
+    </div> -->
+    <div class="topbar" style="font-weight: 400; font-family: 'Livvic';">
+      <div class="title">⭐ Fill in the Blank</div>
+      <div class="score" id="scoreBox">Score: 0</div>
+    </div>
+
+    <div class="question-area">
+      <img id="qImage" src="">
+      <div class="question-text" id="qText"></div>
+    </div>
+
+    <div class="options-area">
+      <div id="options"></div>
+      <button class="submit-btn" id="submitBtn" disabled>✔ Submit</button>
+    </div>
+
+    <div class="footer">
+      <button class="prev" id="prevBtn">← Prev</button>
+      <button class="next" id="nextBtn" disabled>Next →</button>
+    </div>
+
+  </div>
+
+  <!-- FEEDBACK POPUP -->
+  <div class="popup" id="feedbackPopup">
+    <div class="animated-popup">
+      <div id="popupMedia"></div>
+      <h2 id="feedbackText"></h2>
+    </div>
+  </div>
+
+  <!-- FINAL POPUP -->
+  <div class="popup" id="finalPopup">
+    <div class="final-box">
+      <img class="winner-img" src="../assets/images/boy-trophy.png" alt="Winner">
+      <h2 class="final-title">🎉 Congratulations!</h2>
+      <p class="final-score" id="finalScore"></p>
+      <div class="final-stars" id="stars"></div>
+      <button class="restart-btn" onclick="restartQuiz()">🔄 Play Again</button>
+    </div>
+  </div>
+
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <script src="../assets/js/FITB.js"></script>
+
+</body>
+
+</html>

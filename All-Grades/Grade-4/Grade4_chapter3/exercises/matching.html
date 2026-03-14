@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knowledge Flow Match</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="../assets/CSS/matching.css">
+</head>
+
+<body>
+
+    <div class="game">
+        
+        <!-- <div class="progress" id="progress"></d        iv> -->
+
+        <svg id="lines" class="lines-svg"></svg>
+
+        <!-- LEFT -->
+        <div class="section">
+            <h2>🐾 Concepts</h2>
+
+            <div class="concept" data-answer="Camel">
+                <span class="dot"></span>
+                <span>A desert animal</span>
+            </div>
+
+            <div class="concept" data-answer="Dolphin">
+                <span class="dot"></span>
+                <span>An aquatic animal</span>
+            </div>
+
+            <div class="concept" data-answer="Newt">
+                <span class="dot"></span>
+                <span>An amphibian</span>
+            </div>
+
+            <div class="concept" data-answer="Vulture">
+                <span class="dot"></span>
+                <span>An aerial animal</span>
+            </div>
+
+            <div class="concept" data-answer="Monkey">
+                <span class="dot"></span>
+                <span>An arboreal animal</span>
+            </div>
+        </div>
+
+        <!-- CENTER -->
+        <!-- <div class="section">
+            <h2>🔗 Knowledge Flow</h2>
+            <div class="flow">
+                <div class="flow-item"><span>Waiting...</span></div>
+                <div class="flow-item"><span>Waiting...</span></div>
+                <div class="flow-item"><span>Waiting...</span></div>
+                <div class="flow-item"><span>Waiting...</span></div>
+                <div class="flow-item"><span>Waiting...</span></div>
+            </div>
+        </div> -->
+
+        <!-- RIGHT -->
+        <div class="section">
+            <h2>🪶 Options</h2>
+
+            <div class="example" data-value="Vulture">
+                <span class="icon">🦅</span>
+                <span class="text">Vulture</span>
+            </div>
+
+            <div class="example" data-value="Camel">
+                <span class="icon">🐪</span>
+                <span class="text">Camel</span>
+            </div>
+
+            <div class="example" data-value="Dolphin">
+                <span class="icon">🐬</span>
+                <span class="text">Dolphin</span>
+            </div>
+
+            <div class="example" data-value="Monkey">
+                <span class="icon">🐒</span>
+                <span class="text">Monkey</span>
+            </div>
+
+            <div class="example" data-value="Newt">
+                <span class="icon">🦎</span>
+                <span class="text">Newt</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FINAL POPUP -->
+    <div id="finalPopup""> <div class=" finalpopup-box">
+        <h2 class="final-heading">🎉 Congratulations!</h2>
+        <p id="finalScore"></p>
+        <div id="stars"></div><br> <button onclick="location.reload()" class="playAgain-btn"> Play Again </button>
+    </div>
+    </div>
+
+    <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+    <script src="../assets/JavaScript/matching.js"></script>
+</body>
+
+</html>

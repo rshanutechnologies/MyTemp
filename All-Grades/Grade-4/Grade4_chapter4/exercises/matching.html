@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Kids Matching Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/CSS/matching.css">
+</head>
+
+<body>
+
+  <div class="quiz-container">
+
+    <div class="title">Digestive System Matching</div>
+
+    <div class="match-grid" id="matchGrid">
+      <svg id="lines"></svg>
+
+      <div class="column" id="left">
+        <div class="card" data-match="a">
+          <img src="../assets/images/ml-1.png" class="card-img">
+          <span>Mouth</span>
+        </div>
+
+        <div class="card" data-match="b">
+          <img src="../assets/images/ml-2.png" class="card-img">
+          <span>Food Pipe</span>
+        </div>
+
+        <div class="card" data-match="c">
+          <img src="../assets/images/ml-3.png" class="card-img">
+          <span>Stomach</span>
+        </div>
+
+        <div class="card" data-match="d">
+          <img src="../assets/images/ml-4.png" class="card-img">
+          <span>Small Intestine</span>
+        </div>
+
+        <div class="card" data-match="e">
+          <img src="../assets/images/ml-5.png" class="card-img">
+          <span>Large Intestine</span>
+        </div>
+      </div>
+
+
+      <div class="column" id="right">
+
+         <div class="card" data-value="d">
+          <img src="../assets/images/mr-2.png" class="card-img">
+          <span>It absorbs nutrients from the digested food.</span>
+        </div>
+
+        <div class="card" data-value="a">
+          <img src="../assets/images/mr-3.1.png" class="card-img">
+          <span>It produces saliva.</span>
+        </div>
+
+         <div class="card" data-value="e">
+          <img src="../assets/images/mr-1.png" class="card-img">
+          <span>Most of the water is absorbed from the undigested food here.</span>
+        </div>
+
+        <div class="card" data-value="b">
+          <img src="../assets/images/mr-4.png" class="card-img">
+          <span>It passes the food from the mouth to the stomach.</span>
+        </div>
+
+        <div class="card" data-value="c">
+          <img src="../assets/images/mr-5.png" class="card-img">
+          <span>Food is churned and made into a paste here.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-box" id="popupBox"></div>
+  </div>
+
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <script src="../assets/JavaScript/matching.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Body Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:"Livvic", sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  background: radial-gradient(circle at top left, #ffe8c7, #f0f7ff);
+  overflow-y: hidden;
+  
+}
+
+/* ================= LAYOUT ================= */
+.wrapper{
+  display:flex;
+  width:100%;
+  min-height:100vh;
+}
+
+/* ================= LEFT PANEL ================= */
+.nav-area{
+  width:360px;
+  padding:40px 25px;
+  display:flex;
+  flex-direction:column;
+}
+
+.nav-btn{
+  width:80%;
+  height:70px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:0 22px;
+  margin-bottom:18px;
+  border-radius:20px;
+  font-size:18px;
+  font-weight:600;
+  color:#2f4f4f;
+  cursor:pointer;
+  background:#f1f7ff;
+  box-shadow:0 6px 15px rgba(0,0,0,.1);
+  transition:.3s ease;
+}
+
+.nav-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 24px rgba(0,0,0,.25);
+}
+
+.nav-btn.active{
+  color:#fff;
+  outline:3px solid rgba(0,0,0,.15);
+}
+
+.choose.active{ background:#ff4d6d; }
+.fill.active{ background:#219ebc; }
+.truefalse.active{ background:#06d6a0; }
+.match.active{ background:#ffb703; }
+.oneword.active{ background:#f72585; }
+.label.active{ background:#7209b7; }
+
+/* ================= QUIZ FRAME ================= */
+.quiz-frame{
+  flex:1;
+  display:flex;
+  position:relative;
+}
+
+iframe{
+  flex:1;
+  border:none;
+}
+
+/* ================= MOBILE TOGGLE ================= */
+.mobile-toggle{
+  display:none;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media(max-width:768px){
+
+  body{
+    flex-direction:column;
+  }
+
+  .nav-area{
+    width:100%;
+    padding:25px 20px;
+  }
+
+  .quiz-frame{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#fff;
+    z-index:999;
+  }
+
+  .quiz-frame.active{
+    display:flex;
+  }
+
+  .mobile-toggle{
+    display:flex;
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:#00cfff;
+    color:#fff;
+    font-size:22px;
+    padding:10px 14px;
+    border-radius:12px;
+    cursor:pointer;
+    z-index:1001;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+    transition:.2s ease;
+  }
+
+  .mobile-toggle:active{
+    transform:scale(0.9);
+  }
+
+}
+/* ========================================= */
+/* 💻 DESKTOP – LEFT NAV 20% SMALLER */
+/* ========================================= */
+
+@media (min-width: 800px){
+
+  .nav-area{
+    width:288px;   /* 🔥 360px -20% */
+   
+  }
+  .nav-btn{
+  /* width:80%; */
+  height:50px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:0 22px;
+  margin-bottom:18px;
+  border-radius:20px;
+  font-size:18px;
+  font-weight:600;
+  color:#2f4f4f;
+  cursor:pointer;
+  background:#f1f7ff;
+  box-shadow:0 6px 15px rgba(0,0,0,.1);
+  transition:.3s ease;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <div class="nav-area">
+
+    <div class="nav-btn choose active" onclick="loadQuiz('exercises/mcq.html', this)">
+      <i class="fa-solid fa-list-check"></i> Choose Options
+    </div>
+
+    <div class="nav-btn fill" onclick="loadQuiz('exercises/FTB.html', this)">
+      <i class="fa-solid fa-pen-to-square"></i> Fill in Blanks
+    </div>
+
+    <div class="nav-btn truefalse" onclick="loadQuiz('exercises/true_false.html', this)">
+      <i class="fa-solid fa-check-circle"></i> True / False
+    </div>
+
+    <div class="nav-btn match" onclick="loadQuiz('exercises/matching.html', this)">
+      <i class="fa-solid fa-link"></i> Matching
+    </div>
+
+    <div class="nav-btn oneword" onclick="loadQuiz('exercises/two_example.html', this)">
+      <i class="fa-solid fa-lightbulb"></i> One Word
+    </div>
+
+    <div class="nav-btn label" onclick="loadQuiz('exercises/label.html', this)">
+      <i class="fa-solid fa-tags"></i> Label Type
+    </div>
+
+  </div>
+
+  <div class="quiz-frame" id="quizFrameWrapper">
+
+    <!-- MOBILE BACK TOGGLE -->
+  <div class="mobile-toggle" id="toggleBtn">
+  <i class="fa-solid fa-bars"></i>
+</div>
+
+   <iframe id="quizFrame" src="exercises/mcq.html"></iframe>
+
+  </div>
+
+</div>
+
+<script>
+const quizWrapper = document.getElementById("quizFrameWrapper");
+const toggleBtn = document.getElementById("toggleBtn");
+
+function loadQuiz(page, element){
+
+  document.getElementById("quizFrame").src = page;
+
+  document.querySelectorAll(".nav-btn")
+    .forEach(btn=>btn.classList.remove("active"));
+
+  element.classList.add("active");
+
+  if(window.innerWidth <= 768){
+    quizWrapper.classList.add("active");
+  }
+}
+
+/* Mobile Back */
+toggleBtn.addEventListener("click", ()=>{
+  quizWrapper.classList.remove("active");
+});
+</script>
+
+</body>
+</html>

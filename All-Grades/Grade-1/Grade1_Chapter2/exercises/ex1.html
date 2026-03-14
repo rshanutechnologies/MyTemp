@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Tick ✓ the Correct Answer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #fde2e4; --bg2: #e2f0fb; --bg3: #e8f8e8;
+      --q-text-color: #2F4F4F;
+    }
+
+    * { box-sizing: border-box; }
+
+  /* exercises/ex1.html — UPDATE this block */
+body {
+  font-family: "Livvic", sans-serif;
+  background: radial-gradient(circle at top left, var(--bg1), transparent 55%),
+              radial-gradient(circle at bottom right, var(--bg2), transparent 55%),
+              radial-gradient(circle at center, var(--bg3), #ffffff 60%);
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* change this: */
+  /* overflow: hidden; */
+  overflow-y: auto;     /* allow vertical scroll */
+  overflow-x: hidden;   /* avoid horizontal scroll */
+}
+   
+/* exercises/ex1.html — keep/confirm these */
+.app { 
+  width: 100%; 
+  max-width: 1200px; 
+  min-height: 100vh;     /* not fixed height */
+  display: flex;
+  flex-direction: column;
+  padding: 2vh 20px;
+}
+
+
+  
+#slides { 
+  flex: 1; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  overflow: visible;      /* prevent clipping inside slides */
+}
+
+
+    .slide { display: none; width: 100%; }
+    .slide.active { display: block; }
+
+    .question { 
+      margin: 0 auto; 
+      text-align: center; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5vh;
+    }
+
+    .q-number {
+      font-weight: 700;
+      font-size: clamp(16px, 2.5vh, 22px);
+      color: var(--q-text-color);
+      background: rgba(255,255,255,0.5);
+      padding: 5px 20px;
+      border-radius: 20px;
+    }
+
+    .q-text {
+      font-size: clamp(25pt, 4vh, 32pt);
+      color: var(--q-text-color);
+      line-height: 1.3;
+      margin: 5px 0;
+    }
+
+    .blank { 
+      border-bottom: 4px dashed var(--q-text-color); 
+      min-width: 150px; 
+      display: inline-block; 
+      padding: 0 15px;
+      color: #28a745; 
+      font-weight: 700;
+      text-align: center;
+      vertical-align: baseline;
+      transition: all 0.3s;
+    }
+
+    .opts {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3vw;
+      width: 100%;
+      margin-top: 1vh;
+    }
+
+    .opt-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1vh;
+      flex: 1;
+      max-width: 280px;
+    }
+
+    .opt {
+      background: white;
+      border-radius: 25px;
+      border: 6px solid #fff;
+      width: 100%;
+      height: clamp(140px, 25vh, 200px);
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .opt:hover:not(.correct) { transform: scale(1.05); }
+    .opt img { width: 100%; height: 100%; object-fit: cover; }
+    .label { font-size: clamp(22px, 2.2vh, 24px); font-weight: 700; color: var(--q-text-color); margin-top: 5px; }
+
+    .opt.correct { border-color: #2ed573; background: #dff9fb; pointer-events: none; }
+    .opt.wrong { border-color: #dc3545; background: #ffe6e6; animation: shake 0.4s; }
+    .opt-container.faded { opacity: 0.3; pointer-events: none; }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    .nav-area {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px 5%;
+      height: 80px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      background: #4cc9f0;
+      border: 4px solid white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: clamp(16px, 2vh, 24px);
+      cursor: pointer;
+      color: var(--q-text-color);
+      font-family: 'Fredoka One', cursive;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    #backBtn { background: #f778a1; }
+    #bigNext { display: none; }
+    #bigNext.show { display: block; }
+
+    .smiley-overlay {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      font-size: 150px; opacity: 0; z-index: 2000;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+    .smiley-overlay.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+    .bird-btn {
+      background: #FFD54F; border: none; width: clamp(50px, 7vh, 70px); height: clamp(50px, 7vh, 70px);
+      border-radius: 50%; cursor: pointer; box-shadow: 0 6px 0 #E0B93F; margin-bottom: 10px;
+    }
+    .bird-btn svg { width: 50%; fill: #2C3E50; }
+
+    .final-modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 3000; backdrop-filter: blur(8px);
+    }
+    .final-modal { background: #C2F4FF; padding: 5vh; border-radius: 40px; text-align: center; width: min(600px, 90%); }
+
+    canvas.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 1500; }
+    /* =========================
+   RESPONSIVE LAYOUT PATCH
+   ========================= */
+
+/* exercises/ex1.html — responsive layout for options */
+  
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div id="slides"></div>
+    <div class="nav-area">
+      <button id="backBtn" class="nav-btn">◀ PREV</button>
+      <button id="bigNext" class="nav-btn">NEXT ▶</button>
+    </div>
+    <div class="confetti" id="confetti"></div>
+    <div id="feedbackSmiley" class="smiley-overlay"></div>
+  </div>
+
+  <script>
+    const quiz = [
+      { text: "We breathe through our _____.", options: [{ label: "nose", img: "../uploads/nose.png" }, { label: "ears", img: "../uploads/ear.png" }, { label: "eyes", img: "../uploads/eyes.png" }], correctIndex: 0 },
+      { text: "We hear with our _____.", options: [{ label: "nose", img: "../uploads/nose.png" }, { label: "skin", img: "../uploads/skin.png" }, { label: "ears", img: "../uploads/ear.png" }], correctIndex: 2 },
+      { text: "We must wash our eyes with cool and ____ water.", options: [{ label: "dirty", img: "../uploads/dirty.png" }, { label: "clean", img: "../uploads/clean.png" }, { label: "hot", img: "../uploads/hot.png" }], correctIndex: 1 },
+      { text: "We should take a bath _____.", options: [{ label: "twice in a week", img: "../uploads/twice-week.png" }, { label: "once in a week", img: "../uploads/once-week.png" }, { label: "every day", img: "../uploads/everyday.png" }], correctIndex: 2 },
+      { text: "We should brush our teeth _____.", options: [{ label: "once in a day", img: "../uploads/once-day.png" }, { label: "twice in a day", img: "../uploads/twice-day.png" }, { label: "twice in a week", img: "../uploads/twice-week.png" }], correctIndex: 1 }
+    ];
+
+    let current = 0;
+    let audioCtx = null;
+    const slidesRoot = document.getElementById("slides");
+    const backBtn = document.getElementById("backBtn");
+    const bigNext = document.getElementById("bigNext");
+    const feedbackSmiley = document.getElementById("feedbackSmiley");
+
+    function ensureAudio(){
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      return audioCtx;
+    }
+
+    function playSound(type){
+      const ctx = ensureAudio();
+      const now = ctx.currentTime;
+      const g = ctx.createGain(); g.gain.setValueAtTime(0.2, now); g.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
+      const o = ctx.createOscillator(); o.connect(g); g.connect(ctx.destination);
+      if(type === 'win'){ o.frequency.setValueAtTime(880, now); o.frequency.exponentialRampToValueAtTime(1100, now + 0.2); }
+      else { o.type='sawtooth'; o.frequency.setValueAtTime(150, now); }
+      o.start(); o.stop(now + 0.5);
+    }
+
+    function renderSlides() {
+      slidesRoot.innerHTML = "";
+      quiz.forEach((q, index) => {
+        const slide = document.createElement("div");
+        slide.className = "slide" + (index === 0 ? " active" : "");
+        // Unique ID for each blank to prevent target errors
+        const formattedText = q.text.replace("_____", `<span class="blank" id="blank-${index}"></span>`);
+        const formattedText2 = formattedText.replace("____", `<span class="blank" id="blank-${index}"></span>`);
+
+        slide.innerHTML = `
+          <div class="question" id="q-wrap-${index}" data-answered="false">
+            <div class="q-number">Question ${index + 1} of ${quiz.length}</div>
+            <span class="q-text">${formattedText2}</span>
+            <button class="bird-btn"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            <div class="opts">
+              ${q.options.map((opt, i) => `
+                <div class="opt-container">
+                  <div class="opt" data-qidx="${index}" data-oidx="${i}"><img src="${opt.img}" alt="${opt.label}"></div>
+                  <div class="label">${opt.label}</div>
+                </div>`).join("")}
+            </div>
+          </div>`;
+        slidesRoot.appendChild(slide);
+        slide.querySelector(".bird-btn").onclick = () => {
+          const u = new SpeechSynthesisUtterance(q.text.replace(/_+/g, "blank"));
+          u.lang = "en-IN"; window.speechSynthesis.speak(u);
+        };
+        slide.querySelectorAll(".opt").forEach(el => el.onclick = () => handleOptionClick(el));
+      });
+    }
+
+    function handleOptionClick(optEl) {
+      const qIndex = parseInt(optEl.dataset.qidx);
+      const oIndex = parseInt(optEl.dataset.oidx);
+      const questionWrap = document.getElementById(`q-wrap-${qIndex}`);
+      
+      if (questionWrap.dataset.answered === "true") return;
+
+      if (oIndex === quiz[qIndex].correctIndex) {
+        optEl.classList.add("correct");
+        questionWrap.dataset.answered = "true";
+        
+        // Target the specific ID for this question's blank
+        const targetBlank = document.getElementById(`blank-${qIndex}`);
+        if(targetBlank) {
+          targetBlank.textContent = quiz[qIndex].options[oIndex].label;
+          targetBlank.style.borderBottomStyle = "solid"; // Make line solid on correct
+        }
+        
+        const container = optEl.closest(".question");
+        container.querySelectorAll(".opt-container").forEach(c => {
+          if (c.querySelector(".opt") !== optEl) c.classList.add("faded");
+        });
+
+        feedbackSmiley.innerText = "😃"; feedbackSmiley.classList.add("show");
+        setTimeout(() => feedbackSmiley.classList.remove("show"), 1200);
+        playSound('win');
+        
+        if (current === quiz.length - 1) {
+          setTimeout(showFinalModal, 1500);
+        } else {
+          bigNext.classList.add("show");
+        }
+      } else {
+        optEl.classList.add("wrong"); playSound('fail');
+        feedbackSmiley.innerText = "😭"; feedbackSmiley.classList.add("show");
+        setTimeout(() => {
+          optEl.classList.remove("wrong");
+          feedbackSmiley.classList.remove("show");
+        }, 1000);
+      }
+    }
+
+    function showSlide(index) {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      slides.forEach((s, i) => s.classList.toggle("active", i === index));
+      current = index;
+      backBtn.style.visibility = (current === 0) ? "hidden" : "visible";
+      const answered = document.getElementById(`q-wrap-${current}`).dataset.answered === "true";
+      bigNext.classList.toggle("show", answered && current < quiz.length - 1);
+    }
+
+    function showFinalModal() {
+      const div = document.createElement("div");
+      div.className = "final-modal-overlay";
+      div.innerHTML = `
+        <div class="final-modal">
+          <h1 style="font-family:'Fredoka One', cursive; color:#2c7a4b; font-size:45px; margin:0;">🎉 YOU WON! 🎉</h1>
+          <p style="font-size:24px; color:#2F4F4F; margin-top:14px;">Superstar! You are an expert ✅</p>
+          <button class="nav-btn" style="position:static; margin-top:20px; background:#4cc9f0; color:white; border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
+        </div>`;
+      document.body.appendChild(div);
+      playSound('win');
+    }
+
+    bigNext.onclick = () => { if (current < quiz.length - 1) showSlide(current + 1); };
+    backBtn.onclick = () => { if (current > 0) showSlide(current - 1); };
+
+    renderSlides();
+    showSlide(0);
+  </script>
+</body>
+</html>

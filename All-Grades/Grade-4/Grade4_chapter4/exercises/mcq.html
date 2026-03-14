@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Digestive System Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/CSS/mcq.css">
+
+</head>
+
+<body>
+
+  <div class="quiz">
+    <div class="question">
+      <span class="q-no" id="qNo"></span>
+      <span class="q-text" id="question"></span>
+    </div>
+
+
+    <div class="content">
+      <div class="options" id="options"></div>
+    </div>
+
+    <div class="controls">
+      <button class="prev" id="prevBtn" disabled>← Prev</button>
+      <button class="next" id="nextBtn" disabled>Next →</button>
+    </div>
+
+  </div>
+
+  <!-- 🔔 POPUP HTML — SAME -->
+  <div class="popup" id="popup">
+    <div class="popup-box" id="popupText"></div>
+  </div>
+
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <script src="../assets/JavaScript/mcq.js"></script>
+
+</body>
+
+</html>

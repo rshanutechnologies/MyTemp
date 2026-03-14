@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Match the Following – Bridge Builder</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+   
+ <link rel="stylesheet" href="../assets/CSS/matching.css">
+  
+</head>
+
+<body>
+
+  <div class="game">
+    <div class="title"> Match the following</div>
+
+    <div class="play">
+
+      <!-- LEFT BANK -->
+      <div class="bank" id="leftBank">
+        <div class="item a1" data-answer="Natural source of energy">1. Sun <span class="emoji">🌞</span></div>
+        <div class="item a2" data-answer="Non-living things">2. Abiotic <span class="emoji">🪨</span></div>
+        <div class="item a3" data-answer="Living things">3. Biotic <span class="emoji">🌿</span></div>
+        <div class="item a4" data-answer="Herbivore">4. Giraffe <span class="emoji">🦒</span></div>
+        <div class="item a5" data-answer="Carnivore">5. Lion <span class="emoji">🦁</span></div>
+      </div>
+
+       <svg id="lineLayer"></svg>
+
+
+      <!-- RIGHT BANK -->
+      <div class="bank" id="rightBank">
+        <div class="item" data-value="Carnivore">a) Carnivore</div>
+        <div class="item" data-value="Herbivore">b) Herbivore</div>
+        <div class="item" data-value="Natural source of energy">c) Natural source of energy</div>
+        <div class="item" data-value="Living things">d) Living things</div>
+        <div class="item" data-value="Non-living things">e) Non-living things</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ✅ POPUP (outside any scaling container) -->
+  <!-- CORRECT / WRONG POPUP -->
+<div id="answerPopup" class="popup">
+  <div class="popup-content">
+    <div class="popup-icon" id="popupIcon"></div>
+    <h3 id="popupTitle"></h3>
+    <p id="popupMsg"></p>
+  </div>
+</div>
+
+<!-- FINAL POPUP -->
+<div id="finalPopup" class="popup">
+  <div class="popup-content">
+    <div class="popup-icon">🏆</div>
+    <h3>Congratulations!</h3>
+    <p id="finalScore"></p>
+    <div id="stars"></div>
+    <button class="restart" onclick="location.reload()">Play Again</button>
+  </div>
+</div>
+
+<script src="../assets/JavaScript/matching.js"></script>
+  
+</body>
+
+</html>

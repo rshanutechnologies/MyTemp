@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant Match Game</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="../assets/CSS/matching.css">
+</head>
+
+<body>
+
+  <div class="game">
+    <!-- <div class="quiz-type">🧠 Matching</div>
+    <div class="home" onclick="window.location.assign('../index.html')">🏠 Home</div> -->
+
+    <!-- PROGRESS -->
+    <!-- <div class="parts-progress" id="partsProgress"></div> -->
+
+    <div class="spin-area">
+      <div class="wheel" id="wheel">
+
+        <!-- <div class="center" id="spin">SPIN</div> -->
+        <div class="center hint-btn" id="hintBtn">HINT</div>
+
+        <div class="plant p1" data-answer="A deciduous tree">
+          <div class="plant-inner">
+            <img src="../assets/images/cherry.png">
+            <p class="option-label">Cherry</p>
+          </div>
+        </div>
+
+        <div class="plant p2" data-answer="An evergreen tree">
+          <div class="plant-inner">
+            <img src="../assets/images/teak-img.png">
+            <p class="option-label">Teak</p>
+          </div>
+        </div>
+
+        <div class="plant p3" data-answer="A desert plant">
+          <div class="plant-inner">
+            <img src="../assets/images/Cactus1.png">
+            <p class="option-label">Cactus</p>
+          </div>
+        </div>
+
+        <div class="plant p4" data-answer="A fixed aquatic plant">
+          <div class="plant-inner">
+            <img src="../assets/images/Duckweed-plant.png">
+            <p class="option-label">Duckweed</p>
+          </div>
+        </div>
+
+        <div class="plant p5" data-answer="A floating aquatic plant">
+          <div class="plant-inner">
+            <img src="../assets/images/lotus-img.png">
+            <p class="option-label">Lotus</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tags-wrap">
+      <div class="tags">
+        <div class="tag" data-value="A deciduous tree">A deciduous tree</div>
+        <div class="tag" data-value="An evergreen tree">An evergreen tree</div>
+        <div class="tag" data-value="A desert plant">A desert plant</div>
+        <div class="tag" data-value="A floating aquatic plant">A floating aquatic plant</div>
+        <div class="tag" data-value="A fixed aquatic plant">A fixed aquatic plant</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HINT POPUP -->
+  <div class="hint-popup" id="hintPopup">
+    <p>
+      👉 Click a sentence below<br>
+      👉 Then click the matching plant<br><br>
+      Match all correctly to finish the game
+    </p>
+  </div>
+
+
+  <!-- CORRECT / WRONG POPUP -->
+  <div id="answerPopup" class="popup">
+    <div class="popup-content">
+      <div class="popup-icon" id="popupIcon"></div>
+      <h3 id="popupTitle"></h3>
+      <p id="popupMsg"></p>
+    </div>
+  </div>
+
+  <!-- FINAL POPUP -->
+  <div id="finalPopup">
+    <div class=" finalpopup-box">
+      <h2 class="final-heading">🎉 Congratulations!</h2>
+      <p id="finalScore"></p>
+      <div id="stars"></div><br> <button onclick="location.reload()" class="playAgain-btn"> Play Again </button>
+    </div>
+  </div>
+
+  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <script src="../assets/JavaScript/matching.js"></script>
+
+</body>
+
+</html>

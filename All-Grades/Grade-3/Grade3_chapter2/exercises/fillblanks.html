@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fill in the Blanks Quiz</title>
+
+  <!-- ✅ Livvic Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="../assets/CSS/fillblanks.css">
+ 
+</head>
+
+<body>
+
+  <div class="ui-scale">
+    <div class="wrap">
+
+      <!-- ✅ SAME PROCESS BAR -->
+     
+      <!-- ✅ QUIZ CARD -->
+      <div class="app">
+        <div class="hero">
+          <img id="image" alt="question image">
+        </div>
+
+        <div class="question" id="question"></div>
+
+        <div id="answerContainer"></div>
+        <button class="check-btn" id="checkBtn">Check</button>
+      </div>
+
+      <!-- ✅ FOOTER NAV -->
+      <div class="footer">
+        <button class="nav-btn prev" id="prevBtn" disabled>← Prev</button>
+        <button class="nav-btn next" id="nextBtn" disabled>Next →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ✅ CORRECT / WRONG POPUP -->
+  <div class="popup" id="popup">
+  <div class="popup-box" id="popupText"></div>
+</div>
+
+
+  <!-- ✅ FINAL POPUP -->
+  <div id="finalPopup">
+  <div class="finalpopup-box">
+    <div style="font-size:28px;color:#166534;">🎉 Congratulations!</div>
+
+    <div style="font-size:60px;margin:10px 0;">🏆</div>
+
+    <div style="font-size:26px;color:#166534;">
+      You finished the quiz!
+    </div>
+
+    <p id="finalScore" style="font-size:24px;color:#166534;"></p>
+
+    <div id="stars" style="font-size:34px;margin:14px 0;"></div>
+
+    <button onclick="location.reload()" class="playAgain-btn">
+      🔄 Restart
+    </button>
+  </div>
+</div>
+
+  <script src="../assets/JavaScript/fillblanks.js"></script>
+ 
+</body>
+</html>
