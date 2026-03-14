@@ -17,7 +17,7 @@ const questions = [
     options: [
       { t: "Venation", img: "../assets/images/Venation.png" },
       { t: "Photosynthesis", img: "../assets/images/Photosynthesis.png" },
-      { t: "Respiration", img: "../assets/images/Pespiration.png" },
+      { t: "Respiration", img: "../assets/images/Respiration.png" },
       { t: "Phyllotaxy", img: "../assets/images/Phyllotaxy.png" },
     ],
     answer: 1,
