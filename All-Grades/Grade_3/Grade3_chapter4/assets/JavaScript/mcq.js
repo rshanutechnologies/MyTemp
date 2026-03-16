@@ -30,7 +30,7 @@ const quizData = [
       {
         id: "b",
         label: "Molecules",
-        img: "../assets/images/molecules.png",
+        img: "../assets/images/Molecules.png",
         correct: false,
       },
       {
@@ -54,7 +54,7 @@ const quizData = [
       {
         id: "a",
         label: "Nitrogen",
-        img: "../assets/images/nitrogen.png",
+        img: "../assets/images/Nitrogen.png",
         correct: false,
       },
       {
@@ -66,7 +66,7 @@ const quizData = [
       {
         id: "c",
         label: "Kerosene",
-        img: "../assets/images/kerosene.png",
+        img: "../assets/images/Kerosene.png",
         correct: true,
       },
       {
@@ -90,7 +90,7 @@ const quizData = [
       {
         id: "b",
         label: "Molecules",
-        img: "../assets/images/molecules.png",
+        img: "../assets/images/Molecules.png",
         correct: false,
       },
       {
@@ -102,7 +102,7 @@ const quizData = [
       {
         id: "d",
         label: "Liquids",
-        img: "../assets/images/liquids.png",
+        img: "../assets/images/Liquids.png",
         correct: true,
       },
     ],
@@ -126,7 +126,7 @@ const quizData = [
       {
         id: "d",
         label: "Liquid",
-        img: "../assets/images/liquids.png",
+        img: "../assets/images/Liquids.png",
         correct: false,
       },
     ],
@@ -143,7 +143,7 @@ const quizData = [
       {
         id: "b",
         label: "Liquid",
-        img: "../assets/images/liquids.png",
+        img: "../assets/images/Liquids.png",
         correct: true,
       },
       {

@@ -37,7 +37,7 @@ const quizData = [
       { text:"Carbon dioxide", img:"../assets/images/CO2.png", correct:true },
       { text:"Wood", img:"../assets/images/Wood.png", correct:false },
       { text:"Iron", img:"../assets/images/Iron.png", correct:false },
-      { text:"Oxygen", img:"../assets/images/Oxygen.png", correct:true },
+      { text:"Oxygen", img:"../assets/images/oxygen.png", correct:true },
     ]
   },
   {

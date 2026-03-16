@@ -14,7 +14,7 @@
       question: "Q2. The _________ bears the leaves.",
       options: [
         { tag:"A", title:"Root", value:"Root", img:"../assets/images/rootak.png"  },
-        { tag:"B", title:"Stem", value:"Stem",   img:"../assets/images/Stemak.png"  },
+        { tag:"B", title:"Stem", value:"Stem",   img:"../assets/images/stemak.png"  },
         { tag:"C", title:"Fruit", value:"Fruit",   img:"../assets/images/Fruits.png" },
         { tag:"D", title:"Flower", value:"Flower",  img:"../assets/images/flowerak.png" }
       ],

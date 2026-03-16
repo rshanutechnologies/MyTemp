@@ -5,7 +5,7 @@ const quizData = [
   q:"Q1. Choose the odd one from the options. (Biotic components)",
   options:[
     { text:"Soil",   img:"../assets/images/soil.png" },
-    { text:"Water",  img:"../assets/images/water.png" },
+    { text:"Water",  img:"../assets/images/Water.png" },
     { text:"Air",    img:"../assets/images/air.png" },
     { text:"Plants", img:"../assets/images/Plant.png" }
   ],
