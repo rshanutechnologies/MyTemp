@@ -1,0 +1,761 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fill in the blanks</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Livvic',sans-serif;
+    }
+
+    body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow: hidden;
+
+    }
+.quiz{
+  width:1000px;
+  max-width:95%;
+  height:100vh;          /* 🔥 fixed height */
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.question{
+font-size:30px;
+color:#2f4f4f;
+text-align:center;
+width:100%;
+
+height:90px;              /* fixed height */
+display:flex;
+align-items:center;
+justify-content:center;
+
+line-height:1.3;
+padding:0 20px;
+}
+.image{
+height:160px;              /* fixed image area */
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.image img{
+width:160px;
+height:160px;              /* fixed size */
+object-fit:contain;        /* keeps image ratio */
+margin-top:0;              /* remove negative margin */
+}
+.answerBox{
+display:flex;
+justify-content:center;
+gap:12px;
+margin:20px auto;
+flex-wrap:wrap;
+min-height:50px;
+
+}
+.letterBox{
+width:50px;
+height:50px;
+
+background:#fff7d6; /* light contrast color */
+border:2px solid #f3d27a;
+
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:28px;
+font-weight:700;
+color:#2f4f4f;
+
+box-shadow:0 6px 12px rgba(0,0,0,0.15);
+}
+
+.keyboard{
+display:flex;
+justify-content:center;   /* center letters */
+align-items:center;
+flex-wrap:wrap;           /* allow second row */
+gap:10px;                 /* same spacing always */
+
+margin:0 auto 30px auto;
+padding:20px;
+
+max-width:700px;
+min-height:120px;
+border-radius:20px;
+margin-top: -20px;
+}
+.key{
+width:50px;
+height:50px;
+background:#f1b64c;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+font-weight:700;
+color:black;
+cursor:pointer;
+box-shadow:0 6px 12px rgba(0,0,0,0.25);
+transition:0.2s;
+}
+
+.key:hover{
+transform:translateY(-4px);
+}
+
+.key:active{
+transform:scale(0.9);
+}
+.buttons{
+  position:absolute;
+  bottom:5px;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:0 20px;
+}
+    button{
+    padding:14px 28px;
+    border:none;
+    border-radius:20px;
+    font-size: 22px;
+    font-weight:500;
+    cursor:pointer;
+    color: white;
+    
+    }
+
+    .prev{background:linear-gradient(135deg,#607d8b,#455a64);}
+    .check.active{
+    background:linear-gradient(135deg,#4caf50,#2e7d32);
+    }
+    .next{background:linear-gradient(135deg,#ff9800,#f57c00);}
+
+    button:disabled{
+    background:#cccccc !important;
+    cursor:not-allowed;
+    box-shadow:none;
+    }
+
+    .result{
+    margin-top:10px;
+    font-weight:700;
+    }
+.used{
+opacity:0.4;
+pointer-events:none;
+}
+    .correct{color:green;}
+    .wrong{color:red;}
+    .popup{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+    }
+
+    .hidden{
+    display:none;
+    }
+
+    .popup-content{
+    background:#fef6ff;
+    padding:60px 80px;
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 20px 45px rgba(0,0,0,0.25);
+    min-width:350px;
+    max-width:500px;
+    animation:pop 0.3s ease;
+    }
+
+    @keyframes pop{
+    from{ transform:scale(0.8); opacity:0; }
+    to{ transform:scale(1); opacity:1; }
+    }
+
+    .popup-emoji{
+    font-size:60px;
+    margin-bottom:15px;
+    }
+
+    .popup-content h2{
+    font-size:28px;
+    margin-bottom:10px;
+    }
+
+    .popup-content p{
+    font-size:20px;
+    }
+
+    .play-again-btn{
+    margin-top:20px;
+    padding:12px 28px;
+    font-size:16px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#4caf50,#2e7d32);
+    color:white;
+    font-weight:600;
+    }
+    .image,
+.answerBox,
+.keyboard,
+.buttons{
+text-align:center;
+}
+/* ===== Tablet ===== */
+@media (max-width:768px){
+
+.quiz{
+width:95%;
+}
+
+.question{
+font-size:22px;
+}
+
+.image img{
+width:110px;
+}
+
+.letterBox{
+width:42px;
+height:42px;
+font-size:22px;
+}
+
+.key{
+width:42px;
+height:42px;
+font-size:22px;
+}
+
+.keyboard{
+gap:8px;
+padding:10px;
+}
+
+button{
+font-size:16px;
+padding:8px 14px;
+}
+
+}
+
+/* ===== Small Mobile ===== */
+@media (max-width:600px){
+
+.question{
+font-size:20px;
+margin-top: 70px;
+}
+
+.image img{
+width:90px;
+}
+
+.answerBox{
+gap:8px;
+}
+
+.letterBox{
+width:36px;
+height:36px;
+font-size:20px;
+}
+
+.key{
+width:36px;
+height:36px;
+font-size:20px;
+}
+
+.keyboard{
+gap:6px;
+padding:6px;
+margin-top: 20px;
+}
+
+.buttons{
+gap:8px;
+bottom: 20px;
+
+}
+
+button{
+font-size:18px;
+padding:6px 10px;
+
+
+}
+
+.popup-content{
+padding:30px 20px;
+}
+
+.popup-content h2{
+font-size:22px;
+}
+
+.popup-content p{
+font-size:16px;
+}
+.popup-content{
+    padding:30px 25px;   /* reduced padding */
+    min-width:260px;
+    max-width:90%;
+    border-radius:20px;
+  }
+
+  .popup-emoji{
+    font-size:40px;   /* smaller emoji */
+  }
+
+  .popup-content h2{
+    font-size:20px;
+  }
+
+  .popup-content p{
+    font-size:16px;
+  }
+
+  .play-again-btn{
+    padding:10px 20px;
+    font-size:14px;
+  }
+}
+    </style>
+    </head>
+
+    <body>
+
+    <div class="quiz">
+
+    <div class="question" id="question"></div>
+
+    <div class="image">
+   <img id="qImage">
+    </div>
+
+    <div class="answerBox" id="answer"></div>
+
+    <div class="keyboard" id="keyboard"></div>
+
+    <div class="buttons">
+    <button class="prev" onclick="prevQ()">Previous</button>
+    <button class="check" onclick="checkAnswer()">Check</button>
+    <button class="next" onclick="nextQ()">Next</button>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    </div>
+    <!-- Popup -->
+    <div id="popup" class="popup hidden">
+    <div class="popup-content">
+    <div id="popupEmoji" class="popup-emoji"></div>
+    <h2 id="popupTitle"></h2>
+    <p id="popupMessage"></p>
+
+    <button id="playAgainBtn" class="play-again-btn hidden">
+        🔄 Play Again
+    </button>
+    </div>
+    </div>
+
+<script>
+
+const quizData=[
+{
+q:"________ do not have a main root.",
+a:"FIBROUSROOTS",
+img:"../images/roots.png"
+},
+{
+q:"Leaves are usually ______ in colour.",
+a:"GREEN",
+img:"../images/leaf.png"
+},
+{
+q:"The thinner roots have white hair-like structures on them called the ______.",
+a:"ROOTHairs".toUpperCase(),
+img:"../images/fb1.png"
+},
+{
+q:"The process by which a seed grows into a new plant is called ______.",
+a:"GERMINATION",
+img:"../images/seed.png"
+},
+{
+q:"______ fixes the plant firmly in the soil.",
+a:"ROOT",
+img:"../images/fb5.png"
+}
+]
+
+let current=0
+let userAnswers=new Array(quizData.length).fill("")
+let user=""
+let usedButtons=[]
+let locked=false
+
+const question=document.getElementById("question")
+const answer=document.getElementById("answer")
+const result=document.getElementById("result")
+
+const popup=document.getElementById("popup")
+const popupTitle=document.getElementById("popupTitle")
+const popupMessage=document.getElementById("popupMessage")
+const popupEmoji=document.getElementById("popupEmoji")
+const playAgainBtn=document.getElementById("playAgainBtn")
+
+function generateLetters(ans){
+
+const alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
+let letters=ans.split("")
+
+let extra=Math.floor(Math.random()*2)+1
+
+while(letters.length<ans.length+extra){
+
+let rand=alphabet[Math.floor(Math.random()*alphabet.length)]
+
+if(!letters.includes(rand)){
+letters.push(rand)
+}
+
+}
+
+letters.sort(()=>Math.random()-0.5)
+
+return letters
+}
+
+function loadQ(){
+    playAgainBtn.classList.add("hidden")
+question.innerText="Q"+(current+1)+". "+quizData[current].q
+
+document.getElementById("qImage").src=quizData[current].img
+
+user=userAnswers[current]||""
+result.innerText=""
+usedButtons=[]
+
+const checkBtn=document.querySelector(".check")
+checkBtn.disabled=true
+checkBtn.classList.remove("active")
+
+document.querySelector(".prev").disabled = current === 0
+
+const nextBtn = document.querySelector(".next")
+
+if(userAnswers[current] === quizData[current].a){
+    nextBtn.disabled = false
+}else{
+    nextBtn.disabled = true
+}
+if(userAnswers[current] === quizData[current].a){
+    nextBtn.disabled = false
+}else{
+    nextBtn.disabled = true
+}
+
+/* create answer boxes */
+
+answer.innerHTML=""
+let len=quizData[current].a.length
+
+for(let i=0;i<len;i++){
+
+let box=document.createElement("div")
+box.className="letterBox"
+box.innerText=user[i]||""
+
+answer.appendChild(box)
+
+}
+
+/* create keyboard */
+
+const keyboard=document.getElementById("keyboard")
+keyboard.innerHTML=""
+
+let letters=generateLetters(quizData[current].a)
+
+letters.forEach(letter=>{
+
+let btn=document.createElement("div")
+btn.className="key"
+btn.innerText=letter
+
+/* restore disabled letters if user already typed */
+if(user.includes(letter)){
+btn.style.pointerEvents="none"
+btn.classList.add("used")
+usedButtons.push(btn)
+}
+
+btn.onclick=()=>{
+    if(locked) return
+
+if(user.length<len){
+
+user+=letter
+userAnswers[current]=user
+
+usedButtons.push(btn)
+
+
+updateBoxes()
+
+if(user.length>0){
+checkBtn.disabled=false
+checkBtn.classList.add("active")
+}
+
+}
+
+}
+
+keyboard.appendChild(btn)
+
+})
+let back=document.createElement("div")
+back.className="key"
+back.innerText="⌫"
+
+back.onclick=()=>{
+
+if(locked) return
+
+if(user.length>0){
+
+user=user.slice(0,-1)
+userAnswers[current]=user
+
+updateBoxes()
+usedButtons.pop()
+if(user.length===0){
+checkBtn.disabled=true
+checkBtn.classList.remove("active")
+}
+
+}
+
+
+}
+
+keyboard.appendChild(back)
+
+}
+
+function updateBoxes(){
+
+const boxes=document.querySelectorAll(".letterBox")
+
+boxes.forEach((box,i)=>{
+box.innerText=user[i]||""
+})
+
+}
+
+loadQ()
+
+function speakText(text){
+
+if(!('speechSynthesis' in window)) return
+
+window.speechSynthesis.cancel()
+
+const utter=new SpeechSynthesisUtterance(text)
+
+utter.lang="en-GB"
+utter.volume=0.25
+
+speechSynthesis.speak(utter)
+
+}
+function fireConfetti(){
+
+  confetti({
+    particleCount: 40,
+    spread: 70,
+    origin: { y: 0.6 },
+    scalar: 0.7
+  });
+
+}
+
+function checkAnswer(){
+
+if(user===quizData[current].a){
+fireConfetti();
+popupEmoji.textContent="🎉"
+popupTitle.textContent="Correct!"
+popupTitle.style.color="green"
+popupMessage.textContent="Great job!"
+
+// ✅ ADD HERE
+document.querySelectorAll(".key").forEach(key=>{
+  key.style.pointerEvents="none"
+  key.style.opacity="0.5"
+});
+
+document.querySelector(".check").disabled=true
+
+speakText("Correct!")
+
+popup.classList.remove("hidden")
+
+setTimeout(()=>{
+popup.classList.add("hidden")
+
+if(current === quizData.length-1){
+    showFinalPopup()
+}else{
+    document.querySelector(".next").disabled=false
+}
+
+},1200)
+
+}
+else{
+
+popupEmoji.textContent="❌"
+popupTitle.textContent="Wrong!"
+popupTitle.style.color="red"
+popupMessage.textContent="Try again!"
+
+speakText("Wrong!")
+
+popup.classList.remove("hidden")
+
+setTimeout(()=>{
+popup.classList.add("hidden")
+user=""
+userAnswers[current]=""
+updateBoxes()
+},1200)
+
+}
+
+}
+function nextQ(){
+
+if(current<quizData.length-1){
+
+current++
+locked=false
+loadQ()
+
+}else{
+
+showFinalPopup()
+
+}
+
+}
+
+function prevQ(){
+
+if(current>0){
+
+current--
+locked=true
+loadQ()
+
+}
+
+}
+function fireFinalConfetti(){
+
+  const duration = 2500;
+  const animationEnd = Date.now() + duration;
+
+  const interval = setInterval(function () {
+
+    if (Date.now() > animationEnd) {
+      clearInterval(interval);
+      return;
+    }
+
+    confetti({
+      particleCount: 60,
+      spread: 120,
+      startVelocity: 45,
+      scalar: 1.1,
+      origin: { x: Math.random(), y: Math.random() - 0.2 }
+    });
+
+  }, 250);
+
+}
+function showFinalPopup(){
+
+let score=0
+
+quizData.forEach((q,i)=>{
+if(userAnswers[i]===q.a) score++
+})
+
+fireFinalConfetti()
+
+setTimeout(()=>{
+
+popupEmoji.textContent="🏆"
+popupTitle.textContent="Quiz Completed!"
+popupTitle.style.color="#2e7d32"
+
+popupMessage.textContent=`Score: ${score}/${quizData.length}`
+
+playAgainBtn.classList.remove("hidden")
+
+popup.classList.remove("hidden")
+
+},800)   // delay so confetti appears first
+
+}
+playAgainBtn.onclick=()=>{
+
+confetti.reset()   // ✅ stop previous confetti
+
+current=0
+userAnswers=new Array(quizData.length).fill("")
+user=""
+
+popup.classList.add("hidden")
+
+loadQ()
+
+}
+
+</script>
+    </body>
+    </html>   

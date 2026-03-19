@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fill The Blanks Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<!-- CONFETTI (same as MCQ) -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+/* YOUR CSS EXACTLY SAME — NOT CHANGED */
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:"Livvic",sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow: hidden;
+}
+
+.main-container{
+width:1200px;
+}
+
+.quiz-container{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.question-area{
+width:100%;
+height:60px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.question-area h2{
+font-size:30px;
+font-weight:400;
+color:#2f4f4f;
+text-align:center;
+}
+
+.image-area{
+width:100%;
+display:flex;
+justify-content:center;
+margin:15px 0;
+}
+
+.image-area img{
+width:380px;
+height:250px;
+object-fit:contain;
+border-radius:20px;
+filter:grayscale(70%) brightness(.8);
+transition:.4s;
+padding:10px;
+}
+
+.image-area img.reveal{
+filter:none;
+transform:scale(1.05);
+}
+
+.input-area{
+display:flex;
+gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:10px;
+width:90%;
+}
+
+.input-box{
+flex:1;
+min-width:160px;
+height:70px;
+display:flex;
+align-items:center;
+gap:6px;
+padding:6px 10px;
+border-radius:16px;
+border:3px solid #4da5d4;
+background:#ffffff;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.input-area .input-box:only-child{
+max-width:420px;
+margin:auto;
+}
+
+.input-box.correct{
+border-color:#1fb36b;
+background:#eafff3;
+}
+
+.input-box input{
+flex:1;
+height:40px;
+font-size:22px;
+border:none;
+outline:none;
+background:transparent;
+color:#2f4f4f;
+}
+
+.input-box button{
+padding:10px 20px;
+border-radius:20px;
+font-size:16px;
+font-weight:600;
+border:none;
+background:#6bc6f5;
+color:#fff;
+cursor:pointer;
+min-width:80px;
+}
+
+.input-box button:disabled{
+background:#b9dff5;
+cursor:not-allowed;
+}
+.nav{
+margin-top:30px;
+display:flex;
+justify-content:space-between;
+width:95%;
+}
+
+button{
+border:none;
+padding:14px 32px;
+font-size:18px;
+font-weight:600;
+border-radius:50px;
+cursor:pointer;
+transition:all .3s ease;
+box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+.prev{
+background:linear-gradient(45deg,#ff7a7a,#ffb199);
+color:white;
+}
+
+.prev:hover{
+transform:translateY(-3px) scale(1.05);
+box-shadow:0 10px 20px rgba(0,0,0,0.25);
+}
+
+.next{
+background:linear-gradient(45deg,#00c6ff,#0072ff);
+color:white;
+}
+
+.next:hover{
+transform:translateY(-3px) scale(1.05);
+box-shadow:0 10px 20px rgba(0,0,0,0.25);
+}
+
+button:disabled{
+background:#dcdcdc;
+color:#888;
+box-shadow:none;
+cursor:not-allowed;
+}
+
+.kid-popup{
+position:fixed;
+inset:0;
+display:none;
+align-items:center;
+justify-content:center;
+z-index:3000;
+}
+
+.kid-card{
+background:#fff;
+width:320px;
+padding:25px;
+border-radius:30px;
+text-align:center;
+
+}
+
+.kid-icon{
+font-size:4.5em;
+margin-bottom:10px;
+}
+
+.kid-card h3{
+font-size:2em;
+margin-bottom:8px;
+}
+
+.kid-card p{
+font-size:1.2em;
+}
+
+.kid-correct .kid-card{
+background:#e6fffa;
+border:6px solid #38d9a9;
+}
+
+.kid-wrong .kid-card{
+background:#fff5f5;
+border:6px solid #ffa8a8;
+}
+
+#finalPopup{
+position:fixed;
+inset:0;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:4000;
+}
+
+.final-kid-box{
+background:linear-gradient(135deg,#fff7d6,#e6fff5);
+padding:30px 35px;
+border-radius:35px;
+text-align:center;
+width:420px;
+
+}
+
+.final-kid-box h2{
+font-size:2.2em;
+color:#2f9e44;
+margin-bottom:10px;
+}
+
+.final-kid-box p{
+font-size:1.3em;
+font-weight:600;
+}
+
+#stars{
+font-size:2.3em;
+margin:12px 0;
+}
+
+.playAgain-btn{
+background:#ffac30;
+color:#fff;
+border:none;
+padding:14px 34px;
+border-radius:30px;
+font-size:1.1em;
+cursor:pointer;
+margin-top:12px;
+}
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+@media (max-width:900px){
+
+.main-container{
+width:100%;
+}
+
+.image-area img{
+width:320px;
+height:220px;
+}
+
+.question-area h2{
+font-size:26px;
+}
+
+}
+
+@media (max-width:768px){
+
+.main-container{
+width:95%;
+}
+
+.question-area h2{
+font-size:22px;
+}
+
+.image-area img{
+width:260px;
+height:180px;
+}
+
+.input-box{
+min-width:140px;
+height:60px;
+}
+
+.input-box input{
+font-size:18px;
+}
+
+button{
+padding:12px 24px;
+font-size:16px;
+}
+.input-box button{
+padding:8px 15px;
+border-radius:20px;
+font-size:16px;
+font-weight:600;
+border:none;
+background:#6bc6f5;
+color:#fff;
+cursor:pointer;
+min-width:80px;
+}
+.final-kid-box{
+width:90%;
+}
+
+}
+
+@media (max-width:600px){
+
+  body{
+    height:auto;
+    overflow:auto;
+    align-items:flex-start;
+    padding:12px;
+    margin-top: 80px;
+  }
+
+  .quiz-container{
+    width:100%;
+    align-items:center;
+  }
+
+  /* QUESTION */
+  .question-area h2{
+    font-size:18px;
+    line-height:1.4;
+    padding:0 5px;
+  }
+
+  /* IMAGE */
+  .image-area img{
+    width:180px;
+    height:130px;
+  }
+
+  /* INPUT AREA */
+  .input-area{
+    width:100%;
+    gap:12px;
+    flex-direction:column;   /* 🔥 stack properly */
+    align-items:center;
+  }
+
+  /* INPUT BOX FIX */
+  .input-box{
+    width:100%;               /* 🔥 prevent overflow */
+    max-width:300px;
+    height:40px;
+
+    padding:6px 10px;
+    gap:6px;
+
+    border-radius:14px;
+  }
+
+  /* INPUT FIELD */
+  .input-box input{
+    font-size:15px;
+  }
+
+  /* CHECK BUTTON FIX */
+  .input-box button{
+    padding:4px 8px;
+    font-size:10px;
+    min-width:45px;
+    border-radius:15px;
+    margin-left: -70px;
+  }
+
+  /* NAV BUTTONS */
+  .nav{
+    width:90%;
+    margin-top:15px;
+    gap:10px;
+  }
+
+  .nav button{
+    flex:1;
+    font-size:14px;
+    padding:10px;
+  }
+/* ✅ FINAL POPUP SMALL FOR MOBILE */
+.final-kid-box{
+  width:90%;
+  padding:20px 18px;   /* reduced padding */
+  border-radius:25px;
+}
+
+.final-kid-box h2{
+  font-size:18px;      /* smaller title */
+}
+
+.final-kid-box p{
+  font-size:14px;      /* smaller score text */
+}
+
+#stars{
+  font-size:18px;      /* smaller stars */
+  margin:8px 0;
+}
+
+.playAgain-btn{
+  padding:10px 20px;
+  font-size:14px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="main-container">
+<div class="quiz-container">
+
+<div class="question-area">
+<h2 id="questionText"></h2>
+</div>
+
+<div class="image-area">
+<img id="questionImage">
+</div>
+
+<div class="input-area" id="inputsContainer"></div>
+<div class="nav">
+<button class="prev" id="prevBtn" onclick="prevQ()" disabled>← Prev</button>
+<button class="next" id="nextBtn" onclick="nextQ()" disabled>Next →</button>
+</div>
+
+</div>
+</div>
+
+<div id="answerPopup" class="kid-popup">
+<div class="kid-card">
+<div class="kid-icon" id="popupIcon"></div>
+<h3 id="popupTitle"></h3>
+<p id="popupMsg"></p>
+</div>
+</div>
+
+<div id="finalPopup">
+<div class="final-kid-box">
+<h2>🎉 Congratulations!</h2>
+<p id="finalScore"></p>
+<div id="stars"></div>
+<button class="playAgain-btn" onclick="location.reload()">Play Again</button>
+</div>
+</div>
+
+<script>
+
+const questions=[
+
+{
+q:"Q1. A penguin builds its nest on the ground using ______ and ______.",
+a:["stones","pebbles"],
+img:"../images/ftb1.png"
+},
+
+{
+q:"Q2. An eagle has a strong, sharp and ______ beak.",
+a:["hooked"],
+img:"../images/ftb2.png"
+},
+
+{
+q:"Q3. Birds like ______ and ______ have only two toes.",
+a:["ostrich","emu"],
+img:"../images/ftb3.png"
+},
+
+{
+q:"Q4. ______ feathers help in keeping the bird's body warm.",
+a:["down"],
+img:"../images/ftb4.png"
+},
+
+{
+q:"Q5. An ostrich is a ______ bird.",
+a:["flightless"],
+img:"../images/ftb5.png"
+}
+
+]
+
+let index=0
+let score=0
+
+const questionText=document.getElementById("questionText")
+const image=document.getElementById("questionImage")
+const prevBtn=document.getElementById("prevBtn")
+const nextBtn=document.getElementById("nextBtn")
+const inputsRow=document.getElementById("inputsContainer")
+
+const userAnswers=questions.map(q=>({
+used:[],
+boxes:q.a.map(()=>({value:"",correct:false}))
+}))
+
+/* TEXT SPEECH SAME AS MCQ */
+
+function speakText(text){
+
+const speech = new SpeechSynthesisUtterance(text)
+
+speech.lang="en-GB"
+speech.volume=0.25
+speech.rate=1
+speech.pitch=1
+
+speechSynthesis.speak(speech)
+
+}
+
+/* CONFETTI SAME AS MCQ */
+
+function correctConfetti(){
+confetti({
+particleCount:40,
+spread:70,
+origin:{y:0.6}
+})
+}
+
+function finalConfetti(){
+
+confetti({
+particleCount:120,
+spread:120,
+origin:{y:0.6}
+})
+
+setTimeout(()=>{
+confetti({
+particleCount:80,
+spread:100,
+origin:{y:0.6}
+})
+},300)
+
+}
+
+/* POPUP SAME STYLE */
+
+function showPopup(isCorrect){
+
+const popup=document.getElementById("answerPopup")
+const icon=document.getElementById("popupIcon")
+const title=document.getElementById("popupTitle")
+const msg=document.getElementById("popupMsg")
+
+popup.className="kid-popup "+(isCorrect?"kid-correct":"kid-wrong")
+popup.style.display="flex"
+
+if(isCorrect){
+
+icon.textContent="🎉😊"
+title.textContent="Great Job!"
+msg.textContent="You got it right!"
+
+}else{
+
+icon.textContent="😅"
+title.textContent="Oops!"
+msg.textContent="Try again!"
+
+}
+
+setTimeout(()=>popup.style.display="none",1400)
+
+}
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const q=questions[index]
+
+questionText.innerText=q.q
+image.src=q.img
+
+image.classList.toggle(
+"reveal",
+userAnswers[index].boxes.every(b=>b.correct)
+)
+
+prevBtn.disabled=index===0
+
+inputsRow.innerHTML=""
+
+q.a.forEach((_,i)=>{
+
+const box=document.createElement("div")
+box.className="input-box"
+
+const input=document.createElement("input")
+input.placeholder="Type here..."
+input.value=userAnswers[index].boxes[i].value
+
+const btn=document.createElement("button")
+btn.textContent="Check"
+btn.disabled=input.value.trim()===""
+
+input.addEventListener("input",()=>{
+btn.disabled=input.value.trim()===""
+})
+
+if(userAnswers[index].boxes[i].correct){
+box.classList.add("correct")
+input.disabled=true
+btn.disabled=true
+}
+
+btn.onclick=()=>checkAnswer(input,btn,box,i)
+
+box.append(input,btn)
+inputsRow.appendChild(box)
+
+})
+
+checkAllAnswered()
+
+}
+
+/* CHECK ANSWER */
+
+function checkAnswer(input,btn,box,i){
+
+const value=input.value.trim().toLowerCase()
+const answers=questions[index].a
+const state=userAnswers[index]
+if(answers.includes(value) && !state.used.includes(value)){
+
+box.classList.add("correct")
+
+image.classList.add("reveal")   // ⭐ ADD THIS LINE
+
+input.disabled=true
+btn.disabled=true
+
+state.used.push(value)
+state.boxes[i]={value,correct:true}
+
+correctConfetti()
+
+speakText("Correct")
+
+showPopup(true)
+
+}else{
+
+input.value=""
+btn.disabled=true
+
+speakText("Wrong")
+
+showPopup(false)
+
+}
+
+checkAllAnswered()
+
+}
+
+function checkAllAnswered(){
+
+const done=userAnswers[index].boxes.every(b=>b.correct)
+nextBtn.disabled=!done
+
+if(done && !userAnswers[index].scored){
+
+score++
+userAnswers[index].scored=true
+image.classList.add("reveal")
+
+if(index===questions.length-1){
+
+setTimeout(showFinal,1500)
+
+}
+
+}
+
+}
+
+nextBtn.onclick=()=>{
+if(index<questions.length-1){
+index++
+loadQuestion()
+}
+}
+
+prevBtn.onclick=()=>{
+if(index>0){
+index--
+loadQuestion()
+}
+}
+
+function showFinal(){
+
+const popup=document.getElementById("finalPopup")
+
+document.getElementById("finalScore").textContent =
+`Your Score: ${score} / ${questions.length}`
+
+document.getElementById("stars").textContent="⭐".repeat(score)
+
+popup.style.display="flex"
+
+finalConfetti()
+
+}
+function nextQ(){
+
+if(index < questions.length-1){
+index++
+loadQuestion()
+}else{
+showFinal()
+}
+
+}
+
+function prevQ(){
+
+if(index > 0){
+index--
+loadQuestion()
+}
+
+}
+loadQuestion()
+
+</script>
+
+</body>
+</html>

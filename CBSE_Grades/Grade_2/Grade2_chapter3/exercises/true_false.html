@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>True / False Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/CSS/true_false.css">
+ 
+</head>
+
+<body>
+
+<div class="quiz-card">
+
+ <!-- HEADER -->
+    <div class="quiz-header">
+        <div class="quiz-title">
+            🌱 Plant World Quiz
+            <div class="quiz-subtitle">
+                Let's explore the world of plants!
+            </div>
+        </div>
+
+        <div class="score-box" id="scoreBox">
+            Score: 0
+        </div>
+    </div>
+  <div class="question" id="question"></div>
+<img id="questionImg" class="question-img" />
+
+
+  <div class="tf-buttons">
+    <button class="true" id="trueBtn">TRUE</button>
+    <button class="false" id="falseBtn">FALSE</button>
+  </div>
+
+  <div class="nav">
+    <button class="prev" id="prevBtn" disabled>◀ Prev</button>
+    <button class="next" id="nextBtn" disabled>Next  ▶</button>
+  </div>
+
+</div>
+
+ <!-- ANSWER POPUP -->
+<div id="answerPopup" class="popup">
+  <div class="popup-content">
+    <div id="popupIcon" class="popup-icon"></div>
+    <div id="popupTitle" class="popup-title"></div>
+    <div id="popupMsg" class="popup-msg"></div>
+  </div>
+</div>
+
+<!-- FINAL POPUP -->
+<div id="finalPopup" class="popup">
+  <div class="popup-content">
+    <h2>🎉 Congratulations!</h2>
+    <div id="finalScore"></div>
+    <div id="stars"></div>
+     <button class="playAgain-btn" onclick="location.reload()">Play Again</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="../assets/JavaScript/true_false.js"></script>
+
+</body>
+</html>

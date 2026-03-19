@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Grade1_Lesson2</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Livvic", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(132deg, #e7f6da, rgb(199, 223, 199));
+      background-size: 4px 4px;
+    }
+
+    .app {
+      height: 100vh;
+      display: flex;
+      background: rgba(206, 221, 217, 0.55);
+    }
+
+    .sidebar {
+      width: 280px;
+      padding: 25px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 23px;
+    }
+
+    /* OPTION BUTTON */
+
+    .island-btn {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 16px 20px;
+      border-radius: 20px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #cfcfcf;
+      color: #444;
+      box-shadow:
+        0 6px 14px rgba(187, 173, 173, 0.12),
+        inset 0 1px 0 rgba(201, 194, 194, 0.8);
+      transition: .3s;
+    }
+
+    .option-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .option-num {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: 700;
+      color: white;
+      font-size: 16px;
+      background: #9ca3af;
+    }
+
+    .island-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ACTIVE */
+
+    .island-btn.active {
+      color: #1f2937;
+      box-shadow:
+        0 12px 22px rgba(0, 0, 0, .2),
+        0 0 0 3px white;
+    }
+
+    /* ACTIVE TICK */
+
+    .island-btn.active .option-num {
+      background: #22c55e;
+      font-size: 20px;
+    }
+
+    .island-btn.active .option-num::after {
+      content: "✔";
+    }
+
+    .island-btn.active .option-num span {
+      display: none;
+    }
+
+    /* OPTION COLORS */
+
+    .o1.active {
+      background: #ffdbb2;
+    }
+
+    .o2.active {
+      background: #c0eaff;
+    }
+
+    .o3.active {
+      background: #c1ffa9;
+    }
+
+    .o4.active {
+      background: #fae091;
+    }
+
+    .o5.active {
+      background: #fcb9c1;
+    }
+
+    .o6.active {
+      background: #9dd2dbef;
+    }
+
+    .main {
+      flex: 1;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+    }
+
+    /* MOBILE */
+
+    .menu-btn {
+      display: none;
+    }
+
+    .offcanvas {
+      display: none;
+    }
+
+    @media(max-width:900px) {
+
+      .app {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        font-size: 26px;
+        background: #e9a106;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 6px 12px;
+        cursor: pointer;
+        z-index: 5000;
+      }
+
+      .offcanvas {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .45);
+        display: none;
+        z-index: 4000;
+      }
+
+      .offcanvas.show {
+        display: block;
+      }
+
+      .offcanvas-panel {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        background: #f1f5f9;
+        padding: 20px;
+        padding-top: 80px;
+        transform: translateX(100%);
+        transition: .3s;
+        overflow-y: auto;
+      }
+
+      .offcanvas.show .offcanvas-panel {
+        transform: translateX(0);
+      }
+
+      .offcanvas-panel .island-btn {
+        margin-bottom: 18px;
+      }
+
+    }
+
+    @media (min-width: 900px) and (max-height: 800px) {
+      .app {
+        transform: scaleY(0.95);
+        transform-origin: top center;
+        height: calc(100vh / 0.95);
+      }
+    }
+
+    @media (min-width: 900px) and (max-height: 700px) {
+      .app {
+        transform: scaleY(0.9);
+        transform-origin: top center;
+        height: calc(100vh / 0.9);
+      }
+    }
+
+    @media (min-width: 900px) and (max-height: 600px) {
+      .app {
+        transform: scaleY(0.85);
+        transform-origin: top center;
+        height: calc(100vh / 0.85);
+      }
+    }
+
+    @media (min-width: 900px) and (max-height: 500px) {
+      .app {
+        transform: scaleY(0.8);
+        transform-origin: top center;
+        height: calc(100vh / 0.8);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+  <div class="app">
+
+    <div class="sidebar">
+
+      <div class="island-btn o1 active" onclick="openIsland(0)">
+        <div class="option-left">
+          <div class="option-num"><span><i class="fa-solid fa-check-double"></i></span></div>
+          <div>Correct Options</div>
+        </div>
+      </div>
+
+      <div class="island-btn o2" onclick="openIsland(1)">
+        <div class="option-left">
+          <div class="option-num"><span> <i class="fa-solid fa-pen-to-square"></i></span></div>
+          <div>Fill Blanks</div>
+        </div>
+      </div>
+
+      <div class="island-btn o3" onclick="openIsland(2)">
+        <div class="option-left">
+          <div class="option-num"><span><i class="fa-solid fa-scale-balanced"></i></span></div>
+          <div>True / False</div>
+        </div>
+      </div>
+
+      <div class="island-btn o6" onclick="openIsland(3)">
+        <div class="option-left">
+          <div class="option-num"><span> <i class="fa-solid fa-spell-check"></i></span></div>
+          <div>One Word</div>
+        </div>
+      </div>
+
+      <div class="island-btn o5" onclick="openIsland(4)">
+        <div class="option-left">
+          <div class="option-num"><span><i class="fa-solid fa-lightbulb"></i></span></div>
+          <div>One Examples</div>
+        </div>
+      </div>
+
+      <div class="island-btn o4" onclick="openIsland(5)">
+        <div class="option-left">
+          <div class="option-num"><span><i class="fa-solid fa-link"></i></span></div>
+          <div>Matching</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <iframe id="contentFrame" src="./exercises/mcq.html"></iframe>
+    </div>
+
+  </div>
+
+  <!-- MOBILE -->
+
+  <div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
+
+    <div class="offcanvas-panel" onclick="event.stopPropagation()">
+
+      <div class="island-btn o1 active" onclick="mobileOpen(0)">
+        <div class="option-left">
+          <div class="option-num"><span><i class="fa-solid fa-circle-check"></i></span></div>
+          <div>Correct Options</div>
+        </div>
+      </div>
+
+      <div class="island-btn o2" onclick="mobileOpen(1)">
+        <div class="option-left">
+          <div class="option-num"><span> <i class="fa-solid fa-pen-to-square"></i></span></div>
+          <div>Fill Blanks</div>
+        </div>
+      </div>
+
+      <div class="island-btn o3" onclick="mobileOpen(2)">
+        <div class="option-left">
+          <div class="option-num"><span><i class="fa-solid fa-scale-balanced"></i></span></div>
+          <div>True / False</div>
+        </div>
+      </div>
+
+      <div class="island-btn o5" onclick="mobileOpen(3)">
+        <div class="option-left">
+          <div class="option-num"><span><i class="fa-solid fa-font"></i></span></div>
+          <div>One Word</div>
+        </div>
+      </div>
+
+      <div class="island-btn o6" onclick="mobileOpen(4)">
+        <div class="option-left">
+          <div class="option-num"><span><i class="fa-solid fa-lightbulb"></i></span></div>
+          <div>One Example</div>
+        </div>
+      </div>
+
+      <div class="island-btn o4" onclick="mobileOpen(5)">
+        <div class="option-left">
+          <div class="option-num"><span><i class="fa-solid fa-link"></i></span></div>
+          <div>Matching</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+
+    const sidebarButtons = document.querySelectorAll(".sidebar .island-btn");
+    const mobileButtons = document.querySelectorAll(".offcanvas .island-btn");
+
+    const frame = document.getElementById("contentFrame");
+
+    const pages = [
+
+      "./exercises/mcq.html",
+      "./exercises/FTB.html",
+      "./exercises/true_false.html",
+      "./exercises/one_word.html",
+      "./exercises/one_example.html",
+      "./exercises/matching.html",
+
+    ];
+
+    function openIsland(index) {
+
+      sidebarButtons.forEach(btn => btn.classList.remove("active"));
+      sidebarButtons[index].classList.add("active");
+
+      mobileButtons.forEach(btn => btn.classList.remove("active"));
+      mobileButtons[index].classList.add("active");
+
+      frame.src = pages[index];
+
+    }
+
+    function toggleMenu() {
+
+      if (window.innerWidth > 900) return;
+
+      document.getElementById("offcanvas").classList.toggle("show");
+
+    }
+
+    function mobileOpen(i) {
+
+      openIsland(i);
+      toggleMenu();
+
+    }
+
+  </script>
+
+</body>
+
+</html>

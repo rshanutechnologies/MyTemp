@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Matching Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/matching.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<svg id="lines"></svg>
+
+<div class="matching">
+
+<!-- LEFT QUESTIONS -->
+
+<div class="left" id="left">
+
+<div class="box" data-match="pollen">
+1. The fine powdery particles on the anther
+<div class="dot"></div>
+</div>
+
+<div class="box" data-match="pistil">
+2. The female reproductive part of a flower
+<div class="dot"></div>
+</div>
+
+<div class="box" data-match="carpel">
+3. The female reproductive unit
+<div class="dot"></div>
+</div>
+
+<div class="box" data-match="stigma">
+4. The part of the flower which receives the pollen grains
+<div class="dot"></div>
+</div>
+
+<div class="box" data-match="ovary">
+5. The swollen bottom part of the carpel
+<div class="dot"></div>
+</div>
+
+</div>
+
+<!-- RIGHT OPTIONS -->
+
+<div class="right" id="right">
+
+<div class="box c1" data-match="stigma">
+<div class="dot"></div>
+<img src="../assets/images/stigmaak.png">
+<span>Stigma</span>
+</div>
+
+<div class="box c2" data-match="carpel">
+<div class="dot"></div>
+<img src="../assets/images/carpelak.png">
+<span>Carpel</span>
+</div>
+
+<div class="box c3" data-match="pistil">
+<div class="dot"></div>
+<img src="../assets/images/pistilak.png">
+<span>Pistil</span>
+</div>
+
+<div class="box c4" data-match="ovary">
+<div class="dot"></div>
+<img src="../assets/images/ovaryak.png">
+<span>Ovary</span>
+</div>
+
+<div class="box c5" data-match="pollen">
+<div class="dot"></div>
+<img src="../assets/images/Pollengrains.png">
+<span>Pollen grains</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- FINAL POPUP -->
+
+<div id="final" class="final">
+
+<h2>🎉 Congratulations!</h2>
+
+<h3 id="score"></h3>
+
+<div>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+</div>
+
+<button class="playBtn" onclick="playAgain()">Play Again</button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="../assets/js/matching.js"></script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grade3_lession1</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Livvic';
+}
+
+body{
+display:flex;
+height:100vh;
+overflow:hidden;
+
+position:relative;
+z-index:0;
+}
+
+/* BACKGROUND IMAGE */
+body::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background-image:url("images/bg2.png");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+/* ✨ BLUR EFFECT */
+
+transform:none;
+
+/* ✨ SOFT PASTEL LOOK */
+
+
+z-index:-2;
+}
+
+/* ✨ LIGHT OVERLAY FOR READABILITY */
+body::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+z-index:-1;
+}
+.sidebar{
+width:280px;
+position:relative;
+height:100vh;   /* ADD THIS */
+flex-shrink:0;
+}
+
+/* PUZZLE BUTTON */
+.menu button{
+all:unset;
+cursor:pointer;
+position:absolute;
+width:150px;
+height:80px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-size:19px;
+font-weight:600;
+color:#333;
+background:var(--puzzle);
+border-radius:20px;
+box-shadow:0 6px 14px rgba(0,0,0,0.15);
+transition:.3s;
+border:3px solid rgba(0,0,0,0.08);
+box-shadow:
+inset -4px -6px 0 rgba(0,0,0,0.08),
+0 6px 14px rgba(0,0,0,0.18);
+
+
+}
+
+/* PUZZLE TOP KNOB */
+.menu button::before{
+content:"";
+position:absolute;
+width:45px;
+height:45px;
+background:var(--puzzle);
+border-radius:50%;
+top:-18px;
+left:50%;
+transform:translateX(-50%);
+}
+
+/* PUZZLE BOTTOM WHITE CIRCLE */
+.menu button::after{
+content:"";
+position:absolute;
+width:40px;
+height:40px;
+background:#ffffff;
+border-radius:50%;
+bottom:-18px;
+left:50%;
+transform:translateX(-50%);
+transition:.3s;
+border:4px solid transparent;
+}
+.menu button.active::after{
+background:#a375f1;
+
+}
+/* POSITIONS */
+.menu button:nth-child(1){
+top:30px;
+left:30px;
+--puzzle:#ff7aa2;   /* Deep Pink */
+}
+
+.menu button:nth-child(2){
+top:160px;
+right:20px;
+--puzzle:#4ecbe0;   /* Deep Sky Blue */
+}
+
+.menu button:nth-child(3){
+top:290px;
+left:30px;
+--puzzle:#7ddf6c;   /* Deep Green */
+}
+
+.menu button:nth-child(4){
+top:410px;
+right:20px;
+--puzzle:#ffd84d;   /* Deep Yellow */
+}
+
+.menu button:nth-child(5){
+top:430px;
+left:30px;
+--puzzle:#b48cff;   /* Deep Purple */
+}
+
+
+/* HOVER */
+.menu button:hover{
+transform:scale(1.08);
+}
+
+/* ACTIVE */
+
+
+/* MAIN */
+.main{
+flex:1;
+
+}
+.menu{
+position:relative;
+height:100%;
+}
+
+iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+body{
+flex-direction:column;
+overflow:auto;
+}
+.sidebar{
+height:240px;
+width:100%;
+}
+.main{
+height:calc(100vh - 240px);
+}
+}
+/* ============================= */
+/* ✅ LARGE MONITORS (1400px+)  */
+/* ============================= */
+@media (min-width:1400px){
+  .menu button{
+    width:170px;
+    height:80px;
+    font-size:18px;
+  }
+}
+
+
+
+.mobile-toggle{
+  display:none;
+}
+@media (max-width:600){
+
+  /* POSITIONS */
+.menu button:nth-child(1){
+top:300px;
+left:30px;
+--puzzle:#ff7aa2;   /* Deep Pink */
+}
+
+.menu button:nth-child(2){
+top:160px;
+right:20px;
+--puzzle:#4ecbe0;   /* Deep Sky Blue */
+}
+
+.menu button:nth-child(3){
+top:290px;
+left:30px;
+--puzzle:#7ddf6c;   /* Deep Green */
+}
+
+.menu button:nth-child(4){
+top:410px;
+right:20px;
+--puzzle:#ffd84d;   /* Deep Yellow */
+}
+
+.menu button:nth-child(5){
+top:430px;
+left:30px;
+--puzzle:#b48cff;   /* Deep Purple */
+}
+
+
+}
+/* Mobile Only */
+@media (max-width:768px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  /* Show menu icon */
+  .mobile-toggle{
+    display:flex;
+    position:fixed;
+    top:1px;
+    right:5px;
+    width:45px;
+    height:45px;
+    background:#34b634cc;
+    backdrop-filter:blur(6px);
+    border-radius:10px;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    font-weight:700;
+    cursor:pointer;
+    z-index:2000;
+    box-shadow:0 6px 20px rgba(0,0,0,0.2);
+    
+    
+  }
+
+  /* Sidebar becomes offcanvas */
+  .sidebar{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:260px;
+    height:100vh;
+    background:white;
+    z-index:1500;
+    transition:0.4s ease;
+    box-shadow:-10px 0 25px rgba(0,0,0,0.25);
+    padding-top:80px;
+  }
+
+  .sidebar.active{
+    right:0;
+  }
+
+  /* Stack buttons vertically inside */
+  .menu{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:40px;
+  }
+
+  .menu button{
+    position:relative !important;
+    top:auto !important;
+    left:auto !important;
+    right:auto !important;
+    width:180px;
+    height:70px;
+    gap: 200px;
+  }
+
+  /* Main full height */
+  .main{
+    height:100vh;
+  }
+}
+/* ============================= */
+/* LARGE SCREEN FIX */
+/* ============================= */
+
+@media (min-width:1400px){
+
+.sidebar{
+width:280px;
+height:100vh;
+}
+
+.menu button:nth-child(1){
+top:80px;
+}
+
+.menu button:nth-child(2){
+top:240px;
+}
+
+.menu button:nth-child(3){
+top:400px;
+}
+
+.menu button:nth-child(4){
+top:560px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+ <div class="mobile-toggle" id="mobileToggle">☰</div>
+<div class="sidebar">
+
+<div class="menu">
+
+<button class="active" data-file="./exercise/mcq2.html">
+Correct Option
+</button>
+
+<button data-file="./exercise/fillintheblanks.html">
+Fill the Blanks
+</button>
+
+<button data-file="./exercise/truefalse.html">
+True / False
+</button>
+
+<button data-file="./exercise/matching.html">
+Matching
+</button>
+
+</div>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+<iframe id="frame" src="./exercise/mcq2.html"></iframe>
+</div>
+
+<script>
+
+const buttons=document.querySelectorAll(".menu button");
+const frame=document.getElementById("frame");
+
+buttons.forEach(btn=>{
+btn.addEventListener("click",()=>{
+buttons.forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+frame.src=btn.dataset.file;
+});
+});
+
+
+/* Mobile Offcanvas Toggle */
+const mobileToggle = document.getElementById("mobileToggle");
+const sidebar = document.querySelector(".sidebar");
+
+mobileToggle.addEventListener("click",()=>{
+  sidebar.classList.toggle("active");
+});
+
+/* Close sidebar when clicking quiz */
+buttons.forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    if(window.innerWidth <= 768){
+      sidebar.classList.remove("active");
+    }
+  });
+});
+
+
+</script>
+
+</body>
+</html>

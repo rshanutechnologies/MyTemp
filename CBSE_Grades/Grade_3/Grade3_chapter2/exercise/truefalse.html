@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>True False Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+ 
+  overflow:hidden;
+  font-family:'Livvic';
+}
+
+.quiz-container{
+  width:100%;
+  max-width:1100px;
+  min-height:300px;
+  padding:40px 40px 120px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.question{
+  font-size:30px;
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;   /* center horizontally */
+  text-align:center;        /* center multi-line text */
+  width:100%;               /* take full container width */
+  color:#2f4f4f;
+}
+.row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex:1;                    /* Fills middle space */
+}
+.image{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:300px;              /* FIX IMAGE AREA */
+}
+
+.image img{
+  max-width:300px;
+  max-height:300px;
+  object-fit:contain;        /* Prevent distortion */
+}
+
+/* Right Section */
+.right{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:30px;
+}
+
+/* T/F Options */
+.options{
+  display:flex;
+  gap:40px;
+}
+
+/* 🌟 FUN OPTION BOXES */
+
+.option-box{
+  width:95px;
+  height:95px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:38px;
+  font-weight:700;
+  border-radius:25px;
+  cursor:pointer;
+  transition:0.25s ease;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  position:relative;
+}
+
+/* Bouncy Hover */
+.option-box:hover{
+  transform:translateY(-6px) scale(1.05);
+}
+
+/* TRUE BOX - Bright Green */
+.true-box{
+  background:linear-gradient(145deg,#c8f7c5,#a5e6a2);
+  color:#0a7a0a;
+  border:3px solid #0a7a0a;
+  box-shadow:
+    inset 0 4px 8px rgba(255,255,255,0.7),
+    0 10px 20px rgba(0,128,0,0.25);
+}
+
+/* FALSE BOX - Bright Red */
+.false-box{
+  background:linear-gradient(145deg,#ffd6d6,#ffb3b3);
+  color:#c40000;
+  border:3px solid #c40000;
+  box-shadow:
+    inset 0 4px 8px rgba(255,255,255,0.7),
+    0 10px 20px rgba(255,0,0,0.25);
+}
+
+/* 🌟 FUN ANSWER BOX */
+
+.answer-box{
+  width:280px;
+  height:70px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:2px;
+
+  border-radius:20px;
+  border:3px dashed #8fa8ff;
+
+  background:linear-gradient(145deg,#ffffff,#e9f0ff);
+
+  color:#2f4f4f;
+
+  box-shadow:
+    inset 0 5px 10px rgba(255,255,255,0.9),
+    0 8px 18px rgba(0,0,0,0.12),
+    0 0 12px rgba(143,168,255,0.35);
+
+  transition:all 0.3s ease;
+}
+
+/* ✨ When answer appears */
+.answer-box:not(:empty){
+  border:3px solid #4caf50;
+  background:linear-gradient(145deg,#e8fbe8,#c8f7c5);
+  color:#0a7a0a;
+
+  box-shadow:
+    inset 0 4px 10px rgba(255,255,255,0.9),
+    0 10px 22px rgba(0,128,0,0.25),
+    0 0 15px rgba(76,175,80,0.4);
+
+  transform:scale(1.05);
+}
+/* Navigation Buttons */
+.nav-btn{
+  position:absolute;
+  bottom:30px;   /* Better placement */
+  padding:12px 35px;
+  font-size:22px;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  color:white;
+  font-weight:500;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  transition:0.3s;
+}
+
+.nav-btn:hover{
+  transform:translateY(-3px);
+}
+
+#prevBtn{
+  left:60px;
+  background:linear-gradient(135deg,#607d8b,#455a64);
+}
+
+#nextBtn{
+  right:60px;
+  background:linear-gradient(135deg,#ff9800,#f57c00);
+}
+.nav-btn:disabled{
+  background:#ccc !important;
+  cursor:not-allowed;
+  box-shadow:none;
+}
+/* ===== SMALLER POPUP ===== */
+
+.popup{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.hidden{
+  display:none;
+}
+
+.popup-content{
+  background:#fef6ff;
+  padding:35px 45px;          /* Reduced padding */
+  border-radius:22px;         /* Slightly smaller radius */
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
+  min-width:280px;            /* Smaller width */
+  max-width:380px;            /* Smaller max width */
+  animation:pop 0.25s ease;
+}
+
+@keyframes pop{
+  from{ transform:scale(0.85); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
+}
+
+.popup-emoji{
+  font-size:48px;             /* Smaller emoji */
+  margin-bottom:10px;
+}
+
+.popup-content h2{
+  font-size:28px;             /* Smaller title */
+  margin-bottom:8px;
+}
+
+.popup-content p{
+  font-size:20px;             /* Smaller text */
+}
+
+.play-again-btn{
+  margin-top:20px;
+  padding:12px 28px;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#4caf50,#2e7d32);
+  color:white;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.play-again-btn:hover{
+  transform:translateY(-2px);
+}
+/* ============================= */
+/* 📱 MOBILE RESPONSIVE */
+/* ============================= */
+
+@media (max-width:600px){
+
+  body{
+    align-items:flex-start;
+    padding-top:30px;
+    overflow:auto;
+    margin-top: 40px;
+  }
+
+  .quiz-container{
+    padding:20px 20px 100px;
+  }
+
+  .question{
+    font-size:20px;
+    height:auto;
+    text-align:center;
+    justify-content:center;
+  }
+
+  .row{
+    flex-direction:column;
+    gap:40px;
+  }
+
+  .image{
+    height:auto;
+  }
+
+  .image img{
+    max-width:200px;
+    max-height:200px;
+  }
+
+  .option-box{
+    width:75px;
+    height:75px;
+    font-size:30px;
+  }
+
+  .answer-box{
+    width:220px;
+    height:60px;
+    font-size:24px;
+  }
+
+  #prevBtn{
+    left:20px;
+    bottom:-30px;
+  }
+
+  #nextBtn{
+    right:20px;
+    bottom:-30px;
+  }
+  .popup-content{
+    padding:30px 25px;   /* reduced padding */
+    min-width:260px;
+    max-width:90%;
+    border-radius:20px;
+  }
+
+  .popup-emoji{
+    font-size:40px;   /* smaller emoji */
+  }
+
+  .popup-content h2{
+    font-size:20px;
+  }
+
+  .popup-content p{
+    font-size:16px;
+  }
+
+  .play-again-btn{
+    padding:10px 20px;
+    font-size:14px;
+  }
+}
+
+/* ============================= */
+/* 🖥 LARGE MONITOR */
+/* ============================= */
+
+@media (min-width:1400px){
+
+  .question{
+    font-size:34px;
+  }
+
+  .image img{
+    max-width:280px;
+    max-height:280px;
+  }
+
+  .option-box{
+    width:110px;
+    height:110px;
+    font-size:42px;
+  }
+
+  .answer-box{
+    width:320px;
+    height:75px;
+    font-size:34px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+  <div class="question" id="question"></div>
+
+  <div class="row">
+    <div class="image">
+      <img id="questionImg">
+    </div>
+
+    <div class="right">
+      <div class="options">
+        <div class="option-box true-box" onclick="selectAnswer('T')">T</div>
+        <div class="option-box false-box" onclick="selectAnswer('F')">F</div>
+      </div>
+
+      <div class="answer-box" id="answerBox"></div>
+    </div>
+  </div>
+
+  <button class="nav-btn" id="prevBtn">Previous</button>
+  <button class="nav-btn" id="nextBtn" disabled>Next</button>
+
+</div>
+
+<!-- Popup -->
+<div id="popup" class="popup hidden">
+ <div class="popup-content">
+  <div id="popupEmoji" class="popup-emoji"></div>
+  <h2 id="popupTitle"></h2>
+  <p id="popupMessage"></p>
+
+  <button id="playAgainBtn" class="play-again-btn hidden">
+    🔄 Play Again
+  </button>
+ </div>
+</div>
+
+<script>
+const questions = [
+  {
+    q:"Q1. All roots are of the same type.",
+    img:"../images/roots.png",
+    correct:"F"
+  },
+  {
+    q:"Q2. The shoot is the underground part of a plant.",
+    img:"../images/shoot.png",
+    correct:"F"
+  },
+  {
+    q:"Q3. The stem grows above the ground.",
+    img:"../images/stems.png",
+    correct:"T"
+  },
+  {
+    q:"Q4. Fibrous roots have a main root.",
+    img:"../images/fbroot.png",
+    correct:"F"
+  },
+  { 
+    q:"Q5. Seeds of all the plants can be eaten.",
+    img:"../images/seeds.png",
+    correct:"F"
+  }
+];
+let current = 0;
+let selectedAnswers = new Array(questions.length).fill(null);
+
+const questionEl = document.getElementById("question");
+const imgEl = document.getElementById("questionImg");
+const answerBox = document.getElementById("answerBox");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+
+const popup = document.getElementById("popup");
+const popupTitle = document.getElementById("popupTitle");
+const popupMessage = document.getElementById("popupMessage");
+const popupEmoji = document.getElementById("popupEmoji");
+const playAgainBtn = document.getElementById("playAgainBtn");
+
+/* ===== UK TEXT TO SPEECH ===== */
+function speakText(text){
+  if(!('speechSynthesis' in window)) return;
+
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = "en-GB";
+  utter.volume = 0.25;
+
+  const voices = speechSynthesis.getVoices();
+  const ukVoice = voices.find(v => v.lang === "en-GB");
+  if(ukVoice) utter.voice = ukVoice;
+
+  window.speechSynthesis.speak(utter);
+}
+function fireConfetti(){
+
+  confetti({
+    particleCount: 40,
+    spread: 70,
+    origin: { y: 0.6 },
+    scalar: 0.7
+  });
+
+}
+function loadQuestion(){
+  confetti.reset();
+  const q = questions[current];
+  questionEl.textContent = q.q;
+  imgEl.src = q.img;
+
+  answerBox.textContent = selectedAnswers[current] || "";
+
+  // ✅ FIXED LINE
+  nextBtn.disabled = selectedAnswers[current] === null;
+
+  prevBtn.disabled = current === 0;
+}
+
+function selectAnswer(choice){
+
+  if(selectedAnswers[current] !== null) return;
+
+  const correctAnswer = questions[current].correct;
+
+ if(choice === correctAnswer){
+
+  setTimeout(()=>fireConfetti(),100);
+
+  selectedAnswers[current] = choice;
+  answerBox.textContent = choice;
+  nextBtn.disabled = false;
+fireConfetti();
+
+    selectedAnswers[current] = choice;
+    answerBox.textContent = choice;
+    nextBtn.disabled = false;
+
+    popupEmoji.textContent = "🎉";
+    popupTitle.textContent = "Correct!";
+    popupTitle.style.color = "green";
+    popupMessage.textContent = "Great job!";
+    playAgainBtn.classList.add("hidden");
+
+    speakText("Correct!");
+
+    popup.classList.remove("hidden");
+
+    if(current === questions.length - 1){
+      setTimeout(()=>{
+        popup.classList.add("hidden");
+        showFinalPopup();
+      },900);
+    } else {
+      setTimeout(()=> popup.classList.add("hidden"),1200);
+    }
+
+  } else {
+
+    popupEmoji.textContent = "❌";
+    popupTitle.textContent = "Wrong!";
+    popupTitle.style.color = "red";
+    popupMessage.textContent = "Try again!";
+    playAgainBtn.classList.add("hidden");
+
+    speakText("Wrong!");
+
+    popup.classList.remove("hidden");
+    setTimeout(()=> popup.classList.add("hidden"),1200);
+  }
+}
+
+nextBtn.addEventListener("click",()=>{
+  if(current < questions.length-1){
+    current++;
+    loadQuestion();
+  }
+});
+
+prevBtn.addEventListener("click",()=>{
+  if(current > 0){
+    current--;
+    loadQuestion();
+  }
+});
+function fireFinalConfetti(){
+
+const duration = 2500;
+const animationEnd = Date.now() + duration;
+
+finalConfettiInterval = setInterval(function(){
+
+if(Date.now() > animationEnd){
+clearInterval(finalConfettiInterval);
+return;
+}
+
+confetti({
+particleCount:60,
+spread:120,
+startVelocity:45,
+scalar:1.1,
+origin:{ x:Math.random(), y:Math.random()-0.2 }
+});
+
+},250);
+
+}
+function showFinalPopup(){
+
+  let score = 0;
+  questions.forEach((q,i)=>{
+    if(selectedAnswers[i] === q.correct) score++;
+  });
+fireFinalConfetti();
+  popupEmoji.textContent = "🏆";
+  popupTitle.textContent = "Quiz Completed!";
+  playAgainBtn.classList.remove("hidden");
+
+  if(score === 5){
+    popupTitle.style.color = "#2e7d32";
+    popupMessage.style.color = "#2e7d32";
+    popupMessage.textContent = `Score: ${score}/5 - Excellent 🌟`;
+    speakText("");
+  }
+  else if(score > 3){
+    popupTitle.style.color = "#1565c0";
+    popupMessage.style.color = "#1565c0";
+    popupMessage.textContent = `Score: ${score}/5 - Very Good 👏`;
+    speakText("Very good!");
+  }
+  else if(score < 3){
+    popupTitle.style.color = "#c62828";
+    popupMessage.style.color = "#c62828";
+    popupMessage.textContent = `Score: ${score}/5 - Keep Practicing 💪`;
+    speakText("Keep practicing!");
+  }
+  else{
+    popupTitle.style.color = "#ef6c00";
+    popupMessage.style.color = "#ef6c00";
+    popupMessage.textContent = `Score: ${score}/5 - Good 👍`;
+    speakText("Good job!");
+  }
+
+  popup.classList.remove("hidden");
+}
+
+playAgainBtn.addEventListener("click",()=>{
+
+clearInterval(finalConfettiInterval);  // ⭐ stop interval
+confetti.reset();                      // ⭐ clear particles
+
+current = 0;
+selectedAnswers = new Array(questions.length).fill(null);
+
+popup.classList.add("hidden");
+playAgainBtn.classList.add("hidden");
+
+loadQuestion();
+
+});
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>

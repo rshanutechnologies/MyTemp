@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fun Kids Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Livvic';
+}
+
+/* SKY BACKGROUND */
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+ 
+  overflow:hidden;
+}
+
+
+@keyframes cloudMove{
+  from{transform:translateX(-100%);}
+  to{transform:translateX(120vw);}
+}
+.quiz-container{
+  width:100%;
+  max-width:1200px;
+  height:100vh;                 /* 🔥 important */
+  padding:20px 30px;
+  border-radius:40px;
+display:flex;
+  flex-direction:column;
+  justify-content:flex-start;   /* 🔥 important */
+  gap:15px;                     /* spacing between elements */
+  align-items:center;
+
+  text-align:center;
+  position:relative;
+  margin-top: -50px;
+}
+
+.question{
+  font-size:30px;
+  color: #2f4f4f;
+  
+  padding:10px 20px;
+  
+}
+
+.question-img img{
+  width:180px;  
+ 
+}
+.options{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+ margin-top: -20px;
+   
+}
+
+.option{
+  width:23%;
+     /* 🔥 4 fit perfectly */
+}
+
+.circle{
+  width:100%;
+  height:140px;
+}
+
+.circle img{
+  width:75px;
+}
+.circle{
+  width:200px;
+  height:150px;
+  background:#DFEBFC;
+  border-radius:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  
+  padding-bottom:20px;
+}
+
+/* IMAGE */
+.circle img{
+  width:100px;
+}
+/* LABEL BASE STYLE */
+.option p{
+  position:relative;
+  top:-22px;
+  left: 10px;
+  display:inline-block;
+  padding:10px 33px;
+  font-size:18px;
+  font-weight:600;
+  color:white;
+  border-radius:40px;
+  z-index:2;
+  box-shadow:0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* SIDE SHAPES */
+.option p::before,
+.option p::after{
+  content:"";
+  position:absolute;
+  bottom:6px;
+  width:60px;
+  height:22px;
+  z-index:-1;
+}
+
+/* LEFT */
+.option p::before{
+  left:-25px;
+  border-radius:12px 0 0 12px;
+}
+
+/* RIGHT */
+.option p::after{
+  right:-25px;
+  border-radius:0 12px 12px 0;
+}
+/* Lungs */
+.option:nth-child(1) p{
+  background:#f6a645;
+}
+.option:nth-child(1) p::before,
+.option:nth-child(1) p::after{
+  background:#f6a645;
+}
+
+/* Wings */
+.option:nth-child(2) p{
+  background:#4da6ff;
+}
+.option:nth-child(2) p::before,
+.option:nth-child(2) p::after{
+  background:#4da6ff;
+}
+
+/* Gills */
+.option:nth-child(3) p{
+  background:#f2c94c;
+  color:#333;
+}
+.option:nth-child(3) p::before,
+.option:nth-child(3) p::after{
+  background:#f2c94c;
+}
+
+/* Fins */
+.option:nth-child(4) p{
+  background:#b28dff;
+}
+.option:nth-child(4) p::before,
+.option:nth-child(4) p::after{
+  background:#b28dff;
+}
+/* DIFFERENT LABEL COLORS */
+.option:nth-child(2) p{ background:#4dabf7; }
+.option:nth-child(3) p{ background:#f6c945; color:#333; }
+.option:nth-child(4) p{ background:#b197fc; }
+/* HOVER */
+.option:hover .circle{
+  transform:translateY(-6px);
+  box-shadow:0 12px 25px rgba(0,0,0,0.12);
+}
+/* CORRECT */
+.correct .circle{
+  border:3px solid #4caf50;
+  background:#e8f5e9;
+}
+
+/* WRONG */
+.wrong .circle{
+  border:3px solid #e53935;
+  background:#ffebee;
+}
+
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-5px);}
+  50%{transform:translateX(5px);}
+  75%{transform:translateX(-5px);}
+  100%{transform:translateX(0);}
+}
+
+@keyframes pop{
+  from{transform:scale(0.8);}
+  to{transform:scale(1.1);}
+}
+
+/* NAV BUTTONS */
+.nav-btn{
+  position:absolute;
+  
+  padding:12px 37px;
+  bottom:-10px;   /* 🔥 inside screen */
+  border:none;
+  border-radius:50px;
+   font-size:22px;
+  font-weight:500;
+  cursor:pointer;
+  transition:0.3s;
+ 
+  color:white;
+  font-family:'Livvic';
+
+}
+
+
+#prevBtn{
+  left:20px;
+}
+
+#nextBtn{
+  right:20px;
+}
+#prevBtn{
+  left:40px;
+  background:linear-gradient(135deg,#607d8b,#455a64);
+}
+
+#nextBtn{
+  right:40px;
+   background:linear-gradient(135deg,#ff9800,#f57c00);
+}
+
+.nav-btn:hover{
+  transform:scale(1.1);
+}
+
+.nav-btn:disabled{
+  background:#cccccc;
+  cursor:not-allowed;
+}
+.nav-btn:disabled{
+  background:#ccc !important;
+  cursor:not-allowed;
+  box-shadow:none;
+}
+.popup{
+  position:fixed;
+  inset:0;
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.hidden{
+  display:none;
+}
+
+.popup-content{
+  background:#fef6ff;  /* pastel base */
+  padding:60px 80px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 20px 45px rgba(0,0,0,0.25);
+  min-width:350px;
+  max-width:500px;
+  animation:pop 0.3s ease;
+}
+
+@keyframes pop{
+  from{ transform:scale(0.8); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
+}
+
+.popup-emoji{
+  font-size:60px;
+  margin-bottom:15px;
+}
+
+.popup-content h2{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.popup-content p{
+  font-size:20px;
+}
+
+.play-again-btn{
+  margin-top:20px;
+  padding:12px 28px;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#4caf50,#2e7d32);
+  color:white;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.play-again-btn:hover{
+  transform:translateY(-3px);
+}
+.question-img{
+  display:flex;
+  justify-content:center;
+  margin-bottom:35px;
+}
+
+.question-img img{
+  width:250px;
+  height: 230px;
+  height:auto;
+}
+@media(max-width:600px){
+
+  .question{
+    font-size:18px;
+    margin-top:40px;
+    padding:0 10px;
+  }
+
+  .question-img img{
+    width:140px;
+  }
+
+  .options{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    width:100%;
+  }
+
+  .option{
+    width:100%;
+  }
+
+  .circle{
+    width:100%;
+    height:100px;
+  }
+
+  .circle img{
+    width:55px;
+  }
+
+  .option p{
+    font-size:13px;
+    padding:6px 14px;
+    top:-16px;
+    left:0;
+  }
+
+  .nav-btn{
+    font-size:16px;
+    padding:10px 20px;
+    bottom:-5px;
+  }
+
+  #prevBtn{
+    left:10px;
+  }
+
+  #nextBtn{
+    right:10px;
+  }
+}
+@media(max-width:768px){
+
+  body{
+    overflow:auto;
+  }
+
+  .question{
+    font-size:22px;
+  }
+
+  .options{
+    gap:25px;
+  }
+
+  .option{
+    width:130px;
+  }
+
+  .circle{
+    width:130px;
+    height:120px;
+  }
+
+  .circle img{
+    width:75px;
+  }
+
+  /* FIX LABEL SIZE */
+  .option p{
+    font-size:14px;
+    padding:8px 18px;
+    left:0;
+    top:-18px;
+  }
+
+  /* FIX SIDE SHAPES */
+  .option p::before,
+  .option p::after{
+    width:30px;
+    height:16px;
+  }
+
+  .option p::before{
+    left:-15px;
+  }
+
+  .option p::after{
+    right:-15px;
+  }
+
+}
+/* CONFETTI */
+.confetti{
+  position:fixed;
+  width:10px;
+  height:10px;
+  background:red;
+  top:-10px;
+  opacity:0.8;
+  z-index:999;
+  animation:fall 2s linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(100vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+  <div class="question" id="question"></div>
+
+<!-- ADD THIS -->
+<div class="question-img">
+   <img id="qImage" src="" alt="">
+</div>
+
+  <div class="options" id="options"></div>
+
+  <button class="nav-btn" id="prevBtn">Prev</button>
+  <button class="nav-btn" id="nextBtn" disabled>Next</button>
+
+<!-- Popup -->
+<div id="popup" class="popup hidden">
+ <div class="popup-content">
+  <div id="popupEmoji" class="popup-emoji"></div>
+  <h2 id="popupTitle"></h2>
+  <p id="popupMessage"></p>
+
+  <button id="playAgainBtn" class="play-again-btn hidden">
+    🔄 Play Again
+  </button>
+
+</div>
+
+<script>
+const questions = [
+{
+question: "Q1. Birds fly with the help of their ______.",
+qimg: "../images/Fly_bird.png",
+options: [
+{ text: "Lungs", img: "../images/lungs.png" },
+{ text: "Wings", img: "../images/wings.png" },
+{ text: "Gills", img: "../images/gills1.png" },
+{ text: "Fins", img: "../images/fins.png" }
+],
+correct: 1
+},
+
+{
+question: "Q2. A __________ lays eggs.",
+qimg: "../images/mcq2.png",
+options: [
+{ text: "Bat", img: "../images/bat.png" },
+{ text: "Snake", img: "../images/snake-img.png" },
+{ text: "Kangaroo", img: "../images/kangaroo.png" },
+{ text: "Bear", img: "../images/bear.png" }
+],
+correct: 1
+},
+
+{
+question: "Q3. __________ have six legs.",
+qimg: "../images/mcq3.png",
+options: [
+{ text: "Insects", img: "../images/insect.png" },
+{ text: "Snakes", img: "../images/snake-img.png" },
+{ text: "Birds", img: "../images/bird.png" },
+{ text: "Fishes", img: "../images/fish.png" }
+],
+correct: 0
+},
+
+{
+question: "Q4. Plants make food in their __________.",
+qimg: "../images/mcq4.png",
+options: [
+{ text: "Leaves", img: "../images/leaf.png" },
+{ text: "Roots", img: "../images/roots.png" },
+{ text: "Stems", img: "../images/stems.png" },
+{ text: "Branches", img: "../images/branches.png" }
+],
+correct: 0
+},
+
+{
+question: "Q5. Non-living things __________.",
+qimg: "../images/mcq5.png",
+options: [
+{ text: "Reproduce", img: "../images/reproduce.png" },
+{ text: "Don't grow", img: "../images/car.png" },
+{ text: "Move", img: "../images/move.png" },
+{ text: "Breathe", img: "../images/breathe.png" }
+],
+correct: 1
+}
+];
+let currentQuestion = 0;
+let selectedAnswers = new Array(questions.length).fill(null);
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+
+const popup = document.getElementById("popup");
+const popupTitle = document.getElementById("popupTitle");
+const popupMessage = document.getElementById("popupMessage");
+const popupEmoji = document.getElementById("popupEmoji");
+const playAgainBtn = document.getElementById("playAgainBtn");
+
+const qImage = document.getElementById("qImage");
+
+function launchConfetti(){
+
+for(let i=0;i<40;i++){
+
+const conf = document.createElement("div");
+conf.classList.add("confetti");
+
+conf.style.left = Math.random()*100 + "vw";
+
+const colors = ["#ff5252","#ffca28","#66bb6a","#42a5f5","#ab47bc"];
+conf.style.background = colors[Math.floor(Math.random()*colors.length)];
+
+conf.style.animationDuration = (Math.random()*2+2) + "s";
+
+document.body.appendChild(conf);
+
+setTimeout(()=>{
+conf.remove();
+},3000);
+
+}
+}
+function fireConfetti(){
+
+  confetti({
+    particleCount: 40,   // small confetti
+    spread: 70,
+    origin: { y: 0.6 },
+    scalar: 0.7
+  });
+
+}
+
+function loadQuestion(){
+optionsEl.innerHTML = "";
+const q = questions[currentQuestion];
+questionEl.textContent = q.question;
+qImage.src = q.qimg;
+nextBtn.disabled = selectedAnswers[currentQuestion] !== q.correct;
+
+q.options.forEach((opt,index)=>{
+const div = document.createElement("div");
+div.classList.add("option");
+
+div.innerHTML = `
+<div class="circle">
+<img src="${opt.img}" alt="">
+</div>
+<p>${opt.text}</p>
+`;
+
+div.addEventListener("click",()=>{
+
+// Prevent clicking after correct answer
+if(selectedAnswers[currentQuestion] === questions[currentQuestion].correct) return;
+
+if(index === q.correct){
+
+selectedAnswers[currentQuestion] = index; // save only correct answer
+loadQuestion();
+
+fireConfetti();
+speak("correct.");
+
+popupEmoji.textContent = "🎉";
+popupTitle.textContent = "Correct!";
+popupTitle.style.color = "green";
+popupMessage.textContent = "Great job!";
+nextBtn.disabled = false;
+
+popup.classList.remove("hidden");
+
+if(currentQuestion === questions.length - 1){
+setTimeout(()=>{
+popup.classList.add("hidden");
+showFinalPopup();
+},1200);
+}else{
+setTimeout(()=>{
+popup.classList.add("hidden");
+},1200);
+}
+
+}else{
+
+speak("Wrong.");
+
+popupEmoji.textContent = "❌";
+popupTitle.textContent = "Wrong!";
+popupTitle.style.color = "red";
+popupMessage.textContent = "Try again!";
+popup.classList.remove("hidden");
+
+setTimeout(()=>{
+popup.classList.add("hidden");
+},1200);
+
+}
+
+});
+
+if(selectedAnswers[currentQuestion] !== null){
+if(index === selectedAnswers[currentQuestion]){
+if(index === q.correct){
+div.classList.add("correct");
+}else{
+div.classList.add("wrong");
+}
+}
+}
+
+optionsEl.appendChild(div);
+});
+
+prevBtn.disabled = currentQuestion === 0;
+}
+
+nextBtn.addEventListener("click",()=>{
+if(currentQuestion < questions.length - 1){
+currentQuestion++;
+loadQuestion();
+}else{
+showFinalPopup();
+}
+});
+
+prevBtn.addEventListener("click",()=>{
+if(currentQuestion > 0){
+currentQuestion--;
+loadQuestion();
+}
+});
+
+function showFinalPopup(){
+
+let score = 0;
+
+questions.forEach((q,i)=>{
+if(selectedAnswers[i] === q.correct){ score++; }
+});
+
+popupEmoji.textContent = "🏆";
+popupTitle.textContent = "Quiz Completed!";
+popupMessage.textContent = `Score: ${score}/5`;
+
+playAgainBtn.classList.remove("hidden");
+popup.classList.remove("hidden");
+
+/* 🎉 FINAL CONFETTI CELEBRATION */
+
+confetti({
+  particleCount: 150,
+  spread: 120,
+  origin: { y: 0.6 }
+});
+
+}
+
+playAgainBtn.addEventListener("click",()=>{
+location.reload();
+});
+function speak(text){
+
+const msg = new SpeechSynthesisUtterance();
+
+msg.text = text;
+msg.lang = "en-GB";   // UK English
+msg.volume = 0.25;   // volume (0 to 1)
+msg.rate = 1;
+msg.pitch = 1;
+
+speechSynthesis.speak(msg);
+
+}
+loadQuestion();
+
+</script>
+</body>
+</html>

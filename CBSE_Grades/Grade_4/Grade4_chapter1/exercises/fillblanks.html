@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Fill in the Blanks Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/CSS/fillblanks.css">
+</head>
+
+<body>
+
+  <div class="quiz">
+    <div class="home" onclick="location.href='../index.html'">🏠 Home</div>
+    
+
+    <!-- <div class="header">
+    <div id="qCount">Question 1 of 5</div>
+  </div> -->
+
+    <div class="question" id="qText"></div>
+
+    <div class="illustration">
+      <img id="qImg">
+    </div>
+
+    <div class="input-box">
+      <input id="answerInput" placeholder="Type your answer">
+      <input id="answerInput2" placeholder="Type second answer" style="display:none;">
+    </div>
+
+    <div class="buttons">
+      <button class="prev" id="prevBtn">⟵ Prev</button>
+      <button class="check" id="checkBtn" disabled> Submit</button>
+      <button class="next" id="nextBtn">Next ⟶</button>
+    </div>
+
+  </div>
+
+  <!-- POPUP -->
+  <div id="popup" class="popup">
+    <div id="popupBox" class="popup-box"></div>
+  </div>
+
+  <script src="../assets/JavaScript/fillblanks.js"></script>
+</body>
+
+</html>

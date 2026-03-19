@@ -1,0 +1,532 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Livvic", sans-serif
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.main {
+    width: 95%;
+    max-width: 950px;
+    padding: 40px
+}
+
+.question {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px
+}
+
+.question h2 {
+    font-size: 30px;
+    font-weight: 400;
+    color: #2f4f4f;
+    text-align: center;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px
+}
+
+.image-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    width: 300px;
+    padding: 20px 10px 25px;
+    border-radius: 25px;
+    background: linear-gradient(180deg, #fff5f5, #f1f6ff);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(228, 228, 228, 0.2) 0px -3px 0px inset;
+    transition: all .25s ease;
+    border: 4px solid transparent;
+}
+
+.image-box:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, 0.2),
+        inset 0 3px 8px rgba(255, 255, 255, 0.9);
+}
+
+.image-box.wrongBlink {
+    animation: wrongBorderFlash 0.45s ease;
+}
+
+.image-box.correct {
+    border: 4px solid #8de3b4;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.image-box.wrong {
+    opacity: .4;
+    box-shadow: none;
+    border: 4px solid rgb(255, 126, 126);
+    filter: grayscale(50%);
+    cursor: not-allowed;
+}
+
+@keyframes wrongBorderFlash {
+    0% {
+        border: 4px solid transparent;
+        background: #ffe6e6;
+    }
+
+    50% {
+        border: 4px solid #ff9aa2;
+        background: #ffdcdc;
+    }
+
+    100% {
+        border: 4px solid transparent;
+        background: #ffe6e6;
+    }
+}
+
+.image-box img {
+    width: 170px;
+    height: 170px;
+    object-fit: contain;
+    margin-bottom: 20px;
+
+    transition: .25s;
+}
+
+.image-box.correct img {
+    animation: floatItem 2.5s ease-in-out infinite;
+}
+
+@keyframes floatItem {
+    0% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-10px)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+
+.base {
+    width: 200px;
+    filter: drop-shadow(0 12px 16px rgba(0, 0, 0, .35))
+}
+
+.image-bottom {
+    padding: 14px 26px;
+    font-size: 19px;
+    font-weight: 600;
+    color: #444;
+    background: #59dfb2d5;
+    border-radius: 15px;
+    border: 2px solid #e3e3e3;
+    /* box-shadow: 8px 8px 13px rgb(207, 207, 207); */
+    min-width: 150px;
+    text-align: center;
+    transition: .25s;
+}
+
+.image-box.correct {
+    opacity: 1
+}
+
+.image-box.correct .image-bottom {
+    background: #dff7ec;
+    border: 2px dashed #7cd9b2;
+    color: #1b7c57;
+}
+
+.image-box.wrong .image-bottom {
+    background: #ffe5e5;
+    border: 2px dashed #ffb3b3;
+    color: #b54848;
+}
+
+@keyframes wrongFlash {
+    0% {
+        transform: scale(1)
+    }
+
+    50% {
+        transform: scale(1.07)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+.wrongBlink .image-bottom {
+    animation: wrongFlash .35s ease
+}
+
+.controls {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px
+}
+
+.controls button {
+    width: 100px;
+    height: 60px;
+    border: none;
+    border-radius: 15px;
+    font-size: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+
+.prev {
+    background: #8fb1e8;
+}
+
+.next {
+    background: #f29b1d;
+}
+
+.controls button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.kid-popup {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000
+}
+
+.kid-card {
+    background: #ffffff;
+    width: 320px;
+    padding: 25px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 15px 0 #ffd966, 0 25px 40px rgba(0, 0, 0, .2);
+    animation: kidPop .6s ease
+}
+
+.kid-icon {
+    font-size: 4.5em;
+    margin-bottom: 10px;
+    animation: emojiBounce .9s infinite alternate
+}
+
+.kid-card h3 {
+    font-size: 2em;
+    margin-bottom: 8px
+}
+
+.kid-card p {
+    font-size: 1.2em
+}
+
+.kid-correct .kid-card {
+    background: #e6fffa;
+    border: 6px solid #38d9a9
+}
+
+.kid-correct h3 {
+    color: #2f9e44
+}
+
+.kid-correct p {
+    color: #1c7c54
+}
+
+.kid-wrong .kid-card {
+    background: #fff5f5;
+    border: 6px solid #ffa8a8
+}
+
+.kid-wrong h3 {
+    color: #e03131
+}
+
+.kid-wrong p {
+    color: #c92a2a
+}
+
+@keyframes kidPop {
+    0% {
+        transform: scale(.3) rotate(-10deg);
+        opacity: 0
+    }
+
+    60% {
+        transform: scale(1.1) rotate(5deg)
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1
+    }
+}
+
+@keyframes emojiBounce {
+    from {
+        transform: translateY(0)
+    }
+
+    to {
+        transform: translateY(-15px)
+    }
+}
+
+#finalPopup {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 4000
+}
+
+.final-kid-box {
+    background: linear-gradient(135deg, #fff7d6, #e6fff5);
+    padding: 30px 35px;
+    border-radius: 35px;
+    text-align: center;
+    width: 450px;
+    animation: finalBounce .8s ease;
+    box-shadow: 0 20px 0 #ffd43b, 0 30px 50px rgba(0, 0, 0, .2)
+}
+
+.final-kid-box h2 {
+    font-size: 2.2em;
+    color: #2f9e44;
+    margin-bottom: 10px
+}
+
+.final-kid-box p {
+    font-size: 1.3em;
+    font-weight: 600
+}
+
+#stars {
+    font-size: 2.3em;
+    margin: 12px 0
+}
+
+.playAgain-btn {
+    background: #ffac30;
+    color: white;
+    border: none;
+    padding: 14px 34px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 12px
+}
+
+@keyframes finalBounce {
+    0% {
+        transform: scale(.3);
+        opacity: 0
+    }
+
+    60% {
+        transform: scale(1.15)
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+@media (max-width:900px) {
+    body {
+        align-items: center;
+        padding: 20px;
+        overflow: auto
+    }
+
+    .main {
+        width: 100%;
+        padding: 25px
+    }
+
+    .question h2 {
+        font-size: 26px;
+        height: auto;
+        padding: 10px
+    }
+
+    .image-container {
+        gap: 25px
+    }
+
+    .image-box {
+        width: 220px
+    }
+
+    .image-box img {
+        height: 140px
+    }
+
+    .image-bottom {
+        font-size: 18px
+    }
+
+    .controls {
+        margin-top: 25px
+    }
+
+    .controls button {
+        width: 110px;
+        height: 50px;
+        font-size: 28px
+    }
+
+    .final-kid-box {
+        width: 90%;
+        max-width: 340px;
+        padding: 22px
+    }
+
+    .final-kid-box h2 {
+        font-size: 1.8em
+    }
+
+    .final-kid-box p {
+        font-size: 1.1em
+    }
+
+    #stars {
+        font-size: 1.8em
+    }
+}
+
+@media (max-width:768px) {
+    body {
+        padding: 30px 0 10px;
+        align-items: flex-start
+    }
+
+    .main {
+        padding: 20px
+    }
+
+    .question h2 {
+        font-size: 22px
+    }
+
+    .image-container {
+        gap: 25px
+    }
+
+    .image-box {
+        width: 180px
+    }
+
+    .image-box img {
+        height: 120px
+    }
+
+    .image-bottom {
+        font-size: 16px
+    }
+
+    .controls button {
+        width: 95px;
+        height: 45px;
+        font-size: 24px
+    }
+}
+
+@media (max-width:480px) {
+    .question h2 {
+        font-size: 18px
+    }
+
+    .image-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 28px
+    }
+
+    .image-box {
+        width: 200px
+    }
+
+    .image-box img {
+        height: 110px
+    }
+
+    .image-bottom {
+        font-size: 15px
+    }
+
+    .controls {
+        margin-top: 20px
+    }
+
+    .controls button {
+        width: 85px;
+        height: 40px;
+        font-size: 20px
+    }
+
+    .kid-card {
+        width: 260px;
+        padding: 15px;
+    }
+
+    .kid-icon {
+        font-size: 3em;
+    }
+
+    .kid-card h3 {
+        font-size: 1.5em;
+    }
+
+    .final-kid-box {
+        width: 90%;
+        max-width: 300px;
+        padding: 20px
+    }
+
+    .final-kid-box h2 {
+        font-size: 1.5em
+    }
+
+    .final-kid-box p {
+        font-size: 1em
+    }
+
+    #stars {
+        font-size: 1.6em
+    }
+
+    .playAgain-btn {
+        padding: 10px 20px;
+        font-size: .9em
+    }
+}

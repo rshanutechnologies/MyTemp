@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Match the Following</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Livvic';
+}
+
+body{
+
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+overflow: hidden;
+}
+
+.container{
+width:920px;
+
+padding:40px;
+border-radius:24px;
+
+}
+
+h1{
+text-align:center;
+margin-bottom:40px;
+font-size:36px;
+color:#374151;
+}
+
+/* GAME AREA */
+
+.game{
+position:relative;
+display:flex;
+justify-content:center;
+gap:140px;
+}
+
+/* COLUMNS */
+
+.column{
+width:420px;
+display:flex;
+flex-direction:column;
+gap:20px;
+z-index:2;
+}
+
+/* ITEM CARDS */
+
+.item{
+width:100%;
+height:70px;
+
+display:flex;
+align-items:center;
+gap:16px;
+
+padding:18px 24px;
+
+border-radius:22px;
+
+background:#f8fafc;
+
+font-size:22px;
+font-weight:500;
+
+cursor:pointer;
+
+border:2px solid transparent;
+
+box-shadow:0 8px 18px rgba(0,0,0,0.08);
+
+transition:0.25s;
+}
+
+.item:hover{
+transform:translateY(-3px);
+}
+
+/* LEFT SIDE COLORS */
+
+.left .item:nth-child(1){background:#ffe4ec;}
+.left .item:nth-child(2){background:#e0f4ff;}
+.left .item:nth-child(3){background:#fff5d6;}
+.left .item:nth-child(4){background:#e6ffe8;}
+.left .item:nth-child(5){background:#f2e8ff;}
+
+/* RIGHT SIDE COLORS */
+
+.right .item:nth-child(1){background:#ffe4ec;}
+.right .item:nth-child(2){background:#e0f4ff;}
+.right .item:nth-child(3){background:#fff5d6;}
+.right .item:nth-child(4){background:#e6ffe8;}
+.right .item:nth-child(5){background:#f2e8ff;}
+
+.item.active{
+border-color:#6366f1;
+}
+
+.item.matched{
+opacity:0.6;
+cursor:default;
+}
+
+/* IMAGE */
+
+.left img{
+width:44px;
+height:44px;
+object-fit:contain;
+}
+
+/* TEXT */
+
+.text{
+flex:1;
+}
+
+/* COLOR DOT */
+
+.dot{
+width:16px;
+height:16px;
+border-radius:50%;
+}
+
+/* DOT COLORS */
+
+.pink{background:#ff7ab6;}
+.blue{background:#60a5fa;}
+.yellow{background:#fbbf24;}
+.green{background:#34d399;}
+.purple{background:#a78bfa;}
+
+/* ANCHOR */
+
+.anchor{
+width:14px;
+height:14px;
+background:#94a3b8;
+border-radius:50%;
+margin-left:auto;
+}
+
+.right .anchor{
+margin-left:auto;
+}
+
+/* SVG LINES */
+
+svg{
+position:absolute;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+svg path{
+transition:0.4s;
+stroke-dasharray:6 6;
+}
+
+.popup{
+  position:fixed;
+  inset:0;
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.hidden{
+  display:none;
+}
+
+.popup-content{
+  background:#fef6ff;  /* pastel base */
+  padding:60px 80px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 20px 45px rgba(0,0,0,0.25);
+  min-width:350px;
+  max-width:500px;
+  animation:pop 0.3s ease;
+}
+
+@keyframes pop{
+  from{ transform:scale(0.8); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
+}
+
+.popup-emoji{
+  font-size:60px;
+  margin-bottom:15px;
+}
+
+.popup-content h2{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.popup-content p{
+  font-size:20px;
+}
+
+.play-again-btn{
+  margin-top:20px;
+  padding:12px 28px;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#4caf50,#2e7d32);
+  color:white;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.play-again-btn:hover{
+  transform:translateY(-3px);
+}
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width:768px){
+
+body{
+padding:10px;
+align-items:flex-start;
+margin-top: 50px;
+}
+
+/* container full width */
+.container{
+width:100%;
+padding:10px;
+}
+
+/* reduce space between columns */
+.game{
+gap:40px;
+}
+
+/* allow horizontal scroll if needed */
+.container{
+overflow-x:auto;
+}
+
+/* column smaller */
+.column{
+width:48%;
+}
+
+/* cards smaller */
+.item{
+height:65px;
+font-size:18px;
+padding:12px 16px;
+}
+
+/* images smaller */
+.left img{
+width:30px;
+height:30px;
+}
+
+/* dots smaller */
+.dot{
+width:10px;
+height:10px;
+}
+
+/* anchors smaller */
+.anchor{
+width:10px;
+height:10px;
+}
+
+/* popup responsive */
+.popup-content{
+width:90%;
+padding:30px 20px;
+}
+
+.popup-content h2{
+font-size:22px;
+}
+
+.popup-content p{
+font-size:16px;
+}
+
+}
+/* ============================= */
+/* ✅ SMALL PHONE (max 600px) */
+/* ============================= */
+@media (max-width:600px){
+
+  body{
+    padding:8px;
+    align-items:flex-start;
+    margin-top:70px;
+  }
+
+  /* container full width */
+  .container{
+    width:100%;
+    padding:8px;
+    overflow-x:auto;   /* keep scroll if needed */
+  }
+
+  /* reduce space between columns */
+  .game{
+    gap:25px;
+  }
+
+  /* column smaller */
+  .column{
+    width:48%;
+  }
+
+  /* cards smaller */
+  .item{
+    height:55px;
+    font-size:10px;
+    padding:10px 12px;
+  }
+
+  /* images smaller */
+  .left img{
+    width:26px;
+    height:26px;
+  }
+
+  /* dots smaller */
+  .dot{
+    width:8px;
+    height:8px;
+  }
+
+  /* anchors smaller */
+  .anchor{
+    width:8px;
+    height:8px;
+  }
+
+  /* popup responsive */
+  .popup-content{
+    width:95%;
+    padding:25px 15px;
+  }
+
+  .popup-content h2{
+    font-size:20px;
+  }
+
+  .popup-content p{
+    font-size:15px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+
+
+<div class="game">
+
+<svg id="lines"></svg>
+
+<!-- LEFT SIDE -->
+
+<div class="column left">
+
+<div class="item" data-match="d">
+<div class="dot pink"></div>
+<img src="../images/flowerak.png">
+<div class="text">Flower</div>
+<div class="anchor"></div>
+</div>
+
+<div class="item" data-match="a">
+<div class="dot blue"></div>
+<img src="../images/roots.png">
+<div class="text">Roots</div>
+<div class="anchor"></div>
+</div>
+
+<div class="item" data-match="b">
+<div class="dot yellow"></div>
+<img src="../images/shoot.png">
+<div class="text">Shoot</div>
+<div class="anchor"></div>
+</div>
+
+<div class="item" data-match="e">
+<div class="dot green"></div>
+<img src="../images/seeds.png">
+<div class="text">Seed</div>
+<div class="anchor"></div>
+</div>
+
+<div class="item" data-match="c">
+<div class="dot purple"></div>
+<img src="../images/leaf.png">
+<div class="text">Leaf</div>
+<div class="anchor"></div>
+</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+
+<div class="column right">
+
+<div class="item" data-match="a">
+<div class="dot pink"></div>
+<div class="text">They absorb water and minerals
+from the soil.</div>
+<div class="anchor"></div>
+</div>
+
+<div class="item" data-match="b">
+<div class="dot blue"></div>
+<div class="text"> It grows above the ground</div>
+<div class="anchor"></div>
+</div>
+
+<div class="item" data-match="c">
+<div class="dot yellow"></div>
+<div class="text">It  prepares food for the plant</div>
+<div class="anchor"></div>
+</div>
+
+<div class="item" data-match="d">
+<div class="dot green"></div>
+<div class="text">It  develops into a fruit</div>
+<div class="anchor"></div>
+</div>
+
+<div class="item" data-match="e">
+<div class="dot purple"></div>
+<div class="text">It  grows into a new plant</div>
+<div class="anchor"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div id="popup" class="popup hidden">
+ <div class="popup-content">
+  <div id="popupEmoji" class="popup-emoji"></div>
+  <h2 id="popupTitle"></h2>
+  <p id="popupMessage"></p>
+
+  <button id="playAgainBtn" class="play-again-btn hidden">
+    🔄 Play Again
+  </button>
+</div>
+</div>
+
+<script>
+
+let selected=null
+let score=0
+let matched=0
+
+const left=document.querySelectorAll(".left .item")
+const right=document.querySelectorAll(".right .item")
+const svg=document.getElementById("lines")
+
+const popup=document.getElementById("popup")
+const popupTitle=document.getElementById("popupTitle")
+const popupMessage=document.getElementById("popupMessage")
+const playAgainBtn=document.getElementById("playAgainBtn")
+function speak(text){
+
+if(!('speechSynthesis' in window)) return
+
+speechSynthesis.cancel()
+
+const utter=new SpeechSynthesisUtterance(text)
+utter.lang="en-GB"
+
+speechSynthesis.speak(utter)
+
+}
+
+left.forEach(l=>{
+
+l.onclick=()=>{
+
+if(l.classList.contains("matched")) return
+
+left.forEach(i=>i.classList.remove("active"))
+
+l.classList.add("active")
+
+selected=l
+
+}
+
+})
+
+right.forEach(r=>{
+
+r.onclick=()=>{
+
+if(!selected || r.classList.contains("matched")) return
+
+if(selected.dataset.match===r.dataset.match){
+
+drawLine(selected,r)
+
+selected.classList.add("matched")
+r.classList.add("matched")
+
+confetti({particleCount:40,spread:70,origin:{y:0.6}})
+
+speak("Correct")
+
+score++
+matched++
+
+}else{
+
+speak("Wrong")
+
+}
+
+selected.classList.remove("active")
+selected=null
+
+if(matched===5){
+setTimeout(showResult,800)
+}
+
+}
+
+})
+
+function drawLine(l,r){
+
+const r1=l.querySelector(".anchor").getBoundingClientRect()
+const r2=r.querySelector(".dot").getBoundingClientRect()   // ⭐ changed here
+const svgRect=svg.getBoundingClientRect()
+
+const x1=r1.left-svgRect.left
+const y1=r1.top+r1.height/2-svgRect.top
+
+const x2=r2.left+r2.width/2-svgRect.left
+const y2=r2.top+r2.height/2-svgRect.top
+
+const curve=120
+
+const path=document.createElementNS("http://www.w3.org/2000/svg","path")
+
+path.setAttribute(
+"d",
+`M ${x1} ${y1}
+C ${x1+curve} ${y1},
+${x2-curve} ${y2},
+${x2} ${y2}`
+)
+
+path.setAttribute("stroke","#22c55e")
+path.setAttribute("stroke-width","5")
+path.setAttribute("fill","none")
+path.setAttribute("stroke-linecap","round")
+
+svg.appendChild(path)
+
+}
+function fireFinalConfetti(){
+
+  const duration = 2500;
+  const animationEnd = Date.now() + duration;
+
+  const interval = setInterval(function () {
+
+    if (Date.now() > animationEnd) {
+      clearInterval(interval);
+      return;
+    }
+
+    confetti({
+      particleCount: 60,
+      spread: 120,
+      startVelocity: 45,
+      scalar: 1.1,
+      origin: { x: Math.random(), y: Math.random() - 0.2 }
+    });
+
+  }, 250);
+
+}
+function showResult(){
+  fireFinalConfetti();
+
+popup.classList.remove("hidden")
+
+popupTitle.textContent="Quiz Completed 🎉"
+popupMessage.textContent="Score : "+score+" / 5"
+
+/* show play again button */
+playAgainBtn.classList.remove("hidden")
+
+}
+playAgainBtn.onclick = () => {
+  location.reload();
+}
+</script>
+
+</body>
+</html>

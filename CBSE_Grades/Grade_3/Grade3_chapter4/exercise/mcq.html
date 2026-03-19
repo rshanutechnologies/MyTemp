@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Image MCQ Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+body{
+font-family:'Livvic';
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+background:linear-gradient(135deg,#d7ecff,#cde7ff);
+}
+/* ============================= */
+/* ✅ UNIVERSAL RESPONSIVE BOX */
+/* ============================= */
+.quiz-box{
+  width:100%;
+  max-width:1200px;
+
+  height:100vh;                /* 🔥 full screen fit */
+  padding:20px;                /* balanced padding */
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;   /* 🔥 change this */
+  gap:15px;                     /* control spacing */
+
+  border-radius:30px;
+  text-align:center;
+
+  margin:auto;
+  margin-top: -20px;
+}
+.question{
+font-size:30px;
+margin-bottom:30px;
+color:#2f4f4f;
+}
+
+.options{
+display:flex;
+gap:30px;
+justify-content:center;
+width: 100%;
+
+}
+
+.option{
+width:100px;
+height:120px;
+
+
+clip-path:polygon(
+25% 6%,
+75% 6%,
+100% 50%,
+75% 94%,
+25% 94%,
+0% 50%
+);
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:20px;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 12px 20px rgba(0,0,0,0.15);
+position:relative;
+}
+
+.option:hover{
+transform:translateY(-8px) scale(1.05);
+}
+
+.option img{
+width:90px;
+
+}
+
+.option p{
+font-size:20px;
+font-weight:600;
+color:#2f4f4f;
+}
+
+.correct{
+background:linear-gradient(#fff4cc,#ffd966);
+box-shadow:0 0 20px rgba(255,200,0,0.6);
+border:4px solid #ff9800;
+}
+
+.selected{
+border:4px solid #4caf50;
+}
+
+.nav{
+
+display:flex;
+justify-content:space-evenly;
+gap:30px;
+
+
+}
+
+button{
+border:none;
+padding:14px 35px;
+font-size:20px;
+border-radius:40px;
+cursor:pointer;
+color:white;
+
+}
+
+.prev{
+background:#ddd;
+}
+
+.next{
+background:linear-gradient(45deg,#7f5ae0,#b388ff);
+}
+
+.question-img{
+display:flex;
+justify-content:center;
+
+}
+
+.question-img img{
+width:220px;
+height:125px;
+object-fit:contain;
+}
+
+/* popup */
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+
+background:white;
+
+padding:20px 20px;   /* increased padding */
+
+border-radius:25px;
+
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+
+font-size:30px;      /* slightly bigger text */
+font-weight:600;
+
+min-width:300px;     /* increased width */
+min-height:100px;    /* increased height */
+
+z-index:999;
+text-align:center;
+
+transition:.3s;
+}
+
+.popup.show{
+transform:translate(-50%,-50%) scale(1);
+}
+/* stars inside popup */
+
+.popup-stars{
+margin-top:10px;
+font-size:28px;
+color:#f7b500;
+letter-spacing:5px;
+}
+/* result */
+
+.result-box{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+background:#fff;
+padding:40px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 20px 50px rgba(0,0,0,0.25);
+z-index:1000;
+transition:.4s;
+}
+
+.result-box.show{
+transform:translate(-50%,-50%) scale(1);
+}
+
+.result-box h2{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.result-box p{
+font-size:24px;
+margin-bottom:20px;
+}
+
+.play-btn{
+background:#4caf50;
+border:none;
+padding:12px 30px;
+font-size:18px;
+border-radius:30px;
+color:white;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+body{
+height:auto;
+overflow:auto;
+align-items:flex-start;
+padding:15px;
+}
+
+.quiz-box{
+padding:20px 10px;
+min-height:100vh;
+}
+
+.question{
+font-size:22px;
+}
+
+.question-img img{
+width:140px;
+height:90px;
+}
+
+/* 2 × 2 grid layout */
+
+.options{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+justify-items:center;
+}
+
+/* hexagon option size */
+
+.option{
+width:100px;
+height:100px;
+padding:10px;
+}
+
+.option img{
+width:50px;
+}
+
+.option p{
+font-size:15px;
+}
+
+button{
+padding:10px 25px;
+font-size:16px;
+}
+
+}
+
+
+@media(max-width:900px){
+
+body{
+height:auto;
+overflow:hidden;
+align-items:flex-start;
+padding:15px;
+}
+
+.quiz-box{
+padding:20px 10px;
+min-height:100vh;
+margin-top: -30px;
+}
+
+.question{
+font-size:26px;
+}
+
+.question-img img{
+width:120px;
+height:70px;
+margin-top: -25px;
+}
+
+/* 2 × 2 grid layout */
+
+.options{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+justify-items:center;
+}
+
+/* hexagon option size */
+
+.option{
+width:80px;
+height:80px;
+padding:10px;
+}
+
+.option img{
+width:50px;
+}
+
+.option p{
+font-size:15px;
+}
+
+button{
+padding:10px 25px;
+font-size:16px;
+}
+.nav{
+  margin-top: -13px;
+}
+}
+
+button:disabled{
+opacity:0.5;
+cursor:not-allowed;
+}
+.prev{
+background:#ccc;
+color:#333;
+
+}
+
+.prev:enabled{
+background:linear-gradient(45deg,#5c6bc0,#7986cb);
+color:white;
+}
+/* popup colors */
+@media(max-width:600px){
+
+  body{
+    height:auto;
+    overflow:hidden;
+    align-items:flex-start;
+    padding:10px;
+    margin-top: -10px;
+  }
+
+  .quiz-box{
+    padding:15px 10px;
+    min-height:100vh;
+    margin-top:0;
+    gap:12px;
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:18px;
+    margin-bottom:10px;
+    padding:0 8px;
+    line-height:1.3;
+  }
+
+  /* IMAGE */
+  .question-img img{
+    width:120px;
+    height:80px;
+  }
+
+  /* OPTIONS → 2x2 GRID */
+  .options{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    justify-items:center;
+  }
+
+  /* HEXAGON SIZE */
+  .option{
+    width:85px;
+    height:95px;
+    padding:8px;
+  }
+
+  .option img{
+    width:45px;
+  }
+
+  .option p{
+    font-size:13px;
+  }
+
+  /* NAV */
+  .nav{
+    gap:15px;
+    margin-top:10px;
+  }
+
+  button{
+    padding:10px 16px;
+    font-size:14px;
+  }
+
+  /* POPUP */
+  .popup{
+    font-size:20px;
+    min-width:180px;
+    padding:15px;
+  }
+
+  .popup-stars{
+    font-size:20px;
+  }
+
+  /* RESULT BOX */
+  .result-box{
+    width:80%;
+    padding:25px;
+  }
+
+  .result-box h2{
+    font-size:22px;
+  }
+
+  .result-box p{
+    font-size:18px;
+  }
+/* 🔥 MAKE LAYOUT STABLE */
+.quiz-box{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;  /* 👈 key fix */
+}
+
+/* 🔒 FIX QUESTION AREA */
+.question{
+  min-height:50px;   /* same height always */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* 🔒 FIX IMAGE AREA */
+.question-img{
+  min-height:100px;  /* reserve space */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* 🔒 FIX OPTIONS AREA */
+.options{
+  min-height:200px;  /* keeps grid stable */
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  align-content:center;
+}
+
+/* 🔒 FIX NAV BUTTON POSITION */
+.nav{
+  position:relative;
+  bottom:20px;   /* increase to move up */
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-box">
+
+<div class="question" id="question"></div>
+
+<div class="question-img">
+<img id="qImage">
+</div>
+
+<div class="options" id="options"></div>
+
+<div class="nav">
+<button class="prev" id="prevBtn" onclick="prevQ()" disabled>← Prev</button>
+<button class="next" id="nextBtn" onclick="nextQ()" disabled>Next →</button>
+</div>
+
+</div>
+
+<div class="popup" id="popup"></div>
+
+<div class="result-box" id="resultBox">
+<h2>🎉 Quiz Completed!</h2>
+<p id="scoreText"></p>
+<button class="play-btn" onclick="location.reload()">Play Again</button>
+</div>
+
+<script>
+
+const quiz=[
+
+{
+q:"Q1. ______ spread over the entire space they are kept in.",
+qImg:"../images/mcq1.png",
+options:[
+{img:"../images/solid.png", text:"Solids"},
+{img:"../images/Molecules.png", text:"Molecules"},
+{img:"../images/Gases.png", text:"Gases"},
+{img:"../images/liquid.png", text:"Liquids"}
+],
+correct:2
+},
+
+{
+q:"Q2. The amount of substance present in an object is its ______.",
+qImg:"../images/Gases.png",
+options:[
+{img:"../images/volume.png", text:"Volume"},
+{img:"../images/mass.png", text:"Mass"},
+{img:"../images/Molecules.png", text:"Molecule"},
+{img:"../images/space.png", text:"Space"}
+],
+correct:1
+},
+
+{
+q:"Q3. ______ take the shape of the container they are poured in.",
+qImg:"../images/mcq3.png",
+options:[
+{img:"../images/solid.png", text:"Solids"},
+{img:"../images/Molecules.png", text:"Molecules"},
+{img:"../images/Gases.png", text:"Gases"},
+{img:"../images/water.png", text:"Liquids"}
+],
+correct:3
+},
+
+{
+q:"Q4. The molecules in liquids are ______ packed.",
+qImg:"../images/mcq4.png",
+options:[
+{img:"../images/Water.png", text:"Loosely"},
+{img:"../images/Solid.png", text:"Tightly"},
+{img:"../images/Ice.png", text:"Closely"},
+{img:"../images/milk.png", text:"Smoothly"}
+],
+correct:0
+},
+
+{
+q:"Q5. Water exists in ______ state at room temperature.",
+qImg:"../images/mcq5.png",
+options:[
+{img:"../images/solid.png", text:"Solid"},
+{img:"../images/liquid.png", text:"Liquid"},
+{img:"../images/Gases.png", text:"Gas"},
+{img:"../images/vapour.png", text:"Vapour"}
+],
+correct:1
+}
+
+]
+
+let current=0
+let score=0
+let answered=false
+
+let userAnswers=new Array(quiz.length).fill(null)
+function speakText(text){
+
+if(!('speechSynthesis' in window)) return
+
+window.speechSynthesis.cancel()
+
+const utter = new SpeechSynthesisUtterance(text)
+
+utter.lang = "en-GB"   // UK English
+utter.volume = 0.25    // Low volume
+utter.rate = 1
+utter.pitch = 1
+
+// Try selecting UK voice if available
+const voices = speechSynthesis.getVoices()
+const ukVoice = voices.find(v => v.lang === "en-GB")
+if(ukVoice){
+  utter.voice = ukVoice
+}
+
+speechSynthesis.speak(utter)
+
+}
+
+window.speechSynthesis.onvoiceschanged = () => {}
+speechSynthesis.getVoices();
+
+function correctConfetti(){
+
+confetti({
+particleCount:35,
+spread:70,
+origin:{y:0.6},
+scalar:0.7
+})
+
+}
+
+
+function finalConfetti(){
+
+const duration=2000
+const end=Date.now()+duration
+
+const interval=setInterval(()=>{
+
+if(Date.now()>end){
+clearInterval(interval)
+return
+}
+
+confetti({
+particleCount:50,
+spread:120,
+startVelocity:40,
+scalar:1,
+origin:{x:Math.random(),y:Math.random()-0.2}
+})
+
+},250)
+
+}
+
+function showPopup(text,type){
+
+const popup=document.getElementById("popup")
+
+popup.innerHTML=text
+
+// remove old stars
+const oldStars = popup.querySelector(".popup-stars")
+if(oldStars) oldStars.remove()
+
+// ⭐ show stars for correct answer
+if(type==="correct"){
+
+const stars=document.createElement("div")
+stars.className="popup-stars"
+
+// stars increase question by question
+stars.innerText="⭐".repeat(score)
+
+popup.appendChild(stars)
+
+popup.style.color="#2e7d32"
+
+}
+
+if(type==="wrong"){
+popup.style.color="#c62828"
+}
+
+popup.classList.add("show")
+
+setTimeout(()=>{
+popup.classList.remove("show")
+},1200)
+
+}
+function loadQuestion(){
+    document.getElementById("nextBtn").style.display = "inline-block"
+    document.getElementById("nextBtn").disabled = true;
+document.getElementById("prevBtn").disabled = current === 0;
+
+answered=false
+
+document.getElementById("question").innerText=quiz[current].q
+document.getElementById("qImage").src=quiz[current].qImg
+
+const optionsDiv=document.getElementById("options")
+optionsDiv.innerHTML=""
+
+quiz[current].options.forEach((opt,i)=>{
+
+const card=document.createElement("div")
+card.classList.add("option")
+
+card.innerHTML=`
+<img src="${opt.img}">
+<p>${opt.text}</p>
+`
+if(userAnswers[current]!==null){
+
+answered=true
+if(current === quiz.length-1){
+document.getElementById("nextBtn").style.display = "none"
+}else{
+document.getElementById("nextBtn").disabled = false;
+}
+
+if(i===quiz[current].correct){
+card.classList.add("correct")
+}
+
+if(i===userAnswers[current]){
+card.classList.add("selected")
+}
+
+}
+
+card.onclick=()=>{
+
+if(answered) return
+
+if(i===quiz[current].correct){
+
+answered=true
+card.classList.add("correct")
+
+if(userAnswers[current]===null){
+userAnswers[current]=i
+score++
+}
+
+document.getElementById("nextBtn").disabled = false;
+correctConfetti()
+showPopup("🎉 Correct! Great Job!", "correct")
+speakText("Correct")
+
+// ⭐ Automatically show final popup on last question
+if(current === quiz.length-1){
+
+setTimeout(()=>{
+showResult()
+},1200)
+
+}
+
+}else{
+
+showPopup("❌ Oops! Try Again", "wrong")
+speakText("Wrong")
+
+}
+
+}
+
+
+optionsDiv.appendChild(card)
+
+})
+}
+
+function nextQ(){
+
+if(!answered){
+// showPopup("⚠️ Select correct answer first")
+return
+}
+
+if(current<quiz.length-1){
+current++
+loadQuestion()
+}else{
+showResult()
+}
+
+}
+
+function prevQ(){
+
+if(current>0){
+current--
+loadQuestion()
+}
+
+}
+function showResult(){
+
+finalConfetti()
+
+document.getElementById("resultBox").classList.add("show")
+
+document.getElementById("scoreText").innerText =
+"Your Score: "+score+" / "+quiz.length
+
+// ✅ disable navigation
+document.getElementById("nextBtn").disabled = true
+document.getElementById("prevBtn").disabled = true
+
+}
+loadQuestion()
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Grade2_chapter2</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Livvic';
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+/* background:linear-gradient(135deg,#f2eef8,#e6eef6); */
+ background-image: url("./assets/imageS/G2_C2_IBG.png");
+    /* background-image: url("./assets/images/G2_C2_CBG.png"); */
+overflow:hidden;
+}
+
+/* MENU BUTTON (mobile only) */
+
+.menu-toggle{
+display:none;
+}
+
+/* MAIN PANEL */
+
+.main-container{
+
+width:85%;
+height:95vh;
+
+/* background:rgba(255,255,255,0.45); */
+   background-image: url("./assets/images/G2_C2_CBG.png");
+
+border-radius:35px;
+
+padding:17px;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.08),
+inset 0 0 0 3px rgba(255,255,255,0.6);
+
+position:relative;
+
+display:flex;
+
+}
+
+/* INNER FRAME */
+
+.frame-box{
+
+flex:1;
+
+border-radius:28px;
+
+overflow:hidden;
+
+/* background:white; */
+
+/* box-shadow:
+0 8px 20px rgba(0,0,0,0.06),
+inset 0 0 0 2px #f0f0f0; */
+
+}
+
+iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* NAVIGATION */
+
+.nav-container{
+
+position:absolute;
+
+right:-80px;
+
+top:50%;
+
+transform:translateY(-50%);
+
+display:flex;
+align-items:center;
+
+}
+
+/* CENTER LINE */
+
+.nav-line{
+
+width:6px;
+height:420px;
+
+border-radius:20px;
+
+margin-right:10px;
+
+}
+
+/* STACK */
+
+.nav-stack{
+display:flex;
+flex-direction:column;
+gap:28px;
+}
+
+/* BUTTON */
+
+.nav-btn{
+
+position:relative;
+
+display:flex;
+align-items:center;
+gap:10px;
+
+padding:12px 12px;
+
+border-radius:40px;
+
+font-size:18px;
+font-weight:500;
+
+color:white;
+
+cursor:pointer;
+
+/* box-shadow:0 8px 20px rgba(0,0,0,0.15); */
+
+transition:0.25s;
+
+}
+
+/* TOP TRIANGLE */
+
+.nav-btn::before{
+
+content:"";
+
+position:absolute;
+
+top:-14px;
+left:54%;
+
+transform:translateX(-50%);
+
+border-left:12px solid transparent;
+border-right:12px solid transparent;
+
+}
+
+.nav-line{
+position:absolute;
+left:-20px;
+}
+
+/* COLORS */
+
+.c1{
+background:linear-gradient(145deg,#ff7a70,#ff5e54);
+}
+.c1::before{ border-bottom:16px solid #ff6a5e; }
+
+.c2{
+background:linear-gradient(145deg,#78b5ff,#5fa7ff);
+}
+.c2::before{ border-bottom:16px solid #6aaeff; }
+
+.c3{
+background:linear-gradient(145deg,#7dd39a,#5fc67c);
+}
+.c3::before{ border-bottom:16px solid #6cd58d; }
+
+.c4{
+background:linear-gradient(145deg,#ffd77e,#ffc251);
+}
+.c4::before{ border-bottom:16px solid #ffc861; }
+
+.c5{
+background:linear-gradient(145deg,#c6b0ff,#a892ff);
+}
+.c5::before{ border-bottom:16px solid #b39cff; }
+
+.c6{
+background:linear-gradient(145deg,#7cc6ff,#5ba8ff);
+}
+.c6::before{ border-bottom:16px solid #5ba8ff; }
+
+/* HOVER */
+
+.nav-btn:hover{
+transform:translateX(-6px);
+}
+
+/* ACTIVE */
+
+.nav-btn.active{
+/* box-shadow:0 10px 25px rgba(0,0,0,0.25); */
+border: 3px solid white;
+}
+
+/* ICON */
+
+.nav-btn i{
+font-size:18px;
+}
+
+/* ========================= */
+/* MOBILE RESPONSIVE */
+/* ========================= */
+
+@media (max-width:768px){
+
+body{
+align-items:flex-start;
+background-image:url("./assets/images/G2_C2_IBG.png") !important;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+
+}
+
+/* menu button */
+
+.menu-toggle{
+
+display:block;
+
+position:fixed;
+
+top:15px;
+
+right:15px;
+
+background:#5fa7ff;
+
+color:white;
+
+border:none;
+
+width:45px;
+
+height:45px;
+
+border-radius:10px;
+
+font-size:20px;
+
+z-index:1000;
+
+}
+
+/* main container */
+
+.main-container{
+
+width:92%;
+height:90vh;
+
+margin:auto;
+
+padding:12px;
+
+}
+
+/* nav becomes side panel */
+
+.nav-container{
+
+position:fixed;
+
+right:-100%;
+
+top:50%;
+
+width:100%;
+
+height:100vh;
+
+background:url("./assets/images/G2_C2_IBG.png") center/cover no-repeat;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+transition:0.3s;
+
+z-index:999;
+
+}
+
+/* open panel */
+
+.nav-container.active{
+right:0;
+}
+
+/* hide vertical line */
+
+.nav-line{
+display:none;
+}
+
+/* nav buttons layout */
+
+.nav-stack{
+
+flex-direction:column;
+
+gap:50px;
+
+padding:20px;
+
+}
+
+/* remove triangle */
+
+.nav-btn::before{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<button class="menu-toggle" onclick="toggleMenu()">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<div class="main-container">
+
+<div class="frame-box">
+
+<iframe id="contentFrame" src="./exercises/mcq.html"></iframe>
+
+</div>
+
+<!-- NAVIGATION -->
+
+<div class="nav-container">
+
+<div class="nav-line"></div>
+
+<div class="nav-stack">
+
+<div class="nav-btn c1 active"
+onclick="loadPage(this,'./exercises/mcq.html')">
+<i class="fa-solid fa-file-circle-check"></i>
+Choose Option
+</div>
+
+<div class="nav-btn c2"
+onclick="loadPage(this,'./exercises/fillblanks.html')">
+<i class="fa-solid fa-pencil"></i>
+Fill Blanks
+</div>
+
+<div class="nav-btn c3"
+onclick="loadPage(this,'./exercises/true_false.html')">
+<i class="fa-solid fa-check"></i>
+True / False
+</div>
+<div class="nav-btn c4"
+onclick="loadPage(this,'./exercises/matching.html')">
+<i class="fa-solid fa-link"></i>
+Matching
+</div>
+
+<div class="nav-btn c5"
+onclick="loadPage(this,'./exercises/one_example.html')">
+<i class="fa-solid fa-clone"></i>
+One Examples
+</div>
+
+
+<div class="nav-btn c6"
+onclick="loadPage(this,'./exercises/one_word.html')">
+<i class="fa-solid fa-font"></i>
+One Word
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function loadPage(btn,url){
+
+document.querySelectorAll('.nav-btn')
+.forEach(b=>b.classList.remove('active'));
+
+btn.classList.add('active');
+
+document.getElementById('contentFrame').src=url;
+
+/* close menu on mobile */
+
+if(window.innerWidth<=768){
+
+document.querySelector(".nav-container")
+.classList.remove("active");
+
+}
+
+}
+
+function toggleMenu(){
+
+document.querySelector(".nav-container")
+.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+</html>

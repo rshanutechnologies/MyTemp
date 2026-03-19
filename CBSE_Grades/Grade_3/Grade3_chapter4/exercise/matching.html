@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Matching Game</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:'Livvic',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#d7ecff,#cde7ff);
+padding:40px;
+overflow: hidden;
+}
+
+/* Layout */
+
+.layout{
+display:flex;
+gap:50px;
+align-items:flex-start;
+}
+
+/* Quiz Buttons */
+
+.quiz-menu{
+width:220px;
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.quiz-btn{
+padding:16px 20px;
+border-radius:30px;
+color:white;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+position:relative;
+box-shadow:0 8px 15px rgba(0,0,0,0.2);
+}
+
+.quiz-btn::after{
+content:"";
+position:absolute;
+right:-20px;
+top:50%;
+transform:translateY(-50%);
+border-top:15px solid transparent;
+border-bottom:15px solid transparent;
+}
+
+.choose{background:#ff4b5c;}
+.choose::after{border-left:20px solid #ff4b5c;}
+
+.fill{background:#3b82f6;}
+.fill::after{border-left:20px solid #3b82f6;}
+
+.true{background:#10b981;}
+.true::after{border-left:20px solid #10b981;}
+
+.match{background:#7c4dff;}
+.match::after{border-left:20px solid #7c4dff;}
+
+/* Matching container */
+
+.container{
+width:1000px;
+
+padding:50px;
+border-radius:30px;
+margin-left: 70px;
+position:relative;
+}
+
+/* Matching grid */
+
+.game{
+display:grid;
+grid-template-columns:1fr 1fr;
+row-gap:35px;
+column-gap:120px;
+position:relative;
+margin-top: -40px;
+}
+
+/* Matching boxes */
+
+.pill{
+display:flex;
+align-items:center;
+gap:18px;
+background:#f9fafc;
+padding:18px 24px;
+border-radius:60px;
+border:3px solid #53a6eb;
+font-size:22px;
+cursor:pointer;
+transition:.2s;
+}
+
+.pill:hover{
+transform:scale(1.05);
+}
+
+.pill img{
+width:70px;
+height:70px;
+border-radius:50%;
+
+padding:6px;
+}
+
+.circle{
+width:42px;
+height:42px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:600;
+font-size:18px;
+color:#444;
+}
+
+.a{background:#f5a9a9;}
+.b{background:#f6cf8a;}
+.c{background:#c6e3a4;}
+
+.selected{
+outline:4px dashed #ffcc00;
+}
+
+svg{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+.left:nth-of-type(1){background:#ffd6d6;}   /* Solids */
+.left:nth-of-type(3){background:#d6f5ff;}   /* Liquids */
+.left:nth-of-type(5){background:#e7ffd6;}   /* Gases */
+
+/* popup */
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+background:white;
+padding:20px 30px;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+font-size:28px;
+font-weight:600;
+z-index:999;
+transition:.3s;
+}
+
+.popup.show{
+transform:translate(-50%,-50%) scale(1);
+}
+
+/* result */
+
+.result-box{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+background:#fff;
+padding:40px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 20px 50px rgba(0,0,0,0.25);
+z-index:1000;
+transition:.4s;
+}
+
+.result-box.show{
+transform:translate(-50%,-50%) scale(1);
+}
+
+.result-box h2{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.result-box p{
+font-size:24px;
+margin-bottom:20px;
+}
+
+.play-btn{
+background:#4caf50;
+border:none;
+padding:12px 30px;
+font-size:18px;
+border-radius:30px;
+color:white;
+cursor:pointer;
+}
+/* ================= TABLET ================= */
+
+@media (max-width:900px){
+
+body{
+padding:20px;
+overflow:auto;
+}
+
+.container{
+width:100%;
+padding:35px;
+margin-left:0;
+}
+
+.game{
+column-gap:60px;
+row-gap:25px;
+}
+
+.pill{
+font-size:20px;
+padding:14px 18px;
+}
+
+.pill img{
+width:55px;
+height:55px;
+}
+
+}
+
+
+
+@media (max-width:400px){
+
+.container{
+padding:18px;
+}
+
+.game{
+column-gap:15px;
+row-gap:15px;
+}
+
+.pill{
+font-size:14px;
+padding:10px 12px;
+}
+
+.pill img{
+width:34px;
+height:34px;
+}
+
+.circle{
+width:24px;
+height:24px;
+font-size:12px;
+}
+
+}
+@media(max-width:600px){
+
+  body{
+    padding:8px;
+    margin-top:10px;
+    overflow:auto;
+  }
+
+  .container{
+    width:100%;
+    padding:12px;
+    margin-left:0;
+  }
+
+  /* 🔥 FIX GRID WIDTH */
+  .game{
+    grid-template-columns:1fr 1fr;
+    column-gap:8px;     /* reduce gap */
+    row-gap:12px;
+    margin-top:0;
+  }
+
+  /* 🔥 MAIN BOX FIX */
+  .pill{
+    min-height:70px;
+    padding:10px;
+    font-size:13px;
+    gap:6px;
+
+    display:flex;
+    align-items:flex-start;   /* 🔥 important for text */
+
+    border-radius:20px;
+  }
+
+  /* IMAGE */
+  .pill img{
+    width:26px;
+    height:26px;
+    flex-shrink:0;
+  }
+
+  /* 🔥 FIX TEXT BREAK ISSUE */
+  .right{
+    display:flex;
+    align-items:flex-start;
+    gap:6px;
+  }
+
+  .right{
+    font-size:12px;
+    line-height:1.3;
+
+    word-break:normal;        /* ❗ fix vertical text */
+    overflow-wrap:break-word; /* wrap properly */
+  }
+
+  /* 🔥 KEEP a,b,c visible */
+  .circle{
+    width:24px;
+    height:24px;
+    font-size:11px;
+    flex-shrink:0;
+  }
+
+  /* 🔥 REMOVE SVG LINES */
+  svg{
+    display:none;
+  }
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+<!-- Left Menu -->
+
+
+
+<!-- Matching Game -->
+
+<div class="container">
+
+<div class="game">
+
+<div class="pill left" data-match="solid">
+<img src="../images/Solid.png">
+Solids
+</div>
+
+<div class="pill right" data-match="gas">
+<div class="circle a">a</div>
+Spread in the entire space
+</div>
+
+<div class="pill left" data-match="liquid">
+<img src="../images/Water.png">
+Liquids
+</div>
+
+<div class="pill right" data-match="solid">
+<div class="circle b">b</div>
+Have definite shape
+</div>
+
+<div class="pill left" data-match="gas">
+<img src="../images/Gases.png">
+Gases
+</div>
+
+<div class="pill right" data-match="liquid">
+<div class="circle c">c</div>
+Flow from a higher level to a lower level
+</div>
+
+</div>
+
+<svg id="lines"></svg>
+
+</div>
+
+<div class="popup" id="popup"></div>
+
+<div class="result-box" id="resultBox">
+<h2>🎉 Quiz Completed!</h2>
+<p id="scoreText"></p>
+<button class="play-btn" onclick="location.reload()">Play Again</button>
+</div>
+
+
+<script>
+
+let selected=null
+let colors=["#ff6b6b","#4dabf7","#51cf66","#fcc419","#845ef7"]
+let score = 0
+let totalMatches = document.querySelectorAll(".left").length
+let matchedPairs = 0
+
+function speakText(text){
+
+if(!('speechSynthesis' in window)) return
+
+window.speechSynthesis.cancel()
+
+const utter = new SpeechSynthesisUtterance(text)
+
+utter.lang="en-GB"
+utter.volume=0.25
+utter.rate=1
+utter.pitch=1
+
+speechSynthesis.speak(utter)
+
+}
+
+const left=document.querySelectorAll(".left")
+const right=document.querySelectorAll(".right")
+
+left.forEach(item=>{
+item.onclick=()=>{
+document.querySelectorAll(".pill").forEach(i=>i.classList.remove("selected"))
+item.classList.add("selected")
+selected=item
+}
+})
+right.forEach(item=>{
+item.onclick=()=>{
+
+if(!selected) return
+
+if(selected.dataset.match === item.dataset.match){
+
+if(window.innerWidth > 600){
+drawLine(selected,item)
+}
+
+let color=getComputedStyle(selected).backgroundColor
+item.style.background=color
+
+const letter = item.querySelector(".circle").innerText
+
+const label = document.createElement("span")
+label.style.marginLeft="10px"
+label.style.fontWeight="700"
+label.style.color="#5c6bc0"
+label.innerText="(" + letter + ")"
+
+selected.appendChild(label)
+
+correctConfetti()
+
+/* ✅ ADD THIS */
+speakText("Correct")
+
+score++
+matchedPairs++
+
+if(matchedPairs === totalMatches){
+setTimeout(()=>{
+showResult()
+},1000)
+}
+
+}else{
+
+/* ✅ ADD THIS */
+speakText("Wrong")
+
+}
+
+selected.classList.remove("selected")
+selected=null
+
+}
+})
+window.speechSynthesis.onvoiceschanged = () => {
+  speechSynthesis.getVoices();
+};
+function drawLine(a,b){
+
+const svg=document.getElementById("lines")
+const container=document.querySelector(".container")
+
+const r1=a.getBoundingClientRect()
+const r2=b.getBoundingClientRect()
+const rc=container.getBoundingClientRect()
+
+const x1 = r1.right - rc.left
+const y1 = r1.top + r1.height/2 - rc.top
+
+const x2 = r2.left - rc.left
+const y2 = r2.top + r2.height/2 - rc.top
+
+const path=document.createElementNS("http://www.w3.org/2000/svg","path")
+
+const curve = (x2-x1)/2
+
+const d = `M ${x1} ${y1} Q ${x1+curve} ${y1}, ${x2} ${y2}`
+
+path.setAttribute("d", d)
+path.setAttribute("fill","none")
+path.setAttribute("stroke","#4da3ff")
+path.setAttribute("stroke-width","5")
+path.setAttribute("stroke-linecap","round")
+
+svg.appendChild(path)
+
+}
+function correctConfetti(){
+
+confetti({
+particleCount:35,
+spread:70,
+origin:{y:0.6},
+scalar:0.7
+})
+
+}
+
+function finalConfetti(){
+
+confetti({
+particleCount:120,
+spread:120
+})
+
+}
+function showPopup(text,type){
+
+const popup=document.getElementById("popup")
+
+popup.innerHTML=text
+
+if(type==="correct"){
+popup.style.color="#2e7d32"
+}
+
+if(type==="wrong"){
+popup.style.color="#c62828"
+}
+
+popup.classList.add("show")
+
+setTimeout(()=>{
+popup.classList.remove("show")
+},1200)
+
+}
+function showResult(){
+
+finalConfetti()
+
+document.getElementById("resultBox").classList.add("show")
+
+document.getElementById("scoreText").innerText =
+"Your Score: " + score + " / " + totalMatches
+
+}
+</script>
+
+</body>
+</html>

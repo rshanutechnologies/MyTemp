@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Matching</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+margin:0;
+font-family:'Livvic',sans-serif;
+overflow:hidden;
+display:flex;
+justify-content:center;
+padding:60px;
+}
+
+.container{
+width:1200px;
+display:flex;
+justify-content:space-between;
+gap:130px;
+margin-top: 70px;
+position:relative;
+}
+
+.column{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+pointer-events:none;
+}
+
+/* WOOD BOX */
+
+.wood-box{
+width:360px;
+height:80px;
+background:linear-gradient(180deg,#f6e3c2 0%,#e6c59a 35%,#d6ae7b 70%,#c89b64 100%);
+border-radius:26px;
+display:flex;
+align-items:center;
+padding-left:20px;
+font-size:20px;
+color:#2f4f4f;
+position:relative;
+cursor:pointer;
+
+box-shadow:
+inset 0 4px 0 rgba(255,255,255,0.6),
+inset 0 -5px 0 rgba(0,0,0,0.15),
+0 6px 12px rgba(0,0,0,0.25);
+}
+
+/* ICON */
+
+.corner-icon{
+position:absolute;
+top:-10px;
+left:-10px;
+width:26px;
+height:26px;
+background:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 3px 8px rgba(0,0,0,0.2);
+color:#ff8c42;
+font-size:14px;
+}
+
+/* IMAGE */
+
+.animal{
+width:50px;
+margin-right:12px;
+}
+
+/* ROPE POINT */
+
+.rope{
+position:absolute;
+right:-8px;
+width:14px;
+height:14px;
+background:#f1a24b;
+border-radius:50%;
+}
+
+/* ANSWERS */
+.answer-box{
+position:relative;
+width:380px;
+height:80px;
+background:linear-gradient(#e7f4f5,#d9eef0);
+border-radius:28px;
+display:flex;
+align-items:center;
+padding-left:25px;
+font-size:18px;
+color:#2f4f4f;
+cursor:pointer;
+box-shadow:
+inset 0 3px 0 rgba(255,255,255,0.6),
+inset 0 -1px 0 rgba(0,0,0,0.08),
+0 5px 12px rgba(0,0,0,0.15);
+}
+.kid-popup{
+position:fixed;
+inset:0;
+display:none;
+align-items:center;
+justify-content:center;
+z-index:3000;
+}
+
+.kid-card{
+background:#fff;
+width:300px;
+padding:2px;
+border-radius:30px;
+text-align:center;
+}
+
+.kid-icon{
+font-size:4.5em;
+margin-bottom:10px;
+}
+
+.kid-card h3{
+font-size:2em;
+margin-bottom:8px;
+}
+
+.kid-card p{
+font-size:1.2em;
+}
+
+.kid-correct .kid-card{
+background:#e6fffa;
+border:6px solid #38d9a9;
+}
+
+.kid-wrong .kid-card{
+background:#fff5f5;
+border:6px solid #ffa8a8;
+}
+
+#finalPopup{
+position:fixed;
+inset:0;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:4000;
+}
+
+.final-kid-box{
+background:linear-gradient(135deg,#fff7d6,#e6fff5);
+padding:30px 35px;
+border-radius:35px;
+text-align:center;
+width:420px;
+}
+
+.final-kid-box h2{
+font-size:2.2em;
+color:#2f9e44;
+margin-bottom:10px;
+}
+
+.final-kid-box p{
+font-size:1.3em;
+font-weight:600;
+}
+
+#stars{
+font-size:2.3em;
+margin:12px 0;
+}
+
+.playAgain-btn{
+background:#ffac30;
+color:#fff;
+border:none;
+padding:14px 34px;
+border-radius:30px;
+font-size:1.1em;
+cursor:pointer;
+margin-top:12px;
+}
+.right-dot{
+position:absolute;
+left:-8px;
+top:50%;
+transform:translateY(-50%);
+width:16px;
+height:16px;
+background:#f1a24b;
+border-radius:50%;
+box-shadow:0 2px 5px rgba(0,0,0,0.25);
+}
+/* ---------------- RESPONSIVE DESIGN ---------------- */
+
+/* Tablets */
+@media (max-width:1024px){
+
+.container{
+width:100%;
+gap:100px;
+}
+
+.wood-box{
+width:300px;
+height:70px;
+font-size:20px;
+}
+
+.answer-box{
+width:320px;
+height:70px;
+font-size:20px;
+}
+
+.animal{
+width:40px;
+}
+
+}
+@media (max-width:768px){
+
+body{
+padding:20px 10px;
+overflow-y:auto;
+align-items:flex-start;
+}
+
+/* keep two columns */
+.container{
+width:100%;
+gap:20px;
+margin-top: 40px;
+}
+
+/* columns shrink */
+.column{
+width:48%;
+gap:14px;
+}
+
+/* left boxes */
+.wood-box{
+width:80%;
+height:70px;
+font-size:12px;
+padding-left:12px;
+border-radius:22px;
+}
+
+/* right boxes */
+.answer-box{
+width:80%;
+height:70px;
+font-size:14px;
+padding-left:15px;
+border-radius:22px;
+}
+
+/* smaller images */
+.animal{
+width:32px;
+margin-right:8px;
+}
+
+/* icons */
+.corner-icon{
+width:18px;
+height:18px;
+font-size:10px;
+top:-6px;
+left:-6px;
+}
+
+/* connection dots */
+.rope{
+width:10px;
+height:10px;
+right:-6px;
+}
+
+.right-dot{
+width:10px;
+height:10px;
+left:-6px;
+}
+
+}
+@media (max-width:600px){
+body{
+    margin-top: 90px;
+}
+.container{
+    width: 100%;
+gap:50px;
+margin-left: -10px;
+}
+
+.column{
+width:70%;
+}
+
+.wood-box{
+height:60px;
+font-size:12px;
+width: 100%;
+}
+
+.answer-box{
+height:60px;
+font-size:10px;
+width: 100%;
+}
+
+.animal{
+width:28px;
+}
+
+  /* FULLSCREEN POPUP FIX */
+  #finalPopup{
+    padding:10px;
+  }
+
+  .final-kid-box{
+    width:95%;              /* 🔥 full width */
+    max-width:320px;        /* prevent overflow */
+    
+    padding:20px 15px;      /* smaller padding */
+    border-radius:25px;
+
+    text-align:center;
+  }
+
+  /* TITLE */
+  .final-kid-box h2{
+    font-size:22px;
+  }
+
+  /* SCORE TEXT */
+  .final-kid-box p{
+    font-size:16px;
+  }
+
+  /* STARS */
+  #stars{
+    font-size:20px;
+    margin:10px 0;
+  }
+
+  /* BUTTON */
+  .playAgain-btn{
+    width:100%;             /* full width button */
+    padding:12px;
+    font-size:14px;
+    border-radius:20px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container" id="container">
+
+<canvas id="canvas"></canvas>
+
+<div class="column">
+<div class="wood-box" data-id="1">
+<div class="corner-icon"><i class="fa-solid fa-leaf"></i></div>
+<img src="../images/macaw.png" class="animal"> Macaw
+<div class="rope"></div>
+</div>
+
+<div class="wood-box" data-id="2">
+<div class="corner-icon"><i class="fa-solid fa-star"></i></div>
+<img src="../images/goose.png" class="animal"> Goose
+<div class="rope"></div>
+</div>
+
+<div class="wood-box" data-id="3">
+<div class="corner-icon"><i class="fa-solid fa-seedling"></i></div>
+<img src="../images/woodpecker.png" class="animal"> Woodpecker
+<div class="rope"></div>
+</div>
+
+<div class="wood-box" data-id="4">
+<div class="corner-icon"><i class="fa-solid fa-heart"></i></div>
+<img src="../images/Hummingbird.png" class="animal"> Hummingbird
+<div class="rope"></div>
+</div>
+
+<div class="wood-box" data-id="5">
+<div class="corner-icon"><i class="fa-solid fa-clover"></i></div>
+<img src="../images/hawk.png" class="animal"> Hawk
+<div class="rope"></div>
+</div>
+</div>
+
+
+<div class="column">
+<div class="answer-box" data-id="3">
+    <div class="right-dot"></div>
+a) It has a strong, chisel-shaped beak.
+</div>
+
+<div class="answer-box" data-id="4">
+    <div class="right-dot"></div>
+b) It has a long and pointed beak.
+</div>
+
+<div class="answer-box" data-id="1">
+    <div class="right-dot"></div>
+c) It has a strong, curved beak.
+</div>
+
+<div class="answer-box" data-id="5">
+    <div class="right-dot"></div>
+d) It has a strong, sharp and hooked beak.
+</div>
+
+<div class="answer-box" data-id="2">
+    <div class="right-dot"></div>
+e) It has a broad and flat beak.
+</div>
+</div>
+
+</div>
+<div id="answerPopup" class="kid-popup">
+<div class="kid-card">
+<div class="kid-icon" id="popupIcon"></div>
+<h3 id="popupTitle"></h3>
+<p id="popupMsg"></p>
+</div>
+</div>
+
+<div id="finalPopup">
+<div class="final-kid-box">
+<h2>🎉 Congratulations!</h2>
+<p id="finalScore"></p>
+<div id="stars"></div>
+<button class="playAgain-btn" onclick="location.reload()">Play Again</button>
+</div>
+</div>
+<script>
+const canvas = document.getElementById("canvas")
+const ctx = canvas.getContext("2d")
+const container = document.getElementById("container")
+
+canvas.width = container.offsetWidth
+canvas.height = container.offsetHeight
+
+let selected = null
+let matches = []
+let totalCorrect = 0
+
+const correctSound = new SpeechSynthesisUtterance("Correct!")
+const wrongSound = new SpeechSynthesisUtterance("Try again!")
+
+function speakText(text){
+
+const speech = new SpeechSynthesisUtterance(text)
+
+speech.lang="en-GB"
+speech.volume=0.25
+speech.rate=1
+speech.pitch=1
+
+speechSynthesis.speak(speech)
+
+}
+document.querySelectorAll(".wood-box").forEach(el=>{
+
+el.onclick = ()=>{
+
+document.querySelectorAll(".wood-box").forEach(b=>b.style.border="none")
+
+selected = el
+el.style.border = "2px solid #ff9800"
+
+}
+
+})
+
+document.querySelectorAll(".answer-box").forEach(el=>{
+
+el.onclick = ()=>{
+
+if(!selected) return
+
+const leftId = selected.dataset.id
+const rightId = el.dataset.id
+
+if(leftId === rightId){
+
+matches.push({left:selected,right:el})
+
+selected.style.border="4px solid #4CAF50"
+el.style.border="2px solid #4CAF50"
+
+selected.style.pointerEvents="none"
+el.style.pointerEvents="none"
+
+totalCorrect++
+
+speakText("Correct")
+
+drawAllLines()
+correctConfetti()
+
+if(totalCorrect === 5){
+setTimeout(showResult,1200)
+}
+
+}else{
+
+el.style.border="2px solid red"
+
+setTimeout(()=>{
+el.style.border="none"
+},600)
+
+speakText("Wrong")
+}
+
+selected.style.border="none"
+selected=null
+
+}
+
+})
+function showPopup(isCorrect){
+
+const popup=document.getElementById("answerPopup")
+const icon=document.getElementById("popupIcon")
+const title=document.getElementById("popupTitle")
+const msg=document.getElementById("popupMsg")
+
+popup.className="kid-popup "+(isCorrect?"kid-correct":"kid-wrong")
+popup.style.display="flex"
+
+if(isCorrect){
+
+icon.textContent="🎉😊"
+title.textContent="Great Job!"
+msg.textContent="You got it right!"
+
+}else{
+
+icon.textContent="😅"
+title.textContent="Oops!"
+msg.textContent="Try again!"
+
+}
+
+setTimeout(()=>popup.style.display="none",1400)
+
+}
+function drawAllLines(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+matches.forEach(m=>{
+const leftDot = m.left.querySelector(".rope")
+const rightDot = m.right.querySelector(".right-dot")
+
+const rectA = leftDot.getBoundingClientRect()
+const rectB = rightDot.getBoundingClientRect()
+const containerRect = container.getBoundingClientRect()
+const x1 = rectA.left + rectA.width/2 - containerRect.left
+const y1 = rectA.top + rectA.height/2 - containerRect.top
+
+const x2 = rectB.left + rectB.width/2 - containerRect.left
+const y2 = rectB.top + rectB.height/2 - containerRect.top
+
+const cpX = (x1+x2)/2
+
+ctx.beginPath()
+ctx.moveTo(x1,y1)
+ctx.bezierCurveTo(cpX,y1,cpX,y2,x2,y2)
+
+ctx.lineWidth = 3
+ctx.strokeStyle = "#4CAF50"
+ctx.lineCap = "round"
+ctx.stroke()
+
+})
+
+}
+function correctConfetti(){
+confetti({
+particleCount:80,
+spread:90,
+origin:{y:0.6}
+})
+}
+function showResult(){
+
+const popup=document.getElementById("finalPopup")
+
+document.getElementById("finalScore").textContent=
+"Your Score: "+totalCorrect+" / 5"
+
+document.getElementById("stars").textContent="⭐".repeat(totalCorrect)
+
+popup.style.display="flex"
+
+confetti({
+particleCount:120,
+spread:120,
+origin:{y:0.6}
+})
+
+}
+</script>
+
+</body>
+</html>

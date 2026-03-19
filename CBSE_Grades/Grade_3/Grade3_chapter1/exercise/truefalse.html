@@ -1,0 +1,609 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>True False Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Livvic';
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+/* CONTAINER */
+
+.quiz-container{
+width:100%;
+max-width:900px;
+
+padding:40px 30px 120px;
+text-align:center;
+position:relative;
+
+}
+
+
+/* QUESTION */
+
+.question{
+font-size:30px;
+margin-top: -40px;
+color:#2f4f4f;
+
+}
+
+/* IMAGE */
+
+.image{
+display:flex;
+justify-content:center;
+align-items:center;
+height:270px;   /* fixed space for all images */
+margin-bottom:35px;
+}
+
+.image img{
+width:250px;      /* fixed width */
+height:250px;     /* fixed height */
+object-fit:contain;   /* keeps image proportion */
+}
+
+.options{
+display:flex;
+justify-content:center;
+gap:50px;
+margin-top:10px;
+}
+
+/* BASE BUTTON */
+
+.option-btn{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+padding:18px 50px;
+font-size:28px;
+font-weight:700;
+border-radius:60px;
+cursor:pointer;
+color:white;
+position:relative;
+transition:0.25s;
+box-shadow:0 12px 20px rgba(0,0,0,0.2);
+}
+
+/* INNER SHINE */
+
+.option-btn::after{
+content:"";
+position:absolute;
+top:4px;
+left:8px;
+right:8px;
+height:45%;
+border-radius:60px;
+background:linear-gradient(rgba(255,255,255,0.6),rgba(255,255,255,0));
+pointer-events:none;
+}
+
+/* HOVER */
+
+.option-btn:hover{
+transform:translateY(-4px);
+}
+
+/* TRUE BUTTON */
+
+.true-btn{
+background:linear-gradient(180deg,#8edb7f,#8be88b);
+box-shadow:
+inset 0 2px 6px rgba(255,255,255,0.6),
+0 12px 18px rgba(0,0,0,0.2);
+}
+
+/* FALSE BUTTON */
+
+.false-btn{
+background:linear-gradient(180deg,#ff8e8e,#e07171);
+box-shadow:
+inset 0 2px 6px rgba(255,255,255,0.6),
+0 12px 18px rgba(0,0,0,0.2);
+}
+/* SELECTED ANSWER HIGHLIGHT */
+
+.selected{
+transform:scale(1.05);
+box-shadow:
+0 0 0 4px rgba(98, 239, 107, 0.6),
+0 12px 22px rgba(0,0,0,0.25);
+}
+.nav-btn{
+position:absolute;
+bottom:35px;
+padding:12px 35px;
+font-size:22px;
+font-weight: 500;
+border:none;
+border-radius:40px;
+cursor:pointer;
+color:white;
+transition:0.3s;
+}
+
+#prevBtn{
+left:30px;
+background:linear-gradient(135deg,#607d8b,#455a64);
+}
+
+#nextBtn{
+right:30px;
+background:linear-gradient(135deg,#ff9800,#f57c00);
+}
+
+.nav-btn:disabled{
+background:#ccc !important;
+cursor:not-allowed;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.hidden{
+  display:none;
+}
+
+.popup-content{
+  background:#fef6ff;  /* pastel base */
+  padding:60px 80px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 20px 45px rgba(0,0,0,0.25);
+  min-width:350px;
+  max-width:500px;
+  animation:pop 0.3s ease;
+}
+
+@keyframes pop{
+  from{ transform:scale(0.8); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
+}
+
+@keyframes pop{
+from{transform:scale(0.85);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+.popup-emoji{
+  font-size:60px;
+  margin-bottom:15px;
+}
+
+.popup-content h2{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.popup-content p{
+  font-size:20px;
+}
+
+
+.play-again-btn{
+  margin-top:20px;
+  padding:12px 28px;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#4caf50,#2e7d32);
+  color:white;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.play-again-btn:hover{
+  transform:translateY(-3px);
+}
+/* MOBILE */
+
+@media(max-width:768px){
+
+body{
+overflow:hidden;
+align-items:flex-start;
+padding-top:30px;
+}
+
+.question{
+font-size:26px;
+}
+
+.image img{
+max-width:180px;
+}
+
+.options{
+gap:20px;
+}
+
+.option-btn{
+font-size:22px;
+padding:15px 35px;
+}
+
+}
+
+@media(max-width:600px){
+
+body{
+overflow:auto;
+align-items:flex-start;
+padding-top:30px;
+}
+
+.question{
+font-size:20px;
+
+}
+
+.image img{
+max-width:180px;
+}
+
+.options{
+gap:20px;
+}
+
+.option-btn{
+font-size:22px;
+padding:15px 35px;
+}
+#prevBtn{
+  left:20px;
+}
+
+#nextBtn{
+  right:20px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+
+
+<div class="question" id="question"></div>
+
+<div class="image">
+<img id="questionImg">
+</div>
+
+<div class="options">
+<div class="option-btn true-btn" onclick="selectAnswer('T')">✔ TRUE</div>
+<div class="option-btn false-btn" onclick="selectAnswer('F')">✖ FALSE</div>
+</div>
+
+<button class="nav-btn" id="prevBtn">Previous</button>
+<button class="nav-btn" id="nextBtn" disabled>Next</button>
+
+</div>
+
+
+<!-- POPUP -->
+
+<div id="popup" class="popup hidden">
+
+<div class="popup-content">
+
+<div id="popupEmoji" class="popup-emoji"></div>
+
+<h2 id="popupTitle"></h2>
+
+<p id="popupMessage"></p>
+
+<button id="playAgainBtn" class="play-again-btn hidden">
+🔄 Play Again
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+{q:"Q1. Insects are non-living things.", img:"../images/insects.png", correct:"F"},
+
+{q:"Q2.  Plants do not respond to stimuli.", img:"../images/plant.png", correct:"F"},
+
+{q:"Q3. Living things don’t die.", img:"../images/mango.png", correct:"F"},
+
+{q:"Q4. Frogs and insects lay eggs.", img:"../images/mcq2.png", correct:"T"},
+
+{q:"Q5. The lifespan of different living things vary.", img:"../images/tf5.png", correct:"T"}
+
+];
+
+
+let current = 0;
+
+let selectedAnswers = new Array(questions.length).fill(null);
+
+
+const questionEl = document.getElementById("question");
+
+const imgEl = document.getElementById("questionImg");
+
+const nextBtn = document.getElementById("nextBtn");
+
+const prevBtn = document.getElementById("prevBtn");
+
+
+const popup = document.getElementById("popup");
+
+const popupTitle = document.getElementById("popupTitle");
+
+const popupMessage = document.getElementById("popupMessage");
+
+const popupEmoji = document.getElementById("popupEmoji");
+
+const playAgainBtn = document.getElementById("playAgainBtn");
+
+const trueBtn = document.querySelector(".true-btn");
+const falseBtn = document.querySelector(".false-btn");
+
+
+/* TEXT TO SPEECH */
+
+function speak(text){
+
+const msg = new SpeechSynthesisUtterance();
+
+msg.text = text;
+
+msg.lang = "en-GB";
+
+msg.volume = 0.25;
+
+speechSynthesis.speak(msg);
+
+}
+
+function fireConfetti(){
+
+  confetti({
+    particleCount: 40,
+    spread: 70,
+    origin: { y: 0.6 },
+    scalar: 0.7
+  });
+
+}
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const q = questions[current];
+
+questionEl.textContent = q.q;
+imgEl.src = q.img;
+
+trueBtn.classList.remove("selected");
+falseBtn.classList.remove("selected");
+
+/* highlight previous answer */
+
+if(selectedAnswers[current] === "T"){
+trueBtn.classList.add("selected");
+}
+
+if(selectedAnswers[current] === "F"){
+falseBtn.classList.add("selected");
+}
+
+nextBtn.disabled = selectedAnswers[current] === null;
+prevBtn.disabled = current === 0;
+
+}
+
+/* SELECT ANSWER */
+
+function selectAnswer(choice){
+
+if(selectedAnswers[current] !== null) return;
+
+const correctAnswer = questions[current].correct;
+
+
+if(choice === correctAnswer){
+  fireConfetti(); // 🎉 same confetti as MCQ
+
+selectedAnswers[current] = choice;
+if(choice === "T"){
+trueBtn.classList.add("selected");
+}
+if(choice === "F"){
+falseBtn.classList.add("selected");
+}
+
+nextBtn.disabled = false;
+
+
+popupEmoji.textContent = "🎉";
+
+popupTitle.textContent = "Correct!";
+
+popupTitle.style.color = "green";
+
+popupMessage.textContent = "Great job!";
+
+playAgainBtn.classList.add("hidden");
+
+
+speak("Correct");
+
+
+popup.classList.remove("hidden");
+
+
+if(current === questions.length-1){
+
+setTimeout(()=>{
+
+popup.classList.add("hidden");
+
+showFinalPopup();
+
+},1200);
+
+}
+
+else{
+
+setTimeout(()=>popup.classList.add("hidden"),1200);
+
+}
+
+}
+
+else{
+
+popupEmoji.textContent = "❌";
+
+popupTitle.textContent = "Wrong!";
+
+popupTitle.style.color = "red";
+
+popupMessage.textContent = "Try again!";
+
+playAgainBtn.classList.add("hidden");
+
+
+speak("Wrong");
+
+
+popup.classList.remove("hidden");
+
+setTimeout(()=>popup.classList.add("hidden"),1200);
+
+}
+
+}
+
+
+/* NEXT */
+
+nextBtn.addEventListener("click",()=>{
+
+if(current < questions.length-1){
+
+current++;
+
+loadQuestion();
+
+}
+
+});
+
+
+/* PREVIOUS */
+
+prevBtn.addEventListener("click",()=>{
+
+if(current > 0){
+
+current--;
+
+loadQuestion();
+
+}
+
+});
+
+
+/* FINAL SCORE */
+
+function showFinalPopup(){
+
+let score = 0;
+
+questions.forEach((q,i)=>{
+
+if(selectedAnswers[i] === q.correct) score++;
+
+});
+
+
+popupEmoji.textContent = "🏆";
+
+popupTitle.textContent = "Quiz Completed!";
+popupTitle.style.color = "#2e7d32";
+    popupMessage.style.color = "#2e7d32";
+popupMessage.textContent = `Score: ${score}/5`;
+
+playAgainBtn.classList.remove("hidden");
+
+popup.classList.remove("hidden");
+confetti({
+  particleCount:150,
+  spread:120,
+  origin:{ y:0.6 }
+});
+
+
+}
+
+
+/* PLAY AGAIN */
+
+playAgainBtn.addEventListener("click",()=>{
+
+current = 0;
+
+selectedAnswers = new Array(questions.length).fill(null);
+
+popup.classList.add("hidden");
+
+playAgainBtn.classList.add("hidden");
+
+
+loadQuestion();
+
+});
+
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>

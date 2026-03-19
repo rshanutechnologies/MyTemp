@@ -1,0 +1,339 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Livvic',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+/* background:linear-gradient(#f7e9c8,#c9e6f7); */
+overflow:hidden;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+position:relative;
+width:100%;
+max-width:1100px;
+height:90vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* MATCHING LAYOUT */
+
+.matching{
+display:flex;
+justify-content:center;
+align-items:flex-start;
+gap:220px;
+width:100%;
+}
+
+/* LEFT QUESTIONS */
+
+/* .left{
+width:420px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+/* RIGHT OPTIONS */
+
+/*.right{
+width:300px;
+display:flex;
+flex-direction:column;
+gap:20px;
+} */
+
+/* BOX STYLE */
+
+/* BOX STYLE */
+
+.box{
+display:flex;
+align-items:center;
+
+padding:8px 8px;
+
+border-radius:16px;
+
+font-size:19px;
+font-weight:400;
+color:#2f4f4f;
+box-shadow:0 5px 10px rgba(0,0,0,0.25);
+
+cursor:pointer;
+
+line-height:1.4;
+
+min-height:55px;
+
+gap:12px;
+}
+
+/* LEFT BOX FIX */
+.left{
+flex:1;
+display:flex;
+flex-direction:column;
+gap:8px;
+margin-left: 3px;
+}
+
+.right{
+flex:1;
+display:flex;
+flex-direction:column;
+gap:12px;
+margin-top: 10px;
+}
+
+.left .box{
+position:relative;
+padding-right:40px;
+margin-top:12px;
+line-height:1;
+}
+
+/* LEFT DOT FIXED POSITION */
+
+.left .dot{
+position:absolute;
+right:18px;
+top:50%;
+transform:translateY(-50%);
+}
+
+/* RIGHT SIDE KEEP ORIGINAL */
+
+.right .box{
+justify-content:flex-start;
+}
+
+.right .dot{
+margin-right:6px;
+}
+
+.right img{
+width:45px !important;
+height: 45px !important;
+margin-right:8px;
+}
+
+/* DOT DEFAULT */
+
+.dot{
+width:14px;
+height:14px;
+border-radius:50%;
+background:#999;
+}
+
+
+/* SELECT */
+
+.selected{
+outline:4px solid #4CAF50;
+}
+
+/* MATCHED */
+
+.matched{
+background:#c8f5c8;
+cursor:default;
+}
+
+/* SVG LINES */
+
+svg{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+
+/* POPUP */
+
+
+/* FINAL POPUP (MCQ STYLE) */
+
+.final{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+
+background:white;
+padding:40px;
+
+border-radius:25px;
+text-align:center;
+
+width:380px;
+height: 360px;
+box-shadow:0 15px 35px rgba(0,0,0,0.4);
+display:none;
+}
+
+.final h2{
+font-size:36px;
+margin-bottom:20px;
+font-weight: 400;
+}
+
+.final h3{
+font-size:28px;
+margin-bottom:20px;
+font-weight: 400;
+}
+
+.star{
+color:gold;
+font-size:50px;
+}
+
+/* PLAY AGAIN BUTTON */
+
+.playBtn{
+
+margin-top:20px;
+
+padding:12px 30px;
+
+font-size:20px;
+
+border:none;
+border-radius:30px;
+
+background:#4CAF50;
+color:white;
+
+
+cursor:pointer;
+
+box-shadow:0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* RIGHT COLORS */
+
+.c1{background:#6da8d8ae;color:#132a3d;}
+.c2{background:#86c651ab;}
+.c3{background:#f3c74dad;}
+.c4{background:#f39a2db7;}
+.c5{background:#d57ad3b7;}
+
+/* MOBILE */
+/* MOBILE RESPONSIVE (NO SCROLL) */
+
+@media (max-width:768px){
+
+body{
+height:100vh;
+overflow:hidden;
+}
+
+.container{
+height:100vh;
+align-items:center;
+}
+
+/* matching layout */
+
+.matching{
+gap:18px;
+}
+
+/* LEFT SIDE */
+
+.left{
+width:58%;
+gap:10px;
+}
+
+/* RIGHT SIDE */
+
+.right{
+width:40%;
+gap:10px;
+}
+
+/* BOX SIZE */
+
+.box{
+font-size:12px;
+padding:8px 28px 8px 8px;
+min-height:40px;
+line-height:1.2;
+}
+
+/* LEFT DOT POSITION */
+
+.left .dot{
+right:8px;
+}
+
+/* RIGHT IMAGE */
+
+.right img{
+width:18px;
+height:18px;
+}
+
+/* DOT */
+
+.dot{
+width:8px;
+height:8px;
+}
+
+/* SVG LINES */
+
+svg{
+display:block;
+}
+
+}
+
+@media(max-width:768px){
+
+.matching{
+gap:20px;
+}
+
+/* balanced columns */
+
+.left{
+flex:1;
+}
+
+.right{
+flex:1;
+}
+
+/* smaller text boxes */
+
+.box{
+font-size:12px;
+padding:8px 30px 8px 8px;
+min-height:45px;
+}
+
+/* smaller images */
+
+.right img{
+width:20px;
+height:20px;
+}
+
+}

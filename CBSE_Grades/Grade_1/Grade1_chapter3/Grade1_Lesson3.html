@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grade1_Lesson3</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Livvic", sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            /* background: #98aca94f */
+            background: url("./assets/images/bg.png");
+            background-size: 100px 100px;
+        }
+
+        .app {
+            background-color: #d5ffd475;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            margin: 0 20px;
+        }
+
+        .nav-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            width: 100%;
+            max-width: 1150px;
+            border-radius: 18px;
+            padding: 10px;
+        }
+
+        .nav-slider {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            height: calc(100% - 20px);
+            border-radius: 12px;
+            transition: transform .45s cubic-bezier(.65, .05, .36, 1), width .35s ease;
+            z-index: 1;
+        }
+
+        .island-btn {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 18px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 14px;
+            white-space: nowrap;
+            z-index: 2;
+            transition: .35s;
+            color: #2b2b2b;
+            background: #f2f2f2;
+            opacity: .5;
+            filter: saturate(.6);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .08), inset 0 1px 0 rgba(255, 255, 255, .6);
+        }
+
+        .island-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            opacity: .8;
+        }
+
+        .island-btn.active {
+            opacity: 1;
+            filter: none;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 18px rgba(0, 0, 0, .18), 0 0 10px rgb(221 221 221 / 35%), inset 0 2px 0 rgba(255, 255, 255, .8);
+            color: #1f2937;
+        }
+
+        .island-btn:nth-child(2).active {
+            background: #fddec1;
+        }
+
+        .island-btn:nth-child(3).active {
+            background: #c5e3ff;
+        }
+
+        .island-btn:nth-child(4).active {
+            background: #d1ffd8;
+        }
+
+        .island-btn:nth-child(5).active {
+            background: #FFF2C6;
+        }
+
+        .island-btn:nth-child(6).active {
+            background: #ffccd3;
+        }
+
+        .island-btn:nth-child(7).active {
+            background: #fffb0085;
+        }
+
+        .island-btn:nth-child(2).active~.nav-slider {
+            background: #FFC089;
+        }
+
+        .island-btn:nth-child(3).active~.nav-slider {
+            background: #9ED1FF;
+        }
+
+        .island-btn:nth-child(4).active~.nav-slider {
+            background: #9BE8A8;
+        }
+
+        .island-btn:nth-child(5).active~.nav-slider {
+            background: #FFE07B;
+        }
+
+        .island-btn:nth-child(6).active~.nav-slider {
+            background: #FF9DA9;
+        }
+
+        .island-btn:nth-child(7).active~.nav-slider {
+            background: #B3A6FF;
+        }
+
+        .main {
+            flex: 1;
+            padding: 10px 5px 0px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        .offcanvas {
+            display: none;
+        }
+
+        @media(max-width:900px) {
+
+            .topbar {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+                position: fixed;
+                top: 15px;
+                right: 15px;
+                font-size: 24px;
+                background: #f59e0b;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                padding: 6px 12px;
+                cursor: pointer;
+                z-index: 5000;
+            }
+
+            .offcanvas {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, .45);
+                display: none;
+                z-index: 4000;
+            }
+
+            .offcanvas.show {
+                display: block;
+            }
+
+            .offcanvas-panel {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 280px;
+                height: 100%;
+                background: white;
+                padding: 30px;
+                padding-top: 80px;
+                display: flex;
+                flex-direction: column;
+                gap: 22px;
+                transform: translateX(100%);
+                transition: .35s;
+                overflow-y: auto;
+            }
+
+            .offcanvas.show .offcanvas-panel {
+                transform: translateX(0);
+            }
+
+            .offcanvas-panel .island-btn {
+                flex: none;
+                padding: 30px 14px;
+                font-size: 15px;
+                border-radius: 12px;
+                opacity: .6;
+                filter: saturate(.6);
+            }
+
+            .offcanvas-panel .island-btn:hover {
+                transform: none;
+                opacity: .85;
+            }
+
+            .offcanvas-panel .island-btn.active {
+                opacity: 1;
+                filter: none;
+                box-shadow: 0 8px 14px rgba(0, 0, 0, .18), 0 0 8px rgba(255, 200, 0, .35), inset 0 2px 0 rgba(255, 255, 255, .8);
+            }
+
+            .offcanvas-panel .island-btn:nth-child(1).active {
+                background: #FFE3C8;
+            }
+
+            .offcanvas-panel .island-btn:nth-child(2).active {
+                background: #CFE8FF;
+            }
+
+            .offcanvas-panel .island-btn:nth-child(3).active {
+                background: #D7F7DC;
+            }
+
+            .offcanvas-panel .island-btn:nth-child(4).active {
+                background: #FFF2C6;
+            }
+
+            .offcanvas-panel .island-btn:nth-child(5).active {
+                background: #FFD8DD;
+            }
+
+            .offcanvas-panel .island-btn:nth-child(6).active {
+                background: #DCD6FF;
+            }
+
+        }
+
+        @media(max-width:480px) {
+
+            .offcanvas-panel {
+                width: 85%;
+                padding: 20px;
+                gap: 16px;
+            }
+
+            .offcanvas-panel .island-btn {
+                font-size: 14px;
+                padding: 30px 12px;
+            }
+
+        }
+
+        @media (min-width: 900px) and (max-height: 800px) {
+            .app {
+                transform: scaleY(0.95);
+                transform-origin: top center;
+                height: calc(100vh / 0.95);
+            }
+        }
+
+        @media (min-width: 900px) and (max-height: 700px) {
+            .app {
+                transform: scaleY(0.9);
+                transform-origin: top center;
+                height: calc(100vh / 0.9);
+            }
+        }
+
+        @media (min-width: 900px) and (max-height: 600px) {
+            .app {
+                transform: scaleY(0.85);
+                transform-origin: top center;
+                height: calc(100vh / 0.85);
+            }
+        }
+
+        @media (min-width: 900px) and (max-height: 500px) {
+            .app {
+                transform: scaleY(0.8);
+                transform-origin: top center;
+                height: calc(100vh / 0.8);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <div class="app">
+
+        <div class="topbar">
+
+            <div class="nav-group">
+
+                <div class="nav-slider" id="navSlider"></div>
+
+                <div class="island-btn active" onclick="openIsland(0)">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Correct Options
+                </div>
+
+                <div class="island-btn" onclick="openIsland(1)">
+                    <i class="fa-solid fa-pen"></i>
+                    Fill The Blanks
+                </div>
+
+                <div class="island-btn" onclick="openIsland(2)">
+                    <i class="fa-solid fa-check-double"></i>
+                    True / False
+                </div>
+
+                <div class="island-btn" onclick="openIsland(3)">
+                    <i class="fa-solid fa-font"></i>
+                    One Word
+                </div>
+
+                <div class="island-btn" onclick="openIsland(4)">
+                    <i class="fa-solid fa-link"></i>
+                    Matching
+                </div>
+
+                <div class="island-btn" onclick="openIsland(5)">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    One Example
+                </div>
+            </div>
+
+        </div>
+
+        <div class="main">
+            <iframe id="contentFrame" src="./exercises/mcq.html"></iframe>
+        </div>
+
+    </div>
+
+    <div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
+
+        <div class="offcanvas-panel" onclick="event.stopPropagation()">
+
+            <div class="island-btn active" onclick="mobileOpen(0)">
+                <i class="fa-solid fa-circle-check"></i>
+                Correct Options
+            </div>
+
+            <div class="island-btn" onclick="mobileOpen(1)">
+                <i class="fa-solid fa-pen"></i>
+                Fill The Blanks
+            </div>
+
+            <div class="island-btn" onclick="mobileOpen(2)">
+                <i class="fa-solid fa-check-double"></i>
+                True / False
+            </div>
+
+            <div class="island-btn" onclick="mobileOpen(3)">
+                <i class="fa-solid fa-font"></i>
+                One Word
+            </div>
+
+            <div class="island-btn" onclick="mobileOpen(4)">
+                <i class="fa-solid fa-link"></i>
+                Matching
+            </div>
+
+            <div class="island-btn" onclick="mobileOpen(5)">
+                <i class="fa-solid fa-lightbulb"></i>
+                One Example
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const sidebarButtons = document.querySelectorAll(".topbar .island-btn");
+        const mobileButtons = document.querySelectorAll(".offcanvas .island-btn");
+
+        const slider = document.getElementById("navSlider");
+
+        const frame = document.getElementById("contentFrame");
+
+        const pages = [
+            "./exercises/mcq.html",
+            "./exercises/FTB.html",
+            "./exercises/true_false.html",
+            "./exercises/one_word.html",
+            "./exercises/matching.html",
+            "./exercises/one_example.html",
+        ];
+
+        function moveSlider(el) {
+            slider.style.width = el.offsetWidth + "px";
+            slider.style.transform = `translateX(${el.offsetLeft}px)`;
+        }
+
+        function openIsland(index) {
+
+            sidebarButtons.forEach(btn => btn.classList.remove("active"));
+            sidebarButtons[index].classList.add("active");
+
+            mobileButtons.forEach(btn => btn.classList.remove("active"));
+            mobileButtons[index].classList.add("active");
+
+            moveSlider(sidebarButtons[index]);
+
+            frame.src = pages[index];
+        }
+
+        function toggleMenu() {
+
+            if (window.innerWidth > 900) return;
+
+            document.getElementById("offcanvas").classList.toggle("show");
+        }
+
+        function mobileOpen(i) {
+
+            openIsland(i);
+            toggleMenu();
+        }
+
+        window.onload = () => {
+            moveSlider(sidebarButtons[0]);
+        };
+
+    </script>
+
+</body>
+
+</html>

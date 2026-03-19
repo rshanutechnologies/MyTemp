@@ -1,0 +1,625 @@
+*{ box-sizing:border-box; }
+
+body{
+    margin:0;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    font-family:"Livvic" !important;
+    font-weight:500;
+    background-image:url("../images/G2_C2_CBG.png");
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.quiz-header{
+  display: none;
+}
+body::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+}
+
+/* MAIN WRAPPER */
+.app{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:24px;
+    /* margin-top:5%; */
+}
+
+/* TEMPLATE */
+.template{
+    width:min(1250px,98vw);
+    height:min(720px,98vh);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* QUESTION TITLE */
+.title{
+    font-size:30px;
+    font-weight:400;
+    color: #0A3D62;
+    letter-spacing:0.5px;
+    min-height:80px;
+    width:750px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    line-height:1.3;
+    margin-top:10px;
+}
+
+/* ================= QUIZ LAYOUT ================= */
+
+.quiz-container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:30px;
+}
+
+/* OPTIONS GRID */
+
+
+.options{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  margin-top:20px;
+}
+/* OPTION CARD */
+/* OPTION CARD */
+.option{
+  width:250px;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+}
+
+/* floating container */
+.option-card{
+ 
+  height:200px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+}
+
+/* IMAGE FLOATING */
+.option-img{
+  width:250px;
+  height:250px;
+  object-fit:contain;
+  position:absolute;
+  bottom:70px;
+  z-index:3;
+  /* animation:floatItem 3s ease-in-out infinite; */
+}
+.correct-lock .option-img{
+  animation:floatItem 2.5s ease-in-out infinite;
+}
+
+/* FLOATING ANIMATION */
+@keyframes floatItem{
+  0%{ transform:translateY(0px);}
+  50%{ transform:translateY(-10px);}
+  100%{ transform:translateY(0px);}
+}
+
+/* METAL PLATFORM BASE */
+
+
+/* INNER GLOW RING */
+
+
+/* LIGHT BEAM */
+
+/* LABEL */
+.label{
+  font-size:22px;
+   color: #0A3D62;
+  margin-top:-10px;
+  font-weight:500;
+}
+
+/* HOVER EFFECT */
+.option:hover .platform::before{
+  box-shadow:0 0 30px #66fff2;
+}
+
+/* CORRECT ANSWER LIGHT */
+
+
+/* CORRECT PLATFORM GLOW */
+
+.option img{
+  transition:0.25s;
+}
+.correct-lock{
+ border-color:#cee3ff !important;
+  /* background:#eafaf1; */
+}
+
+.wrong-shake{
+  border-color:#e74c3c !important;
+  /* background:#fdecea; */
+  filter: grayscale(0.5);
+}
+
+/* ================= NAV BUTTONS ================= */
+
+.quiz-nav{
+    margin-top:-3%;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:70%;
+    padding:20px 0;
+    margin-bottom:10%;
+}
+
+.prev,
+.next{
+    width:80px;
+    height:80px;
+    border:none;
+    border-radius:999px;
+    font-size:16px;
+    font-weight:500;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.prev{
+  background:#8fb1e8;
+  color: white;
+}
+
+.next{
+  background:#f29b1d;
+  color: white;
+}
+
+.prev:disabled,
+.next:disabled{
+    opacity:0.4;
+    cursor:not-allowed;
+}
+
+/* ================= POPUPS ================= */
+
+.popup{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+}
+
+.popup-content{
+    background:#ffffff;
+    padding:35px 40px;
+    border-radius:25px;
+    text-align:center;
+    width:min(420px,90%);
+    /* box-shadow:0 20px 60px rgba(0,0,0,0.25); */
+}
+
+.popup-icon{
+    font-size:70px;
+    margin-bottom:15px;
+}
+
+.popup-title{
+    font-size:28px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.popup-msg{
+    font-size:18px;
+    font-weight:500;
+}
+
+/* FINAL POPUP */
+
+#finalPopup{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.finalpopup-box{
+    background:#fff;
+    padding:25px 35px;
+    border-radius:18px;
+    text-align:center;
+}
+
+#stars{
+    font-size:40px;
+    margin-top:10px;
+}
+
+.playAgain-btn{
+    background:#1fb36b;
+    color:#fff;
+    border:none;
+    padding:12px 28px;
+    border-radius:20px;
+    font-size:16px;
+    margin-top:10px;
+    cursor:pointer;
+}
+/* ===============================
+   POPUP BASE
+================================ */
+
+/* correct and wrong */
+.popup {
+    position: fixed;
+    inset: 0;
+    /* background: rgba(0, 0, 0, 0.7); */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.popup-content {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 255, 240, 0.98) 100%);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    backdrop-filter: blur(15px);
+    /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); */
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.popup-icon {
+    font-size: 5.5em;
+    margin-bottom: 10px;
+    animation: iconBounce 0.8s ease;
+    /* filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)); */
+}
+
+@keyframes iconBounce {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-30px) scale(1.2) rotate(-10deg);
+    }
+
+    50% {
+        transform: translateY(-15px) scale(1.1) rotate(10deg);
+    }
+
+    75% {
+        transform: translateY(-25px) scale(1.15) rotate(-5deg);
+    }
+}
+
+.popup-content h3 {
+    font-family: "Livvic";
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popup-content p {
+    font-size: 1.3em;
+    font-family: "Livvic";
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.popup.correct .popup-icon {
+    animation: iconBounce 0.8s ease, correctSpin 0.8s ease;
+}
+
+.popup.wrong .popup-icon {
+    animation: iconBounce 0.8s ease, wrongShake 0.6s ease;
+}
+
+.popup.correct .popup-content {
+    background-color: #ffffff;
+}
+
+.popup.wrong .popup-content {
+    background-color: #ffffff;
+}
+
+.popup.correct h3 {
+    color: #22543d;
+}
+
+.popup.wrong h3 {
+    color: #742a2a;
+}
+
+.popup.correct p {
+    color: #276749;
+}
+
+.popup.wrong p {
+    color: #9b2c2c;
+}
+
+@keyframes correctSpin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.3);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes wrongShake {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: rotate(-15deg);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: rotate(15deg);
+    }
+}
+
+
+
+/* ================= FINAL POPUP NEW DESIGN ================= */
+
+.final-box{
+    background-color: #ffffff;
+    padding:10px 10px;
+    border-radius:30px;
+    text-align:center;
+    width:400px;
+    color:white;
+    animation: popIn 0.4s ease;
+}
+
+/* trophy icon */
+
+.trophy{
+    font-size:80px;
+   
+    animation: trophyBounce 1s infinite alternate;
+}
+
+/* title */
+
+.final-title{
+    font-size:30px;
+    font-weight:600;
+    margin-bottom:5px;
+    color: #1fb36b;
+}
+
+/* score circle */
+
+.score-circle{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:white;
+    color:#333;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    font-weight:700;
+    margin:0 auto 20px auto;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+    
+}
+
+/* stars */
+
+.star-row{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+/* play again */
+
+.playAgain-btn{
+    background:#ff9d2e;
+    border:none;
+    padding:14px 30px;
+    font-size:18px;
+    border-radius:25px;
+    color:white;
+    cursor:pointer;
+    transition:0.25s;
+}
+
+.playAgain-btn:hover{
+    transform:scale(1.05);
+    background:#ff8c1a;
+}
+
+
+
+/* trophy animation */
+
+@keyframes trophyBounce{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-12px);
+    }
+}
+
+.correct-lock{
+background:#e6fff2;
+border:2px solid #2ecc71;
+box-shadow:0 0 15px rgba(46,204,113,0.4);
+padding: 20px;
+margin-top: -20%;
+}
+
+.options.single{
+display:flex;
+justify-content:center;
+}
+/* ================= MOBILE ================= */
+/* ================= MOBILE ================= */
+@media (max-width:768px){
+
+body{
+overflow:hidden;
+padding:10px;
+align-items:flex-start;
+}
+
+/* template container */
+
+.template{
+width:100%;
+height:auto;
+}
+
+/* title */
+
+.title{
+width:100%;
+font-size:22px;
+padding:0 10px;
+min-height:auto;
+margin-top: 50px;
+}
+
+/* quiz container spacing */
+
+.quiz-container{
+gap:20px;
+}
+
+/* options grid */
+
+.options{
+grid-template-columns:1fr 1fr;
+gap:12px;
+width:100%;
+margin-top: 40px;
+}
+
+/* option card */
+
+.option{
+width:100%;
+}
+
+/* platform layout */
+
+.option-card{
+height:160px;
+}
+
+/* floating image */
+
+.option-img{
+width:150px;
+height:150px;
+object-fit: contain;
+bottom:60px;
+}
+
+/* platform */
+
+.platform{
+width:130px;
+height:28px;
+bottom:15px;
+
+}
+
+/* beam */
+
+
+
+/* label */
+
+.label{
+font-size:18px;
+}
+
+/* navigation buttons */
+
+.quiz-nav{
+gap:50%;
+margin-top:50px;
+}
+
+.prev,
+.next{
+width:80px;
+height:80px;
+font-size:16px;
+}
+
+/* popup */
+
+.popup-content{
+width:92%;
+padding:22px;
+}
+
+.popup-icon{
+font-size:50px;
+}
+
+}

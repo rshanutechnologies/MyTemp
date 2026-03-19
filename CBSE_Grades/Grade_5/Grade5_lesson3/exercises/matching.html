@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Match the Following</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<link rel="stylesheet" href="../assets/css/matching.css">
+
+</head>
+
+<body>
+
+<div class="container">
+<header>
+ 
+</header>
+
+<div class="game" id="gameArea">
+  <svg id="lines"></svg>
+
+  <div class="column left" id="leftCol"></div>
+  <div class="column right" id="rightCol"></div>
+</div>
+</div>
+
+<!-- Popup -->
+<div id="popup" class="popup hidden">
+
+<div class="final">
+
+<h2>🎉 Congratulations!</h2>
+<h3 id="score"></h3>
+
+<div>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+</div>
+
+<button class="playBtn" onclick="location.reload()">Play Again</button>
+
+</div>
+
+</div>
+
+<script src="../assets/js/matching.js"></script>
+
+</body>
+</html>

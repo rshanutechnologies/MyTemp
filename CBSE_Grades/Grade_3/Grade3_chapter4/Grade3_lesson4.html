@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Grade3 Lesson4</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Livvic';
+}
+
+body{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#d9e7f5;
+overflow:hidden;
+position:relative;
+}
+
+/* Background */
+
+body::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background-image:url("images/3-41.png");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+filter:blur(3px);
+z-index:-1;
+}
+
+/* Laptop */
+
+.wrapper{
+position:relative;
+}
+
+.laptop{
+width:1000px;
+height:500px;
+background:#2e4f6d;
+border-radius:30px;
+padding:18px;
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+.screen{
+width:100%;
+height:100%;
+background:white;
+border-radius:20px;
+overflow:hidden;
+}
+
+iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* ================= */
+/* DESKTOP MENU */
+/* ================= */
+
+.quiz-menu{
+position:absolute;
+left:-70px;
+top:110px;
+display:flex;
+flex-direction:column;
+gap:28px;
+}
+
+.quiz-btn{
+width:200px;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+font-weight:600;
+color:white;
+border-radius:18px;
+cursor:pointer;
+position:relative;
+transition:.25s;
+
+box-shadow:
+0 6px 0 rgba(0,0,0,.25),
+0 14px 20px rgba(0,0,0,.25);
+}
+
+/* tab arrow */
+
+.quiz-btn::before{
+content:"";
+position:absolute;
+right:-28px;
+top:50%;
+transform:translateY(-50%);
+width:0;
+height:0;
+
+border-top:20px solid transparent;
+border-bottom:20px solid transparent;
+border-left:28px solid;
+}
+
+.quiz-btn:hover{
+transform:translateX(8px) scale(1.05);
+}
+
+/* Colors */
+
+.btn1{background:#ff4b5c;}
+.btn1::before{border-left-color:#ff4b5c;}
+
+.btn2{background:#3b82f6;}
+.btn2::before{border-left-color:#3b82f6;}
+
+.btn3{background:#10b981;}
+.btn3::before{border-left-color:#10b981;}
+
+.btn5{background:#8b5cf6;}
+.btn5::before{border-left-color:#8b5cf6;}
+
+.quiz-btn.active{
+transform:scale(1.08);
+outline:5px solid white;
+}
+
+/* ================= */
+/* MOBILE MENU */
+/* ================= */
+
+.menu-toggle{
+display:none;
+position:absolute;
+top:15px;
+left:15px;
+font-size:28px;
+background:white;
+border:none;
+border-radius:8px;
+padding:8px 12px;
+cursor:pointer;
+z-index:1000;
+box-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+
+/* ================= */
+/* MOBILE RESPONSIVE */
+/* ================= */
+
+@media(max-width:600px){
+
+body{
+overflow:auto;
+align-items:flex-start;
+padding-top:60px;
+}
+
+/* hamburger visible */
+.menu-toggle{
+  display:block;
+  right:15px;   /* 👉 move button right */
+  left:auto;
+}
+
+/* offcanvas menu */
+.quiz-menu{
+  position:fixed;
+  top:0;
+  right:-260px;   /* 👉 start from right */
+  left:auto;
+
+  width:240px;
+  height:100vh;
+  background:white;
+  padding:90px 20px;
+
+  flex-direction:column;
+  gap:20px;
+
+  transition:0.35s;
+  box-shadow:-5px 0 20px rgba(0,0,0,.3);  /* 👉 shadow from right */
+
+  z-index:999;
+}
+
+/* open state */
+.quiz-menu.open{
+  right:0;
+  left:auto;
+}
+/* laptop resize */
+
+.laptop{
+width:95vw;
+height:85vh;
+}
+
+
+
+/* buttons */
+
+.quiz-btn{
+width:100%;
+height:55px;
+font-size:16px;
+border-radius:12px;
+}
+
+.quiz-btn::before{
+display:none;
+}
+
+}
+@media(max-width:1000px){
+
+  body{
+    overflow:hidden;
+    align-items:flex-start;
+    padding-top:60px;
+  }
+
+  /* ✅ Toggle RIGHT */
+  .menu-toggle{
+    display:block;
+    right:15px;
+    left:auto;
+  }
+
+  /* ✅ FIX LAPTOP SCALE */
+  .wrapper{
+    width:100%;
+  }
+
+  .laptop{
+    width:95vw;
+    height:90vh;
+    margin:auto;
+  }
+
+  /* ✅ OFFCANVAS RIGHT */
+  .quiz-menu{
+    position:fixed;
+    top:0;
+
+    right:-260px;
+    left:auto !important;
+
+    width:240px;
+    height:100vh;
+    background:white;
+
+    padding:90px 20px;
+
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+
+    transition:0.35s ease;
+    box-shadow:-5px 0 20px rgba(0,0,0,.3);
+
+    z-index:999;
+  }
+
+  .quiz-menu.open{
+    right:0;
+    left:auto !important;
+  }
+
+  /* ✅ BUTTON STYLE */
+  .quiz-btn{
+    width:100%;
+    height:55px;
+    font-size:16px;
+    border-radius:12px;
+  }
+
+  .quiz-btn::before{
+    display:none;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- Mobile Menu Button -->
+
+<button class="menu-toggle" id="menuToggle">☰</button>
+
+<div class="wrapper">
+
+<div class="laptop">
+
+<div class="screen">
+<iframe id="frame" src="./exercise/mcq.html"></iframe>
+</div>
+
+</div>
+
+<div class="quiz-menu" id="menu">
+
+<div class="quiz-btn btn1 active" data-file="./exercise/mcq.html">
+📝 Choose Option
+</div>
+
+<div class="quiz-btn btn2" data-file="./exercise/fillintheblanks.html">
+✏ Fill Blanks
+</div>
+
+<div class="quiz-btn btn3" data-file="./exercise/truefalse.html">
+✔ True / False
+</div>
+
+<div class="quiz-btn btn5" data-file="./exercise/matching.html">
+🔗 Matching
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const buttons=document.querySelectorAll(".quiz-btn");
+const frame=document.getElementById("frame");
+const menu=document.getElementById("menu");
+const toggle=document.getElementById("menuToggle");
+
+buttons.forEach(btn=>{
+btn.addEventListener("click",()=>{
+
+buttons.forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+
+frame.src=btn.dataset.file;
+
+/* close menu on mobile */
+
+menu.classList.remove("open");
+
+});
+});
+
+/* toggle menu */
+
+toggle.onclick=()=>{
+menu.classList.toggle("open");
+};
+
+</script>
+
+</body>
+</html>

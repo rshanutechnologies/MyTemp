@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Grade2_chapter4</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+display:flex;
+flex-direction:column;
+font-family:'Livvic';
+/* background:url("./assets/images/G2_C4_MIMG2.png") center/cover no-repeat; */
+ /* background:#f8fbff;; */
+ background:#eef7ff;
+overflow:hidden;
+}
+
+/* TOP NAVBAR */
+
+.navbar{
+width:100%;
+display:flex;
+gap:18px;
+padding:18px;
+align-items:center;
+margin-left: -1%;
+/* background:rgba(255,255,255,0.15); */
+/* backdrop-filter:blur(6px); */
+}
+
+/* MENU BUTTON */
+
+.menu-btn{
+min-width:210px;
+height:70px;
+padding:0 18px;
+border-radius:20px;
+font-size:18px;
+font-weight:500;
+cursor:pointer;
+transition:all 0.3s ease;
+/* background:#ffffff; */
+border:1px solid #e8e8e8;
+display:flex;
+align-items:center;
+gap:14px;
+box-shadow:0 3px 16px rgba(0,0,0,0.08);
+}
+
+.menu-btn:hover{
+transform:translateY(-4px);
+/* box-shadow:0 10px 22px rgba(0,0,0,0.15); */
+}
+
+.icon-box{
+width:45px;
+height:45px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+color:white;
+flex-shrink:0;
+}
+
+/* COLORS */
+
+.color1.active{ background:#ffe8f0; border-color:white; }
+.color1 .icon-box{ background:#ff4d88; }
+
+.color2.active{ background:#e6f9ff; border-color:white; }
+.color2 .icon-box{ background:#00bcd4; }
+
+.color3.active{ background:#e9fbe9; border-color:white; }
+.color3 .icon-box{ background:#4caf50; }
+
+.color4.active{ background:#fff4e6; border-color:white; }
+.color4 .icon-box{ background:#ff9800; }
+
+.color5.active{ background:#f3e8ff; border-color:white; }
+.color5 .icon-box{ background:#9c27b0; }
+
+.color6.active{ background:#eef3ff; border-color:white; }
+.color6 .icon-box{ background:#5b6cff; }
+
+/* CONTENT AREA */
+
+.content{
+flex:1;
+position:relative;
+padding:10px 18px 18px 18px;
+}
+
+iframe{
+width:100%;
+height:100%;
+border:none;
+border-radius:18px;
+/* background:white; */
+}
+.mobile-toggle{
+    display: none;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+.mobile-toggle{
+position:fixed;
+top:20px;
+right:20px;
+width:45px;
+height:45px;
+background:#3fa7ff;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:10px;
+font-size:20px;
+z-index:1000;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* MOBILE MENU */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+margin-left:-1%;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:30px;
+ background:#eef7ff;
+
+transform:translateX(-100%);
+transition:0.4s ease;
+}
+
+/* SHOW MENU */
+
+.navbar.active{
+transform:translateX(0);
+}
+
+/* BUTTON STYLE */
+
+
+.menu-btn{
+width:80vw;
+height:70px;
+border-radius:40px;
+font-size:18px;
+
+display:flex;
+align-items:center;
+justify-content:flex-start;   /* ⭐ start from same position */
+
+gap:12px;
+padding-left:18px;            /* ⭐ same starting space */
+}
+
+/* FIX ICON ALIGNMENT */
+
+.icon-box{
+width:40px;
+height:40px;
+min-width:40px;               /* ⭐ prevents shifting */
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+
+.content{
+width:100%;
+height:100vh;
+position:relative;
+z-index:1;
+}
+
+iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* make sidebar above content */
+
+.navbar{
+z-index:1000;
+}
+.mobile-toggle{
+z-index:1200;
+}
+
+
+}
+
+
+/* ===============================
+   BIG DESKTOP CENTER FIX
+================================ */
+
+@media (min-width:1600px){
+
+.navbar{
+justify-content:center;
+gap:30px;
+}
+
+
+
+}
+</style>
+</head>
+
+<body>
+  <div class="mobile-toggle" onclick="toggleMenu()">
+<i class="fa-solid fa-bars"></i>
+</div>
+<!-- TOP NAVIGATION -->
+
+<div class="navbar" id="mobileMenu">
+
+<div class="menu-btn color1 active"
+onclick="loadPage(this,'./exercises/mcq.html')">
+<div class="icon-box">
+<i class="fa-solid fa-circle-check"></i>
+</div>
+Choose Correct
+</div>
+
+<div class="menu-btn color2"
+onclick="loadPage(this,'./exercises/fillblanks.html')">
+<div class="icon-box">
+<i class="fa-solid fa-keyboard"></i>
+</div>
+Fill in Blanks
+</div>
+
+<div class="menu-btn color4"
+onclick="loadPage(this,'./exercises/true_false.html')">
+<div class="icon-box">
+<i class="fa-solid fa-scale-balanced"></i>
+</div>
+True / False
+</div>
+
+<div class="menu-btn color3"
+onclick="loadPage(this,'./exercises/matching.html')">
+<div class="icon-box">
+<i class="fa-solid fa-link"></i>
+</div>
+Matching
+</div>
+
+<div class="menu-btn color6"
+onclick="loadPage(this,'./exercises/one_example.html')">
+<div class="icon-box">
+<i class="fa-solid fa-chalkboard-user"></i>
+</div>
+One Example
+</div>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="content">
+
+<iframe id="contentFrame" src="./exercises/mcq.html"></iframe>
+
+</div>
+
+<script>
+    function loadPage(btn,url){
+
+document.querySelectorAll('.menu-btn')
+.forEach(b=>b.classList.remove('active'));
+
+btn.classList.add('active');
+
+document.getElementById('contentFrame').src=url;
+
+/* close menu on mobile */
+
+if(window.innerWidth <= 768){
+document.getElementById("mobileMenu").classList.remove("active");
+}
+
+}
+
+function toggleMenu(){
+document.getElementById("mobileMenu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html> 

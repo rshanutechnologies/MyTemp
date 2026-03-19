@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter-2</title>
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@100;200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./asset/css/layout.css">
+<link rel="stylesheet" href="./asset/css/c.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+<img src="./asset/images/bottomleft-img.png" class="plant-bottom-left" alt="plant decoration">
+<img src="./asset/images/bottom-right.png" class="plant-bottom-right" alt="plant decoration">
+
+
+<!-- Navbar -->
+
+<nav class="quiz-navbar">
+
+<div class="hamburger" id="hamburger">☰</div>
+
+<!-- DESKTOP NAV -->
+<div class="nav-buttons">
+<button class="nav-btn mcq-btn"><i class="fa-solid fa-list-check"></i> Correct Options</button>
+<button class="nav-btn fib-btn"><i class="fa-solid fa-pencil"></i> Fill Blanks</button>
+<button class="nav-btn tf-btn">  <i class="fa-solid fa-scale-balanced"></i> True/False</button>
+<button class="nav-btn match-btn"> <i class="fa-solid fa-link"></i> Matching</button>
+</div>
+
+<!-- MOBILE SIDEBAR -->
+<div class="side-menu" id="sideMenu">
+
+<div class="close-btn" id="closeMenu">✕</div>
+
+<div class="nav-buttons">
+<button class="nav-btn mcq-btn"><i class="fa-solid fa-list-check"></i> Correct Options</button>
+<button class="nav-btn fib-btn"> <i class="fa-solid fa-pencil"></i> Fill Blanks</button>
+<button class="nav-btn tf-btn"><i class="fa-solid fa-scale-balanced"></i> True/False</button>
+<button class="nav-btn match-btn"> <i class="fa-solid fa-link"></i> Matching</button>
+</div>
+
+</div>
+
+</nav>
+
+<!-- Quiz Container -->
+
+<div class="quiz-container">
+
+<h2 id="question-text"></h2>   <!-- QUESTION HERE -->
+
+<div class="question-layout">
+
+<div class="question-image">
+<img id="question-img" src="" alt="">
+</div>
+
+<div id="answer-area"></div>
+
+</div>
+
+<div class="nav-controls">
+<button id="prev-btn">Prev</button>
+<button id="next-btn">Next</button>
+</div>
+
+</div>
+
+
+<!-- ================= POPUP ================= -->
+
+<div id="popup" class="popup">
+
+<div class="popup-content">
+
+<div id="popupIcon" class="popup-icon">🎉</div>
+
+<h2 id="popupTitle">Correct!</h2>
+
+<p id="popupMsg">Great job!</p>
+
+</div>
+
+</div>
+
+
+<!-- ================= FINAL SCORE POPUP ================= -->
+
+<div id="finalPopup" class="final-popup">
+
+<div class="final-box">
+
+<h2>🏆 Quiz Completed!</h2>
+
+<p id="finalScore"></p>
+
+<button id="playAgainBtn" class="play-again-btn">Play Again</button>
+
+</div>
+
+</div>
+
+<!-- CONFETTI LIBRARY -->
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+<!-- JS FILES -->
+<script src="./asset/js/questions.js" defer></script>
+<script src="./asset/js/popup.js" defer></script>
+
+<script src="./asset/js/mcq.js" defer></script>
+<script src="./asset/js/fib.js" defer></script>
+<script src="./asset/js/tf.js" defer></script>
+<script src="./asset/js/matching.js" defer></script>
+
+<script src="./asset/js/navbar.js" defer></script>
+</body>
+
+</html>

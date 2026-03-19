@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Grade3_Lesson2</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Livvic',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+overflow:hidden;
+position:relative;
+}
+
+/* Background layer */
+body::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:url("./images/Bg_img.png");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+filter: blur(2px) brightness(0.95) saturate(1.2);
+z-index:-1;
+}
+
+/* MOBILE MENU BUTTON */
+
+.mobile-toggle{
+display:none;
+position:fixed;
+top:15px;
+right:15px;
+font-size:28px;
+background:#ffffff;
+padding:6px 12px;
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+cursor:pointer;
+z-index:1000;
+}
+
+/* MAIN QUIZ AREA */
+
+.main{
+flex:1;
+height:100vh;
+}
+
+.main iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+.sidebar{
+width:270px;
+height:100vh;
+
+padding:25px 15px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;   /* ADD THIS */
+
+gap:18px;
+}
+/* HANGER */
+
+.hanger{
+width:150px;
+height:18px;
+background:#c89b73;
+border-radius:30px;
+position:relative;
+box-shadow:0 4px 0 #b1835d;
+}
+
+.hanger span{
+position:absolute;
+top:18px;
+width:4px;
+height:10px;
+background:#caa17d;
+border-radius:2px;
+}
+
+.hanger span::after{
+content:"";
+position:absolute;
+top:10px;
+left:-3px;
+width:10px;
+height:10px;
+border-radius:50%;
+}
+
+.b1{left:25px}
+.b2{left:55px}
+.b3{left:85px}
+.b4{left:115px}
+
+.b1::after{background:#ffd59a}
+.b2::after{background:#9dd2ff}
+.b3::after{background:#ff9fb1}
+.b4::after{background:#ffd59a}
+
+.menu{
+display:flex;
+flex-direction:column;
+gap:18px;
+margin-top:20px;
+}
+/* BUTTON */
+
+.menu button{
+
+position:relative;
+width:230px;
+padding:15px 20px;
+
+border-radius:20px;
+border:none;
+
+font-size:18px;
+font-weight:600;
+
+display:flex;
+align-items:center;
+justify-content:flex-start;
+
+gap:12px;
+
+cursor:pointer;
+
+box-shadow:
+0 6px 10px rgba(0,0,0,0.08),
+inset 0 3px 6px rgba(255,255,255,0.7);
+
+transition:.25s;
+}
+
+.menu button:after{
+content:"";
+position:absolute;
+top:4px;
+left:10px;
+right:10px;
+height:45%;
+background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,0));
+border-radius:20px;
+}
+
+.menu button:before{
+content:"";
+position:absolute;
+left:-12px;
+top:50%;
+transform:translateY(-50%);
+width:22px;
+height:14px;
+border-radius:8px;
+}
+.garden{
+margin-top: 20px;
+font-size:40px;
+display:flex;
+justify-content:center;
+gap:8px;
+}
+
+/* COLORS */
+
+.mcq{background:linear-gradient(#dff4ff,#bfe9ff)}
+.mcq:before{background:#8bd0f0}
+
+.fill{background:linear-gradient(#fff1c8,#ffd87d)}
+.fill:before{background:#f0c05a}
+
+.tf{background:linear-gradient(#cdf6cf,#9be29d)}
+.tf:before{background:#77c97a}
+
+.match{background:linear-gradient(#ffe0e3,#ffc0c7)}
+.match:before{background:#e59aa5}
+
+/* ACTIVE */
+
+.menu button:not(.active){
+opacity:0.45;
+filter:grayscale(80%);
+}
+
+.menu button.active{
+box-shadow:
+0 0 0 4px rgba(255,255,255,0.6) inset,
+0 8px 18px rgba(0,0,0,0.12);
+transform:scale(1.04);
+}
+
+
+/* CARTOON PLANT */
+
+.plant{
+margin-top:auto;
+display:flex;
+justify-content:center;
+padding-top:20px;
+}
+
+.plant img{
+width:110px;
+animation:plantFloat 3s ease-in-out infinite;
+}
+
+@keyframes plantFloat{
+0%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+100%{transform:translateY(0)}
+}
+
+/* MOBILE STYLE */
+
+@media(max-width:768px){
+
+.mobile-toggle{
+display:block;
+}
+
+.sidebar{
+position:fixed;
+right:-270px;
+top:0;
+z-index:999;
+background-color: #dff4ff;
+}
+
+.sidebar.open{
+right:0;
+}
+
+}
+.icon{
+width:36px;
+height:36px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:18px;
+
+border-radius:50%;
+
+/* make circle visible */
+border:2px solid rgba(0,0,0,0.08);
+
+box-shadow:0 3px 6px rgba(0,0,0,0.15);
+
+transition:.25s;
+}
+/* ICON COLORS */
+.icon-mcq{
+background:#cfeeff;
+}
+
+.icon-fill{
+background:#ffe8a6;
+}
+
+.icon-tf{
+background:#c8f5d1;
+}
+
+.icon-match{
+background:#ffd6dc;
+}
+
+/* HOVER ANIMATION */
+
+.menu button:hover .icon{
+transform:scale(1.15) rotate(5deg);
+}
+
+/* ACTIVE ICON GLOW */
+
+.menu button.active .icon{
+box-shadow:
+0 0 0 4px rgba(255,255,255,0.6),
+0 0 10px rgba(0,0,0,0.2);
+}
+/* ============================= */
+/* MONITOR / LARGE SCREEN FIX */
+/* ============================= */
+
+@media (min-width:1400px){
+
+body{
+justify-content:center;
+}
+
+.main{
+max-width:1200px;
+width:100%;
+flex:none;
+}
+
+.sidebar{
+width:270px;
+flex-shrink:0;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="mobile-toggle" id="mobileToggle">☰</div>
+
+<!-- MAIN -->
+
+<div class="main">
+<iframe id="quizFrame" src="./exercise/mcq.html"></iframe>
+</div>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar" id="sidebar">
+
+<div class="hanger">
+<span class="b1"></span>
+<span class="b2"></span>
+<span class="b3"></span>
+<span class="b4"></span>
+</div>
+
+<div class="menu">
+
+<button class="mcq active" data-file="./exercise/mcq.html">
+<span class="icon icon-mcq">📝</span> MCQ
+</button>
+
+<button class="fill" data-file="./exercise/fillintheblanks.html">
+<span class="icon icon-fill">✏️</span> Fill in the Blanks
+</button>
+
+<button class="tf" data-file="./exercise/truefalse.html">
+<span class="icon icon-tf">⚖️</span> True / False
+</button>
+
+<button class="match" data-file="./exercise/matching.html">
+<span class="icon icon-match">🧩</span> Matching
+</button>
+
+</div>
+
+
+</div>
+
+<script>
+
+const buttons=document.querySelectorAll(".menu button")
+const frame=document.getElementById("quizFrame")
+const sidebar=document.getElementById("sidebar")
+const toggle=document.getElementById("mobileToggle")
+
+buttons.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+buttons.forEach(b=>b.classList.remove("active"))
+btn.classList.add("active")
+
+frame.src=btn.dataset.file
+
+if(window.innerWidth<768){
+sidebar.classList.remove("open")
+}
+
+})
+
+})
+
+toggle.onclick=()=>{
+sidebar.classList.toggle("open")
+}
+
+</script>
+
+</body>
+</html>

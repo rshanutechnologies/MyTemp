@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Quiz Adventure Journey</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@600;700;800&display=swap" rel="stylesheet">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Livvic',sans-serif;
+}
+
+html,body{
+  height:100%;
+}
+
+/* ================= BODY ================= */
+body{
+  display:flex;
+  flex-direction:column;
+ background-image: url("./assets/images/bg-8.png"); 
+ /* background-color: rgba(175, 241, 220, 0.838);  */
+background-size:cover ;
+background-position:center center;
+  overflow:hidden;
+}
+
+/* ================= NAV WRAPPER ================= */
+.nav-wrapper{
+  width:100%;
+  position:relative;
+  display:flex;
+  justify-content:flex-end; /* move toggle to right */
+}
+
+/* TOGGLE BUTTON (MOBILE) */
+.menu-toggle{
+  display:none;
+  font-size:26px;
+  padding:12px 18px;
+  cursor:pointer;
+  color:#fff;
+  background:rgba(0,0,0,.4);
+  backdrop-filter:blur(6px);
+  margin-left:auto;
+}
+
+/* ================= NAV BAR ================= */
+.nav-bar{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:15px 20px;
+  width:100%;
+  flex-shrink:0;
+  transition:.3s ease;
+}
+
+.nav-item{
+  flex:1;
+  text-align:center;
+  padding:16px 0;
+  border-radius:20px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .25s ease;
+  background:#ffffff60;
+  backdrop-filter:blur(6px);
+  color:#374151;
+  white-space:nowrap;
+}
+
+.nav-item:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.nav-item.active{
+  background:  #4cea71;
+  color:#fff;
+  border: 2px dotted white;
+
+}
+
+/* ================= QUIZ AREA ================= */
+.quiz-area{
+  flex:1;
+  width:100%;
+  display:flex;
+  /* background:#f0e5e59d; */
+  min-height:0;
+}
+
+iframe{
+  flex:1;
+  width:100%;
+  height:100%;
+  border:none;
+  background:transparent;
+}
+
+/* ================= TABLET ================= */
+@media (max-width:1024px){
+
+  .nav-bar{
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+
+  .nav-bar::-webkit-scrollbar{
+    display:none;
+  }
+
+  .nav-item{
+    flex:none;
+    min-width:140px;
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width:900px){
+
+  body{
+    overflow:auto;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .nav-bar{
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    flex-direction:column;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(10px);
+    transform:translateY(-120%);
+    opacity:0;
+    pointer-events:none;
+  }
+
+  .nav-bar.show{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  .nav-item{
+    flex:none;
+    margin:6px 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+<div class="nav-wrapper">
+
+  <!-- MOBILE TOGGLE -->
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div class="nav-bar" id="navBar">
+
+    <div class="nav-item active" onclick="loadQuiz('exercises/MCQ.html', this)"><i class="fa-solid fa-circle-check"></i>  MCQ</div>
+    <div class="nav-item" onclick="loadQuiz('exercises/FITB.html', this)"><i class="fa-solid fa-pen"></i> Fill The Blanks</div>
+    <div class="nav-item" onclick="loadQuiz('exercises/true_false.html', this)"> <i class="fa-solid fa-check-double"></i> True / False</div>
+    <div class="nav-item" onclick="loadQuiz('exercises/matching.html', this)"><i class="fa-solid fa-link"></i> Matching</div>
+    <div class="nav-item" onclick="loadQuiz('exercises/oneWord.html', this)"><i class="fa-solid fa-font"></i> One Word</div>
+    <div class="nav-item" onclick="loadQuiz('exercises/oneExample.html', this)"><i class="fa-solid fa-lightbulb"></i> One Examples</div>
+
+  </div>
+</div>
+
+<!-- ================= QUIZ AREA ================= -->
+<div class="quiz-area">
+  <iframe id="quizFrame" src="exercises/MCQ.html"></iframe>
+</div>
+
+<script>
+function loadQuiz(link, element){
+
+  document.getElementById("quizFrame").src = link;
+
+  document.querySelectorAll(".nav-item").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  element.classList.add("active");
+
+  // auto close mobile menu
+  document.getElementById("navBar").classList.remove("show");
+}
+
+function toggleMenu(){
+  document.getElementById("navBar").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>

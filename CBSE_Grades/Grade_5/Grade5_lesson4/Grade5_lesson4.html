@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Animal Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================= RESET ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Livvic";
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* ================= BODY ================= */
+    body {
+      display: flex;
+      flex-direction: column;
+      background-image: url("assets/images/bg-5_5_2.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* ================= TITLE ================= */
+    .top-title {
+      text-align: center;
+      padding: 14px;
+      font-size: 34px;
+      font-weight: 700;
+      color: #0b3c5d;
+    }
+
+    /* ================= INDEX BAR ================= */
+    .top-index {
+      display: flex;
+      justify-content: space-around;
+      gap: 16px;
+      padding-top: 8px;
+      margin-top: -10px;
+    }
+
+    /* BUTTON BASE */
+    .index-btn {
+      padding: 12px 24px;
+      /* border-radius:30px; */
+      font-size: 22px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      /* background:#e0e0e0; */
+      background: none;
+      color: #0A3D62;
+      transition: .25s;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      gap: 10px;
+    }
+
+    /* ACTIVE = GREEN */
+    /* .index-btn.active{
+  background:#4caf50 !important;
+  color:#fff !important;
+} */
+
+    /* COMPLETED = GREY BUT CLICKABLE */
+    /*.index-btn.completed {
+      background: #9e9e9e;
+      color: #fff;
+    }*/
+
+    /* ICON */
+    .btn-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    /* ================= CONTENT ================= */
+    .content {
+      flex: 1;
+      width: 100%;
+      height: calc(100vh - 130px);
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ================= MOBILE ================= */
+    @media(max-width:768px) {
+      .top-title {
+        font-size: 26px
+      }
+
+      .index-btn {
+        font-size: 15px;
+        padding: 10px 16px
+      }
+    }
+
+    .header {
+      text-align: center
+    }
+
+    .header h1 {
+      font-size: 42px;
+      margin: 0;
+      color: #0F4D43;
+      margin-bottom: 10px;
+    }
+
+
+
+
+    /* ACTIVE ICON ONLY (SMALL GREEN) */
+    .index-btn.active .btn-icon {
+      border-radius: 50%;
+      background: #4caf50;
+      padding: 6px;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, .3);
+    }
+    /* ================= MOBILE MENU ================= */
+/* ================= MOBILE MENU ================= */
+
+.menu-toggle{
+  display:none;
+  font-size:30px;
+  padding:10px 15px;
+  cursor:pointer;
+  color:#0A3D62;
+  position:absolute;
+  right:15px;
+  top:10px;
+  z-index:1100;
+}
+
+/* MOBILE */
+@media (max-width:900px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .top-index{
+    position:fixed;
+    top:0;
+    left:-260px;           /* hidden on left */
+    width:260px;
+    height:100%;
+    background:white;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:20px;
+    gap:15px;
+    transition:0.3s ease;
+    z-index:1000;
+  }
+
+  .top-index.show{
+    left:0;                /* slide in */
+  }
+
+  .index-btn{
+    width:100%;
+    justify-content:flex-start;
+  }
+
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= TITLE ================= -->
+ 
+<div class="menu-toggle" id="menuToggle">☰</div>
+  <!-- ================= INDEX BAR ================= -->
+ <div class="top-index" id="menuBar">
+    <button class="index-btn" data-step="1" data-file="./exercises/mcq.html">
+      <img class="btn-icon" src="./assets/images/icon_1.png">
+      Correct Option
+    </button>
+
+    <button class="index-btn" data-step="2" data-file="./exercises/FITB.html">
+      <img class="btn-icon" src="./assets/images/icon_2.png">
+       Fill the Blanks
+     
+    </button>
+
+    <button class="index-btn" data-step="3" data-file="./exercises/True_false.html">
+      <img class="btn-icon" src="./assets/images/icon_3.png">
+       True / False
+     
+    </button>
+
+    <button class="index-btn" data-step="4" data-file="./exercises/matching.html">
+      <img class="btn-icon" src="./assets/images/icon_4.png">
+      Matching
+    </button>
+
+      <button class="index-btn" data-step="5" data-file="./exercises/oneExample.html">
+      <img class="btn-icon" src="./assets/images/icon_1.png">
+      
+     One Example
+    </button>
+  </div>
+
+  <!-- ================= CONTENT ================= -->
+  <div class="content">
+    <iframe id="quizFrame"></iframe>
+  </div>
+
+  <script>
+    const iframe = document.getElementById("quizFrame");
+    const buttons = document.querySelectorAll(".index-btn");
+
+    /* LOAD FIRST GAME */
+    iframe.src = buttons[0].dataset.file;
+    buttons[0].classList.add("active");
+
+    /* UPDATE COMPLETED STATUS (VISUAL ONLY) */
+    function updateIndex() {
+  buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    buttons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    iframe.src = btn.dataset.file;
+
+    /* CLOSE MENU AFTER CLICK */
+    if(window.innerWidth <= 900){
+      menuBar.classList.remove("show");
+    }
+
+  });
+});
+    }
+
+    /* BUTTON CLICK — ALWAYS ALLOWED */
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        iframe.src = btn.dataset.file;
+      });
+    });
+
+    /* INIT */
+    updateIndex();
+
+    const menuToggle = document.getElementById("menuToggle");
+const menuBar = document.getElementById("menuBar");
+
+menuToggle.addEventListener("click", () => {
+  menuBar.classList.toggle("show");
+});
+  </script>
+
+</body>
+
+</html>

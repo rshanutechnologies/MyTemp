@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kids Image MCQ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:"Livvic";
+}
+
+body{
+  
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  overflow: hidden;
+}
+
+.quiz-container{
+  width:90%;
+  max-width:1200px;
+  position:relative;
+  padding-bottom:100px; /* space for bottom buttons */
+  text-align:center;
+}
+.question{
+  font-size:30px;
+  min-height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  width:100%;
+  color:#2f4f4f;
+  margin:0 auto;
+  margin-top: -10px;
+}
+.options{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+ 
+}
+.option{
+  flex:1;
+  min-width:150px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  
+}
+
+.circle{
+  width:150px;
+  height:155px;
+  margin:0 auto 12px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border:1px solid #ffd166;
+  transition:0.3s;
+  
+}
+
+.circle img{
+  width:65%;
+}
+
+.option p{
+  display:inline-block;
+  padding:8px 24px;
+  font-size:22px;
+  
+  color:#2f4f4f;
+  background:#d9e6ec;
+  border:2px solid #b7cbd6;
+  border-radius:40px;
+ box-shadow: 
+  inset 0 2px 4px rgba(255,255,255,0.8),
+  0 3px 8px rgba(173, 216, 230, 0.25);
+  transition:0.3s ease;
+}
+.option:hover p{
+  background:#c8dce6;
+  transform:translateY(-2px);
+}
+.correct .circle{
+  border-color:#4caf50;
+  background:#e8f5e9;
+}
+
+.wrong .circle{
+  border-color:#f44336;
+  background:#ffebee;
+}
+
+/* ===== Bottom Navigation Buttons ===== */
+
+.nav-btn{
+  position:absolute;
+  margin-top: 10px;
+  padding:14px 28px;
+  font-size:18px;
+  border:none;
+  border-radius:40px;
+  cursor:pointer;
+  color:white;
+  font-weight:600;
+  letter-spacing:0.5px;
+  transition:0.3s;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+  
+}
+
+#prevBtn{
+  left:0;
+  background:linear-gradient(135deg,#607d8b,#455a64);
+}
+
+#nextBtn{
+  right:0;
+  background:linear-gradient(135deg,#ff9800,#f57c00);
+}
+
+.nav-btn:hover{
+  transform:translateY(-3px);
+}
+
+.nav-btn:disabled{
+  background:#cccccc !important;
+  cursor:not-allowed;
+  box-shadow:none;
+}
+
+/* Mobile */
+@media (max-width:768px){
+  .question{ font-size:24px; margin-top: 50px;}
+  .circle{ width:120px; height:120px; }
+  .option p{ font-size:18px; }
+
+  #prevBtn, #nextBtn{
+    padding:10px 20px;
+    font-size:16px;
+    margin-top: 20px;
+  }
+}
+
+.popup{
+  position:fixed;
+  inset:0;
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.hidden{
+  display:none;
+}
+
+.popup-content{
+  background:#fef6ff;  /* pastel base */
+  padding:60px 80px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 20px 45px rgba(0,0,0,0.25);
+  min-width:350px;
+  max-width:500px;
+  animation:pop 0.3s ease;
+}
+
+@keyframes pop{
+  from{ transform:scale(0.8); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
+}
+
+.popup-emoji{
+  font-size:60px;
+  margin-bottom:15px;
+}
+
+.popup-content h2{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.popup-content p{
+  font-size:20px;
+}
+
+.play-again-btn{
+  margin-top:20px;
+  padding:12px 28px;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#4caf50,#2e7d32);
+  color:white;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.play-again-btn:hover{
+  transform:translateY(-3px);
+}
+.question-image{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  
+  height:150px;   /* fixed space for image */
+  
+}
+
+.question-image img{
+  width:400px;    /* fixed width */
+  height:240px;   /* fixed height */
+  object-fit:contain;  /* keeps image proportion */
+}
+@media (max-width:768px){
+  
+
+  .quiz-container{
+    width:100%;
+  }
+
+  .question{
+    font-size:24px;
+    height:auto;
+    margin-top:-20px;
+  }
+
+  .options{
+    justify-content:center;
+    gap:1px;
+  }
+
+  .circle{
+    width:100px;
+    height:100px;
+  }
+
+  .option p{
+    font-size:18px;
+    padding:8px 20px;
+  }
+
+}
+
+/* ===== Extra Small Phones ===== */
+
+@media (max-width:360px){
+
+  .circle{
+    width:75px;
+    height:75px;
+  }
+
+  .option p{
+    font-size:14px;
+  }
+
+  .question{
+    font-size:18px;
+  }
+
+}
+
+
+
+@media (max-width:600px){
+
+  body{
+    padding:10px;
+    overflow:auto;
+  }
+
+  .quiz-container{
+    width:100%;
+    padding-bottom:120px;
+    margin-top:50px;
+  }
+
+  .question{
+    font-size:20px;
+    line-height:1.2;
+    margin-top:5px;
+  }
+
+  /* ✅ GRID FIX (2x2 layout) */
+  .options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    justify-items:center;
+  }
+
+  .option{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .circle{
+    width:90px;
+    height:90px;
+  }
+
+  .circle img{
+    width:70%;
+  }
+
+  .option p{
+    font-size:16px;
+    padding:6px 14px;
+  }
+
+  .nav-btn{
+    padding:10px 16px;
+    font-size:14px;
+  }
+.popup-content{
+    padding:30px 25px;   /* reduced padding */
+    min-width:260px;
+    max-width:90%;
+    border-radius:20px;
+  }
+
+  .popup-emoji{
+    font-size:40px;   /* smaller emoji */
+  }
+
+  .popup-content h2{
+    font-size:20px;
+  }
+
+  .popup-content p{
+    font-size:16px;
+  }
+
+  .play-again-btn{
+    padding:10px 20px;
+    font-size:14px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+  <div class="question" id="question"></div>
+
+<div class="question-image">
+  <img id="questionImg" src="">
+</div>
+  <div class="options" id="options"></div>
+
+  <button class="nav-btn" id="prevBtn">Previous</button>
+  <button class="nav-btn" id="nextBtn" disabled>Next</button>
+
+ <!-- Popup -->
+<div id="popup" class="popup hidden">
+ <div class="popup-content">
+  <div id="popupEmoji" class="popup-emoji"></div>
+  <h2 id="popupTitle"></h2>
+  <p id="popupMessage"></p>
+
+  <button id="playAgainBtn" class="play-again-btn hidden">
+    🔄 Play Again
+  </button>
+</div>
+</div>
+
+</div>
+
+
+<script>
+const questions = [
+  {
+    question: "Q1. The ______ help a plant to absorb water and minerals from the soil.",
+    image: "../images/mcq1.png",
+    options: [
+      { text: "Leaves", img: "../images/leaf.png" },
+      { text: "Stem", img: "../images/stems.png" },
+      { text: "Roots", img: "../images/roots.png" },
+      { text: "Flower", img: "../images/flowerak.png" }
+    ],
+    correct: 2
+  },
+  {
+    question: "Q2. The ______ bears the leaves.",
+    image: "../images/mcq2.png",
+
+    options: [
+      { text: "Root", img: "../images/roots.png" },
+      { text: "Stem", img: "../images/stems.png" },
+      { text: "Fruit", img: "../images/fruits.png" },
+      { text: "Flower", img: "../images/flowerak.png" }
+    ],
+    correct: 1
+  },
+  {
+    question: "Q3. The ______ of the ginger stores extra food.",
+    image: "../images/ginger.png",
+    options: [
+      { text: "Root", img: "../images/roots.png" },
+      { text: "Leaf", img: "../images/leaf.png" },
+      { text: "Fruit", img: "../images/fruits.png" },
+      { text: "Stem", img: "../images/stems.png" }
+    ],
+    correct: 3
+  },
+  {
+    question: "Q4. The ______ is the most beautiful part of a plant.",
+    image: "../images/mcq3.png",
+    options: [
+      { text: "Stem", img: "../images/stems.png" },
+      { text: "Leaf", img: "../images/leaf.png" },
+      { text: "Fruit", img: "../images/fruits.png" },
+      { text: "Flower", img: "../images/flowerak.png" }
+    ],
+    correct: 3
+  },
+  {
+    question: "Q5. A ______ plant has taproot.",
+    image: "../images/mcq5.png",
+    options: [
+      { text: "Paddy", img: "../images/paddy.png" },
+      { text: "Wheat", img: "../images/Wheat1.png" },
+      { text: "Onion", img: "../images/onion1.png" },
+      { text: "Mango", img: "../images/Mango.png" }
+    ],
+    correct: 3
+  }
+];
+let currentQuestion = 0;
+let selectedAnswers = new Array(questions.length).fill(null);
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+
+const popup = document.getElementById("popup");
+const popupTitle = document.getElementById("popupTitle");
+const popupMessage = document.getElementById("popupMessage");
+const popupEmoji = document.getElementById("popupEmoji");
+const playAgainBtn = document.getElementById("playAgainBtn");
+
+const questionImg = document.getElementById("questionImg");
+
+/* ===== TEXT TO SPEECH (UK) ===== */
+function speakText(text){
+  if(!('speechSynthesis' in window)) return;
+
+  window.speechSynthesis.cancel();
+
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = "en-GB";     // UK English
+  utter.volume = 0.25;      // Low volume
+  utter.rate = 1;
+  utter.pitch = 1;
+
+  // Try to select UK voice if available
+  const voices = speechSynthesis.getVoices();
+  const ukVoice = voices.find(voice => voice.lang === "en-GB");
+  if(ukVoice){
+    utter.voice = ukVoice;
+  }
+
+  window.speechSynthesis.speak(utter);
+}
+window.speechSynthesis.onvoiceschanged = () => {};
+
+function fireConfetti(){
+
+  confetti({
+    particleCount: 40,   // small confetti
+    spread: 70,
+    origin: { y: 0.6 },
+    scalar: 0.7
+  });
+
+}
+function fireFinalConfetti(){
+
+  const duration = 2500;
+  const animationEnd = Date.now() + duration;
+
+  const interval = setInterval(function () {
+
+    if (Date.now() > animationEnd) {
+      clearInterval(interval);
+      return;
+    }
+
+    confetti({
+      particleCount: 60,
+      spread: 120,
+      startVelocity: 45,
+      scalar: 1.1,
+      origin: { x: Math.random(), y: Math.random() - 0.2 }
+    });
+
+  }, 250);
+
+}
+function loadQuestion(){
+  optionsEl.innerHTML = "";
+
+  const q = questions[currentQuestion];
+  questionEl.textContent = q.question;
+
+  questionImg.src = q.image;
+
+  // Disable next by default
+  nextBtn.disabled = selectedAnswers[currentQuestion] !== q.correct;
+
+  q.options.forEach((opt,index)=>{
+    const div = document.createElement("div");
+    div.classList.add("option");
+
+    div.innerHTML = `
+      <div class="circle">
+        <img src="${opt.img}">
+      </div>
+      <p>${opt.text}</p>
+    `;
+div.addEventListener("click",()=>{
+
+  // prevent editing after correct answer
+  if(selectedAnswers[currentQuestion] === q.correct){
+    return;
+  }
+
+  // Prevent clicking again if correct answer already selected
+  if(selectedAnswers[currentQuestion] === q.correct){
+    return;
+  }
+
+  selectedAnswers[currentQuestion] = index;
+
+  // Reload to update highlight
+  loadQuestion();
+
+  if(index === q.correct){
+
+  fireConfetti(); // 🎉 confetti effect
+
+  popupEmoji.textContent = "🎉";
+    popupTitle.textContent = "Correct!";
+    popupTitle.style.color = "green";
+    popupMessage.textContent = "Great job!";
+    nextBtn.disabled = false;
+
+    speakText("Correct!");
+
+    popup.classList.remove("hidden");
+
+    // ✅ If this is LAST question → show final popup automatically
+    if(currentQuestion === questions.length - 1){
+
+      setTimeout(()=>{
+        popup.classList.add("hidden");   // hide correct popup first
+        showFinalPopup();               // then show final popup
+      },1200);
+
+    } else {
+
+      // Hide normal correct popup after delay
+      setTimeout(()=>{
+        popup.classList.add("hidden");
+      },1200);
+    }
+
+  } else {
+
+    popupEmoji.textContent = "❌";
+    popupTitle.textContent = "Wrong!";
+    popupTitle.style.color = "red";
+    popupMessage.textContent = "Try again!";
+    nextBtn.disabled = true;
+
+    speakText("Wrong!");
+
+    popup.classList.remove("hidden");
+
+    setTimeout(()=>{
+      popup.classList.add("hidden");
+    },1200);
+  }
+
+});
+    // Restore selection highlight
+if(selectedAnswers[currentQuestion] !== null){
+  if(index === selectedAnswers[currentQuestion]){
+    if(index === q.correct){
+      div.classList.add("correct");
+    } else {
+      div.classList.add("wrong");
+    }
+  }
+}
+
+    optionsEl.appendChild(div);
+  });
+
+  prevBtn.disabled = currentQuestion === 0;
+}
+
+nextBtn.addEventListener("click",()=>{
+  if(currentQuestion < questions.length - 1){
+    currentQuestion++;
+    loadQuestion();
+  } else {
+    showFinalPopup();
+  }
+});
+
+prevBtn.addEventListener("click",()=>{
+  if(currentQuestion > 0){
+    currentQuestion--;
+    loadQuestion();
+  }
+});
+function showFinalPopup(){
+
+  let score = 0;
+
+  questions.forEach((q,i)=>{
+    if(selectedAnswers[i] === q.correct){
+      score++;
+    }
+  });
+fireFinalConfetti(); 
+  popupEmoji.textContent = "🏆";
+  popupTitle.textContent = "Quiz Completed!";
+
+  if(score === 5){
+    popupTitle.style.color = "#2e7d32";  // dark green
+    popupMessage.style.color = "#2e7d32";
+    popupMessage.textContent = `Score: ${score}/5 - Excellent 🌟`;
+  }
+  else if(score > 3){
+    popupTitle.style.color = "#1565c0";  // blue
+    popupMessage.style.color = "#1565c0";
+    popupMessage.textContent = `Score: ${score}/5 - Very Good 👏`;
+  }
+  else if(score < 3){
+    popupTitle.style.color = "#c62828";  // red
+    popupMessage.style.color = "#c62828";
+    popupMessage.textContent = `Score: ${score}/5 - Keep Practicing 💪`;
+  }
+  else{
+    popupTitle.style.color = "#ef6c00";  // orange
+    popupMessage.style.color = "#ef6c00";
+    popupMessage.textContent = `Score: ${score}/5 - Good 👍`;
+  }
+
+  playAgainBtn.classList.remove("hidden");
+popup.classList.remove("hidden");
+}
+
+playAgainBtn.addEventListener("click",()=>{
+  location.reload();
+});
+loadQuestion();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Animal Quiz – Matching</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/matching.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="scale-root" id="scaleRoot">
+        <div class="main-container">
+
+            <p class="instruction">
+                Drag the items on the left and drop them onto the correct partner on the right.
+            </p>
+
+            <div class="match-grid">
+               <div class="list">
+
+<div class="item" draggable="true" data-key="ball">
+<img src="../assets/images/ballsocket.png" width="70"> Ball and socket joint
+</div>
+
+<div class="item" draggable="true" data-key="hinge">
+<img src="../assets/images/hingejoint.png" width="70"> Hinge joint
+</div>
+
+<div class="item" draggable="true" data-key="pivot">
+<img src="../assets/images/pivotjoint1.png" width="70"> Pivot joint
+</div>
+
+<div class="item" draggable="true" data-key="gliding">
+<img src="../assets/images/glidingjoint.png" width="70"> Gliding joint
+</div>
+
+</div>
+
+               <div class="list">
+
+<div class="target" data-accept="hinge">
+<span class="label">
+<img src="../assets/images/elbow1.png" width="70"> Elbow
+</span>
+<span class="slot">Drop here</span>
+</div>
+
+<div class="target" data-accept="pivot">
+<span class="label">
+<img src="../assets/images/skullspine.png" width="70">
+The skull and the first two vertebrae of spine
+</span>
+<span class="slot">Drop here</span>
+</div>
+
+<div class="target" data-accept="gliding">
+<span class="label">
+<img src="../assets/images/ankle.png" width="70"> Ankle
+</span>
+<span class="slot">Drop here</span>
+</div>
+
+<div class="target" data-accept="ball">
+<span class="label">
+<img src="../assets/images/shoulder.png" width="70"> Shoulders
+</span>
+<span class="slot">Drop here</span>
+</div>
+
+</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- POPUPS -->
+    <div class="popup" id="correctPop">
+        <div>🎉 Correct!</div>
+    </div>
+    <div class="popup" id="wrongPop">
+        <div>❌ Try again!</div>
+    </div>
+
+  <div class="score-overlay" id="scoreOverlay">
+    <div class="score-box">
+
+        <div class="trophy">🏆</div>
+
+        <h2 style="color: #1fb36b;">Quiz Completed!</h2>
+
+        <div class="score-circle">
+            <span id="scoreText"> Score: 4 / 4</span>
+        </div>
+
+        <div id="stars" class="stars"></div>
+
+        <button class="restart" onclick="restart()">🔁 Play Again</button>
+
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+ <script src="../assets/js/matching.js"></script>
+</body>
+
+</html>

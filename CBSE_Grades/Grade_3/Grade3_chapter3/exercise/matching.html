@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kids Matching Game</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:'Livvic';
+}
+
+body{
+
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:30px;
+overflow:hidden;
+}
+
+.container{
+max-width:1000px;
+width:95%;
+position:relative;
+margin-top: -25px;
+}
+
+.game{
+display:grid;
+grid-template-columns:1fr 1fr;
+row-gap:8px;
+column-gap:150px;
+align-items:center;
+}
+
+/* SVG LINE LAYER */
+
+#lineLayer{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+
+.match-line{
+stroke:#9aa4ad;
+stroke-width:3;
+stroke-dasharray:8 6;
+}
+
+/* LEFT BOX */
+
+.left{
+display:flex;
+align-items:center;
+gap:40px;
+background:#ffd6e7;
+border:3px solid #ff8fb6;
+padding:16px;
+border-radius:30px;
+font-size:20px;
+cursor:pointer;
+transition:.25s;
+}
+
+.left:hover{
+transform:scale(1.05);
+}
+
+.left-img{
+width:35px;
+height:30px;
+object-fit:contain;
+}
+
+/* RIGHT BOX */
+
+.right{
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:#dff7ff;
+border:3px solid #6bd3ff;
+padding:16px;
+border-radius:30px;
+font-size:20px;
+cursor:pointer;
+transition:.25s;
+}
+
+.right:hover{
+transform:scale(1.05);
+}
+
+/* SLOT */
+
+.slot{
+height:30px;
+width:70px;
+border-radius:20px;
+background:linear-gradient(145deg,#ffffff,#f3f4f6);
+border:3px dashed #b6c2cf;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+/* CORRECT EFFECT */
+
+.slot.filled{
+background:linear-gradient(145deg,#dcfce7,#bbf7d0);
+border:3px solid #22c55e;
+box-shadow:
+0 0 0 4px rgba(34,197,94,0.25),
+0 0 15px rgba(34,197,94,0.6),
+0 0 25px rgba(34,197,94,0.4);
+animation:matchPop .4s ease;
+}
+
+@keyframes matchPop{
+0%{transform:scale(.6);}
+60%{transform:scale(1.15);}
+100%{transform:scale(1);}
+}
+
+.sparkle{
+position:absolute;
+font-size:18px;
+animation:sparkleAnim 1s ease forwards;
+pointer-events:none;
+}
+
+@keyframes sparkleAnim{
+0%{opacity:0; transform:translateY(10px) scale(.5);}
+50%{opacity:1;}
+100%{opacity:0; transform:translateY(-25px) scale(1.3);}
+}
+
+.slot img{
+width:35px;
+height:30px;
+z-index:2;
+}
+
+.active{
+outline:3px solid #ef4444;
+}
+
+.matched{
+opacity:.6;
+pointer-events:none;
+}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.popup-content{
+background:white;
+padding:40px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 15px 35px rgba(0,0,0,0.25);
+}
+
+.popup-content button{
+margin-top:20px;
+padding:12px 30px;
+border:none;
+border-radius:25px;
+background:#ff9c55;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+#finalScore{
+font-size:28px;
+font-weight:600;
+margin-top:15px;
+color:#2f4f4f;
+}
+#scorePopup .popup-content{
+width:480px;   /* increase width only for final popup */
+padding:55px;
+}
+/* MOBILE */
+
+/* ============================= */
+/* ✅ MOBILE COMPACT (NO SCROLL) */
+/* ============================= */
+@media(max-width:768px){
+
+  body{
+    padding:8px;
+    align-items:flex-start;
+    overflow:hidden;   /* ❗ remove scroll */
+    
+  }
+
+  .game{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5px;          /* 🔥 reduced gap */
+  }
+
+  /* columns tighter */
+  .left,.right{
+    font-size:13px;
+    padding:6px 8px;   /* 🔥 reduced padding */
+  }
+
+  /* image smaller */
+  .left-img{
+    width:20px;
+    height:20px;
+  }
+
+  /* slots compact */
+  .slot{
+    width:34px;
+    height:18px;
+  }
+
+  .slot img{
+    width:18px;
+    height:18px;
+  }
+
+}
+@media(max-width:600px){
+
+  body{
+    padding:10px;
+    align-items:flex-start;
+    overflow:auto;
+
+  }
+
+  .container{
+    width:100%;
+    margin-top:0;
+  }
+
+  /* GRID TIGHT */
+  .game{
+    grid-template-columns:1fr 1fr;
+    column-gap:8px;   /* 🔥 reduce huge 150px gap */
+    row-gap:8px;
+    margin-top: 20px;
+  }
+
+  /* LEFT + RIGHT BOX */
+  .left,
+  .right{
+    font-size:13px;
+    padding:8px;
+    border-radius:18px;
+  }
+
+  /* LEFT CONTENT */
+  .left{
+    gap:8px;
+  }
+
+  .left-img{
+    width:22px;
+    height:22px;
+  }
+
+  /* RIGHT TEXT */
+  .right span{
+    font-size:12px;
+    line-height:1.2;
+  }
+
+  /* SLOT */
+  .slot{
+    width:45px;
+    height:24px;
+  }
+
+  .slot img{
+    width:20px;
+    height:20px;
+  }
+
+  /* SVG LINE (OPTIONAL REMOVE FOR MOBILE) */
+  #lineLayer{
+    display:none;   /* 👉 cleaner mobile UI */
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="game" id="game"></div>
+
+<!-- LINE LAYER -->
+<svg id="lineLayer"></svg>
+
+</div>
+
+<!-- FINAL POPUP -->
+
+<div id="scorePopup" class="popup">
+<div class="popup-content">
+<h2>🎉 Quiz Finished!</h2>
+<p id="finalScore"></p>
+<button onclick="restartQuiz()">Play Again</button>
+</div>
+</div>
+
+<script>
+
+const leftData=[
+{text:"1. Lion",match:"d",img:"../images/lion-img.png"},
+{text:"2. Mosquito",match:"a",img:"../images/mosquoto.png"},
+{text:"3. Lizard",match:"b",img:"../images/lizard.png"},
+{text:"4. Honey Bee",match:"e",img:"../images/bee.png"},
+{text:"5. Rat",match:"c",img:"../images/rat.png"},
+];
+
+const rightData=[
+{text:"a) It sucks blood.",match:"a"},
+{text:"b) It swallows its prey.",match:"b"},
+{text:"c) It gnaws its food.",match:"c"},
+{text:"d) It holds and tears its prey.",match:"d"},
+{text:"e) It sucks liquid food from flowers.",match:"e"},
+];
+
+const game=document.getElementById("game");
+const svg=document.getElementById("lineLayer");
+
+let selected=null;
+let score=0;
+
+rightData.sort(()=>Math.random()-0.5);
+
+/* CREATE ROWS */
+
+leftData.forEach((item,i)=>{
+
+const left=document.createElement("div");
+left.className="left";
+left.dataset.match=item.match;
+
+left.innerHTML=`
+<img src="${item.img}" class="left-img">
+${item.text}
+`;
+
+left.onclick=()=>{
+
+if(left.classList.contains("matched")) return;
+
+document.querySelectorAll(".left").forEach(el=>el.classList.remove("active"));
+
+left.classList.add("active");
+selected=left;
+
+};
+
+const right=document.createElement("div");
+right.className="right";
+right.dataset.match=rightData[i].match;
+
+right.innerHTML=`
+<span>${rightData[i].text}</span>
+<div class="slot"></div>
+`;
+
+right.onclick=()=>{
+
+if(!selected) return;
+
+if(selected.dataset.match===right.dataset.match){
+
+match(selected,right);
+
+speak("Correct");
+
+confetti({
+particleCount:80,
+spread:90,
+origin:{y:0.6}
+});
+
+}else{
+
+speak("Wrong");
+
+}
+
+};
+
+game.appendChild(left);
+game.appendChild(right);
+
+});
+
+/* DRAW DASHED LINE */
+
+function drawLine(left,right){
+
+const l=left.getBoundingClientRect();
+const r=right.getBoundingClientRect();
+const container=document.querySelector(".container").getBoundingClientRect();
+
+const x1=l.right-container.left;
+const y1=l.top+l.height/2-container.top;
+
+const x2=r.left-container.left;
+const y2=r.top+r.height/2-container.top;
+
+const line=document.createElementNS("http://www.w3.org/2000/svg","line");
+
+line.setAttribute("x1",x1);
+line.setAttribute("y1",y1);
+line.setAttribute("x2",x2);
+line.setAttribute("y2",y2);
+line.setAttribute("class","match-line");
+
+svg.appendChild(line);
+
+}
+
+/* MATCH */
+
+function match(left,right){
+
+const img=left.querySelector("img").cloneNode(true);
+const slot=right.querySelector(".slot");
+
+slot.appendChild(img);
+slot.classList.add("filled");
+
+drawLine(left,right);
+
+for(let i=0;i<4;i++){
+
+const star=document.createElement("div");
+star.innerHTML="✨";
+star.className="sparkle";
+
+star.style.left=Math.random()*60+"px";
+star.style.top=Math.random()*30+"px";
+
+slot.appendChild(star);
+
+setTimeout(()=>star.remove(),1000);
+
+}
+
+left.classList.add("matched");
+right.classList.add("matched");
+
+left.classList.remove("active");
+
+selected=null;
+
+score++;
+
+if(score===leftData.length){
+setTimeout(showResult,800);
+}
+
+}
+function fireFinalConfetti(){
+
+  const duration = 1500;
+  const animationEnd = Date.now() + duration;
+
+  const interval = setInterval(function () {
+
+    if (Date.now() > animationEnd) {
+      clearInterval(interval);
+      return;
+    }
+
+    confetti({
+      particleCount: 30,
+      spread: 70,
+      startVelocity: 35,
+      scalar: 1.1,
+      origin: { x: Math.random(), y: Math.random() - 0.2 }
+    });
+
+  }, 250);
+
+}
+/* RESULT */
+
+function showResult(){
+fireFinalConfetti();   
+
+document.getElementById("finalScore").innerText=
+"Your Score: "+score+" / "+leftData.length;
+
+document.getElementById("scorePopup").style.display="flex";
+
+confetti({
+particleCount:150,
+spread:120,
+origin:{y:0.6}
+});
+
+}
+
+/* SPEECH */
+
+function speak(text){
+
+let speech=new SpeechSynthesisUtterance(text);
+
+speech.lang="en-GB";
+speech.volume=0.25;
+speech.rate=1;
+
+window.speechSynthesis.speak(speech);
+
+}
+
+function restartQuiz(){
+location.reload();
+}
+
+</script>
+
+</body>
+</html>

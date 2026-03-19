@@ -1,0 +1,330 @@
+body{
+background-image: url('../images/bg2.png');
+background-repeat: no-repeat;
+background-position: center;
+ background-size: cover;   /* ✅ MOST IMPORTANT */
+margin:0;
+font-family:'Livvic';
+
+height:100dvh;
+overflow:hidden;
+
+display:flex;
+flex-direction:column;
+
+}
+/* ---------- Bottom Left Plant ---------- */
+
+.plant-bottom-left{
+position:fixed;
+bottom:0;
+left:0;
+
+width:180px;
+height:auto;
+
+z-index:-1;
+pointer-events:none;
+display: none;
+}
+
+/* ---------- Bottom Right Plant (Larger) ---------- */
+
+.plant-bottom-right{
+position:fixed;
+bottom:0;
+right:0;
+
+width:260px;
+height:auto;
+
+z-index:-1;
+pointer-events:none;
+display: none;
+}
+
+
+
+
+
+/* ---------- Tablet Screens ---------- */
+
+@media (max-width:1024px){
+
+.plant-bottom-left{
+width:130px;
+}
+
+.plant-bottom-right{
+width:200px;
+}
+
+.plant-top-left{
+width:160px;
+left:0;
+}
+
+.plant-top-left-2{
+width:160px;
+left:70px;
+}
+
+}
+
+
+/* ---------- Mobile Screens ---------- */
+
+@media (max-width:600px){
+
+.plant-bottom-left{
+width:90px;
+}
+
+.plant-bottom-right{
+width:140px;
+}
+
+.plant-top-left{
+width:110px;
+left:0;
+}
+
+.plant-top-left-2{
+width:110px;
+left:50px;
+}
+
+}
+/* ---------- Hamburger ---------- */
+
+.hamburger{
+display:none;
+visibility:hidden;
+
+position:absolute;
+top:20px;
+right:20px;
+
+width:40px;
+height:40px;
+
+border:none;
+border-radius:6px;
+
+font-size:26px;
+color:#fff;
+background:#EDA35A;
+
+align-items:center;
+justify-content:center;
+
+cursor:pointer;
+}
+
+/* ---------- Navbar ---------- */
+.quiz-navbar{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:10px;
+position:relative;
+}
+
+/* button container */
+
+.nav-buttons{
+display:flex;
+gap:60px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+/* buttons */
+
+.nav-btn{
+border:none;
+padding:13px 20px;   /* increased padding */
+border-radius:30%;
+
+font-size:20px;
+color: #1F3C5B;
+font-size: 23px;
+cursor:pointer;
+font-family:'Livvic';
+/* box-shadow:0 4px 0 rgba(0,0,0,0.25); */
+transition:transform 0.15s ease;
+border: 5px solid transparent;
+}
+
+.nav-btn:hover{
+transform:translateY(-2px);
+}
+
+/* colors */
+
+.mcq-btn{
+background:#a9db6fb7;
+}
+
+.tf-btn{
+background:#ecada2bc;
+}
+
+.match-btn{
+background:#ecd490bd;
+}
+
+.fib-btn{
+background:#f7ca9dbc;
+}
+/* ---------- MOBILE NAV ---------- */
+
+@media (max-width:900px){
+
+.quiz-navbar{
+display:flex;
+align-items:center;
+padding:20px;
+}
+
+/* hamburger on right */
+
+.hamburger{
+display:flex;
+visibility:visible;
+margin-left:auto;
+}
+/* menu dropdown */
+
+.nav-btn{
+font-size: 17px;
+}
+.nav-buttons{
+display:none;
+flex-direction:column;
+gap:15px;
+
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+
+background:#D9EB8B;
+padding:20px 0;
+}
+
+.nav-buttons.open{
+display:flex;
+}
+
+}
+/* ================= SIDE MENU ================= */
+
+.side-menu{
+position:fixed;
+top:0;
+right:-100%;
+
+width:45%;
+height:100%;
+
+background:#D9EB8B;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+padding-top:60px;
+gap:20px;
+
+transition:0.3s;
+
+z-index:9999;
+
+/* IMPORTANT FIX */
+overflow:hidden;
+box-sizing:border-box;
+}
+
+/* when open */
+
+.side-menu.open{
+right:0;   /* slide from right */
+}
+.side-menu .nav-btn{
+width:85%;
+max-width:260px;
+text-align:center;
+}
+.close-btn{
+position:absolute;
+    top: 19px;
+    right: 18px;
+
+font-size:28px;
+cursor:pointer;
+
+background:#F2994A;
+color:white;
+
+width:35px;
+height:35px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:6px;
+}
+.side-menu .nav-buttons{
+display:flex;
+flex-direction:column;
+gap:20px;
+align-items:center;
+width:100%;
+}
+.nav-btn.active{
+border:5px solid #ffffff;
+background: #84db20;
+/* box-shadow:0 0 0 2px rgba(255,255,255,0.4); */
+}
+
+
+
+/* ---------- MOBILE NAV (≤800px) ---------- */
+
+@media (max-width:1100px){
+
+  .quiz-navbar{
+    display:flex;
+    align-items:center;
+    padding:20px;
+  }
+
+  /* SHOW hamburger */
+  .hamburger{
+    display:flex;
+    visibility:visible;
+    margin-left:auto;
+  }
+
+  /* HIDE normal nav */
+  .nav-buttons{
+    display:none;
+    flex-direction:column;
+    gap:15px;
+
+    position:absolute;
+    top:80px;
+    left:0;
+    width:100%;
+
+    background:#D9EB8B;
+    padding:20px 0;
+  }
+
+  .nav-buttons.open{
+    display:flex;
+  }
+
+}
