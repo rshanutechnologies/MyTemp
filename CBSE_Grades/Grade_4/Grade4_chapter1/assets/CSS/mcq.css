@@ -35,7 +35,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 30px;
+  gap: 20px;
   padding: 14px;
   margin-top: 0px;
   margin: 0 auto;
@@ -74,12 +74,11 @@ body {
 }
 
 .question-text {
-  margin: 0;
+  /* margin-bottom: -20px; */
   width: 100%;
   font-size: 30px;
   font-weight: 400;
   color: #2f4f4f;
-  line-height: 1.3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,7 +177,7 @@ body {
 /* ✅ Buttons */
 .nav {
   width: 500px;
-  margin-top: 10px;
+  margin-top: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -459,7 +458,8 @@ button:disabled {
   .app {
     width: 100%;
     gap: 30px;
-    padding:10px 14px;
+    
+    
   }
 
   /* TITLE */
@@ -516,6 +516,7 @@ button:disabled {
   .nav {
     gap: 50px;
     justify-content: center;
+    margin-top:30px;
   }
 
   .nav-btn {

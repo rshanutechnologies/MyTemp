@@ -25,7 +25,7 @@ background:linear-gradient(135deg,#d7ecff,#cde7ff);
 /* ============================= */
 .quiz-box{
   width:100%;
-  max-width:1200px;
+  max-width:1400px;
 
   height:100vh;                /* 🔥 full screen fit */
   padding:20px;                /* balanced padding */
@@ -53,46 +53,42 @@ gap:30px;
 justify-content:center;
 width: 100%;
 
-}
 
+}
 .option{
-width:100px;
-height:120px;
+  width:120px;
+  height:140px;   /* 🔥 increased for balance */
 
+  clip-path:polygon(
+    25% 6%,
+    75% 6%,
+    100% 50%,
+    75% 94%,
+    25% 94%,
+    0% 50%
+  );
 
-clip-path:polygon(
-25% 6%,
-75% 6%,
-100% 50%,
-75% 94%,
-25% 94%,
-0% 50%
-);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;   /* 🔥 key fix */
 
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-padding:20px;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 12px 20px rgba(0,0,0,0.15);
-position:relative;
+  padding:15px 10px;
 }
-
-.option:hover{
-transform:translateY(-8px) scale(1.05);
-}
-
 .option img{
-width:90px;
-
+  width:65px;
+  height:60px;          /* 🔥 same height for all */
+  object-fit:contain;   /* keeps aspect ratio */
 }
-
 .option p{
-font-size:20px;
-font-weight:600;
-color:#2f4f4f;
+  font-size:18px;
+  font-weight:600;
+  color:#2f4f4f;
+
+  text-align:center;
+  margin-top:5px;
+
+  min-height:22px;   /* 🔥 equal text space */
 }
 
 .correct{
@@ -110,9 +106,9 @@ border:4px solid #4caf50;
 display:flex;
 justify-content:space-evenly;
 gap:30px;
-margin-top: -5px;
+margin-top: -10px;
 
-}
+} 
 
 button{
 border:none;
@@ -123,7 +119,10 @@ cursor:pointer;
 color:white;
 
 }
-
+button:disabled{
+  opacity:0.5;
+  transform:none;   /* 🔥 stop animation shift */
+}
 .prev{
 background:#ddd;
 }
@@ -139,8 +138,8 @@ justify-content:center;
 }
 
 .question-img img{
-width:220px;
-height:125px;
+width:200px;
+height:120px;
 object-fit:contain;
 }
 
@@ -211,17 +210,25 @@ margin-bottom:10px;
 font-size:24px;
 margin-bottom:20px;
 }
-
 .play-btn{
-background:#4caf50;
-border:none;
-padding:12px 30px;
-font-size:18px;
-border-radius:30px;
-color:white;
-cursor:pointer;
-}
+  background:#4caf50;
+  border:none;
 
+  width:180px;              /* 🔥 fixed width */
+  height:50px;              /* 🔥 fixed height */
+
+  font-size:18px;
+  border-radius:30px;
+  color:white;
+  cursor:pointer;
+
+  white-space:nowrap;       /* 🔥 prevent line break */
+}
+/* ✅ Apply pointer to option + children */
+.option,
+.option *{
+  cursor:pointer;
+}
 @media(max-width:768px){
 
 body{
@@ -277,66 +284,108 @@ font-size:16px;
 
 }
 
-
 @media(max-width:900px){
 
 body{
-height:auto;
-overflow:hidden;
-align-items:flex-start;
-padding:15px;
+  height:auto;
+  overflow:hidden;
+  align-items:flex-start;
+  padding:15px;
+  margin-top: -50px;
 }
 
+/* ✅ STRUCTURE FIX */
 .quiz-box{
-padding:20px 10px;
-min-height:100vh;
-margin-top: -30px;
+  padding:20px 15px;
+  min-height:100vh;
+  margin-top:0;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;   /* 🔥 balanced layout */
 }
 
+/* ✅ QUESTION */
 .question{
-font-size:26px;
+  font-size:24px;
+  text-align:center;
+  min-height:60px;   /* 🔥 fixed height prevents jump */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ✅ IMAGE */
+.question-img{
+  min-height:100px;   /* 🔥 reserve space */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top: -40px;
 }
 
 .question-img img{
-width:120px;
-height:70px;
-margin-top: -25px;
+  width:100px;
+  height:50px;
+  object-fit:contain;
+  margin:0;
 }
 
-/* 2 × 2 grid layout */
-
+/* ✅ OPTIONS GRID */
 .options{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-justify-items:center;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  justify-items:center;
+  align-content:center;
+  min-height:200px;   /* 🔥 stable grid */
 }
 
-/* hexagon option size */
-
+/* ✅ OPTION BOX (IMPORTANT) */
 .option{
-width:80px;
-height:80px;
-padding:10px;
+  width:100px;        /* 🔥 increased from 80 */
+  height:80px;       /* 🔥 better spacing */
+  padding:10px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
 }
 
+/* ✅ IMAGE INSIDE OPTION */
 .option img{
-width:50px;
+  width:50px;
+  height:45px;
+  object-fit:contain;
 }
 
+/* ✅ TEXT */
 .option p{
-font-size:15px;
+  font-size:14px;
+  text-align:center;
+  min-height:20px;
 }
 
-button{
-padding:10px 25px;
-font-size:16px;
-}
+/* ✅ NAV FIX */
 .nav{
-  margin-top: -13px;
-}
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  max-width:300px;
+  margin:0 auto;
 }
 
+/* ✅ BUTTON FIX */
+button{
+  width:120px;
+  height:45px;
+  font-size:15px;
+  padding:0;
+}
+
+}
 button:disabled{
 opacity:0.5;
 cursor:not-allowed;
@@ -350,6 +399,39 @@ color:#333;
 .prev:enabled{
 background:linear-gradient(45deg,#5c6bc0,#7986cb);
 color:white;
+}
+/* ✅ KEEP RESULT BOX SAME SIZE */
+.result-box{
+  width:400px;        /* fixed width */
+  padding:40px;       /* same as desktop */
+}
+
+/* ✅ FIX TEXT SIZE */
+.result-box h2{
+  font-size:32px;
+}
+
+.result-box p{
+  font-size:22px;
+}
+.play-btn{
+  background:#4caf50;
+  border:none;
+
+  width:180px;              /* 🔥 fixed width */
+  height:50px;              /* 🔥 fixed height */
+
+  font-size:18px;
+  border-radius:30px;
+  color:white;
+  cursor:pointer;
+
+  white-space:nowrap;       /* 🔥 prevent line break */
+}
+/* ✅ Apply pointer to option + children */
+.option,
+.option *{
+  cursor:pointer;
 }
 /* popup colors */
 @media(max-width:600px){

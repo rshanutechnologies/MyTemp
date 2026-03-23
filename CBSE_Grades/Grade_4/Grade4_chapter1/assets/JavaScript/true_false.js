@@ -30,7 +30,7 @@ const quizData = [
   {
     q: "Q.5. The transport of water, minerals and food takes place through the network of veins and the stem",
     a: true,
-    img: "../assets/images/TF5.png",
+    img: "../assets/images/TF.png",
     answered: false
   }
 ];

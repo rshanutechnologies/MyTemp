@@ -20,7 +20,7 @@ const questions = [
     img: "../assets/images/FIB4.png",
   },
   {
-    q: "Q.5 The parasitic plants that completely depend on their host for nutrition are called __________________",
+    q: "Q.5 The parasitic plants that completely depend on their host for nutrition are called ____",
     a: "holoparasites",
     img: "../assets/images/FIB5.png",
   },

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Matching Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/matching.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="matching">
+
+<!-- LEFT SIDE (WITH IMAGES) -->
+
+<div class="left" id="left">
+
+<div class="box c" data-match="1">
+<img src="../assets/images/cherry.png">
+A deciduous tree
+<span class="dot"></span>
+</div>
+
+<div class="box c" data-match="2">
+<img src="../assets/images/Eucalyptus.png">
+An evergreen tree
+<span class="dot"></span>
+</div>
+
+<div class="box c" data-match="3">
+<img src="../assets/images/m-3.png">
+A desert plant
+<span class="dot"></span>
+</div>
+
+<div class="box c" data-match="4">
+<img src="../assets/images/duckweed.png">
+A floating aquatic plant
+<span class="dot"></span>
+</div>
+
+<div class="box c" data-match="5">
+<img src="../assets/images/lotus.png">
+A fixed aquatic plant
+<span class="dot"></span>
+</div>
+
+</div>
+
+
+<!-- RIGHT SIDE (TEXT ONLY) -->
+
+<div class="right" id="right">
+
+<div class="box c3" data-match="4">
+<span class="dot"></span>
+Duckweed
+</div>
+
+<div class="box c4 " data-match="2">
+<span class="dot"></span>
+Lotus
+</div>
+
+<div class="box c1" data-match="5">
+<span class="dot"></span>
+Cherry
+</div>
+
+<div class="box c2" data-match="1">
+<span class="dot"></span>
+Eucalyptus
+</div>
+
+<div class="box c5" data-match="3">
+<span class="dot"></span>
+Cactus
+</div>
+
+</div>
+
+</div>
+
+<svg id="lines"></svg>
+
+</div>
+
+
+
+<!-- FINAL POPUP -->
+
+<div id="final" class="final">
+
+<h2>🎉 Congratulations!</h2>
+
+<h3 id="score"></h3>
+
+<div>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+</div>
+
+<button class="playBtn" onclick="playAgain()">Play Again</button>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="../assets/js/matching.js"></script>
+</body>
+</html>

@@ -54,9 +54,9 @@ const quizData = [
   question: "Q.3 Which of the following is the flat part of a leaf?",
   image: "../assets/images/MCQ-3.png",
   options: [
-    { id: "a", label: "Lamina", image: "../assets/images/Lamina.png", correct: true, theme: "bg-blue" },
+    { id: "a", label: "Lamina", image: "../assets/images/mcq3-1.png", correct: true, theme: "bg-blue" },
     { id: "b", label: "Apex", image: "../assets/images/plants.png", correct: false, theme: "bg-green" },
-    { id: "c", label: "Vein", image: "../assets/images/vein.png", correct: false, theme: "bg-orange" },
+    { id: "c", label: "Vein", image: "../assets/images/mcq3-3.png", correct: false, theme: "bg-orange" },
     { id: "d", label: "Chlorophyll", image: "../assets/images/chlorophyll.png", correct: false, theme: "bg-yellow" },
   ]
 },
@@ -68,7 +68,7 @@ const quizData = [
   options: [
     { id: "a", label: "Vertical", image: "../assets/images/plants.png", correct: false, theme: "bg-green" },
     { id: "b", label: "Linear", image: "../assets/images/respiration.png", correct: false, theme: "bg-blue" },
-    { id: "c", label: "Parallel", image: "../assets/images/parallel.png", correct: true, theme: "bg-orange" },
+    { id: "c", label: "Parallel", image: "../assets/images/mcq4-3.png", correct: true, theme: "bg-orange" },
     { id: "d", label: "Reticulate", image: "../assets/images/Reticulate.png", correct: false, theme: "bg-yellow" },
   ]
 },
