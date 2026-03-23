@@ -15,7 +15,7 @@ const quizData = [
   title: "Q.2 An energy-giving food",
   options:[
     { text:"Chips", img:"../assets/images/chipsWB.png"},
-    { text:"Rice", img:"../assets/images/rice.png"},
+    { text:"Rice", img:"../assets/images/Rice.png"},
   ],
   answer: "Rice"
 },

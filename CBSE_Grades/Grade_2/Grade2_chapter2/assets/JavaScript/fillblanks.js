@@ -5,13 +5,13 @@ const questions = [
 {
 q: "Q.1 A frog can live both on ______ and in water.",
 a: ["land"],
-img: "../assets/images/froggak.png"
+img: "../assets/images/Froggak.png"
 },
 
 {
 q: "Q.2 Some animals like dogs live in ______ shelters.",
 a: ["kennel"],
-img: "../assets/images/kennel.png"
+img: "../assets/images/Kennel.png"
 },
 
 {

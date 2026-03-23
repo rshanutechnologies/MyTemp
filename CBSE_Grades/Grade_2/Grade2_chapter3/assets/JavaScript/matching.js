@@ -11,10 +11,10 @@ const pairs = [
 
 const leftImages = {
  "Heart": "../assets/images/heart.png",
- "Intestines": "../assets/images/intestines.png",
+ "Intestines": "../assets/images/Intestines.png",
  "Brain": "../assets/images/brain.png",
- "Kidneys": "../assets/images/kidneys.png",
- "Lungs": "../assets/images/lungs.png"
+ "Kidneys": "../assets/images/Kidneys.png",
+ "Lungs": "../assets/images/Lungs.png"
 };
 
 const images = {

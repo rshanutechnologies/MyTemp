@@ -41,8 +41,8 @@ const quizData = [
 {
   title: "Q.5 A part that gives shape to our body",
   options:[
-    { text:"Hair", img:"../assets/images/HairRr.png"},
-    { text:"Bones", img:"../assets/images/2boness.png"},
+    { text:"Hair", img:"../assets/images/Hairrr.png"},
+    { text:"Bones", img:"../assets/images/2Boness.png"},
   ],
   answer: "Bones"
 }

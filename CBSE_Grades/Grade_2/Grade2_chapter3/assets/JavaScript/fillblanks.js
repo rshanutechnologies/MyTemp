@@ -61,7 +61,7 @@ const questions = [
   {
     q: "Q.2 The skin is an _ _ _ _ _ part of our body.",
     a: "outer",
-    img: "../assets/images/skinn.png"
+    img: "../assets/images/Skin.png"
   },
 
   {
@@ -79,7 +79,7 @@ const questions = [
   {
     q: "Q.5 The lungs are known as the _ _ _ _ _ _ _ ",
     a: "breathing",
-    img: "../assets/images/lungs.png"
+    img: "../assets/images/Lungs.png"
   }
 
 ];

@@ -32,7 +32,7 @@ image: "../assets/images/BrianInHeadak.png",
 options: [
 { text: "Heart", img: "../assets/images/heartt.png" },
 { text: "Brain", img: "../assets/images/brain.png" },
-{ text: "Lungs", img: "../assets/images/lungs.png" },
+{ text: "Lungs", img: "../assets/images/Lungs.png" },
 { text: "Stomach", img: "../assets/images/stomachj.png" }
 ],
 answer: "Brain"
@@ -56,7 +56,7 @@ image: "../assets/images/heartking.png",
 options: [
 { text: "Brain", img: "../assets/images/brain.png" },
 { text: "Heart", img: "../assets/images/heartt.png" },
-{ text: "Lungs", img: "../assets/images/lungs.png" },
+{ text: "Lungs", img: "../assets/images/Lungs.png" },
 { text: "Stomach", img: "../assets/images/stomachj.png" }
 ],
 answer: "Heart"

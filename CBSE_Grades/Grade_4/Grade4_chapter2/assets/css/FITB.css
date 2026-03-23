@@ -118,13 +118,13 @@ pointer-events:none;
 }
 
 .blank{
-  width:clamp(30px, 6vw, 65px);
-  height:clamp(30px, 6vw, 65px);
+  width:clamp(20px, 6vw, 45px);
+  height:clamp(20px, 6vw, 45px);
 }
 
 .letter{
-  width:clamp(30px, 7vw, 70px);
-  height:clamp(40px, 8vw, 80px);
+  width:clamp(30px, 7vw, 50px);
+  height:clamp(40px, 8vw, 50px);
 }
 
 .imgbox{

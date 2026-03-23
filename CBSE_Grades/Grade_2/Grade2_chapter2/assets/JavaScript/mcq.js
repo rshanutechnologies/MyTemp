@@ -28,7 +28,7 @@ title: "Q.3 A ____________________ carries load for us.",
 options: [
 { text: "Cat", img: "../assets/images/Catak.png" },
 { text: "Deer", img: "../assets/images/Deerak.png" },
-{ text: "Donkey", img: "../assets/images/DonkeyYy.png" },
+{ text: "Donkey", img: "../assets/images/Donkeyyy.png" },
 { text: "Tiger", img: "../assets/images/Tigerak.png"}
 ],
 answer: "Donkey"

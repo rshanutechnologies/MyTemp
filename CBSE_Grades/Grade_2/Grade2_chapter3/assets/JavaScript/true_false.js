@@ -62,7 +62,7 @@ answered:false
 {
 q:"Q.3 The heart is an external part of our body.",
 a:false,
-img:"../assets/images/Heartt.png",
+img:"../assets/images/heartt.png",
 answered:false
 },
 

@@ -56,7 +56,7 @@ image: "../assets/images/WindElectricity.png",
 options: [
 { text: "Aeroplane", img: "../assets/images/Aeroplaneak.png" },
 { text: "Helicopter", img: "../assets/images/Helicopterak.png" },
-{ text: "Windmill", img: "../assets/images/Windmillak.png" },
+{ text: "Windmill", img: "../assets/images/WindMillak.png" },
 { text: "Kite", img: "../assets/images/Kiteak.png" }
 ],
 answer: "Windmill"

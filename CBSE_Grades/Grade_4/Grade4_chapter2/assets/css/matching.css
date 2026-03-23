@@ -78,6 +78,7 @@ line-height:2;
 min-height:40px !important;
 
 gap:12px;
+background-color: #e6cc81;
 }
 
 
@@ -229,11 +230,11 @@ box-shadow:0 4px 8px rgba(0,0,0,0.3);
 
 /* RIGHT COLORS */
 
-.c1{background:#6da8d8ae;}
+/* .c1{background:#6da8d8ae;}
 .c2{background:#86c651ab;}
 .c3{background:#f3c74dad;}
 .c4{background:#f39a2db7;}
-.c5{background:#d57ad3b7;}
+.c5{background:#d57ad3b7;} */
 
 .left img{
 

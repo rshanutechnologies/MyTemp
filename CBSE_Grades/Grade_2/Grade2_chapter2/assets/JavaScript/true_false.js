@@ -69,7 +69,7 @@ const quizData = [
   {
     q:"Q.4 A snow leopard lives on mountains.",
     a:true,
-    img:"../assets/images/SnowLeopard.png",
+    img:"../assets/images/Snowleopard.png",
     answered:false
   },
   {
