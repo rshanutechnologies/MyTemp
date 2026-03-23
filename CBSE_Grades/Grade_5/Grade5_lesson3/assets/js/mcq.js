@@ -4,9 +4,9 @@ const quiz=[
 q:"1. ________ is the feeding stage in the life cycle of a butterfly.",
 options:[
 {text:"Egg",img:"../assets/images/Eggak.png"},
-{text:"Caterpillar",img:"../assets/images/caterpillar.png"},
+{text:"Caterpillar",img:"../assets/images/Caterpillar.png"},
 {text:"Pupa",img:"../assets/images/pupa.png"},
-{text:"Adult butterfly",img:"../assets/images/butterflyak.png"}
+{text:"Adult butterfly",img:"../assets/images/Butterflyak.png"}
 ],
 answer:1,
 img:"../assets/images/MCQ_1.png"
@@ -30,7 +30,7 @@ options:[
 {text:"Monkey",img:"../assets/images/monkey.png"},
 {text:"Bat",img:"../assets/images/bat.png"},
 {text:"Whale",img:"../assets/images/whale.png"},
-{text:"Cow",img:"../assets/images/cow.png"}
+{text:"Cow",img:"../assets/images/Cow.png"}
 ],
 answer:3,
 img:"../assets/images/MCQ_3.png"
@@ -40,9 +40,9 @@ img:"../assets/images/MCQ_3.png"
 q:"4. Find the odd one from the following.",
 options:[
 {text:"Kangaroo",img:"../assets/images/kangaroo.png"},
-{text:"Rabbit",img:"../assets/images/rabbitt.png"},
+{text:"Rabbit",img:"../assets/images/Rabbitt.png"},
 {text:"Koala",img:"../assets/images/koala.png"},
-{text:"Turtle",img:"../assets/images/turtle.png"}
+{text:"Turtle",img:"../assets/images/Turtle.png"}
 ],
 answer:3,
 img:"../assets/images/MCQ_4.png"
@@ -52,9 +52,9 @@ img:"../assets/images/MCQ_4.png"
 q:"5. A living organism that does not incubate its eggs is a ________.",
 options:[
 {text:"Sparrow",img:"../assets/images/sparrow.png"},
-{text:"Eagle",img:"../assets/images/eagle.png"},
+{text:"Eagle",img:"../assets/images/Eagle.png"},
 {text:"Pigeon",img:"../assets/images/pigeon.png"},
-{text:"Butterfly",img:"../assets/images/butterflyak.png"}
+{text:"Butterfly",img:"../assets/images/Butterflyak.png"}
 ],
 answer:3,
 img:"../assets/images/MCQ_5.png"

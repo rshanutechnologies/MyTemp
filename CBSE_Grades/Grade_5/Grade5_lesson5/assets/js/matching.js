@@ -9,7 +9,7 @@ const leftData = [
     id: "2",
     text: " Lungs",
     match: "c",
-    img: "../assets/images/lungs.png",
+    img: "../assets/images/Lungs.png",
   },
   {
     id: "3",

@@ -172,8 +172,9 @@ body::before{
 .label{
   font-size:20px;
   color:#222;
-  margin-top:-10%;
+  margin-top:-30%;
   font-weight:500;
+  /* background-color: yellow; */
 }
 
 /* HOVER EFFECT */

@@ -15,7 +15,7 @@ img:"../assets/images/MQ3.png"
 {
 q:"2. The style has a small disc-like structure at its tip called the _____ .",
 options:[
-{text:"anther",img:"../assets/images/anther.png"},
+{text:"anther",img:"../assets/images/Anther.png"},
 {text:"stigma",img:"../assets/images/stigmaak.png"},
 {text:"carpel",img:"../assets/images/carpelak.png"},
 {text:"ovule",img:"../assets/images/ovulesak.png"}

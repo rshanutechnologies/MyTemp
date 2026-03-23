@@ -48,7 +48,7 @@ options:[
 {text:"Egg → Chick → Bird → Adult",img:"../assets/images/bird-life.png"}
 ],
 answer:0,
-img:"../assets/images/butterflyak.png"
+img:"../assets/images/Butterflyak.png"
 }
 
 ];

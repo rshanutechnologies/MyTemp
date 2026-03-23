@@ -21,7 +21,7 @@ const quiz = [
     q: "4. When a pollen grain falls on the stigma of a flower, it develops a long tube called the ______.",
     a: "pollen tube",
     options: ["pollen tube","flower stem","stick","magic"],
-     img:"../assets/images/pollengrains.png"
+     img:"../assets/images/Pollengrains.png"
   },
   {
     q: "5. The fertilised female reproductive cell or zygote develops into a ______.",

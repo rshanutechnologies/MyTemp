@@ -48,7 +48,7 @@ const quizData = [
 {
 q:"Q.1 Cartilage is harder than bone.",
 a:false,
-img:"../assets/images/cartilage1.png",
+img:"../assets/images/Cartilage1.png",
 answered:false
 },
 

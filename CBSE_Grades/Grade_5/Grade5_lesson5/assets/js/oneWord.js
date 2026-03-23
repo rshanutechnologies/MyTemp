@@ -21,7 +21,7 @@ const quizData = [
 {
     q: "Q4. The soft, spongy and delicate organs in our body",
     a: "LUNGS",
-    img: "../assets/images/lungs.png"
+    img: "../assets/images/Lungs.png"
 },
 
 {

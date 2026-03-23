@@ -44,7 +44,7 @@ options: [
 { text: "Trees", img: "../assets/images/SoftStem.png" },
 { text: "Climbers", img: "../assets/images/ClimbPlant.png" },
 { text: "Herbs", img: "../assets/images/Herbsak.png" },
-{ text: "Shrubs", img: "../assets/images/shrub.png" }
+{ text: "Shrubs", img: "../assets/images/Shrub.png" }
 ],
 answer: "Climbers"
 },

@@ -78,7 +78,7 @@ img: "../assets/images/ribcage.png"
 {
 q: "Q.5 The __________ acts as a cushion and reduces friction between the bones.",
 a: ["cartilage"],
-img: "../assets/images/cartilage1.png"
+img: "../assets/images/Cartilage1.png"
 }
 
 ];

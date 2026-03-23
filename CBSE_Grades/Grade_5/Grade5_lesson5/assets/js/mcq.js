@@ -17,7 +17,7 @@ const quizData = [
     options: [
       "../assets/images/heart.png|Heart",
       "../assets/images/diaphragm.png|Diaphragm",
-      "../assets/images/lungs.png|Lungs",
+      "../assets/images/Lungs.png|Lungs",
       "../assets/images/question.png|None of these",
     ],
     a: 1,

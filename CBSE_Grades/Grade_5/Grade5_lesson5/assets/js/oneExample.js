@@ -39,7 +39,7 @@ const quiz = [
     q: "Q5. Name the four chambers of the heart.",
     img1: "../assets/images/heart-chambers1.png",
     t1: "Atrium and ventricle",
-    img2: "../assets/images/lungs.png",
+    img2: "../assets/images/Lungs.png",
     t2: "Bronchi and alveoli",
     a: "atrium and ventricle",
   }

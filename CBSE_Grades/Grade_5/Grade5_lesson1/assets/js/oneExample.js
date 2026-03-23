@@ -12,7 +12,7 @@ img:"../assets/images/reproductiveak.png"
 q:"2. What are pollen grains?",
 options:["Male reproductive cells","Polen grains","Pollan grains"],
 answer:0,
-img:"../assets/images/pollengrains.png"
+img:"../assets/images/Pollengrains.png"
 },
 
 {
