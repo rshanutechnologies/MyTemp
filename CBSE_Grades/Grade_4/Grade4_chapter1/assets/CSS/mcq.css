@@ -62,8 +62,9 @@ body {
 .question-pill {
   width: min(980px, 96vw);
   border-radius: 999px;
-  padding: 16px 24px;
-   height: 100px;
+  padding: 10px 24px;
+   height: auto;
+   min-height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -458,6 +459,7 @@ button:disabled {
   .app {
     width: 100%;
     gap: 30px;
+    padding:10px 14px;
   }
 
   /* TITLE */
