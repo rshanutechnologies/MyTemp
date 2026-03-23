@@ -199,7 +199,7 @@ flex-wrap:wrap;
 
 }
 
-.nav button{
+/* .nav button{
 
 padding:12px 35px;
 
@@ -224,6 +224,35 @@ background:#e8ddb3;
 background:#6ca8a4;
 color:white;
 
+} */
+
+.prev,.next{
+width:120px;
+height:50px;
+border-radius:20px;
+border:none;
+font-size:25px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+color:white;
+border: 2px solid white;
+}
+
+.prev{
+background:#5c6cff;
+/* box-shadow:0 6px 0 #3f51b5; */
+}
+
+.next{
+background:#ff9f43;
+/* box-shadow:0 6px 0 #e67e22; */
+}
+.prev:disabled,
+.next:disabled{
+  opacity:0.4;
+  cursor:not-allowed;
 }
 
 button:disabled{

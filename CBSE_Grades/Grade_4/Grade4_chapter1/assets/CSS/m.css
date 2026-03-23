@@ -1,0 +1,33 @@
+/* ========================= */
+/* IMAGE + OPTIONS LAYOUT */
+/* ========================= */
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+}
+
+/* IMAGE */
+.image-box {
+  display: flex; /* 👈 override your display:none */
+  width: 220px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-image {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* OPTIONS ADJUST */
+.options {
+  grid-template-columns: repeat(2, 1fr); /* cleaner */
+  width: 100%;
+  max-width: 600px;
+}

@@ -9,7 +9,7 @@ options:[
 {text:"Aquatic plants",img:"../assets/images/option1-4.png"}
 ],
 answer:1,
-img:"../assets/images/mcq-1.png"
+img:"../assets/images/MCQ-1.png"
 },
 
 {
@@ -33,7 +33,7 @@ options:[
 {text:"Palm",img:"../assets/images/option3-4.png"}
 ],
 answer:2,
-img:"../assets/images/mcq-3.png"
+img:"../assets/images/MCQ-3.png"
 },
 
 {

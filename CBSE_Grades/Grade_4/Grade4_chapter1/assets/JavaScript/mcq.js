@@ -40,7 +40,7 @@ const quizData = [
 {
   //  title: "  Pick the correct option ",
   question: "Q.2 Which of the following is the main source of energy",
-  image: "../assets/images/MCQ-2",
+  image: "../assets/images/MCQ-2.png",
   options: [
     { id: "a", label: "Plants", image: "../assets/images/plants.png", correct: false, theme: "bg-blue" },
     { id: "b", label: "Animals", image: "../assets/images/animals.png", correct: false, theme: "bg-green" },
@@ -64,7 +64,7 @@ const quizData = [
 {
   //  title: "  Pick the correct option ",
   question: "Q.4 In _____________ venation, the veins run parallel to one another",
-  image: "../assets/images/MCQ-4",
+  image: "../assets/images/MCQ-4.png",
   options: [
     { id: "a", label: "Vertical", image: "../assets/images/plants.png", correct: false, theme: "bg-green" },
     { id: "b", label: "Linear", image: "../assets/images/respiration.png", correct: false, theme: "bg-blue" },
@@ -76,7 +76,7 @@ const quizData = [
 {
    title: "  Pick the correct option ",
   question: "Q.5 Which of the following has stored food in its stem?",
-  image: "../assets/images/MCQ-5",
+  image: "../assets/images/MCQ-5.png",
   options: [
     { id: "a", label: "cauliflower", image: "../assets/images/cauliflower.png", correct: false, theme: "bg-blue" },
     { id: "b", label: "potato", image: "../assets/images/potatoo.png", correct: true, theme: "bg-orange" },
