@@ -11,421 +11,294 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
-/* YOUR CSS EXACTLY SAME — NOT CHANGED */
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:"Livvic",sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:"Livvic",sans-serif;
 }
 
+/* BODY (NO SCROLL LIKE MCQ) */
 body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow: hidden;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 }
 
+/* MAIN */
 .main-container{
-width:1200px;
+  width:100%;
+  max-width:1200px;
 }
 
 .quiz-container{
-display:flex;
-flex-direction:column;
-align-items:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  height:100%;
 }
 
+/* QUESTION */
 .question-area{
-width:100%;
-height:60px;
-display:flex;
-justify-content:center;
-align-items:center;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .question-area h2{
-font-size:30px;
-font-weight:400;
-color:#2f4f4f;
-text-align:center;
+  font-size: clamp(20px, 2.5vw + 1vh, 30px);
+  font-weight:400;
+  color:#2f4f4f;
+  text-align:center;
+  line-height:1.3;
 }
 
+/* IMAGE */
 .image-area{
-width:100%;
-display:flex;
-justify-content:center;
-margin:15px 0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin: clamp(8px, 2vh, 15px) 0;
 }
 
 .image-area img{
-width:380px;
-height:250px;
-object-fit:contain;
-border-radius:20px;
-filter:grayscale(70%) brightness(.8);
-transition:.4s;
-padding:10px;
+  width: clamp(180px, 30vw, 380px);
+  height: clamp(130px, 25vw, 250px);
+  object-fit:contain;
+  border-radius:20px;
+  filter:grayscale(70%) brightness(.8);
+  transition:.4s;
+  padding:10px;
 }
 
 .image-area img.reveal{
-filter:none;
-transform:scale(1.05);
+  filter:none;
+  transform:scale(1.05);
 }
 
 .input-area{
-display:flex;
-gap:15px;
-justify-content:center;
-flex-wrap:wrap;
-margin-top:10px;
-width:90%;
-}
+  width:100%;
+  max-width: clamp(280px, 60vw, 700px); /* 🔥 main fix */
 
+  display:flex;
+  gap: clamp(10px, 2vw, 15px);
+  justify-content:center;
+  flex-wrap:wrap;
+
+  margin: 0 auto; /* center */
+  margin-bottom: clamp(60px, 10vh, 100px); /* 🔥 space for buttons */
+}
 .input-box{
-flex:1;
-min-width:160px;
-height:70px;
-display:flex;
-align-items:center;
-gap:6px;
-padding:6px 10px;
-border-radius:16px;
-border:3px solid #4da5d4;
-background:#ffffff;
-box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  width:100%;
+  display:flex;
+  align-items:center;
+
+  padding: clamp(6px, 1vw, 10px);
+
+  border-radius:16px;
+  border:3px solid #4da5d4;
+  background:#ffffff;
+
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+
+  overflow:hidden; /* 🔥 IMPORTANT */
 }
 
 .input-area .input-box:only-child{
-max-width:420px;
-margin:auto;
+  max-width:420px;
+  margin:auto;
 }
 
+/* CORRECT */
 .input-box.correct{
-border-color:#1fb36b;
-background:#eafff3;
+  border-color:#1fb36b;
+  background:#eafff3;
 }
 
+/* INPUT FIELD */
 .input-box input{
-flex:1;
-height:40px;
-font-size:22px;
-border:none;
-outline:none;
-background:transparent;
-color:#2f4f4f;
+  flex:1;
+  height:100%;
+  font-size: clamp(16px, 2.2vw, 32px); /* 🔥 FIX */
+  border:none;
+  outline:none;
+  background:transparent;
+  color:#2f4f4f;
 }
-
 .input-box button{
-padding:10px 20px;
-border-radius:20px;
-font-size:16px;
-font-weight:600;
-border:none;
-background:#6bc6f5;
-color:#fff;
-cursor:pointer;
-min-width:80px;
-}
+  flex-shrink:0; /* 🔥 prevents squeezing */
 
+  padding: clamp(6px, 1vw, 10px) clamp(10px, 2vw, 16px);
+
+  font-size: clamp(12px, 1vw, 14px);
+
+  border-radius:14px;
+  border:none;
+
+  background:#6bc6f5;
+  color:#fff;
+
+  cursor:pointer;
+
+  white-space:nowrap; /* 🔥 keeps text in one line */
+}
 .input-box button:disabled{
-background:#b9dff5;
-cursor:not-allowed;
+  background:#b9dff5;
+  cursor:not-allowed;
 }
 .nav{
-margin-top:30px;
-display:flex;
-justify-content:space-between;
-width:95%;
+  position:absolute; /* 🔥 fix position */
+  bottom:110px;          /* always bottom */
+  left:0;
+  width:100%;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding-top: clamp(10px, 2vh, 20px);
 }
 
-button{
-border:none;
-padding:14px 32px;
-font-size:18px;
-font-weight:600;
-border-radius:50px;
-cursor:pointer;
-transition:all .3s ease;
-box-shadow:0 6px 15px rgba(0,0,0,0.2);
+/* BUTTON (MCQ STYLE) */
+.nav button{
+  border:none;
+  padding: clamp(10px, 1.2vw, 14px) clamp(20px, 3vw, 28px);
+ font-size: clamp(15px, 1.4vw + 0.6vh, 20px);
+  font-weight:600;
+  border-radius:50px;
+  cursor:pointer;
+  transition:all .3s ease;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+ min-width: clamp(100px, 14vw, 150px);
 }
 
+/* PREV */
 .prev{
-background:linear-gradient(45deg,#ff7a7a,#ffb199);
-color:white;
+  background:linear-gradient(45deg,#ff7a7a,#ffb199);
+  color:white;
 }
 
 .prev:hover{
-transform:translateY(-3px) scale(1.05);
-box-shadow:0 10px 20px rgba(0,0,0,0.25);
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 10px 20px rgba(0,0,0,0.25);
 }
 
+/* NEXT */
 .next{
-background:linear-gradient(45deg,#00c6ff,#0072ff);
-color:white;
+  background:linear-gradient(45deg,#00c6ff,#0072ff);
+  color:white;
 }
 
 .next:hover{
-transform:translateY(-3px) scale(1.05);
-box-shadow:0 10px 20px rgba(0,0,0,0.25);
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 10px 20px rgba(0,0,0,0.25);
 }
 
-button:disabled{
-background:#dcdcdc;
-color:#888;
-box-shadow:none;
-cursor:not-allowed;
+/* DISABLED */
+.nav button:disabled{
+  background:#dcdcdc;
+  color:#888;
+  box-shadow:none;
+  cursor:not-allowed;
 }
 
+/* POPUP */
 .kid-popup{
-position:fixed;
-inset:0;
-display:none;
-align-items:center;
-justify-content:center;
-z-index:3000;
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
 }
 
 .kid-card{
-background:#fff;
-width:320px;
-padding:25px;
-border-radius:30px;
-text-align:center;
-
+  background:#fff;
+    width: clamp(280px, 55vw, 360px); /* 🔥 increase */
+  padding: clamp(18px, 2.5vw, 28px);
+  border-radius:30px;
+  text-align:center;
 }
 
 .kid-icon{
-font-size:4.5em;
-margin-bottom:10px;
+  font-size: clamp(3.5em, 7vw, 5em);
+  margin-bottom:10px;
 }
 
 .kid-card h3{
-font-size:2em;
-margin-bottom:8px;
+   font-size: clamp(1.6em, 3vw, 2.2em);
+  margin-bottom:8px;
 }
 
 .kid-card p{
-font-size:1.2em;
+  font-size: clamp(1.1em, 1.8vw, 1.3em);
+  
 }
 
 .kid-correct .kid-card{
-background:#e6fffa;
-border:6px solid #38d9a9;
+  background:#e6fffa;
+  border:6px solid #38d9a9;
 }
 
 .kid-wrong .kid-card{
-background:#fff5f5;
-border:6px solid #ffa8a8;
+  background:#fff5f5;
+  border:6px solid #ffa8a8;
 }
 
+/* FINAL POPUP */
 #finalPopup{
-position:fixed;
-inset:0;
-display:none;
-justify-content:center;
-align-items:center;
-z-index:4000;
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:4000;
 }
 
 .final-kid-box{
-background:linear-gradient(135deg,#fff7d6,#e6fff5);
-padding:30px 35px;
-border-radius:35px;
-text-align:center;
-width:420px;
-
+  background:linear-gradient(135deg,#fff7d6,#e6fff5);
+  padding: clamp(20px, 3vw, 35px);
+  border-radius:35px;
+  text-align:center;
+  width: clamp(280px, 60vw, 420px);
 }
 
 .final-kid-box h2{
-font-size:2.2em;
-color:#2f9e44;
-margin-bottom:10px;
+  font-size: clamp(1.6em, 3vw, 2.2em);
+  color:#2f9e44;
+  margin-bottom:10px;
 }
 
 .final-kid-box p{
-font-size:1.3em;
-font-weight:600;
+  font-size: clamp(1.1em, 2vw, 1.3em);
+  font-weight:600;
 }
 
 #stars{
-font-size:2.3em;
-margin:12px 0;
+  font-size: clamp(1.5em, 3vw, 2.3em);
+  margin:12px 0;
 }
 
 .playAgain-btn{
-background:#ffac30;
-color:#fff;
-border:none;
-padding:14px 34px;
-border-radius:30px;
-font-size:1.1em;
-cursor:pointer;
-margin-top:12px;
-}
-/* ---------- RESPONSIVE DESIGN ---------- */
-
-@media (max-width:900px){
-
-.main-container{
-width:100%;
+  background:#ffac30;
+  color:#fff;
+  border:none;
+  padding: clamp(10px, 1.5vw, 14px) clamp(20px, 3vw, 34px);
+  border-radius:30px;
+  font-size: clamp(1em, 1.5vw, 1.1em);
+  cursor:pointer;
+  margin-top:12px;
 }
 
-.image-area img{
-width:320px;
-height:220px;
-}
-
-.question-area h2{
-font-size:26px;
-}
-
-}
-
-@media (max-width:768px){
-
-.main-container{
-width:95%;
-}
-
-.question-area h2{
-font-size:22px;
-}
-
-.image-area img{
-width:260px;
-height:180px;
-}
-
-.input-box{
-min-width:140px;
-height:60px;
-}
-
-.input-box input{
-font-size:18px;
-}
-
-button{
-padding:12px 24px;
-font-size:16px;
-}
-.input-box button{
-padding:8px 15px;
-border-radius:20px;
-font-size:16px;
-font-weight:600;
-border:none;
-background:#6bc6f5;
-color:#fff;
-cursor:pointer;
-min-width:80px;
-}
-.final-kid-box{
-width:90%;
-}
-
-}
-
-@media (max-width:600px){
-
-  body{
-    height:auto;
-    overflow:auto;
-    align-items:flex-start;
-    padding:12px;
-    margin-top: 80px;
-  }
-
-  .quiz-container{
-    width:100%;
-    align-items:center;
-  }
-
-  /* QUESTION */
-  .question-area h2{
-    font-size:18px;
-    line-height:1.4;
-    padding:0 5px;
-  }
-
-  /* IMAGE */
-  .image-area img{
-    width:180px;
-    height:130px;
-  }
-
-  /* INPUT AREA */
-  .input-area{
-    width:100%;
-    gap:12px;
-    flex-direction:column;   /* 🔥 stack properly */
-    align-items:center;
-  }
-
-  /* INPUT BOX FIX */
-  .input-box{
-    width:100%;               /* 🔥 prevent overflow */
-    max-width:300px;
-    height:40px;
-
-    padding:6px 10px;
-    gap:6px;
-
-    border-radius:14px;
-  }
-
-  /* INPUT FIELD */
-  .input-box input{
-    font-size:15px;
-  }
-
-  /* CHECK BUTTON FIX */
-  .input-box button{
-    padding:4px 8px;
-    font-size:10px;
-    min-width:45px;
-    border-radius:15px;
-    margin-left: -70px;
-  }
-
-  /* NAV BUTTONS */
-  .nav{
-    width:90%;
-    margin-top:15px;
-    gap:10px;
-  }
-
-  .nav button{
-    flex:1;
-    font-size:14px;
-    padding:10px;
-  }
-/* ✅ FINAL POPUP SMALL FOR MOBILE */
-.final-kid-box{
-  width:90%;
-  padding:20px 18px;   /* reduced padding */
-  border-radius:25px;
-}
-
-.final-kid-box h2{
-  font-size:18px;      /* smaller title */
-}
-
-.final-kid-box p{
-  font-size:14px;      /* smaller score text */
-}
-
-#stars{
-  font-size:18px;      /* smaller stars */
-  margin:8px 0;
-}
-
-.playAgain-btn{
-  padding:10px 20px;
-  font-size:14px;
-}
+/* POP ANIMATION */
+@keyframes pop{
+  0%{transform:translate(-50%,-50%) scale(.4)}
+  70%{transform:translate(-50%,-50%) scale(1.1)}
+  100%{transform:translate(-50%,-50%) scale(1)}
 }
 </style>
 </head>

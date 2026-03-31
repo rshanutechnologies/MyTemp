@@ -600,19 +600,7 @@ button:disabled {
     padding:10px 18px;
   }
 }
-@media (max-width:700px){
 
-  body{
-    display:block;
-  }
-
-  .book{
-    width:100%;
-    height:auto;
-    padding:20px;
-    margin-top:20px;
-  }
-}
 
 /* ===== FIX MOBILE OVERFLOW & IMAGE ===== */
 @media (max-width:700px){
@@ -620,11 +608,11 @@ button:disabled {
   body{
     height:100vh !important;
     overflow:hidden !important;   /* ✅ remove scroll */
-    margin-top:0 !important;      /* ✅ remove overlap */
+    margin-top: -50px;
     display:flex;
     align-items:center;
     justify-content:center;
-    margin-top: -120px;
+   
   }
 
   .book{
@@ -644,7 +632,7 @@ button:disabled {
   }
 
   .story{
-    font-size:22px;  /* ✅ fit properly */
+    font-size:20px;  /* ✅ fit properly */
     line-height:1.4;
   }
 

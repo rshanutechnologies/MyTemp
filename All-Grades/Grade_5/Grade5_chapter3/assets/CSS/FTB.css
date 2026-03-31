@@ -160,6 +160,7 @@ body {
   border: none;
   color: #fff;
   cursor: pointer;
+   outline: 3px solid white;
 }
 #prevBtn { background: #4db6ac; }
 #nextBtn { background: #ffa726; }

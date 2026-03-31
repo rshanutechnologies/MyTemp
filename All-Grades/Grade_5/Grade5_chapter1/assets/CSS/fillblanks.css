@@ -652,6 +652,7 @@ button:disabled {
     overflow-y:hidden;
     padding:20px 10px;
       background:url("../images/bgbg.png") center/cover no-repeat;
+      margin-top: -100px !important;
   }
   #answerInput{
     font-size: 15px !important;
@@ -660,7 +661,8 @@ button:disabled {
   .main{
     width:100%;
     padding:15px;
-    min-height:auto;
+    /* min-height:auto; */
+    
   }
 
   .content{
@@ -748,4 +750,10 @@ button:disabled {
       margin-top: -5%;
   }
 
+}
+@media (max-width: 500px) {
+    body{
+      
+        margin-top: -100px !important;
+    }
 }

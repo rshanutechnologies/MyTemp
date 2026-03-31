@@ -234,6 +234,29 @@ margin-top:10px;
 font-size:clamp(20px,2vw,28px);
 color:#ffcc00;
 }
+@media (max-width: 600px){
+  .options{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; /* slightly reduced gap */
+  }
+
+  .option{
+    width: 100%;
+    max-width: 120px;   /* 🔽 smaller than before */
+    aspect-ratio: 1/1;
+    padding: 6px;       /* 🔽 reduce inner spacing */
+  }
+
+  .opt-img{
+    width: 40px;        /* 🔽 smaller image */
+    height: 40px;
+  }
+
+  .opt-text{
+    font-size: 13px;    /* 🔽 slightly smaller text */
+  }
+}
 </style>
 </head>
 

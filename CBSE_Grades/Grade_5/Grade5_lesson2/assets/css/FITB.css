@@ -392,7 +392,32 @@ cursor:pointer;
 
 box-shadow:0 4px 8px rgba(0,0,0,0.3);
 }
+/* 
+@media (max-width:1024px){
+    .blanks{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+}
+.blank{
+    width:clamp(30px, 12vw, 50px) !important;
+    height:clamp(30px, 12vw, 50px) !important;
+    font-size:16px;
+}
 
+
+.letters{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+      
+}
+.letter{
+    width:clamp(35px, 12vw, 55px);
+    height:clamp(35px, 12vw, 55px);
+    font-size:16px;
+}
+} */
 /* =========================================
 📱 TABLET (≤ 900px)
 ========================================= */
@@ -421,7 +446,10 @@ body{
     flex-wrap:wrap;
     justify-content:center;
     gap:10px;
+      
 }
+
+
 
 /* IMAGE FIX */
 .imgbox{
@@ -473,7 +501,7 @@ body{
 /* BLANKS */
 .blanks{
     flex-wrap:wrap;
-    justify-content:center;
+    justify-content:center; 
     gap:8px;
 }
 
@@ -488,10 +516,11 @@ body{
     flex-wrap:wrap;
     justify-content:center;
     gap:8px;
+    
 }
 
 .letter{
-    width:clamp(40px, 11vw, 55px);
+    width:clamp(40px, 11vw, 55px) ;
     height:clamp(40px, 11vw, 55px);
     font-size:18px;
 }

@@ -121,7 +121,7 @@ body {
 }
 
 .option {
-    background: #f4f8fc;
+    /* background: #f4f8fc; */
     padding: 16px 20px;
     border-radius: 14px;
     cursor: pointer;
@@ -147,11 +147,13 @@ body {
     font-weight: 600;
 }
 .option-img{
-  width:150px !important;
-  height:100px;
+  width:100px !important;
+  height:70px !important;
 }
 .option.correct {
-    border-color: #7ed957;
+    /* border-color: #7ed957; */
+    border: transparent
+    ;
 }
 
 .option.disabled {
@@ -167,7 +169,7 @@ body {
 .nav {
     display: flex;
     justify-content: space-between;
-    margin-top: 22px;
+    margin-top: 10px;
 }
 
 button {
@@ -177,6 +179,7 @@ button {
     font-size: 20px;
     color: white;
     cursor: pointer;
+    outline: 3px solid white;
 }
 
 .prev {
@@ -369,6 +372,7 @@ button:disabled {
     margin-top: 2%;
     display: none;
 }
+
 /* ===================================== */
 /* 📱 FULL MOBILE RESPONSIVE FINAL */
 /* ===================================== */
@@ -428,7 +432,7 @@ button:disabled {
   }
 
   .question{
-    font-size:18px;
+    font-size:20px !important;
     padding:8px;
     text-align:center;
   }
@@ -440,25 +444,30 @@ button:disabled {
 
   /* OPTIONS */
   .options{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    margin-top:10px;
-  }
+  display:grid;
+  grid-template-columns: 1fr 1fr; /* 🔥 2 boxes per row */
+  gap:10px;
+  margin-top:10px;
+}
 
-  /* OPTION BOX */
-  .option{
-    width:100%;
-    padding:10px;
-    border-radius:12px;
-    gap:6px;
-    font-size:14px;
-  }
+.option{
+  width:100%;
+  padding:10px;
+  border-radius:12px;
+  gap:6px;
+  font-size:14px;
+
+  display:flex;
+  flex-direction:column; /* 🔥 stack image + text */
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
 
   /* 🔥 VERY SMALL IMAGE */
   .option-img{
-    width:35px;
-    height:35px;
+    width:55px !important;
+    height:55px !important;
     object-fit:contain;
   }
 
@@ -469,13 +478,13 @@ button:disabled {
 
   /* NAV BUTTONS */
   .nav{
-    flex-direction:column;
+    flex-direction:row;
     gap:10px;
     margin-top:15px;
   }
 
   .nav button{
-    width:100%;
+    width:45%;
     font-size:15px;
     height:45px;
   }
@@ -521,20 +530,20 @@ button:disabled {
 /* 💻 DESKTOP – REDUCE WHOLE PAGE BY 10% */
 /* ========================================= */
 
-@media (min-width: 800px){
+/* @media (min-width: 800px){
 
   .quiz{
-    transform: scale(0.8);       /* 🔥 10% smaller */
-    transform-origin: center;    /* keep centered */
+    transform: scale(0.8);       
+    transform-origin: center;    
   }
 
-}
+} */
 
 @media (max-width: 380px){
 
   .option-img{
-  width:20px !important;
-  height:20px;
+  width:60px !important;
+  height:60px;
 }
 
 .option{

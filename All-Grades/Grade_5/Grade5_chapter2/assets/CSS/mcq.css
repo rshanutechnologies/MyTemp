@@ -381,6 +381,7 @@ button:disabled {
   background-size: cover;        /* ✅ Makes image full screen */
   background-position: center;   /* ✅ Center the image */
   background-repeat: no-repeat;  /* ✅ Prevent repeat */
+  margin-top: 2% !important;
     }
 
     .quiz {

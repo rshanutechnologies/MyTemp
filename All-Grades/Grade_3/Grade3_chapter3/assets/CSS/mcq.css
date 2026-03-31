@@ -517,24 +517,21 @@
     font-size:26px;        /* balance layout */
   }
   .fancy-nav{
-    justify-content:space-evenly;  /* ✅ auto left-right */
+    justify-content:space-between;  /* ✅ auto left-right */
     gap:0 !important;               /* ❌ remove fixed gap */
     width:100%;
     padding:0 20px;
   }
 
 
+}.fancy-nav {
+    height: 55px;
+    display: flex;
+    justify-content: space-between;  /* ✅ always correct */
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;                 /* ✅ spacing from sides */
 }
-        /* NAV CONTAINER */
-        .fancy-nav {
-            height: 55px;
-            display: flex;
-            justify-content: center;   /* center both buttons */
-            align-items: center;
-            gap: 400px;                 /* ← controls space between PREV and NEXT */
-        
-        }
-
 
         /* BASE */
         .nav-btn {
@@ -758,16 +755,17 @@
         gap:30px;
     }
 
-    .nav-btn .circle{
-        width:45px;
-        height:45px;
-        font-size:18px;
-    }
+  .nav-btn .circle{
+    width:42px;
+    height:42px;
+    font-size:16px;
+  }
 
     .nav-btn .label{
         padding:12px 18px;
         height:45px;
         font-size:13px;
+        
     }
 
     }

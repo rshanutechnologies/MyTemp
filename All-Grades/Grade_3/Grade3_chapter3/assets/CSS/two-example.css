@@ -368,7 +368,7 @@ button:disabled {
 @media (max-width:800px){
 
   body{
-    overflow:auto;
+    overflow:hidden;
     align-items:flex-start;
   }
 
@@ -413,7 +413,7 @@ button:disabled {
 
   html, body{
     height:auto;
-    overflow:auto;
+    overflow:hidden;
     margin-top: -10px;
   }
 

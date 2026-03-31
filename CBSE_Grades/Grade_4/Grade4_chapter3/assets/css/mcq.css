@@ -21,13 +21,14 @@ body {
     padding: clamp(20px, 3vw, 30px);
     display: flex;
     flex-direction: column;
+    margin-top: -20px;
 }
 
 /* GRID */
 .quiz-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(15px, 3vw, 30px);
+    gap: clamp(10px, 2vw, 20px); /* reduced gap */
     align-items: center;
 }
 
@@ -42,11 +43,12 @@ body {
 /* QUESTION */
 #question {
     margin-top: 5px;
+    margin-bottom: 5px; /* reduced space */
     font-size: clamp(20px, 3vw, 30px);
     font-weight: 400;
     color: #2f4f4f;
     line-height: 1.3;
-    min-height: clamp(60px, 10vh, 80px);
+    min-height: auto; /* removed extra height */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,12 +60,13 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: clamp(10px, 2vw, 20px);
+    margin-top: 8px;
+    margin-bottom: 5px; /* reduced gap */
 }
 
 .question-image img {
     width: clamp(200px, 25vw, 280px);
-    height: clamp(180px, 25vh, 250px);
+    height: clamp(140px, 20vh, 200px); /* reduced height */
     object-fit: contain;
     padding: 5px;
     border-radius: 28px;
@@ -149,7 +152,7 @@ body {
     display: flex;
     justify-content: center;
     gap: clamp(40px, 20vw, 300px);
-    margin-top: clamp(15px, 3vh, 25px);
+    margin-top: 10px; /* reduced gap */
 }
 
 .controls button {
@@ -171,6 +174,7 @@ body {
     transition: .15s ease;
 }
 
+/* BUTTON COLORS (UNCHANGED) */
 #prevBtn {
     background: linear-gradient(#C37B89, #a86472);
     box-shadow: 0 4px 0 #8e5260;
@@ -196,7 +200,7 @@ body {
     cursor: not-allowed;
 }
 
-/* POPUP */
+/* POPUP (UNCHANGED) */
 .kid-popup {
     position: fixed;
     inset: 0;
@@ -227,7 +231,7 @@ body {
     font-size: clamp(1em, 2vw, 1.2em);
 }
 
-/* FINAL POPUP FIX */
+/* FINAL POPUP (UNCHANGED) */
 #finalPopup {
     position: fixed;
     inset: 0;
@@ -281,9 +285,9 @@ body {
 @media (max-width:900px) {
 
     body {
-        overflow: auto;
-        align-items: flex-start;
-        padding: 20px;
+        height: 100vh;
+        overflow: hidden;
+        padding-top: 60px; /* push below hamburger */
     }
 
     .quiz-layout {
@@ -294,4 +298,7 @@ body {
         gap: clamp(20px, 10vw, 120px);
     }
 
+    .quiz {
+        margin-top: -10px;
+    }
 }

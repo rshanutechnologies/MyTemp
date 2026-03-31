@@ -295,11 +295,13 @@ line-height:1.2;
 
 .left .dot{
 right:18px;
-display: none;
+/* display: none; */
+background: none;
 }
 
 .right .dot{
-    display: none;
+    /* display: none; */
+    background: none;
 }
 /* RIGHT IMAGE */
 

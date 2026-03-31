@@ -16,7 +16,7 @@ const leftImages = {
   Cerebrum: "../assets/images/Cerebrums.png",
   Nerves: "../assets/images/nerves.png",
   "Spinal cord": "../assets/images/spinalcords.png",
-  Cerebellum: "../assets/images/cerebellum.png",
+  Cerebellum: "../assets/images/Cerebellum.png",
   Brain: "../assets/images/brain.png",
 };
 

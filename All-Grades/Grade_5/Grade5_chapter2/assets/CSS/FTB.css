@@ -414,6 +414,7 @@ button:disabled {
   background-size: cover;        /* ✅ Makes image full screen */
   background-position: center;   /* ✅ Center the image */
   background-repeat: no-repeat;  /* ✅ Prevent repeat */
+  margin-top: -5% !important;
     }
 
     .app {
@@ -453,6 +454,9 @@ button:disabled {
         flex-direction: column;
         gap: 15px;
         width: 100%;
+    }
+    #answer{
+        font-size: 15px;
     }
 
     .answer-area input {
@@ -530,6 +534,7 @@ button:disabled {
 
     .app {
         padding: 14px;
+        margin-top: -10% !important;
     }
 
     .image-panel {
@@ -577,7 +582,7 @@ button:disabled {
         position: static;      /* 🔥 Remove absolute */
         transform: none;
         margin: 10px 8px 0;
-        width: 130px;
+        width: 80px;
         font-size: 16px;
         padding: 10px;
     }

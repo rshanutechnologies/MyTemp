@@ -244,6 +244,7 @@ button {
   border: none;
   color: #fff;
   cursor: pointer;
+  
 
 }
 
@@ -251,12 +252,14 @@ button {
   font-size: 20px;
   color: #fff;
   background: #4db6ac;
+   outline: 3px solid white;
 }
 
 .next {
   font-size: 20px;
   color: #fff;
   background: #ffa726;
+   outline: 3px solid white;
 }
 
 .prev:disabled,

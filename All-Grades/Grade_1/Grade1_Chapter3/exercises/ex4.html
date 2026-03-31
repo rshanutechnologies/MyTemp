@@ -173,76 +173,50 @@
       text-align: center;
     }
 
-    /* ==================================================
-   📱 SMALL MOBILES (≤480px)
+      /* ==================================================
+   📱 TABLETS (769px – 1024px)
 ================================================== */
-    @media (max-width: 480px) {
-
-      body {
-        overflow-y: auto;
-        align-items: flex-start;
-      }
+    @media (max-width: 900px) {
 
       .app {
-        width: 100%;
-        height: auto;
-        min-height: 100vh;
-        padding: 14px;
-        border-radius: 0;
+        width: 95%;
+        height: 92vh;
+        padding: 22px;
       }
 
       .title {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
+        font-size: 1.8rem;
       }
 
       .match-row {
-        grid-template-columns: 1fr;
-        gap: 10px;
         height: auto;
-        padding: 14px;
-        text-align: center;
+        padding: 16px;
       }
 
       .left-item {
-        font-size: 1rem;
-      }
-
-      .answer-box {
-        width: 50px;
-        height: 40px;
-        font-size: 18px;
-      }
-
-      .option {
-        justify-content: center;
-        font-size: 1rem;
+        font-size: 1.25rem;
       }
 
       .option img {
-        height: 70px;
-      }
-
-      .smiley {
-        font-size: 90px;
+        height: 90px;
       }
 
       /* 🎉 FINAL POPUP */
       .final-card {
-        width: 90%;
-        padding: 20px;
-        border-radius: 24px;
+        width: 420px;
+        padding: 34px;
       }
 
       .final-card h1 {
-        font-size: 1.8rem;
+        font-size: 2.6rem;
       }
 
       .final-card p {
-        font-size: 1.1rem;
+        font-size: 1.35rem;
       }
     }
 
+  
     /* ==================================================
    📱 MOBILES (≤768px)
 ================================================== */
@@ -302,48 +276,79 @@
       }
     }
 
-    /* ==================================================
-   📱 TABLETS (769px – 1024px)
+  
+
+      /* ==================================================
+   📱 SMALL MOBILES (≤480px)
 ================================================== */
-    @media (max-width: 900px) {
+    @media (max-width: 480px) {
+
+      body {
+        overflow-y: hidden;
+        align-items: flex-start;
+      }
 
       .app {
-        width: 95%;
-        height: 92vh;
-        padding: 22px;
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 14px;
+        border-radius: 0;
       }
 
       .title {
-        font-size: 1.8rem;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
       }
 
       .match-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
         height: auto;
-        padding: 16px;
+        padding: 14px;
+        text-align: center;
       }
 
       .left-item {
-        font-size: 1.25rem;
+        font-size: 1rem;
+        font-weight: 300;
+      }
+
+      .answer-box {
+        width: 50px;
+        height: 40px;
+        font-size: 18px;
+      }
+
+      .option {
+        justify-content: center;
+        font-size: 1rem;
       }
 
       .option img {
-        height: 90px;
+        height: 40px;
+      }
+
+      .smiley {
+        font-size: 90px;
       }
 
       /* 🎉 FINAL POPUP */
       .final-card {
-        width: 420px;
-        padding: 34px;
+        width: 90%;
+        padding: 20px;
+        border-radius: 24px;
       }
 
       .final-card h1 {
-        font-size: 2.6rem;
+        font-size: 1.8rem;
       }
 
       .final-card p {
-        font-size: 1.35rem;
+        font-size: 1.1rem;
       }
     }
+
   </style>
 </head>
 

@@ -640,4 +640,15 @@ button:disabled{opacity:0.45;
     padding:10px;
   }
 
+.top-title{
+    text-align:center;
+    font-size:20px;
+    font-weight:500;
+    background:#ffe2d5;
+    color:#444;
+    padding:8px 10px;
+    width:max-content;
+    margin:0 auto 0px;
+      border-radius:20px;
+}
 }

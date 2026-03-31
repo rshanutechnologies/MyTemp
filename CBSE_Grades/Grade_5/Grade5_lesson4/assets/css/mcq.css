@@ -196,6 +196,7 @@ body::before{
     font-weight:500;
     cursor:pointer;
     color:#ffffff;
+    border: 2px solid white;
     display:flex;
     align-items:center;
     justify-content:center;

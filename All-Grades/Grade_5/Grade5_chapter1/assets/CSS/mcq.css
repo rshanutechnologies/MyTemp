@@ -473,7 +473,7 @@ color: black;
 
   /* TITLE */
   .quiz-title{
-    font-size: 26px;   /* 30 × 0.85 */
+    font-size: 30px !important;   /* 30 × 0.85 */
     padding: 12px 17px;
   }
 
@@ -579,7 +579,7 @@ color: black;
   /* TITLE */
   .quiz-title{
     width:100%;
-    font-size: clamp(20px, 5vw, 24px);
+    font-size:30px !important;
     text-align:center;
     padding:12px 15px;
     line-height:1.3;

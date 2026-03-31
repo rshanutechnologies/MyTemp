@@ -1,7 +1,7 @@
 
 let selected=null
 let score=0
-let matchNumber = 1;
+// let matchNumber = 1;
 
 const left=document.querySelectorAll("#left .box")
 const right=document.querySelectorAll("#right .box")
@@ -58,8 +58,7 @@ if(r.dataset.match===selected.dataset.match){
 launchConfetti(); 
 speak("Correct")
 
-addMatchNumber(selected, r);
-matchNumber++;
+addMatchNumber(selected, r);   // ✅ CORRECT PLACE
 
 selected.classList.add("matched")
 r.classList.add("matched")
@@ -123,27 +122,19 @@ location.reload()
 
 
 
-
 function addMatchNumber(leftBox, rightBox){
+
+  const number = leftBox.dataset.id; // 🔥 get fixed number
 
   const leftDot = leftBox.querySelector(".dot");
   const rightDot = rightBox.querySelector(".dot");
 
-  leftDot.innerText = matchNumber;
-  rightDot.innerText = matchNumber;
+  leftDot.innerText = number;
+  rightDot.innerText = number;
 
   leftDot.style.background = "#4CAF50";
   rightDot.style.background = "#4CAF50";
 
   leftDot.style.color = "#fff";
   rightDot.style.color = "#fff";
-
-  leftDot.style.display = "flex";
-  rightDot.style.display = "flex";
-
-  leftDot.style.alignItems = "center";
-  leftDot.style.justifyContent = "center";
-
-  rightDot.style.alignItems = "center";
-  rightDot.style.justifyContent = "center";
 }
