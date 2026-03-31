@@ -167,8 +167,7 @@
         }
 
         .nav-buttons button {
-            width: 140px;
-            height: 55px;
+            padding: 13px 32px;
 
             display: flex;
             justify-content: center;
@@ -177,8 +176,8 @@
             border-radius: 35px;
             border: 3px solid #ffffff;
 
-            font-size: 34px;
-            font-weight: 900;
+            font-size: 20px;
+            font-weight: 400;
             color: #ffffff;
 
             cursor: pointer;
@@ -383,7 +382,7 @@
             }
 
             .nav-buttons {
-                padding: 0 10px;
+                padding: 0 20px;
             }
 
         }
@@ -401,7 +400,7 @@
             }
 
             .question-area h2 {
-                font-size: 20px;
+                font-size: 22px;
             }
 
             .image-area img {
@@ -426,9 +425,8 @@
             }
 
             .nav-buttons button {
-                width: 120px;
-                height: 50px;
-                font-size: 28px;
+                padding: 6px 20px;
+                font-size: 18px;
             }
 
         }
@@ -441,7 +439,7 @@
         @media (max-width:480px) {
 
             .question-area h2 {
-                font-size: 18px;
+                font-size: 20px;
             }
 
             .image-area img {
@@ -460,7 +458,7 @@
             }
 
             .nav-buttons button {
-                width: 100%;
+                font-size: 18px;
             }
 
         }

@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif
+    font-family: 'Livvic';
 }
 
 body {
@@ -322,11 +322,13 @@ canvas {
     .question-box {
         font-size: 20px;
         padding: 18px;
+        margin-top: -10px;
     }
 
     .tf-buttons {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row;
+        gap: 10px;
+        margin-top: -40px;
 
     }
 
@@ -366,4 +368,17 @@ canvas {
 /* hidden by default */
 .nav-wrapper {
     display: none;
+}
+
+
+
+@media (max-width:450px){
+       .tf-buttons {
+       
+        flex-direction: row;
+        gap: 1px;
+        margin-top: -40px;
+
+    }
+
 }

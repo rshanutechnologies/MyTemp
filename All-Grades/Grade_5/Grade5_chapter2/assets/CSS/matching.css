@@ -247,7 +247,7 @@ background: transparent;
         overflow: auto;
         align-items: flex-start;
         padding: 15px 10px;
-        background-image: url("../images/L2bg.png");
+        background-image: url("../images/L2bgg.png");
   background-size: cover;        /* ✅ Makes image full screen */
   background-position: center;   /* ✅ Center the image */
   background-repeat: no-repeat;  /* ✅ Prevent repeat */
@@ -257,6 +257,7 @@ background: transparent;
         position: relative;
         padding: 15px;
         margin-top: 40px;
+        margin-left: -5%;
     }
 
     /* KEEP TWO COLUMNS ON MOBILE */
@@ -269,7 +270,8 @@ background: transparent;
     .token,
     .slot {
         height: 55px;
-        font-size: 14px;
+        font-size: 13px !important;
+    
     }
 
     .token {
@@ -283,8 +285,8 @@ background: transparent;
     }
 
     .slot-img {
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
     }
 
 }
@@ -301,3 +303,62 @@ background: transparent;
     }
 
 }
+
+
+
+
+@media (max-width: 350px) {
+
+    body {
+        height: 100vh;
+        overflow: auto;
+        align-items: flex-start;
+        padding: 15px 10px;
+        background-image: url("../images/L2bgg.png");
+  background-size: cover;        /* ✅ Makes image full screen */
+  background-position: center;   /* ✅ Center the image */
+  background-repeat: no-repeat;  /* ✅ Prevent repeat */
+       margin-left: -6%;
+    }
+
+    .container {
+        position: relative;
+        padding: 15px;
+        margin-top: 40px;
+   
+    }
+
+    /* KEEP TWO COLUMNS ON MOBILE */
+    .board {
+        grid-template-columns: 1fr 1fr;   /* side-by-side */
+        gap: 5px;
+    }
+
+    /* Make items smaller so both fit */
+    .token,
+    .slot {
+        height: 55px;
+        font-size: 14px;
+    
+    }
+
+    .token {
+        padding: 0 10px;
+    }
+
+    .drop-zone {
+        width: 70px;
+        height: 30px;
+        font-size: 9px;
+    }
+
+    .slot-img {
+        width: 30px;
+        height: 30px;
+    }
+
+}
+
+/* ========================================= */
+/* 💻 DESKTOP – SCALE WHOLE MATCHING UI -20% */
+/* ========================================= */

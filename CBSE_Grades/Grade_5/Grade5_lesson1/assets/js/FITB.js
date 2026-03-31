@@ -151,7 +151,8 @@ document.getElementById("final").style.display = "block";
 document.getElementById("score").textContent = `Your Score: ${score}/5`;
 launchConfetti(); 
 // speak("Congratulations. Your score is " + score + " out of five");
-
+prev.disabled = true;
+next.disabled = true;
 }, 1000);
 
 } else {

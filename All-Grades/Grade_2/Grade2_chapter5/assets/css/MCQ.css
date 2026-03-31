@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial
+    font-family: 'Livvic';
 }
 
 body {
@@ -233,10 +233,149 @@ canvas {
     /* slightly washed look */
 }
 
+
+@media (max-width: 900px){
+
+body{
+    height:auto;
+    overflow:auto;
+    align-items:flex-start;
+    padding-top:30px;
+}
+
+.quiz-container{
+    width:90%;
+}
+
+#question{
+    font-size:24px;
+}
+
+.img-container{
+    width:200px;
+    height:150px;
+}
+
+.option{
+    padding:10px;
+    font-size:16px;
+}
+
+/* controls slightly inward */
+.controls{
+    padding:0 20px;
+}
+}
+
+
 @media (max-width:768px) {
     h3 {
         display: none;
     }
+}
+
+@media (max-width: 600px){
+
+.quiz-container{
+    width:95%;
+}
+
+#question{
+    font-size:20px;
+}
+
+.img-container{
+    width:180px;
+    height:140px;
+}
+
+.option{
+    padding:10px;
+    font-size:15px;
+}
+
+/* controls closer */
+.controls{
+    padding:0 12px;
+}
+
+.controls button{
+    width:48px;
+    height:48px;
+}
+}
+
+@media (max-width: 480px){
+
+#question{
+    font-size:22px !important;
+    min-height:auto;
+}
+
+.img-container{
+    width:160px;
+    height:120px;
+}
+
+.option{
+    padding:9px;
+    font-size:14px;
+    border-radius:20px;
+    width: 50%;
+    margin: auto;
+}
+
+/* progress circles smaller */
+.level{
+    width:50px;
+    height:50px;
+}
+
+/* controls */
+.controls button{
+    width:44px;
+    height:44px;
+    font-size:18px;
+}
+}
+
+
+@media (max-width: 370px){
+
+.quiz-container{
+    width:100%;
+    padding:0 8px;
+}
+
+#question{
+    font-size:16px;
+}
+
+.img-container{
+    width:140px;
+    height:110px;
+}
+
+.option{
+    padding:8px;
+    font-size:13px;
+}
+
+.level{
+    width:42px;
+    height:42px;
+}
+
+/* controls */
+.controls{
+    padding:0 6px;
+}
+
+.controls button{
+    width:40px;
+    height:40px;
+    font-size:16px;
+}
 }
 
 /* ===== DESKTOP SCALE (-10%) ===== */
@@ -248,3 +387,4 @@ canvas {
         margin-top: 5%;
     }
 }
+

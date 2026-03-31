@@ -395,7 +395,8 @@ body {
 @media (max-width:900px) {
 
   body {
-    overflow: auto;
+    overflow: hidden;
+    margin-top: 10px;
   }
 
   .match-area {
@@ -418,7 +419,9 @@ body {
     flex-wrap: wrap;
     justify-content: center;
   }
-
+.left-side{
+  gap: 20px !important;
+}
   .answer {
     width: 48%;
   }
@@ -431,12 +434,13 @@ body {
 
   body {
     padding: 14px 10px;
+    
   }
 
   .header-title {
     margin: 10px 0 20px;
     padding: 12px 28px;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 500;
     text-align: center;
     border-radius: 40px;
@@ -549,7 +553,7 @@ body {
 .right-side {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 10px;
   width: 40%;
 }
 
@@ -667,7 +671,7 @@ body {
     max-width: 50%;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 15px;
   }
 
   /* 🔥 Equal box height */
@@ -694,6 +698,7 @@ body {
     overflow-y: auto;
     align-items: flex-start;
     padding: 14px 10px;
+    margin-top: -30px;
   }
 
   .game {

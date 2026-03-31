@@ -1,287 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Grade5_lesson3</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Livvic';
-}
-
-/* BODY */
-
-body{
-min-height:100vh;
-/* background-color:#7cd892; */
-background-image: url("assets/images/bg3.png");
-background-size:cover ;
-background-position:center center;
-
-display:flex;
-flex-direction:row;
-overflow-x:hidden;
-overflow-y: hidden;
-}
-
-/* LEFT NAVBAR */
-
-.side-nav{
-
-width:260px;
-padding:80px 20px;
-
-display:flex;
-flex-direction:column;
-gap:18px;
-
-transition:0.3s;
-
-}
-
-/* BUTTON */
-
-.nav-btn{
-
-display:flex;
-align-items:center;
-gap:12px;
-
-font-size:18px;
-font-weight:600;
-
-padding:14px 22px;
-
-border:none;
-border-radius:40px;
-
-cursor:pointer;
-
-box-shadow:0 6px 12px rgba(0,0,0,0.2);
-
-transition:0.2s;
-
-}
-
-.nav-btn:hover{
-transform:translateX(5px);
-}
-
-/* ACTIVE BUTTON */
-
-.nav-btn.active{
-opacity:1;
-outline:3px solid rgba(255,255,255,0.9);
-position:relative;
-}
-
-/* BUTTON COLORS */
-
-.mcq{background:linear-gradient(#ffd2a2,#ffb778);}
-.fill{background:linear-gradient(#b4f2c0,#7cd892);}
-.true{background:linear-gradient(#fff1a8,#f4d86c);}
-.match{background:linear-gradient(#bfe7f7,#86c8e6);}
-.one{background:linear-gradient(#d7c6f0,#b39add);}
-
-/* RIGHT CONTENT */
-
-.content{
-flex:1;
-min-height:100vh;
-/* padding:10px; */
-
-}
-
-/* IFRAME */
-
-iframe{
-width:100%;
-height:100%;
-min-height:100vh;
-border:none;
-background:transparent;
-}
-
-/* HAMBURGER BUTTON */
-
-.menu-btn{
-
-display:none;
-
-position:fixed;
-top:15px;
-right:10px;
-
-font-size:26px;
-
-background:#333;
-color:white;
-
-border:none;
-
-border-radius:8px;
-
-padding:6px 12px;
-
-cursor:pointer;
-
-z-index:1000;
-
-}
-
-
-.nav-btn{
-display:flex;
-align-items:center;
-gap:12px;
-font-size:18px;
-font-weight:600;
-padding:14px 22px;
-border:none;
-border-radius:40px;
-cursor:pointer;
-box-shadow:0 6px 12px rgba(0,0,0,0.2);
-transition:0.2s;
-opacity:0.6; /* light buttons */
-}
-
-
-.nav-btn.active::before{
-content:"";
-width:12px;
-height:12px;
-background:#22c55e;
-border-radius:50%;
-position:absolute;
-left:10px;
-top:50%;
-transform:translateY(-50%);
-box-shadow:0 0 6px rgba(0,0,0,0.3);
-}
-
-/* ---------------- MOBILE & TABLET ---------------- */
-
-@media(max-width:900px){
-
-body{
-flex-direction:column;
-overflow:auto;
-}
-
-/* sidebar hidden */
-
-.side-nav{
-
-position:fixed;
-
-top:0;
-left:-280px;
-
-height:100vh;
-
-background:white;
-
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
-
-z-index:999;
-
-}
-
-/* show sidebar */
-
-.side-nav.show{
-left:0;
-}
-
-/* menu button visible */
-
-.menu-btn{
-display:block;
-}
-
-/* content full width */
-
-.content{
-width:100%;
-height:100vh;
-padding-top:60px;
-}
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade5_lesson3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Livvic', sans-serif;
+        }
+
+        body {
+            height: 100vh;                    /* Changed from min-height */
+            background-image: url("assets/images/bg3.png");
+            background-size: cover;
+            background-position: center center;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;                 /* No scrolling on body */
+        }
+
+        /* LEFT SIDEBAR */
+        .side-nav {
+            width: 260px;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+
+            height: 100vh;
+            overflow: hidden;                 /* No scroll in sidebar */
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 14px 22px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: 0.2s;
+            opacity: 0.85;
+        }
+
+        .nav-btn:hover {
+            transform: translateX(5px);
+            opacity: 1;
+        }
+
+        .nav-btn.active {
+            opacity: 1;
+            outline: 3px solid rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        .nav-btn.active::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background: #22c55e;
+            border-radius: 50%;
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Button Colors */
+        .mcq  { background: linear-gradient(#ffd2a2, #ffb778); }
+        .fill { background: linear-gradient(#b4f2c0, #7cd892); }
+        .true { background: linear-gradient(#fff1a8, #f4d86c); }
+        .match { background: linear-gradient(#bfe7f7, #86c8e6); }
+        .one  { background: linear-gradient(#d7c6f0, #b39add); }
+
+        /* RIGHT CONTENT */
+        .content {
+            flex: 1;
+            height: 100vh;
+            overflow: hidden;                 /* No scroll in content area */
+        }
+
+        /* IFRAME - MOST IMPORTANT */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+            overflow: hidden;                 /* Prevents scroll inside iframe */
+        }
+
+        /* HAMBURGER BUTTON */
+        .menu-btn {
+            display: none;
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            font-size: 26px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 14px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 900px) {
+            body {
+                flex-direction: column;
+            }
+
+            .side-nav {
+                position: fixed;
+                top: 0;
+                left: -280px;
+                height: 100vh;
+                width: 260px;
+                background: white;
+                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.25);
+                z-index: 999;
+                transition: left 0.3s ease;
+            }
+
+            .side-nav.show {
+                left: 0;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .content {
+                height: 100vh;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-<!-- LEFT NAVBAR -->
+    <!-- LEFT NAVBAR -->
+    <div class="side-nav" id="navbar">
+        <button class="nav-btn mcq active" onclick="openPage('./exercises/MCQ.html', this)">
+            🥕 Choose Correct
+        </button>
 
-<div class="side-nav" id="navbar">
+        <button class="nav-btn fill" onclick="openPage('./exercises/FITB.html', this)">
+            🥬 Fill in Blanks
+        </button>
 
-<button class="nav-btn mcq active" onclick="openPage('./exercises/MCQ.html',this)">
-🥕 Choose Correct
-</button>
+        <button class="nav-btn true" onclick="openPage('./exercises/True_false.html', this)">
+            🐱 True / False
+        </button>
 
-<button class="nav-btn fill" onclick="openPage('./exercises/FITB.html',this)">
-🥬 Fill in Blanks
-</button>
+        <button class="nav-btn match" onclick="openPage('./exercises/matching.html', this)">
+            ☁ Matching
+        </button>
 
-<button class="nav-btn true" onclick="openPage('./exercises/True_false.html',this)">
-🐱 True / False
-</button>
+        <button class="nav-btn one" onclick="openPage('./exercises/oneExample.html', this)">
+            📦 One Word
+        </button>
+    </div>
 
-<button class="nav-btn match" onclick="openPage('./exercises/matching.html',this)">
-☁ Matching
-</button>
+    <!-- RIGHT CONTENT -->
+    <div class="content">
+        <iframe id="viewer" src="./exercises/MCQ.html"></iframe>
+    </div>
 
-<button class="nav-btn one" onclick="openPage('./exercises/oneExample.html',this)">
-📦 One Word
-</button>
+    <script>
+        function openPage(page, btn) {
+            document.getElementById("viewer").src = page;
 
-</div>
+            // Remove active class from all buttons
+            document.querySelectorAll(".nav-btn").forEach(b => {
+                b.classList.remove("active");
+            });
 
-<!-- RIGHT CONTENT -->
+            btn.classList.add("active");
 
-<div class="content">
+            // Close sidebar on mobile
+            document.getElementById("navbar").classList.remove("show");
+        }
 
-<iframe id="viewer" src="./exercises/MCQ.html"></iframe>
-
-</div>
-
-<script>
-
-function openPage(page,btn){
-
-document.getElementById("viewer").src = page;
-
-document.querySelectorAll(".nav-btn").forEach(b=>{
-b.classList.remove("active");
-});
-
-btn.classList.add("active");
-
-document.getElementById("navbar").classList.remove("show");
-
-}
-
-function toggleMenu(){
-
-document.getElementById("navbar").classList.toggle("show");
-
-}
-
-</script>
+        function toggleMenu() {
+            document.getElementById("navbar").classList.toggle("show");
+        }
+    </script>
 
 </body>
 </html>

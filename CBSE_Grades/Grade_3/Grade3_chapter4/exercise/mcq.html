@@ -11,53 +11,63 @@
 
 <style>
 
+/* ============================= */
+/* BASE */
+/* ============================= */
 body{
 font-family:'Livvic';
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+min-height:100vh;
 overflow:hidden;
 background:linear-gradient(135deg,#d7ecff,#cde7ff);
+padding:clamp(10px,2vw,25px);
 }
+
 /* ============================= */
-/* ✅ UNIVERSAL RESPONSIVE BOX */
+/* CONTAINER */
 /* ============================= */
 .quiz-box{
   width:100%;
   max-width:1400px;
 
-  height:100vh;                /* 🔥 full screen fit */
-  padding:20px;                /* balanced padding */
+  height:100vh;
+  padding:clamp(15px,2vw,25px);
 
   display:flex;
   flex-direction:column;
-  justify-content:flex-start;   /* 🔥 change this */
-  gap:15px;                     /* control spacing */
+  justify-content:flex-start;
+  gap:clamp(10px,2vh,18px);
 
-  border-radius:30px;
   text-align:center;
-
   margin:auto;
-  margin-top: -20px;
+  margin-top:clamp(-10px,-1vh,-20px);
 }
+
+/* ============================= */
+/* QUESTION */
+/* ============================= */
 .question{
-font-size:30px;
-margin-bottom:30px;
+font-size:clamp(22px,2.5vw + 1.2vh,36px);
+margin-bottom:clamp(15px,2vh,30px);
 color:#2f4f4f;
 }
 
+/* ============================= */
+/* OPTIONS */
+/* ============================= */
 .options{
 display:flex;
-gap:30px;
+gap:clamp(20px,3vw,30px);
 justify-content:center;
-width: 100%;
-
-
+width:100%;
 }
+
+/* OPTION (same shape, just fluid size) */
 .option{
-  width:120px;
-  height:140px;   /* 🔥 increased for balance */
+  width:clamp(100px,10vw,130px);
+  height:clamp(120px,14vh,150px);
 
   clip-path:polygon(
     25% 6%,
@@ -71,26 +81,27 @@ width: 100%;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:space-between;   /* 🔥 key fix */
+  justify-content:space-between;
 
-  padding:15px 10px;
+  padding:clamp(10px,1.5vh,15px);
 }
+
+/* IMAGE INSIDE OPTION */
 .option img{
-  width:65px;
-  height:60px;          /* 🔥 same height for all */
-  object-fit:contain;   /* keeps aspect ratio */
+  width:clamp(55px,6vw,70px);
+  height:clamp(50px,6vh,60px);
+  object-fit:contain;
 }
 .option p{
-  font-size:18px;
-  font-weight:600;
+  font-size:clamp(15px, 1.5vw + 0.8vh, 24px);
+  font-weight:500;
   color:#2f4f4f;
-
   text-align:center;
   margin-top:5px;
-
-  min-height:22px;   /* 🔥 equal text space */
+  min-height:22px;
 }
 
+/* STATES */
 .correct{
 background:linear-gradient(#fff4cc,#ffd966);
 box-shadow:0 0 20px rgba(255,200,0,0.6);
@@ -102,27 +113,30 @@ border:4px solid #4caf50;
 }
 
 .nav{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
 
-display:flex;
-justify-content:space-evenly;
-gap:30px;
-margin-top: -10px;
+  width:min(90%, 500px);
 
-} 
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+
+  z-index:1000;
+}
 
 button{
 border:none;
-padding:14px 35px;
-font-size:20px;
+padding:clamp(12px,2vh,18px) clamp(28px,4vw,50px);
+  font-size:clamp(16px,1.3vw + 0.6vh,22px);
 border-radius:40px;
 cursor:pointer;
 color:white;
+font-weight:600;
+}
 
-}
-button:disabled{
-  opacity:0.5;
-  transform:none;   /* 🔥 stop animation shift */
-}
 .prev{
 background:#ddd;
 }
@@ -131,19 +145,27 @@ background:#ddd;
 background:linear-gradient(45deg,#7f5ae0,#b388ff);
 }
 
+button:disabled{
+opacity:0.5;
+}
+
+/* ============================= */
+/* QUESTION IMAGE (STATIC SIZE) */
+/* ============================= */
 .question-img{
 display:flex;
 justify-content:center;
-
 }
 
 .question-img img{
-width:200px;
-height:120px;
-object-fit:contain;
+width: clamp(120px, 25vw, 200px);
+  height: clamp(70px, 15vw, 120px);
+  object-fit: contain;
 }
 
-/* popup */
+/* ============================= */
+/* POPUP */
+/* ============================= */
 .popup{
 position:fixed;
 top:50%;
@@ -151,18 +173,16 @@ left:50%;
 transform:translate(-50%,-50%) scale(0);
 
 background:white;
-
-padding:20px 20px;   /* increased padding */
-
+padding:clamp(15px,2vw,25px);
 border-radius:25px;
 
 box-shadow:0 20px 40px rgba(0,0,0,0.2);
 
-font-size:30px;      /* slightly bigger text */
+font-size:clamp(20px,2vw,30px);
 font-weight:600;
 
-min-width:300px;     /* increased width */
-min-height:100px;    /* increased height */
+min-width:clamp(200px,30vw,300px);
+min-height:clamp(80px,12vh,100px);
 
 z-index:999;
 text-align:center;
@@ -173,28 +193,31 @@ transition:.3s;
 .popup.show{
 transform:translate(-50%,-50%) scale(1);
 }
-/* stars inside popup */
 
 .popup-stars{
 margin-top:10px;
-font-size:28px;
+font-size:clamp(18px,2vw,28px);
 color:#f7b500;
-letter-spacing:5px;
 }
-/* result */
 
+/* ============================= */
+/* RESULT */
+/* ============================= */
 .result-box{
 position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%) scale(0);
+
 background:#fff;
-padding:40px;
+padding:clamp(25px,3vw,40px);
 border-radius:30px;
 text-align:center;
+
 box-shadow:0 20px 50px rgba(0,0,0,0.25);
-z-index:1000;
 transition:.4s;
+
+width:min(90%,400px);
 }
 
 .result-box.show{
@@ -202,364 +225,103 @@ transform:translate(-50%,-50%) scale(1);
 }
 
 .result-box h2{
-font-size:34px;
-margin-bottom:10px;
+font-size:clamp(24px,2vw,34px);
 }
 
 .result-box p{
-font-size:24px;
-margin-bottom:20px;
+font-size:clamp(18px,1.5vw,24px);
 }
+
 .play-btn{
-  background:#4caf50;
-  border:none;
+background:#4caf50;
+border:none;
 
-  width:180px;              /* 🔥 fixed width */
-  height:50px;              /* 🔥 fixed height */
+width:clamp(140px,20vw,180px);
+height:clamp(40px,6vh,50px);
 
-  font-size:18px;
-  border-radius:30px;
-  color:white;
-  cursor:pointer;
+font-size:clamp(14px,1vw,18px);
+border-radius:30px;
+color:white;
+cursor:pointer;
 
-  white-space:nowrap;       /* 🔥 prevent line break */
+white-space:nowrap;
 }
-/* ✅ Apply pointer to option + children */
+
+/* POINTER */
 .option,
 .option *{
-  cursor:pointer;
-}
-@media(max-width:768px){
-
-body{
-height:auto;
-overflow:auto;
-align-items:flex-start;
-padding:15px;
+cursor:pointer;
 }
 
-.quiz-box{
-padding:20px 10px;
-min-height:100vh;
-}
-
-.question{
-font-size:22px;
-}
-
-.question-img img{
-width:140px;
-height:90px;
-}
-
-/* 2 × 2 grid layout */
-
-.options{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-justify-items:center;
-}
-
-/* hexagon option size */
-
-.option{
-width:100px;
-height:100px;
-padding:10px;
-}
-
-.option img{
-width:50px;
-}
-
-.option p{
-font-size:15px;
-}
-
-button{
-padding:10px 25px;
-font-size:16px;
-}
-
-}
-
-@media(max-width:900px){
-
-body{
-  height:auto;
-  overflow:hidden;
-  align-items:flex-start;
-  padding:15px;
-  margin-top: -50px;
-}
-
-/* ✅ STRUCTURE FIX */
-.quiz-box{
-  padding:20px 15px;
-  min-height:100vh;
-  margin-top:0;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;   /* 🔥 balanced layout */
-}
-
-/* ✅ QUESTION */
-.question{
-  font-size:24px;
-  text-align:center;
-  min-height:60px;   /* 🔥 fixed height prevents jump */
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* ✅ IMAGE */
-.question-img{
-  min-height:100px;   /* 🔥 reserve space */
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-top: -40px;
-}
-
-.question-img img{
-  width:100px;
-  height:50px;
-  object-fit:contain;
-  margin:0;
-}
-
-/* ✅ OPTIONS GRID */
-.options{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-  justify-items:center;
-  align-content:center;
-  min-height:200px;   /* 🔥 stable grid */
-}
-
-/* ✅ OPTION BOX (IMPORTANT) */
-.option{
-  width:100px;        /* 🔥 increased from 80 */
-  height:80px;       /* 🔥 better spacing */
-  padding:10px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  align-items:center;
-}
-
-/* ✅ IMAGE INSIDE OPTION */
-.option img{
-  width:50px;
-  height:45px;
-  object-fit:contain;
-}
-
-/* ✅ TEXT */
-.option p{
-  font-size:14px;
-  text-align:center;
-  min-height:20px;
-}
-
-/* ✅ NAV FIX */
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  width:100%;
-  max-width:300px;
-  margin:0 auto;
-}
-
-/* ✅ BUTTON FIX */
-button{
-  width:120px;
-  height:45px;
-  font-size:15px;
-  padding:0;
-}
-
-}
-button:disabled{
-opacity:0.5;
-cursor:not-allowed;
-}
 .prev{
 background:#ccc;
 color:#333;
-
 }
 
 .prev:enabled{
 background:linear-gradient(45deg,#5c6bc0,#7986cb);
 color:white;
 }
-/* ✅ KEEP RESULT BOX SAME SIZE */
-.result-box{
-  width:400px;        /* fixed width */
-  padding:40px;       /* same as desktop */
-}
 
-/* ✅ FIX TEXT SIZE */
-.result-box h2{
-  font-size:32px;
-}
+@media (max-width:768px){
 
-.result-box p{
-  font-size:22px;
-}
-.play-btn{
-  background:#4caf50;
-  border:none;
-
-  width:180px;              /* 🔥 fixed width */
-  height:50px;              /* 🔥 fixed height */
-
-  font-size:18px;
-  border-radius:30px;
-  color:white;
-  cursor:pointer;
-
-  white-space:nowrap;       /* 🔥 prevent line break */
-}
-/* ✅ Apply pointer to option + children */
-.option,
-.option *{
-  cursor:pointer;
-}
-/* popup colors */
-@media(max-width:600px){
-
-  body{
-    height:auto;
-    overflow:hidden;
-    align-items:flex-start;
-    padding:10px;
-    margin-top: -10px;
-  }
-
-  .quiz-box{
-    padding:15px 10px;
-    min-height:100vh;
-    margin-top:0;
-    gap:12px;
-  }
-
-  /* QUESTION */
+  /* ✅ Question font size fixed for mobile */
   .question{
-    font-size:18px;
-    margin-bottom:10px;
-    padding:0 8px;
-    line-height:1.3;
+    font-size:20px;
   }
 
-  /* IMAGE */
-  .question-img img{
-    width:120px;
-    height:80px;
-  }
-
-  /* OPTIONS → 2x2 GRID */
+  /* ✅ Options → 2x2 grid */
   .options{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:12px;
+    gap:clamp(10px,2vw,15px);
     justify-items:center;
   }
 
-  /* HEXAGON SIZE */
+  /* ✅ Option size adjust */
   .option{
-    width:85px;
-    height:95px;
-    padding:8px;
+    width:clamp(90px,40vw,130px);
+    height:clamp(100px,16vh,140px);
   }
+  
+button{
+border:none;
+padding:clamp(10px,1.5vh,15px) clamp(28px,4vw,50px);
+  font-size:clamp(14px,1.3vw + 0.6vh,22px);
+border-radius:40px;
+cursor:pointer;
+color:white;
+font-weight:600;
+}
 
-  .option img{
-    width:45px;
-  }
+}
+@media (max-width:600px){
 
-  .option p{
-    font-size:13px;
-  }
-
-  /* NAV */
-  .nav{
-    gap:15px;
-    margin-top:10px;
-  }
-
-  button{
-    padding:10px 16px;
-    font-size:14px;
-  }
-
-  /* POPUP */
-  .popup{
-    font-size:20px;
-    min-width:180px;
-    padding:15px;
-  }
-
-  .popup-stars{
-    font-size:20px;
-  }
-
-  /* RESULT BOX */
   .result-box{
-    width:80%;
-    padding:25px;
+    width:85%;
+    max-width:280px;
+    padding:15px;
+    border-radius:20px;
   }
 
   .result-box h2{
-    font-size:22px;
+    font-size:20px;
   }
 
   .result-box p{
-    font-size:18px;
+    font-size:16px;
   }
-/* 🔥 MAKE LAYOUT STABLE */
-.quiz-box{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;  /* 👈 key fix */
+
+  .play-btn{
+    width:120px;
+    height:38px;
+    font-size:14px;
+  }
+  .option{
+  width:clamp(70px, 28vw, 110px);   /* smaller width */
+  height:clamp(85px, 14vh, 120px);  /* smaller height */
 }
 
-/* 🔒 FIX QUESTION AREA */
-.question{
-  min-height:50px;   /* same height always */
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* 🔒 FIX IMAGE AREA */
-.question-img{
-  min-height:100px;  /* reserve space */
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* 🔒 FIX OPTIONS AREA */
-.options{
-  min-height:200px;  /* keeps grid stable */
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  align-content:center;
-}
-
-/* 🔒 FIX NAV BUTTON POSITION */
-.nav{
-  position:relative;
-  bottom:40px;   /* increase to move up */
-}
 }
 </style>
 </head>

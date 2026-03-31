@@ -410,7 +410,7 @@ button:disabled {
     body {
         overflow: auto;
         padding: 15px;
-        background-image: url("../images/L2bg.png");
+        background-image: url("../images/L2bgg.png");
   background-size: cover;        /* ✅ Makes image full screen */
   background-position: center;   /* ✅ Center the image */
   background-repeat: no-repeat;  /* ✅ Prevent repeat */

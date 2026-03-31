@@ -462,7 +462,7 @@ body {
 }
 
 /* ================= TABLET ================= */
-@media (max-width:900px) {
+@media (max-width:1100px) {
     body {
         overflow-y: auto;
     }
@@ -484,7 +484,8 @@ body {
         border-radius: 50px;
         position: relative;
         top: 30px;
-        left: 4px;
+         left: 120%; 
+        
     }
 }
 
@@ -581,7 +582,17 @@ body {
         margin-top: 10px;
         justify-content: center;
     }
-
+ .progress-bar {
+        display: flex;
+        gap: 10px;
+        background: #fff;
+        padding: 8px 14px;
+        border-radius: 50px;
+        position: relative;
+        top: 30px;
+         left: 0%; 
+        
+    }
     /* fix backspace position */
     .backspace {
         position: static;
@@ -591,10 +602,125 @@ body {
     }
 
     /* keep navigation visible */
-    .nav-bar {
-        margin-top: 15px;
-        position: static;
-        width: 100%;
-    }
+ .nav-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: px;
+    position: static;
 
 }
+
+.nav {
+    padding: 10px 26px;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 22px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 7px;
+
+}
+
+
+}
+
+@media (max-width:438px) {
+    body{
+        overflow: auto;
+          margin-top: -15%;
+    }
+.question-text {
+        font-size: 22px;
+    }
+
+    /* .character-section img {
+      width: 90px;
+      height: 90px;
+    } */
+
+    .answer-boxes {
+  
+    margin-top: -15%;
+}
+   .letters button {
+        font-size: 18px;
+       
+    } 
+
+    .answer-boxes .box {
+    width: 38px;
+    height: 38px;
+    background: white;
+    border-radius: 12px;
+    border: 3px solid #7ec8ee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    
+    font-weight: 900;
+    color: #0f172a;
+    user-select: none;
+}
+
+.letters button {
+    width: 38px;
+    height: 38px;
+    aspect-ratio: 1/1;
+    background: linear-gradient(#2f9fdc, #1c7fc7);
+    color: white;
+    border: 3px solid #ffa25c;
+    border-radius: 12px;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 900;
+
+}
+
+ .feedback-circle{
+    width:140px;
+    height:140px;
+    font-size:60px;
+  }
+
+  .final-popup-box{
+    width:95vw;
+    flex-direction:column;
+  }
+
+  .final-left{
+    width:100%;
+    height:100px;
+   
+  }
+
+  .final-left img{
+    width:90px;
+    height:90px;
+  }
+
+  .final-right h2{
+    font-size:18px;
+    text-align: center;
+  }
+
+  .final-score{
+    font-size:14px;
+    text-align: center;
+  }
+
+  .final-stars{
+    font-size:18px;
+    text-align: center;
+  }
+
+  .restart-btn{
+    font-size:14px;
+    padding:8px 14px;
+    margin: auto;
+  }
+
+}
+
+

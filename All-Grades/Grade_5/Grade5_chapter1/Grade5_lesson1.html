@@ -128,7 +128,7 @@ iframe{
   }
 
   .content{
-    display:none;
+    display:block;
     position:fixed;
     inset:0;
     background:#fff;
@@ -175,7 +175,7 @@ iframe{
   padding:8px 12px;
   border-radius:10px;
   cursor:pointer;
-  z-index:1001;
+  z-index:9999;   /* VERY IMPORTANT */
 }
 
 .mobile-toggle.show{
@@ -195,27 +195,48 @@ iframe{
  
   /* Hide iframe initially */
   .content{
-    display:none;
+    display:block;
     position:fixed;
     inset:0;
     /* background:#fff; */
     z-index:999;
    
   }
-
+ 
   .content.active{
     display:block;
   }
 
   /* Sidebar full width */
-  .sidebar{
-    width:100%;
-    height:auto;
-    padding:20px;
-    align-items:center;
-   
-  }
+ 
+.sidebar.active{
+  display:flex !important;
+  position:fixed;
+  inset:0;
+  background:#fff;
+  z-index:2000;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
 
+.sidebar{
+  display:none;
+  width:100%;
+  height:100vh;
+  padding:20px;
+  align-items:center;
+}
+
+.sidebar{
+  display:none;
+  width:100%;
+  height:100vh;
+  padding:20px;
+  align-items:center;
+}.sidebar{
+  transition:0.3s ease;
+}
   /* Remove absolute positioning */
   .menu-btn{
     position:relative;
@@ -253,19 +274,9 @@ iframe{
     display:block;
   }
 }
-.mobile-toggle{
-  display:none;
-  position:fixed;
-  top:15px;
-  right:15px;
-  background:#00cfff;
-  color:#fff;
-  font-size:22px;
-  padding:8px 12px;
-  border-radius:10px;
-  cursor:pointer;
-  z-index:1001;
-}
+
+
+
 
 
 </style>
@@ -308,12 +319,13 @@ iframe{
 </div>
 
 <script>
-const lines = document.querySelectorAll(".path-line");
-const buttons = document.querySelectorAll(".menu-btn");
-const iframe = document.getElementById("contentFrame");
-const content = document.getElementById("content");
-const toggleBtn = document.getElementById("toggleBtn");
-buttons[0].classList.add("active");
+  const lines = document.querySelectorAll(".path-line");
+  const buttons = document.querySelectorAll(".menu-btn");
+  const iframe = document.getElementById("contentFrame");
+  const content = document.getElementById("content");
+  const toggleBtn = document.getElementById("toggleBtn");
+  buttons[0].classList.add("active");
+  iframe.src = buttons[0].dataset.url;
 /* Activate lines function */
 function activateLines(index){
   lines.forEach(line => line.classList.remove("active"));
@@ -337,18 +349,27 @@ buttons.forEach((btn,index)=>{
 
     activateLines(index);
 
-    if(window.innerWidth <= 768){
-      content.classList.add("active");
-      toggleBtn.classList.add("show");
-    }
+   if(window.innerWidth <= 768){
+  document.querySelector(".sidebar").classList.remove("active");
+  content.style.display = "block";
+}
   });
 });
 
 /* Mobile back */
 toggleBtn.addEventListener("click",()=>{
-  content.classList.remove("active");
-  toggleBtn.classList.remove("show");
+  const sidebar = document.querySelector(".sidebar");
+
+  if(sidebar.classList.contains("active")){
+    sidebar.classList.remove("active");
+    content.style.display = "block";
+  } else {
+    sidebar.classList.add("active");
+    content.style.display = "none";
+  }
 });
+
+
 </script>
 
 </body>

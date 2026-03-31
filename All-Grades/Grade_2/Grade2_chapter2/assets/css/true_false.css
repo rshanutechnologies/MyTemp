@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Livvic';
-  overflow: hidden;
+ 
 }
 
 body {
@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 24px 16px;
-  overflow-x: hidden;
+  overflow: hidden;
   /* allow vertical space */
   /* overflow-y: hidden; */
 }
@@ -78,7 +78,7 @@ body {
 
 /* QUESTION */
 .question {
-  font-size: 30px;
+  font-size: 30px !important;
   font-weight: 400 !important;
   color: #2f4f4f;
 }
@@ -469,9 +469,15 @@ body {
 
 
 @media (max-width:480px) {
-
+  body{
+    overflow-y: hidden;
+  }
+    .box {
+  margin-top: -40%;
+  height: 500px !important;
+}
   .question {
-    font-size: 18px;
+    font-size: 22px !important;
   }
 
   .scene {
@@ -489,6 +495,7 @@ body {
 
   .nav {
     gap: 10px;
+    margin-top: -50%;
   }
 
   .nav button {

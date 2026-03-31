@@ -120,6 +120,11 @@ body {
   cursor: not-allowed;
 }
 
+.opt-img {
+  width: 80px;
+  height: 90px;
+}
+
 /* CONTROLS */
 .controls {
   display: flex;
@@ -395,9 +400,23 @@ button:disabled {
 }
 
 @media (max-width: 480px) {
+  body {
+    padding: 0px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .q-text {
+    text-align: left;
+  }
 
   .question {
     font-size: 20px;
+  }
+
+  .opt-img {
+    width: 65px;
+    height: 55px;
   }
 
   .options {
@@ -405,7 +424,8 @@ button:disabled {
   }
 
   .option {
-    font-size: 15px;
+    flex-direction: row;
+    font-size: 13px;
     padding: 12px;
   }
 

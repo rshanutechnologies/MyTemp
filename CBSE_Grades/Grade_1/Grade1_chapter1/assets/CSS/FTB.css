@@ -450,7 +450,7 @@ input:focus {
     }
 
     .question h2 {
-        font-size: 20px;
+        font-size: 22px;
         text-align: left;
     }
 
@@ -466,7 +466,7 @@ input:focus {
     }
 
     #submitBtn {
-        font-size: 15px;
+        font-size: 16px;
         padding: 8px 24px;
     }
 
@@ -482,11 +482,11 @@ input:focus {
 
     #prevBtn,
     #nextBtn {
-        font-size: 14px;
-        padding: 10px 24px;
+        font-size: 18px;
+        padding: 10px 14px;
     }
 
-    /* .kid-card {
+    .kid-card {
         width: 90%;
         max-width: 300px;
         padding: 20px;
@@ -502,7 +502,7 @@ input:focus {
 
     .kid-card p {
         font-size: 1em;
-    } */
+    }
 
     /* final popup */
 
@@ -537,8 +537,14 @@ input:focus {
 
 @media (max-width:480px) {
 
+    body{
+        align-items: flex-start;
+        padding-top: 55px;
+    }
+
     .question h2 {
-        font-size: 18px;
+        font-size: 20px;
+        margin-inline: 20px;
     }
 
     input {
@@ -551,8 +557,10 @@ input:focus {
     }
 
     .nav-buttons {
-        flex-direction: column;
-        gap: 10px;
+        margin: 20px 0px 0px;
+        width: 100%;
+        flex-direction: row;
+        gap: 40px;
     }
 
     #prevBtn,
@@ -590,7 +598,7 @@ input:focus {
 @media (max-width:360px) {
 
     .question h2 {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .heading h3 {

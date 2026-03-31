@@ -127,7 +127,7 @@ function loadQuestion() {
     opt.className = "option";
 
     opt.innerHTML = `
-    <img src="${optData.img}" style="width:80px;height:90px;">
+    <img class="opt-img" src="${optData.img}">
     <span>${optData.text}</span>
   `;
 

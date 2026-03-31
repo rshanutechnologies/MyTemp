@@ -130,12 +130,12 @@
   
     font-weight: 500;
      position:relative;
-    width:140px;
+    width:120px;
     height:50px;
     border:none;
     border-radius:999px;
-    font-size:24px;
-    font-weight:500;
+    font-size:20px;
+    font-weight:400;
         background-color: #ffeab1;
   color:#8a6d4b;
   }
@@ -145,12 +145,12 @@
     cursor: pointer;
     font-weight: 500;
  position:relative;
-    width:140px;
+    width:120px;
     height:50px;
     border:none;
     border-radius:999px;
-    font-size:24px;
-    font-weight:500;
+    font-size:20px;
+    font-weight:400;
      background: linear-gradient(145deg, #9be3d6, #6ccfd0);
   color:#ffffff;
    }
@@ -396,9 +396,11 @@ box-shadow:none !important;
 
 body{
   height:auto;
-  overflow-y: auto;
+  overflow:hidden;
   padding:10px;
-  margin-top:2%;
+  margin-top:-2%;
+  margin-left: -50px;
+  
 }
 
 /* main card */
@@ -411,7 +413,7 @@ body{
 /* progress text */
 .progress{
   margin-left:0;
-  text-align:right;
+  /* text-align:right; */
   font-size:14px;
 }
 
@@ -420,28 +422,30 @@ body{
   font-size:22px;
   padding:10px;
   text-align:center;
-  min-height:100px;
+  min-height:150px;
   margin-top:8%;
+  width: 250px;
 }
 
 /* question image */
 .question-img{
-  width:150px;
+  width:100px;
   height:180px;
   max-width:100%;
+
 }
 
 /* true/false buttons */
 .tf-buttons{
-  flex-direction:column;
+  flex-direction:row;
   gap:15px;
   margin-top:10px;
   margin-left:15%;
 }
 
 .tf-buttons button{
-  width:80%;
-  font-size:18px;
+  width:100%;
+  font-size:14px;
   padding:16px;
   height:60px;
 }
@@ -453,6 +457,7 @@ body{
   transform:none;
   margin-top:20px;
   justify-content:space-between;
+  margin-left: 20px;
 }
 
 .prev,
@@ -498,4 +503,51 @@ body{
   padding:20px;
 }
 
+}
+
+
+
+/* Small desktops / laptops */
+@media (min-width: 1024px) {
+  body{
+    margin-top: -2%;
+  }
+  
+.nav{
+    margin-top:6%;
+  
+}
+}
+
+/* Medium desktops */
+@media (min-width: 1280px) {
+ body{
+    margin-top: -2%;
+  }
+  .nav{
+    margin-top:6%;
+  
+}
+}
+
+/* Large desktops */
+@media (min-width: 1440px) {
+   body{
+    margin-top: -2%;
+  }
+    .nav{
+    margin-top:6%;
+  
+}
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
+  body{
+    margin-top: -2%;
+  }
+    .nav{
+    margin-top:6%;
+  
+}
 }

@@ -546,3 +546,54 @@ body {
     padding: 10px 22px;
   }
 }
+
+@media (max-width: 468px) {
+   .wheel {
+    width: 200px;
+    height: 200px;
+  }
+
+  .tag{
+    font-size: 16px;
+    padding: 6px 10px;
+    height: 90px;
+  }
+
+  .game{
+    gap: 25px;
+  }
+
+  .plant img {
+    width: 41px;
+    height: 50px;
+  }
+
+  .option-label{
+    font-size: 14px;
+  }
+
+  .plant {
+    width: 105px;
+    height: 105px;
+  }
+
+  .p1 {
+    transform: rotate(144deg) translateY(-100px);
+  }
+
+  .p2 {
+    transform: rotate(0deg) translateY(-100px);
+  }
+
+  .p3 {
+    transform: rotate(288deg) translateY(-100px);
+  }
+
+  .p4 {
+    transform: rotate(216deg) translateY(-100px);
+  }
+
+  .p5 {
+    transform: rotate(72deg) translateY(-100px);
+  }
+}

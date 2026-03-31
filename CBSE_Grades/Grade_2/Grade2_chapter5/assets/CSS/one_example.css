@@ -75,7 +75,7 @@ body::before{
 .options{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:150px;
+  gap:10px !important;
   margin-top:50px;
 }
 /* OPTION CARD */
@@ -102,7 +102,7 @@ body::before{
   height:200px;
   object-fit:contain;
   position:absolute;
-  bottom:70px;
+  /* bottom:70px; */
   z-index:3;
   /* animation:floatItem 3s ease-in-out infinite; */
 }
@@ -249,9 +249,9 @@ body::before{
     width:100%;
     display:flex;
     justify-content:center;
-    gap:70%;
+    gap:50%;
     padding:20px 0;
-    margin-bottom:10%;
+    margin-top:2% !important;
 }
 
 .prev,
@@ -260,7 +260,7 @@ body::before{
 height:50px;
 border-radius:20px;
 border:none;
-font-size:25px;
+font-size:20px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -613,4 +613,37 @@ padding:22px;
 font-size:50px;
 }
 
+}
+
+
+
+
+/* Medium desktops */
+@media (min-width: 1280px) {
+ body{
+    margin-top: 3%;
+  }
+  .quiz-nav{
+    margin-bottom:5% !important;
+}
+}
+
+/* Large desktops */
+@media (min-width: 1440px) {
+   body{
+    margin-top: 3%;
+  }
+    .quiz-nav{
+    margin-bottom:5% !important;
+}
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
+  body{
+    margin-top: 3%;
+  }
+    .quiz-nav{
+    margin-bottom:5% !important;
+}
 }

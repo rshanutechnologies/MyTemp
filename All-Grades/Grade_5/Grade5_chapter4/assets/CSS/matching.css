@@ -328,7 +328,7 @@ body {
   }
 
   .item span {
-    font-size: 18px;
+    font-size: 13px !important;
     margin-right: 0;
   }
 
@@ -363,6 +363,7 @@ body {
   body {
     align-items: flex-start;
     padding: 20px 12px;
+    margin-left: 10% !important;
   }
 
   /* TITLE */
@@ -389,26 +390,36 @@ body {
   }
 
   /* ITEMS */
-  .item {
-    height: auto;
-    height: 126px;
-    padding: 10px;
-  }
+.item {
+  height: 126px;
+  padding: 10px;
+  width: 100%;   /* ✅ FULL WIDTH ONLY MOBILE */
+}
 
+#lineLayer path {
+  stroke: #21da3a;
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 8px rgba(165, 180, 252, .6));
+}
   .item img {
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
   }
 
   .right-img {
-    width: 50px !important;
-    height: 50px !important;
+    width: 36px !important;
+    height: 36px !important;
   }
 
   .item span {
-    font-size: 16px;
+    font-size: 13px !important;
     margin-right: 0;
-  }
+  margin-left: -8px;
+}
+  
 
   /* POPUP */
   .popup-box {
@@ -459,3 +470,101 @@ body {
   }
 
 }
+
+
+
+
+@media (max-width:380px) {
+
+  html,
+  body {
+    overflow-y: auto;
+  }
+
+  body {
+    align-items: flex-start;
+    padding: 20px 12px;
+  }
+
+  /* TITLE */
+  .quiz-title {
+    display: block;
+    width: 100%;
+    font-size: 22px;
+    margin-bottom: 20px !important;
+    /* display: none; */
+  }
+
+  /* MAIN QUIZ WRAPPER */
+  .quiz {
+    width: 100%;
+  }
+
+  /* MATCH AREA */
+  .match-area {
+    gap: 30px;
+  }
+
+  .column {
+    gap: 14px;
+  }
+
+  /* ITEMS */
+  .item {
+    /* height: auto; */
+    height: 106px;
+    padding: 10px;
+    width: 120px;
+  }
+
+  .item img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .right-img {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .item span {
+    font-size: 10px;
+    margin-right: 0;
+  }
+
+  /* POPUP */
+  .popup-box {
+    width: 95%;
+  }
+
+  .popup-box.popup-final {
+    width: 95%;
+    min-height: auto;
+  }
+
+  .popup-final-content {
+    font-size: 20px;
+  }
+
+  .popup-final-content .emoji {
+    font-size: 50px;
+  }
+
+  /* FINAL BUTTONS STACK */
+  .final-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .restart,
+  .home {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  /* Increase LEFT column height only */
+  .match-area .column:first-child .item {
+    min-height: 95px !important;
+  }
+}
+

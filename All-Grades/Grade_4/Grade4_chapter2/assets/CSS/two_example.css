@@ -520,12 +520,21 @@ button:disabled {
 /* ---------- EXTRA SMALL (≤ 360px) ---------- */
 @media (max-width: 360px) {
 
+  body{
+    padding: 0;
+  }
+
+  .quiz{
+    padding: 0;
+  }
+
   .question {
     font-size: 18px;
   }
 
   .options {
     gap: 12px;
+    padding: 0;
   }
 
   .option {

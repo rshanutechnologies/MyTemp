@@ -28,6 +28,29 @@ overflow: hidden;
 
 }
 
+/* QUIZ HEADER */
+
+.quiz-header{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+text-align:center;
+}
+
+.quiz-img{
+width:120px;
+height:auto;
+object-fit:contain;
+}
+
+.quiz-title{
+font-size:22px;
+font-weight:600;
+color:#0b5fa5;
+}
+
 /* SIDEBAR (Desktop visible) */
 
 .sidebar{
@@ -131,6 +154,14 @@ z-index:1000;
 
 @media (max-width:768px){
 
+.quiz-img{
+width:100px;
+}
+
+.quiz-title{
+font-size:20px;
+}
+
 .sidebar{
 position:fixed;
 top:0;
@@ -190,12 +221,21 @@ margin-bottom:10px;
 </head>
 
 <body>
+   
+
 
 <button class="toggle-btn" id="toggleBtn">
 <i class="fa-solid fa-bars"></i>
 </button>
 
 <div class="sidebar" id="sidebar">
+
+<!-- TITLE SECTION -->
+<!-- <div class="quiz-header">
+    <img src="./assets/images/MangoTree.png" class="quiz-img" />
+    <h2 class="quiz-title">Green World Quiz</h2>
+</div> -->
+
 
 <div class="menu-btn color1 active"
 onclick="loadPage(this,'./exercises/mcq.html')">

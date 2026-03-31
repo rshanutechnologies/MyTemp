@@ -89,12 +89,12 @@ body {
 .left img {
   width: 100%;
   max-width: 250px;
-  height: 240px;
+  height: 190px;
   object-fit: contain;
 }
 
 .question-text {
-  font-size: 30px;
+  font-size: 30px !important;
   font-weight: 400 !important;
   color: #2f4f4f;
   text-align: left;
@@ -428,21 +428,7 @@ button:disabled {
 /* ============================
    SMALL MOBILE
 ============================ */
-@media (max-width:480px) {
 
-  .question-text {
-    font-size: 18px;
-  }
-
-  .option {
-    font-size: 16px;
-  }
-
-  .winner-img {
-    width: 150px;
-    height: 150px;
-  }
-}
 
 @media (max-width:768px) {
 
@@ -461,6 +447,29 @@ button:disabled {
     padding: 12px;
   }
 
+}
+
+@media (max-width:480px) {
+  body{
+    overflow-y: hidden;
+  }
+  .question-text {
+    font-size: 22px !important;
+  }
+.left img {
+  width: 100%;
+  max-width: 250px;
+  height: 90px;
+  object-fit: contain;
+}
+  .option {
+    font-size: 16px;
+  }
+
+  .winner-img {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 @media (max-width:480px) {
@@ -484,3 +493,4 @@ button:disabled {
   }
 
 }
+

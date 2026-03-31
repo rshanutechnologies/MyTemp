@@ -435,9 +435,12 @@ button:disabled {
    📱 SMALL MOBILES (≤ 480px)
 ================================ */
 @media (max-width: 480px) {
+  body {
+    padding: 0;
+  }
 
   .quiz-container {
-    padding: 18px;
+    padding: 0px;
   }
 
   .question {
@@ -447,6 +450,10 @@ button:disabled {
 
   .question .q-text {
     text-align: left;
+  }
+
+  .content-left {
+    margin: 0;
   }
 
   .content-left img {

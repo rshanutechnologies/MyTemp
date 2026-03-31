@@ -452,7 +452,7 @@ body {
         padding: 20px 10px;
         overflow: auto;
         align-items: flex-start;
-         background-image: url("../images/L2bg.png");
+         background-image: url("../images/L2bgg.png");
   background-size: cover;        /* ✅ Makes image full screen */
   background-position: center;   /* ✅ Center the image */
   background-repeat: no-repeat;  /* ✅ Prevent repeat */
@@ -472,7 +472,7 @@ body {
 
     /* QUESTION */
     .question {
-        font-size: 22px;
+        font-size: 20px;
         margin-top: 40px;
         height: auto;
         padding: 0 10px;
@@ -482,8 +482,8 @@ body {
 
     /* IMAGE */
     #qImg {
-        width: 200px;
-        height: 200px;
+        width: 120px;
+        height: 120px;
         margin-bottom: 20px;
     }
 

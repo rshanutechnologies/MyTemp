@@ -55,20 +55,25 @@ let usedTiles=[];
 
 /* TEXT SPEECH */
 
-function speak(t){
+function speak(text){
 
+if(!window.speechSynthesis) return;
+
+const msg = new SpeechSynthesisUtterance(text);
+
+msg.lang = "en-US"; // better support
+msg.volume = 1;
+msg.rate = 1;
+msg.pitch = 1;
+
+// 🔥 important fix
 speechSynthesis.cancel();
 
-const msg=new SpeechSynthesisUtterance(t);
-
-msg.lang="en-UK";
-msg.volume=0.3;
-msg.rate=1;
-
-speechSynthesis.speak(msg);
+setTimeout(()=>{
+    speechSynthesis.speak(msg);
+}, 100);
 
 }
-
 
 /* LOAD QUESTION */
 
@@ -145,6 +150,10 @@ boxes[i].innerText=tile.innerText;
 tile.classList.add("used");
 
 usedTiles.push(tile);
+tile.onclick=function(){
+    addLetter(tile);
+    speak("Selected " + tile.innerText);
+};
 
 /* save answer */
 
@@ -216,7 +225,11 @@ if(word.length===quiz[index].answer.length){
 if(word===quiz[index].answer){
 
 showPopup(true);
-speak("Correct");
+
+// ✅ FIX: delay speech
+setTimeout(()=>{
+    speak("Correct");
+},100);
 
 score++;
 answered[index]=true;
@@ -240,9 +253,13 @@ prev.disabled = true;
 }else{
 
 showPopup(false);
-speak("Wrong");
-/* RESET LETTERS */
 
+// ✅ FIX: delay speech
+setTimeout(()=>{
+    speak("Wrong");
+},100);
+
+/* RESET LETTERS */
 setTimeout(()=>{
 resetLetters();
 },800);

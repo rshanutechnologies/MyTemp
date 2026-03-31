@@ -10,7 +10,9 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
-
+/* ============================= */
+/* BASE */
+/* ============================= */
 *{
 margin:0;
 padding:0;
@@ -19,65 +21,75 @@ font-family:'Livvic';
 }
 
 body{
-height:100vh;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 background:linear-gradient(135deg,#d7ecff,#cde7ff);
-overflow: hidden;
+overflow:hidden;
+padding:clamp(10px,2vw,25px);
+margin-top: -10px;
 }
 
-/* MAIN CONTAINER */
-
+/* ============================= */
+/* CONTAINER */
+/* ============================= */
 .quiz-container{
-width:1000px;
-max-width:100%;
-height:520px;
+width:min(100%,1000px);
+ min-height:clamp(460px,75vh,520px);  /* ✅ allow expansion */
+
 border-radius:40px;
+
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:space-between;
-padding:40px;
+
+padding:clamp(20px,3vw,40px);
+padding-bottom: clamp(20px,4vh,40px);  /* ✅ breathing space */
 }
 
+/* ============================= */
 /* QUESTION */
-
+/* ============================= */
 .question-card{
-font-size:30px;
+font-size:clamp(20px,2.5vw + 1.2vh,36px);
 color:#2f4f4f;
 text-align:center;
 line-height:1.4;
 }
 
+/* ============================= */
 /* CONTENT AREA */
-
+/* ============================= */
 .content-area{
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:20px;
+gap:clamp(10px,2vh,20px);
 flex:1;
 justify-content:center;
 }
+
+/* ============================= */
+/* IMAGE */
+/* ============================= */
 .image-wrapper{
-width:320px;
-height:200px;
+width:clamp(260px, 40vw, 450px);   /* bigger width */
+  height:clamp(180px, 28vh, 300px);  /* bigger height */
+
 display:flex;
 justify-content:center;
 align-items:center;
 
-background:#fafafa;
-
+background:#eef2f5;
 border-radius:30px;
 
-border:3px solid #6c8ea4;   /* visible border */
-
+border:3px dashed #b6c6d2;
 box-shadow:0 10px 25px rgba(0,0,0,0.15);
 
-padding:20px;
+padding:clamp(10px,2vw,20px);
 }
-/* image */
 
 .image-wrapper img{
 max-width:100%;
@@ -85,46 +97,56 @@ max-height:100%;
 object-fit:contain;
 }
 
-
-/* ANSWER */
-
+/* ============================= */
+/* INPUT */
+/* ============================= */
 .answer-input{
-width:320px;
-padding:16px;
+width:clamp(220px,30vw,320px);
+padding:clamp(12px,1.5vh,16px);
+
 border-radius:40px;
 border:none;
 background:#c6d6e1;
-font-size:20px;
+
+font-size: clamp(18px,1.8vw,24px);
 text-align:center;
 outline:none;
+margin-top: 20px;
 }
 
+/* ============================= */
 /* RESULT */
-
+/* ============================= */
 .result{
-font-size:20px;
+font-size:clamp(16px,1.5vw,20px);
 font-weight:600;
 height:30px;
 }
-
-/* BUTTONS */
-
 .buttons{
-display:flex;
-gap:25px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:clamp(10px,2vw,20px);
+  flex-wrap:wrap;   /* ✅ prevents overlap */
+  margin-bottom: 20px;
 }
 
+/* BUTTON */
 button{
-padding:12px 30px;
-border-radius:30px;
-border:none;
-font-size:18px;
-cursor:pointer;
+  padding:clamp(12px,2vh,18px) clamp(28px,4vw,50px);
+  font-size:clamp(16px,1.3vw + 0.6vh,22px);
+
+  min-width:clamp(90px,12vw,130px);   /* ✅ equal width */
+  text-align:center;
+
+  border-radius:30px;
+  border:none;
+  cursor:pointer;
 }
 
 .prev{
 background:#ddd;
-border:2px solid #333;
+
 }
 
 .check{
@@ -146,46 +168,31 @@ background:linear-gradient(45deg,#5c6bc0,#7986cb);
 color:white;
 }
 
-/* MOBILE */
-
-@media(max-width:700px){
-
-.quiz-container{
-height:auto;
-padding:25px;
-}
-
-.question-card{
-font-size:22px;
-}
-
-.image-wrapper{
-width:200px;
-height:200px;
-}
-
-.answer-input{
-width:250px;
-}
-
-}
-/* popup */
-
+/* ============================= */
+/* POPUP */
+/* ============================= */
 .popup{
 position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%) scale(0);
+
 background:white;
-padding:20px 25px;
+padding:clamp(15px,2vw,25px);
 border-radius:25px;
+
 box-shadow:0 20px 40px rgba(0,0,0,0.2);
-font-size:30px;
+
+font-size:clamp(20px,2vw,30px);
 font-weight:600;
-min-width:280px;
-text-align:center;
-transition:.3s;
+
+min-width:clamp(200px,30vw,300px);
+min-height:clamp(80px,12vh,100px);
+
 z-index:999;
+text-align:center;
+
+transition:.3s;
 }
 
 .popup.show{
@@ -194,9 +201,8 @@ transform:translate(-50%,-50%) scale(1);
 
 .popup-stars{
 margin-top:10px;
-font-size:28px;
+font-size:clamp(18px,2vw,28px);
 color:#f7b500;
-letter-spacing:5px;
 }
 
 
@@ -205,13 +211,16 @@ position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%) scale(0);
+
 background:#fff;
-padding:40px;
+padding:clamp(25px,3vw,40px);
 border-radius:30px;
 text-align:center;
+
 box-shadow:0 20px 50px rgba(0,0,0,0.25);
-z-index:1000;
 transition:.4s;
+
+width:min(90%,400px);
 }
 
 .result-box.show{
@@ -219,294 +228,84 @@ transform:translate(-50%,-50%) scale(1);
 }
 
 .result-box h2{
-font-size:34px;
-margin-bottom:10px;
+font-size:clamp(24px,2vw,34px);
+margin-bottom: 10px;
 }
 
+
 .result-box p{
-font-size:24px;
-margin-bottom:20px;
+font-size:clamp(18px,1.5vw,24px);
+margin-bottom: 20px; 
 }
 
 .play-btn{
 background:#4caf50;
 border:none;
-padding:12px 30px;
-font-size:18px;
+
+width:clamp(140px,20vw,180px);
+height:clamp(40px,6vh,50px);
+
+font-size:clamp(14px,1vw,18px);
 border-radius:30px;
 color:white;
 cursor:pointer;
+
+white-space:nowrap;
+margin-top: 10px; 
 }
-.image-wrapper{
-background:#eef2f5;
-border:3px dashed #b6c6d2;
-}
-.check:disabled{
-background:#cfd8dc;
-color:#666;
-cursor:not-allowed;
-}
-/* ========================= */
-/* TABLET */
-/* ========================= */
-
-@media(max-width:700px){
-
-.quiz-container{
-height:auto;
-padding:25px;
-}
-
-.question-card{
-font-size:22px;
-}
-
-.image-wrapper{
-width:220px;
-height:180px;
-}
-
-.answer-input{
-width:250px;
-font-size:18px;
-}
-
-}
-
-
-@media(max-width:480px){
-
-body{
-height:auto;
-overflow:auto;
-padding:10px;
-align-items:flex-start;
-}
-
-/* container */
-
-.quiz-container{
-width:100%;
-height:auto;
-padding:20px;
-gap:15px;
-}
-
-/* question */
-
-.question-card{
-font-size:20px;
-line-height:1.4;
-}
-
-/* image */
-
-.image-wrapper{
-width:160px;
-height:130px;
-padding:10px;
-}
-
-/* input */
-
-.answer-input{
-width:200px;
-font-size:16px;
-padding:10px;
-}
-
-/* buttons */
-
-.buttons{
-flex-direction:column;
-gap:12px;
-}
-
-button{
-width:170px;
-font-size:15px;
-padding:10px;
-}
-
-}
-/* MOBILE FIX */
-/* ============================= */
-/* ✅ TABLET / SMALL DESKTOP (≤900px) */
-/* ============================= */
-@media(max-width:900px){
-
-  body{
-    height:100vh;
-    overflow:hidden;          /* ❗ no scroll */
-    padding:10px;
-    align-items:center;
-  }
-
-  .quiz-container{
-    height:100%;
-    padding:15px;
-    gap:10px;
-    justify-content:space-between;
-  }
-
-  /* QUESTION */
-  .question-card{
-    font-size:26px;
-    line-height:1.3;
-  }
-
-  /* IMAGE */
-  .image-wrapper{
-    width:220px;
-    height:150px;
-    padding:10px;
-  }
-
-  .image-wrapper img{
-    max-width:100%;
-    max-height:100%;
-  }
-
-  /* INPUT */
-  .answer-input{
-    width:220px;
-    font-size:16px;
-    padding:15px;
-    margin-top: 30px;
-  }
-
-  /* CONTENT SPACING */
-  .content-area{
-    gap:12px;
-  }
-
-  /* BUTTONS - SAME LINE */
-  .buttons{
-    flex-direction:row;
-    justify-content:center;
-    gap:12px;
-    margin-top:0;   /* ❗ remove negative margin */
-  }
-
-  button{
-    width:auto;
-    min-width:90px;
-    font-size:14px;
-    padding:8px 16px;
-  }
-
-}
-
 .blur-img{
-filter: blur(5px);
-transition: filter 0.5s ease;
+  filter: blur(8px);
+  transition: 0.3s ease;
 }
+@media (max-width:600px){
 
-@media(max-width:600px){
-
-  body{
-    height:auto;
-    overflow:auto;
-    align-items:flex-start;
-    padding:10px;
-  }
-
-  /* CONTAINER */
-  .quiz-container{
-    width:100%;
-    height:100vh;                  /* 🔥 full screen */
-    padding:15px;
-    gap:10px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between; /* 🔥 keep layout stable */
-  }
-
-  /* QUESTION (FIXED HEIGHT) */
-  .question-card{
-    font-size:18px;
-    line-height:1.3;
-    min-height:60px;               /* 🔒 prevents jumping */
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-  }
-
-  /* CONTENT AREA */
-  .content-area{
-    flex:1;
-    gap:12px;
-    justify-content:center;
-  }
-
-  /* IMAGE (FIXED SPACE) */
-  .image-wrapper{
-    width:160px;
-    height:120px;
-    padding:10px;
-  }
-
-  .image-wrapper img{
-    max-width:100%;
-    max-height:100%;
-  }
-
-  /* INPUT */
-  .answer-input{
-    width:220px;
-    font-size:16px;
-    padding:13px;
-    margin-top: 70px;
-  }
-
-  /* RESULT TEXT */
-  .result{
-    font-size:14px;
-    height:20px;
-  }
-
-  /* BUTTONS (INLINE, STATIC POSITION) */
   .buttons{
     display:flex;
-    justify-content:center;
-    gap:10px;
-    margin-bottom:20px;   /* 👈 moves buttons slightly UP */
+    flex-direction:column;   /* 🔥 stack vertically */
+    align-items:center;
+    gap:12px;
+    width:100%;
+    margin-top: -20px;
   }
 
-  button{
-    min-width:80px;
+  .buttons button{
+    width:70%;              /* nice centered size */
+    max-width:220px;
+    padding:12px 0;
     font-size:14px;
-    padding:8px 12px;
   }
 
-  /* POPUP */
-  .popup{
-    font-size:20px;
-    min-width:220px;
-    padding:15px;
+  .image-wrapper{
+    width:clamp(180px, 60vw, 260px);  /* smaller */
+    height:clamp(120px, 18vh, 160px); /* smaller height */
   }
 
-  .popup-stars{
-    font-size:20px;
-  }
 
-  /* RESULT BOX */
+
   .result-box{
-    width:90%;
-    padding:25px;
+    width:85%;
+    max-width:280px;
+    padding:15px;
+    border-radius:20px;
   }
 
   .result-box h2{
-    font-size:22px;
+    font-size:20px;
   }
 
   .result-box p{
-    font-size:18px;
+    font-size:16px;
   }
 
+  .play-btn{
+    width:120px;
+    height:38px;
+    font-size:14px;
+  }
+  
+
 }
+
 </style>
 </head>
 
@@ -679,27 +478,32 @@ popup.classList.remove("show")
 
 function loadQ(){
 
-document.getElementById("question").innerText = quiz[current].q
+  document.getElementById("question").innerText = quiz[current].q
 
-const imgBox = document.getElementById("qImage")
-const answerBox = document.getElementById("answer")
+  const imgBox = document.getElementById("qImage")
+  const answerBox = document.getElementById("answer")
 
-answerBox.value = userAnswers[current]
-document.getElementById("checkBtn").disabled = true
-document.getElementById("prevBtn").disabled = current === 0
+  answerBox.value = userAnswers[current]
+  document.getElementById("checkBtn").disabled = true
+  document.getElementById("prevBtn").disabled = current === 0
 
-// if already answered → show image again
-if(userAnswers[current] !== ""){
-    imgBox.src = quiz[current].img
+  imgBox.src = quiz[current].img
+
+  // ✅ IF already answered → show CLEAR image
+  if(userAnswers[current] !== ""){
+    
+    imgBox.classList.remove("blur-img")   // 🔥 remove blur
     answerBox.disabled = true
-    document.getElementById("checkBtn").disabled = true
     document.getElementById("nextBtn").disabled = false
-}else{
-   imgBox.src = quiz[current].img
-imgBox.classList.add("blur-img")
+
+  }else{
+
+    // ✅ ONLY first time → blur
+    imgBox.classList.add("blur-img")
     answerBox.disabled = false
     document.getElementById("nextBtn").disabled = true
-}
+
+  }
 
 }
 const answerInput = document.getElementById("answer")

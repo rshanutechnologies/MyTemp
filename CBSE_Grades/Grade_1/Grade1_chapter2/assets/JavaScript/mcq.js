@@ -102,7 +102,7 @@ function loadQuestion() {
     const img = t.split("|")[0];
     const text = t.split("|")[1];
 
-    d.innerHTML = `<div class="option-img"><img src="${img}"></div>${String.fromCharCode(65 + i)}. ${text}`;
+    d.innerHTML = `<div class="option-img"><img src="${img}"></div>${text}`;
 
     if (answered[current] !== null) {
       if (i === q.a) d.classList.add("correct");

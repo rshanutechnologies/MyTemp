@@ -1,19 +1,19 @@
 const leftData = [
   {
     id: "1",
-    text: "1. Big plant",
+    text: "Big plant",
     match: "c",
     img: "../assets/images/tree.png",
   },
   {
     id: "2",
-    text: "2. Small plant",
+    text: "Small plant",
     match: "a",
     img: "../assets/images/small-plants.png",
   },
   {
     id: "3",
-    text: "3. Weak plant",
+    text: "Weak plant",
     match: "b",
     img: "../assets/images/weak-plant.png",
   },

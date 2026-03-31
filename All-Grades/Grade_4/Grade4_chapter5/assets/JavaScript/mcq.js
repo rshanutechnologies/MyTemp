@@ -1,6 +1,6 @@
 const quizData = [
   {
-    q: "Q1. Living things require __________ for breathing.",
+    q: "Q1. Living things require ______ for breathing.",
     img: "../assets/images/boy-img.png",
     options: [
       { t: "🫁 argon" },
@@ -11,7 +11,7 @@ const quizData = [
     a: 1,
   },
   {
-    q: "Q2. __________ of the Earth is covered by water.",
+    q: "Q2. ______ of the Earth is covered by water.",
     img: "../assets/images/earth-img.png",
     options: [
       { t: "🌊 80%" },
@@ -22,7 +22,7 @@ const quizData = [
     a: 2,
   },
   {
-    q: "Q3. The roots of trees and plants bind the soil preventing __________.",
+    q: "Q3. The roots of trees and plants bind the soil preventing ______.",
     img: "../assets/images/tree-img.png",
     options: [
       { t: "🌱 soil erosion" },
@@ -33,7 +33,7 @@ const quizData = [
     a: 0,
   },
   {
-    q: "Q4. __________ is refined to make petrol or diesel.",
+    q: "Q4. ______ is refined to make petrol or diesel.",
     img: "../assets/images/oil-img.png",
     options: [
       { t: "🍂 Dead plant" },
@@ -44,7 +44,7 @@ const quizData = [
     a: 2,
   },
   {
-    q: "Q5. A __________ is a large area which is almost covered with woody vegetation or trees.",
+    q: "Q5. A ______ is a large area which is almost covered with woody vegetation or trees.",
     img: "../assets/images/forest-img.png",
     options: [
       { t: "🌿 plant" },

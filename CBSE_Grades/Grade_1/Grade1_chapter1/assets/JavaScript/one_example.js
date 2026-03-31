@@ -118,9 +118,11 @@ function loadQuestion() {
         speak("Correct");
         smallConfetti();
         showPopup(true);
+        nextBtn.disabled = false;
 
         setTimeout(() => {
           if (current === quizData.length - 1) {
+            nextBtn.disabled = true;
             showFinal();
           } else {
             nextBtn.disabled = false;

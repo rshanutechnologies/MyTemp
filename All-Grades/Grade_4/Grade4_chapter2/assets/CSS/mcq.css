@@ -566,6 +566,10 @@ body {
 /* -------- SMALL MOBILES (≤ 480px) -------- */
 @media (max-width: 480px) {
 
+    .title{
+        margin: 0px 0px 20px;
+    }
+
     .options {
         grid-template-columns: repeat(2, 1fr);
         gap: 14px;
@@ -584,15 +588,26 @@ body {
 
 /* -------- EXTRA SMALL (≤ 360px) -------- */
 @media (max-width: 360px) {
+    body{
+        padding: 5px;
+    }
+
+    .template{
+        padding: 0;
+    }
+
+    .main {
+        padding: 0;
+    }
 
     .option {
-        height: 120px;
+        height: 90px;
         padding: 10px;
     }
 
     .option img {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
 
     .option .label {

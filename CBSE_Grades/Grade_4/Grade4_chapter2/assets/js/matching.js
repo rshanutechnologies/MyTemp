@@ -109,7 +109,7 @@ const curve=`M${x1},${y1} C${x1+150},${y1} ${x2-150},${y2} ${x2},${y2}`
 
 path.setAttribute("d",curve)
 path.setAttribute("stroke","#fff4f4")
-path.setAttribute("stroke-width","4")
+path.setAttribute("stroke-width","3")
 path.setAttribute("fill","none")
 
 svg.appendChild(path)

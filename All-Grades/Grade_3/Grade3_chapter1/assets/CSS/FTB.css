@@ -536,7 +536,9 @@ body {
   .nav-btn button{
     width:100%;
   }
-
+.header{
+    font-size: 18px;
+}
 }
 
 /* ===================================== */
@@ -567,6 +569,29 @@ body {
   .popup-content{
     width:95%;
     padding:18px;
+  }
+
+}
+
+/* ===== MOBILE (≤600px) FINAL FIX ===== */
+@media (max-width:600px){
+
+  /* 🔥 NAV LEFT-RIGHT */
+  .nav-btn{
+    flex-direction:row !important;
+    justify-content:space-between !important;
+    gap:10px;
+  }
+
+  .nav-btn button{
+    width:48% !important;
+    font-size:16px;
+    padding:10px;
+  }
+.check{
+    display:block;
+    margin:12px auto 0 auto;   /* 🔥 center horizontally */
+    text-align:center;
   }
 
 }

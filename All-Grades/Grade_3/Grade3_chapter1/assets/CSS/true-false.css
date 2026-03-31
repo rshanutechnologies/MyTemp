@@ -302,11 +302,30 @@
          max-width: 320px;
      }
 
-     .nav {
-         flex-direction: column;
-     }
  }
+/* ===== MOBILE NAV LEFT-RIGHT FIX ===== */
+@media (max-width:600px){
 
+  .nav{
+    display:flex !important;
+    flex-direction:row !important;          /* ✅ horizontal */
+    justify-content:space-between !important;
+    align-items:center;
+    gap:10px;
+    width:100%;
+  }
+
+  .nav button{
+    width:48% !important;   /* ✅ left-right equal */
+    max-width:none;
+    font-size:16px;
+    padding:10px;
+  }
+  .header{
+    font-size: 18px;
+  }
+
+}
  /*final score POPUPS */
  #finalPopup {
      position: fixed;

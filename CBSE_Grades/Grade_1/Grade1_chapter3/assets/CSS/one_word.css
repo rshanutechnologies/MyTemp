@@ -134,18 +134,18 @@ body {
 }
 
 .quiz-navigation button {
-    width: 140px;
-    height: 55px;
+    padding: 13px 32px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 6px;
 
     border-radius: 35px;
     border: 3px solid #ffffff;
 
-    font-size: 34px;
-    font-weight: 900;
+    font-size: 20px;
+    font-weight: 400;
     color: #ffffff;
 
     cursor: pointer;
@@ -362,12 +362,6 @@ body {
         margin-top: 25px;
     }
 
-    .quiz-navigation button {
-        width: 110px;
-        height: 50px;
-        font-size: 28px;
-    }
-
     .final-kid-box {
         width: 90%;
         max-width: 340px;
@@ -389,11 +383,6 @@ body {
 }
 
 @media (max-width:768px) {
-
-    body {
-        padding: 30px 0 10px;
-        align-items: flex-start;
-    }
 
     .quiz-container {
         padding: 20px;
@@ -429,17 +418,21 @@ body {
     }
 
     .quiz-navigation button {
-        width: 95px;
-        height: 45px;
-        font-size: 24px;
+        padding: 6px 20px;
+        font-size: 18px;
     }
 
 }
 
 @media (max-width:480px) {
 
+    body {
+        padding: 30px 0 10px;
+        align-items: flex-start;
+    }
+
     .question-title {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     #questionImage {
@@ -470,12 +463,6 @@ body {
 
     .quiz-navigation {
         margin-top: 20px;
-    }
-
-    .quiz-navigation button {
-        width: 85px;
-        height: 40px;
-        font-size: 20px;
     }
 
     .kid-card {

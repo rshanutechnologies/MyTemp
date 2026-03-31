@@ -2,13 +2,13 @@ const quizData = [
   {
     q: "Animals that eat plants are called ____.",
     a: "herbivores",
-    qImg: "../assets/images/M-3.png",
+    qImg: "../assets/images/MCQ_3.png",
   },
 
   {
     q: "Flesh-eating animals are also called ____.",
     a: "carnivores",
-    qImg: "../assets/images/M-2.png",
+    qImg: "../assets/images/MCQ_2.png",
   },
 
   {
@@ -20,13 +20,13 @@ const quizData = [
   {
     q: "____ animals eat both plants and flesh of other animals.",
     a: "omnivorous",
-    qImg: "../assets/images/omnivorous.png",
+    qImg: "../assets/images/bear.png",
   },
 
   {
     q: "____ is a flesh eating animal.",
     a: "tiger",
-    qImg: "../assets/images/M-2.png",
+    qImg: "../assets/images/MCQ_2.png",
   },
 ];
 

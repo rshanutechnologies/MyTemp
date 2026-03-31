@@ -434,6 +434,78 @@ body {
   body {
     align-items: flex-start;
     padding: 14px;
+      overflow-y: auto ;
+  }
+
+  .wrap {
+    padding: 14px;
+  }
+
+  /* STACK BOARD */
+  .board {
+    grid-template-columns: 1fr;
+    margin-bottom: 0;
+
+  }
+
+  /* REMOVE CONNECTOR CIRCLES */
+  .q-piece::after,
+  .a-piece::before {
+    display: none;
+  }
+
+  /* QUESTIONS AUTO HEIGHT */
+  #questions {
+    grid-template-rows: auto;
+    gap: 12px;
+  }
+
+  .piece {
+    min-height: auto;
+    padding: 14px;
+    font-size: 18px;
+  }
+
+  /* ⭐ IMPORTANT: stop absolute drag layout */
+  .answers-bay {
+    min-height: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #answers {
+    position: static;
+    height: auto;
+    display: grid;
+    gap: 12px;
+  }
+
+  .a-piece {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    margin-left: 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .hint-btn-abs {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 10px auto;
+    display: block;
+  }
+}
+
+
+@media (max-width:600px) {
+
+  body {
+    align-items: flex-start;
+    padding: 14px;
+  
   }
 
   .wrap {

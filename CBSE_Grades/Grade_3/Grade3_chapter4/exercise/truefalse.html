@@ -10,54 +10,82 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
-
+/* ============================= */
+/* BASE */
+/* ============================= */
 body{
 font-family:'Livvic',sans-serif;
 background:linear-gradient(135deg,#d7ecff,#cde7ff);
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+min-height:100vh;
 margin:0;
+padding:clamp(10px,2vw,30px);
+overflow: hidden;
 }
 
+/* ============================= */
+/* CONTAINER */
+/* ============================= */
 .quiz-box{
-width:900px;
+  min-height:clamp(460px,75vh,520px);  /* ✅ allow expansion */
+width:min(95%,900px);
 text-align:center;
 }
+
+/* ============================= */
+/* QUESTION */
+/* ============================= */
 .question{
-font-size:30px;
+ 
+font-size:clamp(20px,2.5vw + 1.2vh,36px);
 color:#2f4f4f;
 
-height:80px;              /* fixed height for all questions */
+min-height:clamp(60px,10vh,90px);
+
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 
-margin-bottom:20px;
-padding:0 20px;
+margin-bottom:clamp(10px,2vh,25px);
+padding:0 clamp(10px,2vw,20px);
+ 
 }
+
+/* ============================= */
+/* QUESTION IMAGE (STATIC SIZE) */
+/* ============================= */
+.question-img{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:clamp(15px,3vh,35px);
+}
+
+/* ✅ STATIC IMAGE SIZE (same for all questions) */
 .question-img img{
 width:220px;
-height:130px;          /* fixed height */
-object-fit:contain;    /* keeps full image visible */
-margin-bottom:35px;
+height:130px;
+object-fit:contain;
 }
-/* SIDE BY SIDE BUTTONS */
 
+/* ============================= */
+/* OPTIONS */
+/* ============================= */
 .options{
 display:flex;
 justify-content:center;
-gap:40px;
+gap:clamp(20px,3vw,40px);
+flex-wrap:wrap;
 }
 
-/* WATER BUTTON */
-
+/* BUTTON STYLE */
 .water-btn{
 
-width:300px;
-height:90px;
+width:clamp(220px,28vw,300px);
+height:clamp(70px,10vh,90px);
 
 border-radius:50px;
 
@@ -65,13 +93,12 @@ display:flex;
 align-items:center;
 justify-content:center;
 
-font-size:26px;
+font-size:clamp(18px,1.5vw + 0.5vh,26px);
 font-weight:600;
 
 cursor:pointer;
 
 border:3px solid rgba(255,255,255,0.9);
-
 color:white;
 
 box-shadow:
@@ -85,31 +112,22 @@ position:relative;
 overflow:hidden;
 }
 
-/* water shine */
-
+/* shine */
 .water-btn::before{
-
 content:"";
-
 position:absolute;
-
 top:-50%;
 left:-40%;
-
 width:180%;
 height:200%;
-
 background:linear-gradient(
 120deg,
 transparent 30%,
 rgba(255,255,255,0.45),
 transparent 70%
 );
-
 transform:rotate(25deg);
-
 transition:0.6s;
-
 }
 
 .water-btn:hover::before{
@@ -121,35 +139,42 @@ transform:translateY(-6px) scale(1.03);
 }
 
 /* TRUE */
-
 .true-btn{
 background:linear-gradient(180deg,#8ec5ff,#4a9df5);
 }
 
 /* FALSE */
-
 .false-btn{
 background:linear-gradient(180deg,#ff9a9a,#ff5252);
 }
 
 .icon{
-margin-right:10px;
-font-size:28px;
+margin-right:clamp(6px,1vw,10px);
+font-size:clamp(20px,2vw,28px);
 }
 
+/* ============================= */
 /* NAV */
 
 .nav{
-margin-top:40px;
-display:flex;
-justify-content:center;
-gap:40px;
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+
+  width:min(90%, 500px);
+
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+
+  z-index:1000;
 }
 
 button{
 border:none;
-padding:14px 35px;
-font-size:18px;
+padding:clamp(12px,2vh,18px) clamp(28px,4vw,50px);
+  font-size:clamp(16px,1.3vw + 0.6vh,22px);
 border-radius:40px;
 cursor:pointer;
 color:white;
@@ -174,8 +199,9 @@ opacity:0.5;
 cursor:not-allowed;
 }
 
+/* ============================= */
 /* POPUP */
-
+/* ============================= */
 .popup{
 position:fixed;
 top:50%;
@@ -183,16 +209,15 @@ left:50%;
 transform:translate(-50%,-50%) scale(0);
 
 background:white;
-padding:25px;
+padding:clamp(15px,2vw,25px);
 border-radius:25px;
 
-font-size:26px;
-min-width:260px;
+font-size:clamp(18px,2vw,26px);
+min-width:clamp(200px,40vw,260px);
 
 box-shadow:0 20px 40px rgba(0,0,0,0.2);
 
 text-align:center;
-
 transition:.3s;
 }
 
@@ -201,26 +226,28 @@ transform:translate(-50%,-50%) scale(1);
 }
 
 .popup-stars{
-font-size:26px;
+font-size:clamp(18px,2vw,26px);
 color:#f7b500;
 margin-top:10px;
 }
 
+/* ============================= */
 /* RESULT */
-
-
+/* ============================= */
 .result-box{
 position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%) scale(0);
 background:#fff;
-padding:40px;
+padding:clamp(25px,3vw,40px);
 border-radius:30px;
 text-align:center;
 box-shadow:0 20px 50px rgba(0,0,0,0.25);
 z-index:1000;
 transition:.4s;
+
+width:min(90%,400px);
 }
 
 .result-box.show{
@@ -228,221 +255,59 @@ transform:translate(-50%,-50%) scale(1);
 }
 
 .result-box h2{
-font-size:34px;
+font-size:clamp(22px,2vw,34px);
 margin-bottom:10px;
 }
 
 .result-box p{
-font-size:24px;
+font-size:clamp(16px,1.5vw,24px);
 margin-bottom:20px;
 }
 
 .play-btn{
 background:#4caf50;
 border:none;
-padding:12px 30px;
-font-size:18px;
+
+width:clamp(140px,20vw,180px);
+height:clamp(40px,6vh,50px);
+
+font-size:clamp(14px,1vw,18px);
 border-radius:30px;
 color:white;
 cursor:pointer;
 }
-/* ================= TABLET ================= */
-
-@media (max-width:900px){
-
-.quiz-box{
-width:100%;
-}
-
-.question{
-font-size:26px;
-height:auto;
-}
-
-.options{
-gap:20px;
-}
-
-.water-btn{
-width:200px;
-height:70px;
-font-size:22px;
-}
-
-.question-img img{
-width:170px;
-height:100px;
-}
-
-}
-
-/* ================= MOBILE ================= */
-
 @media (max-width:600px){
 
-body{
-height:auto;
-padding:20px 10px;
-align-items:flex-start;
-}
-
-.quiz-box{
-width:100%;
-}
-.question{
-font-size:20px;
-
-/* ✅ FIXED SIZE */
-height:70px;              /* same height for all questions */
-max-width:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-
-padding:0 10px;
-line-height:1.3;
-overflow:hidden;          /* prevents overflow */
-}
-.question-img{
-height:120px;               /* fixed container height */
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.question-img img{
-width:180px;                /* fixed width */
-height:120px;               /* fixed height */
-object-fit:contain;         /* keeps image ratio */
-margin-bottom:0;
-}
-
-/* stack buttons */
-
-.options{
-flex-direction:column;
-align-items:center;
-gap:20px;
-}
-
-.water-btn{
-width:200px;
-height:65px;
-font-size:20px;
-}
-
-.icon{
-font-size:22px;
-}
-
-/* nav buttons */
-
-.nav{
-gap:20px;
-margin-top:80px;
-}
-
-button{
-padding:10px 22px;
-font-size:16px;
-}
-/* POPUP */
-  .popup{
-    font-size:20px;
-    min-width:220px;
-    padding:15px;
-  }
-
-  .popup-stars{
-    font-size:20px;
-  }
-
-  /* RESULT BOX */
   .result-box{
-    width:90%;
-    padding:25px;
+    width:85%;
+    max-width:280px;
+    padding:15px;
+    border-radius:20px;
   }
 
   .result-box h2{
-    font-size:22px;
-  }
-
-  .result-box p{
-    font-size:18px;
-  }
-  .question-img{
-height:120px;               /* fixed container height */
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.question-img img{
-width:180px;                /* fixed width */
-height:120px;               /* fixed height */
-object-fit:contain;         /* keeps image ratio */
-margin-bottom:0;
-}
-}
-
-/* ================= SMALL MOBILE ================= */
-
-@media (max-width:400px){
-.question{
-font-size:20px;
-
-/* ✅ FIXED SIZE */
-height:70px;              /* same height for all questions */
-max-width:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-
-padding:0 10px;
-line-height:1.3;
-overflow:hidden;          /* prevents overflow */
-}
-.water-btn{
-width:170px;
-height:60px;
-font-size:18px;
-}
-
-.question-img img{
-width:130px;
-height:95px;
-}
-
-button{
-font-size:15px;
-padding:8px 18px;
-}
-/* POPUP */
-  .popup{
-    font-size:20px;
-    min-width:220px;
-    padding:15px;
-  }
-
-  .popup-stars{
     font-size:20px;
   }
 
-  /* RESULT BOX */
-  .result-box{
-    width:90%;
-    padding:25px;
-  }
-
-  .result-box h2{
-    font-size:22px;
-  }
-
   .result-box p{
-    font-size:18px;
+    font-size:16px;
   }
+
+  .play-btn{
+    width:80%;              /* 🔥 responsive width */
+    max-width:220px;
+    height:42px;
+
+    font-size:15px;
+
+    border-radius:25px;
+
+    display:block;
+    margin:10px auto 0;     /* center align */
+  }
+
+  
+
 }
 </style>
 </head>

@@ -422,7 +422,7 @@ iframe{
 <!-- OFFCANVAS MOBILE MENU -->
 <div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
   <div class="offcanvas-panel" onclick="event.stopPropagation()">
-  <div class="card c1 active" onclick="openPage(0)">
+  <div class="card c1 active" onclick="mobileOpen(0)">
         <span class="icon">
     <i class="fa-solid fa-check"></i>
   </span>
@@ -434,14 +434,14 @@ iframe{
       Fill the Blanks
     </div>
 
-      <div class="card c3" onclick="openPage(2)">
+      <div class="card c3" onclick="mobileOpen(2)">
       <span class="question-bubble">
   <span class="qmark">?</span>
 </span>
       True or False
     </div>
 
-      <div class="card c4" onclick="openPage(3)">
+      <div class="card c4" onclick="mobileOpen(3)">
        <span class="camera-icon"></span>
       Picture Match
     </div>
@@ -528,11 +528,12 @@ function openPage(i){
 function toggleMenu(){
   offcanvas.classList.toggle("show");
 }
-
 function mobileOpen(i){
   openPage(i);
-  if(window.innerWidth <= 1150){
-    toggleMenu();
+
+  // ✅ ALWAYS close if offcanvas is open
+  if(offcanvas.classList.contains("show")){
+    offcanvas.classList.remove("show");
   }
 }
 </script>

@@ -102,21 +102,32 @@ iframe{
     padding:25px 20px;
   }
 
-  .quiz-frame{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:#fff;
-    z-index:999;
-  }
-
+ .quiz-frame{
+  display:flex;   /* SHOW MCQ FIRST */
+  position:fixed;
+  inset:0;
+  background:#fff;
+  z-index:1;
+}
   .quiz-frame.active{
     display:flex;
   }
+  .nav-area{
+  display:none;   /* HIDE MENU FIRST */
+}
+.nav-area.active{
+  display:flex;
+  position:fixed;
+  inset:0;
+  /* background:#fff; */
+  z-index:2000;
+  flex-direction:column;
+  padding:25px 20px;
+}
 
   .mobile-toggle{
     display:flex;
-    position:absolute;
+    position:fixed;
     top:15px;
     right:15px;
     background:#00cfff;
@@ -213,8 +224,9 @@ iframe{
 </div>
 
 <script>
-const quizWrapper = document.getElementById("quizFrameWrapper");
+  const quizWrapper = document.getElementById("quizFrameWrapper");
 const toggleBtn = document.getElementById("toggleBtn");
+const nav = document.querySelector(".nav-area");
 
 function loadQuiz(page, element){
 
@@ -226,13 +238,22 @@ function loadQuiz(page, element){
   element.classList.add("active");
 
   if(window.innerWidth <= 768){
-    quizWrapper.classList.add("active");
+    nav.classList.remove("active");
+    quizWrapper.style.display = "flex";
   }
 }
 
-/* Mobile Back */
+/* TOGGLE MENU */
 toggleBtn.addEventListener("click", ()=>{
-  quizWrapper.classList.remove("active");
+
+  if(nav.classList.contains("active")){
+    nav.classList.remove("active");
+    quizWrapper.style.display = "flex";
+  } else {
+    nav.classList.add("active");
+    quizWrapper.style.display = "none";
+  }
+
 });
 </script>
 

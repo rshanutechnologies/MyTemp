@@ -349,3 +349,49 @@ body{
   }
 
 }
+/* ===== MOBILE PERFECT RESPONSIVE ===== */
+@media (max-width:600px){
+
+  body{
+    overflow:hidden; /* optional: no scroll */
+  }
+
+  /* GRID FIX */
+  .board{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  /* TOKENS */
+  .token{
+    width:100%;
+    font-size:14px;
+    padding:6px 8px;
+     min-height:55px;
+  }
+
+  .token span{
+    font-size:18px;
+  }
+
+  /* SLOTS */
+  .slot{
+    height:auto;
+    min-height:55px;
+    padding:8px;
+    font-size:14px;
+  }
+
+  /* DROP AREA */
+  .drop{
+    min-width:70px;
+    height:26px;
+  }
+
+  /* TOKEN INSIDE SLOT */
+  .slot .token{
+    font-size:13px;
+    padding:4px 6px;
+  }
+
+}

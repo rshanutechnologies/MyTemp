@@ -1,15 +1,15 @@
 const leftItems = [
-  { text: "Tiger", img: "../assets/images/M-2.png" },
-  { text: "Bear", img: "../assets/images/omnivorous.png" },
-  { text: "Elephant", img: "../assets/images/M-3_1.png" },
+  { text: "Tiger", img: "../assets/images/MCQ_2.png" },
+  { text: "Bear", img: "../assets/images/bear.png" },
+  { text: "Elephant", img: "../assets/images/MCQ_3_1.png" },
   { text: "Crocodile", img: "../assets/images/M-5.png" },
 ];
 
 const rightItems = [
-  { text: "Herbivore", img: "../assets/images/M-3.png" },
+  { text: "Herbivore", img: "../assets/images/MCQ_3_1.png" },
   { text: "Aquatic animal", img: "../assets/images/M-5.png" },
   { text: "Carnivore", img: "../assets/images/M-2.png" },
-  { text: "Omnivore", img: "../assets/images/omnivorous.png" },
+  { text: "Omnivore", img: "../assets/images/bear.png" },
 ];
 
 const answers = {

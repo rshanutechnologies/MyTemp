@@ -244,16 +244,16 @@ body {
     }
 
     /* Only add space WHEN number appears */
-    .card.show-number {
+    /* .card.show-number {
         padding-left: 46px;
-    }
+    } */
 
     /* Number badge */
     .card::before {
         content: attr(data-match);
         position: absolute;
-        left: 10px;
-        top: 50%;
+        right: 0px;
+        top: 2px;
         transform: translateY(-50%);
         width: 24px;
         height: 24px;
@@ -314,5 +314,20 @@ body {
     .playAgain-btn {
         font-size: 15px;
         padding: 10px 22px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    body{
+        padding-inline: 0;
+    }
+
+    .main{
+        padding: 0;
+    }
+
+    .game{
+        padding: 0px 6px;
     }
 }

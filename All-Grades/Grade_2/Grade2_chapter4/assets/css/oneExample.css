@@ -144,7 +144,7 @@
 
     /* OPTIONS */
     .options {
-      margin-top: 25px;
+       margin-top: -25px; 
       display: flex;
       gap: 20px;
       justify-content: space-between;
@@ -333,7 +333,7 @@
 @media (max-width:1024px){
 
   body{
-    overflow:auto;
+    overflow:hidden;
     align-items:flex-start;
     padding-top:80px;
   }
@@ -352,7 +352,7 @@
   }
 
   .question img{
-    width:160px !important;
+    width:120px !important;
     height:auto !important;
   }
 
@@ -451,44 +451,6 @@
   }
 }
 
-
-/* ===================== SMALL PHONES ===================== */
-@media (max-width:480px){
-
-  #questionText{
-    font-size:18px;
-  }
-
-  .question img{
-    width:110px !important;
-  }
-
-  .drop{
-    height:60px;
-    font-size:18px;
-  }
-
-  .option{
-    font-size:16px;
-    padding:10px;
-  }
-
-  .step{
-    width:28px;
-    height:28px;
-    font-size:12px;
-  }
-
-  .home-btn{
-    font-size:14px;
-    padding:6px 14px;
-  }
-
-  .final-board{
-    width:150px;
-    height:150px;
-  }
-}/* ================= MOBILE ORDER FIX ================= */
 @media (max-width:768px){
 
   /* stack vertically */
@@ -517,13 +479,236 @@
 
 }
 
-/* ===== SCALE QUIZ (-10%) USING MEDIA QUERY ===== */
-@media (min-width:800px){
+@media (max-width:600px){
+
+  body{
+    overflow:auto;
+    padding-top:90px;
+  }
+
+  .home-btn{
+    font-size:16px;
+    padding:8px 18px;
+  }
+
+  /* STACK LAYOUT */
+  .content{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .left,.right{
+    width:100%;
+  }
+
+  .drop{
+    margin-top:0;
+    height:70px;
+    font-size:20px;
+    margin-bottom: 40px;
+  }
+
+  .question{
+    height:auto;
+    gap:12px;
+  }
+
+  #questionText{
+    font-size:20px;
+    text-align:center;
+  }
+
+  .question img{
+    width:130px !important;
+  }
+
+  .options{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .option{
+    width:100%;
+    font-size:18px;
+  }
+
+  .progress{
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
+  .step{
+    width:34px;
+    height:34px;
+    font-size:14px;
+  }
+
+  .nav{
+    margin-top:15px;
+  }
+
+  .popup-box{
+    width:90%;
+  }
+}
+
+/* ===================== SMALL PHONES ===================== */
+@media (max-width:480px){
+
+  #questionText{
+    font-size:22px;
+  }
+
+  .question img{
+    width:110px !important;
+  }
+
+  .drop{
+    height:60px;
+    font-size:18px;
+  }
+  .options{
+    margin-top: 2%;
+  }
+
+  .option{
+    font-size:16px;
+    padding:10px;
+    
+  }
+
+  .step{
+    width:28px;
+    height:28px;
+    font-size:12px;
+  }
+
+  .home-btn{
+    font-size:14px;
+    padding:6px 14px;
+  }
+
+  .final-board{
+    width:150px;
+    height:150px;
+  }
+
+
+@media (max-width: 375px){
+
+  body{
+    overflow:auto;
+    padding-top:50px;
+  }
+
   .main{
-    transform: scale(0.9);      /* 10% smaller */
+    width:100%;
+  }
+
+  /* title */
+  .title{
+    font-size:16px;
+    padding:8px 18px;
+  }
+
+  /* question */
+  .question{
+    font-size:22px !important;
+    gap:10px;
+    height:auto;
+  }
+
+  #questionText{
+    font-size:18px;
+    text-align:center;
+  }
+
+  .question img{
+    width:120px !important;
+    height:70px !important;
+  }
+
+  /* drop box */
+  .drop{
+    height:65px;
+    font-size:18px;
+    margin-top:-30px !important;
+  }
+
+  /* options */
+  .options{
+    flex-direction:column;
+    gap:10px;
+    margin-top:-20px;
+  }
+
+  .option{
+    width:100%;
+    font-size:16px;
+    padding:10px;
+  }
+
+  .option img{
+    width:65px;
+  }
+
+  /* progress */
+  .progress{
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .step{
+    width:30px;
+    height:30px;
+    font-size:13px;
+  }
+
+  /* nav */
+  .nav{
+    margin-top:15px;
+    gap:10px;
+  }
+
+  .nav button{
+    font-size:15px;
+    padding:8px 18px;
+  }
+
+  /* home button */
+  .home-btn{
+    font-size:14px;
+    padding:6px 14px;
+  }
+
+  /* popup */
+  .popup-box{
+    width:92vw;
+    padding:20px;
+  }
+
+  .popup-emoji{
+    font-size:60px;
+  }
+
+  /* final board */
+  .final-board{
+    width:140px;
+    height:140px;
+  }
+}
+
+}/* ================= MOBILE ORDER FIX ================= */
+
+
+/* ===== SCALE QUIZ (-10%) USING MEDIA QUERY ===== */
+/* @media (min-width:800px){
+  .main{
+    transform: scale(0.9);      
     transform-origin: top center;
   }
   body{
     overflow: hidden;
   }
-}
+} */

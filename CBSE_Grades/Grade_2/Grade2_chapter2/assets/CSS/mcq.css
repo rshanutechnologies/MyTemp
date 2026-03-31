@@ -167,12 +167,12 @@ body::before{
     left:0;
     top:79%;
     transform:translateY(-20%); */
-    width:140px;
+    width:120px;
     height:50px;
     border:none;
     border-radius:999px;
-    font-size:24px;
-    font-weight:500;
+    font-size:20px;
+    font-weight:400;
     cursor:pointer;
     color:#ffffff;
     
@@ -195,12 +195,12 @@ body::before{
     right:0;
     top:79%;
     transform:translateY(-20%); */
-       width:140px;
+       width:120px;
     height:50px;
     border:none;
     border-radius:999px;
-    font-size:24px;
-    font-weight:500;
+    font-size:20px;
+    font-weight:400;
     cursor:pointer;
     color:#ffffff;
  
@@ -690,13 +690,15 @@ body::before{
 body{
     width:100%;
     height:auto;
-    overflow:scroll;
+    overflow:hidden;
+    
 }
 
 /* main container */
 .app{
     padding:10px;
-    margin-top:20px;
+    margin-top:-10px;
+    /* margin-left: -8px; */
 }
 
 /* template */
@@ -711,6 +713,7 @@ body{
     font-size:22px;
     text-align:center;
     min-height:30px;
+    margin-bottom: -2%;
 }
 
 /* image */
@@ -721,13 +724,14 @@ body{
 
 /* option buttons */
 .option{
-    height:60px;
-    padding:8px;
+    height:40px;
+    padding:5px;
+    /* margin-top: -1%; */
 }
 
 /* option text */
 .option .label{
-    font-size:18px;
+    font-size:10px;
 }
 
 /* header */
@@ -756,6 +760,7 @@ body{
     width:130px;
     height:48px;
     font-size:18px;
+    margin-top: -2%;
 }
 
 /* popup */
@@ -785,7 +790,7 @@ body{
 }
 
 .option{
-  width:140px;
+  width:120px;
   height:65px;
     margin-bottom: 15%;
 }
@@ -802,3 +807,51 @@ body{
 
 }
 
+
+
+
+
+/* Small desktops / laptops */
+@media (min-width: 1024px) {
+  body{
+    margin-top: 2%;
+  }
+  
+.quiz-nav{
+    margin-top:1%;
+  
+}
+}
+
+/* Medium desktops */
+@media (min-width: 1280px) {
+ body{
+    margin-top: 2%;
+  }
+  .quiz-nav{
+    margin-top:1%;
+  
+}
+}
+
+/* Large desktops */
+@media (min-width: 1440px) {
+   body{
+    margin-top: 2%;
+  }
+    .quiz-nav{
+    margin-top:1%;
+  
+}
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
+  body{
+    margin-top: 2%;
+  }
+    .quiz-nav{
+    margin-top:1%;
+  
+}
+}

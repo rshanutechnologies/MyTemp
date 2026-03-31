@@ -471,5 +471,6 @@ button:disabled {
 
     .input-row input {
         font-size: 16px;
+        padding: 0;
     }
 }

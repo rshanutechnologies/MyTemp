@@ -455,7 +455,9 @@ button:disabled {
 ===================================================== */
 
 @media (max-width:600px){
-
+body{
+    overflow: hidden;
+}
   .heading{
     font-size:20px;
     margin-bottom:18px;
@@ -488,6 +490,7 @@ button:disabled {
     width:100%;
     justify-content:space-around;
     margin-top:20px;
+    
   }
 
   .nav button,
@@ -525,7 +528,9 @@ button:disabled {
 ===================================================== */
 
 @media (max-width:380px){
-
+body{
+    overflow: hidden;
+}
   .card p{
     font-size:18px;
   }

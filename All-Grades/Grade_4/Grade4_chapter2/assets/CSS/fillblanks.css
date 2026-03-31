@@ -510,6 +510,11 @@ body {
 /* -------- SMALL MOBILES (≤ 480px) -------- */
 @media (max-width: 480px) {
 
+  .content{
+    padding-block: 0;
+  }
+
+
   .question {
     font-size: 20px;
   }
@@ -536,6 +541,10 @@ body {
 
 /* -------- EXTRA SMALL (≤ 360px) -------- */
 @media (max-width: 360px) {
+
+  .content{
+    padding-block: 0;
+  }
 
   .question {
     font-size: 18px;

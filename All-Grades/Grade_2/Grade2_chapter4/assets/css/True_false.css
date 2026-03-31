@@ -68,7 +68,7 @@
  }
 
  .question {
-     font-size: 30px;
+     font-size: 30px ;
      font-weight: 400 !important;
      margin-bottom: 20px;
      height: 70px;
@@ -258,9 +258,10 @@
 
  .animal-img {
      width: 250px;
-     height: 200px;
+     height: 170px;
      object-fit: contain;
      transition: .3s;
+     margin-top: -20px;
      margin-bottom: 20px;
  }
 
@@ -398,9 +399,11 @@
 
  /* ======================= SMALL PHONES ======================= */
  @media (max-width:480px) {
-
+body{
+    overflow: hidden;
+}
      .question {
-         font-size: 18px;
+         font-size: 22px;
      }
 
      .animal-img {
@@ -432,13 +435,13 @@
  /* ===================================
    DESKTOP ONLY SIZE REDUCE (-10%)
 =================================== */
- @media (min-width: 800px) {
+ /* @media (min-width: 800px) {
 
      .quiz {
          transform: scale(0.9);
-         /* 10% smaller */
+         
          transform-origin: center center;
          margin-top: -2%;
      }
 
- }
+ } */

@@ -10,6 +10,7 @@
 
 <style>
 
+/* ===== BASE ===== */
 *{
 margin:0;
 padding:0;
@@ -25,67 +26,70 @@ align-items:center;
 overflow:hidden;
 }
 
-/* CONTAINER */
+/* ===== CONTAINER ===== */
 
 .quiz-container{
 width:100%;
-max-width:900px;
+max-width:clamp(600px, 90vw, 900px);
 
-padding:40px 30px 120px;
+padding:clamp(20px,4vw,40px) clamp(15px,3vw,30px) clamp(80px,12vh,120px);
 text-align:center;
 position:relative;
-
 }
 
-
-/* QUESTION */
+/* ===== QUESTION ===== */
 
 .question{
-font-size:30px;
-margin-top: -40px;
+font-size: clamp(20px, 3vw, 30px);
+margin-top:clamp(-30px, -3vh, -40px);
 color:#2f4f4f;
-
 }
 
-/* IMAGE */
+/* ===== IMAGE ===== */
 
 .image{
 display:flex;
 justify-content:center;
 align-items:center;
-height:270px;   /* fixed space for all images */
-margin-bottom:35px;
+height:clamp(180px, 28vh, 270px);
+margin-bottom:clamp(20px,4vh,35px);
 }
 
 .image img{
-width:250px;      /* fixed width */
-height:250px;     /* fixed height */
-object-fit:contain;   /* keeps image proportion */
+width:clamp(180px, 20vw, 250px);
+height:clamp(180px, 20vw, 250px);
+object-fit:contain;
 }
+
+/* ===== OPTIONS ===== */
 
 .options{
 display:flex;
 justify-content:center;
-gap:50px;
-margin-top:10px;
+gap:clamp(20px,5vw,50px);
+margin-top:clamp(5px,2vh,10px);
 }
 
-/* BASE BUTTON */
+/* ===== OPTION BUTTON ===== */
 
 .option-btn{
 display:flex;
 align-items:center;
 justify-content:center;
-gap:12px;
-padding:18px 50px;
-font-size:28px;
+gap:clamp(8px,2vw,12px);
+
+padding:clamp(12px,2vh,18px) clamp(25px,5vw,50px);
+
+font-size:clamp(20px,2vw,28px);
 font-weight:700;
+
 border-radius:60px;
 cursor:pointer;
 color:white;
 position:relative;
 transition:0.25s;
-box-shadow:0 12px 20px rgba(0,0,0,0.2);
+
+box-shadow:0 clamp(8px,2vh,12px) clamp(12px,3vh,20px) rgba(0,0,0,0.2);
 }
 
 /* INNER SHINE */
@@ -108,150 +112,151 @@ pointer-events:none;
 transform:translateY(-4px);
 }
 
-/* TRUE BUTTON */
+/* TRUE */
 
 .true-btn{
 background:linear-gradient(180deg,#8edb7f,#8be88b);
 box-shadow:
 inset 0 2px 6px rgba(255,255,255,0.6),
-0 12px 18px rgba(0,0,0,0.2);
+0 clamp(8px,2vh,12px) clamp(12px,3vh,18px) rgba(0,0,0,0.2);
 }
 
-/* FALSE BUTTON */
+/* FALSE */
 
 .false-btn{
 background:linear-gradient(180deg,#ff8e8e,#e07171);
 box-shadow:
 inset 0 2px 6px rgba(255,255,255,0.6),
-0 12px 18px rgba(0,0,0,0.2);
+0 clamp(8px,2vh,12px) clamp(12px,3vh,18px) rgba(0,0,0,0.2);
 }
-/* SELECTED ANSWER HIGHLIGHT */
+
+/* SELECTED */
 
 .selected{
 transform:scale(1.05);
 box-shadow:
 0 0 0 4px rgba(98, 239, 107, 0.6),
-0 12px 22px rgba(0,0,0,0.25);
+0 clamp(10px,3vh,22px) clamp(15px,4vh,22px) rgba(0,0,0,0.25);
 }
+
+/* ===== NAV BUTTON ===== */
+
 .nav-btn{
 position:absolute;
-bottom:35px;
-padding:12px 35px;
-font-size:22px;
-font-weight: 500;
+
+width:clamp(120px,20vw,150px);
+height:clamp(42px,6vh,50px);
+
+bottom:clamp(20px,4vh,35px);
+
+padding:clamp(10px,2vh,12px) clamp(25px,4vw,35px);
+
+font-size:clamp(16px,1.5vw,22px);
+font-weight:500;
+
 border:none;
 border-radius:40px;
 cursor:pointer;
 color:white;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
 transition:0.3s;
 }
 
+/* LEFT / RIGHT */
+
 #prevBtn{
-left:30px;
+left:clamp(15px,3vw,30px);
 background:linear-gradient(135deg,#607d8b,#455a64);
 }
 
 #nextBtn{
-right:30px;
+right:clamp(15px,3vw,30px);
 background:linear-gradient(135deg,#ff9800,#f57c00);
 }
 
+/* DISABLED */
+
 .nav-btn:disabled{
 background:#ccc !important;
+color:#777;
 cursor:not-allowed;
 }
 
-/* POPUP */
+/* ===== POPUP ===== */
+
 .popup{
-  position:fixed;
-  inset:0;
-  
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:1000;
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;
 }
 
 .hidden{
-  display:none;
+display:none;
 }
 
 .popup-content{
-  background:#fef6ff;  /* pastel base */
-  padding:60px 80px;
-  border-radius:30px;
-  text-align:center;
-  box-shadow:0 20px 45px rgba(0,0,0,0.25);
-  min-width:350px;
-  max-width:500px;
-  animation:pop 0.3s ease;
+background:#fef6ff;
+padding:clamp(30px,6vw,60px) clamp(30px,7vw,80px);
+border-radius:30px;
+text-align:center;
+box-shadow:0 20px 45px rgba(0,0,0,0.25);
+
+min-width:clamp(250px,40vw,350px);
+max-width:clamp(300px,60vw,500px);
 }
 
-@keyframes pop{
-  from{ transform:scale(0.8); opacity:0; }
-  to{ transform:scale(1); opacity:1; }
-}
-
-@keyframes pop{
-from{transform:scale(0.85);opacity:0;}
-to{transform:scale(1);opacity:1;}
-}
 .popup-emoji{
-  font-size:60px;
-  margin-bottom:15px;
+font-size:clamp(40px,6vw,60px);
+margin-bottom:15px;
 }
 
 .popup-content h2{
-  font-size:28px;
-  margin-bottom:10px;
+font-size:clamp(20px,2vw,28px);
+margin-bottom:10px;
 }
 
 .popup-content p{
-  font-size:20px;
+font-size:clamp(16px,1.5vw,20px);
 }
-
 
 .play-again-btn{
-  margin-top:20px;
-  padding:12px 28px;
-  font-size:16px;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-  background:linear-gradient(135deg,#4caf50,#2e7d32);
-  color:white;
-  font-weight:600;
-  transition:0.3s;
+margin-top:20px;
+padding:clamp(10px,2vh,12px) clamp(20px,4vw,28px);
+font-size:clamp(14px,1.2vw,16px);
+border:none;
+border-radius:30px;
+cursor:pointer;
+background:linear-gradient(135deg,#4caf50,#2e7d32);
+color:white;
+font-weight:600;
 }
 
-.play-again-btn:hover{
-  transform:translateY(-3px);
-}
-/* MOBILE */
+/* ===== MOBILE ===== */
 
 @media(max-width:768px){
 
-body{
-overflow:hidden;
-align-items:flex-start;
-padding-top:30px;
-}
-
 .question{
-font-size:26px;
+font-size:clamp(20px,2vw,26px);
 }
 
 .image img{
-max-width:180px;
+max-width:clamp(140px,40vw,180px);
 }
 
 .options{
-gap:20px;
+gap:clamp(15px,4vw,20px);
 }
 
 .option-btn{
-font-size:22px;
-padding:15px 35px;
+font-size:clamp(18px,2vw,22px);
+padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
 }
 
 }
@@ -261,36 +266,41 @@ padding:15px 35px;
 body{
 overflow:auto;
 align-items:flex-start;
-padding-top:30px;
-margin-top: 60px;
+padding-top:clamp(20px,4vh,30px);
+margin-top: 40px;
 }
 
 .question{
 font-size:20px;
-
 }
 
 .image img{
-max-width:180px;
+max-width:clamp(120px,35vw,180px);
 }
 
 .options{
-gap:20px;
+gap:clamp(15px,4vw,20px);
 }
 
 .option-btn{
-font-size:22px;
-padding:15px 35px;
-}
-#prevBtn{
-  left:20px;
+font-size:clamp(18px,2vw,22px);
+padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
 }
 
-#nextBtn{
-  right:20px;
-}
+.nav-btn{
+width:clamp(90px,25vw,100px);
+height:clamp(40px,6vh,50px);
+font-size:clamp(14px,2vw,18px);
 }
 
+}
+
+/* From 700px and above = Desktop */
+@media (min-width: 700px) {
+  .question {
+    font-size: 30px;
+  }
+}
 </style>
 </head>
 
@@ -351,7 +361,7 @@ const questions = [
 {q:"Q4. Frogs and insects lay eggs.", img:"../images/mcq2.png", correct:"T"},
 
 {q:"Q5. The lifespan of different living things vary.", img:"../images/tf5.png", correct:"T"}
-
+  
 ];
 
 

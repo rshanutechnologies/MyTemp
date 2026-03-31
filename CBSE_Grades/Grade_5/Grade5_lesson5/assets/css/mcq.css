@@ -131,7 +131,7 @@ body {
     align-items: center;
     border-radius: 35px;
     border: 3px solid #ffffff;
-    font-size: 34px;
+    font-size: 24px;
     font-weight: 900;
     color: #ffffff;
     cursor: pointer;
@@ -453,9 +453,11 @@ body {
 }
 
 @media (max-width:480px) {
-
+ body{
+    margin-top: -40px;
+ }
     #question {
-        font-size: 18px;
+        font-size: 22px;
     }
 
     .question-image img {
@@ -468,7 +470,7 @@ body {
     }
 
     .options {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 12px;
     }
 
@@ -484,6 +486,78 @@ body {
 
     .controls {
         margin-top: 20px;
+    }
+
+    .controls button {
+        width: 85px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .final-kid-box {
+        width: 90%;
+        max-width: 300px;
+        padding: 20px;
+    }
+
+    .final-kid-box h2 {
+        font-size: 1.5em;
+    }
+
+    .final-kid-box p {
+        font-size: 1em;
+    }
+
+    #stars {
+        font-size: 1.6em;
+    }
+
+    .playAgain-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+}
+
+
+
+
+@media (max-width:380px) {
+ body{
+    margin-top: -50px;
+ }
+    #question {
+        font-size: 22px;
+    }
+
+    .question-image img {
+        width: 110px;
+        height: 110px;
+        margin-top: -20px;
+    }
+
+    .quiz-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .options {
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        margin-top: -30px;
+    }
+
+    .option {
+        font-size: 15px;
+        /* padding: 12px; */
+    }
+
+    .option-img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .controls {
+        margin-top: 30px;
     }
 
     .controls button {

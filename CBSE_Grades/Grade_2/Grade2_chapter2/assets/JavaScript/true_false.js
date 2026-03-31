@@ -75,7 +75,7 @@ const quizData = [
   {
     q:"Q.5 Some animals eat both plants and the flesh of other animals.",
     a:true,
-    img:"../assets/images/Omnivoress.png",
+    img:"../assets/images/Omnivoresss.png",
     answered:false
   }
 ];

@@ -112,23 +112,23 @@ body::before{
 }
 .prev{
   position:relative;
-    width:140px;
+    width:120px;
     height:50px;
     border:none;
     border-radius:999px;
-    font-size:24px;
-    font-weight:500;
+    font-size:20px;
+    font-weight:400;
   left:-173px;     /* ⬅️ move outside left */
 }
 
 .next{
   position:relative;
-    width:140px;
+    width:120px;
     height:50px;
     border:none;
     border-radius:999px;
-    font-size:24px;
-    font-weight:500;
+    font-size:20px;
+    font-weight:400;
   right:-173px;    /* ⬅️ move outside right */
 }
 
@@ -720,3 +720,49 @@ opacity:.35;
 pointer-events:none;
 }
 
+
+
+/* Small desktops / laptops */
+@media (min-width: 1024px) {
+  body{
+    margin-top: -2%;
+  }
+  
+.quiz-nav{
+    margin-top:1%;
+  
+}
+}
+
+/* Medium desktops */
+@media (min-width: 1280px) {
+ body{
+    margin-top: -2%;
+  }
+  .quiz-nav{
+    margin-top:1%;
+  
+}
+}
+
+/* Large desktops */
+@media (min-width: 1440px) {
+   body{
+    margin-top: -2%;
+  }
+    .quiz-nav{
+    margin-top:1%;
+  
+}
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
+  body{
+    margin-top: -2%;
+  }
+    .quiz-nav{
+    margin-top:1%;
+  
+}
+}

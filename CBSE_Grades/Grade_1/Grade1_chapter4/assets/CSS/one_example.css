@@ -418,11 +418,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    body {
-        padding: 30px 0 10px;
-        align-items: flex-start
-    }
-
     .main {
         padding: 20px
     }
@@ -448,21 +443,27 @@ body {
     }
 
     .controls button {
-        width: 95px;
+        width: 120px;
         height: 45px;
         font-size: 18px
     }
 }
 
 @media (max-width: 480px) {
+
+    body {
+        padding: 30px 0 10px;
+        align-items: flex-start
+    }
+
     .question h2 {
-        font-size: 18px
+        font-size: 20px
     }
 
     .image-container {
         flex-direction: column;
         align-items: center;
-        gap: 35px;
+        gap: 20px;
     }
 
     .image-box {
@@ -484,7 +485,7 @@ body {
     }
 
     .controls {
-        margin-top: 10px;
+        margin-top: 0px;
         gap: 20px;
         justify-content: center;
     }

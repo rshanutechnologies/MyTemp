@@ -26,7 +26,7 @@
 
 const quizData = [
 {
-  title: "  Pick the correct option ",
+  title: " Correct Option ",
   question: "Q.1 The __________ is the part of the brain that controls the heartbeat.",
   image: "../assets/images/Cerebrums.png",
   options: [
@@ -38,7 +38,7 @@ const quizData = [
 },
 
 {
-   title: "  Pick the correct option ",
+   title: "  Correct Option ",
   question: "Q.2 The organ that is enclosed in the skull is the __________.",
   image: "../assets/images/skull.png",
   options: [
@@ -50,7 +50,7 @@ const quizData = [
 },
 
 {
-  title: "  Pick the correct option ",
+  title: " Correct Option ",
   question: "Q.3 An automatic quick reaction in response to a stimulus is called __________.",
   image: "../assets/images/reflex.png",
   options: [
@@ -62,7 +62,7 @@ const quizData = [
 },
 
 {
-   title: "  Pick the correct option ",
+   title: " Correct Option ",
   question: "Q.4 The adult human brain weighs __________ kgs.",
   image: "../assets/images/brain-weight.png",
   options: [
@@ -74,7 +74,7 @@ const quizData = [
 },
 
 {
-   title: "  Pick the correct option ",
+   title: "  Correct Option ",
   question: "Q.5 The human brain is made up of __________ different parts.",
   image: "../assets/images/brain-parts.png",
   options: [

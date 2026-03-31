@@ -447,14 +447,25 @@
     font-size:22px;
   }
 
+  /* ===== FIX NAV BUTTON LEFT-RIGHT ON MOBILE ===== */
+@media (max-width:768px){
+
   .footer{
-    flex-direction:column;
-    gap:14px;
+    display:flex !important;
+    flex-direction:row !important;        /* ✅ force horizontal */
+    justify-content:space-between !important;
+    align-items:center !important;
+    width:100% !important;
+    gap:10px;
   }
 
   .nav-btn{
-    width:100%;
+    width:48% !important;   /* ✅ left-right equal */
+    height:45px;
+    font-size:16px;
   }
+
+}
 
 }
 
@@ -482,6 +493,27 @@
 
   .popup-box.popup-final-wide{
     width:95%;
+  }
+
+}
+/* ===== FORCE 2x2 GRID ON MOBILE ===== */
+@media (max-width:768px){
+
+  .options{
+    display:grid !important;
+    grid-template-columns:repeat(2,1fr) !important; /* ✅ 2x2 */
+    gap:12px !important;
+    width:100% !important;
+    margin-left:0 !important;
+  }
+
+  .opt-btn{
+    width:100% !important;
+    min-height:140px;
+  }
+
+  .opt-img{
+    height:120px !important;
   }
 
 }

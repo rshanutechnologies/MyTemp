@@ -12,6 +12,8 @@ justify-content:center;
 align-items:center;
 margin-top: -20px;
 
+      
+
 }
 
 .quiz{
@@ -165,8 +167,8 @@ gap:60px;
 }
 
 .nav button{
-padding:14px 50px;
-font-size:22px;
+padding:12px 30px;
+font-size:20px;
 border:none;
 border-radius:40px;
 color:white;
@@ -346,7 +348,9 @@ background:#3da746;
 /* ===================== */
 
 @media (max-width:900px){
-
+body{
+      overflow-y: hidden !important;
+}
 .quiz{
 width:90%;
 }
@@ -412,7 +416,9 @@ font-size:16px;
 /* ===================== */
 
 @media (max-width:600px){
-
+body{
+      overflow-y: hidden !important;
+}
 .quiz{
 width:95%;
 }
@@ -477,20 +483,23 @@ padding:8px 14px;
 /* ===================== */
 
 @media (max-width:430px){
-
+body{
+    margin-top: 0px;
+  overflow: hidden !important;
+}
 .quiz{
 width:100%;
 padding:10px;
 }
 
 .question{
-font-size:20px;
+font-size:22px;
 margin-top: 10%;
 }
 
 .blank{
 width:70%;
-height:45px;
+height:35px;
 font-size:18px;
 margin-left: -3px;
 

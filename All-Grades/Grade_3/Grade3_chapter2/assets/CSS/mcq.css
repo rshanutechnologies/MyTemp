@@ -439,7 +439,7 @@
   }
 
   .wrap{
-    width:95%;
+    width:100%;
   }
 
   .process-wrap{
@@ -452,81 +452,18 @@
   }
 
   .question-text{
-    font-size:24px;
-  }
-
-  .option-card{
-    height:130px;
-  }
-
-  .opt-text{
-    font-size:18px;
-  }
-
-}
-
-
-/* ===================================== */
-/* ✅ MOBILE (768px and below)           */
-/* ===================================== */
-@media (max-width:768px){
-
-  body{
-    overflow:auto;
-    padding:16px 10px;
-    margin-top: 40px;
-  }
-
-  .wrap{
-    width:100%;
-    gap:18px;
-  }
-
-  .process-wrap{
-    width:100%;
-  }
-
-  .process-steps{
-    flex-wrap:wrap;
-    gap:6px;
-  }
-
-  .p-pill{
-    font-size:11px;
-    padding:6px 8px;
-  }
-
-  .question-text{
     font-size:20px;
   }
 
-  .options-grid{
-    grid-template-columns:1fr;
-    width:100%;
-  }
-
   .option-card{
-    height:auto;
-    min-height:120px;
+    min-height:150px;
   }
 
-  .opt-img{
-    height:90px;
+   .opt-text{
+    font-size:14px !important;
+    width:50% !important;
   }
 
-  .opt-text{
-    font-size:16px;
-  }
-
-  .footer{
-    flex-direction:column;
-    gap:12px;
-  }
-
-  .nav-btn{
-    width:100%;
-    font-size:16px;
-  }
 
 }
 
@@ -559,6 +496,57 @@
 
   .popup-box.final-wide{
     width:95%;
+  }
+
+}
+/* ===== FINAL MOBILE FIX (OVERRIDE ALL) ===== */
+@media (max-width:700px){
+
+  /* ✅ FORCE 2×2 GRID */
+  .options-grid{
+    display:grid !important;
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:12px !important;
+    width:100% !important;
+  }
+
+  /* ✅ KEEP CARD SIZE FIT */
+  .option-card{
+    width:100% !important;
+    min-height:110px;
+  }
+
+  .opt-img{
+    height:70px !important;
+  }
+
+  .opt-text{
+    font-size:14px !important;
+    width:80% !important;
+  }
+
+  /* ✅ BUTTON LEFT - RIGHT */
+  .footer{
+    display:flex !important;
+    justify-content:space-between !important;
+    align-items:center !important;
+    flex-direction:row !important; /* 🔥 important */
+    width:100%;
+  }
+
+  .nav-btn{
+    width:auto !important;
+    min-width:110px;
+    font-size:14px;
+  }
+
+  /* ❌ REMOVE SCALE EFFECT */
+  .wrap{
+    transform:none !important;
+  }
+
+  body{
+    overflow:hidden !important;
   }
 
 }

@@ -520,3 +520,56 @@ input:focus {
   }
 
 }
+/* ===== MOBILE PERFECT ALIGNMENT ===== */
+@media (max-width:600px){
+
+  /* spacing between sections */
+  .wrap{
+    gap:18px;
+  }
+
+  /* IMAGE FIX */
+  .hero{
+    width:90%;
+    height:140px;
+  }
+
+  .hero img{
+    max-height:100%;
+  }
+
+  /* QUESTION FIX */
+  .question{
+    font-size:22px;
+    line-height:1.4;
+    padding:0 10px;
+    text-align:center;
+  }
+
+  /* INPUT FIX */
+  input{
+    width:90%;   /* was 70% */
+    font-size:18px;
+    padding:12px;
+  }
+
+  /* CHECK BUTTON */
+  .check-btn{
+    width:40%;   /* better proportion */
+    font-size:18px;
+    padding:10px;
+  }
+
+  /* FOOTER BUTTONS */
+  .footer{
+    width:100%;
+    padding:0 10px;
+  }
+
+  .nav-btn{
+    width:45%;   /* equal left-right */
+    height:45px;
+    font-size:16px;
+  }
+
+}

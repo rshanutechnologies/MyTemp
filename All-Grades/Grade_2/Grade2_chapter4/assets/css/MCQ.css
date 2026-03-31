@@ -296,3 +296,195 @@ body {
 .option {
     transition: all .25s ease;
 }
+
+
+
+
+
+
+
+
+@media (max-width: 900px){
+
+body{
+    overflow:auto;
+    justify-content:flex-start;
+    padding:20px;
+}
+
+.question{
+    font-size:24px;
+    height:auto;
+}
+
+.content{
+    gap:18px;
+}
+
+.image-wrap{
+    width:180px;
+    height:180px;
+}
+
+.image-wrap img{
+    width:100px;
+    height:100px;
+}
+
+.option{
+    height:58px;
+    font-size:1.2rem;
+}
+
+.option span{
+    font-size:28px;
+}
+
+.nav button{
+    font-size:18px;
+}
+}
+
+
+
+
+
+@media (max-width: 600px){
+body{
+    margin-top: 10%;
+}
+.content{
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+}
+
+.question{
+    font-size:20px;
+}
+
+.image-wrap{
+    width:150px;
+    height:150px;
+}
+
+.image-wrap img{
+    width:90px;
+    height:90px;
+}
+
+.options{
+    width:100%;
+}
+
+.option{
+    height:55px;
+    font-size:1.1rem;
+}
+
+.option span{
+    font-size:24px;
+}
+
+.nav{
+    margin-top:10px;
+}
+
+.nav button{
+    padding:8px 20px;
+    font-size:16px;
+}
+}
+
+
+
+
+@media (max-width: 450px){
+body{
+    margin-top: 13%;
+    overflow: hidden;
+}
+.main-title{
+    font-size:1.1rem;
+    padding:8px 10px;
+  
+}
+
+.step {
+    width: 34px;
+    height: 34px;
+   
+}
+
+.question{
+    font-size:22px !important;
+}
+
+.image-wrap{
+    width:90px !important;
+    height:90px !important;
+}
+
+.image-wrap img{
+    width:60px !important;
+    height:60px !important;
+}
+
+.option{
+    height:30px;
+    font-size:1rem;
+    padding:0 12px;
+}
+
+.option span{
+    font-size:20px;
+}
+
+.option img{
+    width:30px;
+    height:30px;
+}
+
+.nav button{
+    font-size:15px;
+    margin-top: -10px;
+}
+}
+
+
+
+
+@media (max-width: 370px){
+
+.question{
+    font-size:16px;
+}
+
+.image-wrap{
+    width:110px;
+    height:110px;
+}
+
+.image-wrap img{
+    width:70px;
+    height:70px;
+}
+
+.option{
+    height:45px;
+    font-size:0.9rem;
+}
+
+.option span{
+    font-size:18px;
+}
+
+.nav button{
+    padding:6px 16px;
+    font-size:14px;
+}
+
+.main-title{
+    font-size:1rem;
+}
+}

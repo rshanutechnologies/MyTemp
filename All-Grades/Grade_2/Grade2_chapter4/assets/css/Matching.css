@@ -276,7 +276,7 @@
  @media (max-width:1024px) {
 
      body {
-         overflow: auto;
+         overflow: hidden;
          padding-top: 70px;
      }
 
@@ -294,6 +294,12 @@
          height: auto;
      }
 
+     .left-content {
+     display: flex;
+     align-items: center;
+     margin-bottom: 18px ;
+     gap: 22px;
+ }
      .left-content img {
          width: 40px;
          height: 40px;
@@ -387,7 +393,10 @@
 
  /* ===================== SMALL PHONES ===================== */
  @media (max-width:480px) {
-
+    body{
+        margin-top: -20px;
+        overflow: hidden;
+    }
      .item {
          font-size: 16px;
      }
@@ -396,6 +405,19 @@
          font-size: 14px;
          padding: 6px 14px;
      }
+      .grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 20px;
+     position: relative;
+ }
+.left-content {
+     display: flex;
+     align-items: center;
+     
+     gap: 12px;
+     margin-bottom: 80px;
+ }
 
      .step {
          width: 28px;

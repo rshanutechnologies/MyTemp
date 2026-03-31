@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif
+    font-family: 'Livvic';
 }
 
 body {
@@ -141,7 +141,7 @@ body {
     padding: 28px 32px;
     border-radius: 16px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-    font-size: 28px;
+    font-size: 30px !important;
     color: #0b4a6f;
     margin-bottom: 70px;
 }
@@ -274,25 +274,27 @@ canvas {
 
     /* image centered properly */
     .image-circle {
-        width: 160px;
-        height: 160px;
+        width: 130px;
+        height: 130px;
+        margin-top: 15%;
     }
 
     /* question spacing */
     .question-box {
         font-size: 20px;
         padding: 18px;
-        margin-bottom: 15px;
+        margin-top: -5%;
     }
 
     .answer-area input {
         width: 95%;
         font-size: 18px;
+        margin-top: -10%;
     }
 
     .check-btn {
-        width: 85%;
-        margin-top: 15px;
+        width: 55%;
+       margin-top: -15px;
         padding: 14px;
     }
 
@@ -300,7 +302,7 @@ canvas {
     .nav-btn {
         position: static;
         transform: none;
-        margin-top: 12px;
+        margin-top: 2px;
     }
 
     .answer-area {
@@ -355,6 +357,10 @@ canvas {
     border-radius: 25px;
     font-size: 20px;
     font-weight: 600;
+}
+
+.question-box {
+    font-size: 22px;
 }
 
 @media(max-width:768px) {

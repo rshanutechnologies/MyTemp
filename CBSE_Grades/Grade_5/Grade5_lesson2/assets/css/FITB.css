@@ -393,117 +393,234 @@ cursor:pointer;
 box-shadow:0 4px 8px rgba(0,0,0,0.3);
 }
 
-/* MOBILE */
+/* =========================================
+📱 TABLET (≤ 900px)
+========================================= */
+@media (max-width:900px){
 
-@media(max-width:800px){
-
-.quiz{
-padding:10px;
-margin-top: 20px;
-
+body{
+    padding:20px;
+    overflow-x:hidden;
 }
 
-.question{
-font-size:28px;
-/* margin-top: 90px; */
-}
-
+/* LAYOUT */
 .row{
-flex-direction:column;
-gap:30px;
-margin-left:0;
+    justify-content:center;
+    gap:25px;
+}
+
+/* BLANKS */
+.blanks{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+}
+
+/* LETTERS */
+.letters{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+}
+
+/* IMAGE FIX */
+.imgbox{
+    width:220px;
+    height:220px;
 }
 
 .imgbox img{
-max-width:220px;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+/* NAV */
+.nav{
+    justify-content:center;
+    gap:20px;
+    flex-wrap:nowrap;
+}
+
+.prev,.next{
+    flex:1;
+    max-width:140px;
+    height:45px;
+    font-size:18px;
+}
+
+}
+
+
+/* =========================================
+📱 MOBILE (≤ 768px)
+========================================= */
+@media (max-width:768px){
+
+body{
+    padding:20px 10px;
+    overflow-x:hidden;
+    align-items:flex-start;
+}
+
+/* STACK */
+.row{
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
+}
+
+/* BLANKS */
+.blanks{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
 }
 
 .blank{
-width:45px !important;
-height:45px !important;
-font-size:20px;
+    width:clamp(35px, 10vw, 45px) !important;
+    height:clamp(35px, 10vw, 45px) !important;
+    font-size:18px;
+}
+
+/* LETTERS */
+.letters{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
 }
 
 .letter{
-width:30px;
-height:40px;
-font-size:20px;
+    width:clamp(40px, 11vw, 55px);
+    height:clamp(40px, 11vw, 55px);
+    font-size:18px;
+}
+
+/* IMAGE FIX */
+.imgbox{
+    width:180px;
+    height:180px;
+}
+
+.imgbox img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+/* NAV */
+.nav{
+    width:100%;
+    flex-wrap:nowrap;
+    justify-content:center;
+    gap:15px;
+}
+
+.prev,.next{
+    flex:1;
+    max-width:120px;
+    height:42px;
+    font-size:16px;
+}
+
+}
+
+
+/* =========================================
+📱 SMALL MOBILE (≤ 480px)
+========================================= */
+@media (max-width:480px){
+
+body{
+    overflow-x:hidden;
+    align-items:flex-start;
+    margin-top: 40px;
+}
+
+/* QUESTION */
+.question{
+    font-size:22px;
+    margin-top:20px;
+}
+
+/* STACK */
+.row{
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
+
+/* BLANKS FIX */
+.blanks{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:6px;
+}
+
+.blank{
+    width:clamp(30px, 12vw, 40px) !important;
+    height:clamp(30px, 12vw, 40px) !important;
+    font-size:16px;
+}
+
+/* LETTER FIX */
+.letters{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:6px;
+}
+
+.letter{
+    width:clamp(35px, 12vw, 45px);
+    height:clamp(35px, 12vw, 45px);
+    font-size:16px;
+}
+
+/* 🔥 IMAGE PERFECT ALIGN */
+.imgbox{
+    width:150px;
+    height:150px;
+}
+
+.imgbox img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+/* NAV STRICT ONE ROW */
+.nav{
+    width:100%;
+    flex-wrap:nowrap;
+    /* flex-direction: column; */
+    justify-content:center;
+    align-items: center;
+    gap:40px;
 }
 
 .nav button{
-font-size:18px;
-padding:10px 25px;
-margin-top: -40px;
+    padding: 0;
 }
 
+.prev,.next{
+    max-width:100%;
+    height:50px;
+    font-size:16px;
+    text-align: center;
 }
 
-
-@media(max-width:768px){
-
-.quiz{
-padding:10px;
-margin-top: 60px;
+/* FINAL */
+.final{
+    width:90%;
+    padding:20px;
 }
 
-.question{
-font-size:22px;
+.final h2{
+    font-size:24px;
 }
 
-.row{
-flex-direction:column;
-gap:30px;
-margin-left:0;
-}
-
-.imgbox img{
-max-width:220px;
-}
-
-.blank{
-width:25px;
-height:25px;
-font-size:15x;
-}
-
-.letter{
-width:30px;
-height:30px;
-font-size:20px;
-}
-
-.nav button{
-font-size:18px;
-padding:10px 25px;
-margin-top: -40px;
-}
-
-}
-
-/* SMALL MOBILE */
-
-@media(max-width:480px){
-
-.question{
-font-size:20px;
-margin-top: 60px;
-}
-
-.blank{
-width:35px;
-height:35px;
-font-size:18px;
-}
-
-.letter{
-width:45px;
-height:55px;
-font-size:18px;
-}
-
-.imgbox img{
-max-width:180px;
-margin-top: -20px;
+.final h3{
+    font-size:18px;
 }
 
 }

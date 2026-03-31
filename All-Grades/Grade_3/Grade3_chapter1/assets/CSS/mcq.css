@@ -92,6 +92,7 @@ body {
   padding: 14px 20px;
   border-radius: 20px;
   text-align: left;
+  margin-top: -60px;
 }
 
 /* OPTIONS */
@@ -99,8 +100,8 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 180px);
   justify-content: center;
-  gap: 28px 40px;
-  margin-top: -10px;
+  gap: 20px 35px;
+  margin-top: -100px;
 }
 
 .option {
@@ -393,17 +394,21 @@ button:disabled {
 @media (max-width:800px) {
 
   .quiz {
-    width: 90%;
+    width: 100%;
     margin-top: 0;
   }
 
-  .options {
-    grid-template-columns: repeat(2, 1fr);
+  .options{
+    display:grid;                           /* ✅ use grid */
+    grid-template-columns:repeat(2,1fr);    /* ✅ 2 columns */
+    gap:15px;
+    justify-items:center;
+    margin-top: -100px;
   }
 
-  .option {
-    width: 160px;
-    height: 160px;
+  .option{
+    width:100%;          /* ✅ fit inside grid */
+    max-width:160px;     /* keep design same */
   }
 
   .optImg {
@@ -413,7 +418,19 @@ button:disabled {
 
   .question {
     font-size: 30px;
+    margin-top: -60px;
   }
+.nav {
+  display:flex;
+  justify-content:space-between; /* ✅ left-right */
+  align-items:center;
+  
+}
+
+button {
+  width:auto; /* ❌ remove full width */
+  min-width:120px;
+}
 
 }
 
@@ -429,6 +446,7 @@ button:disabled {
     overflow: auto;
     padding: 20px 0;
     align-items: flex-start;
+    margin-top: -20px;
   }
 
   .quiz {
@@ -436,55 +454,59 @@ button:disabled {
     padding: 20px;
 
   }
-
-  .header span {
-    position: relative;
-    top: auto;
-    left: auto;
-
-
-  }
+.header span {
+  position: relative;   /* ✅ FIX */
+  top: auto;
+  left: auto;
+  
+}
 
   .question-holder {
     height: auto;
     flex-direction: column;
 
     text-align: center;
+   
   }
 
   .question {
     font-size: 20px;
     text-align: center;
+     margin-top: 1px;
   }
 
   .question-emoji {
     font-size: 40px;
   }
 
-  .options {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  .options{
+    display:grid;                           /* ✅ use grid */
+    grid-template-columns:repeat(2,1fr);    /* ✅ 2 columns */
+    gap:15px;
+    justify-items:center;
+    margin-top: -20px;
   }
 
-  .option {
-    width: 140px;
-    height: 140px;
-    font-size: 16px;
+  .option{
+    width:100%;          /* ✅ fit inside grid */
+    max-width:160px;     /* keep design same */
   }
 
   .optImg {
     width: 70px;
     height: 70px;
   }
+.nav {
+  display:flex;
+  justify-content:space-between; /* ✅ left-right */
+  align-items:center;
+  gap:10px;
+}
 
-  .nav {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  button {
-    width: 100%;
-  }
+button {
+  width:auto; /* ❌ remove full width */
+  min-width:120px;
+}
 
   .hint {
     position: relative;
@@ -509,17 +531,17 @@ button:disabled {
 /* ✅ SMALL MOBILE (480px and below)     */
 /* ===================================== */
 @media (max-width:480px) {
-
-  .options {
-    grid-template-columns: 1fr;
+.options{
+    display:grid;                           /* ✅ use grid */
+    grid-template-columns:repeat(2,1fr);    /* ✅ 2 columns */
+    gap:15px;
+    justify-items:center;
   }
 
-  .option {
-    width: 130px;
-    height: 130px;
-    margin: auto;
+  .option{
+    width:100%;          /* ✅ fit inside grid */
+    max-width:140px;     /* keep design same */
   }
-
   .question {
     font-size: 18px;
   }
@@ -529,43 +551,14 @@ button:disabled {
     height: 26px;
     font-size: 18px;
   }
-
+.header span {
+  position: relative;   /* ✅ FIX */
+  top: auto;
+  left: auto;
+  font-size: 18px;
+}
   .popup-content {
     height: auto;
   }
 
-}
-
-/* If screen height is small (laptop) */
-@media (max-height:750px) {
-
-  .quiz {
-    padding: 20px 30px;
-  }
-
-  .question {
-    font-size: 24px;
-  }
-
-  .option {
-    width: 140px;
-    height: 140px;
-  }
-
-  .optImg {
-    width: 80px;
-    height: 80px;
-  }
-
-  .question-holder {
-    height: auto;
-    margin: 15px 0;
-  }
-}
-
-.finalpopup-box {
-  background: #ffffff;
-  padding: 25px 35px;
-  border-radius: 18px;
-  text-align: center;
 }

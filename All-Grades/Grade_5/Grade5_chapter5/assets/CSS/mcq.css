@@ -127,6 +127,7 @@ body {
     cursor: pointer;
     font-size: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
     border: 3px solid transparent;
@@ -145,7 +146,10 @@ body {
     align-items: center;
     font-weight: 600;
 }
-
+.option-img{
+  width:150px !important;
+  height:100px;
+}
 .option.correct {
     border-color: #7ed957;
 }
@@ -365,146 +369,154 @@ button:disabled {
     margin-top: 2%;
     display: none;
 }
-
 /* ===================================== */
-/* ========== MOBILE RESPONSIVE ========= */
+/* 📱 FULL MOBILE RESPONSIVE FINAL */
 /* ===================================== */
-
 @media (max-width:768px){
 
-  body{
-    height:auto;
-    overflow-y:auto;
-    align-items:flex-start;
-    padding:20px 12px;
-    margin-top: 140px;
-  }
-body::before{
-content:"";
-position:absolute;
-inset:0;
-/* background:url("../images/bg1.png") center/cover no-repeat; */
-z-index:-1;
-}
-  /* MAIN CARD */
-  .quiz{
-    width:100%;
-    padding:20px 15px;
-  }
-
-  /* HEADER TITLE CENTER */
-  .header span{
-    position:relative;
-    top:auto;
-    left:20%;
-    transform:none;
-    font-size:22px;
-    text-align:center;
-    
-     
-  }
-
-  /* QUESTION HOLDER */
-  .question-holder{
-    height:auto;
-    margin:20px 0;
-    gap:10px;
-  }
-
-  .question{
-    font-size:20px;
-    text-align:center;
-    padding:10px;
-  }
-
-  /* IMAGE */
-  .question-img{
-    width:160px;
-    height:auto;
-  }
-
-  /* OPTIONS → 1 COLUMN */
-  .options{
-    grid-template-columns:1fr;
-    gap:14px;
-  }
-
-  .option{
-    font-size:18px;
-    padding:14px;
-  }
-
-  /* NAVIGATION BUTTONS */
-  .nav{
-    flex-direction:row;
-    gap:15px;
-    margin-top:30px;
-  }
-
-  .nav button{
-    width:50%;
-    font-size:20px;
-    height: 50px;
-  }
-
-}
-@media (max-width:768px){
-
+  /* BODY */
   body{
     height:auto;
     min-height:100vh;
-    overflow-y:auto;      /* ✅ scroll only mobile */
+    overflow-y:hidden;
     overflow-x:hidden;
     align-items:flex-start;
-    padding:20px 12px;
+    padding:12px 10px;
+    margin:0;
   }
 
+  /* QUIZ CARD */
   .quiz{
-    max-height:none;      /* allow growth */
-  }
-}
-
-
-
-.option{
-    background:#f4f8fc;
+    width:100%;
+    max-width:100%;
+    max-height:none;
+    margin-top:0;
+    padding:15px 12px;
+    transform:none;
     border-radius:18px;
-    cursor:pointer;
-    border:3px solid transparent;
-    transition:.3s;
-    flex-direction:column;
+  }
+
+  /* HEADER */
+  .header{
     justify-content:center;
-    text-align:center;
-    padding:18px;
-    margin-top: -10px;
-}
+  }
 
-.option:hover:not(.disabled){
-    transform:scale(1.05);
-}
-
-/* image container */
-.option-img-wrap{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:10px;
-}
-
-/* image */
-.option-img{
-    width:100px;
-    height:100px;
-    object-fit:contain;
-}
-
-/* text */
-.option-text{
+  .header span{
     font-size:20px;
-    font-weight:500;
-    color:#2f4f4f;
+    margin-left:0;
+    text-align:center;
+  }
+
+  /* PROGRESS */
+  .progress{
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .progress div{
+    width:22px;
+    height:22px;
+    font-size:12px;
+  }
+
+  /* QUESTION */
+  .question-holder{
+    height:auto;
+    flex-direction:column;
+    gap:8px;
+    margin:15px 0;
+  }
+
+  .question{
+    font-size:18px;
+    padding:8px;
+    text-align:center;
+  }
+
+  .question-img{
+    width:120px;
+    height:auto;
+  }
+
+  /* OPTIONS */
+  .options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:10px;
+  }
+
+  /* OPTION BOX */
+  .option{
+    width:100%;
+    padding:10px;
+    border-radius:12px;
+    gap:6px;
+    font-size:14px;
+  }
+
+  /* 🔥 VERY SMALL IMAGE */
+  .option-img{
+    width:35px;
+    height:35px;
+    object-fit:contain;
+  }
+
+  /* 🔥 SMALL TEXT */
+  .option-text{
+    font-size:14px;
+  }
+
+  /* NAV BUTTONS */
+  .nav{
+    flex-direction:column;
+    gap:10px;
+    margin-top:15px;
+  }
+
+  .nav button{
+    width:100%;
+    font-size:15px;
+    height:45px;
+  }
+
+  /* POPUPS */
+  .popup-content{
+    width:90%;
+    height:auto;
+    padding:15px;
+  }
+
+  .popup-icon{
+    font-size:3em;
+  }
+
+  .popup-content h3{
+    font-size:1.4em;
+  }
+
+  .popup-content p{
+    font-size:1.1em;
+  }
+
+  .finalpopup-box{
+    width:90%;
+    padding:20px;
+  }
+  /* 💯 ALWAYS CENTER TITLE */
+.header{
+  position: relative;
+  margin-bottom: 5%;
 }
 
+.header span{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: 0;
+}
+
+}
 /* ========================================= */
 /* 💻 DESKTOP – REDUCE WHOLE PAGE BY 10% */
 /* ========================================= */
@@ -516,4 +528,16 @@ z-index:-1;
     transform-origin: center;    /* keep centered */
   }
 
+}
+
+@media (max-width: 380px){
+
+  .option-img{
+  width:20px !important;
+  height:20px;
+}
+
+.option{
+  margin-top:-2% ;
+}
 }

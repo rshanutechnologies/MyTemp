@@ -1021,3 +1021,50 @@ font-size:20px;
 
 
 }
+
+
+
+/* Small desktops / laptops */
+@media (min-width: 1024px) {
+  body{
+    margin-top: 3%;
+  }
+  
+.quiz-nav{
+    margin-top:3% !important;
+  
+}
+}
+
+/* Medium desktops */
+@media (min-width: 1280px) {
+ body{
+    margin-top: 3%;
+  }
+  .quiz-nav{
+    margin-top:1%;
+  
+}
+}
+
+/* Large desktops */
+@media (min-width: 1440px) {
+   body{
+    margin-top: 3%;
+  }
+    .quiz-nav{
+    margin-top:1%;
+  
+}
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
+  body{
+    margin-top: 3%;
+  }
+    .quiz-nav{
+    margin-top:1%;
+  
+}
+}

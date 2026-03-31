@@ -905,7 +905,7 @@ button:disabled {
 
 body{
     overflow:scroll;
-    margin-top:3%;
+    margin-top:6%;
 }
 
 /* main container */
@@ -995,7 +995,7 @@ font-size:20px;
 
 /* quiz header */
 .quiz-title{
-    font-size:24px;
+    font-size:22px;
 }
 
 .quiz-subtitle{

@@ -128,31 +128,29 @@
    .prev{
     color: #fff;
    border-radius:30px;
-    font-size:24px;
     cursor: pointer;
-  
-    font-weight: 500;
      position:relative;
- width:170px;
-    height:60px;
     border:none;
     border-radius:999px;
-    font-size:24px;
-    font-weight:500;
+     width:120px;
+    height:50px;
+    font-size:20px;
+    font-weight:400;
       background:#8fb1e8;
   }
 .next{ 
   color: #fff;
-    font-size:24px;
+
     cursor: pointer;
-    font-weight: 500;
+
  position:relative;
-width:170px;
-    height:60px;
+  width:120px;
+    height:50px;
+    font-size:20px;
+    font-weight:400;
     border:none;
     border-radius:999px;
-    font-size:24px;
-    font-weight:500;
+
      background:#f29b1d;
    }
 
@@ -214,7 +212,7 @@ box-shadow:none !important;
   top:0;
 }
 .quiz-nav{
-    margin-top:auto;
+    margin-top:3%;
     width:100%;
     display:flex;
     justify-content:center;
@@ -498,4 +496,52 @@ body{
   padding:20px;
 }
 
+}
+
+
+
+
+/* Small desktops / laptops */
+@media (min-width: 1024px) {
+  body{
+    margin-top: -2%;
+  }
+  
+.quiz-nav{
+    margin-top:4%;
+  
+}
+}
+
+/* Medium desktops */
+@media (min-width: 1280px) {
+ body{
+    margin-top: -2%;
+  }
+  .quiz-nav{
+    margin-top:4%;
+  
+}
+}
+
+/* Large desktops */
+@media (min-width: 1440px) {
+   body{
+    margin-top: -2%;
+  }
+    .quiz-nav{
+    margin-top:4%;
+  
+}
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
+  body{
+    margin-top: -2%;
+  }
+    .quiz-nav{
+    margin-top:4%;
+  
+}
 }

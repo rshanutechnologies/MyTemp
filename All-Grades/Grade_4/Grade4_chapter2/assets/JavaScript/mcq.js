@@ -3,7 +3,7 @@
 /**************** QUIZ DATA ****************/
 const quizData = [
   {
-    title: "Q1. Cacti are ____________.",
+    title: "Q1. Cacti are ______.",
     image: "../assets/images/Cactus1.png",
     options: [
       { text: "Mangroves", img: "../assets/images/Mangrove.png" },
@@ -15,7 +15,7 @@ const quizData = [
   },
   {
     title:
-      "Q2.  Coniferous trees have dark leaves to absorb more ____________.",
+      "Q2.  Coniferous trees have dark leaves to absorb more ______.",
     image: "../assets/images/conifer-img1.png",
     options: [
       { text: "Rain", img: "../assets/images/rain.png" },
@@ -26,7 +26,7 @@ const quizData = [
     answer: "Sunlight",
   },
   {
-    title: "Q3.  The roots of ____________  grow above the soil.",
+    title: "Q3.  The roots of ______  grow above the soil.",
     image: "../assets/images/Rhizophora1.png",
     options: [
       { text: "Coconut", img: "../assets/images/coconut-tree.png" },
@@ -37,7 +37,7 @@ const quizData = [
     answer: "Rhizophora",
   },
   {
-    title: "Q4. The seeds of ____________ trees are dispersed by water.",
+    title: "Q4. The seeds of ______ trees are dispersed by water.",
     image: "../assets/images/coconut-tree.png",
     options: [
       { text: "Mango", img: "../assets/images/mango-img.png" },
@@ -49,7 +49,7 @@ const quizData = [
   },
   {
     title:
-      "Q5. ____________ take in carbon dioxide released by aquatic animals.",
+      "Q5. ______ take in carbon dioxide released by aquatic animals.",
     image: "../assets/images/underwater-plant.png",
     options: [
       { text: "Floating plants", img: "../assets/images/floationg-plant.png" },

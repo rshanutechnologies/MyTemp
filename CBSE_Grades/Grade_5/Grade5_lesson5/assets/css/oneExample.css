@@ -48,7 +48,7 @@ body {
     align-items: center;
     cursor: pointer;
     width: 240px;
-    backdrop-filter: blur(6px);
+    /* backdrop-filter: blur(6px); */
     transition: .25s;
 }
 
@@ -130,7 +130,7 @@ body {
     align-items: center;
     border-radius: 35px;
     border: 3px solid #ffffff;
-    font-size: 34px;
+    font-size: 24px;
     font-weight: 900;
     color: #ffffff;
     cursor: pointer;
@@ -426,8 +426,12 @@ body {
 }
 
 @media (max-width:480px) {
+    body{
+        margin-top: -30px;
+        overflow: hidden;
+    }
     .question h2 {
-        font-size: 18px
+        font-size: 22px
     }
 
     .image-container {
@@ -441,7 +445,7 @@ body {
     }
 
     .image-box img {
-        height: 110px
+        height: 90px
     }
 
     .image-bottom {
@@ -449,7 +453,7 @@ body {
     }
 
     .controls {
-        margin-top: 20px
+        margin-top: 40px
     }
 
     .controls button {

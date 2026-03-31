@@ -422,6 +422,38 @@
 
 }
 
+@media (max-width:1000px){
+
+  body{
+    overflow:hidden;
+    padding:16px 10px;
+    align-items:flex-start;
+    margin-top: -20px;
+  }
+
+  .ui-scale{
+    transform:scale(0.85);
+    transform-origin:top center;
+  }
+
+  .chests{
+    flex-direction:column;
+    gap:16px;
+    margin-top: -20px;
+  }
+
+  .chest{
+    max-width:100%;
+  }
+
+  .nav-row{
+    gap:40px;
+    
+    
+  }
+
+}
+
 
 /* ===================================== */
 /* ✅ SMALL MOBILE (480px and below)     */

@@ -607,3 +607,51 @@ content:none;
   background:#fff8e1;
   transform:scale(1.03);
 }
+
+
+
+
+/* Small desktops / laptops */
+@media (min-width: 1024px) {
+  body{
+    margin-top: -2%;
+  }
+  
+.quiz-nav{
+    margin-top:4%;
+  
+}
+}
+
+/* Medium desktops */
+@media (min-width: 1280px) {
+ body{
+    margin-top: -2%;
+  }
+  .quiz-nav{
+    margin-top:4%;
+  
+}
+}
+
+/* Large desktops */
+@media (min-width: 1440px) {
+   body{
+    margin-top: -2%;
+  }
+    .quiz-nav{
+    margin-top:4%;
+  
+}
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
+  body{
+    margin-top: -2%;
+  }
+    .quiz-nav{
+    margin-top:4%;
+  
+}
+}

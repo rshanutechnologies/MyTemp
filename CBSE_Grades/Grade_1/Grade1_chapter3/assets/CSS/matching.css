@@ -256,12 +256,6 @@ h1 {
 }
 
 @media (max-width: 768px) {
-    body {
-        padding: 30px 10px 0px;
-        overflow-y: auto;
-        align-items: flex-start;
-    }
-
     .main {
         max-width: 720px;
     }
@@ -286,9 +280,9 @@ h1 {
     }
 
     .item {
-        height: 90px;
+        height: 140px;
         border-radius: 15px;
-        font-size: 17px;
+        font-size: 22px;
         padding: 12px 14px;
         width: 100%;
     }
@@ -300,9 +294,9 @@ h1 {
 
     .right .item,
     .left .item {
-        flex-direction: column;
+        flex-direction: row;
         text-align: center;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 20px;
     }
 
@@ -350,6 +344,13 @@ h1 {
 }
 
 @media (max-width: 480px) {
+
+    body {
+        padding: 30px 10px 0px;
+        overflow-y: auto;
+        align-items: flex-start;
+    }
+
     .main {
         margin-top: 60px;
     }
@@ -376,6 +377,14 @@ h1 {
         height: 120px;
         font-size: 15px;
         padding: 10px 12px;
+    }
+
+    .right .item,
+    .left .item {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        gap: 20px;
     }
 
     .left-img {

@@ -273,6 +273,8 @@ button:disabled {
 .station.finish { background: #f59e0b; }
 
 /* =================== Mobile =================== */
+
+
 @media (max-width:768px){
   body{
     overflow-y:auto;
@@ -285,6 +287,7 @@ button:disabled {
   .question .question-img {
     width: 120px;   /* 🔥 smaller */
     height: auto;
+    /* background-color: yellow; */
   }
 
   .main { width:95%; padding:15px; }
@@ -324,6 +327,7 @@ button:disabled {
   font-size: 20px;
    position: relative;
    top:530px;
+   
 }
 #finalPopup {
   position: fixed;
@@ -414,3 +418,143 @@ button:disabled {
   }
 
 }
+
+
+
+
+@media (max-width:480px){
+  body{
+    overflow-y:auto;
+    align-items:flex-start;
+    padding:15px 0;
+    background: linear-gradient(135deg, #fef3c7, #e0f2fe, #dcfce7);
+  }
+
+  .question img,
+  .question .question-img {
+    width: 120px;   /* 🔥 smaller */
+    height: auto;
+   
+  
+  }
+
+  .main { width:95%; padding:15px; }
+
+  .question { flex-direction:column; height:auto; text-align:center; margin-top: -20px !important; }
+  .question img { width:100px !important; height:100px !important; }
+  .question-text { font-size:20px; min-height:auto !important; }
+
+  .input-row {
+    flex-direction: column; /* stack input + check button */
+    gap: 12px;
+    max-width: 100%;
+
+  
+  }
+
+  .input-row input { font-size:18px; }
+  .input-row button { width:100%; padding:12px; }
+
+  .question .nav {
+    max-width: 100%;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  .question .nav button {
+    width: 45%;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+}
+.checkBtn {
+  background: #1fb36b;
+  color: #fff;
+  border: none;
+  padding: 10px 28px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 20px;
+   position: relative;
+   top:480px !important;
+   
+}
+#finalPopup {
+  position: fixed;
+  inset: 0;
+  /* background: rgba(0, 0, 0, .4); */
+  display: none;                 /* default hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+/* 🔥 Reorder Question Layout */
+
+.question {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 1️⃣ Question text first */
+.question-text {
+  order: 1;
+}
+
+/* 2️⃣ Image second */
+.question-img {
+  order: 2;
+}
+
+/* 3️⃣ Input third */
+.input-row {
+  order: 3;
+}
+
+/* 4️⃣ Navigation buttons last */
+.question .nav {
+  order: 4;
+}
+
+/*final score POPUPS */
+#finalPopup {
+  position: fixed;
+  inset: 0;
+  /* background: rgba(0, 0, 0, .4); */
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.finalpopup-box {
+  background: #fff;
+  padding: 25px 35px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.final-heading {
+  display: block;
+  font-size: 2em;
+  margin: 20px;
+  font-weight: bold;
+}
+
+#stars {
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.playAgain-btn {
+  background: #1fb36b;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-block: 10px;
+  cursor: pointer;
+}
+
+/* ========================================= */
+/* 💻 DESKTOP – REDUCE PAGE SIZE BY 20% */
+/* ========================================= */

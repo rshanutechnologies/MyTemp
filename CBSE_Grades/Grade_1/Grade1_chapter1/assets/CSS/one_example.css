@@ -349,12 +349,6 @@ TABLET
 
 @media (max-width: 768px) {
 
-    body {
-        overflow-y: auto;
-        align-items: flex-start;
-        padding-top: 40px;
-    }
-
     .main-container {
         width: 95%;
         height: auto;
@@ -363,7 +357,7 @@ TABLET
     }
 
     .question-box {
-        font-size: 24px;
+        font-size: 22px;
         height: auto;
     }
 
@@ -403,7 +397,7 @@ TABLET
     }
 
     .controls button {
-        font-size: 16px;
+        font-size: 18;
         padding: 10px 26px;
     }
 
@@ -414,12 +408,12 @@ TABLET
 MOBILE
 ================================ */
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
 
     body {
         overflow-y: auto;
         align-items: flex-start;
-        padding-top: 40px;
+        padding-top: 70px;
     }
 
     .main-container {
@@ -446,7 +440,7 @@ MOBILE
     }
 
     .option {
-        width: 170px;
+        width: 150px;
         height: 110px;
         font-size: 16px;
     }
@@ -469,7 +463,7 @@ MOBILE
     }
 
     .controls button {
-        font-size: 15px;
+        font-size: 18px;
         padding: 10px 22px;
     }
 

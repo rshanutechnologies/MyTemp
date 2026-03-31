@@ -14,8 +14,8 @@
  }
 
  .quiz-card {
-     width: 600px;
-     max-width: 65%;
+     width: 800px;
+     max-width: 85%;
      display: flex;
      flex-direction: column;
      justify-content: center;
@@ -51,7 +51,7 @@
 
  /* OPTIONS */
  .options {
-     height: 130px;
+     height: 100px;
      display: flex;
      gap: 25px;
      justify-content: center;
@@ -416,19 +416,21 @@
  }
 
  .header {
-     margin-top: -300px;
+  position: fixed;   /* 🔥 FIX: stick to screen */
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+  color: blue;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 999;
+}
 
-     font-size: 20px;
-     color: blue;
-     display: flex;
-     align-items: center;
-     gap: 8px;
-     white-space: nowrap;
-     /* ← important */
- }
-
+/* MOBILE FIX */
  .header span {
      margin-left: 10px;
+     
  }
 
  .question-pill {
@@ -454,6 +456,7 @@
      .question-pill {
          font-size: 30px;
      }
+     
  }
 
 
@@ -548,3 +551,101 @@
      color: #fdefefea;
      font-style: italic;
  }
+
+ /* ===== PERFECT MOBILE FIX (≤600px) ===== */
+@media (max-width:600px){
+
+  body{
+    overflow:auto;
+    align-items:flex-start;
+    padding:12px;
+  }
+
+  .quiz-card{
+    width:100%;
+    max-width:100%;
+    gap:10px;
+    padding:14px;
+  }
+
+  /* QUESTION */
+  .question-pill{
+    font-size:20px;
+    height:auto;
+    padding:10px;
+    text-align:center;
+  }
+
+  /* OPTIONS (VERTICAL CLEAN) */
+  .options{
+    flex-direction:column;
+    align-items:center;
+    gap:5px;
+    height:auto;
+  }
+
+  .option{
+    width:100%;
+    max-width:220px;
+    margin-top:0;
+    text-align:center;
+  }
+
+  .option img{
+    width:30%;
+    height:auto;
+    margin-top: -20px;
+  }
+
+  .option span{
+    font-size:16px;
+    margin-top:8px;
+  }
+
+  /* ANSWER SECTION */
+  .answer-box{
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    padding:10px;
+  }
+
+  .answer-title{
+    font-size:16px;
+    text-align:center;
+  }
+
+  .answer-input{
+    width:100%;
+    font-size:16px;
+    text-align:center;
+  }
+
+  /* NAV BUTTONS LEFT-RIGHT */
+  .nav-buttons{
+    width:100%;
+    justify-content:space-between;
+    gap:10px;
+  }
+
+  .btn{
+    width:32%;
+    font-size:14px;
+    padding:8px;
+    justify-content:center;
+  }
+
+  .header{
+    position:fixed !important;
+    top:10px;
+    left:10px;
+    font-size:18px;
+    z-index:999;
+  }
+
+  body{
+    padding-top:50px;   /* space for header */
+  }
+
+
+}

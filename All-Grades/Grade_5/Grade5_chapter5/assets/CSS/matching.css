@@ -446,7 +446,7 @@ FINALS POPUP CSS
 
   .quiz{
     width:100%;
-    margin-top:0;
+    /* margin-top:-5%; */
   }
    body::before{
 content:"";
@@ -467,7 +467,7 @@ z-index:-1;
   }
 
   .item{
-    font-size:14px;
+    font-size:13px !important;
     padding:8px;
     min-height:65px;
   }
@@ -480,11 +480,12 @@ z-index:-1;
   /* HEADER FIX */
   .header span{
     position:relative;
-    top:auto;
-    left:40%;
+    top:5%;
+    left:20%;
     transform:none;
     font-size:18px;
     text-align:center;
+    margin-top: 10%;
 
   }
 
@@ -498,7 +499,7 @@ z-index:-1;
 
   /* POPUP MOBILE FIX */
   .popup-box{
-    width:95%;
+    width:75% !important;
     padding:18px;
   }
 
@@ -513,7 +514,7 @@ z-index:-1;
   }
 
   .popup-box.popup-final{
-    width:95%;
+    width:75% !important;
     min-height:auto;
   }
 

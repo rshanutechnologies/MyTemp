@@ -7,360 +7,273 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Livvic',sans-serif;
+}
+
 body{
-  height:100vh;
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
- 
+  padding:clamp(10px,2vw,20px);
+
   overflow:hidden;
-  font-family:'Livvic';
 }
+
+/* ================= CONTAINER (FTB STYLE) ================= */
 
 .quiz-container{
   width:100%;
-  max-width:1100px;
-  min-height:300px;
-  padding:40px 40px 120px;
-  position:relative;
+  max-width:1000px;
+  min-height:clamp(420px,70vh,650px);
+
   display:flex;
   flex-direction:column;
   justify-content:space-between;
 }
+
+/* ================= QUESTION ================= */
+
 .question{
-  font-size:30px;
-  height:80px;
+  font-size:clamp(20px,2vw + 1vh,30px);
+  min-height:clamp(60px,10vh,90px);
+
   display:flex;
   align-items:center;
-  justify-content:center;   /* center horizontally */
-  text-align:center;        /* center multi-line text */
-  width:100%;               /* take full container width */
+  justify-content:center;
+  text-align:center;
+
   color:#2f4f4f;
+  padding:0 clamp(10px,2vw,20px);
 }
+
+/* ================= MIDDLE ================= */
+
 .row{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
-  flex:1;                    /* Fills middle space */
+  gap:clamp(20px,3vw,40px);
+  flex:1;
 }
+
+/* ================= IMAGE ================= */
+
 .image{
   flex:1;
   display:flex;
   justify-content:center;
   align-items:center;
-  height:300px;              /* FIX IMAGE AREA */
 }
 
 .image img{
-  max-width:300px;
-  max-height:300px;
-  object-fit:contain;        /* Prevent distortion */
+  width:clamp(140px,20vw,300px);
+  height:auto;
 }
 
-/* Right Section */
+/* ================= RIGHT ================= */
+
 .right{
   flex:1;
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:30px;
+  justify-content:center;
+  gap:clamp(20px,3vw,30px);
 }
 
-/* T/F Options */
+/* ================= OPTIONS ================= */
+
 .options{
   display:flex;
-  gap:40px;
+  gap:clamp(20px,3vw,40px);
 }
 
-/* 🌟 FUN OPTION BOXES */
-
 .option-box{
-  width:95px;
-  height:95px;
+  width:clamp(70px,9vw,110px);
+  height:clamp(70px,9vw,110px);
+
   display:flex;
   justify-content:center;
   align-items:center;
-  font-size:38px;
+
+  font-size:clamp(26px,3vw,42px);
   font-weight:700;
+
   border-radius:25px;
   cursor:pointer;
   transition:0.25s ease;
   box-shadow:0 10px 25px rgba(0,0,0,0.15);
-  position:relative;
 }
 
-/* Bouncy Hover */
 .option-box:hover{
   transform:translateY(-6px) scale(1.05);
 }
 
-/* TRUE BOX - Bright Green */
+/* COLORS */
 .true-box{
   background:linear-gradient(145deg,#c8f7c5,#a5e6a2);
   color:#0a7a0a;
   border:3px solid #0a7a0a;
-  box-shadow:
-    inset 0 4px 8px rgba(255,255,255,0.7),
-    0 10px 20px rgba(0,128,0,0.25);
 }
 
-/* FALSE BOX - Bright Red */
 .false-box{
   background:linear-gradient(145deg,#ffd6d6,#ffb3b3);
   color:#c40000;
   border:3px solid #c40000;
-  box-shadow:
-    inset 0 4px 8px rgba(255,255,255,0.7),
-    0 10px 20px rgba(255,0,0,0.25);
 }
 
-/* 🌟 FUN ANSWER BOX */
+/* ================= ANSWER ================= */
 
 .answer-box{
-  width:280px;
-  height:70px;
+  width:clamp(200px,28vw,320px);
+  height:clamp(50px,8vh,75px);
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  font-size:32px;
+  font-size:clamp(22px,2vw,34px);
   font-weight:700;
-  letter-spacing:2px;
 
   border-radius:20px;
   border:3px dashed #8fa8ff;
 
   background:linear-gradient(145deg,#ffffff,#e9f0ff);
-
-  color:#2f4f4f;
-
-  box-shadow:
-    inset 0 5px 10px rgba(255,255,255,0.9),
-    0 8px 18px rgba(0,0,0,0.12),
-    0 0 12px rgba(143,168,255,0.35);
-
-  transition:all 0.3s ease;
 }
 
-/* ✨ When answer appears */
 .answer-box:not(:empty){
   border:3px solid #4caf50;
   background:linear-gradient(145deg,#e8fbe8,#c8f7c5);
   color:#0a7a0a;
-
-  box-shadow:
-    inset 0 4px 10px rgba(255,255,255,0.9),
-    0 10px 22px rgba(0,128,0,0.25),
-    0 0 15px rgba(76,175,80,0.4);
-
   transform:scale(1.05);
 }
-/* Navigation Buttons */
-.nav-btn{
-  position:absolute;
-  bottom:30px;   /* Better placement */
-  padding:12px 35px;
-  font-size:22px;
+
+/* ================= BUTTONS (FTB STYLE) ================= */
+
+.buttons{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:auto;
+  gap:clamp(6px,1vw,12px);
+}
+
+button{
+  padding:clamp(10px, 1vw, 14px) clamp(26px, 3.5vw, 42px);
+
+  font-size: clamp(16px, 1.5vw, 22px);
   border:none;
-  border-radius:50px;
+  border-radius:40px;
+
+  font-size:clamp(16px,1.5vw,22px);
+  font-weight:600;
+
   cursor:pointer;
   color:white;
-  font-weight:500;
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
-  transition:0.3s;
 }
 
-.nav-btn:hover{
-  transform:translateY(-3px);
-}
+/* colors */
+.prev{background:linear-gradient(135deg,#607d8b,#455a64);}
+.next{background:linear-gradient(135deg,#ff9800,#f57c00);}
 
-#prevBtn{
-  left:60px;
-  background:linear-gradient(135deg,#607d8b,#455a64);
-}
-
-#nextBtn{
-  right:60px;
-  background:linear-gradient(135deg,#ff9800,#f57c00);
-}
-.nav-btn:disabled{
-  background:#ccc !important;
+button:disabled{
+  background:#cccccc !important;
   cursor:not-allowed;
-  box-shadow:none;
 }
-/* ===== SMALLER POPUP ===== */
+
+/* ================= POPUP ================= */
 
 .popup{
-  position:fixed;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:1000;
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;
 }
 
 .hidden{
-  display:none;
+display:none;
 }
 
 .popup-content{
-  background:#fef6ff;
-  padding:35px 45px;          /* Reduced padding */
-  border-radius:22px;         /* Slightly smaller radius */
-  text-align:center;
-  box-shadow:0 15px 35px rgba(0,0,0,0.2);
-  min-width:280px;            /* Smaller width */
-  max-width:380px;            /* Smaller max width */
-  animation:pop 0.25s ease;
+background:#fef6ff;
+padding:clamp(25px,4vw,60px) clamp(20px,5vw,80px);
+border-radius:30px;
+text-align:center;
+box-shadow:0 20px 45px rgba(0,0,0,0.25);
+min-width:260px;
+max-width:90%;
+animation:pop 0.3s ease;
 }
 
 @keyframes pop{
-  from{ transform:scale(0.85); opacity:0; }
-  to{ transform:scale(1); opacity:1; }
+from{ transform:scale(0.8); opacity:0; }
+to{ transform:scale(1); opacity:1; }
 }
 
 .popup-emoji{
-  font-size:48px;             /* Smaller emoji */
-  margin-bottom:10px;
+font-size:clamp(35px,5vw,60px);
+margin-bottom:15px;
 }
 
 .popup-content h2{
-  font-size:28px;             /* Smaller title */
-  margin-bottom:8px;
+font-size:clamp(18px,2vw,28px);
+margin-bottom:10px;
 }
 
 .popup-content p{
-  font-size:20px;             /* Smaller text */
+font-size:clamp(14px,1.5vw,20px);
 }
 
 .play-again-btn{
-  margin-top:20px;
-  padding:12px 28px;
-  font-size:16px;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-  background:linear-gradient(135deg,#4caf50,#2e7d32);
-  color:white;
-  font-weight:600;
-  transition:0.3s;
+margin-top:20px;
+padding:clamp(10px, 1vw, 14px) clamp(26px, 3.5vw, 42px);
+
+  font-size: clamp(16px, 1.5vw, 22px);
+border:none;
+border-radius:30px;
+cursor:pointer;
+background:linear-gradient(135deg,#4caf50,#2e7d32);
+color:white;
+font-weight:600;
 }
 
-.play-again-btn:hover{
-  transform:translateY(-2px);
-}
-/* ============================= */
-/* 📱 MOBILE RESPONSIVE */
-/* ============================= */
+/* ================= MOBILE FIX ================= */
 
 @media (max-width:600px){
 
-  body{
-    align-items:flex-start;
-    padding-top:30px;
-    overflow:auto;
-    margin-top: 40px;
-  }
-
-  .quiz-container{
-    padding:20px 20px 100px;
-  }
-
-  .question{
-    font-size:20px;
-    height:auto;
-    text-align:center;
-    justify-content:center;
-  }
-
   .row{
-    flex-direction:column;
-    gap:40px;
+    flex-direction:column;   /* 🔥 stack vertically */
+    gap:clamp(20px,4vh,40px);
   }
 
-  .image{
-    height:auto;
+  .right{
+    gap:clamp(15px,3vh,25px);
   }
 
-  .image img{
-    max-width:200px;
-    max-height:200px;
-  }
-
-  .option-box{
-    width:75px;
-    height:75px;
-    font-size:30px;
+  .options{
+    gap:clamp(15px,4vw,30px);
   }
 
   .answer-box{
-    width:220px;
-    height:60px;
-    font-size:24px;
+    margin-top:10px;   /* 🔥 prevent overlap */
   }
 
-  #prevBtn{
-    left:20px;
-    bottom:-30px;
-  }
-
-  #nextBtn{
-    right:20px;
-    bottom:-30px;
-  }
-  .popup-content{
-    padding:30px 25px;   /* reduced padding */
-    min-width:260px;
-    max-width:90%;
-    border-radius:20px;
-  }
-
-  .popup-emoji{
-    font-size:40px;   /* smaller emoji */
-  }
-
-  .popup-content h2{
-    font-size:20px;
-  }
-
-  .popup-content p{
-    font-size:16px;
-  }
-
-  .play-again-btn{
-    padding:10px 20px;
-    font-size:14px;
-  }
 }
 
-/* ============================= */
-/* 🖥 LARGE MONITOR */
-/* ============================= */
-
-@media (min-width:1400px){
+@media (min-width:700px){
 
   .question{
-    font-size:34px;
+    font-size: 30px;
   }
 
-  .image img{
-    max-width:280px;
-    max-height:280px;
-  }
-
-  .option-box{
-    width:110px;
-    height:110px;
-    font-size:42px;
-  }
-
-  .answer-box{
-    width:320px;
-    height:75px;
-    font-size:34px;
-  }
 }
 </style>
 </head>
@@ -385,9 +298,10 @@ body{
       <div class="answer-box" id="answerBox"></div>
     </div>
   </div>
-
-  <button class="nav-btn" id="prevBtn">Previous</button>
-  <button class="nav-btn" id="nextBtn" disabled>Next</button>
+<div class="buttons">
+  <button class="prev" id="prevBtn">Previous</button>
+  <button class="next" id="nextBtn" disabled>Next</button>
+</div>
 
 </div>
 

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fun Kids Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+  :root{
+  /* QUESTION ≈ 30px */
+  --fs-lg: clamp(22px, 2vw + 1vh, 30px);
+
+  /* OPTION ≈ 20px */
+  --fs-md: clamp(16px, 1.2vw + 0.8vh, 20px);
+
+  /* SMALL TEXT */
+  --fs-sm: clamp(13px, 1vw + 0.5vh, 16px);
+
+  --box-h: clamp(100px, 12vh + 2vw, 160px);
+  --img-size: clamp(70px, 7vw + 3vh, 120px);
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Livvic';
+}
+
+html, body{
+  height:100%;
+}
+
+body{
+   min-height:100vh;   /* 🔥 FIX */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  margin-top: -10px;
+}
+.quiz-container{
+  width:min(100%, 1000px);
+  height:auto;              /* ❌ remove 100% */
+  max-height:100vh;
+  margin:auto;
+padding:clamp(10px, 2vh, 25px);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+ 
+  
+}
+.question{
+  width:100%;
+  min-height:80px;
+ font-size: clamp(20px, 3vw, 30px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+ 
+  
+}
+
+/* IMAGE */
+.question-img{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.question-img img{
+   width: clamp(150px, 14vw + 10vh, 280px); /* 🔥 bigger image */
+  height:auto;
+}
+
+.options{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:clamp(6px, 1.5vh, 20px);
+  margin-top: -20px;
+}
+
+/* OPTION ITEM */
+.option{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* BOX */
+.circle{
+  width:100%;
+  height: var(--box-h);
+}
+
+.circle img{
+  width: clamp(70px, 7vw + 3vh, 120px); /* 🔥 bigger & responsive */
+}
+
+/* BOX */
+.circle{
+  width:100%;
+  height:clamp(100px, 18vw, 150px);
+  background:#DFEBFC;
+  border-radius:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding-bottom:20px;
+}
+
+.option p{
+  font-size: var(--fs-md);  /* 🔥 20px feel */
+  padding: clamp(6px, 0.8vw + 0.5vh, 10px)
+           clamp(10px, 1.5vw, 20px);
+  margin-top:-12px;
+  font-weight:600;
+  color:white;
+  border-radius:40px;
+  position:relative;
+  box-shadow:0 6px 12px rgba(0,0,0,0.15);
+  white-space:nowrap;
+}
+
+/* SIDE DECOR */
+.option p::before,
+.option p::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width:clamp(20px,4vw,60px);
+  height:clamp(10px,2vw,22px);
+  z-index:-1;
+}
+
+.option p::before{
+  left:-20px;
+  border-radius:12px 0 0 12px;
+}
+
+.option p::after{
+  right:-20px;
+  border-radius:0 12px 12px 0;
+}
+
+/* COLORS */
+.option:nth-child(1) p{ background:#f6a645; }
+.option:nth-child(2) p{ background:#4da6ff; }
+.option:nth-child(3) p{ background:#f2c94c; color:#333; }
+.option:nth-child(4) p{ background:#b28dff; }
+
+.option:nth-child(1) p::before,
+.option:nth-child(1) p::after{ background:#f6a645; }
+
+.option:nth-child(2) p::before,
+.option:nth-child(2) p::after{ background:#4da6ff; }
+
+.option:nth-child(3) p::before,
+.option:nth-child(3) p::after{ background:#f2c94c; }
+
+.option:nth-child(4) p::before,
+.option:nth-child(4) p::after{ background:#b28dff; }
+
+/* HOVER */
+.option:hover .circle{
+  transform:translateY(-6px);
+  box-shadow:0 12px 25px rgba(0,0,0,0.12);
+}
+
+/* CORRECT / WRONG */
+.correct .circle{
+  border:3px solid #4caf50;
+  background:#e8f5e9;
+}
+
+.wrong .circle{
+  border:3px solid #e53935;
+  background:#ffebee;
+}
+.question{
+  flex:0 0 auto;
+}
+
+.question-img{
+  flex:0 0 auto;
+}
+
+.options{
+  flex:1;                 /* 🔥 takes available space */
+  display:grid;
+  align-content:center;   /* 🔥 center options vertically */
+}
+.nav-container{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:10px;
+  padding:0 clamp(10px, 5vw, 120px); /* 🔥 key fix */
+}
+/* ✅ NAV BUTTON FIX */
+.nav-btn{
+  width: clamp(120px, 20vw, 150px);   /* ✅ same as Fill page */
+  height: clamp(42px, 6vh, 50px);
+
+  font-size: clamp(16px, 1.5vw, 22px);
+  font-weight:500;
+
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  color:white;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:0.3s;
+
+  flex:0 0 auto;     /* 🔥 remove stretch */
+  margin-top:40px;      /* 🔥 remove wrong spacing */
+}
+#prevBtn{
+  background:linear-gradient(135deg,#607d8b,#455a64);
+}
+
+#nextBtn{
+  background:linear-gradient(135deg,#ff9800,#f57c00);
+}
+.nav-btn:hover{
+  transform:scale(1.05);
+}
+
+.nav-btn:hover{
+  transform:scale(1.05);
+}
+.nav-btn:disabled{
+  background:#e0e0e0 !important;
+  color:#9e9e9e;
+  cursor:not-allowed;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.hidden{
+  display:none;
+}
+
+.popup-content{
+  background:#fef6ff;
+  padding:clamp(20px,5vw,60px);
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 20px 45px rgba(0,0,0,0.25);
+  width:min(90%, 400px);
+}
+
+.popup-emoji{
+  font-size:clamp(30px,6vw,60px);
+}
+
+.popup-content h2{
+  font-size:clamp(18px,3vw,28px);
+}
+
+.popup-content p{
+  font-size:clamp(14px,2vw,20px);
+}
+
+.play-again-btn{
+  margin-top:20px;
+  padding:10px 25px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#4caf50,#2e7d32);
+  color:white;
+}
+@media (max-width:600px){
+   
+  .options{
+    grid-template-columns:repeat(2, 1fr); /* ✅ 2x2 grid */
+  }
+
+  .question{
+    margin-top: 40px;
+    font-size:clamp(20px,3vw,22px);
+  }
+  .nav-container{
+    justify-content:center;   /* 🔥 center both buttons */
+    gap:12px;                 /* 🔥 control gap */
+    padding:0 10px;
+  }
+
+  .nav-btn{
+    flex:0 0 auto;            /* ❌ remove stretch */
+    width:auto;               /* auto width */
+    min-width:100px;          /* 🔥 small but readable */
+    height:40px;
+    font-size:14px;
+    padding:0 12px;
+  }
+    
+    
+ }
+
+/* Default = Mobile */
+.question {
+  font-size: 20px;
+}
+
+/* From 700px and above = Desktop */
+@media (min-width: 700px) {
+  .question {
+    font-size: 30px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+  <div class="question" id="question"></div>
+
+<!-- ADD THIS -->
+<div class="question-img">
+   <img id="qImage" src="" alt="">
+</div>
+
+  <div class="options" id="options"></div>
+<div class="nav-container">
+  <button class="nav-btn" id="prevBtn">Previous</button>
+  <button class="nav-btn" id="nextBtn" disabled>Next</button>
+</div>
+
+<!-- Popup -->
+<div id="popup" class="popup hidden">
+ <div class="popup-content">
+  <div id="popupEmoji" class="popup-emoji"></div>
+  <h2 id="popupTitle"></h2>
+  <p id="popupMessage"></p>
+
+  <button id="playAgainBtn" class="play-again-btn hidden">
+    🔄 Play Again
+  </button>
+
+</div>
+
+<script>
+const questions = [
+{
+question: "Q1. Birds fly with the help of their ______.",
+qimg: "../images/Fly_bird.png",
+options: [
+{ text: "Lungs", img: "../images/lungs.png" },
+{ text: "Wings", img: "../images/wings.png" },
+{ text: "Gills", img: "../images/gills1.png" },
+{ text: "Fins", img: "../images/fins.png" }
+],
+correct: 1
+},
+
+{
+question: "Q2. A __________ lays eggs.",
+qimg: "../images/mcq2.png",
+options: [
+{ text: "Bat", img: "../images/bat.png" },
+{ text: "Snake", img: "../images/snake-img.png" },
+{ text: "Kangaroo", img: "../images/kangaroo.png" },
+{ text: "Bear", img: "../images/bear.png" }
+],
+correct: 1
+},
+
+{
+question: "Q3. __________ have six legs.",
+qimg: "../images/mcq3.png",
+options: [
+{ text: "Insects", img: "../images/insect.png" },
+{ text: "Snakes", img: "../images/snake-img.png" },
+{ text: "Birds", img: "../images/bird.png" },
+{ text: "Fishes", img: "../images/fish.png" }
+],
+correct: 0
+},
+
+{
+question: "Q4. Plants make food in their __________.",
+qimg: "../images/mcq4.png",
+options: [
+{ text: "Leaves", img: "../images/leaf.png" },
+{ text: "Roots", img: "../images/roots.png" },
+{ text: "Stems", img: "../images/stems.png" },
+{ text: "Branches", img: "../images/branches.png" }
+],
+correct: 0
+},
+
+{
+question: "Q5. Non-living things __________.",
+qimg: "../images/mcq5.png",
+options: [
+{ text: "Reproduce", img: "../images/reproduce.png" },
+{ text: "Don't grow", img: "../images/car.png" },
+{ text: "Move", img: "../images/move.png" },
+{ text: "Breathe", img: "../images/breathe.png" }
+],
+correct: 1
+}
+];
+let currentQuestion = 0;
+let selectedAnswers = new Array(questions.length).fill(null);
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+
+const popup = document.getElementById("popup");
+const popupTitle = document.getElementById("popupTitle");
+const popupMessage = document.getElementById("popupMessage");
+const popupEmoji = document.getElementById("popupEmoji");
+const playAgainBtn = document.getElementById("playAgainBtn");
+
+const qImage = document.getElementById("qImage");
+
+function launchConfetti(){
+
+for(let i=0;i<40;i++){
+
+const conf = document.createElement("div");
+conf.classList.add("confetti");
+
+conf.style.left = Math.random()*100 + "vw";
+
+const colors = ["#ff5252","#ffca28","#66bb6a","#42a5f5","#ab47bc"];
+conf.style.background = colors[Math.floor(Math.random()*colors.length)];
+
+conf.style.animationDuration = (Math.random()*2+2) + "s";
+
+document.body.appendChild(conf);
+
+setTimeout(()=>{
+conf.remove();
+},3000);
+
+}
+}
+function fireConfetti(){
+
+  confetti({
+    particleCount: 40,   // small confetti
+    spread: 70,
+    origin: { y: 0.6 },
+    scalar: 0.7
+  });
+
+}
+
+function loadQuestion(){
+optionsEl.innerHTML = "";
+const q = questions[currentQuestion];
+questionEl.textContent = q.question;
+qImage.src = q.qimg;
+nextBtn.disabled = selectedAnswers[currentQuestion] !== q.correct;
+
+q.options.forEach((opt,index)=>{
+const div = document.createElement("div");
+div.classList.add("option");
+
+div.innerHTML = `
+<div class="circle">
+<img src="${opt.img}" alt="">
+</div>
+<p>${opt.text}</p>
+`;
+
+div.addEventListener("click",()=>{
+
+// Prevent clicking after correct answer
+if(selectedAnswers[currentQuestion] === questions[currentQuestion].correct) return;
+
+if(index === q.correct){
+
+selectedAnswers[currentQuestion] = index; // save only correct answer
+loadQuestion();
+
+fireConfetti();
+speak("correct.");
+
+popupEmoji.textContent = "🎉";
+popupTitle.textContent = "Correct!";
+popupTitle.style.color = "green";
+popupMessage.textContent = "Great job!";
+nextBtn.disabled = false;
+
+popup.classList.remove("hidden");
+
+if(currentQuestion === questions.length - 1){
+setTimeout(()=>{
+popup.classList.add("hidden");
+showFinalPopup();
+},1200);
+}else{
+setTimeout(()=>{
+popup.classList.add("hidden");
+},1200);
+}
+
+}else{
+
+speak("Wrong.");
+
+popupEmoji.textContent = "❌";
+popupTitle.textContent = "Wrong!";
+popupTitle.style.color = "red";
+popupMessage.textContent = "Try again!";
+popup.classList.remove("hidden");
+
+setTimeout(()=>{
+popup.classList.add("hidden");
+},1200);
+
+}
+
+});
+
+if(selectedAnswers[currentQuestion] !== null){
+if(index === selectedAnswers[currentQuestion]){
+if(index === q.correct){
+div.classList.add("correct");
+}else{
+div.classList.add("wrong");
+}
+}
+}
+
+optionsEl.appendChild(div);
+});
+
+prevBtn.disabled = currentQuestion === 0;
+}
+
+nextBtn.addEventListener("click",()=>{
+if(currentQuestion < questions.length - 1){
+currentQuestion++;
+loadQuestion();
+}else{
+showFinalPopup();
+}
+});
+
+prevBtn.addEventListener("click",()=>{
+if(currentQuestion > 0){
+currentQuestion--;
+loadQuestion();
+}
+});
+
+function showFinalPopup(){
+
+let score = 0;
+
+questions.forEach((q,i)=>{
+if(selectedAnswers[i] === q.correct){ score++; }
+});
+
+popupEmoji.textContent = "🏆";
+popupTitle.textContent = "Quiz Completed!";
+popupMessage.textContent = `Score: ${score}/5`;
+
+playAgainBtn.classList.remove("hidden");
+popup.classList.remove("hidden");
+
+/* 🎉 FINAL CONFETTI CELEBRATION */
+
+confetti({
+  particleCount: 150,
+  spread: 120,
+  origin: { y: 0.6 }
+});
+
+}
+
+playAgainBtn.addEventListener("click",()=>{
+location.reload();
+});
+function speak(text){
+
+const msg = new SpeechSynthesisUtterance();
+
+msg.text = text;
+msg.lang = "en-GB";   // UK English
+msg.volume = 0.25;   // volume (0 to 1)
+msg.rate = 1;
+msg.pitch = 1;
+
+speechSynthesis.speak(msg);
+
+}
+loadQuestion();
+
+</script>
+</body>
+</html>

@@ -22,7 +22,7 @@ body{
   margin:0;
   display:flex;
 
-  background-image: url("./assets/images/L2bg.png");
+  background-image: url("./assets/images/L2bgg.png");
   background-size: cover;        /* ✅ Makes image full screen */
   background-position: center;   /* ✅ Center the image */
   background-repeat: no-repeat;  /* ✅ Prevent repeat */
@@ -111,41 +111,11 @@ iframe{
 width:100%;
 height:100%;
 border:none;
-}
-
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-
-body{
-flex-direction:column;
-}
-
-.content{
-display:none;
-position:fixed;
-inset:0;
-background:#fff;
-z-index:999;
-margin-left:0;
-}
-
-.content.active{
-display:block;
-}
-
-.side-nav{
+pointer-events:auto;
 position:relative;
-width:100%;
-height:100vh;
+z-index:999;
 }
 
-.nav-btn{
-width:90%;
-}
-
-}
-
-/* MOBILE TOGGLE */
 .mobile-toggle{
 display:none;
 position:fixed;
@@ -157,11 +127,64 @@ font-size:22px;
 padding:8px 12px;
 border-radius:10px;
 cursor:pointer;
-z-index:1001;
+z-index:999999;   /* HIGH */
 }
 
-.mobile-toggle.show{
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+
+body{
+flex-direction:column;
+
+}
+
+.content{
+display:block;   /* ✅ SHOW MCQ FIRST */
+position:fixed;
+inset:0;
+z-index:1;
+margin-left:0;
+}
+
+
+.content.active{
 display:block;
+}
+
+
+.side-nav{
+display:none;   /* hide first */
+}
+
+.side-nav.active{
+display:flex;
+position:fixed;
+inset:0;
+/* background:#fff; */
+z-index:2000;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
+padding-top:30px;
+}
+
+.mobile-toggle{
+display:block !important;
+}
+
+
+
+.nav-btn{
+width:90%;
+}
+
+}
+
+/* MOBILE TOGGLE */
+
+.mobile-toggle.show{
+display:block ;
 }
 
 
@@ -210,14 +233,22 @@ document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"))
 btn.classList.add("active");
 
 if(window.innerWidth <= 768){
-document.querySelector(".content").classList.add("active");
-document.getElementById("toggleBtn").classList.add("show");
+document.querySelector(".side-nav").classList.remove("active");
+document.querySelector(".content").style.display = "block";
 }
 }
 
 function goBack(){
-document.querySelector(".content").classList.remove("active");
-document.getElementById("toggleBtn").classList.remove("show");
+const nav = document.querySelector(".side-nav");
+const content = document.querySelector(".content");
+
+if(nav.classList.contains("active")){
+  nav.classList.remove("active");
+  content.style.display = "block";
+} else {
+  nav.classList.add("active");
+  content.style.display = "none";
+}
 }
 
 </script>

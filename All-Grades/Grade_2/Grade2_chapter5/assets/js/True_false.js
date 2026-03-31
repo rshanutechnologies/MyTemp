@@ -2,7 +2,7 @@ const quizData = [
   {
     q: "All animals eat the same type of food.",
     a: false,
-    img: "../assets/images/M-4.png",
+    img: "../assets/images/MCQ_4.png",
   },
   {
     q: "All animals live in forests.",
@@ -17,12 +17,12 @@ const quizData = [
   {
     q: "Omnivores are flesh eating animals.",
     a: false,
-    img: "../assets/images/omnivorous.png",
+    img: "../assets/images/bear.png",
   },
   {
     q: "Deer is a plant eating animal.",
     a: true,
-    img: "../assets/images/M-3.png",
+    img: "../assets/images/MCQ_3.png",
   },
 ];
 

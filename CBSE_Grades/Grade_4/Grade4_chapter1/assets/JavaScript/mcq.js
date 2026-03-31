@@ -27,7 +27,7 @@
 const quizData = [
 {
   // title: "  Pick the correct option ",
-  question: "Q.1The process by which a plant makes its own food in the presence of sunlight is called _____________________.",
+  question: "Q.1The process by which a plant makes its own food in the presence of sunlight is called _______.",
   image: "../assets/images/MCQ-1.png",
   options: [
     { id: "a", label: "ventation",   image: "../assets/images/venation.png", correct: false, theme: "bg-blue" },
@@ -115,7 +115,7 @@ const quizData = [
       quizTitleEl.textContent = q.title;
       questionTextEl.textContent = q.question;
       questionImageEl.src = q.image;
-
+      questionImageEl.parentElement.style.display = q.image ? "flex" : "none";
       prevBtn.disabled = current === 0;
       nextBtn.disabled = !solved;
 

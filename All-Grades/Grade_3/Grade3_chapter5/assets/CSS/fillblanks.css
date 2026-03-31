@@ -362,52 +362,58 @@ body {
     width:1100px;
   }
 }
-
-/* ===== MOBILE ===== */
+/* ===== FINAL MOBILE FIX (NO OVERLAP) ===== */
 @media (max-width:600px){
 
-  .quiz{
-    width:100%;
-    border-radius:0;
-    padding:16px;
-  }
-
-  .top-title{
-    font-size:28px;
-    padding:6px 14px;
-  }
-
-  .question{
-    font-size:20px;
+  /* ✅ STACK IMAGE + QUESTION */
+  .content{
+    flex-direction:column !important;
+    align-items:center !important;
+    gap:12px;
   }
 
   .image-box img{
-    width:160px;
-    height:150px;
+    width:140px !important;
+    height:130px !important;
+  }
+
+  /* ✅ QUESTION CENTER */
+  .question{
+    font-size:20px !important;
+    text-align:center;
+    min-height:auto;
+  }
+
+  /* ✅ INPUT FULL WIDTH */
+  .input-box{
+    width:100%;
   }
 
   .input-box input{
-    font-size:18px;
+    width:100%;
+    font-size:16px;
   }
 
-  .checkBtn-container button{
+  /* ✅ BUTTON CENTER */
+  .checkBtn-container{
     width:100%;
   }
 
+  /* ✅ NAV BUTTONS LEFT RIGHT */
   .footer{
-    flex-direction:column;
-    gap:12px;
-    align-items:center;
-    margin-top:20px;
+    flex-direction:row !important;
+    justify-content:space-between !important;
+    gap:10px;
+    margin-top:10px !important;
   }
 
   .footer button{
-    width:100%;
+    width:48% !important;
+    font-size:14px !important;
+    padding:10px;
+    margin-top:0 !important;   /* 🔥 fix overlap */
   }
 
-  .score{
-    justify-content:center;
-  }
 }
 .double-input{
   display:flex;
@@ -437,4 +443,46 @@ body {
   color:#fff;
   cursor:pointer;
   font-size:20px;
+}
+
+/* ===== COMPACT MOBILE FIX ===== */
+@media (max-width:600px){
+
+  /* ✅ INPUT BOX SMALL */
+  .input-box input,
+  .double-input input{
+    height:40px !important;
+    font-size:14px !important;
+    padding:0 10px;
+  }
+
+  .double-input{
+    gap:8px !important;
+  }
+
+  /* ✅ CHECK BUTTON SMALL */
+  .checkBtn-container button,
+  .double-check button{
+    font-size:14px !important;
+    padding:8px 14px !important;
+    border-radius:16px;
+  }
+
+  .double-check{
+    gap:10px !important;
+  }
+
+  /* ✅ NAV BUTTON SMALL */
+  .footer button{
+    width:120px !important;
+    font-size:14px !important;
+    padding:8px 10px !important;
+    border-radius:20px;
+  }
+
+  .footer{
+    gap:10px;
+    margin-top:10px !important;
+  }
+
 }

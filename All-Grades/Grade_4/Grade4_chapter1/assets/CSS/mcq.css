@@ -567,8 +567,16 @@ body {
 
 @media (max-width: 360px) {
 
+    .question-card{
+        padding: 0;
+    }
+
+    .q-text{
+        text-align: start;
+    }
+
     .options-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         justify-items: center;
         /* centers card */
     }
@@ -580,6 +588,7 @@ body {
         /* controlled width */
         height: 78px;
         justify-content: center;
+        flex-direction: column;
         padding-left: 22px;
     }
 

@@ -396,8 +396,8 @@ margin-top:10px;
 /* image */
 
 .animal-img{
-width:150px;
-height:140px;
+width:100px;
+height:90px;
 margin:10px auto;
 }
 
@@ -407,6 +407,7 @@ margin:10px auto;
 grid-template-columns:repeat(2,1fr);
 gap:16px;
 margin-top:20px;
+margin-top: -2%;
 }
 
 /* option card */
@@ -463,4 +464,51 @@ font-size:22px;
 font-size:16px;
 }
 
+}
+
+
+
+/* Small desktops / laptops */
+@media (min-width: 1024px) {
+  body{
+    margin-top: 8%;
+  }
+  
+.quiz-nav{
+    margin-top:11%;
+  
+}
+}
+
+/* Medium desktops */
+@media (min-width: 1280px) {
+ body{
+    margin-top: 8%;
+  }
+  .quiz-nav{
+    margin-top:11%;
+  
+}
+}
+
+/* Large desktops */
+@media (min-width: 1440px) {
+   body{
+    margin-top: 8%;
+  }
+    .quiz-nav{
+    margin-top:11%;
+  
+}
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
+  body{
+    margin-top: 8%;
+  }
+    .quiz-nav{
+    margin-top:11%;
+  
+}
 }

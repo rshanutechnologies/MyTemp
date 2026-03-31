@@ -260,7 +260,68 @@ function showFinalPopup(){
     </div>
   `, true);
 }
+/* ===== MOBILE TOUCH SUPPORT ===== */
 
+let touchedOptionIndex = null;
+
+// 👉 select option on touch
+document.addEventListener("touchstart", (e) => {
+  const option = e.target.closest(".option");
+  if(!option) return;
+
+  if(option.classList.contains("disabled")) return;
+
+  touchedOptionIndex = parseInt(option.dataset.index);
+});
+
+// 👉 drop on touch
+dropAreaEl.addEventListener("touchend", () => {
+
+  if(touchedOptionIndex === null) return;
+
+  const q = quizData[current];
+  const state = solvedMap[current];
+
+  if(state.solved) return;
+
+  const opt = q.options[touchedOptionIndex];
+
+  if(state.dropped.length >= 2) return;
+  if(state.dropped.includes(opt.text)) return;
+
+  if(opt.correct){
+
+    state.dropped.push(opt.text);
+    state.correctSet.add(opt.text);
+
+    const chip = document.createElement("div");
+    chip.className = "drop-chip";
+    chip.textContent = opt.text;
+    dropItemsEl.appendChild(chip);
+
+    speakText("Correct");
+
+    const optionDivs = document.querySelectorAll(".option");
+    optionDivs[touchedOptionIndex].classList.add("correct-picked");
+    optionDivs[touchedOptionIndex].draggable = false;
+
+    if(state.correctSet.size === 2){
+      state.solved = true;
+      score++;
+      nextBtn.disabled = false;
+
+      if(current === quizData.length - 1){
+        setTimeout(showFinalPopup, 1000);
+      }
+    }
+
+  } else {
+    speakText("Wrong");
+  }
+
+  touchedOptionIndex = null;
+
+});
 /* start */
 renderQuestion();
 

@@ -157,6 +157,8 @@ setTimeout(()=>{
 document.getElementById("final").style.display="block";
 document.getElementById("score").innerText="Your Score "+score+"/5";
 launchConfetti(); 
+prev.disabled = true;
+next.disabled = true;
 },1000);
 
 }else{

@@ -11,315 +11,186 @@
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Livvic';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Livvic', sans-serif;
 }
 
 /* BODY */
-
-body{
-
-height:100vh;
-
-background-image:url("./assets/images/bgak.png");
-/* background: linear-gradient(to bottom, #FFD0A5, #B2EBF2); */
-background-size:cover;
-background-position:center;
-
-display:flex;
-flex-direction:column;
-
+body {
+  height: 100dvh;
+  background-image: url("./assets/images/bgak.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* FRAME */
-
-.frame{
-
-flex:1;
-
-display:flex;
-flex-direction:column;
-
-width:100%;
-max-width:1300px;
-
-margin:auto;
-
-position:relative;
-
+.frame {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 1300px);
+  margin: auto;
+  padding: clamp(6px, 1.5vw, 16px);
+  gap: clamp(6px, 1.2vw, 14px);
+  min-height: 0;
+  position: relative;
 }
 
-/* ☰ MENU BUTTON */
-
-.menu-btn{
-
-display:none;
-
-position:absolute;
-
-top:10px;
-right:15px;   /* RIGHT SIDE */
-
-font-size:26px;
-
-background:#333;
-color:white;
-
-border:none;
-
-border-radius:6px;
-
-padding:6px 12px;
-
-cursor:pointer;
-
-z-index:1000;
-
+/* HAMBURGER — top right, only on mobile */
+.menu-btn {
+  display: none;
+  position: absolute;
+  top: clamp(6px, 1.5vw, 16px);
+  right: clamp(6px, 1.5vw, 16px);
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: clamp(20px, 4vw, 26px);
+  cursor: pointer;
+  z-index: 1000;
+  line-height: 1;
 }
 
-/* NAVBAR */
-
-.top-nav{
-
-display:flex;
-justify-content:center;
-gap:20px;
-
-flex-wrap:wrap;
-
-padding:10px 0;
-
+/* NAVBAR — centered on desktop */
+.top-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(6px, 1.2vw, 14px);
+  padding: clamp(4px, 1vw, 10px) 0;
 }
 
 /* NAV BUTTON */
-
-.nav-btn{
-
-padding:14px 30px;
-
-font-size:18px;
-font-weight:600;
-
-border:none;
-border-radius:56px;
-
-cursor:pointer;
-
-color:#f2f2f2;
-
-box-shadow:
-0 4px 8px rgba(0,0,0,0.35),
-inset 0 2px 4px rgba(255,255,255,0.3);
-
-transition:0.2s;
-
-display:flex;
-align-items:center;
-gap:8px;
-
-opacity:0.5;
-filter:grayscale(30%);
+.nav-btn {
+  padding: clamp(10px, 1.4vw, 14px) clamp(14px, 2.5vw, 30px);
+  font-size: clamp(13px, 1.6vw, 18px);
+  font-weight: 600;
+  font-family: 'Livvic', sans-serif;
+  border: none;
+  border-radius: 56px;
+  cursor: pointer;
+  color: #f2f2f2;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.35),
+    inset 0 2px 4px rgba(255,255,255,0.3);
+  transition: transform 0.2s, opacity 0.2s, filter 0.2s;
+  display: flex;
+  align-items: center;
+  gap: clamp(5px, 0.8vw, 8px);
+  opacity: 0.55;
+  filter: grayscale(30%);
+  white-space: nowrap;
 }
 
-.nav-btn:hover{
-transform:translateY(-2px);
-}
-
-.nav-btn.active{
-outline:3px solid rgba(255, 255, 255, 0.7);
+.nav-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.75;
 }
 
 /* COLORS */
+.mcq   { background: linear-gradient(#54f7d9, #80efed); color: #4b3c1f; }
+.fill  { background: linear-gradient(#7f7bd4, #6561bd); }
+.true  { background: linear-gradient(#e07a6f, #c55e53); }
+.match { background: linear-gradient(#75ab9f, #589387); }
+.one   { background: linear-gradient(#4be79f, #5ddba8); }
 
-.mcq{
-background:linear-gradient(#54f7d9,#80efed);
-color:#4b3c1f;
+/* ACTIVE STATE */
+.nav-btn.active {
+  outline: 4px solid rgba(255, 255, 255, 0.7);
+  opacity: 1;
+  filter: none;
+  transform: scale(1.05);
 }
 
-.fill{
-background:linear-gradient(#7f7bd4,#6561bd);
-}
-
-.true{
-background:linear-gradient(#e07a6f,#c55e53);
-}
-
-.match{
-background:linear-gradient(#75ab9f,#589387);
-}
-
-.one{
-background:linear-gradient(#4be79f,#5ddba8);
-}
-
-/* CONTENT */
-
-.content{
-
-flex:1;
-
-display:flex;
-
-border-radius:20px;
-
-overflow:hidden;
-
-}
-
-iframe{
-
-flex:1;
-
-width:100%;
-height:100%;
-
-border:none;
-
-}
-
-
-/* SHOW MENU BUTTON FOR MOBILE + TABLET */
-@media (max-width:1100px){
-
-  .menu-btn{
-    display:block;
-  }
-
-  /* MOBILE/TABLET MENU */
-  .top-nav{
-
-    display:none;
-
-    flex-direction:column;
-
-    position:absolute;
-
-    top:50px;
-    right:10px;
-
-    background:white;
-
-    padding:15px;
-
-    border-radius:12px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,0.35);
-
-    gap:12px;
-
-    z-index:999;
-  }
-
-  .top-nav.show{
-    display:flex;
-  }
-
-  .nav-btn{
-    width:220px;
-    font-size:16px;
-    padding:12px 20px;
-  }
-
-}
-
-/* ---------------- MOBILE ---------------- */
-
-@media (max-width:768px){
-
-.menu-btn{
-display:block;
-}
-
-/* MOBILE MENU */
-
-.top-nav{
-
-display:none;
-
-flex-direction:column;
-
-position:absolute;
-
-top:50px;
-right:10px;   /* RIGHT SIDE MENU */
-
-background:white;
-
-padding:15px;
-
-border-radius:12px;
-
-box-shadow:0 10px 25px rgba(0,0,0,0.35);
-
-gap:12px;
-
-z-index:999;
-
-}
-
-.top-nav.show{
-display:flex;
-}
-
-.nav-btn{
-
-width:200px;
-
-font-size:15px;
-
-padding:10px 20px;
-
-}
-
-}
-
-/* ICON STYLE */
-
-.icon{
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-width:22px;
-height:22px;
-
-font-size:14px;
-
+/* ICON */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(18px, 2vw, 22px);
+  height: clamp(18px, 2vw, 22px);
+  font-size: clamp(11px, 1.4vw, 14px);
+  flex-shrink: 0;
 }
 
 /* ACTIVE ICON CIRCLE */
+.nav-btn.active .icon {
+  background: #2ecc71;
+  color: white;
+  border-radius: 50%;
+  box-shadow:
+    0 0 6px rgba(46,204,113,0.8),
+    0 0 12px rgba(46,204,113,0.6),
+    0 0 18px rgba(46,204,113,0.4);
+}
 
-.nav-btn.active .icon{
+/* CONTENT */
+.content {
+  flex: 1;
+  display: flex;
+  border-radius: clamp(12px, 2vw, 20px);
+  overflow: hidden;
+  min-height: 0;
+}
 
-background:#2ecc71;
-color:white;
+/* IFRAME */
+iframe {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
 
-border-radius:50%;
+/* ── MOBILE — only switches layout mode ── */
+@media (max-width: 600px) {
 
-/* glow effect */
+  /* show hamburger */
+  .menu-btn {
+    display: block;
+  }
 
-box-shadow:
-0 0 6px rgba(46,204,113,0.8),
-0 0 12px rgba(46,204,113,0.6),
-0 0 18px rgba(46,204,113,0.4);
+  /* hide navbar by default */
+  .top-nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 54px;
+    right: clamp(6px, 3vw, 16px);
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 12px;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+    gap: 10px;
+    z-index: 999;
+    min-width: 220px;
+  }
+
+  /* show when toggled */
+  .top-nav.show {
+    display: flex;
+  }
+
+  /* full-width buttons inside dropdown */
+  .nav-btn {
+    width: 100%;
+    justify-content: flex-start;
+    font-size: 15px;
+    padding: 12px 18px;
+  }
 
 }
 
-.nav-btn.active{
-
-outline:4px solid rgba(255, 255, 255, 0.7);
-
-/* highlight */
-opacity:1;
-filter:none;
-
-transform:scale(1.05);
-
-}
 </style>
 </head>
 
@@ -327,71 +198,70 @@ transform:scale(1.05);
 
 <div class="frame">
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <!-- HAMBURGER — sits absolute top-right, independent of navbar -->
+  <button class="menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
 
-<!-- NAVBAR -->
+  <!-- NAVBAR — centered on desktop, dropdown on mobile -->
+  <nav class="top-nav" id="navbar">
 
-<div class="top-nav" id="navbar">
+    <button class="nav-btn mcq active" onclick="openPage('exercises/MCQ.html', this)">
+      <span class="icon"><i class="fa-solid fa-file-circle-check"></i></span>
+      Choose Option
+    </button>
 
-<button class="nav-btn mcq active" onclick="openPage('exercises/MCQ.html',this)">
-<span class="icon"><i class="fa-solid fa-file-circle-check"></i></span> Choose Option
-</button>
+    <button class="nav-btn fill" onclick="openPage('exercises/FITB.html', this)">
+      <span class="icon"><i class="fa-solid fa-pencil"></i></span>
+      Fill Blanks
+    </button>
 
-<button class="nav-btn fill" onclick="openPage('exercises/FITB.html',this)">
-<span class="icon"><i class="fa-solid fa-pencil"></i></span> Fill Blanks
-</button>
+    <button class="nav-btn true" onclick="openPage('exercises/True_false.html', this)">
+      <span class="icon"><i class="fa-solid fa-check"></i></span>
+      True / False
+    </button>
 
-<button class="nav-btn true" onclick="openPage('exercises/True_false.html',this)">
-<span class="icon"><i class="fa-solid fa-check"></i></span> True / False
-</button>
+    <button class="nav-btn match" onclick="openPage('exercises/matching.html', this)">
+      <span class="icon"><i class="fa-solid fa-link"></i></span>
+      Matching
+    </button>
 
-<button class="nav-btn match" onclick="openPage('exercises/matching.html',this)">
-<span class="icon"><i class="fa-solid fa-link"></i></span> Matching
-</button>
+  </nav>
 
-
-
-</div>
-
-<!-- CONTENT -->
-
-<div class="content">
-
-<iframe id="viewer" src="./exercises/MCQ.html"></iframe>
-
-</div>
+  <!-- CONTENT -->
+  <div class="content">
+    <iframe id="viewer" src="./exercises/MCQ.html"></iframe>
+  </div>
 
 </div>
 
 <script>
 
-/* OPEN PAGE */
+  function openPage(page, btn) {
+    document.getElementById("viewer").src = page;
+    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("navbar").classList.remove("show");
+    updateHamburgerIcon(false);
+  }
 
-function openPage(page,btn){
+  function toggleMenu() {
+    const navbar = document.getElementById("navbar");
+    const isOpen = navbar.classList.toggle("show");
+    updateHamburgerIcon(isOpen);
+  }
 
-document.getElementById("viewer").src = page;
+  function updateHamburgerIcon(isOpen) {
+    document.getElementById("menuBtn").textContent = isOpen ? "✕" : "☰";
+  }
 
-document.querySelectorAll(".nav-btn").forEach(b=>{
-b.classList.remove("active");
-});
-
-btn.classList.add("active");
-
-/* CLOSE MOBILE MENU */
-
-document.getElementById("navbar").classList.remove("show");
-
-}
-
-/* TOGGLE MENU */
-
-function toggleMenu(){
-
-const menu=document.getElementById("navbar");
-
-menu.classList.toggle("show");
-
-}
+  // close menu when clicking outside
+  document.addEventListener("click", function(e) {
+    const navbar = document.getElementById("navbar");
+    const menuBtn = document.getElementById("menuBtn");
+    if (!navbar.contains(e.target) && !menuBtn.contains(e.target)) {
+      navbar.classList.remove("show");
+      updateHamburgerIcon(false);
+    }
+  });
 
 </script>
 

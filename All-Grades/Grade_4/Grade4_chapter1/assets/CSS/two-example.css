@@ -476,7 +476,11 @@ body {
 /* ================================
    📱 VERY SMALL MOBILES (≤ 360px)
    ================================ */
-@media (max-width: 360px) {
+@media (max-width: 480px) {
+
+    body{
+        padding-top: 40px;
+    }
 
     .question {
         font-size: 20px;
@@ -484,7 +488,7 @@ body {
     }
 
     .options {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         justify-items: center;
     }
 

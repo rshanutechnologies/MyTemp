@@ -49,7 +49,7 @@ function speakText(t) {
 // ✅ 5 Questions Quiz Data
 const quizData = [
   {
-    question: "Our body has _______________ parts.",
+    question: "Our body has ________ parts.",
     image: "../assets/images/MCQ1.png",
     options: [
       {
@@ -77,7 +77,7 @@ const quizData = [
     ],
   },
   {
-    question: " We run with our _____________. ",
+    question: " We run with our ____. ",
     image: "../assets/images/MCQ2.png",
     options: [
       {
@@ -105,7 +105,7 @@ const quizData = [
     ],
   },
   {
-    question: " We feel things with our ____________. ",
+    question: " We feel things with our ______. ",
     image: "../assets/images/MCQ3.png",
     options: [
       {
@@ -133,7 +133,7 @@ const quizData = [
     ],
   },
   {
-    question: "Our ___________ helps us to remember. ",
+    question: "Our _____ helps us to remember. ",
     image: "../assets/images/MCQ4.png",
     options: [
       {
@@ -161,7 +161,7 @@ const quizData = [
     ],
   },
   {
-    question: " Our eyes help us to ____________. ",
+    question: " Our eyes help us to _____. ",
     image: "../assets/images/MCQ5.png",
     options: [
       {

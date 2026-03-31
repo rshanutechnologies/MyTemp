@@ -251,12 +251,6 @@ h1 {
 
 @media (max-width:768px) {
 
-    body {
-        padding: 25px 10px 0;
-        overflow-y: auto;
-        align-items: flex-start;
-    }
-
     .main {
         max-width: 720px;
     }
@@ -266,7 +260,10 @@ h1 {
     }
 
     .column {
-        width: 48%;
+        width: 43%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         gap: 14px;
     }
 
@@ -314,13 +311,13 @@ h1 {
 
 }
 
-@media (max-width:480px) {
+@media (max-width:600px) {
 
     body {
         height: auto;
         min-height: 100vh;
         overflow-y: auto;
-        padding: 20px 12px;
+        padding: 60px 12px 0px;
         align-items: flex-start;
     }
 
@@ -331,30 +328,26 @@ h1 {
     }
 
     .game-container {
-        gap: 14px;
+        gap: 12px;
         width: 100%;
-        align-items: flex-start;
+        justify-content: center;
     }
 
     .column {
-        /* width: 44%; */
-        gap: 14px;
+        width: 48%;
+        align-items: center;
+        gap: 12px;
     }
 
-    .left .item {
-        width: 150px;
-        min-height: 120px;
-        font-size: 14px;
-        padding: 12px;
-        border-radius: 20px;
-    }
-
+    /* 🔥 KEY FIX: use % instead of fixed px */
+    .left .item,
     .right .item {
-        width: 180px;
-        min-height: 120px;
-        font-size: 14px;
-        padding: 12px;
-        border-radius: 20px;
+        width: 100%;
+        min-height: 110px;
+        font-size: 15px;
+        font-weight: 400;
+        padding: 10px;
+        border-radius: 18px;
     }
 
     .left-img {
@@ -362,8 +355,55 @@ h1 {
         height: 32px;
     }
 
-    /* #line-canvas {
-                display: none;
-            } */
+    #line-canvas {
+        display: none;
+    }
+}
 
+@media (max-width:360px) {
+
+    .game-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .column {
+        width: 100%;
+        align-items: center;
+    }
+
+    .left .item,
+    .right .item {
+        width: 95%;
+        min-height: 90px;
+        font-size: 13px;
+        padding: 10px;
+        border-radius: 16px;
+    }
+
+    .left-img {
+        width: 26px;
+        height: 28px;
+    }
+
+    h1 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .final-kid-box {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .playAgain-btn {
+        width: 100%;
+        padding: 12px;
+    }
 }

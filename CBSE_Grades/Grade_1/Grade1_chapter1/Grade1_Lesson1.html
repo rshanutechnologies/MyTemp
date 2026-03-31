@@ -35,29 +35,30 @@
       padding: 20px 10px;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: center;
+      gap: 30px;
     }
 
     /* ===== HEADER ===== */
-    .header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 6px;
-    }
+    /* .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 6px;
+      }
 
-    .header img {
-      width: 140px;
-      height: 92px;
-      margin-bottom: 6px;
-    }
+      .header img {
+        width: 140px;
+        height: 92px;
+        margin-bottom: 6px;
+      }
 
-    .sidebar-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: #0369a1;
-      text-align: center;
-    }
+      .sidebar-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #0369a1;
+        text-align: center;
+      } */
 
     /* ===== OPTION BUTTON ===== */
     .island-btn {
@@ -66,7 +67,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 14px 18px;
+      padding: 25px 18px;
       border-radius: 22px;
       cursor: pointer;
       font-size: 18px;
@@ -80,8 +81,8 @@
     }
 
     .island-btn img {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       object-fit: contain;
       border-radius: 10px;
       flex-shrink: 0;
@@ -244,7 +245,7 @@
       display: none;
     }
 
-    @media (max-width:900px) {
+    @media (max-width:1065px) {
 
       body {
         overflow: hidden;
@@ -356,10 +357,10 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
 
-      <div class="header">
+      <!-- <div class="header">
         <img src="./assets/images/group-img.png" alt="Living">
         <div class="sidebar-title">Living & Non-living Things</div>
-      </div>
+      </div> -->
 
       <div class="island-btn o1 active" onclick="openIsland(0)">
         <div class="sparkles">
@@ -468,7 +469,6 @@
     }
 
     function toggleMenu() {
-      if (window.innerWidth > 900) return;
       document.getElementById("offcanvas").classList.toggle("show");
     }
 

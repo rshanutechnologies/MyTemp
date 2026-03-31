@@ -198,7 +198,7 @@ width:120px;
 height:50px;
 border-radius:20px;
 border:none;
-font-size:25px;
+font-size:20px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -377,10 +377,9 @@ background:#ff9f43;
 body{
 width:100%;
 height:auto;
-overflow:auto;
 align-items:flex-start;
-margin-top: 20%;
-overflow:scroll;
+margin-top: 5%;
+overflow:hidden;
 }
 
 /* main container */
@@ -408,8 +407,8 @@ margin-top:10px;
 /* image */
 
 .animal-img{
-width:150px;
-height:140px;
+width:100px;
+height:90px;
 margin:10px auto;
 }
 
@@ -475,4 +474,26 @@ font-size:22px;
 font-size:16px;
 }
 
+}
+
+
+/* Medium desktops */
+@media (min-width: 1280px) {
+ body{
+    margin-top: 3%;
+  }
+}
+
+/* Large desktops */
+@media (min-width: 1440px) {
+   body{
+    margin-top: 3%;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
+  body{
+    margin-top: 3%;
+  }
 }

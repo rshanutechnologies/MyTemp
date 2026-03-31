@@ -113,29 +113,30 @@ body::before{
 }
 .prev{
   position:relative;
- width:170px;
-    height:60px;
+  width:120px;
+    height:50px;
+    font-size:20px;
+    font-weight:400;
     border:none;
     border-radius:999px;
-    font-size:24px;
-    font-weight:500;
   left:-173px;     /* ⬅️ move outside left */
 }
 
 .next{
   position:relative;
-width:170px;
-    height:60px;
+  width:120px;
+    height:50px;
+    font-size:20px;
+    font-weight:400;
     border:none;
     border-radius:999px;
-    font-size:24px;
-    font-weight:500;
+  
   right:-173px;    /* ⬅️ move outside right */
 }
 
 
 button{
-  padding:14px 34px;
+  /* padding:14px 34px; */
   border:none;
   cursor:pointer;
   color:#fff;
@@ -253,8 +254,8 @@ button:disabled{
 }
 
 .option img{
-  width:250px !important;
-  height:250px !important;
+  width:220px ;
+  height:220px ;
   object-fit:contain;
   /* border: 2px solid skyblue; */
  
@@ -310,7 +311,7 @@ button:disabled{
   top:0;
 }
 .quiz-nav{
-    margin-top:auto;
+    margin-top:3%;
     width:100%;
     display:flex;
     justify-content:center;
@@ -494,9 +495,9 @@ html{
 }
 
 body{
-  overflow:auto;
+  overflow:hidden;
   padding:10px;
-  margin-top:-1%;
+  margin-top:-2%;
 }
 
 /* quiz container */
@@ -536,15 +537,12 @@ body{
 }
 
 /* option card */
-.option{
-  height:auto;
-  padding:10px;
-}
 
 /* option image smaller */
-.option img{
+#questionImg{
   width:120px !important;
   height:120px !important;
+ 
 }
 
 /* navigation buttons */
@@ -613,17 +611,17 @@ body{
 
 /* smaller bubbles */
 .bubble{
-  width:44px;
-  height:44px;
-  font-size:18px;
+  width:34px !important;
+  height:34px !important;
+  font-size:10px;
    
 }
 
 /* answer slots smaller */
 .slot{
-  width:44px;
-  height:44px;
-  font-size:20px;
+  width:34px;
+  height:34px;
+  font-size:13px;
    
 }
 .answer-slots{
@@ -631,7 +629,7 @@ body{
   gap:8px;
 }
 #submitBtn{
- margin-top:30px !important; 
+ margin-top:-10px !important; 
 }
 
 }
@@ -647,7 +645,7 @@ body{
 display:flex;
 justify-content:center;
 gap:12px;
-margin-top:-3%;
+margin-top:-2%;
 
 }
 
@@ -717,3 +715,49 @@ opacity:.35;
 pointer-events:none;
 }
 
+
+
+/* Small desktops / laptops */
+@media (min-width: 1024px) {
+  body{
+    margin-top: -3%;
+  }
+  
+.nav{
+    margin-top:-4%;
+  
+}
+}
+
+/* Medium desktops */
+@media (min-width: 1280px) {
+ body{
+    margin-top: -3%;
+  }
+  .nav{
+    margin-top:-4%;
+  
+}
+}
+
+/* Large desktops */
+@media (min-width: 1440px) {
+   body{
+    margin-top: -3%;
+  }
+    .nav{
+    margin-top:-4%;
+  
+}
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
+  body{
+    margin-top: -3%;
+  }
+    .nav{
+    margin-top:-4%;
+  
+}
+}

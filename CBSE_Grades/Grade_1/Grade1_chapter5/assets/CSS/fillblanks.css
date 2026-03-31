@@ -128,12 +128,11 @@ body {
 
 .prev,
 .next {
-    width: 100px;
-    height: 60px;
+    padding: 13px 32px;
     border: none;
     border-radius: 15px;
-    font-size: 25px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 400;
     cursor: pointer;
     color: #fff;
     display: flex;
@@ -317,13 +316,6 @@ button:disabled {
 }
 
 @media (max-width:768px) {
-    body {
-        height: auto;
-        overflow: auto;
-        align-items: center;
-        padding: 20px 12px;
-    }
-
     .main {
         width: 100%;
         max-width: 420px;
@@ -334,7 +326,7 @@ button:disabled {
     }
 
     .question {
-        font-size: 20px;
+        font-size: 22px;
         line-height: 1.4;
         text-align: center;
         height: auto;
@@ -412,10 +404,8 @@ button:disabled {
 
     .prev,
     .next {
-        width: 65px;
-        height: 45px;
+        padding: 8px 20px;
         font-size: 18px;
-        border-radius: 12px;
     }
 
     .final-kid-box {
@@ -438,8 +428,15 @@ button:disabled {
 }
 
 @media (max-width:480px) {
+    body {
+        height: 100%;
+        overflow: auto;
+        align-items: flex-start;
+        padding: 30px 12px;
+    }
+
     .question {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .left img {
@@ -471,13 +468,6 @@ button:disabled {
     .quiz-nav {
         gap: 50px;
         margin-top: 18px;
-    }
-
-    .prev,
-    .next {
-        width: 60px;
-        height: 42px;
-        font-size: 16px;
     }
 
     .kid-card {

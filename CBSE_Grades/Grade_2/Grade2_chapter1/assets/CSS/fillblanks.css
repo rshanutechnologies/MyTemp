@@ -166,13 +166,12 @@ body::before{
 }
  .prev,
 .next{
-    width:170px;
-    height:60px;
-
+     width:120px;
+    height:50px;
+    font-size:20px;
+    font-weight:400;
     border:none;
     border-radius:999px;
-    font-size:24px;
-    font-weight:500;
     cursor:pointer;
 
     display:flex;
@@ -560,7 +559,7 @@ button:disabled {
   top:0;
 }
 .quiz-nav{
-    margin-top:auto;
+    margin-top:3%;
     width:100%;
     display:flex;
     justify-content:center;
@@ -1039,4 +1038,52 @@ body{
     display:none;
 } */
 
+}
+
+
+
+
+/* Small desktops / laptops */
+@media (min-width: 1024px) {
+  body{
+    margin-top: 0%;
+  }
+  
+.quiz-nav{
+    margin-top:4%;
+  
+}
+}
+
+/* Medium desktops */
+@media (min-width: 1280px) {
+ body{
+    margin-top: -0%;
+  }
+  .quiz-nav{
+    margin-top:4%;
+  
+}
+}
+
+/* Large desktops */
+@media (min-width: 1440px) {
+   body{
+    margin-top: -1%;
+  }
+    .quiz-nav{
+    margin-top:4%;
+  
+}
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
+  body{
+    margin-top: -1%;
+  }
+    .quiz-nav{
+    margin-top:4%;
+  
+}
 }

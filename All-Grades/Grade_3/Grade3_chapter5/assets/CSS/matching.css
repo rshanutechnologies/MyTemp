@@ -496,25 +496,81 @@
   }
 
 }
-@media (max-width:480px){
 
-  .play{
-    grid-template-columns: 1fr 1fr !important; /* keep left-right */
-    gap: 20px;                                 /* smaller gap */
-  }
+/* ===== FINAL PERFECT MOBILE ALIGNMENT ===== */
+@media (max-width:600px){
 
-  .item{
-    font-size:14px;
+  body{
+    margin-top:0 !important;
     padding:10px;
   }
 
+  .game{
+    width:100% !important;
+    padding:12px;
+    gap:10px;
+  }
+
+  .title{
+    font-size:20px !important;
+    padding:6px 12px;
+  }
+
+  /* ✅ GRID SAME WIDTH */
+  .play{
+    grid-template-columns:1fr 1fr !important;
+    gap:40px !important;
+    align-items:start;
+  }
+
+  .bank{
+    gap:10px !important;
+  }
+
+  /* ✅ BOTH SIDES SAME BOX */
+  .item{
+    width:100% !important;
+    box-sizing:border-box;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+
+    font-size:14px !important;
+    padding:10px 12px !important;
+    border-radius:12px;
+
+    min-height:50px;   /* 🔥 SAME HEIGHT BOTH SIDES */
+  }
+
+  /* ✅ LEFT SIDE FIX (REMOVE BIG SPACE) */
   #leftBank .item{
-    padding:14px 60px 14px 15px; /* reduce right padding */
+    position:relative;
+    padding:30px 45px 10px 12px !important;
+    
   }
 
+  /* ✅ RIGHT SIDE SAME LOOK */
+  #rightBank .item{
+    padding:10px 12px !important;
+  }
+
+  /* ✅ IMAGE */
+  .item img{
+    width:32px !important;
+    height:28px !important;
+  }
+
+  /* ✅ EMOJI PERFECT ALIGN */
   #leftBank .emoji{
-    font-size:28px;
-    right:12px;
+    position:absolute;
+    right:10px !important;
+    top:60%;
+    transform:translateY(-50%);
+    font-size:35px !important;
   }
-
+/* ===== FIX RIGHT SIDE EXTRA GAP ===== */
+#rightBank .item{
+  margin-bottom:0 !important;
+}
+ 
 }

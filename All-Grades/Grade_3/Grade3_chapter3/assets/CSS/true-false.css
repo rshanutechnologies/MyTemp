@@ -549,9 +549,12 @@ button:disabled {
 }
 
 @media (max-width:480px){
-
+body{
+    margin-top: 40px;
+}
   .text{
     font-size:18px;
+    
   }
 
   .ribbon{

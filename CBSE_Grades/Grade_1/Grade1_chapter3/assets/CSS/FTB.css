@@ -128,15 +128,15 @@ body {
 }
 
 .nav-buttons button {
-    width: 130px;
-    height: 55px;
+    padding: 13px 32px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 6px;
     border-radius: 35px;
     border: 3px solid #ffffff;
-    font-size: 34px;
-    font-weight: 900;
+    font-size: 20px;
+    font-weight: 400;
     color: #ffffff;
     cursor: pointer;
     background-size: 200% 200%;
@@ -297,17 +297,12 @@ body {
 
 @media (max-width:768px) {
 
-    body {
-        padding: 30px 10px;
-        align-items: flex-start;
-    }
-
     .quiz-container {
         margin-top: 40px;
     }
 
     .question-area h2 {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .image-area img {
@@ -338,9 +333,8 @@ body {
     }
 
     .nav-buttons button {
-        width: 110px;
-        height: 48px;
-        font-size: 28px;
+        padding: 6px 20px;
+        font-size: 18px;
     }
 
     .final-kid-box {
@@ -394,9 +388,13 @@ body {
 }
 
 @media (max-width:480px) {
+    body {
+        padding: 30px 10px;
+        align-items: flex-start;
+    }
 
     .question-area h2 {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .image-area img {
@@ -424,9 +422,4 @@ body {
     .nav-buttons {
         gap: 20px;
     }
-
-    .nav-buttons button {
-        width: 100%;
-    }
-
 }

@@ -486,9 +486,9 @@ body {
   }
 
   .question-card h2 {
-    font-size: 22px;
+    font-size: 20px;
     height: auto;
-    margin: 0;
+    margin-top: -5%;
   }
 
   .question-card img {
@@ -580,4 +580,118 @@ body {
     /* keep centered */
   }
 
+}
+
+
+
+
+@media (max-width:380px) {
+
+  body {
+    overflow-y: auto;
+    align-items: flex-start;
+    padding: 20px 0;
+    background: linear-gradient(135deg, #fef3c7, #e0f2fe, #dcfce7);
+  }
+
+  .main-container {
+    width: 92%;
+    margin-top: 0;
+    gap: 22px;
+  }
+
+  .title {
+    font-size: 22px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  /* ---------------- QUESTION ---------------- */
+
+  .question-card {
+    height: auto;
+    padding: 15px 10px;
+    gap: 15px;
+  }
+
+  .question-card h2 {
+    font-size: 20px;
+    height: auto;
+    margin-top: -10% !important;
+  }
+
+  .question-card img {
+    width: 80px;
+    height: 80px;
+    display: block;
+  }
+
+  /* ---------------- OPTIONS ---------------- */
+
+  .options-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px !important;
+    margin-top: -10% !important;
+  }
+
+  .option-card {
+    width: 100%;
+    padding: 16px;
+    gap: 14px;
+    border-radius: 16px;
+    transition: .2s ease;
+  }
+
+  .option-card:active {
+    transform: scale(0.97);
+  }
+
+  .emoji {
+    font-size: 42px;
+  }
+
+  .option-card span {
+    font-size: 17px;
+  }
+
+  /* ---------------- NAVIGATION ---------------- */
+
+  .nav-container {
+    justify-content: center;
+    gap: 35px;
+    margin-top: -20px;
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 10px 22px;
+    border-radius: 12px;
+  }
+
+  /* ---------------- PROGRESS TRACK ---------------- */
+
+  .train-track {
+    margin: 15px 0;
+  }
+
+  .train-track::before {
+    height: 6px;
+  }
+
+  .station {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+  .toggle-wrapper {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+  }
+
+}
+
+.blue-icon {
+  color: #2196f3;
 }

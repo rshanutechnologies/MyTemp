@@ -8,7 +8,6 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -17,66 +16,67 @@ font-family:'Livvic';
 }
 
 body{
-
 display:flex;
 justify-content:center;
 align-items:center;
 min-height:100vh;
-overflow: hidden;
+overflow:hidden;
 }
+
+/* ================= CONTAINER ================= */
 
 .container{
-width:920px;
-
-padding:40px;
+width:clamp(320px, 92vw, 920px);
+padding:clamp(20px, 3vw, 40px);
 border-radius:24px;
-
 }
+
+/* ================= TITLE ================= */
 
 h1{
 text-align:center;
-margin-bottom:40px;
-font-size:36px;
+margin-bottom:clamp(20px, 4vh, 40px);
+font-size:clamp(22px, 3vw, 36px);
 color:#374151;
 }
 
-/* GAME AREA */
+/* ================= GAME AREA ================= */
 
 .game{
 position:relative;
 display:flex;
 justify-content:center;
-gap:140px;
+gap:clamp(40px, 8vw, 140px);
 }
 
-/* COLUMNS */
+/* ================= COLUMNS ================= */
 
 .column{
-width:420px;
+width:clamp(160px, 45vw, 420px);
 display:flex;
 flex-direction:column;
-gap:20px;
+gap:clamp(10px, 2vh, 20px);
 z-index:2;
 }
 
-/* ITEM CARDS */
+/* ================= ITEM CARDS ================= */
 
 .item{
 width:100%;
-height:70px;
+height:clamp(55px, 8vh, 70px);
 
 display:flex;
 align-items:center;
-gap:16px;
+gap:clamp(8px, 1.5vw, 16px);
 
-padding:18px 24px;
+padding:clamp(10px, 2vw, 18px) clamp(12px, 3vw, 24px);
 
 border-radius:22px;
 
 background:#f8fafc;
 
-font-size:22px;
-font-weight:500;
+font-size:clamp(14px, 2vw, 28px);
+
 
 cursor:pointer;
 
@@ -91,15 +91,13 @@ transition:0.25s;
 transform:translateY(-3px);
 }
 
-/* LEFT SIDE COLORS */
+/* ================= COLORS ================= */
 
 .left .item:nth-child(1){background:#ffe4ec;}
 .left .item:nth-child(2){background:#e0f4ff;}
 .left .item:nth-child(3){background:#fff5d6;}
 .left .item:nth-child(4){background:#e6ffe8;}
 .left .item:nth-child(5){background:#f2e8ff;}
-
-/* RIGHT SIDE COLORS */
 
 .right .item:nth-child(1){background:#ffe4ec;}
 .right .item:nth-child(2){background:#e0f4ff;}
@@ -116,29 +114,29 @@ opacity:0.6;
 cursor:default;
 }
 
-/* IMAGE */
+/* ================= IMAGE ================= */
 
 .left img{
-width:44px;
-height:44px;
+width:clamp(26px, 4vw, 44px);
+height:clamp(26px, 4vw, 44px);
 object-fit:contain;
 }
 
-/* TEXT */
+/* ================= TEXT ================= */
 
 .text{
 flex:1;
 }
 
-/* COLOR DOT */
+/* ================= DOT ================= */
 
 .dot{
-width:16px;
-height:16px;
+width:clamp(8px, 1.5vw, 16px);
+height:clamp(8px, 1.5vw, 16px);
 border-radius:50%;
 }
 
-/* DOT COLORS */
+/* ================= DOT COLORS ================= */
 
 .pink{background:#ff7ab6;}
 .blue{background:#60a5fa;}
@@ -146,21 +144,17 @@ border-radius:50%;
 .green{background:#34d399;}
 .purple{background:#a78bfa;}
 
-/* ANCHOR */
+/* ================= ANCHOR ================= */
 
 .anchor{
-width:14px;
-height:14px;
+width:clamp(8px, 1.5vw, 14px);
+height:clamp(8px, 1.5vw, 14px);
 background:#94a3b8;
 border-radius:50%;
 margin-left:auto;
 }
 
-.right .anchor{
-margin-left:auto;
-}
-
-/* SVG LINES */
+/* ================= SVG ================= */
 
 svg{
 position:absolute;
@@ -168,207 +162,83 @@ width:100%;
 height:100%;
 pointer-events:none;
 }
+
 svg path{
 transition:0.4s;
 stroke-dasharray:6 6;
 }
 
+/* ================= POPUP ================= */
+
 .popup{
-  position:fixed;
-  inset:0;
-  
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:1000;
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;
 }
 
 .hidden{
-  display:none;
+display:none;
 }
 
 .popup-content{
-  background:#fef6ff;  /* pastel base */
-  padding:60px 80px;
-  border-radius:30px;
-  text-align:center;
-  box-shadow:0 20px 45px rgba(0,0,0,0.25);
-  min-width:350px;
-  max-width:500px;
-  animation:pop 0.3s ease;
+background:#fef6ff;
+padding:clamp(30px, 5vw, 60px) clamp(25px, 6vw, 80px);
+border-radius:30px;
+text-align:center;
+box-shadow:0 20px 45px rgba(0,0,0,0.25);
+min-width:clamp(260px, 40vw, 350px);
+max-width:clamp(320px, 60vw, 500px);
+animation:pop 0.3s ease;
 }
 
 @keyframes pop{
-  from{ transform:scale(0.8); opacity:0; }
-  to{ transform:scale(1); opacity:1; }
+from{ transform:scale(0.8); opacity:0; }
+to{ transform:scale(1); opacity:1; }
 }
 
 .popup-emoji{
-  font-size:60px;
-  margin-bottom:15px;
+font-size:clamp(35px, 5vw, 60px);
+margin-bottom:15px;
 }
 
 .popup-content h2{
-  font-size:28px;
-  margin-bottom:10px;
+font-size:clamp(18px, 2vw, 28px);
+margin-bottom:10px;
 }
 
 .popup-content p{
-  font-size:20px;
+font-size:clamp(14px, 1.5vw, 20px);
 }
 
 .play-again-btn{
-  margin-top:20px;
-  padding:12px 28px;
-  font-size:16px;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-  background:linear-gradient(135deg,#4caf50,#2e7d32);
-  color:white;
-  font-weight:600;
-  transition:0.3s;
+margin-top:20px;
+padding:clamp(10px, 1vw, 14px) clamp(18px, 2vw, 28px);
+font-size:clamp(14px, 1.2vw, 16px);
+border:none;
+border-radius:30px;
+cursor:pointer;
+background:linear-gradient(135deg,#4caf50,#2e7d32);
+color:white;
+font-weight:600;
+transition:0.3s;
 }
 
 .play-again-btn:hover{
-  transform:translateY(-3px);
-}
-/* ================= MOBILE RESPONSIVE ================= */
-
-@media (max-width:768px){
-
-body{
-padding:10px;
-align-items:flex-start;
-margin-top: 50px;
+transform:translateY(-3px);
 }
 
-/* container full width */
-.container{
-width:100%;
-padding:10px;
-}
 
-/* reduce space between columns */
-.game{
-gap:40px;
-}
 
-/* allow horizontal scroll if needed */
-.container{
-overflow-x:auto;
-}
-
-/* column smaller */
-.column{
-width:48%;
-}
-
-/* cards smaller */
-.item{
-height:65px;
-font-size:18px;
-padding:12px 16px;
-}
-
-/* images smaller */
-.left img{
-width:30px;
-height:30px;
-}
-
-/* dots smaller */
-.dot{
-width:10px;
-height:10px;
-}
-
-/* anchors smaller */
-.anchor{
-width:10px;
-height:10px;
-}
-
-/* popup responsive */
-.popup-content{
-width:90%;
-padding:30px 20px;
-}
-
-.popup-content h2{
-font-size:22px;
-}
-
-.popup-content p{
-font-size:16px;
-}
-
-}
-/* ============================= */
-/* ✅ SMALL PHONE (max 600px) */
-/* ============================= */
+/* slightly improve small screen text scaling */
 @media (max-width:600px){
 
-  body{
-    padding:8px;
-    align-items:flex-start;
-    margin-top:70px;
-  }
-
-  /* container full width */
-  .container{
-    width:100%;
-    padding:8px;
-    overflow-x:auto;   /* keep scroll if needed */
-  }
-
-  /* reduce space between columns */
-  .game{
-    gap:25px;
-  }
-
-  /* column smaller */
-  .column{
-    width:48%;
-  }
-
-  /* cards smaller */
   .item{
-    height:55px;
-    font-size:10px;
-    padding:10px 12px;
-  }
-
-  /* images smaller */
-  .left img{
-    width:26px;
-    height:26px;
-  }
-
-  /* dots smaller */
-  .dot{
-    width:8px;
-    height:8px;
-  }
-
-  /* anchors smaller */
-  .anchor{
-    width:8px;
-    height:8px;
-  }
-
-  /* popup responsive */
-  .popup-content{
-    width:95%;
-    padding:25px 15px;
-  }
-
-  .popup-content h2{
-    font-size:20px;
-  }
-
-  .popup-content p{
-    font-size:15px;
+   height: clamp(80px, 14vh, 110px);
+    font-size:clamp(12px, 3vw, 22px);
+    padding:clamp(8px, 2vw, 12px);
   }
 
 }

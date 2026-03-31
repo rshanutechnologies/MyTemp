@@ -75,7 +75,7 @@ body {
 .progress {
     position: absolute;
     top: 1%;
-    right:4%;
+    right: 4%;
     padding: 14px 22px;
     border-radius: 25px;
     display: flex;
@@ -472,50 +472,50 @@ body {
 ================================ */
 @media (max-width: 850px) {
 
-  body {
-    padding: 14px;
-    align-items: flex-start;
-    overflow-y: auto;
-  }
+    body {
+        padding: 14px;
+        align-items: flex-start;
+        overflow-y: auto;
+    }
 
-  .main-container {
-    height: auto;
-    max-width: 950px;
-    border-radius: 28px;
-   margin-top: 50px;
-  }
+    .main-container {
+        height: auto;
+        max-width: 950px;
+        border-radius: 28px;
+        margin-top: 50px;
+    }
 
-  .left-panel {
-    padding: 30px 20px;
-  }
+    .left-panel {
+        padding: 30px 20px;
+    }
 
-  .question-text {
-    font-size: 26px;
-    height: auto;
-    margin-bottom: 30px;
-  }
+    .question-text {
+        font-size: 26px;
+        height: auto;
+        margin-bottom: 30px;
+    }
 
-  .q-image {
-    width: 300px;
-    height: auto;
-  }
+    .q-image {
+        width: 300px;
+        height: auto;
+    }
 
-  .right-panel {
-    padding: 30px 20px;
-  }
+    .right-panel {
+        padding: 30px 20px;
+    }
 
-  .option-label {
-    font-size: 18px;
-  }
+    .option-label {
+        font-size: 18px;
+    }
 
-  .drop-section {
-    margin-top: 30px;
-  }
+    .drop-section {
+        margin-top: 30px;
+    }
 
-  .nav-btn {
-    font-size: 18px;
-    padding: 10px 26px;
-  }
+    .nav-btn {
+        font-size: 18px;
+        padding: 10px 26px;
+    }
 }
 
 
@@ -525,82 +525,82 @@ body {
 ================================ */
 @media (max-width: 768px) {
 
-  body {
-    padding: 10px;
-    align-items: flex-start;
-    overflow-y: auto;
-  }
+    body {
+        padding: 10px;
+        align-items: flex-start;
+        overflow-y: auto;
+    }
 
-  .main-container {
-    flex-direction: column;
-    height: auto;
-    border-radius: 22px;
-  }
+    .main-container {
+        flex-direction: column;
+        height: auto;
+        border-radius: 22px;
+    }
 
-  /* LEFT FIRST */
-  .left-panel {
-    padding: 20px;
-    padding-top: 0px;
-  }
+    /* LEFT FIRST */
+    .left-panel {
+        padding: 20px;
+        padding-top: 0px;
+    }
 
-  .question-text {
-    font-size: 22px;
-    justify-content: center;
-    margin-bottom: 30px;
-  }
+    .question-text {
+        font-size: 22px;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
 
-  .q-image {
-    width: 220px;
-    height: auto;
-  }
+    .q-image {
+        width: 220px;
+        height: auto;
+    }
 
-  /* RIGHT BELOW */
-  .right-panel {
-    padding: 20px;
-    gap: 16px;
-  }
+    /* RIGHT BELOW */
+    .right-panel {
+        padding: 20px;
+        gap: 16px;
+    }
 
-  .options-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
+    .options-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
 
-  .option-card {
-    padding: 14px;
-  }
+    .option-card {
+        padding: 14px;
+    }
 
-  .option-emoji {
-    font-size: 28px;
-  }
+    .option-emoji {
+        font-size: 28px;
+    }
 
-  .option-label {
-    font-size: 16px;
-  }
+    .option-label {
+        font-size: 16px;
+    }
 
-  .drop-box {
-    height: 64px;
-    font-size: 18px;
-  }
+    .drop-box {
+        height: 64px;
+        font-size: 18px;
+    }
 
-  .drop-hint {
-    font-size: 16px;
-  }
+    .drop-hint {
+        font-size: 16px;
+    }
 
-  .nav-footer {
-    flex-direction: column;
-    gap: 12px;
-  }
+    .nav-footer {
+        flex-direction: column;
+        gap: 12px;
+    }
 
-  .nav-btn {
-    width: 100%;
-    font-size: 16px;
-    padding: 10px;
-  }
+    .nav-btn {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+    }
 
-  /* Progress stays visible */
-  .progress {
-    position: static;
-  }
+    /* Progress stays visible */
+    .progress {
+        position: static;
+    }
 }
 
 
@@ -609,20 +609,61 @@ body {
 ================================ */
 @media (max-width: 480px) {
 
-  .question-text {
-    font-size: 20px;
-  }
+    .progress {
+        padding: 0;
+    }
 
-  .q-image {
-    width: 180px;
-  }
+    .drop-section {
+        margin-top: 0;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 15px;
+        width: 100%;
+    }
 
-  .option-label {
-    font-size: 15px;
-  }
+    .nav-footer {
+        flex-direction: row;
+        margin-bottom: 10px;
+    }
 
-  .nav-btn {
-    font-size: 15px;
-    padding: 9px;
-  }
+    .drop-box {
+        width: 100%;
+    }
+
+    .right-panel {
+        padding: 0px 10px 0px;
+        gap: 10px;
+    }
+
+    .left-panel {
+        padding: 10px 5px;
+    }
+
+    .progress .item {
+        width: 15px;
+        height: 25px;
+        font-size: 20px;
+    }
+
+    .question-text {
+        font-size: 20px;
+    }
+
+    .q-image {
+        width: 180px;
+    }
+
+    .option-card{
+        padding: 10px;
+        flex-direction: row;
+    }
+
+    .option-label {
+        font-size: 15px;
+    }
+
+    .nav-btn {
+        font-size: 15px;
+        padding: 9px;
+    }
 }

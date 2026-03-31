@@ -118,6 +118,16 @@ input.addEventListener("input", () => {
   submit.disabled = !input.value.trim();
 });
 
+input.addEventListener("dragover", (e) => {
+  e.preventDefault();
+});
+
+input.addEventListener("drop", (e) => {
+  e.preventDefault();
+});
+document.addEventListener("dragover", (e) => e.preventDefault());
+document.addEventListener("drop", (e) => e.preventDefault());
+
 submit.onclick = function () {
   const user = input.value.trim().toLowerCase();
   const q = quiz[current];

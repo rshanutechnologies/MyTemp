@@ -66,7 +66,7 @@ body::before{
     padding:14px 20px;
     border-radius:999px;
      /* box-shadow:0 10px 18px rgba(0,0,0,0.10);  */
-        font-size:30px;
+        font-size:30px !important;
     font-weight:600;
 /* color: #76b4f3; */
  color:palevioletred;;
@@ -649,11 +649,13 @@ button:disabled {
 @media (max-width:768px){
 
   body{
-    overflow-y:auto;
+    overflow-y:hidden;
     padding:20px 10px;
       background:url("../images/bgbg.png") center/cover no-repeat;
   }
-   
+  #answerInput{
+    font-size: 15px !important;
+  } 
 
   .main{
     width:100%;
@@ -687,15 +689,15 @@ button:disabled {
   }
 
   .center-img{
-    width:160px;
-    height:auto;
+    width:150px;
+    height:150px;
     margin-top: -50%;
   }
 
   .input-box{
-    width:100%;
+    width:90%;
     height:55px;
-    width: 400px !important;
+    width: 350px !important;
   }
 
   .input-box input{
@@ -719,16 +721,20 @@ button:disabled {
   } */
   .prev {
     position: absolute;
-    top: 90%;
+    top: 80%;
     left: 8%;
 }
 
 .next {
     position: absolute;
-    top: 90%;
+    top: 80%;
     right: 8% !important;
 }
 
+.badge{
+     font-size: clamp(20px, 5vw, 24px);
+     text-align: center;
+}
 }
 /* ======================================= */
 /* ===== DESKTOP SIZE REDUCE -15% ======== */

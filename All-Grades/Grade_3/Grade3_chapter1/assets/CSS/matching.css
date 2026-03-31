@@ -30,8 +30,7 @@ body {
     /* border-radius: 34px; */
     /* padding: 28px; */
     /* box-shadow: 0 25px 50px rgba(0, 0, 0, .18); */
-     transform: scale(0.95);
-     
+    
 }
 
 /* HEADER */
@@ -54,8 +53,9 @@ body {
 
 /* LAYOUT */
 .play-area {
-    display: grid;
-    grid-template-columns: 250px 120px 380px;
+     display: grid;
+    grid-template-columns: 1fr 80px 1fr;  /* ✅ flexible */
+    width:100%;
     justify-content: center;
     gap: 0;
      margin-top:35px;
@@ -74,13 +74,13 @@ body {
     background: var(--card);
     border-radius: 30px;
     padding: 18px 22px;
-    font-size: 25px;
+    font-size: 22px;
     /* font-weight: 600; */
     color: #111111;
     box-shadow: 0 10px 22px rgba(0, 0, 0, .15);
     cursor: pointer;
     transition: .25s;
-     height:72px;           /* fixed height */
+     height:65px;           /* fixed height */
   overflow:hidden;       /* prevents expansion */
    
 }
@@ -257,8 +257,8 @@ body {
 
 
 .step-img img{
-  width:48px;
-  height:48px;
+  width:45px;
+  height:45px;
   object-fit:contain;
 }
 
@@ -280,7 +280,7 @@ body {
 }
 
 .step-text{
-  font-size:22px;
+  font-size:20px;
 }
 .score{
   display:none;
@@ -305,17 +305,20 @@ body {
   object-fit:contain;
   justify-self:center;
 }
+.game{
+  position: relative;
+  padding-top: 60px;   /* 🔥 THIS IS THE REAL FIX */
+}
 .hint{
-  position: absolute;
-  
-  
+  position: fixed;
+  top: 20px;
+  left: 20px;
   font-size: 20px;
   color: blue;
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .stars{
   display:flex;
   justify-content:center;
@@ -337,4 +340,38 @@ body {
     transform: scale(1);
     opacity:1;
   }
+}
+@media (max-width:768px){
+
+  .play-area{
+    grid-template-columns: 1fr 40px 1fr; /* ✅ still LEFT-RIGHT */
+  }
+
+  .step{
+    font-size:16px;
+    padding:10px;
+    height:auto; /* ✅ remove fixed height */
+  }
+
+  .step-text{
+    font-size:16px;
+  }
+
+  .answer{
+    font-size:16px;
+    padding:8px;
+  }
+
+  .answer-inner{
+    grid-template-columns:40px 1fr; /* ✅ flexible */
+    width:100%;
+  }
+
+  .answer img{
+    width:40px;
+    height:40px;
+  }
+.hint{
+    font-size: 18px;
+}
 }

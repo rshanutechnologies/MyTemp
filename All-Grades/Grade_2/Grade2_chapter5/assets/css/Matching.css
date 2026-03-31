@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif
+    font-family: 'Livvic';
 }
 
 body {
@@ -248,7 +248,8 @@ canvas {
 /* ---------- MOBILE ---------- */
 @media (max-width:768px) {
     body{
-        overflow: auto;
+        overflow: hidden;
+      
     }
     h3 {
         display: none;
@@ -264,11 +265,12 @@ canvas {
     }
 
     /* STACK COLUMNS */
-    .container {
-        flex-direction: column;
-        gap: 18px;
-        align-items: center;
-    }
+      .container {
+    display: grid;
+   grid-template-columns: 1fr 1fr;
+  
+    
+}
 
     .column {
         width: 100%;
@@ -312,15 +314,32 @@ canvas {
 /* ---------- SMALL MOBILE ---------- */
 @media (max-width:480px) {
 
+    .container {
+    display: grid;
+   grid-template-columns: 1fr 1fr;
+    
+}
     .item {
-        font-size: 18px;
+        font-size: 15px;
         gap: 10px;
+        
+    
     }
 
     .item img {
         width: 38px;
         height: 38px;
     }
+    #leftCol .item {
+    justify-content: flex-start;
+   
+    /* keep image + text natural */
+}
+
+#rightCol .item {
+    justify-content: flex-start;
+    /* pure centered text */
+}
 
     .level {
         width: 38px;

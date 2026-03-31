@@ -185,6 +185,7 @@ body::before{
   background:rgba(255,255,255,.75);
   padding:6px 10px;
   border-radius:999px;
+  display: none;
 }
 
 #quizFrame{
@@ -199,7 +200,7 @@ body::before{
 
   body{ overflow:auto; }
 
-  .app{ flex-direction:column; margin-top: 45px; }
+  .app{ flex-direction:column; }
 
   .sidebar{
     width:80%;
@@ -238,7 +239,7 @@ body::before{
 .menu-toggle{
   position:fixed;
   top:15px;
-  left:15px;
+  right:15px;
   z-index:9999;
   background:#ffffff;
   border:none;
@@ -324,15 +325,15 @@ body::before{
     <div class="board">
 
       <a class="magnet m1" href="./exercises/MCQ.html" onclick="return loadQuiz(event,this,0,'MCQ Quiz')">
-        🎯 Choose the Correct Answer
+        🎯 Choose the option
       </a>
 
        <a class="magnet m2" href="./exercises/FITB.html" onclick="return loadQuiz(event,this,1,'Fill in the Blanks')">
-        🧠 Fill in the Blanks
+        🧠 Fill the Blanks
       </a>
 
       <a class="magnet m3" href="./exercises/true_false.html" onclick="return loadQuiz(event,this,2,'True / False')">
-        👍 True or False Quiz
+        👍 True or False 
       </a>
 
       <a class="magnet m4" href="./exercises/twoExample.html" onclick="return loadQuiz(event,this,3,'One Examples Game')">
@@ -368,28 +369,27 @@ let current = 0; // ✅ MCQ default means step 0 already allowed
 function loadQuiz(event, el, index, title){
   event.preventDefault();
 
-  // ❌ stop skipping (kid-safe)
   if(index > current + 1) return false;
 
-  // ✅ allow open current step or next step
   if(index === current + 1) current++;
 
-  // active magnet UI
   magnets.forEach(m => m.classList.remove("active"));
   el.classList.add("active");
 
-  // ✅ change iframe content
   document.getElementById("quizFrame").src = el.getAttribute("href");
 
-  // ✅ update title
   document.getElementById("quizTitle").innerText = "👁️ " + title;
 
-  // ✅ update step info
   document.getElementById("stepInfo").innerText = `Step ${current + 1} / 4`;
+
+  // ✅ AUTO CLOSE SIDEBAR ON MOBILE
+  if (window.innerWidth <= 800) {
+    document.querySelector(".sidebar").classList.remove("open");
+    document.getElementById("overlay").classList.remove("show");
+  }
 
   return false;
 }
-
 /* ✅ default: MCQ active + loaded on right side */
 window.addEventListener("load", () => {
   magnets.forEach(m => m.classList.remove("active"));

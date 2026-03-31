@@ -109,12 +109,11 @@ body {
 
 .prev,
 .next {
-  width: 100px;
-  height: 60px;
+  padding: 13px 32px;
   border: none;
   border-radius: 15px;
-  font-size: 25px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 400;
   cursor: pointer;
   color: #fff;
   display: flex;
@@ -289,14 +288,6 @@ body {
 
 @media (max-width:768px) {
 
-  body {
-    width: 100%;
-    height: auto;
-    overflow: auto;
-    align-items: flex-start;
-    padding: 20px;
-  }
-
   .quiz {
     width: 100%;
     height: auto;
@@ -335,15 +326,15 @@ body {
   }
 
   .nav {
-    width: 100%;
+    width: 80%;
+    margin-inline: auto;
     margin-top: 20px;
     gap: 10px;
   }
 
   .prev,
   .next {
-    width: 80px;
-    height: 50px;
+    padding: 8px 20px;
     font-size: 18px;
   }
 
@@ -389,9 +380,16 @@ body {
 }
 
 @media (max-width:480px) {
+  body {
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    align-items: flex-start;
+    padding: 20px;
+  }
 
   .question {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   #questionImg {
@@ -416,13 +414,6 @@ body {
     width: 55%;
     font-size: 16px;
     padding: 12px;
-  }
-
-  .prev,
-  .next {
-    width: 70px;
-    height: 45px;
-    font-size: 16px;
   }
 
   .kid-card {

@@ -372,10 +372,10 @@ filter:grayscale(70%);
 body{
 width:100%;
 height:auto;
-overflow:auto;
+overflow:hidden;
 align-items:flex-start;
-margin-top: 20%;
-overflow:scroll;
+margin-top: 12%;
+/* overflow:scroll; */
 }
 
 /* main container */
@@ -403,8 +403,8 @@ margin-top:10px;
 /* image */
 
 .animal-img{
-width:150px;
-height:140px;
+width:100px;
+height:90px;
 margin:10px auto;
 }
 
@@ -413,7 +413,7 @@ margin:10px auto;
 .options{
 grid-template-columns:repeat(2,1fr);
 gap:16px;
-margin-top:20px;
+margin-top:10px;
 }
 
 /* option card */

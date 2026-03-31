@@ -614,3 +614,43 @@ button:disabled {
   }
 }
 
+/* ===== FIX MOBILE OVERFLOW & IMAGE ===== */
+@media (max-width:700px){
+
+  body{
+    height:100vh !important;
+    overflow:hidden !important;   /* ✅ remove scroll */
+    margin-top:0 !important;      /* ✅ remove overlap */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top: -120px;
+  }
+
+  .book{
+    height:100vh;
+    justify-content:space-between; /* ✅ fit screen */
+    margin-top:0 !important;
+  }
+
+  .content{
+    gap:16px;
+  }
+
+  .photo{
+    width:140px;     /* ✅ smaller image */
+    height:140px;
+    transform:none;  /* ✅ remove tilt causing overlap */
+  }
+
+  .story{
+    font-size:22px;  /* ✅ fit properly */
+    line-height:1.4;
+  }
+
+  input{
+    width:90%;
+    font-size:18px;
+  }
+
+}
