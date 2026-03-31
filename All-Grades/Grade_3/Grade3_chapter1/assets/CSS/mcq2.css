@@ -1,0 +1,235 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Livvic";
+}
+
+/* BODY */
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden; /* ❌ no scroll */
+}
+
+/* MAIN CARD */
+.quiz{
+  height:100%;
+  width:min(90vw, 900px);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  padding:clamp(10px,2vh,30px);
+  text-align:center;
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.header span{
+  position:absolute;
+  top:clamp(10px,2vh,20px);
+  left:clamp(10px,2vw,20px);
+  font-size: clamp(20px, 2vw, 25px);
+  color:blue;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* PROGRESS */
+.progress{
+  display:flex;
+  gap:clamp(4px,1vh,8px);
+}
+
+.progress div{
+  width:clamp(22px,3vh,34px);
+  height:clamp(22px,3vh,34px);
+  border-radius:8px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:clamp(14px,2vh,20px);
+}
+
+/* QUESTION AREA */
+.question-holder{
+  flex:0 0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin:clamp(10px,2vh,20px) 0;
+}
+
+.question-emoji{
+  font-size:clamp(30px,6vh,50px);
+}
+
+.question{
+  font-size: clamp(20px, 2.5vw + 1vh, 30px);
+  color:#2f4f4f;
+  line-height:1.3;
+  padding:clamp(10px,2vh,20px);
+}
+
+/* ========================= */
+/* 🔥 OPTIONS (AUTO FIT HEIGHT) */
+/* ========================= */
+.options{
+  flex:1;
+
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+
+  align-content:center;
+  justify-items:center;
+
+  gap:clamp(10px,2vh,20px);
+}
+.option{
+  width:clamp(120px, 20vh, 190px);   /* ⬆ increased */
+  height:clamp(120px, 20vh, 190px);
+
+  border-radius:50%;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  gap:clamp(6px,1.2vh,10px);
+  font-size:clamp(16px,2.2vh,22px);  /* ⬆ text bigger */
+}
+
+.option:hover:not(.disabled){
+  transform:scale(1.05);
+}
+
+.option span{
+  width:clamp(20px,3vh,32px);
+  height:clamp(20px,3vh,32px);
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:600;
+}
+
+.optImg{
+ width:clamp(60px, 10vh, 130px);  /* ⬆ bigger */
+  height:clamp(60px, 10vh, 130px);
+  object-fit:contain;
+ 
+}
+
+/* STATES */
+.option.correct{
+  border:3px solid #0bd59f;
+}
+.option p{
+  font-size: clamp(18px, 2.5vh, 26px); /* ⬆ only text bigger */
+  font-weight: 500; /* optional for clarity */
+}
+.option.disabled{
+  opacity:.6;
+  pointer-events:none;
+}
+
+/* NAV */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+button{
+  padding:clamp(10px,1.5vh,14px) clamp(18px,3vw,30px);
+  border:none;
+  border-radius:30px;
+  font-size:clamp(14px,2vh,20px);
+  color:#fff;
+  cursor:pointer;
+}
+
+.prev{ background:#63cdda; }
+.next{ background:#f5a623; }
+
+button:disabled{
+  opacity:.4;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+}
+
+.popup-content{
+  width:min(90%,400px);
+  padding:clamp(15px,3vh,25px);
+  border-radius:20px;
+  text-align:center;
+}
+
+/* FINAL POPUP */
+#finalPopup{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:5000;
+}
+
+.finalpopup-box{
+  padding:clamp(20px,3vh,35px);
+  border-radius:18px;
+  text-align:center;
+}
+
+.final-heading{
+  font-size:clamp(20px,3vh,32px);
+  margin:20px;
+  font-weight:bold;
+}
+
+#stars{
+  font-size:clamp(24px,5vh,40px);
+}
+
+/* PLAY AGAIN */
+.playAgain-btn{
+  background:#1fb36b;
+  padding:clamp(10px,2vh,14px) clamp(20px,3vw,28px);
+  border-radius:20px;
+  font-size:clamp(14px,2vh,16px);
+  cursor:pointer;
+}
+
+/* HINT */
+.hint{
+  position:absolute;
+  top:clamp(10px,2vh,20px);
+  left:clamp(10px,2vw,20px);
+  font-size:clamp(14px,2vh,22px);
+  font-weight:600;
+  color:#4a6fa5;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}

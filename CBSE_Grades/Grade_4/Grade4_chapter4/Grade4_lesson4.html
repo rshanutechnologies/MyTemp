@@ -23,6 +23,7 @@ body {
     background: url("./assets/images/bg.png");
     background-size: cover;
     overflow: hidden;
+    
 }
 
 /* APP */
@@ -35,24 +36,30 @@ body {
 /* SIDEBAR */
 .sidebar {
     width: clamp(200px, 16vw, 240px);
-    padding: clamp(15px, 2vw, 20px) clamp(8px, 1.5vw, 12px);
+
+    padding-top: clamp(10px, 2vw, 15px);
+    padding-bottom: clamp(8px, 1.5vw, 10px); /* 🔥 reduced */
+
+    padding-left: clamp(8px, 1.5vw, 12px);
+    padding-right: clamp(8px, 1.5vw, 12px);
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(12px, 2vw, 18px); /* 🔥 increased */
 }
 
 /* PATH */
 .path {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    gap: clamp(18px, 3vw, 30px); /* 🔥 increased */
+    gap: clamp(14px, 2.5vw, 24px); /* 🔥 increased */
+   padding-top: 20px;
+    
 }
 
 /* LEAF */

@@ -29,6 +29,7 @@
       max-width: 1000px;
       height: 95vh;
       display: flex;
+      justify-content: center;
       flex-direction: column;
       padding: 20px;
       box-sizing: border-box;
@@ -91,11 +92,12 @@
     }
 
     #quiz-main {
-      flex-grow: 1;
+      flex-grow: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-evenly;
+      /* justify-content: space-evenly; */
+      justify-content: center;
       gap: 15px;
       min-height: 0;
     }
@@ -414,7 +416,7 @@
       .q-counter {
         font-size: 0.95rem;
         padding: 4px 14px;
-        font-weight: 100;
+        
       }
 
       .q-text {

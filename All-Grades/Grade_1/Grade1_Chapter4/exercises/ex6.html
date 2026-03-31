@@ -181,6 +181,51 @@ body{
 
 .final-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); display: flex; justify-content: center; align-items: center; z-index: 3000; }
 .final-card { background: white; padding: 30px; border-radius: 40px; text-align: center; width: 85%; max-width: 400px; }
+
+@media (max-width:380px){
+
+  /* OPTIONS GRID → 2 PER ROW */
+  .options-container{
+    display:grid;
+    grid-template-columns: 1fr ; /* 2 per row */
+    gap:10px;
+    justify-items:center;
+  }
+
+  /* SMALL OPTION BOX */
+  .board{
+    width:100%;
+    max-width:130px;
+    height:35px;
+
+    font-size:14px;
+    padding:6px;
+
+    border-width:3px;
+    box-shadow: 0 5px 0 #5d2e17;
+  }
+
+  /* QUESTION TEXT SMALL */
+  .q-text{
+    font-size:18px;
+    text-align:center;
+  }
+
+  /* IMAGE SMALL */
+  .big-hint-img{
+    max-height:18vh;
+  }
+
+  /* BUTTONS SMALL */
+  .nav-btn{
+    font-size:14px;
+    padding:10px 0;
+  }
+
+}
+
+
+
 </style>
 </head>
 

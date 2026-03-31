@@ -255,6 +255,52 @@
       font-weight: 700;
       cursor: pointer;
     }
+
+    @media (max-width:380px){
+
+  /* OPTIONS → 2 PER ROW */
+.options{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr); /* 🔥 3 columns = 1 row */
+  gap:10px;
+  justify-items:center;
+}
+
+  /* OPTION BOX SMALL */
+  .option{
+    width:100%;
+  }
+
+  .option-img{
+    width:80px;
+    height:80px;
+    border-radius:20px;
+    border-width:4px;
+  }
+
+  .option-label{
+    font-size:14px;
+    margin-top:6px;
+  }
+
+  /* QUESTION TEXT SMALL */
+  .q-text{
+    font-size:18px;
+    text-align:center;
+  }
+
+  /* HEADER SMALL */
+  .header h1{
+    font-size:18px;
+  }
+
+  /* BUTTONS SMALL */
+  .nav-btn{
+    font-size:14px;
+    padding:10px 15px;
+  }
+
+}
   </style>
 </head>
 
