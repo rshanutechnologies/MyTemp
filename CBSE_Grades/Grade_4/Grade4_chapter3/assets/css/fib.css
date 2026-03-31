@@ -6,14 +6,17 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* MAIN */
 .main-container {
-    width: 900px;
+    width: 100%;
+    max-width: 900px;
+    padding: clamp(10px, 2vw, 20px);
 }
 
 .quiz-container {
@@ -22,55 +25,56 @@ body {
     align-items: center;
 }
 
+/* QUESTION */
 .question-area {
     width: 100%;
-    height: 40px;
+    min-height: clamp(40px, 8vh, 60px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .question-area h2 {
-    font-size: 30px;
+    font-size: clamp(20px, 3vw, 30px);
     font-weight: 400;
     color: #2f4f4f;
     text-align: center;
 }
 
+/* IMAGE */
 .image-area {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 15px 0;
+    margin: clamp(10px, 2vw, 15px) 0;
 }
 
 .image-area img {
-    width: 330px;
-    height: 140px;
+    width: clamp(200px, 35vw, 330px);
+    height: clamp(100px, 20vh, 140px);
     object-fit: contain;
     border-radius: 20px;
 }
 
 /* INPUT AREA */
-
 .input-area {
     display: flex;
-    gap: 15px;
+    gap: clamp(10px, 2vw, 15px);
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 10px;
+    margin-top: clamp(8px, 2vw, 10px);
     width: 90%;
 }
 
 .input-box {
     flex: 1;
-    min-width: 160px;
+    min-width: clamp(120px, 20vw, 160px);
     max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    padding: 12px;
+    gap: clamp(6px, 1vw, 8px);
+    padding: clamp(10px, 2vw, 12px);
     border-radius: 16px;
     border: 3px solid #84B179;
     background: #A2CB8B;
@@ -85,15 +89,10 @@ body {
     background: #eafff3;
 }
 
-.input-box.correct input {
-    text-transform: capitalize;
-
-}
-
 .input-box input {
     width: 100%;
-    height: 50px;
-    font-size: 20px;
+    height: clamp(40px, 6vh, 50px);
+    font-size: clamp(16px, 2vw, 20px);
     border: none;
     outline: none;
     background: white;
@@ -102,12 +101,11 @@ body {
     border: 3px solid #C7EABB;
 }
 
-/* NEW SEPARATE BUTTON */
-
+/* CHECK BUTTON */
 .check-btn {
-    padding: 8px 25px;
+    padding: clamp(6px, 1vw, 8px) clamp(16px, 2vw, 25px);
     border-radius: 10px;
-    font-size: 18px;
+    font-size: clamp(14px, 2vw, 18px);
     border: none;
     background: #e97e7e;
     color: #fff;
@@ -116,21 +114,20 @@ body {
 
 .check-btn:disabled {
     opacity: 0.5;
-    cursor: not-allowed;
 }
 
-/* NAVIGATION */
-
+/* NAV BUTTONS */
 .nav-buttons {
     width: 100%;
-    margin-top: 10px;
+    margin-top: clamp(10px, 2vw, 20px);
     display: flex;
     justify-content: space-between;
 }
 
 .nav-buttons button {
-    width: 130px;
-    height: 55px;
+    width: clamp(100px, 12vw, 130px);
+    height: clamp(45px, 7vh, 55px);
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,8 +136,7 @@ body {
     border-radius: 50%;
     border: 3px solid #ffffff;
 
-    font-size: 20px;
-    font-weight: 400;
+    font-size: clamp(16px, 2vw, 20px);
     color: #ffffff;
     cursor: pointer;
 
@@ -167,17 +163,11 @@ body {
     box-shadow: 0 2px 0 #3e362b;
 }
 
-.nav-buttons button:active {
-    transform: scale(.95);
-}
-
 .nav-buttons button:disabled {
     opacity: .4;
-    cursor: not-allowed;
 }
 
-/* POPUPS */
-
+/* POPUP */
 .kid-popup {
     position: fixed;
     inset: 0;
@@ -189,70 +179,62 @@ body {
 
 .kid-card {
     background: #fff;
-    width: 320px;
-    padding: 25px;
+    width: clamp(260px, 30vw, 320px);
+    padding: clamp(20px, 3vw, 25px);
     border-radius: 30px;
     text-align: center;
     box-shadow: 0 15px 0 #ffd966, 0 25px 40px rgba(0, 0, 0, .2);
 }
 
 .kid-icon {
-    font-size: 4.5em;
-    margin-bottom: 10px;
+    font-size: clamp(3em, 5vw, 4.5em);
 }
 
 .kid-card h3 {
-    font-size: 2em;
-    margin-bottom: 8px;
+    font-size: clamp(1.5em, 3vw, 2em);
 }
 
 .kid-card p {
-    font-size: 1.2em;
+    font-size: clamp(1em, 2vw, 1.2em);
 }
 
-.kid-correct .kid-card {
-    background: #e6fffa;
-    border: 6px solid #38d9a9;
-}
-
-.kid-wrong .kid-card {
-    background: #fff5f5;
-    border: 6px solid #ffa8a8;
-}
-
-/* FINAL POPUP */
-
+/* FINAL POPUP FIX */
 #finalPopup {
     position: fixed;
     inset: 0;
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 4000;
+    z-index: 5000;
+    pointer-events: none;
+}
+
+#finalPopup.show {
+    display: flex;
+    pointer-events: auto;
 }
 
 .final-kid-box {
     background: linear-gradient(135deg, #fff7d6, #e6fff5);
-    padding: 30px 35px;
+    padding: clamp(20px, 3vw, 30px);
     border-radius: 35px;
     text-align: center;
-    width: 450px;
+    width: clamp(260px, 40vw, 450px);
     box-shadow: 0 20px 0 #ffd43b, 0 30px 50px rgba(0, 0, 0, .2);
 }
 
 .final-kid-box h2 {
-    font-size: 2.2em;
+    font-size: clamp(1.5em, 3vw, 2.2em);
     color: #2f9e44;
-    margin-bottom: 10px;
 }
 
 .final-kid-box p {
-    font-size: 1.3em;
+    font-size: clamp(1em, 2vw, 1.3em);
     font-weight: 600;
 }
 
 #stars {
-    font-size: 2.3em;
+    font-size: clamp(1.5em, 3vw, 2.3em);
     margin: 12px 0;
 }
 
@@ -260,240 +242,32 @@ body {
     background: #ffac30;
     color: #fff;
     border: none;
-    padding: 14px 34px;
+    padding: clamp(10px, 2vw, 14px) clamp(20px, 3vw, 34px);
     border-radius: 30px;
-    font-size: 1.1em;
+    font-size: clamp(0.9em, 2vw, 1.1em);
     cursor: pointer;
-    margin-top: 12px;
 }
 
+/* 🔥 SINGLE BREAKPOINT */
 @media (max-width:900px) {
+
     body {
-        padding: 20px;
-        overflow: auto;
+        height: 100vh;
+        overflow: hidden; /* ❌ no scroll */
+
+        display: flex;
+        justify-content: center;
         align-items: center;
     }
 
     .main-container {
-        width: 100%;
-        max-width: 700px;
-    }
-
-    .question-area {
-        height: auto;
-        padding: 10px 0;
-    }
-
-    .question-area h2 {
-        font-size: 24px;
-        line-height: 1.3;
-    }
-
-    .image-area img {
-        width: 280px;
-        height: 180px;
-        margin: 15px 0px;
-    }
-
-    .input-area {
-        width: 100%;
-        gap: 12px;
-    }
-
-    .input-box {
-        min-width: 140px;
-        padding: 10px;
-    }
-
-    .input-box input {
-        height: 60px;
-        font-size: 20px;
-    }
-
-    .check-btn {
-        padding: 15px 28px;
-        font-size: 16px;
-        margin-top: 8px;
-    }
-
-    .nav-buttons {
-        padding: 0 10px;
-        margin-top: 20px;
-    }
-
-    .nav-buttons button {
-        width: 150px;
-        height: 60px;
-        font-size: 25px;
-    }
-
-    .final-kid-box {
-        width: 90%;
-        max-width: 380px;
-        padding: 24px;
-    }
-
-    .final-kid-box h2 {
-        font-size: 1.8em;
-    }
-
-    .final-kid-box p {
-        font-size: 1.1em;
-    }
-
-    #stars {
-        font-size: 2em;
-    }
-
-    .playAgain-btn {
-        padding: 12px 26px;
-        font-size: 1em;
-    }
-}
-
-@media (max-width:768px) {
-    body {
-        padding: 25px 10px;
-        align-items: flex-start;
-    }
-
-    .main-container {
-        max-width: 600px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .quiz-container {
-        margin-top: 40px;
-    }
-
-    .question-area h2 {
-        font-size: 20px;
-    }
-
-    .image-area img {
-        width: 230px;
-        height: 130px;
-    }
-
-    .input-area {
-        gap: 10px;
-    }
-
-    .input-box {
-        min-width: 120px;
-        padding: 10px;
-    }
-
-    .input-box input {
-        height: 44px;
-        font-size: 17px;
-    }
-
-    .check-btn {
-        padding: 7px 18px;
-        font-size: 15px;
-    }
-
-    .nav-buttons {
-        margin-top: 18px;
-    }
-
-    .nav-buttons button {
-        width: 110px;
-        height: 46px;
-        font-size: 17px;
-    }
-
-    .final-kid-box {
-        width: 90%;
-        max-width: 320px;
-        padding: 20px;
-    }
-
-    .final-kid-box h2 {
-        font-size: 1.6em;
-    }
-
-    .final-kid-box p {
-        font-size: 1em;
-    }
-
-    #stars {
-        font-size: 1.7em;
-    }
-
-    .playAgain-btn {
-        padding: 10px 22px;
-        font-size: .95em;
-    }
-}
-
-@media (max-width:480px) {
-    .main-container {
         width: 100%;
-    }
-
-    .question-area h2 {
-        font-size: 18px;
-    }
-
-    .image-area img {
-        width: 190px;
-        height: 110px;
-        margin: 15px 0px;
-    }
-
-    .input-area {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .input-box {
-        width: 90%;
-        margin-inline: auto;
-    }
-
-    .input-box input {
-        height: 42px;
-        font-size: 16px;
-    }
-
-    .check-btn {
-        width: 100%;
-        font-size: 15px;
-    }
-
-    .nav-buttons {
-        flex-direction: row;
-        gap: 14px;
-        margin-top: 30px;
-    }
-
-    .nav-buttons button {
-        width: 100%;
-        height: 44px;
-        font-size: 16px;
-    }
-
-    .final-kid-box {
-        width: 92%;
-        padding: 18px;
-    }
-
-    .final-kid-box h2 {
-        font-size: 1.4em;
-    }
-
-    .final-kid-box p {
-        font-size: .95em;
-    }
-
-    #stars {
-        font-size: 1.5em;
-    }
-
-    .playAgain-btn {
-        width: 100%;
-        padding: 10px 20px;
-        font-size: .9em;
     }
 }

@@ -220,6 +220,66 @@ font-weight: 400;
   cursor: pointer;
   display: none;
 }
+
+
+
+/* IMPORTANT: enable positioning */
+.item {
+  position: relative;
+}
+
+/* LEFT → number on RIGHT */
+.left .item[data-match]::after {
+  content: attr(data-match);
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+background: #87c9ff; /* soft success green */
+  border-color: #22c55e;
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+/* RIGHT → number on LEFT */
+.right .item[data-match]::before {
+  content: attr(data-match);
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+ background: #87c9ff; /* soft success green */
+  /* border-color: #22c55e; */
+color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  /* border: 2px solid #22c55e; */
+}
+
+
+
 @media (max-width:768px){
 
   body{
@@ -253,6 +313,58 @@ font-weight: 400;
   .column{
     gap:8px;
   }
+
+/* LEFT → number on RIGHT */
+.left .item[data-match]::after {
+  content: attr(data-match);
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+background: #87c9ff; /* soft success green */
+  border-color: #22c55e;
+
+  color: white;
+
+  font-size: 6px;
+  font-weight: bold;
+
+  width: 16px;
+  height: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+/* RIGHT → number on LEFT */
+.right .item[data-match]::before {
+  content: attr(data-match);
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+ background: #87c9ff; /* soft success green */
+  /* border-color: #22c55e; */
+color: #fff;
+  font-size: 6px;
+  font-weight: bold;
+
+  width: 16px;
+  height: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  /* border: 2px solid #22c55e; */
+}
+
+
 
   .item{
     font-size:13px !important;

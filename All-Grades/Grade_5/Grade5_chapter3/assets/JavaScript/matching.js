@@ -3,8 +3,7 @@ const rightItems = document.querySelectorAll(".right .item");
 const svg = document.getElementById("lines");
 const game = document.querySelector(".game");
 
-updateSVGSize();
-window.addEventListener("resize", updateSVGSize);
+
 
 /* ---------- GAME STATE ---------- */
 let selectedLeft = null;
@@ -122,41 +121,39 @@ rightItems.forEach((item) => {
 
     const isMatch = selectedLeft.dataset.id === item.dataset.id;
 
-    if (isMatch) {
-      speak("Correct");
+   if (isMatch) {
+  speak("Correct");
 
-      drawCurve(selectedLeft, item, "#22c55e");
+  // ✅ GET LEFT ITEM INDEX (1-based)
+  const number = Array.from(leftItems).indexOf(selectedLeft) + 1;
 
-      selectedLeft.classList.add("matched");
-      item.classList.add("matched");
+  // ✅ APPLY SAME NUMBER TO BOTH
+  selectedLeft.setAttribute("data-match", number);
+  item.setAttribute("data-match", number);
 
-      matches++;
-      score++;
+  selectedLeft.classList.add("matched");
+  item.classList.add("matched");
 
-      // renderProgress(); // update progress
+  matches++;
+  score++;
 
-      selectedLeft.classList.remove("selected");
-      selectedLeft = null;
+  selectedLeft.classList.remove("selected");
+  selectedLeft = null;
 
-      speak("Correct");
+  if (matches === total) setTimeout(showFinal, 800);
+}
+   else {
+  item.classList.add("wrong");
+  selectedLeft.classList.add("wrong");
 
-      if (matches === total) setTimeout(showFinal, 800);
-    } else {
-      // const tempLine = drawCurve(selectedLeft, item, "#ef4444");
+  setTimeout(() => {
+    speak("Wrong");
 
-      item.classList.add("wrong");
-      selectedLeft.classList.add("wrong");
-
-      setTimeout(() => {
-        tempLine.remove();
-
-        speak("Wrong");
-
-        item.classList.remove("wrong");
-        selectedLeft.classList.remove("wrong", "selected");
-        selectedLeft = null;
-      }, 500);
-    }
+    item.classList.remove("wrong");
+    selectedLeft.classList.remove("wrong", "selected");
+    selectedLeft = null;
+  }, 500);
+}
   };
 });
 
@@ -173,11 +170,7 @@ function showFinal() {
   document.getElementById("stars").textContent = "⭐".repeat(score);
 }
 
-window.addEventListener("resize", () => {
-  const paths = svg.querySelectorAll("path");
 
-  paths.forEach((p) => p.remove());
-});
 
 /* ---------- START ---------- */
 // renderProgress();

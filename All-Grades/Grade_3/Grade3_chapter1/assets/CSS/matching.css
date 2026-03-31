@@ -344,21 +344,22 @@ body {
 @media (max-width:768px){
 
   .play-area{
-    grid-template-columns: 1fr 40px 1fr; /* ✅ still LEFT-RIGHT */
+    grid-template-columns: 1fr 35px 1fr; /* smaller center gap */
+    margin-top: -30px;
   }
 
   .step{
-    font-size:16px;
-    padding:10px;
-    height:auto; /* ✅ remove fixed height */
+    font-size:14px;
+    padding:45px 25px;     /* smaller */
+    border-radius:30px;   /* slightly compact */
   }
 
   .step-text{
-    font-size:16px;
+    font-size:12px;
   }
 
   .answer{
-    font-size:16px;
+    font-size:14px;
     padding:8px;
   }
 
@@ -372,6 +373,6 @@ body {
     height:40px;
   }
 .hint{
-    font-size: 18px;
+    font-size: 15px;
 }
 }

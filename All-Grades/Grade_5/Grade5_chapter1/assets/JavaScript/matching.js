@@ -82,34 +82,6 @@ const svg = document.getElementById("connectionLines");
 //   svg.appendChild(path);
 // }
 
-function drawConnection(leftEl, rightEl) {
-  const svgRect = svg.getBoundingClientRect();
-  const leftRect = leftEl.getBoundingClientRect();
-  const rightRect = rightEl.getBoundingClientRect();
-
-  const startX = leftRect.right - svgRect.left;
-  const startY = leftRect.top + leftRect.height / 2 - svgRect.top;
-
-  const endX = rightRect.left - svgRect.left;
-  const endY = rightRect.top + rightRect.height / 2 - svgRect.top;
-
-  // smooth professional curve
-  const midX = (startX + endX) / 2;
-
-  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-
-  const d = `
-    M ${startX} ${startY}
-    C ${midX} ${startY},
-      ${midX} ${endY},
-      ${endX} ${endY}
-  `;
-
-  path.setAttribute("d", d);
-  path.setAttribute("class", "connection-path");
-
-  svg.appendChild(path);
-}
 
 // function speak(t){
 //  speechSynthesis.cancel();
@@ -178,23 +150,33 @@ function arm(el, p) {
 function attempt(el, p) {
   if (!armed || el.classList.contains("correct")) return;
 
-  if (armed.p.r === p.r) {
-    armed.el.classList.add("correct");
-    el.classList.add("correct");
-    drawConnection(armed.el, el);
-    score++;
-    matched++;
-    speak("Correct");
+ if (armed.p.r === p.r) {
+  armed.el.classList.add("correct");
+  el.classList.add("correct");
 
-    document
-      .querySelectorAll(".left .item")
-      .forEach((i) => i.classList.remove("armed"));
-    armed = null;
+  // ✅ GET LEFT POSITION NUMBER
+  const leftItems = document.querySelectorAll(".left .item");
+  const number = Array.from(leftItems).indexOf(armed.el) + 1;
 
-    if (matched === pairs.length) {
-      setTimeout(finalPopup, 1100);
-    }
-  } else {
+  // ✅ APPLY NUMBER TO BOTH SIDES
+  armed.el.setAttribute("data-match", number);
+  el.setAttribute("data-match", number);
+
+  score++;
+  matched++;
+  speak("Correct");
+
+  document
+    .querySelectorAll(".left .item")
+    .forEach((i) => i.classList.remove("armed"));
+
+  armed = null;
+
+  if (matched === pairs.length) {
+    setTimeout(finalPopup, 1100);
+  }
+}
+  else {
     speak("Wrong");
 
     // ⬅️ LEFT QUESTION STAYS SELECTED (NO RESET)

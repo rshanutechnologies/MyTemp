@@ -275,6 +275,57 @@ svg path {
   }
 }
 
+/* LEFT → number on RIGHT (pill style) */
+.left .item[data-match]::after {
+  content: attr(data-match);
+  position: absolute;
+  right: 12px;
+  top: 5%;
+  transform: translateY(-50%);
+
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  min-width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px; /* pill */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* RIGHT → number on LEFT (circle style with border) */
+.right .item[data-match]::before {
+  content: attr(data-match);
+  position: absolute;
+  left: 12px;
+  top: 5%;
+  transform: translateY(-50%);
+
+  background: #fff;
+  color: #16a34a;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 2px solid #22c55e;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
 /* ===================================== */
 /* =========== MOBILE DESIGN =========== */
 /* ===================================== */
@@ -327,6 +378,59 @@ svg path {
     transform: none;
     box-shadow: none;
   }
+
+  
+/* LEFT → number on RIGHT (pill style) */
+.left .item[data-match]::after {
+  content: attr(data-match);
+  position: absolute;
+  right: 12px;
+  top: -0%;
+  transform: translateY(-50%);
+
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+
+  font-size: 6px;
+  font-weight: 700;
+
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px; /* pill */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* RIGHT → number on LEFT (circle style with border) */
+.right .item[data-match]::before {
+  content: attr(data-match);
+  position: absolute;
+  left: 12px;
+  top: 5%;
+  transform: translateY(-50%);
+
+  background: #fff;
+  color: #16a34a;
+
+  font-size: 6px;
+  font-weight: 700;
+
+  width: 16px;
+  height: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 2px solid #22c55e;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
 
   .emoji {
     font-size: 18px;
