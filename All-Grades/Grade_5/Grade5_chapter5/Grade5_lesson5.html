@@ -79,66 +79,68 @@ gap:18px;
 }
 
 /* ================= ✏️ PENCIL BUTTON ================= */
-
+/* ================= CLEAN NAV BUTTON ================= */
+/* ================= UNIQUE SOFT SHAPE NAV ================= */
 .sidebar ul li a{
-position:relative;
 display:flex;
 align-items:center;
-padding:20px 21px 20px 30px;
+gap:14px;
+padding:16px 22px;
 text-decoration:none;
-color:#1F3C5B;
-border-radius:60px;
+color:#445566;
 font-size:clamp(12pt,2vw,17pt);
-font-weight:600;
-border:2px solid rgba(0,0,0,0.1);
-box-shadow:0 6px 0 rgba(0,0,0,0.15);
-transition:.25s ease;
+font-weight:500;
+
+/* 🛸 more stretched UFO shape */
+border-radius:70% 30% 60% 40% / 40% 60% 40% 60%;
+
+/* ✨ strong tilt */
+transform:rotate(-4deg);
+
+/* soft pastel */
+background:#f5f8ff;
+
+/* floating shadow */
+box-shadow:
+0 12px 22px rgba(0,0,0,0.08),
+inset 0 1px 0 rgba(255,255,255,0.7);
+
+transition:all .3s ease;
 }
 
-/* pencil tip */
-.sidebar ul li a::before{
-content:"";
-position:absolute;
-left:-30px;
-top:50%;
-transform:translateY(-50%);
-border-top:24px solid transparent;
-border-bottom:24px solid transparent;
-border-right:30px solid currentColor;
-}
-
-.sidebar ul li a::after{
-content:"";
-position:absolute;
-left:-40px;
-top:50%;
-transform:translateY(-50%);
-border-top:18px solid transparent;
-border-bottom:18px solid transparent;
-border-right:18px solid #f5d6a1;
-}
-
-.sticker{
-font-size:22px;
-margin-right:15px;
-transition:.3s;
-}
-
+/* hover = straighten + lift */
 .sidebar ul li a:hover{
-transform:translateX(6px) translateY(-2px);
+transform:rotate(0deg) translateX(8px) scale(1.05);
+box-shadow:0 16px 28px rgba(0,0,0,0.12);
 }
 
+/* active = slight press */
+
+/* 🌸 DIFFERENT SOFT COLORS (default state) */
+.sidebar ul li:nth-child(1) a{background:#FFE4E1;} /* soft pink */
+.sidebar ul li:nth-child(2) a{background:#FFE4E1;} /* soft green */
+.sidebar ul li:nth-child(3) a{background:#FFE4E1;} /* soft yellow */
+.sidebar ul li:nth-child(4) a{background:#FFE4E1;} /* soft blue */
+
+/* 🌿 HOVER (gentle lift + straighten) */
+.sidebar ul li a:hover{
+transform:rotate(0deg) translateX(6px) scale(1.03);
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* ✨ ACTIVE (slightly stronger pastel, not dark) */
+.sidebar ul li:nth-child(1) a.active{background:#f8caca;}  /* dusty pink */
+.sidebar ul li:nth-child(2) a.active{background:#cde8f6;}  /* soft blue */
+.sidebar ul li:nth-child(3) a.active{background:#f6e3a3;}  /* muted yellow */
+.sidebar ul li:nth-child(4) a.active{background:#cdebdc;}  /* soft green */
+
+/* active feel */
 .sidebar ul li a.active{
-transform:translateX(6px) translateY(4px);
-box-shadow:none;
-outline:4px solid rgba(10,108,43,.4);
+/* transform:rotate(0deg) scale(1.02); */
+box-shadow:0 8px 18px rgba(0,0,0,0.1);
+outline: 3px solid white;
 }
 
-/* colors */
-.sidebar ul li:nth-child(1) a{background:#FFB37A;}
-.sidebar ul li:nth-child(2) a{background:#CFE8B3;}
-.sidebar ul li:nth-child(3) a{background:#FFD84D;}
-.sidebar ul li:nth-child(4) a{background:#86BCD5;}
 
 /* ================= CONTENT ================= */
 
@@ -183,7 +185,9 @@ top:0;
 height:100%;
 width:260px;
 box-shadow:4px 0 20px rgba(0,0,0,.2);
-background:#b4f0d6;
+/* background:#b4f0d6; */
+  background: url("./assets/images/BGM.png") no-repeat center center;
+  background-size: cover;
 
 }
 

@@ -23,15 +23,10 @@
             height: 100vh;
             overflow: hidden;
             background: url("./assets/images/BGGG.png");
-            /* background-color: lightblue; */
             background-size: 100% 100%;
         }
 
         .app {
-            /* background-color: #efffede3; */
-            /* background: linear-gradient(120deg, #e9ffe6e3, #e8e9e8e3); */
-            /* background: linear-gradient(120deg, #ffffe3e3, #c9c8c8d5); */
-            background-size: 3px 3px;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -41,8 +36,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80px;
-            margin: 0 20px;
+            height: clamp(60px, 8vh, 90px);
+            margin: 0 clamp(10px, 3vw, 20px);
         }
 
         .nav-group {
@@ -50,13 +45,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 18px;
+            gap: clamp(8px, 1.5vw, 18px);
             width: 100%;
             max-width: 1150px;
-            padding: 10px;
+            padding: clamp(6px, 1vw, 10px);
         }
 
-        .nav-slider {
+        /* .nav-slider {
             position: absolute;
             top: 10px;
             left: 10px;
@@ -64,17 +59,25 @@
             border-radius: 12px;
             transition: transform .45s cubic-bezier(.65, .05, .36, 1), width .35s ease;
             z-index: 1;
-            /* display: none; */
-        }
+        } */
+         .nav-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 40px;
+    transition: transform .45s cubic-bezier(.65, .05, .36, 1), width .35s ease;
+    z-index: 0;
+}
 
         .island-btn {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 16px 20px;
-            font-size: 15px;
+            gap: clamp(6px, 1vw, 8px);
+            padding: clamp(10px, 1.5vw, 16px) clamp(12px, 2vw, 20px);
+            font-size: clamp(15px, 1.2vw, 20px);
             font-weight: 600;
             cursor: pointer;
             border-radius: 40px;
@@ -86,50 +89,33 @@
             transform: translateY(0);
             opacity: .6;
             filter: grayscale(1);
+            position: relative;
+    z-index: 2;
         }
 
         .island-btn:hover {
             transform: translateY(-4px) scale(1.01);
-            /* box-shadow: 0 12px 22px rgba(0, 0, 0, .18); */
             opacity: .9;
         }
 
+        /* ✅ FIXED HERE */
         .island-btn.active {
-            transform: translateY(-6px) scale(1.02);
-            /* box-shadow: 0 14px 24px rgba(0, 0, 0, .22); */
-            border: 2px solid white;
+            transform: scale(1.02);
+           box-shadow: 0 10px 20px rgba(0,0,0,0.18),0 0 0 2px white;
             opacity: 1;
             filter: none;
-            /* color: #1f2937; */
         }
 
-        .island-btn:nth-child(2).active {
-            background: #ffb7b7;
-        }
-
-        .island-btn:nth-child(3).active {
-            background: #c7e5ff;
-        }
-
-        .island-btn:nth-child(4).active {
-            background: #c7ffca;
-        }
-
-        .island-btn:nth-child(5).active {
-            background: #ffeaa7;
-        }
-
-        .island-btn:nth-child(6).active {
-            background: #ff199456;
-        }
-
-        .island-btn:nth-child(7).active {
-            background: hsla(197, 55%, 67%, 0.5);
-        }
+        .island-btn:nth-child(2).active { background: #ffb7b7; }
+        .island-btn:nth-child(3).active { background: #c7e5ff; }
+        .island-btn:nth-child(4).active { background: #c7ffca; }
+        .island-btn:nth-child(5).active { background: #ffeaa7; }
+        .island-btn:nth-child(6).active { background: #ff199456; }
+        .island-btn:nth-child(7).active { background: hsla(197, 55%, 67%, 0.5); }
 
         .main {
             flex: 1;
-            padding: 10px 0px 0px;
+            padding: clamp(6px, 1vw, 10px) 0 0;
         }
 
         iframe {
@@ -150,20 +136,19 @@
 
             .topbar {
                 display: none;
-              
             }
 
             .menu-btn {
                 display: block;
                 position: fixed;
-                top: 15px;
-                right: 15px;
-                font-size: 24px;
+                top: clamp(10px, 2vw, 15px);
+                right: clamp(10px, 2vw, 15px);
+                font-size: clamp(18px, 3vw, 24px);
                 background: #f59e0b;
                 color: white;
                 border: none;
                 border-radius: 8px;
-                padding: 6px 12px;
+                padding: clamp(4px, 1vw, 6px) clamp(8px, 2vw, 12px);
                 cursor: pointer;
                 z-index: 5000;
             }
@@ -171,8 +156,7 @@
             .offcanvas {
                 position: fixed;
                 inset: 0;
-                /* background: rgba(0, 0, 0, .45); */
-                  background: url("./assets/images/BGGG.png");
+                background: url("./assets/images/BGGG.png");
                 display: none;
                 z-index: 4000;
                 margin-top: 5%;
@@ -186,15 +170,14 @@
                 position: absolute;
                 right: 0;
                 top: 0;
-                width: 280px;
+                width: clamp(220px, 70vw, 280px);
                 height: 100%;
-                /* background: white; */
-                  background: url("./assets/images/BGGG.png");
-                padding: 30px;
-                padding-top: 80px;
+                background: url("./assets/images/BGGG.png");
+                padding: clamp(20px, 4vw, 30px);
+                padding-top: clamp(60px, 10vw, 80px);
                 display: flex;
                 flex-direction: column;
-                gap: 50px !important;
+                gap: clamp(20px, 5vw, 50px);
                 transform: translateX(100%);
                 transition: .35s;
                 overflow-y: auto;
@@ -211,50 +194,19 @@
                 flex: none;
                 width: 100%;
                 justify-content: flex-start;
-                padding: 18px 20px;
+                padding: clamp(14px, 3vw, 18px) clamp(16px, 3vw, 20px);
                 border-radius: 40px;
+                font-size: clamp(13px, 2.5vw, 15px);
             }
 
-            .offcanvas-panel .island-btn:nth-child(1).active {
-                background: #FFE3C8;
-            }
-
-            .offcanvas-panel .island-btn:nth-child(2).active {
-                background: #CFE8FF;
-            }
-
-            .offcanvas-panel .island-btn:nth-child(3).active {
-                background: #D7F7DC;
-            }
-
-            .offcanvas-panel .island-btn:nth-child(4).active {
-                background: #FFF2C6;
-            }
-
-            .offcanvas-panel .island-btn:nth-child(5).active {
-                background: #FFD8DD;
-            }
-
-            .offcanvas-panel .island-btn:nth-child(6).active {
-                background: #DCD6FF;
-            }
-
+            .offcanvas-panel .island-btn:nth-child(1).active { background: #FFE3C8; }
+            .offcanvas-panel .island-btn:nth-child(2).active { background: #CFE8FF; }
+            .offcanvas-panel .island-btn:nth-child(3).active { background: #D7F7DC; }
+            .offcanvas-panel .island-btn:nth-child(4).active { background: #FFF2C6; }
+            .offcanvas-panel .island-btn:nth-child(5).active { background: #FFD8DD; }
+            .offcanvas-panel .island-btn:nth-child(6).active { background: #DCD6FF; }
         }
 
-        @media(max-width:480px) {
-
-            .offcanvas-panel {
-                width: 80%;
-                padding: 20px;
-                gap: 16px;
-            }
-
-            .offcanvas-panel .island-btn {
-                font-size: 14px;
-                padding: 25px 30px;
-            }
-
-        }
     </style>
 </head>
 
@@ -265,7 +217,6 @@
     <div class="app">
 
         <div class="topbar">
-
             <div class="nav-group">
 
                 <div class="nav-slider" id="navSlider"></div>
@@ -286,13 +237,11 @@
                 </div>
 
                 <div class="island-btn" onclick="openIsland(3)">
-                  <i class="fa-solid fa-link"></i>
+                    <i class="fa-solid fa-link"></i>
                     Matching
                 </div>
 
-            
             </div>
-
         </div>
 
         <div class="main">
@@ -325,7 +274,6 @@
                 Matching
             </div>
 
-
         </div>
 
     </div>
@@ -336,7 +284,6 @@
         const mobileButtons = document.querySelectorAll(".offcanvas .island-btn");
 
         const slider = document.getElementById("navSlider");
-
         const frame = document.getElementById("contentFrame");
 
         const pages = [
@@ -354,7 +301,6 @@
         }
 
         function openIsland(index) {
-
             sidebarButtons.forEach(btn => btn.classList.remove("active"));
             sidebarButtons[index].classList.add("active");
 
@@ -362,19 +308,15 @@
             mobileButtons[index].classList.add("active");
 
             moveSlider(sidebarButtons[index]);
-
             frame.src = pages[index];
         }
 
         function toggleMenu() {
-
             if (window.innerWidth > 900) return;
-
             document.getElementById("offcanvas").classList.toggle("show");
         }
 
         function mobileOpen(i) {
-
             openIsland(i);
             toggleMenu();
         }

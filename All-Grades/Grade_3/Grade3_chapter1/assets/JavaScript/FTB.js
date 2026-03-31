@@ -43,12 +43,16 @@ pages.forEach((group, pageIndex) => {
 
   group.forEach((q, qIndex) => {
     const card = document.createElement("div");
-
 card.innerHTML = `
-  <img src="${q.img}" class="plain-img" draggable="false">
-  <div class="question">${q.q}</div>
-  <input class="plain-input" placeholder="Type here ....">
-  <button class="check">Check</button>
+  <div class="content">
+    <img src="${q.img}" class="plain-img" draggable="false">
+    <div class="question">${q.q}</div>
+
+    <div class="input-wrap">
+      <input class="plain-input" placeholder="Type here ....">
+      <button class="check">Check</button>
+    </div>
+  </div>
 `;
 
 
@@ -141,7 +145,10 @@ function showFinal() {
 }
 
 function updateSlide() {
-  path.style.transform = `translateY(-${currentPage * 420}px)`;
+  const viewport = document.querySelector(".viewport");
+  const slideHeight = viewport.clientHeight; // ✅ dynamic height
+
+  path.style.transform = `translateY(-${currentPage * slideHeight}px)`;
 
   prevBtn.disabled = currentPage === 0;
 
@@ -151,8 +158,6 @@ function updateSlide() {
   );
 
   nextBtn.disabled = !pageCompleted;
-
- 
 }
 
 updateSlide();

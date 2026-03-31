@@ -79,6 +79,34 @@ function speak(t) {
   msg.pitch = 1;
   speechSynthesis.speak(msg);
 }
+function smallConfetti() {
+  confetti({ particleCount: 40, spread: 70, origin: { y: 0.7 } });
+}
+
+function bigConfetti() {
+  const duration = 500;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 7,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      zIndex: 5000  // ✅ FIX
+    });
+
+    confetti({
+      particleCount: 7,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      zIndex: 5000  // ✅ FIX
+    });
+
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
+}
 
 function loadQuestion() {
   const q = quizData[current];
@@ -185,6 +213,7 @@ function showFinal() {
   document.getElementById("stars").textContent = "⭐".repeat(score);
 
   popup.style.display = "flex";
+   bigConfetti();
 }
 
 loadQuestion();

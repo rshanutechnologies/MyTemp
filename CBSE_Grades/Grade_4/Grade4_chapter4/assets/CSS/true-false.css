@@ -188,9 +188,29 @@ body {
 .kid-card p {
     font-size: 1.2em;
 }
+.kid-correct .kid-card {
+   background: #e6fffa;
+    border: 6px solid #38d9a9;
+}
 
 /* FINAL POPUP (UNCHANGED) */
-#finalPopup {
+/* #finalPopup {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 4000;
+}
+
+.final-kid-box {
+    background: linear-gradient(135deg, #fff7d6, #e6fff5);
+    padding: 30px 35px;
+    border-radius: 35px;
+    text-align: center;
+    width: 450px;
+} */
+ #finalPopup {
     position: fixed;
     inset: 0;
     display: none;
@@ -206,6 +226,30 @@ body {
     text-align: center;
     width: 450px;
 }
+/* 🔥 spacing inside final popup */
+.final-kid-box h2 {
+    margin-bottom: 18px;
+}
+
+.final-kid-box p {
+    margin-bottom: 14px;
+}
+
+#stars {
+    margin-bottom: 18px;
+}
+
+/* 🔥 play button style */
+.playAgain-btn {
+    background: #22c55e;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: clamp(14px, 2vw, 18px);
+    cursor: pointer;
+}
+
 
 /* 🔥 SINGLE MEDIA QUERY */
 @media (max-width:900px) {

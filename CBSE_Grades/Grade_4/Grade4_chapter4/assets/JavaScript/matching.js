@@ -58,9 +58,9 @@ function init() {
     div.dataset.match = item.match;
 
     div.innerHTML = `
-                    <img src="${item.img}" class="left-img">
-                    <span>${item.text}</span>
-                    `;
+      <img src="${item.img}" class="left-img">
+      <span>${item.text}</span>
+    `;
 
     div.onclick = () => {
       if (div.classList.contains("matched")) return;
@@ -81,9 +81,7 @@ function init() {
     div.className = "item";
     div.dataset.id = item.match;
 
-    div.innerHTML = `
-                    <span>${item.text}</span>
-                    `;
+    div.innerHTML = `<span>${item.text}</span>`;
 
     div.onclick = () => {
       if (!selectedLeft || div.classList.contains("matched")) return;
@@ -111,6 +109,42 @@ function speak(t) {
   speechSynthesis.speak(msg);
 }
 
+/* 🔥 SMALL CONFETTI (for each correct match) */
+function smallConfetti() {
+  confetti({
+    particleCount: 50,
+    spread: 80,
+    origin: { y: 0.6 },
+    zIndex: 5000
+  });
+}
+
+/* 🔥 BIG CONFETTI (already exists, unchanged) */
+function bigConfetti() {
+  const duration = 500;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 7,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      zIndex: 5000
+    });
+
+    confetti({
+      particleCount: 7,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      zIndex: 5000
+    });
+
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
+}
+
 function handleMatch(leftEl, rightEl) {
   score++;
 
@@ -120,7 +154,6 @@ function handleMatch(leftEl, rightEl) {
 
   if (window.innerWidth <= 768) {
     const num = matchesFound + 1;
-
     leftEl.dataset.num = num;
     rightEl.dataset.num = num;
   } else {
@@ -131,6 +164,8 @@ function handleMatch(leftEl, rightEl) {
   selectedLeft = null;
   matchesFound++;
   speak("Correct");
+
+  smallConfetti(); // 🎉🔥 added here
 
   if (matchesFound === leftData.length) {
     setTimeout(showFinal, 700);
@@ -170,6 +205,8 @@ function showFinal() {
   document.getElementById("stars").textContent = "⭐".repeat(score);
 
   document.getElementById("finalPopup").style.display = "flex";
+
+  // (optional) you can add bigConfetti(); here if needed
 }
 
 window.addEventListener("resize", () => {

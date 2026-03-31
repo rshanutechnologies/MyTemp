@@ -40,6 +40,7 @@ body {
   max-width: 1200px; 
   min-height: 100vh;     /* not fixed height */
   display: flex;
+  justify-content: center;
   flex-direction: column;
   padding: 2vh 20px;
 }
@@ -47,7 +48,7 @@ body {
 
   
 #slides { 
-  flex: 1; 
+  flex-grow: 0; 
   display: flex; 
   align-items: center; 
   justify-content: center; 
@@ -192,7 +193,75 @@ body {
     /* =========================
    RESPONSIVE LAYOUT PATCH
    ========================= */
+/* =========================
+   📱 EXTRA SMALL DEVICES (≤370px)
+   ========================= */
 
+@media (max-width: 370px) {
+
+  .app {
+    padding: 10px;
+  }
+
+  .q-number {
+    font-size: 14px;
+    padding: 4px 12px;
+  }
+
+  .q-text {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  /* ✅ FIX: options should stack properly */
+  .opts {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .opt-container {
+    max-width: 100%;
+  }
+
+  .opt {
+    height: 120px;
+    border-width: 4px;
+  }
+
+  .label {
+    font-size: 16px;
+  }
+
+  /* ✅ buttons fix */
+  .nav-area {
+    height: auto;
+    padding: 10px;
+  }
+
+  .nav-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  /* ✅ blank size fix */
+  .blank {
+    min-width: 100px;
+    border-width: 3px;
+  }
+
+  /* ✅ final modal fix */
+  .final-modal {
+    padding: 20px;
+  }
+
+  .final-modal h1 {
+    font-size: 28px !important;
+  }
+
+  .final-modal p {
+    font-size: 18px !important;
+  }
+}
 /* exercises/ex1.html — responsive layout for options */
   
   </style>

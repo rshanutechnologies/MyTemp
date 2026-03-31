@@ -178,7 +178,7 @@ body {
     opacity: .4;
 }
 
-/* POPUP (UNCHANGED) */
+/* ✅ CORRECT POPUP STYLE */
 .kid-popup {
     position: fixed;
     inset: 0;
@@ -189,14 +189,56 @@ body {
 }
 
 .kid-card {
-    background: #fff;
+    background: #ffffff;
     width: 320px;
     padding: 25px;
     border-radius: 30px;
     text-align: center;
+    box-shadow: 0 15px 0 #ffd966, 0 25px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* FINAL POPUP (UNCHANGED) */
+.kid-icon {
+    font-size: 4.5em;
+    margin-bottom: 10px;
+}
+
+.kid-card h3 {
+    font-size: 2em;
+    margin-bottom: 8px;
+}
+
+.kid-card p {
+    font-size: 1.2em;
+}
+
+/* ✅ CORRECT / WRONG STATES */
+.kid-correct .kid-card {
+    background: #e6fffa;
+    border: 6px solid #38d9a9;
+}
+
+.kid-correct h3 {
+    color: #2f9e44;
+}
+
+.kid-correct p {
+    color: #1c7c54;
+}
+
+.kid-wrong .kid-card {
+    background: #fff5f5;
+    border: 6px solid #ffa8a8;
+}
+
+.kid-wrong h3 {
+    color: #e03131;
+}
+
+.kid-wrong p {
+    color: #c92a2a;
+}
+
+/* ✅ FINAL POPUP (same as MCQ) */
 #finalPopup {
     position: fixed;
     inset: 0;
@@ -212,6 +254,30 @@ body {
     border-radius: 35px;
     text-align: center;
     width: 450px;
+}
+
+/* ✅ spacing (as you wanted) */
+.final-kid-box h2 {
+    margin-bottom: 18px;
+}
+
+.final-kid-box p {
+    margin-bottom: 14px;
+}
+
+#stars {
+    margin-bottom: 18px;
+}
+
+/* ✅ play button */
+.playAgain-btn {
+    background: #22c55e;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: clamp(14px, 2vw, 18px);
+    cursor: pointer;
 }
 
 /* 🔥 SINGLE MEDIA QUERY */

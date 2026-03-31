@@ -36,12 +36,13 @@
       height: 100%;
       max-width: 950px;
       display: flex;
+      justify-content: center;
       flex-direction: column;
       padding: 2vh 20px;
     }
 
     .question-area {
-      flex: 1;
+      flex-grow: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -170,6 +171,12 @@
     @media (max-width: 600px) {
       .question-card { flex-direction: column; text-align: center; gap: 10px; }
       .opts { gap: 15px; }
+    }
+
+    @media (max-width: 370px){
+      .q-text {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
