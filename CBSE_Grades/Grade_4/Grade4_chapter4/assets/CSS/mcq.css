@@ -67,6 +67,8 @@ body {
 .option-card {
     display: flex;
     align-items: center;
+    width: 100%;       
+    min-width: 0;  
     gap: clamp(10px, 2vw, 15px);
     padding: clamp(10px, 2vw, 16px);
     border-radius: 18px;
