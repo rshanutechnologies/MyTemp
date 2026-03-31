@@ -142,7 +142,7 @@ rightItems.forEach((item) => {
 
       if (matches === total) setTimeout(showFinal, 800);
     } else {
-      const tempLine = drawCurve(selectedLeft, item, "#ef4444");
+      // const tempLine = drawCurve(selectedLeft, item, "#ef4444");
 
       item.classList.add("wrong");
       selectedLeft.classList.add("wrong");

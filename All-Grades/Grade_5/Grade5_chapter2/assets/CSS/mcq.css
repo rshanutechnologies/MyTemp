@@ -199,7 +199,7 @@ button:disabled {
     max-width: 400px;
     width: 90%;
     animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    backdrop-filter: blur(15px);
+    /* backdrop-filter: blur(15px); */
     /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); */
 }
 
@@ -330,7 +330,7 @@ button:disabled {
 #finalPopup {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, .4);
+    /* background: rgba(0, 0, 0, .4); */
     display: none;
     justify-content: center;
     align-items: center;
