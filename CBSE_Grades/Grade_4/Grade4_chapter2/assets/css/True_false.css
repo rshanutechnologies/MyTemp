@@ -121,25 +121,26 @@ body {
    margin-top: clamp(8px, 2vh, 18px);
 }
 
-.prev, .next {
-  width: clamp(100px, 13vw, 140px);
-  height: clamp(45px, 7vw, 60px);
+.prev,.next{
+    width:clamp(90px,12vw,120px);
+    height:clamp(40px,6vw,50px);
 
-  border-radius: 20px;
-  border: none;
+    border-radius:20px;
+    border:none;
 
-  font-size: clamp(15px, 2vw, 26px);
+    font-size:clamp(14px,2vw,25px);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  cursor: pointer;
-  color: white;
-  border: 2px solid white;
+    cursor:pointer;
+    color:white;
+    border:2px solid white;
 
-  white-space: nowrap;
-  flex-shrink: 0;
+    white-space:nowrap;
+    flex-shrink:0;
+    margin-top: 14px;
 }
 
 .prev { background: #5c6cff; }

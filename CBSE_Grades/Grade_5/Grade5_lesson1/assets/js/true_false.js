@@ -4,7 +4,7 @@ const quiz=[
 {
 q:"1. A potato plant reproduces through its stem.",
 a:true,
-img:"../assets/images/potato1.png"
+img:"../assets/images/TFQQQ1.png"
 },
 
 {

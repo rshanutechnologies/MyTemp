@@ -374,6 +374,93 @@ margin-left: -50px;
 
 }
 
+
+@media (max-width:600px){
+
+body{
+    overflow-y:auto;
+    align-items:center;
+}
+
+/* QUIZ */
+.quiz{
+    padding:15px;
+}
+
+/* QUESTION */
+.question{
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+/* OPTIONS GRID (2 per row) */
+.options{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    width:100%;
+    margin-left:0;
+}
+
+/* OPTION */
+.option{
+    font-size:16px;
+    padding:8px;
+}
+
+.opt-img{
+    width:60px;
+    height:60px;
+}
+
+/* IMAGE */
+.imgbox{
+    height:auto;
+    margin-top:0;
+}
+
+.imgbox img{
+    width:180px;
+    height:auto;
+}
+
+/* NAV */
+.nav{
+    gap:20px;
+    margin-top:20px;
+}
+
+.nav button{
+    font-size:16px;
+    padding:10px 20px;
+}
+
+/* SCORE BOX */
+.scoreBox{
+    position:static;
+    margin-bottom:10px;
+    display:inline-block;
+}
+
+/* FINAL */
+.final{
+    width:90%;
+    padding:30px;
+}
+
+.final h2{
+    font-size:24px;
+}
+
+.final h3{
+    font-size:20px;
+}
+
+.star{
+    font-size:34px;
+}
+
+}
+
 /* MOBILE */
 
 @media (max-width:430px){

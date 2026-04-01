@@ -28,6 +28,7 @@ body{
     align-items:center;
     text-align:center;
     margin:auto 0;
+    padding:0 10px;
     /* transform: translateY(clamp(-10px, -2vh, -25px)); */
 }
 
@@ -42,13 +43,15 @@ body{
 .question{
     font-size: clamp(22px, 2.5vw, 30px);
 
-    padding-left: clamp(10px,5vw,60px);
-    padding-right: clamp(60px,12vw,120px); /* 🔥 space for hamburger */
+     padding: 0 clamp(10px, 5vw, 40px);
 
     margin-bottom:4px;
     padding-bottom:0;
     text-align: center;
     color:#2f4f4f;
+     max-width: 100%;       /* 🔥 prevent overflow */
+    word-break: break-word;
+     margin-top: clamp(10px, 3vh, 25px);
 }
 
 /* ROW (STRICT 2 COLUMN DESKTOP) */
@@ -67,7 +70,7 @@ body{
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:clamp(20px,4vw,40px);
+    gap:clamp(10px,2vw,20px);
 }
 
 /* BLANKS */
@@ -310,6 +313,9 @@ height: clamp(180px, 25vw, 380px);
 .row{
     flex-direction:column;
     align-items:center;
+}
+.question{
+    margin-top: 20px;
 }
 
 }

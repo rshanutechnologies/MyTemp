@@ -249,6 +249,10 @@ body {
     font-size: clamp(14px, 2vw, 18px);
     cursor: pointer;
 }
+.kid-wrong .kid-card {
+    background: #fff5f5;
+    border: 6px solid #ffa8a8;
+}
 
 
 /* 🔥 SINGLE MEDIA QUERY */

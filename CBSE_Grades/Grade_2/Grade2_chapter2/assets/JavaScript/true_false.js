@@ -63,7 +63,7 @@ const quizData = [
   {
     q:"Q.3 Aquatic animals live on land.",
     a:false,
-    img:"../assets/images/AquaticAnimal.png",
+    img:"../assets/images/AquaticAnimall.png",
     answered:false
   },
   {

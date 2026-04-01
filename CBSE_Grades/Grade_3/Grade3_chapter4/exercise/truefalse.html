@@ -110,6 +110,7 @@ transition:0.3s;
 
 position:relative;
 overflow:hidden;
+ border:2px solid transparent;   /* ✅ default border */
 }
 
 /* shine */
@@ -362,6 +363,8 @@ cursor:pointer;
 <p id="scoreText"></p>
 <button class="play-btn" onclick="location.reload()">Play Again</button>
 </div>
+<!-- ONLY JS PART UPDATED (REST SAME AS YOUR CODE) -->
+
 <script>
 
 const quiz=[
@@ -403,17 +406,13 @@ let score=0
 let answered=false
 let userAnswers = new Array(quiz.length).fill(null)
 
-
-/* SPEECH */
+/* ================= SPEECH ================= */
 
 function speakText(text){
-
 if(!('speechSynthesis' in window)) return
-
 window.speechSynthesis.cancel()
 
 const utter = new SpeechSynthesisUtterance(text)
-
 utter.lang="en-GB"
 utter.volume=0.25
 utter.rate=1
@@ -421,41 +420,31 @@ utter.pitch=1
 
 const voices=speechSynthesis.getVoices()
 const ukVoice=voices.find(v=>v.lang==="en-GB")
-
-if(ukVoice){
-utter.voice=ukVoice
-}
+if(ukVoice) utter.voice=ukVoice
 
 speechSynthesis.speak(utter)
-
 }
 
-
-/* CONFETTI */
+/* ================= CONFETTI ================= */
 
 function correctConfetti(){
-
 confetti({
 particleCount:35,
 spread:70,
 origin:{y:0.6},
 scalar:0.7
 })
-
 }
 
 function finalConfetti(){
-
 const duration=2000
 const end=Date.now()+duration
 
 const interval=setInterval(()=>{
-
 if(Date.now()>end){
 clearInterval(interval)
 return
 }
-
 confetti({
 particleCount:50,
 spread:120,
@@ -463,34 +452,25 @@ startVelocity:40,
 scalar:1,
 origin:{x:Math.random(),y:Math.random()-0.2}
 })
-
 },250)
-
 }
 
-
-/* POPUP */
+/* ================= POPUP ================= */
 
 function showPopup(text,type){
 
 const popup=document.getElementById("popup")
-
 popup.innerHTML=text
 
 const oldStars = popup.querySelector(".popup-stars")
 if(oldStars) oldStars.remove()
 
 if(type==="correct"){
-
 const stars=document.createElement("div")
 stars.className="popup-stars"
-
 stars.innerText="⭐".repeat(score)
-
 popup.appendChild(stars)
-
 popup.style.color="#2e7d32"
-
 }
 
 if(type==="wrong"){
@@ -505,12 +485,18 @@ popup.classList.remove("show")
 
 }
 
-
-/* ANSWER */
+/* ================= ANSWER ================= */
 
 function selectAnswer(user){
 
 if(answered) return
+
+const trueBtn = document.querySelector(".true-btn")
+const falseBtn = document.querySelector(".false-btn")
+
+// RESET FIRST
+trueBtn.style.border="2px solid transparent"
+falseBtn.style.border="2px solid transparent"
 
 if(user===quiz[current].a){
 
@@ -519,42 +505,41 @@ score++
 userAnswers[current] = user
 
 correctConfetti()
-
 showPopup("🎉 Correct! Great Job!","correct")
-
 speakText("Correct")
 
 document.getElementById("nextBtn").disabled=false
-const trueBtn = document.querySelector(".true-btn")
-const falseBtn = document.querySelector(".false-btn")
 
+// ✅ GREEN BORDER
 if(user===true){
-trueBtn.style.boxShadow="0 0 20px #4caf50"
+trueBtn.style.border="2px solid #4caf50"
 }else{
-falseBtn.style.boxShadow="0 0 20px #4caf50"
+falseBtn.style.border="2px solid #4caf50"
 }
 
-/* AUTO RESULT ON LAST QUESTION */
+/* AUTO RESULT */
 if(current===quiz.length-1){
-
 document.getElementById("nextBtn").disabled = true;
-
-setTimeout(()=>{
-showResult()
-},1200)
-
+setTimeout(()=>{ showResult() },1200)
 }
 
 }else{
+
+// ❌ RED BORDER
+if(user===true){
+trueBtn.style.border="2px solid red"
+}else{
+falseBtn.style.border="2px solid red"
+}
 
 showPopup("❌ Oops! Try Again","wrong")
-
 speakText("Wrong")
 
 }
 
 }
 
+/* ================= LOAD ================= */
 function loadQuestion(){
 
 answered = userAnswers[current] !== null
@@ -568,28 +553,34 @@ document.getElementById("nextBtn").disabled = !answered
 const trueBtn = document.querySelector(".true-btn")
 const falseBtn = document.querySelector(".false-btn")
 
-trueBtn.style.boxShadow=""
-falseBtn.style.boxShadow=""
+// ✅ RESET FIRST
+trueBtn.style.border="2px solid transparent"
+falseBtn.style.border="2px solid transparent"
 
+// ✅ RESTORE PREVIOUS ANSWER (IMPORTANT)
 if(userAnswers[current] !== null){
 
-if(userAnswers[current] === true){
-trueBtn.style.boxShadow="0 0 20px #4caf50"
+  if(userAnswers[current] === quiz[current].a){
+    // correct → green
+    if(userAnswers[current] === true){
+      trueBtn.style.border="2px solid #4caf50"
+    }else{
+      falseBtn.style.border="2px solid #4caf50"
+    }
+  }else{
+    // wrong → red
+    if(userAnswers[current] === true){
+      trueBtn.style.border="2px solid red"
+    }else{
+      falseBtn.style.border="2px solid red"
+    }
+  }
+
 }
-
-if(userAnswers[current] === false){
-falseBtn.style.boxShadow="0 0 20px #4caf50"
 }
-
-}
-
-}
-
-
-/* NAVIGATION */
+/* ================= NAV ================= */
 
 function nextQ(){
-
 if(!answered) return
 
 if(current<quiz.length-1){
@@ -598,36 +589,28 @@ loadQuestion()
 }else{
 showResult()
 }
-
 }
 
 function prevQ(){
-
 if(current>0){
 current--
 loadQuestion()
 }
-
 }
 
-
-/* RESULT */
+/* ================= RESULT ================= */
 
 function showResult(){
-
 finalConfetti()
 
 document.getElementById("resultBox").classList.add("show")
 
-document.getElementById("scoreText").innerText=
+document.getElementById("scoreText").innerText =
 "Your Score: "+score+" / "+quiz.length
-
 }
-
 
 loadQuestion()
 
 </script>
-
 </body>
 </html>

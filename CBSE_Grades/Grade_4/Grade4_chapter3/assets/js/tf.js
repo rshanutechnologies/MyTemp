@@ -23,8 +23,9 @@ const questions = [
     q: "5. Polar bears sleep during summer to save energy.",
     a: false,
     img: "../images/TF-5.png",
-  }
+  },
 ];
+
 let currentIndex = 0;
 let score = 0;
 
@@ -38,6 +39,12 @@ const elements = {
   dropBox: document.getElementById("dropBox"),
 };
 
+const finalPopup = document.getElementById("finalPopup");
+
+// Hide final popup on load
+finalPopup.style.display = "none";
+
+// ─── Speech ───────────────────────────────────────────────
 function speak(t) {
   speechSynthesis.cancel();
   const msg = new SpeechSynthesisUtterance(t);
@@ -46,6 +53,7 @@ function speak(t) {
   speechSynthesis.speak(msg);
 }
 
+// ─── Confetti ─────────────────────────────────────────────
 function smallConfetti() {
   confetti({ particleCount: 40, spread: 70, origin: { y: 0.7 } });
 }
@@ -53,7 +61,6 @@ function smallConfetti() {
 function bigConfetti() {
   const duration = 500;
   const end = Date.now() + duration;
-
   (function frame() {
     confetti({ particleCount: 7, angle: 60, spread: 55, origin: { x: 0 } });
     confetti({ particleCount: 7, angle: 120, spread: 55, origin: { x: 1 } });
@@ -61,6 +68,7 @@ function bigConfetti() {
   })();
 }
 
+// ─── Render Question ──────────────────────────────────────
 function renderQuestion() {
   const q = questions[currentIndex];
 
@@ -68,20 +76,17 @@ function renderQuestion() {
   elements.img.src = q.img;
 
   elements.prevBtn.disabled = currentIndex === 0;
+  elements.nextBtn.disabled = true;
 
   elements.trueBtn.style.opacity = "1";
   elements.falseBtn.style.opacity = "1";
-
   elements.trueBtn.disabled = false;
   elements.falseBtn.disabled = false;
-
-  elements.nextBtn.disabled = true;
 
   elements.dropBox.textContent = "";
   elements.dropBox.classList.remove("filled");
 
-  /* restore previous answer */
-
+  // Restore previous answer if exists
   if (q.userAnswer !== undefined) {
     elements.dropBox.textContent = q.userAnswer ? "TRUE" : "FALSE";
     elements.dropBox.classList.add("filled");
@@ -101,25 +106,23 @@ function renderQuestion() {
   }
 }
 
+// ─── Handle Answer ────────────────────────────────────────
 function handleAnswer(selected) {
   const q = questions[currentIndex];
 
   if (q.userAnswer !== undefined) return;
 
-  const correct = q.a;
-
-  if (selected === correct) {
+  if (selected === q.a) {
     score++;
-
     q.userAnswer = selected;
 
-    elements.dropBox.textContent = correct ? "TRUE" : "FALSE";
+    elements.dropBox.textContent = q.a ? "TRUE" : "FALSE";
     elements.dropBox.classList.add("filled");
 
     elements.trueBtn.disabled = true;
     elements.falseBtn.disabled = true;
 
-    if (correct) {
+    if (q.a) {
       elements.trueBtn.style.opacity = "1";
       elements.falseBtn.style.opacity = ".5";
     } else {
@@ -133,6 +136,7 @@ function handleAnswer(selected) {
     showPopup(true);
     smallConfetti();
 
+    // ✅ Show final popup only on last question
     if (currentIndex === questions.length - 1) {
       setTimeout(showFinal, 1600);
     }
@@ -142,6 +146,7 @@ function handleAnswer(selected) {
   }
 }
 
+// ─── Answer Popup ─────────────────────────────────────────
 function showPopup(isCorrect) {
   const popup = document.getElementById("answerPopup");
   const icon = document.getElementById("popupIcon");
@@ -164,18 +169,31 @@ function showPopup(isCorrect) {
   setTimeout(() => (popup.style.display = "none"), 1400);
 }
 
+// ─── Final Popup ──────────────────────────────────────────
 function showFinal() {
-  const popup = document.getElementById("finalPopup");
-
+  document.getElementById("answerPopup").style.display = "none";
+  // ✅ Use questions.length NOT quizData.length
   document.getElementById("finalScore").textContent =
     `Your Score: ${score} / ${questions.length}`;
-
   document.getElementById("stars").textContent = "⭐".repeat(score);
-
-  popup.style.display = "flex";
+  finalPopup.style.display = "flex";
   bigConfetti();
 }
 
+// ─── Restart ──────────────────────────────────────────────
+function restartQuiz() {
+  // ✅ Use correct TF variables NOT mcq.js variables
+  currentIndex = 0;
+  score = 0;
+
+  // ✅ Reset userAnswer on every question
+  questions.forEach((q) => delete q.userAnswer);
+
+  finalPopup.style.display = "none";
+  renderQuestion();
+}
+
+// ─── Navigation ───────────────────────────────────────────
 elements.trueBtn.onclick = () => handleAnswer(true);
 elements.falseBtn.onclick = () => handleAnswer(false);
 
@@ -193,4 +211,5 @@ elements.nextBtn.onclick = () => {
   }
 };
 
+// ─── Init ─────────────────────────────────────────────────
 renderQuestion();

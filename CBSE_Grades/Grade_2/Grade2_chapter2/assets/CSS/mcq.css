@@ -691,6 +691,7 @@ body{
     width:100%;
     height:auto;
     overflow:hidden;
+    /* margin-top: 40% !important; */
     
 }
 
@@ -854,4 +855,13 @@ body{
     margin-top:1%;
   
 }
+}
+
+
+
+@media (max-width:380px ){
+    body{
+        margin-top: 2% !important;
+    }
+
 }

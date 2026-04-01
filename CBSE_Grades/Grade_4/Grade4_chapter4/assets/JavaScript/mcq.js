@@ -138,21 +138,33 @@ function loadQuestion() {
       if (answered[current] !== null) return;
 
       if (i === q.a) {
-        answered[current] = i;
-        score++;
+  answered[current] = i;
+  score++;
 
-        d.classList.add("correct");
+  d.classList.add("correct");
 
-        [...optEl.children].forEach((o) => {
-          if (o !== d) o.classList.add("disabled");
-        });
+  [...optEl.children].forEach((o) => {
+    if (o !== d) o.classList.add("disabled");
+  });
 
-        speak("Correct");
-        showPopup(true);
-        nextBtn.disabled = false;
+  speak("Correct");
 
-        if (answered.every((a) => a !== null)) setTimeout(showFinal, 1600);
-      } else {
+  // 🎉 ADD THIS (CONFETTI FIX)
+  // if (typeof confetti !== "undefined") {
+    smallConfetti();
+  //   setTimeout(() => bigConfetti(), 200);
+  // }
+
+  showPopup(true);
+  nextBtn.disabled = false;
+
+  if (answered.every((a) => a !== null)) {
+    setTimeout(() => {
+     smallConfetti() // 🎉 FINAL BLAST
+      showFinal();
+    }, 1600);
+  }
+} else {
         d.classList.add("wrong");
 
         speak("Wrong");

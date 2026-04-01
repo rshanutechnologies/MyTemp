@@ -11,6 +11,8 @@
     //   utter.volume = 1;
     //   window.speechSynthesis.speak(utter);
     // }
+    const correctSound = document.getElementById("correctSound");
+const wrongSound = document.getElementById("wrongSound");
 
     function speakText(t) {
   speechSynthesis.cancel();   // optional but recommended
@@ -22,6 +24,20 @@
   msg.pitch = 1;
 
   speechSynthesis.speak(msg);
+}
+function smallConfetti() {
+  confetti({ particleCount: 40, spread: 70, origin: { y: 0.7 } });
+}
+
+function bigConfetti() {
+  const duration = 500;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({ particleCount: 7, angle: 60, spread: 55, origin: { x: 0 } });
+    confetti({ particleCount: 7, angle: 120, spread: 55, origin: { x: 1 } });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
 }
 
 const quizData = [
@@ -112,7 +128,7 @@ const quizData = [
       const solved = solvedMap[current]?.solved === true;
       const correctId = solvedMap[current]?.correctId || null;
 
-      quizTitleEl.textContent = q.title;
+    quizTitleEl.textContent = q.title || "Pick the correct option";
       questionTextEl.textContent = q.question;
       questionImageEl.src = q.image;
       questionImageEl.parentElement.style.display = q.image ? "flex" : "none";
@@ -147,64 +163,72 @@ const quizData = [
       });
     }
 
-    function selectOption(opt){
-      if(solvedMap[current]?.solved) return;
+   function selectOption(opt){
+  if(solvedMap[current]?.solved) return;
 
-      if(opt.correct){
-        solvedMap[current] = { solved:true, correctId: opt.id };
-        score++;
+  if(opt.correct){
+    solvedMap[current] = { solved:true, correctId: opt.id };
+    score++;
 
-        speakText("Correct");
-        correctSound.currentTime = 0;
-        correctSound.play();
+    speakText("Correct");
 
-       showPopup(`
-  <div class="popup-correct">
-    <span class="check">✅ Correct</span>
-    <span class="happy">😊</span>
-    <div class="stars">${"⭐".repeat(score)}</div>
-  </div>
-`);
+    correctSound.currentTime = 0;
+    correctSound.play();
 
+    // 🎉 CONFETTI FOR EVERY CORRECT CLICK
+    smallConfetti();
+    setTimeout(() => bigConfetti(), 200);
 
-        renderQuestion();
+    showPopup(`
+      <div class="popup-correct">
+        <span class="check">✅ Correct</span>
+        <span class="happy">😊</span>
+        <div class="stars">${"⭐".repeat(score)}</div>
+      </div>
+    `);
 
-        if(current === quizData.length - 1){
-          setTimeout(() => {
-            showPopup(`
+    renderQuestion();
+
+    if(current === quizData.length - 1){
+      setTimeout(() => {
+
+        // 🎉 FINAL CONFETTI BLAST
+        bigConfetti();
+
+        showPopup(`
           <div class="popup-final-content">
             🎉 Congratulations!
             <span class="emoji">🏆</span>
-             <div>You finished the quiz!</div>
+            <div>You finished the quiz!</div>
             <div class="final-score">
-              Score: 5/5
+              Score: ${score}/${quizData.length}
             </div>
+            <div class="stars">${"⭐".repeat(score)}</div>
 
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-
-             <div class="final-actions">
-            <button class="restart" onclick="location.reload()">🔄 Restart</button>
-           <button class="home" onclick="goHome()">🏠 Home</button>
-          </div>
+            <div class="final-actions">
+              <button class="restart" onclick="location.reload()">🔄 Restart</button>
+              <button class="home" onclick="goHome()">🏠 Home</button>
+            </div>
           </div>
         `, true);
-          }, 1100);
-        }
-
-      } else {
-        speakText("Wrong");
-        wrongSound.currentTime = 0;
-        wrongSound.play();
-
-        showPopup(`
-          <div>
-            <div class="popup-title" style="color:#c62828;">❌ Wrong!</div>
-            <span class="popup-emoji">😢</span>
-            <div class="popup-tip">💡 Try again!</div>
-          </div>
-        `);
-      }
+      }, 1100);
     }
+
+  } else {
+    speakText("Wrong");
+
+    wrongSound.currentTime = 0;
+    wrongSound.play();
+
+    showPopup(`
+      <div>
+        <div class="popup-title" style="color:#c62828;">❌ Wrong!</div>
+        <span class="popup-emoji">😢</span>
+        <div class="popup-tip">💡 Try again!</div>
+      </div>
+    `);
+  }
+}
 
     prevBtn.addEventListener("click", () => {
       if(current > 0){

@@ -215,13 +215,10 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 5000;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
-#finalPopup.show {
-    display: flex;
-    pointer-events: auto;
-}
+
 
 .final-kid-box {
     background: linear-gradient(135deg, #fff7d6, #e6fff5);

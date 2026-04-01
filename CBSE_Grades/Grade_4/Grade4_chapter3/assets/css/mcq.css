@@ -150,8 +150,8 @@ body {
 /* CONTROLS */
 .controls {
     display: flex;
-    justify-content: center;
-    gap: clamp(40px, 20vw, 300px);
+    justify-content: space-between;
+    /* gap: clamp(40px, 30vw, 320px); */
     margin-top: 10px; /* reduced gap */
 }
 
@@ -239,13 +239,13 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 5000;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
-#finalPopup.show {
+/* #finalPopup.show {
     display: flex;
     pointer-events: auto;
-}
+} */
 
 .final-kid-box {
     background: linear-gradient(135deg, #fff7d6, #e6fff5);
@@ -280,6 +280,15 @@ body {
     font-size: clamp(0.9em, 2vw, 1.1em);
     cursor: pointer;
 }
+canvas {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
 
 /* 🔥 SINGLE BREAKPOINT */
 @media (max-width:900px) {
@@ -294,8 +303,20 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .controls {
+    /* .controls {
         gap: clamp(20px, 10vw, 120px);
+    } */
+      .controls {
+        gap: clamp(15px, 8vw, 80px);
+        margin-top: 8px;
+    }
+
+    .controls button {
+        width: clamp(80px, 22vw, 110px);
+        height: clamp(40px, 6vh, 50px);
+        font-size: clamp(14px, 3vw, 18px);
+        gap: 6px;
+        margin-top:10px;
     }
 
     .quiz {

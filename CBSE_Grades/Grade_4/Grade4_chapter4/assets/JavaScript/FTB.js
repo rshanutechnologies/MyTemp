@@ -117,13 +117,24 @@ submitBtn.onclick = function () {
     input.classList.add("input-correct");
 
     speak("Correct");
+
+    // 🎉 CONFETTI FIX (ADD THIS)
+    // if (typeof confetti !== "undefined") {
+      smallConfetti();
+    //   setTimeout(() => bigConfetti(), 200);
+    // }
+
     showPopup(true);
 
     loadQuestion();
 
     if (answers.every((a) => a !== null)) {
-      setTimeout(showFinal, 1600);
+      setTimeout(() => {
+        bigConfetti(); // 🎉 final blast
+        showFinal();
+      }, 1600);
     }
+
   } else {
     input.classList.remove("input-correct");
     input.classList.add("input-wrong");

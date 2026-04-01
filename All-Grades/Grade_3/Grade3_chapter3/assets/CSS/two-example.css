@@ -70,7 +70,7 @@ body {
 
 .question {
     font-size: 30px;
-    color: #111111;
+    color: #2f4f4f;
     margin-bottom: 20px;
    
 }
@@ -103,7 +103,7 @@ body {
 
 .option span {
     font-size: 25px;
-   color: #111111;
+   color: #2f4f4f;
    
 }
 
@@ -434,7 +434,7 @@ button:disabled {
   }
 
   .question{
-    font-size:30px;
+    font-size:20px !important;
   }
 
   .options{

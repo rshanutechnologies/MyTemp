@@ -235,17 +235,18 @@ font-size:clamp(20px,2vw,28px);
 color:#ffcc00;
 }
 @media (max-width: 600px){
-  .options{
+   .options{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px; /* slightly reduced gap */
+    grid-template-columns: repeat(2, max-content); /* 🔥 FIX */
+    justify-content: center;  /* 🔥 CENTER horizontally */
+    gap: 10px;
   }
 
   .option{
     width: 100%;
-    max-width: 120px;   /* 🔽 smaller than before */
+    max-width: 120px;
     aspect-ratio: 1/1;
-    padding: 6px;       /* 🔽 reduce inner spacing */
+    padding: 6px;
   }
 
   .opt-img{

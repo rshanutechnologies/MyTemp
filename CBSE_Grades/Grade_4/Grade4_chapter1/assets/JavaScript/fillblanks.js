@@ -1,3 +1,4 @@
+// ================= QUESTIONS =================
 const questions = [
   {
     q: "Q.1 The gaseous exchange takes place with the help of _____________ in the leaves",
@@ -15,7 +16,7 @@ const questions = [
     img: "../assets/images/Reticulate.png",
   },
   {
-    q: "Q.4 unlight is trapped by the _______________ present in the leaves. ",
+    q: "Q.4 sunlight is trapped by the _______________ present in the leaves.",
     a: "chlorophyll",
     img: "../assets/images/FIB4.png",
   },
@@ -26,35 +27,45 @@ const questions = [
   },
 ];
 
-// function speak(text){
-//   if(!("speechSynthesis" in window)) return;
-//   speechSynthesis.cancel();
-//   const utter = new SpeechSynthesisUtterance(text);
-//   utter.rate = 1;
-//   utter.pitch = 1;
-//   utter.volume = 1;
-//   speechSynthesis.speak(utter);
-// }
-
+// ================= SPEECH =================
 function speak(t) {
-  speechSynthesis.cancel(); // optional but recommended
-
+  speechSynthesis.cancel();
   const msg = new SpeechSynthesisUtterance(t);
   msg.lang = "en-UK";
-  msg.volume = 0.25; // 🔉 lower volume (0 to 1)
+  msg.volume = 0.25;
   msg.rate = 1;
   msg.pitch = 1;
-
   speechSynthesis.speak(msg);
 }
 
+// ================= CONFETTI =================
+function smallConfetti() {
+  if (typeof confetti !== "undefined") {
+    confetti({ particleCount: 40, spread: 70, origin: { y: 0.7 } });
+  }
+}
+
+function bigConfetti() {
+  if (typeof confetti === "undefined") return;
+
+  const duration = 500;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({ particleCount: 7, angle: 60, spread: 55, origin: { x: 0 } });
+    confetti({ particleCount: 7, angle: 120, spread: 55, origin: { x: 1 } });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
+}
+
+// ================= STATE =================
 let index = 0;
 let score = 0;
 let popupTimer = null;
 
-// Only store "correct"
 const answers = Array(questions.length).fill(null);
 
+// ================= DOM =================
 const qText = document.getElementById("qText");
 const qImg = document.getElementById("qImg");
 const input = document.getElementById("answerInput");
@@ -65,18 +76,23 @@ const next = document.getElementById("nextBtn");
 const popup = document.getElementById("popup");
 const popupBox = document.getElementById("popupBox");
 
+// ================= LOAD =================
 function load() {
   const q = questions[index];
 
-  qText.textContent = q.q;
-  qImg.src = q.img;
+  if (qText) qText.textContent = q.q;
+
+  // ✅ SAFE IMAGE LOAD
+  if (qImg) {
+    qImg.src = q.img;
+    qImg.style.display = q.img ? "block" : "none";
+  }
 
   const isDouble = Array.isArray(q.a);
 
   input2.style.display = isDouble ? "block" : "none";
 
   if (answers[index] === "correct") {
-
     if (isDouble) {
       input.value = q.a[0];
       input2.value = q.a[1];
@@ -84,24 +100,20 @@ function load() {
     } else {
       input.value = q.a;
     }
-
     input.disabled = true;
-
   } else {
-
     input.value = "";
     input2.value = "";
-
     input.disabled = false;
     input2.disabled = false;
   }
 
   check.disabled = true;
-
   prev.disabled = index === 0;
   next.disabled = answers[index] !== "correct";
 }
 
+// ================= POPUP =================
 function showPopup(html, final = false) {
   if (popupTimer) clearTimeout(popupTimer);
 
@@ -118,23 +130,24 @@ function showPopup(html, final = false) {
   updateButton();
 }
 
+// ================= CHECK =================
 check.onclick = () => {
-
   const q = questions[index];
-
   const user1 = input.value.trim().toLowerCase();
 
   if (Array.isArray(q.a)) {
-
     const user2 = input2.value.trim().toLowerCase();
 
     if (user1 === q.a[0] && user2 === q.a[1]) {
 
       if (answers[index] !== "correct") score++;
-
       answers[index] = "correct";
 
       speak("Correct");
+
+      // 🎉 CONFETTI
+      smallConfetti();
+      setTimeout(() => bigConfetti(), 200);
 
       showPopup(`
         <div class="popup-correct">
@@ -146,17 +159,18 @@ check.onclick = () => {
 
       input.disabled = true;
       input2.disabled = true;
-
       check.disabled = true;
 
       if (index === questions.length - 1) {
-        setTimeout(showFinal, 1400); // show final popup after correct popup
+        setTimeout(() => {
+          bigConfetti();
+          showFinal();
+        }, 1400);
       } else {
         next.disabled = false;
       }
 
     } else {
-
       speak("Wrong");
       input.value = "";
       input2.value = "";
@@ -175,10 +189,13 @@ check.onclick = () => {
     if (user1 === q.a.toLowerCase()) {
 
       if (answers[index] !== "correct") score++;
-
       answers[index] = "correct";
 
       speak("Correct");
+
+      // 🎉 CONFETTI
+      smallConfetti();
+      setTimeout(() => bigConfetti(), 200);
 
       showPopup(`
         <div class="popup-correct">
@@ -189,17 +206,18 @@ check.onclick = () => {
       `);
 
       input.disabled = true;
-
       check.disabled = true;
 
       if (index === questions.length - 1) {
-        setTimeout(showFinal, 1400); // show final popup after correct popup
+        setTimeout(() => {
+          bigConfetti();
+          showFinal();
+        }, 1400);
       } else {
         next.disabled = false;
       }
 
     } else {
-
       speak("Wrong");
       input.value = "";
 
@@ -214,9 +232,9 @@ check.onclick = () => {
   }
 };
 
+// ================= FINAL =================
 function showFinal() {
-  showPopup(
-    `
+  showPopup(`
     <div class="popup-final-content">
       🎉 Congratulations!
       <span class="emoji">🏆</span>
@@ -230,11 +248,10 @@ function showFinal() {
         <button class="home" onclick="location.href='../index.html'">🏠 Home</button>
       </div>
     </div>
-  `,
-    true,
-  );
+  `, true);
 }
 
+// ================= NAV =================
 prev.onclick = () => {
   index--;
   load();
@@ -245,31 +262,27 @@ next.onclick = () => {
   load();
 };
 
+// ================= BUTTON ENABLE =================
 function updateButton() {
-
   const q = questions[index];
 
   if (Array.isArray(q.a)) {
-
     check.disabled =
       input.disabled ||
       input2.disabled ||
       !input.value.trim() ||
       !input2.value.trim();
-
   } else {
-
     check.disabled =
       input.disabled ||
       !input.value.trim();
-
   }
 }
 
 input.oninput = updateButton;
 input2.oninput = updateButton;
 
-// Initial state
+// ================= INIT =================
 prev.disabled = true;
 next.disabled = true;
 

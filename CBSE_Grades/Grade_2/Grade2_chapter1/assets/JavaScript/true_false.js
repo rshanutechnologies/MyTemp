@@ -64,7 +64,7 @@ const quizData = [
   {
     q:"Q.3  A pumpkin plant is an example of a creeper.  ",
     a:true,
-    img:"../assets/images/PumpkinPlantY.png",
+    img:"../assets/images/Pumpkin1.png",
     answered:false
   },
   {

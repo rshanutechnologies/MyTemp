@@ -28,7 +28,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  justify-content: flex-start;   /* ✅ FIXED */
+  justify-content: center;   /* ✅ FIXED */
   align-items: center;
 
   gap: clamp(6px, 1.2vh, 12px);  /* ✅ controlled spacing */
@@ -143,25 +143,25 @@ body {
 }
 
 /* BUTTONS */
-.prev,
-.next {
- width: clamp(110px, 14vw, 150px);  /* 🔥 increased */
-  height: clamp(45px, 7vh, 65px);    /* 🔥 increased */
+.prev,.next{
+    width:clamp(90px,12vw,120px);
+    height:clamp(40px,6vw,50px);
 
-  font-size: clamp(16px, 2vw, 26px); /* 🔥 bigger text */
+    border-radius:20px;
+    border:none;
 
-  border-radius: 20px;
-  border: none;
+    font-size:clamp(14px,2vw,25px);
 
- 
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    cursor:pointer;
+    color:white;
+    border:2px solid white;
 
-  cursor: pointer;
-  color: white;
-  border: 2px solid white;
+    white-space:nowrap;
+    flex-shrink:0;
 }
 
 .prev { background: #5c6cff; }

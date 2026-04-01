@@ -126,13 +126,13 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 5000;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
-#finalPopup.show {
+/* #finalPopup.show {
     display: flex;
     pointer-events: auto;
-}
+} */
 
 .final-kid-box {
     background: linear-gradient(135deg, #fff7d6, #e6fff5);
@@ -165,7 +165,7 @@ body {
     padding: clamp(10px, 2vw, 14px) clamp(20px, 3vw, 34px);
     border-radius: 30px;
     font-size: clamp(0.9em, 2vw, 1.1em);
-    cursor: pointer;
+    cursor: pointer; 
 }
 
 /* 🔥 SINGLE BREAKPOINT */

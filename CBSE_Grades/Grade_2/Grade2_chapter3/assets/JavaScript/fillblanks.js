@@ -67,7 +67,7 @@ const questions = [
   {
     q: "Q.3 Our _ _ _ _ _ help us write.",
     a: "hands",
-    img: "../assets/images/hands.png"
+    img: "../assets/images/BoyWrite.png"
   },
 
   {

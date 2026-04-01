@@ -59,7 +59,7 @@ const quizData = [
     a: 0,
   }
 ];
-
+let isLocked = false;
 let current = 0;
 let score = 0;
 let answered = Array(quizData.length).fill(null);
@@ -113,10 +113,18 @@ function loadQuestion() {
     <div class="option-text">${text}</div>
   `;
 
+
   if (answered[current] !== null) {
     if (i === q.a) d.classList.add("correct");
     else d.classList.add("disabled");
   }
+//     if (current === quizData.length - 1) {
+//   isLocked = true;
+// }
+// if (answered.every((a) => a !== null)) {
+//   isLocked = true; // lock ONLY when all answered
+//   setTimeout(showFinal, 1600);
+// }
 
   d.onclick = () => {
     if (answered[current] !== null) return;
@@ -158,16 +166,30 @@ function loadQuestion() {
   prevBtn.disabled = current === 0;
 }
 
+// prevBtn.onclick = () => {
+//   if (current === 0) return; // 🔥 stop at first
+//   current--;
+//   loadQuestion();
+// };
+
+// nextBtn.onclick = () => {
+//   if (current === quizData.length - 1) return; // 🔥 stop at last
+//   current++;
+//   loadQuestion();
+// };
 prevBtn.onclick = () => {
+  if (isLocked || current === 0) return;
   current--;
   loadQuestion();
 };
 
 nextBtn.onclick = () => {
+  if (isLocked || current === quizData.length - 1) return;
   current++;
   loadQuestion();
 };
-
+prevBtn.disabled = current === 0;
+nextBtn.disabled = current === quizData.length - 1 || answered[current] === null;
 function showPopup(isCorrect) {
   const popup = document.getElementById("answerPopup");
   const icon = document.getElementById("popupIcon");
@@ -191,18 +213,23 @@ function showPopup(isCorrect) {
     popup.style.display = "none";
   }, 1400);
 }
+function restartQuiz() {
+  current = 0;
+  score = 0;
+  answered = Array(quizData.length).fill(null);
+  isLocked = false;
+
+  document.getElementById("finalPopup").style.display = "none";
+
+  loadQuestion();
+}
 
 function showFinal() {
   const popup = document.getElementById("finalPopup");
-
-  document.getElementById("finalScore").textContent =
-    `Your Score: ${score} / ${quizData.length}`;
-
+  document.getElementById("finalScore").textContent = `Your Score: ${score} / ${quizData.length}`;
   document.getElementById("stars").textContent = "⭐".repeat(score);
-
   popup.style.display = "flex";
-
+  // ❌ remove isLocked = false from here
   bigConfetti();
 }
-
 loadQuestion();

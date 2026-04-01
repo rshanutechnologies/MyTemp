@@ -109,8 +109,17 @@ function answer(val) {
   if (questions[index].a === val) {
     answers[index] = val;
     score++;
+
     speak("Correct");
+
+    // 🎉 CONFETTI FIX (ADDED)
+    // if (typeof confetti !== "undefined") {
+      smallConfetti();
+    //   setTimeout(() => bigConfetti(), 200);
+    // }
+
     showPopup(true);
+
     if (val) {
       trueBtn.classList.add("correct");
       falseBtn.disabled = true;
@@ -118,8 +127,19 @@ function answer(val) {
       falseBtn.classList.add("correct");
       trueBtn.disabled = true;
     }
+
     nextBtn.disabled = false;
-    if (index === questions.length - 1) setTimeout(showFinal, 1600);
+
+    // 🎉 FINAL CONFETTI
+    if (index === questions.length - 1) {
+      setTimeout(() => {
+        if (typeof confetti !== "undefined") {
+          bigConfetti();
+        }
+        showFinal();
+      }, 1600);
+    }
+
   } else {
     speak("Wrong");
     showPopup(false);

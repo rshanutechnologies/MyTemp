@@ -6,7 +6,7 @@ const quizData = [
   {
     q: "Q.1. The skull is the most delicate organ of the body.",
     a: false,
-    img: "../assets/images/skull.png",
+    img: "../assets/images/skulll.png",
     answered: false
   },
   {
@@ -18,19 +18,19 @@ const quizData = [
   {
     q: "Q.3. The cerebrum connects the brain to the spinal cord.",
     a: false,
-    img: "../assets/images/spinalcord.png",
+    img: "../assets/images/spinalcordd.png",
     answered: false
   },
   {
     q: "Q.4. The sensory nerves are connected to the sense organs.",
     a: true,
-    img: "../assets/images/nerve.png",
+    img: "../assets/images/sensorynerves.png",
     answered: false
   },
   {
     q: "Q.5. The spinal cord is made up of nerve cells.",
     a: true,
-    img: "../assets/images/TFQ5.png",
+    img: "../assets/images/TFQQ5.png",
     answered: false
   }
 ];

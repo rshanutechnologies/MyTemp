@@ -705,13 +705,13 @@ body::before{
 body{
     width:100%;
     height:auto;
-    overflow:auto;
+    overflow:hidden !important;
 }
 
 /* main container */
 .app{
     padding:10px;
-    margin-top:20px;
+    margin-top:80px !important;
 }
 
 /* template */

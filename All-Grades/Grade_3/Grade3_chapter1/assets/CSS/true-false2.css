@@ -208,28 +208,16 @@ body{
 
 }
 
-
-
 .btn{
-
-  width:clamp(140px,25vw,200px);
-
-  height:clamp(44px,6vh,56px);
-
+  width:clamp(160px,28vw,230px);   /* 🔥 slightly wider */
+ height:clamp(60px,8vh,75px);
   border-radius:999px;
-
-  font-size:clamp(16px,1.8vw,20px);
-
+  font-size:clamp(18px,2vw,22px);  /* 🔥 slightly bigger text */
   font-weight:700;
-
   background:transparent;
-
   cursor:pointer;
-
   transition:.25s ease;
-
 }
-
 
 
 .btn.true{
@@ -674,4 +662,10 @@ body{
 
   100%{ transform:scale(1); opacity:1; }
 
+}
+
+@media (max-width:600px){
+  .header{
+    font-size:18px !important;
+  }
 }

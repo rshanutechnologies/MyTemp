@@ -76,7 +76,7 @@ body {
   text-align: center;
   margin: 0;
   line-height: 1.4;
-  padding-right: clamp(0px, 5vw, 50px);
+  /* padding-right: clamp(0px, 5vw, 50px); */
   /* ✅ added */
   display: flex;
   justify-content: center;
@@ -168,7 +168,7 @@ body {
 /* ── NAV BUTTONS ── */
 .nav {
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -309,7 +309,7 @@ body {
 
   .question-text {
     /* ✅ FIX 12: full right padding to clear hamburger */
-    padding-right: 52px;
+    /* padding-right: 52px; */
     font-size: clamp(20px, 4vw, 24px);
   }
 

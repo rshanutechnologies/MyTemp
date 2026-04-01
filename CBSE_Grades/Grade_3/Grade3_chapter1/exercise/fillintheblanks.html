@@ -215,7 +215,13 @@ button:disabled{
     font-size:clamp(20px,3vw,22px);
   }
   
+.input-area{
+    margin-bottom: 10px;   /* space below inputs */
+  }
 
+  .buttons{
+    margin-top: 10px;      /* space above buttons */
+  }
  
     
     
@@ -267,7 +273,6 @@ button:disabled{
   </div>
 </div>
 <script>
-
 const questions = [
   {
     q: "Q1.Human beings have a pair of ________ to breathe.",
@@ -300,6 +305,10 @@ let index = 0;
 let userAnswers = Array(questions.length).fill(null);
 let answeredCorrectly = Array(questions.length).fill(false);
 
+// ✅ NEW (for step checking)
+let q3Step = 0;
+let q3UsedWords = [];
+
 const qText = document.getElementById("questionText");
 const qImg = document.getElementById("questionImg");
 const inputArea = document.getElementById("inputArea");
@@ -313,89 +322,62 @@ const popupMessage = document.getElementById("popupMessage");
 const popupEmoji = document.getElementById("popupEmoji");
 const playAgainBtn = document.getElementById("playAgainBtn");
 
-
-
-// Make Check button green when user types something
+// INPUT ACTIVE STYLE
 document.addEventListener("input", function(){
-
   const inputs = document.querySelectorAll("#inputArea input");
   const btn1 = document.getElementById("checkBtn1");
-  const btn2 = document.getElementById("checkBtn2");
 
-  inputs.forEach((input, i)=>{
-    const value = input.value.trim();
-
-    if(i === 0 && btn1){
-      if(value !== ""){
-        btn1.classList.add("active");
-      }else{
-        btn1.classList.remove("active");
-      }
-    }
-
-    if(i === 1 && btn2){
-      if(value !== ""){
-        btn2.classList.add("active");
-      }else{
-        btn2.classList.remove("active");
-      }
+  inputs.forEach((input)=>{
+    if(input.value.trim() !== ""){
+      btn1.classList.add("active");
+    } else {
+      btn1.classList.remove("active");
     }
   });
-
 });
 
-/* ===== TEXT TO SPEECH (UK) ===== */
+// SPEECH
 function speakText(text){
   if(!('speechSynthesis' in window)) return;
-
   window.speechSynthesis.cancel();
 
   const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = "en-GB";     // UK English
-  utter.volume = 0.25;      // Low volume
-  utter.rate = 1;
-  utter.pitch = 1;
-
-  const voices = speechSynthesis.getVoices();
-  const ukVoice = voices.find(voice => voice.lang === "en-GB");
-
-  if(ukVoice){
-    utter.voice = ukVoice;
-  }
+  utter.lang = "en-GB";
+  utter.volume = 0.25;
 
   window.speechSynthesis.speak(utter);
 }
 
-window.speechSynthesis.onvoiceschanged = () => {};
+// CONFETTI
 function fireConfetti(){
-
   confetti({
-    particleCount: 40,   // small confetti
+    particleCount: 40,
     spread: 70,
     origin: { y: 0.6 },
     scalar: 0.7
   });
-
 }
 
+// LOAD QUESTION
 function loadQuestion() {
 
   const current = questions[index];
 
-  // Set question text & image
   qText.innerText = current.q;
   qImg.src = current.img;
-
   result.innerText = "";
 
-  // Enable Next only if already answered correctly
   nextBtn.disabled = !answeredCorrectly[index];
   document.getElementById("prevBtn").disabled = index === 0;
 
-  // Clear old inputs
   inputArea.innerHTML = "";
 
-  // Create inputs
+  // ✅ RESET Q3 STEP
+  if(index === 2){
+    q3Step = 0;
+    q3UsedWords = [];
+  }
+
   current.answers.forEach((ans, i) => {
 
     const input = document.createElement("input");
@@ -403,68 +385,100 @@ function loadQuestion() {
     input.id = "input" + i;
     input.placeholder = "Enter answer";
 
-    // Restore saved answer if exists
     if (userAnswers[index] && userAnswers[index][i]) {
       input.value = userAnswers[index][i];
     }
 
-if (answeredCorrectly[index] && userAnswers[index] && userAnswers[index][i]) {
-  input.style.borderColor = "green";
-  input.disabled = true;
-}
+    if (answeredCorrectly[index] && userAnswers[index] && userAnswers[index][i]) {
+      input.style.borderColor = "green";
+      input.disabled = true;
+    }
 
     inputArea.appendChild(input);
   });
-const btn1 = document.getElementById("checkBtn1");
-const btn2 = document.getElementById("checkBtn2");
-const buttonsContainer = document.querySelector(".buttons");
 
-// Reset buttons completely
-btn1.classList.remove("active");
-btn2.classList.remove("active");
+  const btn1 = document.getElementById("checkBtn1");
+  btn1.classList.remove("active");
 
+  btn1.disabled = answeredCorrectly[index];
 }
 
+// ✅ CHECK ANSWER
 function checkAnswer(){
 
   const current = questions[index];
   let correct = true;
+
   let tempAnswers = [];
 
   current.answers.forEach((ans,i)=>{
     const inputField = document.getElementById("input"+i);
     const userAns = inputField.value.trim().toLowerCase();
-
     tempAnswers.push(userAns);
   });
 
   userAnswers[index] = tempAnswers;
 
-  // ===== FINAL LOGIC FOR Q3 =====
-if(index === 2){
+  // ✅ ===== Q3 STEP LOGIC =====
+  if(index === 2){
 
-  const input1 = tempAnswers[0];
-  const input2 = tempAnswers[1];
+    const validWords = ["run", "jump"];
+    const inputField = document.getElementById("input" + q3Step);
+    const value = inputField.value.trim().toLowerCase();
 
-  const validWords = ["run", "jump"];
+    if(value === ""){
+      correct = false;
+    }
+    else if(!validWords.includes(value)){
+      correct = false;
+      inputField.style.borderColor = "red";
+    }
+    else if(q3UsedWords.includes(value)){
+      correct = false;
+      inputField.style.borderColor = "red";
+    }
+    else{
 
-  const isInput1Valid = validWords.includes(input1);
-  const isInput2Valid = validWords.includes(input2);
+      inputField.style.borderColor = "green";
+      inputField.disabled = true;
 
-  // ✅ At least ONE correct answer required
-  if(!(isInput1Valid || isInput2Valid)){
-    correct = false;
+      q3UsedWords.push(value);
+      q3Step++;
 
-    document.querySelectorAll("#inputArea input").forEach(input=>{
-      input.value = "";
-      input.style.borderColor = "red";
-    });
-  }
+      fireConfetti();
+      speakText("Correct!");
+
+      if(q3Step === 2){
+
+  answeredCorrectly[index] = true;
+  nextBtn.disabled = false;
+
+  // ✅ SHOW POPUP ONLY AFTER BOTH CORRECT
+  popupEmoji.textContent = "🎉";
+  popupTitle.textContent = "Correct!";
+  popupTitle.style.color = "green";
+  popupMessage.textContent = "Great job!";
+  popup.classList.remove("hidden");
+
+  setTimeout(()=>{
+    popup.classList.add("hidden");
+
+    if(index === questions.length-1){
+      showFinalPopup();
+    }
+
+  },1200);
+
+} else {
+  nextBtn.disabled = true;
 }
-  
-  // ===== NORMAL QUESTIONS =====
-  else{
 
+return;
+    }
+  }
+
+  // NORMAL QUESTIONS
+  else{
     current.answers.forEach((ans,i)=>{
       const inputField = document.getElementById("input"+i);
 
@@ -476,28 +490,17 @@ if(index === 2){
     });
   }
 
-  // ===== RESULT =====
+  // RESULT
   if(correct){
 
     fireConfetti();
     speakText("Correct!");
-current.answers.forEach((ans, i)=>{
-  const input = document.getElementById("input"+i);
-  const userAns = tempAnswers[i];
 
-  if(index === 2){
-    // For Q3: accept run or jump
-    if(userAns === "run" || userAns === "jump"){
-      input.style.borderColor = "green";
-      input.disabled = true;   // ✅ disable ONLY correct one
-    }
-  } else {
-    if(userAns === ans){
+    current.answers.forEach((ans, i)=>{
+      const input = document.getElementById("input"+i);
       input.style.borderColor = "green";
       input.disabled = true;
-    }
-  }
-});
+    });
 
     popupEmoji.textContent = "🎉";
     popupTitle.textContent = "Correct!";
@@ -510,11 +513,9 @@ current.answers.forEach((ans, i)=>{
 
     setTimeout(()=>{
       popup.classList.add("hidden");
-
       if(index === questions.length-1){
         showFinalPopup();
       }
-
     },1200);
 
   } else {
@@ -532,6 +533,8 @@ current.answers.forEach((ans, i)=>{
     },1200);
   }
 }
+
+// باقي same (no change)
 function saveCurrentInputs(){
   const inputs = document.querySelectorAll("#inputArea input");
   userAnswers[index] = [];
@@ -540,6 +543,7 @@ function saveCurrentInputs(){
     userAnswers[index].push(input.value.trim());
   });
 }
+
 function nextQuestion(){
   saveCurrentInputs();
 
@@ -556,15 +560,15 @@ function nextQuestion(){
 }
 
 function prevQuestion(){
-  saveCurrentInputs();   // ✅ Save before going back
+  saveCurrentInputs();
 
   if(index > 0){
     index--;
     loadQuestion();
   }
 }
-function showFinalPopup(){
 
+function showFinalPopup(){
   let score = 0;
 
   questions.forEach((q,i)=>{
@@ -574,33 +578,13 @@ function showFinalPopup(){
   popupEmoji.textContent = "🏆";
   popupTitle.textContent = "Quiz Completed!";
 
-  if(score === questions.length){
-    popupTitle.style.color = "#2e7d32";
-    popupMessage.style.color = "#2e7d32";
-    popupMessage.textContent = `Score: ${score}/${questions.length} - Excellent 🌟`;
-  }
-  else if(score > 3){
-    popupTitle.style.color = "#1565c0";
-    popupMessage.style.color = "#1565c0";
-    popupMessage.textContent = `Score: ${score}/${questions.length} - Very Good 👏`;
-  }
-  else{
-    popupTitle.style.color = "#c62828";
-    popupMessage.style.color = "#c62828";
-    popupMessage.textContent = `Score: ${score}/${questions.length} - Keep Practicing 💪`;
-  }
+  popupMessage.textContent = `Score: ${score}/${questions.length}`;
 
   playAgainBtn.classList.remove("hidden");
   popup.classList.remove("hidden");
-
-  confetti({
-    particleCount:150,
-    spread:120,
-    origin:{y:0.6}
-  });
 }
-playAgainBtn.addEventListener("click",()=>{
 
+playAgainBtn.addEventListener("click",()=>{
   index = 0;
   userAnswers = Array(questions.length).fill(null);
   answeredCorrectly = Array(questions.length).fill(false);

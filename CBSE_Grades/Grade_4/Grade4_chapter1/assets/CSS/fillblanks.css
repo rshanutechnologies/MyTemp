@@ -22,7 +22,7 @@ body {
 /* ── MAIN CARD ── */
 .quiz {
   width: 100%;
-  max-width: 860px;
+  max-width: 700px;
   height: 100vh;
   padding: clamp(16px, 3vw, 40px);
   position: relative;

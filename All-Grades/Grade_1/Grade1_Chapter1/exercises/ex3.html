@@ -229,6 +229,65 @@
     }
 
 }
+
+
+@media (max-width: 468px) {
+
+    body {
+        overflow-y: auto;
+        height: auto;
+    }
+
+    .wrap {
+        height: auto;
+        padding: 20px 15px 30px;
+    }
+    .q-text {
+        font-size: 22px !important;
+    }
+    .question-area {
+        justify-content: flex-start;
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .header-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .q-number {
+        font-size: 16px;
+    }
+
+   
+    /* Teacher popup move to bottom */
+    .teacher-popup {
+        top: auto;
+        bottom: 20px;
+        right: 50%;
+        transform: translate(50%, 150%);
+        width: 90%;
+    }
+
+    .teacher-popup.show {
+        transform: translate(50%, 0);
+    }
+
+    .teacher-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .teacher-msg {
+        font-size: 14px;
+    }
+
+    #feedbackSmiley {
+        font-size: 90px;
+    }
+
+}
     </style>
 </head>
 

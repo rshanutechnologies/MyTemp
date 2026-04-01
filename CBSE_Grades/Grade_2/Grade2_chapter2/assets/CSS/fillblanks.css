@@ -987,8 +987,8 @@ gap:12px;
 @media (max-width:768px){
 
 body{
-   overflow: scroll;
-    margin-top:-2%;
+   overflow: hidden !important;
+    margin-top:-20%;
 }
 
 

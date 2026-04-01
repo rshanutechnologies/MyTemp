@@ -220,6 +220,20 @@ body {
 background: #e6fffa;
     border: 6px solid #38d9a9;
 }
+.kid-wrong .kid-card {
+    background: #fff5f5;
+    border: 6px solid #ffa8a8;
+}
+@keyframes kidPop {
+    0% { transform: scale(.3) rotate(-10deg); opacity: 0; }
+    60% { transform: scale(1.1) rotate(5deg); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes emojiBounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-15px); }
+}
 
 #finalPopup {
     position: fixed;

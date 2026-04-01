@@ -6,7 +6,7 @@ const quizData = [
   {
     q:"Q.1 A potato plant reproduces through its stem.",
     a:true,
-    img:"../assets/images/TFQQ1.png",
+    img:"../assets/images/TFQQQ1.png",
     answered:false
   },
   {
@@ -24,7 +24,7 @@ const quizData = [
   {
     q:"Q.4 The pistil forms the second whorl of a flower.",
     a:false,
-    img:"../assets/images/pistilak.png",
+    img:"../assets/images/pistilaKKk.png",
     answered:false
   },
   {

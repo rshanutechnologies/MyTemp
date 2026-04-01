@@ -285,3 +285,9 @@ body{
   font-size:clamp(14px,2vw,16px);
   cursor:pointer;
 }
+
+@media (max-width:600px){
+  .header{
+    font-size:18px !important;
+  }
+}

@@ -499,14 +499,19 @@ input:focus {
 @media (max-width:768px) {
 
   body {
-    overflow: auto;
+    overflow: hidden;
     align-items: flex-start;
   }
 
   .ui-scale {
     transform: scale(0.85);
   }
-
+.nav-btn{
+  font-size: 16px;
+}
+.question{
+  font-size: 22px;
+}
 }
 
 
@@ -540,7 +545,7 @@ input:focus {
 
   /* QUESTION FIX */
   .question{
-    font-size:22px;
+    font-size:18px;
     line-height:1.4;
     padding:0 10px;
     text-align:center;
@@ -570,6 +575,7 @@ input:focus {
     width:45%;   /* equal left-right */
     height:45px;
     font-size:16px;
+      padding:12px 16px;
   }
 
 }

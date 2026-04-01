@@ -183,5 +183,33 @@ body {
     .main {
         transform: scale(0.75); /* prevent overflow */
     }
+    /* Reduce column gap */
+.game-container {
+    gap: clamp(10px, 3vw, 20px);
+}
+
+/* Reduce box size */
+.item {
+    width: clamp(140px, 40vw, 200px);
+    height: clamp(60px, 9vh, 75px);
+    font-size: clamp(16px, 3vw, 20px);
+    padding: 10px;
+}
+
+/* Left column */
+.left .item {
+    width: clamp(150px, 42vw, 210px);
+}
+
+/* Right column */
+.right .item {
+    width: clamp(160px, 44vw, 220px);
+}
+
+/* Reduce image size */
+.left-img {
+    width: clamp(28px, 6vw, 40px);
+    height: clamp(30px, 6vw, 45px);
+}
 
 }

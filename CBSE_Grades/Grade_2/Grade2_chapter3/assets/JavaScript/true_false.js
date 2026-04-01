@@ -48,14 +48,14 @@ const quizData = [
 {
 q:"Q.1 Each part of our body has a special job to do.",
 a:true,
-img:"../assets/images/BodyPartss.png",
+img:"../assets/images/BodyPartssWorkk.png",
 answered:false
 },
 
 {
 q:"Q.2 We smell with our tongue.",
 a:false,
-img:"../assets/images/Tounge.png",
+img:"../assets/images/BoySmell.png",
 answered:false
 },
 
@@ -69,7 +69,7 @@ answered:false
 {
 q:"Q.4 The food goes to the stomach through the food pipe.",
 a:true,
-img:"../assets/images/FoodPipee.png",
+img:"../assets/images/FooodPipe.png",
 answered:false
 },
 

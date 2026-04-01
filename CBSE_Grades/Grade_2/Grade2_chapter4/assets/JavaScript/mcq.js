@@ -101,11 +101,7 @@ function speak(text) {
 }
 
 /* ================= IMAGE PRELOAD ================= */
-
-function preloadImages(callback){
-
-  const loader = document.getElementById("imgLoader");
-  loader.textContent = "Loading images...";
+function preloadImages(){
 
   let images = [];
 
@@ -116,27 +112,17 @@ function preloadImages(callback){
     });
   });
 
-  let loaded = 0;
-
   images.forEach(src=>{
     const img = new Image();
     img.src = src;
-
-    img.onload = img.onerror = () => {
-      loaded++;
-
-      if(loaded === images.length){
-        loader.textContent = "";
-        callback(); // start quiz
-      }
-    };
   });
 
 }
-
 /* ================= LOAD QUESTION ================= */
 
 function loadQuestion() {
+
+  // animalImg.loading = "lazy";
   const q = quizData[current];
   const state = answerState[current];
 
@@ -149,8 +135,8 @@ function loadQuestion() {
   q.options.forEach((opt) => {
     const div = document.createElement("div");
     div.className = "option";
-  div.innerHTML = `
-<img src="${opt.img}" class="option-img">
+div.innerHTML = `
+<img src="${opt.img}" class="option-img" loading="lazy">
 <span class="label">${opt.text}</span>
 `;
 if (state.answered) {
@@ -322,4 +308,5 @@ function fireConfetti() {
 
 /* ================= START ================= */
 
-preloadImages(loadQuestion);
+loadQuestion();     // show UI instantly
+// preloadImages();    
