@@ -147,7 +147,7 @@ check.onclick = () => {
 
       // 🎉 CONFETTI
       smallConfetti();
-      setTimeout(() => bigConfetti(), 200);
+      setTimeout(() => smallConfetti(), 200);
 
       showPopup(`
         <div class="popup-correct">
@@ -195,7 +195,7 @@ check.onclick = () => {
 
       // 🎉 CONFETTI
       smallConfetti();
-      setTimeout(() => bigConfetti(), 200);
+      setTimeout(() => smallConfetti(), 200);
 
       showPopup(`
         <div class="popup-correct">

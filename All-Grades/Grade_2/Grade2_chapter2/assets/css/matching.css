@@ -41,7 +41,7 @@ body {
 /* ✅ TOP BAR */
 .topbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 30px;
   margin-top: -30px;
@@ -131,7 +131,7 @@ body {
 
 }
 
-.q-piece::after {
+/* .q-piece::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -143,7 +143,7 @@ body {
   transform: translateY(-50%);
   border: 10px solid #fff;
   box-shadow: var(--shadow);
-}
+} */
 
 /* ✅ Answers bay */
 .answers-bay {
@@ -156,7 +156,7 @@ body {
 
 /* answer default white */
 .a-piece {
-  height: 75px;
+  height: 95px;
   max-width: 700px;
   background: #ffffff;
   border: 2px solid #e5e7eb;
@@ -167,9 +167,10 @@ body {
   left: 0;
   touch-action: none;
   margin-left: 50px;
+  /* margin-top:-20px; */
 }
 
-.a-piece::before {
+/* .a-piece::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -181,7 +182,7 @@ body {
   transform: translateY(-50%);
   border: 10px solid #fff;
   box-shadow: var(--shadow);
-}
+} */
 
 /* locked */
 .locked {
@@ -401,6 +402,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   z-index: 50;
+  display: none;
 }
 
 /* Ensure board can position absolute children */
@@ -426,9 +428,75 @@ body {
   position: relative;
 }
 
+/* Fix for showing all 4 answers properly */
+#answers {
+  display: grid !important;
+  gap: 14px;
+  position: static !important;
+  height: auto !important;
+}
+
+.a-piece {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0 !important;
+  width: 100% !important;
+  cursor: pointer;
+}
+
+/* Visual feedback */
+.q-piece.active {
+  outline: 4px solid #6366f1;
+  transform: scale(1.03);
+}
+
+.a-piece.matched {
+  border: 3px solid #4caf50;
+  background-color: #f0fdf4;
+}
+
+.locked {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+
+/* Question colors */
+.pair-c1 { background: #f6c26b; }
+.pair-c2 { background: #f28b82; }
+.pair-c3 { background: #a78bfa; }
+.pair-c4 { background: #10b981; }
+
+/* VERY IMPORTANT: apply to answers also */
+.a-piece.pair-c1 { background: #f6c26b !important; }
+.a-piece.pair-c2 { background: #f28b82 !important; }
+.a-piece.pair-c3 { background: #a78bfa !important; }
+.a-piece.pair-c4 { background: #10b981 !important; }
 /* =====================================
    MOBILE RESPONSIVE
 =====================================*/
+
+
+
+#questions,
+#answers {
+  display: grid;
+  grid-template-rows: repeat(4, 95px);
+  gap: 14px;
+}
+
+
 @media (max-width:768px) {
 
   body {
@@ -489,14 +557,9 @@ body {
     font-size: 20px;
   }
 
-  .hint-btn-abs {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin: 10px auto;
-    display: block;
-  }
+  
+
+ 
 }
 
 
@@ -560,14 +623,14 @@ body {
     font-size: 20px;
   }
 
-  .hint-btn-abs {
+  /* .hint-btn-abs {
     position: relative;
     top: auto;
     left: auto;
     transform: none;
     margin: 10px auto;
     display: block;
-  }
+  } */
 }
 
 /* =====================================
@@ -578,6 +641,7 @@ body {
     overflow-y: auto;
   }
 
+
   .title,
   .score {
     font-size: 15px;
@@ -587,10 +651,19 @@ body {
   .piece {
     font-size: 16px;
     padding: 12px;
+    height:75px !important;
   }
 
   .a-piece {
     font-size: 18px;
+   
+  }
+
+ #answers {
+    position: static;
+    height: auto;
+    display: grid;
+    gap: 0px;
   }
 
   .popup-box {
@@ -631,6 +704,43 @@ body {
     transform: scale(1);
     opacity: 1;
   }
+  
+}
+
+@media (max-width:370px){
+ @media (max-width:370px){
+
+  body {
+    overflow: hidden; /* ❌ NO SCROLL */
+    padding: 8px;
+    margin-top:5px;
+  }
+
+  .board {
+    gap: 8px; /* reduce column gap */
+  }
+
+  /* 🔥 reduce row height */
+  #questions,
+  #answers {
+    grid-template-rows: repeat(4, 55px);
+    gap: 4px; /* almost no gap */
+  }
+
+  /* 🔥 compact boxes */
+  .piece {
+    height: 55px !important;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .a-piece {
+    height: 55px !important;
+    font-size: 14px;
+  }
+
+}
+  
 }
 
 /* ================= TABLET (KEEP 2 COLUMNS) ================= */
@@ -641,5 +751,6 @@ body {
     /* ✅ stay left-right */
     gap: 18px;
   }
+  
 
 }

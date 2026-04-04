@@ -433,10 +433,13 @@ btn.onclick=()=>{
 
         updateBoxes()
 
-        if(user.length > 0){
-            checkBtn.disabled = false
-            checkBtn.classList.add("active")
-        }
+        if(user.length === len){
+    checkBtn.disabled = false
+    checkBtn.classList.add("active")
+} else {
+    checkBtn.disabled = true
+    checkBtn.classList.remove("active")
+}
     }
 }
 
@@ -463,9 +466,12 @@ if(lastBtn){
   lastBtn.style.pointerEvents = "auto"
   lastBtn.style.opacity = "1"
 }
-if(user.length===0){
-checkBtn.disabled=true
-checkBtn.classList.remove("active")
+if(user.length === len){
+  checkBtn.disabled = false
+  checkBtn.classList.add("active")
+} else {
+  checkBtn.disabled = true
+  checkBtn.classList.remove("active")
 }
 
 }
@@ -534,18 +540,29 @@ document.querySelector(".check").disabled=true
 speakText("Correct!")
 
 popup.classList.remove("hidden")
-
 setTimeout(()=>{
-popup.classList.add("hidden")
+  popup.classList.add("hidden")
 
-if(current === quizData.length-1){
-    showFinalPopup()
-}else{
-    document.querySelector(".next").disabled=false
-}
+  // ✅ clear answer
+  user = ""
+  userAnswers[current] = ""
+  updateBoxes()
+
+  // ✅ ENABLE ALL LETTERS AGAIN
+  document.querySelectorAll(".key").forEach(key=>{
+    key.style.pointerEvents = "auto"
+    key.style.opacity = "1"
+  })
+
+  // ✅ reset used buttons
+  usedButtons = []
+
+  // ✅ disable check button again
+  const checkBtn = document.querySelector(".check")
+  checkBtn.disabled = true
+  checkBtn.classList.remove("active")
 
 },1200)
-
 }
 else{
 
@@ -557,14 +574,29 @@ popupMessage.textContent="Try again!"
 speakText("Wrong!")
 
 popup.classList.remove("hidden")
-
 setTimeout(()=>{
-popup.classList.add("hidden")
-user=""
-userAnswers[current]=""
-updateBoxes()
-},1200)
+  popup.classList.add("hidden")
 
+  // ✅ clear answer
+  user = ""
+  userAnswers[current] = ""
+  updateBoxes()
+
+  // ✅ ENABLE ALL LETTER BUTTONS AGAIN
+  document.querySelectorAll(".key").forEach(key=>{
+    key.style.pointerEvents = "auto"
+    key.style.opacity = "1"
+  })
+
+  // ✅ reset used buttons
+  usedButtons = []
+
+  // ✅ disable check button again
+  const checkBtn = document.querySelector(".check")
+  checkBtn.disabled = true
+  checkBtn.classList.remove("active")
+
+},1200)
 }
 
 }

@@ -1,240 +1,337 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Livvic',sans-serif;
+/* =====================
+   GLOBAL RESET
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Livvic', sans-serif;
 }
 
-body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+/* =====================
+   ROOT VARIABLES
+===================== */
+:root {
+  --column-gap: 64px;
+  --row-gap: 14px;
+
+  /* ✅ KEY FIX: box height now scales with viewport height.
+     At normal zoom: ~76px. At 110% zoom (smaller vh): shrinks gracefully.
+     Formula: 5 boxes + 4 gaps must fit inside ~96vh.
+     (5 × box-height) + (4 × row-gap) + container-padding ≤ 96vh
+     So box-height ≤ (96vh - 4×row-gap - 40px) / 5
+     Using clamp keeps it bounded: never below 54px, never above 76px */
+  --box-height: clamp(54px, 11.5vh, 76px);
+  --box-font: 22px;
+  --box-radius: 42px;
+
+  --img-size: 44px;
+  --dot-size: 14px;
+
+  /* ✅ row-gap also shrinks at high zoom so 5 boxes + 4 gaps never overflow */
+  --row-gap: clamp(6px, 1.4vh, 14px);
 }
 
-/* MAIN CONTAINER */
-
-.container{
-position:relative;
-width:100%;
-max-width:1100px;
-height:100vh;
- padding-top: clamp(10px, 3vh, 30px);
-display:flex;
-align-items:center;
-justify-content:center;
+/* =====================
+   BODY
+===================== */
+body {
+  height: 100vh;
+  overflow: hidden;
 }
 
-/* MATCHING LAYOUT */
+/* =====================
+   MAIN CONTAINER
+===================== */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
 
-.matching{
-display:flex;
-justify-content:center;
-align-items:center; /* ✅ top align */
-
-gap:clamp(40px,8vw,180px); /* ✅ clean center gap */
-
-width:100%;
-height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(8px, 1.5vh, 20px);
 }
 
-/* LEFT & RIGHT */
+/* =====================
+   MATCHING LAYOUT
+===================== */
+.matching {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  width: 100%;
+  max-width: 1200px;
+
+  gap: var(--column-gap);
+  z-index: 2;
+}
+
+/* =====================
+   COLUMNS
+===================== */
 .left,
-.right{
-flex:1;
-min-width:0;
+.right {
+  display: flex;
+  flex-direction: column;
 
-display:flex;
-flex-direction:column;
+  gap: var(--row-gap);
 
-gap:clamp(10px,2vh,20px);
-justify-content:flex-start; /* ✅ start from same level */
+  flex: 0 0 420px;
 }
 
-/* BOX */
+/* =====================
+   BOX
+===================== */
+.box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 
-.box{
-display:flex;
-align-items:center;
+  height: var(--box-height);
+  width: 100%;
 
-padding:clamp(6px,1vw,12px);
+  padding: 0 22px;
 
-border-radius:16px;
+  font-size: clamp(17px, 2.6vw, 22px);
+  line-height: 1.25;
 
-font-size: clamp(17px, 2.5vw, 24px);
-font-weight:400;
-color:#2f4f4f;
+  font-weight: 500;
 
-box-shadow:0 5px 10px rgba(0,0,0,0.25);
-cursor:pointer;
+  color: #2f4f4f;
+  background-color: #e6cc81;
+  border-radius: var(--box-radius);
 
-line-height:1.5;
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
 
-min-height:clamp(50px,7vh,70px); /* ✅ equal height */
-
-gap:clamp(6px,1vw,12px);
-
-background-color:#e6cc81;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* LEFT BOX */
-
-.left .box{
-position:relative;
-padding-right:clamp(25px,4vw,40px);
-
-width:90%;
-max-width:480px;
+/* =====================
+   IMAGE
+   ✅ Image size tied to box height so it never overflows the box
+===================== */
+.left img {
+  /* clamp matches --box-height rhythm: slightly smaller than box */
+  width: clamp(30px, 8vh, 44px);
+  height: clamp(30px, 8vh, 44px);
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
-/* RIGHT BOX */
-
-.right .box{
-width:90%; /* ✅ slightly smaller */
-max-width:380px;
-  min-height: clamp(55px, 8vh, 80px);
+/* =====================
+   DOT
+===================== */
+.dot {
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 50%;
+  background: #888;
 }
 
-/* COLUMN ALIGNMENT */
-.left,
-.right{
-align-items:center; /* ✅ center both columns */
+.left .dot {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-/* DOT */
-
-.dot{
-width:clamp(6px,1vw,14px);
-height:clamp(6px,1vw,14px);
-border-radius:50%;
-background:#999;
+.right .dot {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-/* LEFT DOT POSITION */
+.left .box { padding-right: 52px; }
+.right .box { padding-left: 52px; }
 
-.left .dot{
-position:absolute;
-right:clamp(8px,2vw,18px);
-top:50%;
-transform:translateY(-50%);
+/* =====================
+   STATES
+===================== */
+.selected {
+  outline: 3px solid #ffffff;
 }
 
-/* RIGHT DOT */
-
-.right .dot{
-margin-right:6px;
+.matched {
+  background: #0dd80da7;
+  cursor: default;
 }
 
-/* IMAGE */
-
-.left img{
-width:clamp(25px,4vw,55px);
-height:clamp(25px,4vw,55px);
-
-object-fit:contain;
-margin-right:clamp(5px,1vw,10px);
-
-flex-shrink:0;
+/* =====================
+   SVG LINES
+===================== */
+svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
 }
 
-/* SELECT */
+/* ================= FINAL POPUP ================= */
+.final {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-.selected{
-  outline:4px solid #ffffff;
+  background: white;
+  padding: clamp(20px, 4vw, 60px);
+
+  border-radius: 25px;
+  text-align: center;
+
+  width: clamp(250px, 50vw, 420px);
+
+  display: none;
+  z-index: 3000;
 }
 
-/* MATCHED */
-
-.matched{
-background:#0dd80da7;
-cursor:default;
+.final h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
 }
 
-/* SVG LINES */
-
-svg{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
+.final h3 {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
 }
 
-/* FINAL POPUP (UNCHANGED) */
-
-.final{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-
-background:white;
-padding:60px;
-
-border-radius:25px;
-text-align:center;
-
-width:420px;
-
-box-shadow:0 15px 35px rgba(0,0,0,0.4);
-
-display:none;
+.star {
+  color: gold;
+  font-size: clamp(1.5rem, 4vw, 3rem);
 }
 
-.final h2{
-font-size:36px;
-margin-bottom:20px;
-font-weight:400;
+.playBtn {
+  margin-top: clamp(10px, 2vh, 20px);
+
+  padding: clamp(10px, 1.5vw, 14px)
+           clamp(20px, 3vw, 30px);
+
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+
+  border: none;
+  border-radius: 30px;
+
+  background: #4CAF50;
+  color: white;
+
+  cursor: pointer;
 }
 
-.final h3{
-font-size:28px;
-margin-bottom:20px;
-font-weight:400;
+/* =================================================
+   RESPONSIVE – MEDIUM SCREENS (TABLET & SMALL LAPTOP)
+================================================= */
+@media (max-width: 900px) {
+
+  :root {
+    --box-height: clamp(54px, 11.5vh, 76px);
+    --img-size: clamp(28px, 3.8vw, 36px);
+    --dot-size: clamp(9px, 1.4vw, 12px);
+
+    --column-gap: clamp(20px, 4vw, 64px);
+    --row-gap: clamp(6px, 1.4vh, 14px);
+    --box-radius: 42px;
+    --box-font: 20px;
+  }
+
+  .left,
+  .right {
+    flex: 0 0 clamp(40%, 42%, 44%);
+  }
+
+  .box {
+    padding: 0 clamp(12px, 2vw, 18px);
+    line-height: 1.2;
+  }
 }
 
-.star{
-color:gold;
-font-size:50px;
+
+/* =========================================
+   SMALL SCREEN FIX – USE UI SPACE CORRECTLY
+========================================= */
+@media (max-width: 600px) {
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+  }
+
+  .matching {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .left,
+  .right {
+      width: 48%;
+    flex: 0 0 48%;
+     gap: 12px;
+  }
+
+  /* .box {
+    height: var(--box-height);
+    padding: 14px 14px;
+
+    font-size: 15px;
+    line-height: 1.35;
+
+    white-space: normal;
+    text-align: left;
+
+    border-radius: 32px;
+  } */
+    .box {
+    height: auto;
+    min-height: clamp(54px, 11.5vh, 76px);
+    padding: 10px 14px;
+
+    font-size: 13px;
+    line-height: 1.35;
+
+    white-space: normal;
+    word-break: break-word;
+    text-align: left;
+
+    border-radius: 32px;
+  }
+
+ 
+  .left .box,
+  .right .box {
+    width: 100%;
+    min-height: clamp(54px, 11.5vh, 76px);
+    height: auto;
+    
+  }
+  .left .box {
+  padding-right: 36px;
+  padding-left: 14px;
 }
 
-.playBtn{
-margin-top:20px;
-padding:12px 30px;
-font-size:20px;
-border:none;
-border-radius:30px;
-background:#4CAF50;
-color:white;
-cursor:pointer;
-box-shadow:0 4px 8px rgba(0,0,0,0.3);
+.right .box {
+  padding-left: 36px;
 }
 
-@media(max-width:768px){
 
-.final{
-    width: 80%;            /* 🔽 reduced width */
-    padding: 20px 15px;    /* 🔽 reduced height */
-}
+  .left img {
+    width: 30px;
+    height: 30px;
+  }
 
-.final h2{
-    font-size: 22px;       /* slightly smaller */
-}
+  .dot {
+    width: 9px;
+    height: 9px;
+  }
+  
 
-.final h3{
-    font-size: 18px;
-}
-
-.star{
-    font-size: 28px;
-}
-
-.playBtn{
-    font-size: 16px;
-    padding: 8px 20px;
-}
-
+  .left .dot { right: 10px; }
+  .right .dot { left: 10px; }
 }

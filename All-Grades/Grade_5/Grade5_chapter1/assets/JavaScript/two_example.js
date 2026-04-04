@@ -43,6 +43,11 @@ const prevBtn = document.getElementById("prev");
 const popup = document.getElementById("popup");
 const popupText = document.getElementById("popupText");
 
+
+input.addEventListener("input", () => {
+  submitBtn.disabled = input.value.trim() === "";
+});
+
 // function speak(t){
 //   speechSynthesis.cancel();
 //   speechSynthesis.speak(new SpeechSynthesisUtterance(t));
@@ -86,7 +91,7 @@ function loadQuestion(){
 
   input.value = userAnswers[current] || "";
   input.disabled = answered[current];
-  submitBtn.disabled = answered[current];
+submitBtn.disabled = answered[current] || input.value.trim() === "";
 
   prevBtn.disabled = current === 0;
   nextBtn.disabled = !answered[current];
@@ -94,9 +99,22 @@ function loadQuestion(){
 
 /* ✅ SUBMIT */
 submitBtn.onclick = () => {
+
+  const userAnsRaw = input.value.trim();
+
+  // 🚫 STEP 1: STOP if input is empty
+  if(userAnsRaw === ""){
+    showPopup(`
+      <div class="popup-wrong">
+        <div>⚠️ Please enter an answer</div>
+      </div>
+    `);
+    return;
+  }
+
   if(answered[current]) return;
 
-  const userAns = input.value.trim().toLowerCase();
+  const userAns = userAnsRaw.toLowerCase();
   const correctAns = quizData[current].a.toLowerCase();
 
   if(userAns === correctAns){

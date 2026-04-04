@@ -303,7 +303,8 @@ button:disabled{
     height:auto;
     align-items:flex-start;
     padding:20px 0;
-      background:url("../images/bgbg.png") center/cover no-repeat;
+      /* background:url("../images/bgbg.png") center/cover no-repeat; */
+      background: transparent !important;
   }
 
 #answerInput{

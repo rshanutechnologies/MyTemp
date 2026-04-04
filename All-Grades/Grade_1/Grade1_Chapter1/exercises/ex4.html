@@ -306,6 +306,91 @@
       height: 35px;
 }
 }
+
+/* ============================= */
+/* 💻 800px PERFECT RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 800px) {
+
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .wrap {
+    height: 100vh;
+    padding: 1.5vh 15px;
+  }
+
+  /* 🔥 SAME LAYOUT AS OTHER QUIZ */
+  .question-area {
+    justify-content: space-between;
+    gap: 1vh;
+  }
+
+  .header-row {
+    gap: 10px;
+  }
+
+  .q-number {
+    font-size: clamp(16px, 2.5vh, 24px);
+    padding: 4px 14px;  
+  }
+
+  /* 🔥 QUESTION TEXT = 20px */
+  .q-text {
+    font-size: 20px !important;
+    line-height: 1.2;
+  }
+
+  /* 🔥 IMAGE SIZE CONTROL */
+  .clue-box {
+    width: clamp(120px, 16vh, 150px);
+    height: clamp(120px, 16vh, 150px);
+  }
+
+  /* 🔥 DROP BOX SMALL */
+  .drop-box {
+    width: 32px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .drop-zone {
+    gap: 5px;
+  }
+
+  /* 🔥 LETTER TILES */
+  .letter-tile {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .letters-area {
+    gap: 6px;
+  }
+
+  /* 🔥 CLEAR BUTTON */
+  .small-btn {
+    padding: 6px 16px;
+    font-size: 14px;
+  }
+
+  /* 🔥 NAV BUTTON SAME AS OTHER SCREENS */
+  .controls {
+    padding: 8px 5%;
+  }
+
+  .nav-btn {
+    padding: clamp(10px, 1.5vh, 14px) 20px;
+    font-size: clamp(12px, 1.8vh, 16px);
+    min-width: 110px;
+    margin-top: 0; /* remove negative spacing */
+  }
+
+}
   </style>
 </head>
 

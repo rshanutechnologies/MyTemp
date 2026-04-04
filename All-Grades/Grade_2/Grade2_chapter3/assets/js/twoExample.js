@@ -104,6 +104,22 @@ function render() {
 
     grid.appendChild(item);
 
+    const input = document.getElementById("ans" + i);
+const btn = document.getElementById("btn" + i);
+
+// 🔒 Disable initially if empty
+btn.disabled = input.value.trim() === "" || solved[i];
+
+// 🎯 Enable only when user types
+input.addEventListener("input", () => {
+  if (input.value.trim() === "") {
+    btn.disabled = true;
+  } else {
+    btn.disabled = false;
+  }
+});
+
+
     if (solved[i]) {
       document.getElementById("ans" + i).value = questions[i].answer;
     }
@@ -141,9 +157,15 @@ function check(i) {
       setTimeout(showFinalPopup, 1100);
     }
   } else {
-    showFeedback("wrong");
-    speak("Try again");
-  }
+  showFeedback("wrong");
+  speak("Try again");
+
+  // ❌ clear wrong answer
+  input.value = "";
+
+  // 🔒 disable button again after clearing
+  btn.disabled = true;
+}
 }
 
 /* ✅ Final */

@@ -210,7 +210,69 @@
 
 
 
+@media (max-width: 900px) {
 
+    .main-container {
+        padding: 15px 20px;
+    }
+
+    .instruction {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .match-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .item,
+    .target {
+        height: 120px;
+        font-size: 22px;
+        gap: 15px;
+        padding: 12px;
+    }
+
+    .item img,
+    .label img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .icons {
+        font-size: 40px;
+    }
+
+    .slot {
+        font-size: 20px;
+        padding: 6px 12px;
+    }
+
+    .score-box {
+        width: 320px;
+        padding: 15px;
+    }
+
+    .score-circle {
+        width: 110px;
+        height: 110px;
+        font-size: 28px;
+    }
+
+    .trophy {
+        font-size: 55px;
+    }
+
+    .stars {
+        font-size: 30px;
+    }
+
+    .restart {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+}
 
 
 
@@ -329,5 +391,65 @@
     .restart {
         font-size: 14px;
         padding: 10px 20px;
+    }
+}
+
+
+
+@media (max-width: 400px) {
+
+    .instruction {
+        font-size: 13px;
+    }
+
+    .match-grid {
+        grid-template-columns: 1fr 1fr; /* stack into single column */
+        gap: 15px;
+    }
+
+    .item,
+    .target {
+        font-size: 14px;
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .item img,
+    .label img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .icons {
+        font-size: 20px;
+    }
+
+    .slot {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    .score-box {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .score-circle {
+        width: 80px;
+        height: 80px;
+        font-size: 18px;
+    }
+
+    .trophy {
+        font-size: 35px;
+    }
+
+    .stars {
+        font-size: 20px;
+    }
+
+    .restart {
+        font-size: 12px;
+        padding: 8px 16px;
     }
 }

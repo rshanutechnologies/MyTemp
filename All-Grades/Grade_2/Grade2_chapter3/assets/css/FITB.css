@@ -204,7 +204,7 @@ body {
 /* ✅ letters grid with more distance */
 .letters {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
     gap: 14px;
 }
 
@@ -486,6 +486,29 @@ body {
         top: 30px;
          left: 120%; 
         
+    }
+    .answer-boxes .box {
+    width: 35px;
+    height: 35px;
+    background: white;
+    border-radius: 12px;
+    border: 3px solid #7ec8ee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 900;
+    color: #0f172a;
+    user-select: none;
+}
+.letters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+    gap: 14px;
+}
+.backspace {
+       font-size:22px;
+       padding:5px;
     }
 }
 

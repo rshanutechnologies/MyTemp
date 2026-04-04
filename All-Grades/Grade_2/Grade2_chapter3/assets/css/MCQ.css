@@ -370,10 +370,63 @@ body {
     object-fit: contain;
 }
 
+
+@media (max-width:990px){
+
+  body{
+    padding:16px;
+    overflow-y:hidden !important;
+  }
+
+  .quiz-box{
+    max-width:900px;
+    padding:20px;
+  }
+
+  /* 🔥 center progress properly */
+  .progress{
+    margin: 15px auto;
+    transform: scale(0.95);
+  }
+
+  /* 🔥 reduce spacing */
+  .content{
+    gap:25px;
+  }
+
+  /* 🔥 image smaller */
+  .image-box{
+    width:170px;
+    height:170px;
+  }
+
+  .image-box img{
+    width:130px;
+    height:130px;
+  }
+
+  /* 🔥 question size */
+  .question{
+    font-size:24px;
+  }
+
+  /* 🔥 options tighter */
+  .option{
+    font-size:15px;
+    padding:8px 12px;
+  }
+
+  /* 🔥 buttons */
+  .nav button{
+    font-size:18px;
+    padding:8px 20px;
+  }
+
+}
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
     body {
-        overflow: auto;
+        overflow: hidden;
     }
 
     .quiz-box {

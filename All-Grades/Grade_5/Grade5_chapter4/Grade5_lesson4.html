@@ -219,6 +219,11 @@
 
     @media (max-width:900px) {
 
+
+      body{
+           background: url('./assets/images/bg2.png');
+      background-size: 100% 100%;
+      }
       /* Keep desktop-style navigation */
       .top-index {
         gap: 32px;
@@ -260,15 +265,18 @@
       }
     }
 
-    @media (max-width:768px) {
+    @media (max-width:1100px) {
 
       html,
       body {
-        overflow: auto;
+        overflow: hidden !important;
+        
       }
 
       body {
-        background: linear-gradient(135deg, #fff5fb, #ffe6f5) !important;
+        /* background: linear-gradient(135deg, #fff5fb, #ffe6f5) !important; */
+           background: url('./assets/images/bg2.png');
+      background-size: 100% 100%;
       }
 
       /* SHOW TOGGLE BUTTON */

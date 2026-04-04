@@ -734,6 +734,13 @@ pointer-events:none;
 }
 }
 
+@media (max-width:1100px){
+.nav{
+    margin-top: -6% !important;
+}
+}
+
+
 /* Medium desktops */
 @media (min-width: 1280px) {
  body{

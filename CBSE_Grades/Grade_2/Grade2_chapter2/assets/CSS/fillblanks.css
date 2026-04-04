@@ -1091,6 +1091,7 @@ body{
 /* quiz navigation */
 .quiz-nav{
     gap:12px;
+  
 }
 
 /* tiles */
@@ -1150,7 +1151,11 @@ background:white;
 
 }
 
-
+@media (max-width:1100px){
+.quiz-nav{
+    margin-top: -1% !important;
+}
+}
 
 
 /* Small desktops / laptops */

@@ -70,36 +70,45 @@
       gap:60px;
       margin-top:25px;
     }
+  
 
-    /* .tf-buttons button{
-      font-size:18px;
-      padding:20px 50px;
-      border-radius:50px;
-      border:4px solid transparent;
-      color:white;
-      cursor:pointer;
-    } */
-     .tf-buttons button{
+    .tf-buttons button{
   font-size:22px;
   padding:22px 70px;
-  border-radius:28px;
-  border:2px solid #ffffff;
-  /* background:linear-gradient(145deg,#6ec6ff,#42a5f5); */
+  border-radius:50px;
+
+  /* ✅ NEW BORDER STYLE */
+  border:3px solid rgba(255,255,255,0.6);
+  outline:3px solid rgba(0,0,0,0.1);
+
+  /* ✅ GLOSSY EFFECT */
+  /* background:linear-gradient(145deg,#34d058,#28a745); */
   color:white;
+
   cursor:pointer;
-  /* box-shadow:0 6px 14px rgba(0,0,0,0.2); */
   transition:0.2s;
-  height: 80px;
+
+  height:80px;
+
+  /* ✅ SHADOW */
+  box-shadow:
+    inset 0 4px 10px rgba(255,255,255,0.4),
+    inset 0 -4px 10px rgba(0,0,0,0.2),
+    0 0px 0px rgba(0,0,0,0.2);
 }
 
+.true{
+  background:linear-gradient(145deg,#34d058,#28a745);
+}
+
+.false{
+  background:linear-gradient(145deg,#ff6b6b,#e53935);
+}
 .tf-buttons button:hover{
-  transform:translateY(-3px);
+  transform:translateY(-3px) scale(1.03);
 }
 
-    .true{background:#4caf50;}
-    .false{background:#f44336;}
-
-    .correct{ border:3px solid white !important; pointer-events:none;}
+    .correct{ border:3px solid lightblue !important; pointer-events:none;}
     .disabled{ opacity:.45; pointer-events:none;  }
 
     .nav{

@@ -44,7 +44,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(20px, 4vw, 40px);
+  gap: clamp(20px, 4vw, 48px);
   width: 100%;
 }
 

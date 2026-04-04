@@ -550,3 +550,13 @@ button:disabled {
   margin-top:-2% ;
 }
 }
+
+
+@media (min-width:1000px){
+    .popup-content{
+    width:90%;
+    height:40%;
+    padding:15px;
+  }
+
+}

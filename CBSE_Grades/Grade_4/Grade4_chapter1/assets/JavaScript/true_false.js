@@ -162,7 +162,7 @@ function answer(user){
     // 🎉 CONFETTI ADDED HERE
     if (typeof confetti !== "undefined") {
       smallConfetti();
-      setTimeout(() => bigConfetti(), 200);
+      setTimeout(() => smallConfetti(), 200);
     }
 
     showPopup(`
@@ -210,12 +210,13 @@ function answer(user){
 
   } else {
     showPopup(`
-      <div class="popup-wrong">
-        <span class="cross">❌ Wrong</span>
-        <span class="sad">😢</span>
-        <div class="tip">💡 Try again !</div>
-      </div>
-    `);
+  <div>
+    <div class="popup-title">❌ Wrong!</div>
+    <span class="popup-emoji">😢</span>
+    <div class="popup-tip">💡 Try again!</div>
+  </div>
+`);
+
   }
 }
 

@@ -31,7 +31,7 @@ body {
 /* ✅ TOP BAR */
 .topbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   position: relative;
   margin-top: -20px;

@@ -122,17 +122,19 @@ iframe{
 
 /* ================= MOBILE ================= */
 
-@media(max-width:768px){
+@media(max-width:1100px){
 
   body{
     flex-direction:column;
+   background:url("./assets/images/bgbg111.png") center/cover no-repeat;
+
   }
 
   .content{
     display:block;
     position:fixed;
     inset:0;
-    background:#fff;
+    /* background:#fff; */
     z-index:999;
   }
 
@@ -185,12 +187,12 @@ iframe{
 .menu-btn i{
   font-size:20px;
 }
-@media(max-width:768px){
+@media(max-width:1100px){
 
   body{
     flex-direction:column;
     overflow:hidden;
-     background:url("../images/bgbg.png") center/cover no-repeat !important;
+     background:url("../images/bgbg111.png") center/cover no-repeat !important;
   
   }
  
@@ -214,7 +216,7 @@ iframe{
   display:flex !important;
   position:fixed;
   inset:0;
-  background:#fff;
+  /* background:#fff; */
   z-index:2000;
   flex-direction:column;
   justify-content:center;
@@ -350,7 +352,7 @@ buttons.forEach((btn,index)=>{
 
     activateLines(index);
 
-   if(window.innerWidth <= 768){
+   if(window.innerWidth <= 1100){
   document.querySelector(".sidebar").classList.remove("active");
   content.style.display = "block";
 }

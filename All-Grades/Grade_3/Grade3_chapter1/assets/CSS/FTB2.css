@@ -221,7 +221,6 @@ body{
   opacity:.4;
 }
 
-/* POPUP */
 .popup{
   position:fixed;
   inset:0;
@@ -232,22 +231,33 @@ body{
 }
 
 .popup-content{
-  width:clamp(260px,85vw,400px);
-  padding:clamp(15px,3vw,20px);
-  border-radius:20px;
+  background:linear-gradient(135deg, rgba(247,241,241,0.98), rgba(236,251,236,0.98));
+  
+  padding:clamp(12px,2.5vw,22px);
+  border-radius:18px;
+
+  width:clamp(250px, 85vw, 360px);
+  min-height:clamp(150px, 28vh, 280px);
+
   text-align:center;
+  backdrop-filter:blur(15px);
+
+  animation:popIn 0.4s ease;
 }
 
 .popup-icon{
-  font-size:clamp(2.5em,7vw,5.5em);
+  font-size:clamp(2.5em, 7vw, 5em);
+  margin-bottom:8px;
 }
 
 .popup-content h3{
-  font-size:clamp(18px,3vw,32px);
+  font-size:clamp(16px,2.5vw,26px);
+  margin-bottom:8px;
 }
 
 .popup-content p{
-  font-size:clamp(14px,2vw,20px);
+  font-size:clamp(13px,2vw,18px);
+  line-height:1.5;
 }
 
 /* FINAL POPUP */
@@ -257,35 +267,43 @@ body{
   display:none;
   justify-content:center;
   align-items:center;
+  z-index:5000;
 }
 
 .finalpopup-box{
-  width:clamp(260px,85vw,400px);
-  padding:clamp(20px,3vw,35px);
+  width:clamp(250px, 85vw, 360px);
+  padding:clamp(18px,3vw,28px);
   border-radius:18px;
   text-align:center;
+  background:linear-gradient(135deg, rgba(247,241,241,0.98), rgba(236,251,236,0.98));
 }
 
 .final-heading{
-  font-size:clamp(18px,3vw,32px);
-  margin:20px;
+  font-size:clamp(18px,2.5vw,28px);
+  margin:15px 0;
   font-weight:bold;
 }
 
 #stars{
-  font-size:clamp(24px,5vw,40px);
+  font-size:clamp(22px,5vw,36px);
 }
 
 .playAgain-btn{
   background:#1fb36b;
   color:#fff;
   border:none;
-  padding:clamp(8px,2vw,12px) clamp(16px,3vw,28px);
+  padding:clamp(8px,2vw,12px) clamp(16px,3vw,26px);
   border-radius:20px;
-  font-size:clamp(14px,2vw,16px);
+  font-size:clamp(13px,2vw,16px);
+  margin-top:10px;
   cursor:pointer;
 }
 
+/* ANIMATION */
+@keyframes popIn{
+  0%{ transform:scale(.5); opacity:0; }
+  100%{ transform:scale(1); opacity:1; }
+}
 @media (max-width:600px){
   .header{
     font-size:18px !important;

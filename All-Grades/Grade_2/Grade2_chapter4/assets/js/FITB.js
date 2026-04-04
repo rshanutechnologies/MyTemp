@@ -72,6 +72,13 @@ function renderQuestions() {
     const input = div.querySelector("input");
     const btn = div.querySelector("button");
 
+btn.disabled = input.value.trim() === "";
+
+// 🎯 Enable/disable based on typing
+input.addEventListener("input", () => {
+  btn.disabled = input.value.trim() === "";
+});
+    
     btn.onclick = () => {
       if (correct[i]) return;
 

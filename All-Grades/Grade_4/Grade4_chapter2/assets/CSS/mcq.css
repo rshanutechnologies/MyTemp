@@ -444,8 +444,8 @@ body {
 
     /* OPTIONS → single column */
     .options {
-        grid-template-columns: 1fr 1fr;
-        max-width: 520px;
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 800px;
         margin-inline: auto;
         gap: 18px;
     }

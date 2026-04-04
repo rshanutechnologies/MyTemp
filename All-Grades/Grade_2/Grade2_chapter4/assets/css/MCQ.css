@@ -307,7 +307,7 @@ body {
 @media (max-width: 900px){
 
 body{
-    overflow:auto;
+    overflow:hidden;
     justify-content:flex-start;
     padding:20px;
 }

@@ -264,10 +264,25 @@ color:white;
 }
 
 @media (max-width:768px){
+.quiz-box{
+  width:100%;
+  max-width:1400px;
 
+  height:100vh;
+  padding:clamp(15px,2vw,25px);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:clamp(10px,2vh,18px);
+
+  text-align:center;
+  margin:auto;
+  margin-top:clamp(-10px,-1vh,-20px);
+}
   /* ✅ Question font size fixed for mobile */
   .question{
-    font-size:20px;
+    font-size:30px;
   }
 
   /* ✅ Options → 2x2 grid */
@@ -296,7 +311,25 @@ font-weight:600;
 
 }
 @media (max-width:600px){
+  .quiz-box{
+  width:100%;
+  max-width:1400px;
 
+  height:100vh;
+  padding:clamp(15px,2vw,25px);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  gap:clamp(10px,2vh,18px);
+
+  text-align:center;
+  margin:auto;
+  margin-top:clamp(-10px,-1vh,-20px);
+}
+.question{
+  font-size: 20px;
+}
   .result-box{
     width:85%;
     max-width:280px;
@@ -331,10 +364,12 @@ font-weight:600;
     font-size:13px;                   /* 🔽 smaller text */
   }
 .nav{
-  bottom: 50px;
+  bottom: 20px;
 }
 
 }
+
+
 </style>
 </head>
 

@@ -90,30 +90,49 @@
       margin-top:20px;
     }
 
-    .tf-buttons button{
-     font-size:18px;
-  padding:20px 50px;
+
+.tf-buttons button{
+  font-size:22px;
+  padding:20px 60px;
   border-radius:50px;
-  border:4px solid transparent;
+  border:none;
   color:white;
   cursor:pointer;
   height:80px;
 
-  /* ✨ New styles added */
-  min-width:100px;
   font-weight:600;
   letter-spacing:1px;
-  /* box-shadow:0 8px 18px rgba(0,0,0,0.15); */
-  transition:all 0.25s ease;
-  text-transform:uppercase;;
-    }
+  text-transform:uppercase;
 
-    .true{background:#4caf50;}
-    .false{background:#f44336;}
+  /* ✨ GLASS + GLOSS EFFECT */
+  /* background:linear-gradient(145deg,#4ade80,#16a34a); */
+
+  /* ✨ DOUBLE GLOW BORDER */
+  box-shadow:
+    inset 0 3px 8px rgba(255,255,255,0.6),
+    inset 0 -4px 10px rgba(0,0,0,0.25),
+    0 6px 15px rgba(0,0,0,0.2),
+    0 0 0 0px rgba(255,255,255,0.25);
+
+  position:relative;
+  overflow:hidden;
+
+  transition:all 0.25s ease;
+}
+
+
+
+   .true{
+  background:linear-gradient(145deg,#22c55e,#15803d);
+}
+
+.false{
+  background:linear-gradient(145deg,#ff6b6b,#b91c1c);
+}
 
      .correct{
-   background: linear-gradient(135deg, #22c55e, #15803d);
-  /* border:4px solid #60A5FA; */
+   /* background: linear-gradient(135deg, #22c55e, #15803d); */
+  border:4px solid white !important;
   /* box-shadow:0 0 0 4px rgba(96,165,250,0.35); */
   animation:correctPop .35s ease;
 }
@@ -297,7 +316,8 @@ button:disabled{
     overflow:hidden ;
     padding:20px 10px;
     align-items:flex-start;
-      background:url("../images/bgbg.png") center/cover no-repeat;
+      /* background:url("../images/bgbg.png") center/cover no-repeat; */
+      background: transparent !important;
   }
 
   .quiz-card{

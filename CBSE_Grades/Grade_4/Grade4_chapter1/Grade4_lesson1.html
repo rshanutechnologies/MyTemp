@@ -128,14 +128,17 @@
       cursor: pointer;
     }
 
-    #overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.3);
-      display: none;
-      z-index: 998;
-    }
-    #overlay.show { display: block; }
+   #overlay {
+  position: fixed;
+  inset: 0;
+  background: transparent; /* ✅ no black shade */
+  display: none;
+  z-index: 998;
+}
+
+#overlay.show {
+  display: block;
+}
 
     /* ── MOBILE ≤ 600px ── */
     @media (max-width: 600px) {

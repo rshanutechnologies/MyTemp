@@ -210,8 +210,8 @@ button{
 
 
 .left-img{
-  width:80px;      /* increase width */
-  height:80px;     /* increase height */
+  width:120px !important;      /* increase width */
+  height:120px !important;     /* increase height */
   object-fit:contain;
 }
 .right .item{
@@ -258,6 +258,11 @@ button{
  
   
 }
+.left-img{
+  width:40px !important;      /* increase width */
+  height:40px !important;     /* increase height */
+  object-fit:contain;
+}
 }
 .right .item{
   display:flex;
@@ -271,6 +276,8 @@ button{
   align-items: center;
   overflow: hidden;      /* prevents size change */
 }
+
+
 
 .final{
 position:fixed;

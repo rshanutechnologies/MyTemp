@@ -240,6 +240,59 @@ h1 {
     margin-block: 10px;
     cursor: pointer;
 }
+@media (max-width: 1050px) {
+    body {
+        padding: 14px;
+        overflow-y: auto;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .main {
+        max-width: 900px;
+        
+    }
+
+    .quiz-type {
+        position: static;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    header {
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .game-container {
+        gap: 190px;
+        width: 95%;
+        justify-content: center;
+    }
+
+    .column {
+        width: 260px;
+    }
+
+    .item {
+        height: 65px;
+        font-size: 17px;
+        padding: 16px 18px;
+    }
+
+    .left-img,
+    .right-img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .icon {
+        font-size: 24px;
+    }
+}
 
 @media (max-width: 800px) {
     body {

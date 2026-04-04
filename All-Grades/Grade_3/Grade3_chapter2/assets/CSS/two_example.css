@@ -392,8 +392,10 @@
 @media (max-width:800px){
 
   body{
-    overflow:auto;
-    align-items:flex-start;
+     display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow: hidden;
   }
 
   .ui-scale{
@@ -404,6 +406,9 @@
   .options{
     margin-left:0;   /* remove 12% shift */
     width:100%;
+  }
+  .question-text{
+    font-size: 30px;
   }
 
 }
@@ -417,7 +422,9 @@
   body{
     overflow:auto;
     padding:16px 10px;
-    align-items:flex-start;
+     display:flex;
+      justify-content:center;
+      align-items:center;
   }
 
   .ui-scale{
@@ -445,7 +452,7 @@
   }
 
   .question-text{
-    font-size:22px;
+    font-size:30px;
   }
 
   /* ===== FIX NAV BUTTON LEFT-RIGHT ON MOBILE ===== */

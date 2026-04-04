@@ -483,6 +483,9 @@ input:focus {
 
   body {
     overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* allow scroll */
   }
 
@@ -500,7 +503,7 @@ input:focus {
 
   body {
     overflow: hidden;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .ui-scale {
@@ -510,7 +513,7 @@ input:focus {
   font-size: 16px;
 }
 .question{
-  font-size: 22px;
+  font-size: 25px;
 }
 }
 

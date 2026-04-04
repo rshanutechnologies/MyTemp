@@ -99,7 +99,7 @@
     .true{background:#4caf50;}
     .false{background:#f44336;}
 
-    .correct{ border:3px solid white !important; pointer-events:none;}
+    .correct{ border:3px solid lightgreen !important; pointer-events:none;}
     .disabled{ opacity:.45; pointer-events:none;  }
 
     .nav{

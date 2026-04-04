@@ -21,9 +21,9 @@ body {
 
 /* HOME */
 .home-btn {
-    position: absolute;
+    position: fixed;
     top: 10px;
-    left: -50px;
+    left: -0px;
     padding: 8px 16px;
     border: none;
     border-radius: 22px;

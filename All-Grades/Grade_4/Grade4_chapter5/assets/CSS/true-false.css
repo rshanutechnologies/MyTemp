@@ -322,6 +322,55 @@
             cursor: pointer;
         }
 
+   @media (max-width: 1050px) {
+            body {
+                padding: 12px;
+                align-items: flex-start;
+                overflow-y: hidden;
+            }
+
+            .game {
+                padding: 24px;
+                
+            }
+
+            .quiz-type {
+                position: static;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .title {
+                font-size: 24px;
+            }
+
+            .question-box {
+                font-size: 26px;
+                height: auto;
+                padding: 24px;
+            }
+
+            .question-image img {
+                width: 200px;
+                height: 170px;
+            }
+
+            .answers {
+                gap: 20px;
+            }
+
+            .answer {
+                height: 95px;
+                font-size: 26px;
+            }
+
+            .nav button {
+                font-size: 18px;
+                padding: 10px 26px;
+            }
+        }
+
+
         @media (max-width: 800px) {
             body {
                 padding: 12px;

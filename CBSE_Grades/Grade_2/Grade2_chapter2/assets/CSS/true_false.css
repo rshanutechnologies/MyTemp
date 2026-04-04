@@ -14,7 +14,7 @@
       justify-content:center;
       align-items:center;
       overflow:hidden;
-      margin-top: 3%;
+      margin-top: 3% !important;
     }
     body::before{
   content:"";
@@ -97,7 +97,7 @@
     .true{background:#4caf50;}
     .false{background:#f44336;}
 
-    .correct{ border:3px solid white !important; pointer-events:none; }
+    .correct{ border:4px dotted white !important; pointer-events:none; }
     .disabled{ opacity:.45; pointer-events:none;  }
 
     .nav{

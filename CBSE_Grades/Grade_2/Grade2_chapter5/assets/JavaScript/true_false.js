@@ -63,14 +63,14 @@ answered:false
 {
 q:"Q.3 Dams are built on seas.",
 a:false,
-img:"../assets/images/Damkk.png",
+img:"../assets/images/NewDam.png",
 answered:false
 },
 
 {
 q:"Q.4 Air helps to carry the seeds of plants.",
 a:true,
-img:"../assets/images/AirSeeds.png",
+img:"../assets/images/AirSeedss.png",
 answered:false
 },
 

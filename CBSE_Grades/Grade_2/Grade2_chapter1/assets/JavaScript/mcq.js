@@ -26,13 +26,13 @@ answer: "Stem"
 },
 
 {
-title: "Q.3 We need ____________________ to make our clothes.",
+title: "Q.3 We need _______ to make our clothes.",
 image: "../assets/images/Clothesak.png",
 options: [
-{ text: "Fibre", img: "../assets/images/fiberakc.png" },
-{ text: "Gum", img: "../assets/images/gumc.png" },
-{ text: "Rubber", img: "../assets/images/ruberakc.png" },
-{ text: "Paper", img: "../assets/images/paperc.png" }
+{ text: "Fibre", img: "../assets/images/fiberimg.png" },
+{ text: "Gum", img: "../assets/images/gumimg.png" },
+{ text: "Rubber", img: "../assets/images/ruberimg.png" },
+{ text: "Paper", img: "../assets/images/paperimg.png" }
 ],
 answer: "Fibre"
 },
@@ -50,7 +50,7 @@ answer: "Climbers"
 },
 
 {
-title: "Q.5 Mint plant is an example of a ____________________.",
+title: "Q.5 Mint plant is an example of a _____.",
 image: "../assets/images/MintPlant.png",
 options: [
 { text: "Climber", img: "../assets/images/ClimbPlant.png" },

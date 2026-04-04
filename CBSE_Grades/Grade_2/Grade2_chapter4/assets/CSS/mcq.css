@@ -180,7 +180,7 @@ filter:grayscale(70%);
 /* ================= NAVIGATION ================= */
 
 .quiz-nav{
-    margin-top:-14%;
+    margin-top:-20%;
     width:100%;
     display:flex;
     justify-content:center;
@@ -472,15 +472,19 @@ font-size:16px;
 
 }
 
+@media (max-width:1100px){
 
+
+
+}
 /* ===============================
    BIG DESKTOP FIX (1920px+)
 ================================ */
 
-@media (min-width:1600px){
+@media (min-width:1150px){
 
 .app{
-    margin-top:3%;
+    margin-top:2%;
     height:100vh;
     display:flex;
     align-items:center;
@@ -489,6 +493,7 @@ font-size:16px;
 
 .template{
     justify-content:center;
+    /* background-color: yellow !important; */
 }
 
 /* question position */
@@ -496,7 +501,8 @@ font-size:16px;
 .title{
     margin-top:0;
     /* background-color: yellow; */
-    height: 100px;
+    height: 50px !important;
+    /* background-color: red; */
 }
 
 /* options spacing */
@@ -508,8 +514,8 @@ font-size:16px;
 /* navigation buttons */
 
 .quiz-nav{
-    margin-top:120px;
-    gap:70%;
+    margin-top:2%;
+    gap:80%;
 }
 
 }

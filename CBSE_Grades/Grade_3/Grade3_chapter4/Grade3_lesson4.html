@@ -48,9 +48,11 @@ z-index:-1;
 }
 
 /* Laptop */
-
 .wrapper{
-position:relative;
+  position:relative;
+  display:flex;
+  justify-content:center;   /* 🔥 center horizontally */
+  align-items:center;
 }
 
 .laptop{
@@ -60,6 +62,7 @@ background:#2e4f6d;
 border-radius:30px;
 padding:18px;
 box-shadow:0 20px 50px rgba(0,0,0,.35);
+margin:0 auto;
 }
 
 .screen{
@@ -82,7 +85,7 @@ border:none;
 
 .quiz-menu{
 position:absolute;
-left:-70px;
+left: -50px;
 top:110px;
 display:flex;
 flex-direction:column;

@@ -113,6 +113,7 @@ color:white;
 
     .correct{
 color:white;
+border:6px dotted #fff !important;
 box-shadow:0 0 1px #00e676,0 0 5px #00e676;}
     .disabled{ opacity:.45; pointer-events:none;  }
 

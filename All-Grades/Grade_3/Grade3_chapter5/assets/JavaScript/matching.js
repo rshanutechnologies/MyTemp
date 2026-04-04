@@ -127,7 +127,6 @@ rightItems.forEach((action) => {
     if (action.classList.contains("used")) return;
 
     const isCorrect = action.dataset.value === activeLeft.dataset.answer;
-
 if (isCorrect) {
 
   score++;
@@ -139,25 +138,25 @@ if (isCorrect) {
   action.classList.add("correct-highlight");
   activeLeft.classList.add("correct-highlight");
 
-  // 🔥 APPLY LEFT COLOR TO RIGHT
   const leftBg = window.getComputedStyle(activeLeft).backgroundColor;
   action.style.backgroundColor = leftBg;
 
   drawLine(activeLeft, action);
 
-  showPopup(true);
+  speak("Correct");   // ✅ ONLY SPEECH
 
   activeLeft = null;
 
   if (score === leftItems.length) {
     setTimeout(() => showFinalPopup(), 1100);
   }
+
 } else {
 
-      action.classList.add("wrong");
-      setTimeout(() => action.classList.remove("wrong"), 350);
+  action.classList.add("wrong");
+  setTimeout(() => action.classList.remove("wrong"), 350);
 
-      showPopup(false);
-    }
+  speak("Wrong");   // ✅ ONLY SPEECH
+}
   };
 });

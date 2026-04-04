@@ -423,6 +423,51 @@ body {
     cursor: pointer;
 }
 
+@media (max-width: 1050px) {
+  body {
+    padding: 0px 12px;
+    align-items: flex-start;
+    overflow-y: hidden;
+  }
+
+  .main {
+    max-width: 900px;
+  }
+
+  .question {
+    font-size: 26px;
+    height: auto;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .image-wrap {
+    height: auto;
+  }
+
+  .image-wrap img {
+    width: 220px;
+    height: 130px;
+  }
+
+  .inputs-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .input-box input {
+    width: 160px;
+    font-size: 20px;
+  }
+
+  .nav button {
+    font-size: 18px;
+    padding: 10px 26px;
+  }
+}
+
+
 @media (max-width: 800px) {
   body {
     padding: 0px 12px;
@@ -533,12 +578,13 @@ body {
   }
 
   .image-wrap img {
-    width: 160px;
-    height: 110px;
+    width: 120px;
+    height: 100px;
   }
 
   .input-box input {
     font-size: 16px;
+    height: 20px;
   }
 
   .input-box button {

@@ -269,7 +269,7 @@ body::before{
 }
 
 /* MOBILE SIDEBAR MODE */
-@media(max-width:800px){
+@media(max-width:1100px){
 
   .menu-toggle{
     display:block;
@@ -383,7 +383,7 @@ function loadQuiz(event, el, index, title){
   document.getElementById("stepInfo").innerText = `Step ${current + 1} / 4`;
 
   // ✅ AUTO CLOSE SIDEBAR ON MOBILE
-  if (window.innerWidth <= 800) {
+  if (window.innerWidth <= 1100) {
     document.querySelector(".sidebar").classList.remove("open");
     document.getElementById("overlay").classList.remove("show");
   }

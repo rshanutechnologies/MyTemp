@@ -497,14 +497,15 @@ body {
   }
 
   .tags {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 8px;
   }
 
   .tag {
     padding: 14px 8px;
     justify-content: center;
-    height: 120px;
+    align-items: center;
+    height: 80px;
     font-size: 20px;
   }
 
@@ -514,9 +515,34 @@ body {
     margin-bottom: 6px;
   }
 
-  .tag:last-child {
+  /* .tag:last-child {
     grid-column: 1 / -1;
     justify-self: center;
+  } */
+
+  .plant {
+    width: 100px;
+    height: 100px;
+  }
+
+  .p1 {
+    transform: rotate(144deg) translateY(-100px);
+  }
+
+  .p2 {
+    transform: rotate(0deg) translateY(-100px);
+  }
+
+  .p3 {
+    transform: rotate(288deg) translateY(-100px);
+  }
+
+  .p4 {
+    transform: rotate(216deg) translateY(-100px);
+  }
+
+  .p5 {
+    transform: rotate(72deg) translateY(-100px);
   }
 }
 

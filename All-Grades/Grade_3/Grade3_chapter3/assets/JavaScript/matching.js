@@ -42,7 +42,7 @@ document.querySelectorAll(".animal").forEach((animal) => {
     placeAnimalAboveLabel(animal, matchedLabel);
 
     speak("Correct");
-    showPopup(true);
+    
 
     score++;
 answeredCount++;
@@ -53,7 +53,7 @@ if (answeredCount === 5) {
 } else {
     animal.classList.add("shake");
     speak("Wrong");
-    showPopup(false);
+   
 
     setTimeout(() => animal.classList.remove("shake"), 300);
   }

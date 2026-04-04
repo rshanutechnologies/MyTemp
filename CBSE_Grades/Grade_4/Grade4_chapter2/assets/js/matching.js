@@ -1,121 +1,123 @@
+let selected = null
+let score = 0
 
-let selected=null
-let score=0
+/* ✅ ADD: total matches (kept explicit, no behavior change) */
+const TOTAL_MATCHES = 5
 
-const left=document.querySelectorAll("#left .box")
-const right=document.querySelectorAll("#right .box")
-const svg=document.getElementById("lines")
-
-
+const left = document.querySelectorAll("#left .box")
+const right = document.querySelectorAll("#right .box")
+const svg = document.getElementById("lines")
 
 function speak(t) {
-  speechSynthesis.cancel();
+  speechSynthesis.cancel()
  
-  const msg = new SpeechSynthesisUtterance(t);  
+  const msg = new SpeechSynthesisUtterance(t)
+  msg.lang = "en-UK"
+  msg.volume = 0.25
+  msg.rate = 1
+  msg.pitch = 1
  
-  msg.lang = "en-UK";  
-  msg.volume = 0.25;    
-  msg.rate = 1;
-  msg.pitch = 1;
- 
-  speechSynthesis.speak(msg);  
+  speechSynthesis.speak(msg)
 }
 
 function launchConfetti(){
-
-confetti({
-particleCount:120,
-spread:70,
-origin:{ y:0.6 }
-});
-
+  confetti({
+    particleCount:120,
+    spread:70,
+    origin:{ y:0.6 }
+  })
 }
 
-left.forEach(l=>{
+/* ✅ ADD: final popup function (same as MCQ behavior) */
+function showFinalPopup(){
+  document.getElementById("final").style.display = "block"
+  document.getElementById("score").innerText =
+    "Your Score " + score + "/" + TOTAL_MATCHES
 
-l.onclick=()=>{
-
-if(l.classList.contains("matched")) return
-
-left.forEach(i=>i.classList.remove("selected"))
-l.classList.add("selected")
-
-selected=l
-
+  launchConfetti()
 }
+
+left.forEach(l => {
+
+  l.onclick = () => {
+
+    if (l.classList.contains("matched")) return
+
+    left.forEach(i => i.classList.remove("selected"))
+    l.classList.add("selected")
+
+    selected = l
+  }
 
 })
 
+right.forEach(r => {
 
-right.forEach(r=>{
+  r.onclick = () => {
 
-r.onclick=()=>{
+    if (!selected || r.classList.contains("matched")) return
 
-if(!selected || r.classList.contains("matched")) return
+    if (r.dataset.match === selected.dataset.match) {
 
-if(r.dataset.match===selected.dataset.match){
+      launchConfetti()
+      speak("Correct")
 
-launchConfetti();
-speak("Correct")
+      drawLine(selected, r)
 
-drawLine(selected,r)
+      selected.classList.add("matched")
+      r.classList.add("matched")
 
-selected.classList.add("matched")
-r.classList.add("matched")
+      score++
+      
+      if (score === 5) {
+        setTimeout(() => {
+          showFinalPopup()
+        }, 1000)
+      }
 
-score++
+    } else {
 
-if(score===5){
+      // ✅ FIX: small delay so speech works properly
+      setTimeout(() => {
+        speak("Wrong")
+      }, 100)
 
-setTimeout(()=>{
+    }
 
-document.getElementById("final").style.display="block"
-document.getElementById("score").innerText="Your Score 5/5"
-launchConfetti(); 
-},1000)
-
-}
-
-}else{
-
-
-speak("Wrong")
-
-}
-
-selected.classList.remove("selected")
-selected=null
-
-}
+    selected.classList.remove("selected")
+    selected = null
+  }
 
 })
 
-function drawLine(a,b){
+function drawLine(a, b){
 
-const rectA=a.querySelector(".dot").getBoundingClientRect()
-const rectB=b.querySelector(".dot").getBoundingClientRect()
+  const rectA = a.querySelector(".dot").getBoundingClientRect()
+  const rectB = b.querySelector(".dot").getBoundingClientRect()
 
-const svgRect=svg.getBoundingClientRect()
+  const svgRect = svg.getBoundingClientRect()
 
-const x1=rectA.left-svgRect.left
-const y1=rectA.top-svgRect.top+7
+  const x1 = rectA.left - svgRect.left
+  const y1 = rectA.top - svgRect.top + 7
 
-const x2=rectB.left-svgRect.left
-const y2=rectB.top-svgRect.top+7
+  const x2 = rectB.left - svgRect.left
+  const y2 = rectB.top - svgRect.top + 7
 
-const path=document.createElementNS("http://www.w3.org/2000/svg","path")
+  const path = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "path"
+  )
 
-const curve=`M${x1},${y1} C${x1+150},${y1} ${x2-150},${y2} ${x2},${y2}`
+  const curve = `M${x1},${y1} C${x1+150},${y1} ${x2-150},${y2} ${x2},${y2}`
 
-path.setAttribute("d",curve)
-path.setAttribute("stroke","#fff4f4")
-path.setAttribute("stroke-width","3")
-path.setAttribute("fill","none")
+  path.setAttribute("d", curve)
+  path.setAttribute("stroke", "#fff4f4")
+  path.setAttribute("stroke-width", "3")
+  path.setAttribute("fill", "none")
 
-svg.appendChild(path)
-
+  svg.appendChild(path)
 }
 
 function playAgain(){
-location.reload()
+  location.reload()
 }

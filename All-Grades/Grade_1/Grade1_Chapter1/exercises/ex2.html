@@ -359,7 +359,9 @@
         flex-direction: column;
         gap: 10px;
       }
-
+.question-text{
+  font-size: 20px !important;
+}
       .q-number {
         font-size: 16px;
       }
@@ -442,7 +444,7 @@
 
       @media (max-width: 468px) {
          .question-text {
-          font-size: 22px !important;
+          font-size: 20px !important;
          }
         .clue-box {
         width: 100px;
@@ -450,6 +452,84 @@
         object-fit: contain;
       }
       }
+/* ============================= */
+/* 💻 PERFECT 800px HEIGHT FIX */
+/* ============================= */
+
+@media (max-width: 800px) {
+
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .wrap {
+    height: 100vh;
+    padding: 10px 15px;
+  }
+
+  /* 🔥 KEY FIX: stop vertical centering */
+  .question-area {
+    justify-content: space-between; /* ✅ IMPORTANT */
+    gap: 8px;
+    margin-top: 5px;
+  }
+
+  /* 🔽 Reduce header */
+  .header-row {
+    margin-bottom: 0;
+  }
+
+  .q-number {
+    font-size: clamp(16px, 2.5vh, 24px);
+    padding: 4px 14px;
+  }
+
+  .bird-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* 🔽 Reduce question text */
+  .question-text {
+    font-size: 20px;
+    margin: 5px 0;
+  }
+
+  /* 🔽 Reduce blanks */
+  .blank-box {
+    width: 35px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .blank-group {
+    gap: 5px;
+  }
+
+ .clue-box {
+  width: clamp(160px, 22vh, 220px);
+  height: clamp(160px, 22vh, 220px);
+}
+
+  .clue-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* 🔽 Reduce bottom spacing */
+  .controls {
+    padding: 5px 5%;
+  }
+
+  .nav-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    min-width: 100px;
+  }
+
+}
   </style>
 </head>
 

@@ -558,7 +558,8 @@ color: black;
     overflow-y:auto;
     height:auto;
     align-items:flex-start;
-      background:url("../images/bgbg.png") center/cover no-repeat;
+      /* background:url("../images/bgbg.png") center/cover no-repeat; */
+      background:transparent !important;
   }
 
 
@@ -696,10 +697,11 @@ color: black;
 
   
   body{
-    overflow-y:auto;
+    overflow-y:hidden !important;
     height:auto;
     align-items:flex-start;
-      background:url("../images/bgbg.png") center/cover no-repeat;
+      /* background:url("../images/bgbg.png") center/cover no-repeat; */
+      background:transparent !important;
        margin-top: -7%;
        overflow: hidden;
   }
@@ -784,3 +786,6 @@ color: black;
   }
 
 }
+
+
+

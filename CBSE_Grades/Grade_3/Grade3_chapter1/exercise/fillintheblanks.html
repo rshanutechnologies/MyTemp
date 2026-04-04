@@ -253,7 +253,7 @@ button:disabled{
   <div class="buttons">
  <button id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
 
- <button id="checkBtn1" onclick="checkAnswer()">Check</button>
+ <button id="checkBtn1" onclick="checkAnswer()" disabled>Check</button>
 
   <button id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
 </div>
@@ -321,21 +321,26 @@ const popupTitle = document.getElementById("popupTitle");
 const popupMessage = document.getElementById("popupMessage");
 const popupEmoji = document.getElementById("popupEmoji");
 const playAgainBtn = document.getElementById("playAgainBtn");
-
-// INPUT ACTIVE STYLE
 document.addEventListener("input", function(){
   const inputs = document.querySelectorAll("#inputArea input");
   const btn1 = document.getElementById("checkBtn1");
 
+  let allFilled = true;
+
   inputs.forEach((input)=>{
-    if(input.value.trim() !== ""){
-      btn1.classList.add("active");
-    } else {
-      btn1.classList.remove("active");
+    if(input.value.trim() === ""){
+      allFilled = false;
     }
   });
-});
 
+  if(allFilled){
+    btn1.classList.add("active");
+    btn1.disabled = false;   // ✅ enable
+  } else {
+    btn1.classList.remove("active");
+    btn1.disabled = true;    // ✅ disable
+  }
+});
 // SPEECH
 function speakText(text){
   if(!('speechSynthesis' in window)) return;
@@ -358,7 +363,6 @@ function fireConfetti(){
   });
 }
 
-// LOAD QUESTION
 function loadQuestion() {
 
   const current = questions[index];
@@ -397,12 +401,19 @@ function loadQuestion() {
     inputArea.appendChild(input);
   });
 
+  // ✅ CHECK BUTTON RESET (IMPORTANT)
   const btn1 = document.getElementById("checkBtn1");
+
   btn1.classList.remove("active");
 
-  btn1.disabled = answeredCorrectly[index];
-}
+  // 👉 ALWAYS disable initially
+  btn1.disabled = true;
 
+  // 👉 If already answered correctly, keep disabled
+  if(answeredCorrectly[index]){
+    btn1.disabled = true;
+  }
+}
 // ✅ CHECK ANSWER
 function checkAnswer(){
 

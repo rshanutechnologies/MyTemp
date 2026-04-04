@@ -244,24 +244,37 @@ iframe {
   }
 
   function toggleMenu() {
-    const navbar = document.getElementById("navbar");
-    const isOpen = navbar.classList.toggle("show");
-    updateHamburgerIcon(isOpen);
-  }
+  const navbar = document.getElementById("navbar");
+  const isOpen = navbar.classList.toggle("show");
 
+  updateHamburgerIcon(isOpen);
+}
   function updateHamburgerIcon(isOpen) {
     document.getElementById("menuBtn").textContent = isOpen ? "✕" : "☰";
   }
+  document.getElementById("viewer").addEventListener("load", () => {
+  const iframeDoc = document.getElementById("viewer").contentWindow.document;
 
-  // close menu when clicking outside
-  document.addEventListener("click", function(e) {
+  iframeDoc.addEventListener("click", () => {
     const navbar = document.getElementById("navbar");
-    const menuBtn = document.getElementById("menuBtn");
-    if (!navbar.contains(e.target) && !menuBtn.contains(e.target)) {
+    if (navbar.classList.contains("show")) {
       navbar.classList.remove("show");
       updateHamburgerIcon(false);
     }
   });
+});
+document.addEventListener("click", function(e) {
+  const navbar = document.getElementById("navbar");
+  const menuBtn = document.getElementById("menuBtn");
+
+  const isClickInsideMenu = navbar.contains(e.target);
+  const isClickOnButton = menuBtn.contains(e.target);
+
+  if (navbar.classList.contains("show") && !isClickInsideMenu && !isClickOnButton) {
+    navbar.classList.remove("show");
+    updateHamburgerIcon(false);
+  }
+});
 
 </script>
 

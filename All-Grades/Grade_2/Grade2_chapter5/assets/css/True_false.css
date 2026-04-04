@@ -72,7 +72,7 @@ body {
 }
 
 .next {
-    right: -3px;
+    right: 3px;
     background: linear-gradient(135deg, #ffb74d, #f57c00);
 }
 
@@ -283,6 +283,15 @@ canvas {
         width: 100%;
         max-width: 520px;
     }
+    .question-box {
+    background: #fff;
+    padding: 28px 32px;
+    border-radius: 16px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    font-size: 28px !important;
+    color: #0b4a6f;
+    margin-bottom: 50px;
+}
 }
 
 /* ================= MOBILE ================= */

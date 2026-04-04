@@ -39,6 +39,7 @@ const input = document.getElementById("answerInput");
 const popup = document.getElementById("popup");
 const popupText = document.getElementById("popupText");
 const levels = document.querySelectorAll(".level");
+const checkBtn = document.getElementById("checkBtn");
 const prevBtns = [
   document.getElementById("prevBtn"),
   document.getElementById("prevBtnMobile"),
@@ -119,7 +120,14 @@ function load() {
   levels[current].classList.add("current");
   prevBtns.forEach((b) => (b.disabled = current === 0));
   nextBtns.forEach((b) => (b.disabled = !answered[current]));
+  // 🔒 Disable if empty
+checkBtn.disabled = input.value.trim() === "" || answered[current];
 }
+
+input.addEventListener("input", () => {
+  checkBtn.disabled = input.value.trim() === "";
+});
+
 function speakText(t) {
   speechSynthesis.cancel(); // optional but recommended
 

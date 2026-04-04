@@ -142,7 +142,7 @@ function load() {
   result.style.color = "#2f5d57";
 
   dropZone.classList.remove("locked");
-  dropZone.innerHTML = "Drop here";
+  dropZone.innerHTML = "";
 
   prevBtn.disabled = index === 0;
   nextBtn.disabled = !locked[index];

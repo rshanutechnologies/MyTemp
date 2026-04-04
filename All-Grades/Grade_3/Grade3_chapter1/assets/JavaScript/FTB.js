@@ -58,6 +58,11 @@ card.innerHTML = `
 
    const input = card.querySelector(".plain-input");
 const btn = card.querySelector(".check");
+btn.disabled = true;   // 👈 initially disabled
+
+input.addEventListener("input", () => {
+  btn.disabled = input.value.trim().length === 0;
+});
 const answerBox = card;
 
   function speak(t) {

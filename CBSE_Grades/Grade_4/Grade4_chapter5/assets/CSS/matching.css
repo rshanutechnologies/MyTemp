@@ -23,7 +23,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    transform: scale(0.8);
+    transform: none;
     transform-origin: top center;
 }
 
@@ -119,9 +119,11 @@ body {
 
 /* IMAGE */
 .left-img {
-    width: clamp(40px, 5vw, 60px);
-    height: clamp(45px, 6vw, 65px);
+    width: clamp(60px, 7vw, 120px);   /* 🔼 increased properly */
+    height: clamp(60px, 8vh, 120px);  /* 🔼 increased */
     object-fit: contain;
+
+    flex-shrink: 0;   /* 🔥 prevents shrinking */
 }
 
 /* FINAL POPUP (UNCHANGED) */
@@ -185,15 +187,28 @@ body {
     }
     /* Reduce column gap */
 .game-container {
-    gap: clamp(10px, 3vw, 20px);
+    gap: clamp(14px, 7vw, 24px);
 }
 
 /* Reduce box size */
 .item {
     width: clamp(140px, 40vw, 200px);
-    height: clamp(60px, 9vh, 75px);
+     /* height: clamp(90px, 13vh, 120px); */
     font-size: clamp(16px, 3vw, 20px);
     padding: 10px;
+     gap: clamp(8px, 2vw, 14px); 
+     height: auto; /* ✅ allow dynamic height */
+    min-height: clamp(80px, 10vh, 110px);
+}
+/* Allow text to wrap properly */
+.item span {
+    flex: 1;
+    min-width: 0;
+
+    white-space: normal;   /* ✅ allow wrapping */
+    overflow: visible;     /* ✅ no cutting */
+    text-overflow: unset;  /* ✅ remove dots */
+    word-break: break-word; /* ✅ safe wrapping */
 }
 
 /* Left column */
@@ -208,8 +223,9 @@ body {
 
 /* Reduce image size */
 .left-img {
-    width: clamp(28px, 6vw, 40px);
-    height: clamp(30px, 6vw, 45px);
+    width: clamp(35px, 7vw, 60px);   /* 🔼 increased */
+    height: clamp(35px, 7vw, 60px);
+    flex-shrink: 0; /* 🔥 prevent shrinking */
 }
 
 }

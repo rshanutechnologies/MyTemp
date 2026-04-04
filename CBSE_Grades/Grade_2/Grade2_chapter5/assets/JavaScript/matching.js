@@ -171,7 +171,7 @@ leftItems.forEach(item => {
     item.classList.add("active");
       setTimeout(()=>{
       item.classList.remove("active");
-    },4000);
+    },100);
 
   });
 });

@@ -288,7 +288,7 @@ button:disabled {
 
   .question {
      font-size: clamp(17px, 6vw, 24px);
-    padding-right: 52px;
+    padding-right: 0 20px;
   }
 
   .illustration img {

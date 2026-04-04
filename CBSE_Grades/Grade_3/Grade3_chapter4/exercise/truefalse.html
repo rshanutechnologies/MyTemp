@@ -213,12 +213,17 @@ background:white;
 padding:clamp(15px,2vw,25px);
 border-radius:25px;
 
-font-size:clamp(18px,2vw,26px);
-min-width:clamp(200px,40vw,260px);
-
 box-shadow:0 20px 40px rgba(0,0,0,0.2);
 
+font-size:clamp(20px,2vw,30px);
+font-weight:600;
+
+min-width:clamp(200px,30vw,300px);
+min-height:clamp(80px,12vh,100px);
+
+z-index:999;
 text-align:center;
+
 transition:.3s;
 }
 
@@ -227,10 +232,11 @@ transform:translate(-50%,-50%) scale(1);
 }
 
 .popup-stars{
-font-size:clamp(18px,2vw,26px);
-color:#f7b500;
 margin-top:10px;
+font-size:clamp(18px,2vw,28px);
+color:#f7b500;
 }
+
 
 /* ============================= */
 /* RESULT */
@@ -240,12 +246,13 @@ position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%) scale(0);
+
 background:#fff;
 padding:clamp(25px,3vw,40px);
 border-radius:30px;
 text-align:center;
+
 box-shadow:0 20px 50px rgba(0,0,0,0.25);
-z-index:1000;
 transition:.4s;
 
 width:min(90%,400px);
@@ -256,13 +263,11 @@ transform:translate(-50%,-50%) scale(1);
 }
 
 .result-box h2{
-font-size:clamp(22px,2vw,34px);
-margin-bottom:10px;
+font-size:clamp(24px,2vw,34px);
 }
 
 .result-box p{
-font-size:clamp(16px,1.5vw,24px);
-margin-bottom:20px;
+font-size:clamp(18px,1.5vw,24px);
 }
 
 .play-btn{
@@ -276,7 +281,10 @@ font-size:clamp(14px,1vw,18px);
 border-radius:30px;
 color:white;
 cursor:pointer;
+
+white-space:nowrap;
 }
+
 @media (max-width:600px){
 
   .result-box{

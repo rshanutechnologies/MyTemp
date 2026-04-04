@@ -173,7 +173,7 @@ leftItems.forEach(item => {
     item.classList.add("active");
       setTimeout(()=>{
       item.classList.remove("active");
-    },4000);
+    },100);
 
   });
 });
@@ -267,7 +267,7 @@ rightEl.classList.add("link-active");
 setTimeout(()=>{
   leftEl.classList.remove("link-active");
   rightEl.classList.remove("link-active");
-}, 4000);
+}, 500);
 
 }
 

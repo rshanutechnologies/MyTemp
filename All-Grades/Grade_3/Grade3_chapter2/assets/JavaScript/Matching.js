@@ -82,17 +82,9 @@ document.querySelectorAll(".right-item").forEach(item=>{
       selectedLeft.style.pointerEvents = "none";
       item.style.pointerEvents = "none";
 
-      score++;
-      renderProcess();
-      speakOnly("Correct");
-
-      showPopup(`
-        <div class="popup-correct">
-          <span class="check">✅ Correct</span>
-          <span class="happy">😊</span>
-          <div class="stars">${"⭐".repeat(score)}</div>
-        </div>
-      `);
+    score++;
+renderProcess();
+speakOnly("Correct");   // ✅ ONLY SPEECH
 
       selectedLeft = null;
 
@@ -120,16 +112,8 @@ document.querySelectorAll(".right-item").forEach(item=>{
       }
 
     }else{
+speakOnly("Wrong");
 
-      speakOnly("Wrong");
-
-      showPopup(`
-        <div class="popup-wrong">
-          <span class="cross">❌ Wrong</span>
-          <span class="sad">😢</span>
-          <div class="tip">💡 Try again!</div>
-        </div>
-      `);
 
       selectedLeft.classList.remove("selected");
       selectedLeft = null;

@@ -177,7 +177,7 @@
       .quiz-area { order: 1; flex: none; height: auto; }
       .scene { margin: 1vh 0; }
       .qRow { margin-top: 5px; }
-      #qText { font-size: 18pt; }
+      #qText { font-size: 22px; }
     }
 
     @media (max-width:370px) {
@@ -186,6 +186,101 @@
        font-size: 22px;
     }
   }
+  /* =========================
+   📱 TABLET (≤ 800px)
+   ========================= */
+
+@media (max-width: 800px) {
+
+  body {
+    overflow: hidden;
+    align-items: flex-start;
+  }
+
+  .main-container {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .quiz-area {
+    flex: 1;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  /* 🔽 Question number */
+  #qNumber {
+    font-size: 16px;
+    padding: 4px 16px;
+  }
+
+  /* 🔽 Question text */
+  #qText {
+    font-size: 22px;
+    max-width: 90%;
+  }
+
+  /* 🔽 Volume button */
+  .bird-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* 🔽 Dice size */
+  .scene {
+    width: 180px;
+    height: 180px;
+    margin: 10px 0;
+  }
+
+  /* 🔽 Hint text */
+  #hint {
+    font-size: 16px;
+  }
+
+  /* 🔽 Buttons (ROLL + CHECK) */
+  .action-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .btn-container {
+    gap: 10px;
+  }
+
+  /* 🔽 PREV + NEXT buttons */
+  .nav-side-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+    min-width: 110px;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  .main-container {
+    height: 100vh;
+  }
+
+  .quiz-area {
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  /* ✅ IMPORTANT: allow scroll inside only content */
+  .quiz-area {
+    overflow-y: auto;
+  }
+
+  /* ✅ keep buttons visible */
+  #prevBtn,
+  #nextBtn {
+    position: relative;
+    bottom: 0;
+  }
+}
   </style>
 </head>
 <body>

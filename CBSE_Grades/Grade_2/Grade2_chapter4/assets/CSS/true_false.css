@@ -105,7 +105,7 @@ color: white;}
     .false{background: linear-gradient(180deg, #ff6b6b, #e03131);
 color: white;}
 
-    .correct{ border:4px solid white !important; pointer-events:none; }
+    .correct{ border:4px solid lightcoral!important; pointer-events:none; }
     .disabled{ opacity:.45; pointer-events:none;  }
 
  

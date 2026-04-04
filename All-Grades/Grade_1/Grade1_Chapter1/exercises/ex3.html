@@ -288,6 +288,90 @@
     }
 
 }
+
+/* ============================= */
+/* 💻 800px PERFECT MATCH (LIKE TRUE/FALSE) */
+/* ============================= */
+
+@media (max-width: 800px){
+
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .wrap {
+    height: 100vh;
+    padding: 1.5vh 15px;
+  }
+
+  /* 🔥 EXACT LIKE TRUE/FALSE */
+  .question-area {
+    justify-content: space-between; /* ✅ key change */
+    gap: 1vh;
+  }
+
+  .header-row {
+    gap: 10px;
+  }
+
+  .q-number {
+    font-size: clamp(16px, 2.5vh, 24px);
+    padding: 4px 14px;
+  }
+
+  .bird-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* 🔥 MATCH QUESTION SIZE */
+  
+  .q-text {
+    font-size: 20px !important; /* ✅ correct class */
+    line-height: 1.2;
+  }
+
+
+  /* 🔥 BLANKS SMALL LIKE TF LAYOUT */
+  .blank-box {
+    width: 32px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .blank-group {
+    gap: 4px;
+  }
+
+  .answer-area {
+    gap: 10px;
+  }
+
+  /* 🔥 IMAGE PERFECT SIZE */
+  .clue-box {
+    width: clamp(140px, 18vh, 180px);
+    height: clamp(140px, 18vh, 180px);
+  }
+
+  .clue-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* 🔥 NAV BUTTON SAME AS TRUE/FALSE */
+  .controls {
+    padding: 8px 5%;
+  }
+
+  .nav-btn {
+    padding: clamp(10px, 1.5vh, 14px) 20px;
+    font-size: clamp(12px, 1.8vh, 16px);
+    min-width: 110px;
+  }
+
+}
     </style>
 </head>
 

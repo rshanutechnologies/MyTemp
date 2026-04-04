@@ -154,7 +154,8 @@ font-size: 30px;
 
 /* CORRECT */
 .answer.correct {
-  background: linear-gradient(135deg, #22c55e, #15803d);
+  /* background: linear-gradient(135deg, #22c55e, #15803d); */
+  border:  3px solid white;
   animation: correctPop .6s ease;
 }
 

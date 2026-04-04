@@ -91,10 +91,11 @@ iframe{
 }
 
 /* ================= MOBILE RESPONSIVE ================= */
-@media(max-width:768px){
+@media(max-width:1108px){
 
   body{
     flex-direction:column;
+     background: radial-gradient(circle at top left, #ffe8c7, #f0f7ff);
   }
 
   .nav-area{
@@ -106,7 +107,7 @@ iframe{
   display:flex;   /* SHOW MCQ FIRST */
   position:fixed;
   inset:0;
-  background:#fff;
+  /* background:#fff; */
   z-index:1;
 }
   .quiz-frame.active{
@@ -150,7 +151,7 @@ iframe{
 /* 💻 DESKTOP – LEFT NAV 20% SMALLER */
 /* ========================================= */
 
-@media (min-width: 800px){
+@media (min-width: 1108px){
 
   .nav-area{
     width:288px;   /* 🔥 360px -20% */
@@ -237,7 +238,7 @@ function loadQuiz(page, element){
 
   element.classList.add("active");
 
-  if(window.innerWidth <= 768){
+  if(window.innerWidth <= 1108){
     nav.classList.remove("active");
     quizWrapper.style.display = "flex";
   }

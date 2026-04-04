@@ -76,14 +76,14 @@ body{
   text-align:center;
   margin-top:-20px;
 }
-
-/* OPTIONS GRID */
 .options{
   display:grid;
-  grid-template-columns:repeat(2, minmax(100px,1fr));
-  justify-content:center;
+  grid-template-columns:repeat(2, auto);   /* 🔥 key fix */
+  justify-content:center;                  /* center grid */
   gap:clamp(10px,2vw,22px);
   margin-top:-20px;
+   column-gap:300px;   /* 👈 increase horizontal gap */
+  row-gap:20px;      /* 👈 vertical gap (optional) */
 }
 
 /* OPTION */
@@ -254,5 +254,8 @@ button:disabled{
 @media (max-width:600px){
   .header span{
     font-size:18px !important;
+  }
+  .options{
+    gap:10px;
   }
 }

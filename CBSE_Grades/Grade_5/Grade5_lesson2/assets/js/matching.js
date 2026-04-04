@@ -1,7 +1,7 @@
 
 let selected=null
 let score=0
-
+let matchNumber = 1;
 const left=document.querySelectorAll("#left .box")
 const right=document.querySelectorAll("#right .box")
 const svg=document.getElementById("lines")
@@ -51,30 +51,29 @@ right.forEach(r=>{
 
 r.onclick=()=>{
 
-if(!selected || r.classList.contains("matched")) return
-
 if(r.dataset.match===selected.dataset.match){
 
-launchConfetti();
-speak("Correct")
+    launchConfetti();
+    speak("Correct")
 
-drawLine(selected,r)
+    // 👉 ADD NUMBER TO BOTH SIDES
+    const num = selected.dataset.match
 
-selected.classList.add("matched")
-r.classList.add("matched")
+    addNumber(selected, num)
+    addNumber(r, num)
 
-score++
+    selected.classList.add("matched")
+    r.classList.add("matched")
 
-if(score===5){
+    score++;
 
-setTimeout(()=>{
-
-document.getElementById("final").style.display="block"
-document.getElementById("score").innerText="Your Score 5/5"
-launchConfetti(); 
-},1000)
-
-}
+    if(score===5){
+        setTimeout(()=>{
+            document.getElementById("final").style.display="block"
+            document.getElementById("score").innerText="Your Score 5/5"
+            launchConfetti(); 
+        },1000)
+    }
 
 }else{
 
@@ -89,6 +88,14 @@ selected=null
 }
 
 })
+
+
+function addNumber(el, num){
+    const badge = document.createElement("span")
+    badge.innerText = num
+    badge.classList.add("match-number")
+    el.appendChild(badge)
+}
 
 function drawLine(a,b){
 

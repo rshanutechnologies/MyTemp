@@ -2,7 +2,7 @@
 const quizData = [
 
 {
-title: "Q.1 Animals that live in our houses are called ____________________.",
+title: "Q.1 Animals that live in our houses are called ________.",
 options: [
 { text: "Domestic Animals", img: "../assets/images/Cow.png" },
 { text: "Pet Animals", img: "../assets/images/Dogg.png" },
@@ -15,8 +15,8 @@ answer: "Domestic Animals"
 {
 title: "Q.2 ____________________ is a flesh-eating animal.",
 options: [
-{ text: "Deer", img: "../assets/images/Deerak.png" },
-{ text: "Zebra", img: "../assets/images/Zebraak.png" },
+{ text: "Deer", img: "../assets/images/Deeraknew.png" },
+{ text: "Zebra", img: "../assets/images/Zebraaknew.png" },
 { text: "Horse", img: "../assets/images/Horse.png" },
 { text: "Lion", img: "../assets/images/Lionakkkk.png" }
 ],
@@ -27,7 +27,7 @@ answer: "Lion"
 title: "Q.3 A ____________________ carries load for us.",
 options: [
 { text: "Cat", img: "../assets/images/Catak.png" },
-{ text: "Deer", img: "../assets/images/Deerak.png" },
+{ text: "Deer", img: "../assets/images/Deeraknew.png" },
 { text: "Donkey", img: "../assets/images/Donkeyyy.png" },
 { text: "Tiger", img: "../assets/images/Tigerak.png"}
 ],
@@ -35,10 +35,10 @@ answer: "Donkey"
 },
 
 {
-title: "Q.4 The skin of an animal is used to make ____________________.",
+title: "Q.4 The skin of an animal is used to make _______.",
 options: [
 { text: "Leather", img: "../assets/images/Leatherak.png" },
-{ text: "Paper", img: "../assets/images/paper.png" },
+{ text: "Paper", img: "../assets/images/paperimg.png" },
 { text: "Plastic", img: "../assets/images/Plasticak.png" },
 { text: "Cloth", img: "../assets/images/Clothesak.png" }
 ],
@@ -46,7 +46,7 @@ answer: "Leather"
 },
 
 {
-title: "Q.5 Birds have ____________________ on their bodies.",
+title: "Q.5 Birds have ________ on their bodies.",
 options: [
 { text: "Hair", img: "../assets/images/BirdHair.png" },
 { text: "Fur", img: "../assets/images/BirdFur.png" },

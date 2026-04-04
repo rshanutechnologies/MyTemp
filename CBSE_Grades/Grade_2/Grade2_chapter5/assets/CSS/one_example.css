@@ -194,7 +194,7 @@ body::before{
 /* OPTION 1 — Breeze (bright teal) */
 .option:nth-child(1) .label{
   background:#cffffc;
-  border:3px solid #00cfc5;
+  border:3px solid #e7fffe;
   color:#008f88;
   /* box-shadow:0 0 12px rgba(0,207,197,0.45); */
 }
@@ -202,7 +202,7 @@ body::before{
 /* OPTION 2 — Stone (bright orange) */
 .option:nth-child(2) .label{
   background:#ffe1b5;
-  border:3px solid #ff9d3f;
+  border:3px solid #ffdab8;
   color:#c76b00;
   /* box-shadow:0 0 12px rgba(255,157,63,0.45); */
 }

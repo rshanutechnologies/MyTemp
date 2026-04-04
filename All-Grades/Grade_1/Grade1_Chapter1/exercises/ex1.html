@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Pre-Primary Fun Quiz</title>
   <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  
   <style>
     * { box-sizing: border-box; }
 
@@ -20,7 +20,7 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      margin-top: -1%;
+      
     }
 
     .app { 
@@ -44,17 +44,21 @@
     .slide.active { display: block; }
 
     .question { 
+        position: relative;
       margin: 0 auto; 
       text-align: center; 
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 15px; /* Separation between counter, speaker, text, and options */
+
+      padding-top: 80px;
     }
 
     /* Question Counter - Now part of the flow */
     .q-counter {
-      font-family: 'Fredoka One', cursive;
+      font-family: "Livvic", sans-serif;
+     font-weight: 700;
       font-size: clamp(16px, 2.5vh, 24px);
       color: #2F4F4F;
       background: rgba(255, 255, 255, 0.7);
@@ -63,6 +67,32 @@
       margin-bottom: 5px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
+.top-bar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  z-index: 10;
+}
+
+/* reset both */
+.q-counter {
+  position: static;
+  transform: none;
+   font-size: clamp(16px, 2.5vh, 24px);
+    padding: 4px 14px;
+}
+
+.bird-btn {
+  position: static;
+   width: 45px;
+  height: 45px;
+}
 
     .q-text { 
       font-size: clamp(25pt, 4vh, 32pt); 
@@ -233,7 +263,7 @@
 
 @media (max-width: 450px){
   .q-text { 
-      font-size: 22px; 
+      font-size: 20px; 
       
     }
 
@@ -246,6 +276,32 @@
 
     .opt img { width: 100px; height: 100px; object-fit: cover; }
 }
+
+@media (max-width: 800px) {
+
+  body {
+    justify-content: center; /* prevent top cutting */
+    overflow: hidden;
+   
+  }
+
+  .app {
+    padding-top: 60px; /* space for heading */
+  }
+
+  .question {
+    margin-top: 10px;
+     font-size: 20px;
+  }
+  .q-text{
+     font-size: 20px;
+  }
+ .nav-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    min-width: 100px;
+  }
+}
 </style>
 </head>
 <body>
@@ -254,8 +310,10 @@
     <div id="slides">
       <div class="slide active">
         <div class="question" data-answered="false">
+          <div class="top-bar">
           <div class="q-counter">Question 1 of 5</div>
           <button class="bird-btn"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+          </div>
           <span class="q-text">There are <span class="blank"></span> types of families.</span>
           <div class="opts">
             <div class="opt-container"><div class="opt" data-answer="false"><img src="../uploads/four.png"></div><div class="label">four</div></div>
@@ -267,8 +325,10 @@
 
       <div class="slide">
         <div class="question" data-answered="false">
+          <div class="top-bar">
           <div class="q-counter">Question 2 of 5</div>
           <button class="bird-btn"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+          </div>
           <span class="q-text">Small families have <span class="blank"></span> members.</span>
           <div class="opts">
             <div class="opt-container"><div class="opt" data-answer="false"><img src="../uploads/jfam.png"></div><div class="label">more than four</div></div>
@@ -280,8 +340,10 @@
 
       <div class="slide">
         <div class="question" data-answered="false">
+          <div class="top-bar">
           <div class="q-counter">Question 3 of 5</div>
           <button class="bird-btn"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+          </div>
           <span class="q-text">Uncles and aunts live in a <span class="blank"></span> family.</span>
           <div class="opts">
             <div class="opt-container"><div class="opt" data-answer="false"><img src="../uploads/sfam.png"></div><div class="label">small</div></div>
@@ -293,8 +355,10 @@
 
       <div class="slide">
         <div class="question" data-answered="false">
+          <div class="top-bar">
           <div class="q-counter">Question 4 of 5</div>
           <button class="bird-btn"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+          </div>
           <span class="q-text">We live in a house with our <span class="blank"></span>.</span>
           <div class="opts">
             <div class="opt-container"><div class="opt" data-answer="false"><img src="../uploads/friends.png"></div><div class="label">friends</div></div>
@@ -306,8 +370,10 @@
 
       <div class="slide">
         <div class="question" data-answered="false">
+           <div class="top-bar">
           <div class="q-counter">Question 5 of 5</div>
           <button class="bird-btn"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+          </div>
           <span class="q-text">A house protects us from <span class="blank"></span>.</span>
           <div class="opts">
             <div class="opt-container"><div class="opt" data-answer="false"><img src="../uploads/disease.png"></div><div class="label">diseases</div></div>

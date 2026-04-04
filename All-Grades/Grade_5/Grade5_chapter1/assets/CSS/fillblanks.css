@@ -651,7 +651,8 @@ button:disabled {
   body{
     overflow-y:hidden;
     padding:20px 10px;
-      background:url("../images/bgbg.png") center/cover no-repeat;
+      /* background:url("../images/bgbg.png") center/cover no-repeat; */
+      background: transparent !important;
       margin-top: -100px !important;
   }
   #answerInput{

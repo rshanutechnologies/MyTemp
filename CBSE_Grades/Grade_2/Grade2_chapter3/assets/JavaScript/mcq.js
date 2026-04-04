@@ -15,7 +15,7 @@ answer: "Speak"
 },
 
 {
-title: "Q.2 Our whole body is covered with the ____________________.",
+title: "Q.2 Our whole body is covered with the __________.",
 image: "../assets/images/F11.png",
 options: [
 { text: "Arms", img: "../assets/images/Arms.png" },
@@ -27,7 +27,7 @@ answer: "Skin"
 },
 
 {
-title: "Q.3 The ____________________ is located inside our head.",
+title: "Q.3 The _________ is located inside our head.",
 image: "../assets/images/BrianInHeadak.png",
 options: [
 { text: "Heart", img: "../assets/images/heartt.png" },
@@ -39,7 +39,7 @@ answer: "Brain"
 },
 
 {
-title: "Q.4 ____________________ are the hardest parts of our body.",
+title: "Q.4 ________ are the hardest parts of our body.",
 image: "../assets/images/Bonesak.png",
 options: [
 { text: "Bones", img: "../assets/images/2Boness.png" },
@@ -51,7 +51,7 @@ answer: "Bones"
 },
 
 {
-title: "Q.5 The ____________________ pumps blood to all the parts of body.",
+title: "Q.5 The ______ pumps blood to all the parts of body.",
 image: "../assets/images/heartking.png",
 options: [
 { text: "Brain", img: "../assets/images/brain.png" },

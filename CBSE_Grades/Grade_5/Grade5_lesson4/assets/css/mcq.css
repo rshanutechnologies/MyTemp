@@ -85,7 +85,7 @@ body::before{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:30px;
-  margin-top: -2%;
+  margin-top:.5%;
 }
 
 /* ================= OPTION CARD ================= */
@@ -660,6 +660,7 @@ body{
 .quiz-nav{
     gap:20px;
     margin-top:140px;
+
 }
 
 /* buttons */
@@ -667,6 +668,6 @@ body{
 .next{
     width:60px;
     height:60px;
-    font-size:14px;
+    font-size:12px;
 }
 }

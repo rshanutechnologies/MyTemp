@@ -17,7 +17,7 @@ img: "../assets/images/Kennel.png"
 {
 q: "Q.3 Aquatic animals live in ______.",
 a: ["water"],
-img: "../assets/images/AquaticAnimal.png"
+img: "../assets/images/AquaticTurtle2.png"
 },
 
 {

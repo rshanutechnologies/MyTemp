@@ -66,6 +66,21 @@ const dropZone=document.getElementById("dropZone");
 const prev=document.getElementById("prev");
 const next=document.getElementById("next");
 
+
+function speak(t) {
+  speechSynthesis.cancel();
+ 
+  const msg = new SpeechSynthesisUtterance(t);  
+ 
+  msg.lang = "en-UK";  
+  msg.volume = 0.25;    
+  msg.rate = 1;
+  msg.pitch = 1;
+ 
+  speechSynthesis.speak(msg);  
+}
+
+
 function load(){
 
 question.innerText=quiz[index].q;
@@ -137,11 +152,15 @@ if(type==="correct"){
 icon.textContent="🎉";
 title.textContent="Correct!";
 msg.textContent="Well done!";
+
+speak("Correct");
 }
 else{
 icon.textContent="😔";
 title.textContent="Wrong!";
 msg.textContent="Try again!";
+
+speak("Wrong answer");
 }
 
 setTimeout(()=>{
