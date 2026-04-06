@@ -29,16 +29,19 @@
         }
 
         .wrap {
-            width: 100%;
-            height: 100%;
-            max-width: 1000px;
-            display: flex;
-            flex-direction: column;
-            padding: 2vh 20px;
+           width: 100%; 
+      max-width: 1200px; 
+      height: 100%;
+      display: flex;
+  flex-direction: column;
+  justify-content: center;  /* ✅ same as fill blanks */
+  align-items: stretch; /* ✅ allow full width */
+  gap: 20px; /* control spacing */
+      padding: 40px 20px;
         }
 
         .question-area {
-            flex: 1;
+
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -119,27 +122,42 @@
         .btn-true.selected { background: var(--true) !important; }
         .btn-false.selected { background: var(--false) !important; }
 
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            padding: 10px 5%;
-        }
+      .controls {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 600px;   /* ✅ SAME AS .opts */
+  
+  margin: 20px auto 0; /* ✅ center align */
+  padding: 0;          /* ❌ remove extra side shift */
+}
 
         .nav-btn {
-            padding: clamp(15px, 1.8vh, 18px) 30px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: clamp(14px, 2vh, 22px);
-            border: 4px solid white;
-            cursor: pointer;
-            font-family: 'Livvic';
-            min-width: 140px;
+           background: #4cc9f0;
+      border: 4px solid white;
+    
+      border-radius: 50px;
+      font-size: clamp(16px, 2vh, 24px);
+      cursor: pointer;
+      color: #2F4F4F;
+      font-family: 'Fredoka One', cursive;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+       padding: 14px 28px;        /* ✅ bigger size */
+  font-size: 16px;           /* ✅ fix text wrapping */
+   min-width: 130px;         /* ✅ prevents arrow going down */
+  white-space: nowrap; 
+  
+    display: inline-flex;
+  align-items: center;
+  justify-content: center;
         }
         #prevBtn { background: var(--pink); color: #2F4F4F; }
         #nextBtn { background: var(--blue); color: #2F4F4F; }
         .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
+.question-area {
+    flex: unset;
+}
         /* Overlays & Popups */
         #feedbackSmiley {
             position: fixed; top: 50%; left: 50%;
@@ -170,15 +188,17 @@
         
         canvas.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 1500; }
 
+
         /* ================================= */
 /* 📱 MOBILE RESPONSIVE STYLES */
 /* ================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
 
     body {
         overflow-y: auto;
         height: auto;
+        margin-top: -80px;
     }
 
     .wrap {
@@ -372,6 +392,7 @@
   }
 
 }
+
     </style>
 </head>
 

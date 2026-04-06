@@ -1,31 +1,31 @@
 const leftData = [
   {
     id: "1",
-    text: "1. Pliers",
+    text: " Pliers",
     match: "c",
     img: "../assets/images/Pliers.png",
   },
   {
     id: "2",
-    text: "2. Doorknob",
+    text: " Doorknob",
     match: "a",
     img: "../assets/images/Doorknob.png",
   },
   {
     id: "3",
-    text: "3. Wheelchair ramp",
+    text: " Wheelchair ramp",
     match: "e",
     img: "../assets/images/Wheelchairramp.png",
   },
   {
     id: "4",
-    text: "4. Knife",
+    text: " Knife",
     match: "b",
     img: "../assets/images/knifeak.png",
   },
   {
     id: "5",
-    text: "5. Corkscrew",
+    text: "Corkscrew",
     match: "d",
     img: "../assets/images/Corkscrew.png",
   },

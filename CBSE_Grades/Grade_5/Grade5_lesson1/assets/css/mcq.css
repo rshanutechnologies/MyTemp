@@ -339,7 +339,7 @@ background:#3da746;
 @media (max-width:900px){
 
 .row{
-flex-direction:column;
+/* flex-direction:column; */
 text-align:center;
 }
 
@@ -357,7 +357,7 @@ margin-top:30px;
 
   body{
     padding:20px;
-    overflow:auto; /* allow scroll */
+    overflow:hidden; /* allow scroll */
   }
 
   .quiz{
@@ -366,7 +366,7 @@ margin-top:30px;
   }
 
   .row{
-    flex-direction:column;
+    /* flex-direction:column; */
     gap:25px;
     text-align:center;
   }
@@ -377,7 +377,7 @@ margin-top:30px;
   }
 
   .options{
-    grid-template-columns:1fr 1fr; /* 2 options per row */
+    grid-template-columns:1fr 1fr 1fr 1fr; /* 2 options per row */
     gap:15px;
   }
 
@@ -441,6 +441,10 @@ margin-top:30px;
 padding:20px;
 margin: auto;
 }
+.row{
+ flex-direction:column; 
+text-align:center;
+}
 
 .question{
 font-size:22px !important;
@@ -449,6 +453,7 @@ font-size:22px !important;
 /* 2 OPTIONS PER ROW */
 
 .options{
+
 grid-template-columns:1fr 1fr;
 gap:12px;
 }
@@ -459,7 +464,7 @@ padding:12px;
 }
 .nav{
 
-margin-top:-10px;
+margin-top:10px;
 }
 .nav button{
 font-size:16px;

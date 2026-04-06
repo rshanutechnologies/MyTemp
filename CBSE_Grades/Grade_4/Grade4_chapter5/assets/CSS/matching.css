@@ -25,6 +25,7 @@ body {
 
     transform: none;
     transform-origin: top center;
+    padding:8px 0;
 }
 
 /* GAME AREA */
@@ -51,7 +52,7 @@ body {
 .column {
     display: flex;
     flex-direction: column;
-    gap: clamp(14px, 2vh, 22px);
+    gap: clamp(12px, 1.6vh,18px);
     z-index: 2;
     border-radius: 16px;
 }
@@ -59,7 +60,7 @@ body {
 /* CARD */
 .item {
     width: clamp(320px, 35vw, 400px);
-    height: clamp(80px, 11vh, 100px);
+    height: clamp(70px, 9.5vh, 90px);
 
     background: #f7e4cf;
     border-radius: 60px;
@@ -120,7 +121,7 @@ body {
 /* IMAGE */
 .left-img {
     width: clamp(60px, 7vw, 120px);   /* 🔼 increased properly */
-    height: clamp(60px, 8vh, 120px);  /* 🔼 increased */
+    height: clamp(50px, 6.5vh, 100px);
     object-fit: contain;
 
     flex-shrink: 0;   /* 🔥 prevents shrinking */
@@ -193,7 +194,7 @@ body {
 /* Reduce box size */
 .item {
     width: clamp(140px, 40vw, 200px);
-     /* height: clamp(90px, 13vh, 120px); */
+      height: clamp(90px, 13vh, 120px); 
     font-size: clamp(16px, 3vw, 20px);
     padding: 10px;
      gap: clamp(8px, 2vw, 14px); 

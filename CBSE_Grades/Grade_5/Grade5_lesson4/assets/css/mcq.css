@@ -183,7 +183,7 @@ body::before{
     justify-content:center;
     gap:80%;
     padding:20px 0;
-    margin-top: 3.7%;
+    margin-top: .7%;
 }
 
 .prev,
@@ -451,11 +451,11 @@ body::before{
         transform:translateY(-12px);
     }
 }
-@media (max-width: 900px){
+@media (max-width: 1100px){
 
 body{
     height:auto;
-    overflow:auto;
+    overflow:hidden;
     align-items:flex-start;
     padding:20px;
 }
@@ -473,7 +473,7 @@ body{
 /* question */
 .title{
     width:100%;
-    font-size:26px;
+    font-size:30px;
     padding:0 15px;
 }
 
@@ -486,7 +486,7 @@ body{
 
 /* options */
 .options{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:20px;
 }
 
@@ -504,7 +504,7 @@ body{
 /* navigation */
 .quiz-nav{
     gap:40%;
-    margin-top:240px;
+    margin-top:60px;
 }
 }
 /* ================= MOBILE ================= */
@@ -670,4 +670,44 @@ body{
     height:60px;
     font-size:12px;
 }
+
+#finalPopup{
+  padding:10px;
+}
+
+.final-box{
+  width:90%;
+  padding:20px 15px;
+  border-radius:20px;
+}
+
+/* trophy */
+.trophy{
+  font-size:55px;
+}
+
+/* title */
+.final-title{
+  font-size:22px;
+}
+
+/* score circle */
+.score-circle{
+  width:80px;
+  height:80px;
+  font-size:22px;
+}
+
+/* stars */
+.star-row{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+/* play again button */
+.playAgain-btn{
+  font-size:14px;
+  padding:10px 20px;
+}
+
 }

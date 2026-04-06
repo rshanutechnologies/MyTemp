@@ -13,7 +13,7 @@
 ===================== */
 :root {
   --column-gap: 64px;
-  --row-gap: 14px;
+  --row-gap: 20px;
 
   /* ✅ KEY FIX: box height now scales with viewport height.
      At normal zoom: ~76px. At 110% zoom (smaller vh): shrinks gracefully.
@@ -29,7 +29,7 @@
   --dot-size: 14px;
 
   /* ✅ row-gap also shrinks at high zoom so 5 boxes + 4 gaps never overflow */
-  --row-gap: clamp(6px, 1.4vh, 14px);
+  --row-gap: clamp(14px, 1.6vh, 18px);
 }
 
 /* =====================
@@ -175,7 +175,7 @@ svg {
   overflow: visible;
 }
 
-/* ================= FINAL POPUP ================= */
+/* FINAL SCORE */
 .final {
   position: fixed;
   top: 50%;
@@ -183,47 +183,44 @@ svg {
   transform: translate(-50%, -50%);
 
   background: white;
-  padding: clamp(20px, 4vw, 60px);
+  padding: clamp(25px, 6vw, 60px);
 
   border-radius: 25px;
   text-align: center;
 
-  width: clamp(250px, 50vw, 420px);
+  width: clamp(260px, 85%, 420px);
+
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
 
   display: none;
-  z-index: 3000;
+  z-index: 9999; /* ← add this */
 }
 
 .final h2 {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(22px, 3vw, 36px);
+  margin-bottom: 20px;
+  font-weight: 400;
 }
 
 .final h3 {
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-size: clamp(18px, 2.5vw, 28px);
+  margin-bottom: 20px;
+  font-weight: 400;
 }
 
-.star {
-  color: gold;
-  font-size: clamp(1.5rem, 4vw, 3rem);
-}
+.star { color: gold; font-size: clamp(30px, 4vw, 50px); }
 
 .playBtn {
-  margin-top: clamp(10px, 2vh, 20px);
-
-  padding: clamp(10px, 1.5vw, 14px)
-           clamp(20px, 3vw, 30px);
-
-  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-
+  margin-top: 20px;
+  padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 30px);
+  font-size: clamp(14px, 2vw, 20px);
   border: none;
   border-radius: 30px;
-
   background: #4CAF50;
   color: white;
-
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
-
 /* =================================================
    RESPONSIVE – MEDIUM SCREENS (TABLET & SMALL LAPTOP)
 ================================================= */
@@ -322,8 +319,8 @@ svg {
 
 
   .left img {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
   }
 
   .dot {

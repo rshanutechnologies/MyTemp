@@ -120,6 +120,7 @@ h4 {
   color: #2F4F4F;
 }
 
+/* 4. BLANK INPUT LOGIC */
 .mid input {
   width: clamp(50px, 8vw, 75px);
   height: clamp(45px, 6vh, 60px);
@@ -127,12 +128,12 @@ h4 {
   font-size: 26px;
   font-weight: 700;
   border-radius: 12px;
-
-  border: 3px solid #d6b8ff;
-  box-shadow: 0 0 10px rgba(214, 184, 255, 0.6);
+  border: 3px solid #ccc;
   outline: none;
+  caret-color: black; /* Blank cursor */
   background: #fff;
 }
+
 .mid input:disabled {
   background: #f0fff4;
   border-color: #2ed573;
@@ -279,30 +280,49 @@ h4 {
     padding: 8px;
     font-size: 13px;
   }
-  .left, .right {
-  justify-content: flex-start;   /* ✅ removes extra spacing */
-  gap: 12px;                     /* ✅ control spacing manually */
-}
 
 }
 
 @media (max-width: 800px){
 
-  .app{
-    height: auto;          /* ✅ remove fixed height */
-    min-height: 100vh;     /* keep full screen */
+  .match-table{
+    flex-direction: row !important;   /* ✅ FORCE LEFT-RIGHT */
+    gap: 12px;
   }
 
-  .match-table{
-    flex: unset;           /* ❌ stop forcing height */
-    height: auto;          /* ✅ content decides height */
-    overflow: hidden;      /* ✅ remove scroll */
+  .left{
+    flex: 1.4;
+    gap: 12px;
   }
-.left, .right {
-  justify-content: flex-start;   /* ✅ removes extra spacing */
-  gap: 12px;                     /* ✅ control spacing manually */
+
+  .right{
+    flex: 1;
+    gap: 10px;
+  }
+
+  /* compact rows */
+  .row{
+    padding: 6px 10px;
+  }
+
+  .lhs-images img{
+    width: 48px;
+    height: 48px;
+  }
+
+  .mid input{
+    width: 50px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .option-row{
+    font-size: 1.1rem;
+    padding: 10px 12px;
+  }
+
 }
-}
+
 </style>
 </head>
 

@@ -13,7 +13,7 @@ html, body {
 body {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .quiz {
@@ -27,6 +27,8 @@ body {
     gap: clamp(12px, 2vw, 20px);
     transform-origin: top center;
     margin: 0 auto;
+     justify-content: center;
+     align-items: center;  
 }
 
 .quiz-layout {
@@ -34,7 +36,7 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: clamp(16px, 3vw, 30px);
     align-items: center;
-    flex: 1;
+    flex: unset;
     min-height: 0;
 }
 
@@ -165,6 +167,7 @@ body {
     gap: clamp(20px, 5vw, 100px);
     padding-bottom: clamp(10px, 2vh, 24px);
     flex-shrink: 0;
+      margin-top: 20px;
 }
 
 .controls button {
@@ -320,15 +323,15 @@ body {
 }
 
 @keyframes finalBounce {
-    0%   { transform: scale(.3); opacity: 0; }
-    60%  { transform: scale(1.15); }
+    0% { transform: scale(.3); opacity: 0; }
+    60% { transform: scale(1.15); }
     100% { transform: scale(1); opacity: 1; }
 }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
     body {
-        align-items: flex-start;
+        align-items: center;
     }
 
     .quiz {

@@ -358,7 +358,7 @@ Desktop-like but tighter
  @media (max-width: 1050px) {
      body {
          /* padding: 12px; */
-         align-items: flex-start;
+         align-items: center;
          overflow-y: hidden;
      }
 

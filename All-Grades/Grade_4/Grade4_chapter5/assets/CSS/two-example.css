@@ -485,7 +485,7 @@ body {
 @media (max-width: 1050px) {
     body {
         padding: 14px;
-        align-items: flex-start;
+        align-items: center;
         overflow-y: auto;
     }
 

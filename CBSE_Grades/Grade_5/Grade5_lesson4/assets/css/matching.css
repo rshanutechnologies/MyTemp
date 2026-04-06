@@ -207,7 +207,14 @@
     transition:0.25s;
 }
 
-
+@media (max-width: 1050px) {
+.item,
+    .target {
+        height: 120px;
+        font-size: 22px;
+        gap: 15px;
+    }
+}
 
 
 @media (max-width: 900px) {

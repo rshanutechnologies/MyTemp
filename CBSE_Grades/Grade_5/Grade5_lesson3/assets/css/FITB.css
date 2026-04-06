@@ -347,20 +347,21 @@ background:#3da746;
 /* TABLET (max 900px) */
 /* ===================== */
 
-@media (max-width:900px){
+@media (max-width:1050px){
 body{
       overflow-y: hidden !important;
+      
 }
 .quiz{
 width:90%;
 }
 .question{
- margin-top: 100px;
 
+ font-size: 30px;
 }
 
 .row{
-flex-direction:column;
+
 gap:30px;
 }
 
@@ -379,7 +380,7 @@ font-size:20px;
 
 .imgbox{
 width:240px;
-margin-top: -40px ;
+margin-top: 20px ;
 }
 
 .imgbox img{
@@ -494,7 +495,7 @@ padding:10px;
 
 .question{
 font-size:22px;
-margin-top: 10%;
+margin-top: 12%;
 }
 
 .blank{
@@ -507,7 +508,7 @@ margin-left: -3px;
 
 .row{
 flex-direction:column;
-gap:20px;
+gap:0px;
 }
 
 .letters{
@@ -566,3 +567,5 @@ font-size:36px;
 }
 
 }
+
+

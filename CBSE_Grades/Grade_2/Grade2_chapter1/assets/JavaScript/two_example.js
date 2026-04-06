@@ -77,25 +77,25 @@ const quizData=[
 {
 q:"Q.1 Small and bushy plants",
 a:"SHRUB",
-img:"../assets/images/S.png"
+img:"../assets/images/S1.png"
 },
 
 {
 q:"Q.2 Small plants with soft stems",
 a:"HERB",
-img:"../assets/images/SmallPlant.png"
+img:"../assets/images/SmallPlantsak.png"
 },
 
 {
 q:"Q.3 Seeds such as red gram and green gram",
 a:"PULSES",
-img:"../assets/images/Pulsesak.png"
+img:"../assets/images/RedGreenGram.png"
 },
 
 {
 q:"Q.4 Grains such as wheat and rice",
 a:"CEREALS",
-img:"../assets/images/Cerealak.png"
+img:"../assets/images/WheatRice.png"
 },
 
 {

@@ -204,7 +204,69 @@ h1 {
         opacity: 1;
     }
 }
+@media (max-width: 1050px) {
+    body {
+        padding: 14px;
+        overflow: hidden;
+        align-items: center;
+        justify-content: flex-start;
+    }
 
+    .main {
+        max-width: 900px;
+        
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .game-container {
+        gap: 70px;
+        width: 98%;
+    }
+
+    .column {
+        width: 45%;
+        
+        
+    }
+    .left{
+        
+        margin-left: -60px;
+        
+    }
+  
+    .item {
+        height: 70px;
+        font-size: 19px;
+        padding: 14px 30px;
+    }
+
+    .left-img {
+        width: 50px;
+        height: 55px;
+    }
+
+    .answer-box {
+        width: 52px;
+        height: 52px;
+    }
+
+    .answer-box img {
+        width: 44px;
+        height: 44px;
+    }
+    
+#line-canvas {
+    display: none;
+}
+
+}
 @media (max-width: 900px) {
     body {
         padding: 14px;

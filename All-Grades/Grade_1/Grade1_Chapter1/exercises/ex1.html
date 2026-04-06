@@ -28,8 +28,10 @@
       max-width: 1200px; 
       height: 100%;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between; /* Keeps navigation at the bottom and content centered */
+  flex-direction: column;
+  justify-content: center;  /* ✅ same as fill blanks */
+  align-items: stretch; /* ✅ allow full width */
+  gap: 20px; /* control spacing */
       padding: 40px 20px;
     }
 
@@ -39,6 +41,9 @@
       align-items: center; 
       justify-content: center; 
     }
+    #slides {
+  flex: unset; /* ❌ remove stretching */
+}
 
     .slide { display: none; width: 100%; }
     .slide.active { display: block; }
@@ -147,27 +152,36 @@
       25% { transform: translateX(-8px); }
       75% { transform: translateX(8px); }
     }
-
-    /* Navigation */
-    .nav-area {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      height: 80px;
-      align-items: center;
-      padding: 0 5%;
-    }
+.nav-area {
+  display: flex;
+  justify-content: space-between; /* ✅ left & right */
+  width: 100%;                   /* ✅ full width */
+  max-width: 700px;              /* optional (nice look) */
+  margin-top: 20px;
+  padding: 0 20px;   
+    margin-left: auto;
+  margin-right: auto;            /* space from edges */
+}
 
     .nav-btn {
       background: #4cc9f0;
       border: 4px solid white;
-      padding: 12px 30px;
+    
       border-radius: 50px;
       font-size: clamp(16px, 2vh, 24px);
       cursor: pointer;
       color: #2F4F4F;
       font-family: 'Fredoka One', cursive;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+       padding: 14px 28px;        /* ✅ bigger size */
+  font-size: 16px;           /* ✅ fix text wrapping */
+   min-width: 130px;         /* ✅ prevents arrow going down */
+  white-space: nowrap; 
+  
+    display: inline-flex;
+  align-items: center;
+  justify-content: center;
+        /* ✅ keep text in one line */
     }
     #backBtn { background: #f778a1; }
     #bigNext { display: none; }
@@ -210,10 +224,11 @@
 /* 📱 MOBILE ONLY STYLES */
 /* ========================= */
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
 
   body {
     overflow-y: auto;
+    margin-top: -70px;
   }
 
   .app {
@@ -257,7 +272,9 @@
     padding: 30px 20px;
     border-radius: 25px;
   }
-
+.q-number {
+        font-size: 16px;
+      }
 } 
 
 
@@ -266,7 +283,9 @@
       font-size: 20px; 
       
     }
-
+.q-number {
+        font-size: 16px;
+      }
     .opt {
 
       width: 100px !important;

@@ -13,7 +13,7 @@ const pairs = [
   { l: "Brain", r: "It is the most delicate organ of the body" },
 ];
 const leftImages = {
-  Cerebrum: "../assets/images/Cerebrums.png",
+  Cerebrum: "../assets/images/cerebrummm.png",
   Nerves: "../assets/images/nerves.png",
   "Spinal cord": "../assets/images/spinalcords.png",
   Cerebellum: "../assets/images/Cerebellum.png",

@@ -418,6 +418,11 @@ body {
     .quiz-container{
         padding: 25px 10px 0px;
     }
+.question-image img {
+    width: 200px;
+    height: 120px;
+    object-fit: contain;/
+}
 
     .answer {
         font-size: 20px;

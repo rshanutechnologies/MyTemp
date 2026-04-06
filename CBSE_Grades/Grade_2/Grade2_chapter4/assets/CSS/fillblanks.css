@@ -889,6 +889,10 @@ overflow-y:auto;
 padding:15px 10px;
 }
 
+#answerInput{
+    font-size: 18px !important;
+}
+
 /* main container */
 .main{
 width:100%;

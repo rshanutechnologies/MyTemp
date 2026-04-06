@@ -51,7 +51,7 @@ const quizData = [
   {
     q:"Q.1 Earthworms live in water.",
     a:false,
-    img:"../assets/images/Earthworms.png",
+    img:"../assets/images/Earthwormss.png",
     answered:false
   },
   {

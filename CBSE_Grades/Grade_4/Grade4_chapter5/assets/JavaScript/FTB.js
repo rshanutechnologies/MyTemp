@@ -1,26 +1,26 @@
 const questions = [
   {
-    q: "1. __________________________ is made up of two or more simple machines.",
+    q: "1. _________ is made up of two or more simple machines.",
     a: ["compound machine"],
     img: "../assets/images/FTB_Q11.png",
   },
   {
-    q: "2. There are ____________ types of simple machines.",
+    q: "2. There are _______ types of simple machines.",
     a: ["6"],
     img: "../assets/images/FTB_Q2.png",
   },
   {
-    q: "3. A nail clipper is an example of a ____________________.",
+    q: "3. A nail clipper is an example of a _________.",
     a: ["compound machine"],
     img: "../assets/images/FTB_Q3.png",
   },
   {
-    q: "4. ____________________ is the force that is applied to move things.",
+    q: "4. ___________is the force that is applied to move things.",
     a: ["effort"],
     img: "../assets/images/FTB_Q4.png",
   },
   {
-    q: "5. A ladder is an example of an ____________________.",
+    q: "5. A ladder is an example of an ___________.",
     a: ["inclined plane"],
     img: "../assets/images/FTB_Q5.png",
   },

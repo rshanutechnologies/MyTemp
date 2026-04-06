@@ -151,6 +151,31 @@ body {
     background: linear-gradient(#f1e390, #ecc74e);
     box-shadow: 0 4px 0 #d1a72c;
 }
+/* ACTIVE PRESS EFFECT */
+#prevBtn:active {
+    transform: translateY(4px) scale(0.96);
+    box-shadow: 0 2px 0 #4da5d4;
+}
+
+#nextBtn:active {
+    transform: translateY(4px) scale(0.96);
+    box-shadow: 0 2px 0 #d1a72c;
+}
+
+/* GENERAL BUTTON PRESS */
+.nav-buttons button:active {
+    transform: scale(.95);
+}
+
+/* 🔒 DISABLED STATE */
+.nav-buttons button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+
+    filter: grayscale(30%);
+    transform: none;      /* no press */
+    box-shadow: none;     /* flat look */
+}
 
 /* POPUPS (UNCHANGED — EXACT COPY) */
 .kid-popup {

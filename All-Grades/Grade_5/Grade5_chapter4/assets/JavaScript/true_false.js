@@ -12,7 +12,7 @@ const quizData = [
   {
     q: "Q.2. The cerebellum is the second largest part of the brain.",
     a: true,
-    img: "../assets/images/cerebrum.png",
+    img: "../assets/images/cerebrummm.png",
     answered: false
   },
   {

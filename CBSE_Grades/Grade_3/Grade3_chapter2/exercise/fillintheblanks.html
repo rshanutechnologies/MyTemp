@@ -371,7 +371,11 @@ document.querySelector(".prev").disabled = current === 0
 
 const nextBtn = document.querySelector(".next")
 
-if(userAnswers[current] === quizData[current].a){
+// ✅ last question → always disable next
+if(current === quizData.length - 1){
+    nextBtn.disabled = true
+}
+else if(userAnswers[current] === quizData[current].a){
     nextBtn.disabled = false
 }else{
     nextBtn.disabled = true
@@ -522,81 +526,84 @@ function fireConfetti(){
 
 function checkAnswer(){
 
-if(user===quizData[current].a){
-fireConfetti();
-popupEmoji.textContent="🎉"
-popupTitle.textContent="Correct!"
-popupTitle.style.color="green"
-popupMessage.textContent="Great job!"
+if(user === quizData[current].a){
 
-// ✅ ADD HERE
-document.querySelectorAll(".key").forEach(key=>{
-  key.style.pointerEvents="none"
-  key.style.opacity="0.5"
-});
+    fireConfetti();
 
-document.querySelector(".check").disabled=true
+    popupEmoji.textContent = "🎉";
+    popupTitle.textContent = "Correct!";
+    popupTitle.style.color = "green";
+    popupMessage.textContent = "Great job!";
 
-speakText("Correct!")
+    // ✅ If LAST QUESTION → show final popup automatically
+    if(current === quizData.length - 1){
 
-popup.classList.remove("hidden")
-setTimeout(()=>{
-  popup.classList.add("hidden")
+        speakText("");
 
-  // ✅ clear answer
-  user = ""
-  userAnswers[current] = ""
-  updateBoxes()
+        popup.classList.remove("hidden");
 
-  // ✅ ENABLE ALL LETTERS AGAIN
-  document.querySelectorAll(".key").forEach(key=>{
-    key.style.pointerEvents = "auto"
-    key.style.opacity = "1"
-  })
+        setTimeout(()=>{
+            popup.classList.add("hidden");
+            showFinalPopup();   // 🎯 FINAL SCORE
+        },1200);
 
-  // ✅ reset used buttons
-  usedButtons = []
+    }else{
+        // ✅ Enable Next button for other questions
+        document.querySelector(".next").disabled = false;
 
-  // ✅ disable check button again
-  const checkBtn = document.querySelector(".check")
-  checkBtn.disabled = true
-  checkBtn.classList.remove("active")
+        speakText("Correct!");
 
-},1200)
+        popup.classList.remove("hidden");
+
+        setTimeout(()=>{
+            popup.classList.add("hidden");
+        },1200);
+    }
+
+    // ✅ Disable all keys after correct
+    document.querySelectorAll(".key").forEach(key=>{
+        key.style.pointerEvents = "none";
+        key.style.opacity = "0.5";
+    });
+
+    // ✅ Disable check button
+    document.querySelector(".check").disabled = true;
+
 }
 else{
 
-popupEmoji.textContent="❌"
-popupTitle.textContent="Wrong!"
-popupTitle.style.color="red"
-popupMessage.textContent="Try again!"
+    popupEmoji.textContent = "❌";
+    popupTitle.textContent = "Wrong!";
+    popupTitle.style.color = "red";
+    popupMessage.textContent = "Try again!";
 
-speakText("Wrong!")
+    speakText("Wrong!");
 
-popup.classList.remove("hidden")
-setTimeout(()=>{
-  popup.classList.add("hidden")
+    popup.classList.remove("hidden");
 
-  // ✅ clear answer
-  user = ""
-  userAnswers[current] = ""
-  updateBoxes()
+    setTimeout(()=>{
+        popup.classList.add("hidden");
 
-  // ✅ ENABLE ALL LETTER BUTTONS AGAIN
-  document.querySelectorAll(".key").forEach(key=>{
-    key.style.pointerEvents = "auto"
-    key.style.opacity = "1"
-  })
+        // ❌ Clear answer
+        user = "";
+        userAnswers[current] = "";
+        updateBoxes();
 
-  // ✅ reset used buttons
-  usedButtons = []
+        // ✅ Enable all keys again
+        document.querySelectorAll(".key").forEach(key=>{
+            key.style.pointerEvents = "auto";
+            key.style.opacity = "1";
+        });
 
-  // ✅ disable check button again
-  const checkBtn = document.querySelector(".check")
-  checkBtn.disabled = true
-  checkBtn.classList.remove("active")
+        // ✅ Reset used buttons
+        usedButtons = [];
 
-},1200)
+        // ✅ Disable check button again
+        const checkBtn = document.querySelector(".check");
+        checkBtn.disabled = true;
+        checkBtn.classList.remove("active");
+
+    },1200);
 }
 
 }

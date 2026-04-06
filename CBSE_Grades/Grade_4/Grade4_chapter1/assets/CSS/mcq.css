@@ -107,7 +107,7 @@ body {
   flex-direction: column;
   justify-content: center;   /* center content */
   gap: 6px;   
-  min-height: clamp(60px, 10vh, 120px);
+  min-height: clamp(50px, 9vh, 100px);
 }
 
 .option:hover { transform: translateY(-3px); }
