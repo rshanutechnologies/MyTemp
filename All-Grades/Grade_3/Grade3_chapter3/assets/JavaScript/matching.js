@@ -62,21 +62,14 @@ if (answeredCount === 5) {
 });
 function placeAnimalAboveLabel(animal, label) {
 
-  if (window.innerWidth <= 700) {
+  if (window.innerWidth <= 600) {
 
-    animal.classList.add("matched-mobile");
+  animal.classList.add("matched-mobile");
 
-    // Create wrapper
-    const wrapper = document.createElement("div");
-    wrapper.className = "match-wrapper";
+  // ✅ push image to RIGHT side
+  label.appendChild(animal);
 
-    // Insert wrapper before label
-    label.parentNode.insertBefore(wrapper, label);
-
-    // Put animal inside wrapper
-    wrapper.appendChild(animal);
-
-  } else {
+} else {
 
     // Desktop behavior (your existing code)
     const labelsRect = document.querySelector(".labels").getBoundingClientRect();

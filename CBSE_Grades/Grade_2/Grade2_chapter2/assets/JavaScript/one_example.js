@@ -76,13 +76,13 @@ const quizData = [
 {
 q:"Q.1 A bird that can swim",
 a:"DUCK",
-img:"../assets/images/Duckk.png"
+img:"../assets/images/BirdSwim.png"
 },
 
 {
 q:"Q.2 A small animal that has six legs",
 a:"ANT",
-img:"../assets/images/Antt.png"
+img:"../assets/images/SixLegAnimal.png"
 },
 
 {
@@ -94,13 +94,13 @@ img:"../assets/images/bear-img.png"
 {
 q:"Q.4 An animal that lives in human-made shelters",
 a:"DOG",
-img:"../assets/images/Dogg.png"
+img:"../assets/images/Kennel.png"
 },
 
 {
 q:"Q.5 An animal that lives in holes",
 a:"RABBIT",
-img:"../assets/images/Rabbitt.png"
+img:"../assets/images/RabbittHole.png"
 }
 
 ];

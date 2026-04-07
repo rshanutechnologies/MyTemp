@@ -259,3 +259,26 @@ button:disabled{
     gap:10px;
   }
 }
+
+@media (max-width:768px){
+
+  .popup-content{
+    max-width:260px;      /* ✅ smaller width */
+    width:85%;
+    padding:15px;
+    border-radius:15px;
+  }
+
+  .popup-icon{
+    font-size:3em;        /* ✅ smaller icon */
+  }
+
+  .popup-content h3{
+    font-size:1.2em;      /* ✅ smaller text */
+  }
+
+  .popup-content p{
+    font-size:0.95em;
+  }
+
+}

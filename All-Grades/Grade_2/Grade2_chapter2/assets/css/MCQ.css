@@ -403,6 +403,7 @@ button:disabled {
     font-size: 18px;
     padding: 14px;
     border-radius: 40px;
+      background-color: yellow !important;
   }
 
   .nav {
@@ -461,9 +462,11 @@ button:disabled {
   max-width: 250px;
   height: 90px;
   object-fit: contain;
+
 }
   .option {
     font-size: 16px;
+    
   }
 
   .winner-img {

@@ -305,17 +305,17 @@ body {
   }
 
   .question-text {
-    font-size: clamp(16px, 4vw, 17px);
-    line-height: 1.3;
-    padding-right: 48px;       /* prevent hamburger overlap */
-  }
+  padding-right: 0;        /* remove shift */
+  margin: 0 auto;          /* center properly */
+  max-width: 85%;          /* avoid touching menu */
+}
 
   /* stack image above options */
   .content {
     flex-direction: column;
     gap: 6px;
     width: 100%;
-    /* flex: 1; */
+    flex: 1;
     min-height: 0;
     flex:unset;
   }

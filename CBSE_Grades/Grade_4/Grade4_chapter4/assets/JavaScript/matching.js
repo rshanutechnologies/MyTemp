@@ -152,7 +152,7 @@ function handleMatch(leftEl, rightEl) {
   rightEl.classList.add("matched");
   leftEl.classList.remove("active");
 
-  if (window.innerWidth <= 768) {
+  if (false) {
     const num = matchesFound + 1;
     leftEl.dataset.num = num;
     rightEl.dataset.num = num;

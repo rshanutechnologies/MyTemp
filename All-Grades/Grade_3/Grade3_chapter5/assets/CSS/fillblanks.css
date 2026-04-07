@@ -379,20 +379,21 @@ body {
 
   /* ✅ QUESTION CENTER */
   .question{
-    font-size:20px !important;
+    font-size:18px !important;
     text-align:center;
     min-height:auto;
   }
 
-  /* ✅ INPUT FULL WIDTH */
-  .input-box{
-    width:100%;
-  }
-
-  .input-box input{
-    width:100%;
-    font-size:16px;
-  }
+ .input-box{
+  width:100%;
+  display:flex;
+  justify-content:center;   /* ✅ center */
+}
+.input-box input{
+  flex:none;            /* ✅ IMPORTANT FIX */
+  width:85%;
+  max-width:260px;
+}
 
   /* ✅ BUTTON CENTER */
   .checkBtn-container{
@@ -454,8 +455,20 @@ body {
     height:40px !important;
     font-size:14px !important;
     padding:0 10px;
+     margin-top: 10px;
   }
-
+.input-box{
+  width:100%;
+  display:flex;
+  justify-content:center;   /* ✅ center */
+  
+}
+.input-box input{
+  flex:none;            /* ✅ IMPORTANT FIX */
+  width:85%;
+  max-width:260px;
+ 
+}
   .double-input{
     gap:8px !important;
   }
@@ -498,3 +511,34 @@ body {
 }
 
 }
+@media (max-width:480px){
+
+  /* ✅ INPUT CONTAINER */
+  .double-input{
+    display:flex;
+    justify-content:center;
+    gap:12px;   /* better spacing */
+    width:100%;
+  }
+
+  /* ✅ INPUT BOX STYLE */
+  .double-input input{
+    flex:none;
+    width:44%;              /* balanced size */
+    height:42px;            /* little bigger */
+    font-size:14px;
+    border-radius:18px;     /* smooth look */
+    border:2px solid #e0e0e0;
+    padding:0 12px;
+    text-align:center;
+    background:#fff;
+  }
+
+  /* ✅ PLACEHOLDER CLEAN */
+  .double-input input::placeholder{
+    font-size:12px;
+    color:#aaa;
+  }
+
+} 
+

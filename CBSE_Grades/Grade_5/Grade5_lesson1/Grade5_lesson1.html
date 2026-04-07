@@ -421,8 +421,31 @@ function toggleMenu(){
 
 document.getElementById("navbar").classList.toggle("show");
 
-}
 
+}
+/* CLOSE WHEN CLICK ANYWHERE */
+document.addEventListener("click", function () {
+  document.getElementById("navbar").classList.remove("show");
+});
+
+/* PREVENT CLOSE WHEN CLICKING MENU BUTTON */
+document.querySelector(".menu-btn").addEventListener("click", function(e){
+  e.stopPropagation();
+});
+
+/* PREVENT CLOSE WHEN CLICKING INSIDE NAV */
+document.getElementById("navbar").addEventListener("click", function(e){
+  e.stopPropagation();
+});
+
+/* CLOSE WHEN CLICKING INSIDE IFRAME */
+const iframe = document.getElementById("viewer");
+
+iframe.addEventListener("load", function(){
+  iframe.contentWindow.document.addEventListener("click", function(){
+    document.getElementById("navbar").classList.remove("show");
+  });
+});
 </script>
 
 </body>

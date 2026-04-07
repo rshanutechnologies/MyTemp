@@ -469,3 +469,45 @@ svg path {
   }
 
 }
+
+
+@media (max-width: 768px) {
+
+  .match-area {
+    gap: 8px !important;        /* 🔥 reduce column gap */
+    padding: 0 !important;
+  }
+
+  .column {
+    gap: 10px !important;        /* 🔥 remove Y-axis gap */
+  }
+
+  .item {
+    height: 65px !important;    /* 🔥 FORCE HEIGHT */
+    min-height: 35px !important;
+    padding: 2px !important;    /* 🔥 remove padding */
+    border-radius: 8px;
+    font-size: 10px !important;
+    line-height: 1;
+  }
+
+  .emoji {
+    font-size: 20px !important;
+  }
+
+  /* 🔥 FIX number badges */
+  .left .item[data-match]::after {
+    font-size: 15px;
+    min-width: 14px;
+    height: 14px;
+    right: 4px;
+  }
+
+  .right .item[data-match]::before {
+    font-size: 15px;
+    width: 14px;
+    height: 14px;
+    left: 4px;
+  }
+
+}

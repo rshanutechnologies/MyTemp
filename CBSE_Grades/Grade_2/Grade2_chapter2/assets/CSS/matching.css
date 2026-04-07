@@ -871,3 +871,19 @@ display:none;
   
 }
 }
+
+
+@media (max-width:1100px){
+
+
+body{
+     background-image: url("../images/G2_C2_CBG.png") center/cover no-repeat;
+  overflow-x: auto !important;
+}
+.item{
+  padding:8px 10px;
+  min-height:65px;
+  border-radius:14px;
+
+}
+}

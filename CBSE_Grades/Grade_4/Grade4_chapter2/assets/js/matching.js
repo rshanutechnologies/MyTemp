@@ -90,34 +90,43 @@ right.forEach(r => {
 
 })
 
-function drawLine(a, b){
+function drawLine(leftEl, rightEl) {
 
-  const rectA = a.querySelector(".dot").getBoundingClientRect()
-  const rectB = b.querySelector(".dot").getBoundingClientRect()
+  const svg = document.getElementById("lines");
 
-  const svgRect = svg.getBoundingClientRect()
+  const leftRect = leftEl.getBoundingClientRect();
+  const rightRect = rightEl.getBoundingClientRect();
+  const svgRect = svg.getBoundingClientRect();
 
-  const x1 = rectA.left - svgRect.left
-  const y1 = rectA.top - svgRect.top + 7
+  // start point (right side of left box)
+  const x1 = leftRect.right - svgRect.left;
+  const y1 = leftRect.top + leftRect.height / 2 - svgRect.top;
 
-  const x2 = rectB.left - svgRect.left
-  const y2 = rectB.top - svgRect.top + 7
+  // end point (left side of right box)
+  const x2 = rightRect.left - svgRect.left;
+  const y2 = rightRect.top + rightRect.height / 2 - svgRect.top;
 
-  const path = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "path"
-  )
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-  const curve = `M${x1},${y1} C${x1+150},${y1} ${x2-150},${y2} ${x2},${y2}`
+  const curve = Math.abs(x2 - x1) * 0.5;
 
-  path.setAttribute("d", curve)
-  path.setAttribute("stroke", "#fff4f4")
-  path.setAttribute("stroke-width", "3")
-  path.setAttribute("fill", "none")
+  const offset = Math.random() * 6 - 3; // small variation
 
-  svg.appendChild(path)
+  const d = `
+    M ${x1} ${y1 + offset}
+    C ${x1 + curve} ${y1 + offset},
+      ${x2 - curve} ${y2 + offset},
+      ${x2} ${y2 + offset}
+  `;
+
+  path.setAttribute("d", d);
+  path.setAttribute("fill", "none");
+ path.setAttribute("stroke", "#ffffff");
+  path.setAttribute("stroke-width", "4");
+  path.setAttribute("stroke-linecap", "round");
+
+  svg.appendChild(path);
 }
-
 function playAgain(){
   location.reload()
 }

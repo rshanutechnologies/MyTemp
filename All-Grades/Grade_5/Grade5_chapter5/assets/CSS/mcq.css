@@ -403,6 +403,7 @@ button:disabled {
   /* HEADER */
   .header{
     justify-content:center;
+    
   }
 
   .header span{
@@ -558,5 +559,18 @@ button:disabled {
     height:40%;
     padding:15px;
   }
+
+}
+
+
+@media (max-width: 380px) {
+
+    .header {
+        margin-bottom: 12px;
+    }
+
+    .question-holder {
+        margin-top: 40px;
+    }
 
 }

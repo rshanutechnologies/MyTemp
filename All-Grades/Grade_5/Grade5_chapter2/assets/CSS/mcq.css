@@ -579,7 +579,23 @@ button:disabled {
     width: 96px !important;
     height: 90px !important;
 }
+}
 
 
+@media (max-width: 380px) {
+
+    .option {
+        width: 100%;
+        font-size: 13px;
+        padding: 8px;
+        height: auto;
+        border-radius: 14px;
+        margin-top: 4%;
+    }
+
+    .option img {
+        width: 24px;
+        height: auto;
+    }
 
 }

@@ -422,11 +422,11 @@ button:disabled {
   }
 
   .drop{
-    font-size:15px;
+    font-size:18px;
   }
 
   .drop.correct{
-    font-size:17px;
+    font-size:20px;
   }
 
   .right{
@@ -474,8 +474,8 @@ button:disabled {
   }
 
   .option img{
-    width:65px;
-    height:75px;
+    width:55px;
+    height:65px;
   }
 
   .option span{
@@ -492,6 +492,48 @@ button:disabled {
     padding:12px 18px;
     height:42px;
     font-size:14px;
+  }
+
+}
+@media (max-width:600px){
+
+  .popup-content{
+    max-width:240px;     /* ✅ smaller popup */
+    padding:14px;
+    border-radius:15px;
+  }
+
+  .popup-icon{
+    font-size:3em;       /* ✅ smaller emoji */
+  }
+
+  .popup-content h3{
+    font-size:1.2em;
+  }
+
+  .popup-content p{
+    font-size:0.9em;
+  }
+
+}
+
+@media (max-width:480px){
+
+  .popup-content{
+    max-width:200px;
+    padding:12px;
+  }
+
+  .popup-icon{
+    font-size:2.5em;
+  }
+
+  .popup-content h3{
+    font-size:1em;
+  }
+
+  .popup-content p{
+    font-size:0.8em;
   }
 
 }

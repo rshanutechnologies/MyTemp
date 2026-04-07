@@ -61,7 +61,7 @@ const quizData = [
     { id: "a", label: "Plants", image: "../assets/images/plants.png", correct: false, theme: "bg-blue" },
     { id: "b", label: "Animals", image: "../assets/images/animals.png", correct: false, theme: "bg-green" },
     { id: "c", label: "Sunlight", image: "../assets/images/sunlight1.png", correct: true, theme: "bg-orange" },
-    { id: "d", label: "Chlorophyll", image: "../assets/images/chlorophyll.png", correct: false, theme: "bg-yellow" },
+    { id: "d", label: "Chlorophyll", image: "../assets/images/Chlorophyll.png", correct: false, theme: "bg-yellow" },
   ]
 },
 

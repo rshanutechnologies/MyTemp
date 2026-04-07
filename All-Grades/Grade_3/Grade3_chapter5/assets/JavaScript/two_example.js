@@ -176,61 +176,34 @@ function render(){
       }));
     });
   });
-  enableMobileDrag();
+  if (window.innerWidth <= 768) {
+  enableMobileDrag();   // ✅ mobile only
+}
 }
 function enableMobileDrag() {
   const options = document.querySelectorAll(".option-wrap");
 
   options.forEach(option => {
 
-    let clone = null;
+    // ❌ Remove old events first (important for re-render)
+    option.replaceWith(option.cloneNode(true));
+  });
 
-    option.addEventListener("touchstart", (e) => {
+  const newOptions = document.querySelectorAll(".option-wrap");
+
+  newOptions.forEach(option => {
+
+    option.addEventListener("click", () => {
+
       if (option.classList.contains("disabled") ||
           option.classList.contains("locked")) return;
 
-      clone = option.cloneNode(true);
-      clone.style.position = "fixed";
-      clone.style.pointerEvents = "none";
-      clone.style.opacity = "0.9";
-      clone.style.zIndex = "9999";
-      clone.style.width = option.offsetWidth + "px";
+      handleMobileDrop(option.dataset.text);
 
-      document.body.appendChild(clone);
-    });
-
-    option.addEventListener("touchmove", (e) => {
-      if (!clone) return;
-
-      const touch = e.touches[0];
-      clone.style.left = touch.clientX - clone.offsetWidth / 2 + "px";
-      clone.style.top = touch.clientY - clone.offsetHeight / 2 + "px";
-    });
-
-    option.addEventListener("touchend", (e) => {
-      if (!clone) return;
-
-      const dropRect = dropZone.getBoundingClientRect();
-      const touch = e.changedTouches[0];
-
-      const inside =
-        touch.clientX > dropRect.left &&
-        touch.clientX < dropRect.right &&
-        touch.clientY > dropRect.top &&
-        touch.clientY < dropRect.bottom;
-
-      if (inside) {
-        handleMobileDrop(option.dataset.text);
-      }
-
-      clone.remove();
-      clone = null;
     });
 
   });
- 
 }
-
 function handleMobileDrop(text) {
 
   const q = quizData[index];

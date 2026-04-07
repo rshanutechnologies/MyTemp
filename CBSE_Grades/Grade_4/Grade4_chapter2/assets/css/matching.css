@@ -65,7 +65,8 @@ body {
   width: 100%;
   max-width: 1200px;
 
-  gap: var(--column-gap);
+ gap: clamp(28px, 5vw, 40px);
+  align-items: stretch;
   z-index: 2;
 }
 
@@ -237,9 +238,19 @@ svg {
     --box-font: 20px;
   }
 
-  .left,
+  /* .left,
   .right {
     flex: 0 0 clamp(40%, 42%, 44%);
+  } */
+   .left {
+  flex: 0 0 44%;
+}
+
+.right {
+  flex: 0 0 38%;
+}
+.matching {
+    gap: clamp(40px, 10vw, 100px); /* 🔥 increase middle space */
   }
 
   .box {
@@ -262,8 +273,10 @@ svg {
   }
 
   .matching {
-    align-items: flex-start;
-    gap: 16px;
+    align-items: stretch;;
+    /* gap: 16px; */
+     gap: clamp(24px, 6.4vw, 40px);
+
   }
 
   .left,
@@ -285,37 +298,46 @@ svg {
 
     border-radius: 32px;
   } */
-    .box {
-    height: auto;
-    min-height: clamp(54px, 11.5vh, 76px);
-    padding: 10px 14px;
+.box {
+  height: auto;
+  min-height: clamp(54px, 11.5vh, 76px);
+  padding: 10px 14px;
 
-    font-size: 13px;
-    line-height: 1.35;
+  font-size: 13px;
+  line-height: 1.4;
 
-    white-space: normal;
-    word-break: break-word;
-    text-align: left;
+  white-space: normal !important;   /* 🔥 FORCE override */
+  word-break: normal;
+  overflow-wrap: break-word;        /* safer than anywhere */
 
-    border-radius: 32px;
-  }
+  text-align: left;
+  border-radius: 32px;
+  gap: 8px;                 /* 🔽 reduce space between image & text */
+    padding: 10px 12px;  
+}
 
  
+
   .left .box,
   .right .box {
-    width: 100%;
     min-height: clamp(54px, 11.5vh, 76px);
     height: auto;
-    
   }
-  .left .box {
-  padding-right: 36px;
-  padding-left: 14px;
-}
 
-.right .box {
-  padding-left: 36px;
-}
+  /* ✅ LEFT stays full width */
+  .left .box {
+    width: 100%;
+    padding-right: 36px;
+    padding-left: 14px;
+    padding-right: 30px;
+  }
+
+  .right .box {
+    width: 85%;
+    margin-left: auto;
+    padding-left: 30px;
+    min-height: clamp(60px, 13vh, 85px);
+  }
 
 
   .left img {

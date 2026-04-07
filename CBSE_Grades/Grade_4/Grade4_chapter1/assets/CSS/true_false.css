@@ -271,7 +271,7 @@ button:disabled {
 @media (max-width: 768px) {
 
   .tf-buttons {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   }
 

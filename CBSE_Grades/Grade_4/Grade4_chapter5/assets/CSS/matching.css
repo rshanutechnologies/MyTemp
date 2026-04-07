@@ -181,52 +181,47 @@ body {
 }
 
 /* ✅ ONLY ONE MEDIA QUERY */
-@media (max-width:900px) {
+@media (max-width: 900px) {
 
-    .main {
-        transform: scale(0.75); /* prevent overflow */
+    .game-container {
+        gap: 30px;
     }
-    /* Reduce column gap */
-.game-container {
-    gap: clamp(14px, 7vw, 24px);
-}
 
-/* Reduce box size */
-.item {
-    width: clamp(140px, 40vw, 200px);
-      height: clamp(90px, 13vh, 120px); 
-    font-size: clamp(16px, 3vw, 20px);
-    padding: 10px;
-     gap: clamp(8px, 2vw, 14px); 
-     height: auto; /* ✅ allow dynamic height */
-    min-height: clamp(80px, 10vh, 110px);
-}
-/* Allow text to wrap properly */
-.item span {
-    flex: 1;
-    min-width: 0;
+    .item {
+        width: clamp(140px, 36vw, 180px);
+        height: auto;
+        min-height: clamp(70px, 10vh, 100px);
+        font-size: clamp(11px, 2.8vw, 14px);
+        padding: 8px 10px;
+        gap: 6px;
+        flex-direction: row;        /* ✅ side by side */
+        align-items: center;
+        border-radius: 20px;
+    }
 
-    white-space: normal;   /* ✅ allow wrapping */
-    overflow: visible;     /* ✅ no cutting */
-    text-overflow: unset;  /* ✅ remove dots */
-    word-break: break-word; /* ✅ safe wrapping */
-}
+    .left .item {
+        width: clamp(140px, 36vw, 180px);
+    }
 
-/* Left column */
-.left .item {
-    width: clamp(150px, 42vw, 210px);
-}
+    .right .item {
+        width: clamp(120px, 30vw, 150px);
+    }
 
-/* Right column */
-.right .item {
-    width: clamp(160px, 44vw, 220px);
-}
+    .item span {
+        flex: 1;
+        min-width: 0;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+        word-break: break-word;
+        line-height: 1.3;
+    }
 
-/* Reduce image size */
-.left-img {
-    width: clamp(35px, 7vw, 60px);   /* 🔼 increased */
-    height: clamp(35px, 7vw, 60px);
-    flex-shrink: 0; /* 🔥 prevent shrinking */
-}
-
+    /* ✅ small but visible image */
+    .left-img {
+        width: 38px;
+        height: 38px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
 }
