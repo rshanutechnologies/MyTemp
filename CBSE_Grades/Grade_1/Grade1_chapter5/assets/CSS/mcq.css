@@ -446,7 +446,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin-top: 10px;
-    height: 170px;
+    height: 140px;
   }
 
   .quiz-nav {

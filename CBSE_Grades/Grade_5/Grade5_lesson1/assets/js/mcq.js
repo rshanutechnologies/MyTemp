@@ -32,7 +32,7 @@ options:[
 {text:"sepal",img:"../assets/images/sepalsak.png"},
 {text:"style",img:"../assets/images/MCQStyle.png"}
 ],
-answer:1,
+answer:3,
 img:"../assets/images/pistilap.png"
 },
 

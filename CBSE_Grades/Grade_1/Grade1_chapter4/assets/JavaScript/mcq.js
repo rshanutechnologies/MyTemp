@@ -17,7 +17,7 @@ const quizData = [
     options: [
       "../assets/images/nose.png|nose",
       "../assets/images/ear.png|ears",
-      "../assets/images/skin.png|skin",
+      "../assets/images/skin1.png|skin",
       "../assets/images/eye.png|eyes",
     ],
     a: 1,

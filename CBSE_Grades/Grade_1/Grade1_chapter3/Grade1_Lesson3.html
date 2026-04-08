@@ -206,8 +206,8 @@
                 width: 280px;
                 height: 100%;
                 background: white;
-                padding: 30px;
-                padding-top: 80px;
+                padding: 0px;
+                padding-top: 50px;
                 display: flex;
                 flex-direction: column;
                 gap: 22px;
@@ -218,11 +218,12 @@
 
             .offcanvas.show .offcanvas-panel {
                 transform: translateX(0);
+                padding-inline: 20px;
             }
 
             .offcanvas-panel .island-btn {
                 flex: none;
-                padding: 30px 14px;
+                /* padding: 10px 6px; */
                 font-size: 15px;
                 border-radius: 12px;
                 opacity: .6;
@@ -442,7 +443,7 @@
 
         function toggleMenu() {
 
-            if (window.innerWidth > 900) return;
+            if (window.innerWidth > 1065) return;
 
             document.getElementById("offcanvas").classList.toggle("show");
         }

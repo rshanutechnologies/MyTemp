@@ -13,7 +13,7 @@ const quiz = [
   },
   {
     q: "3. The process by which the pollen grains get transferred from the anther to the stigma is called ______.",
-    a: "pollination",
+    a: "pollinating",
     options: ["pollination","running","jumping","singing"],
      img:"../assets/images/pollinating.png"
   },

@@ -446,8 +446,8 @@ body {
     }
 
     .answer-slot {
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         font-size: 20px;
     }
 
@@ -456,8 +456,8 @@ body {
     }
 
     .letter-tile {
-        width: 60px;
-        height: 45px;
+        width: 50px;
+        height: 35px;
         font-size: 17px;
     }
 

@@ -197,8 +197,8 @@
         width: 300px;
         height: 100%;
         background: #f1f5f9;
-        padding: 20px;
-        padding-top: 40px;
+        padding: 0px;
+        padding-top: 0px;
         transform: translateX(100%);
         transition: .3s;
         overflow-y: hidden;
@@ -206,10 +206,11 @@
 
       .offcanvas.show .offcanvas-panel {
         transform: translateX(0);
+        padding-inline: 20px;
       }
 
       .offcanvas-panel .island-btn {
-        margin-bottom: 18px;
+        margin-bottom: 12px;
       }
 
     }
@@ -388,7 +389,7 @@
 
     function toggleMenu() {
 
-      if (window.innerWidth > 900) return;
+      if (window.innerWidth > 1065) return;
 
       document.getElementById("offcanvas").classList.toggle("show");
 

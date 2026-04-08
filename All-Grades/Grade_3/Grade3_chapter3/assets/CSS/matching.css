@@ -574,7 +574,7 @@ body {
   html, body{
     height:auto;
     overflow:auto;
-    margin-top: -15px;
+   
   }
 
   .game{
@@ -585,7 +585,7 @@ body {
   /* Keep field relative for absolute children */
   .field{
     position:relative;
-    height:300px;   /* smaller field for mobile */
+    height:340px;   /* smaller field for mobile */
     margin-bottom:40px; /* space before buttons */
   }
 

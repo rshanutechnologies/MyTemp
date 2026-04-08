@@ -226,7 +226,7 @@ RESPONSIVE (Same behavior as second CSS)
 
   .main {
     max-width: 900px;
-    margin-top: 80px;
+    margin-top: 40px;
   }
 
   h1 {
@@ -238,7 +238,7 @@ RESPONSIVE (Same behavior as second CSS)
   }
 
   .game-container {
-    gap: 190px;
+    gap: 100px !important;
     width: 95%;
     justify-content: center;
   }
@@ -250,7 +250,7 @@ RESPONSIVE (Same behavior as second CSS)
   .item {
     height: 100px;
     font-size: 20px;
-    padding: 16px 18px;
+    padding: 10px 10px;
   }
 
   .left-img,
@@ -265,7 +265,7 @@ RESPONSIVE (Same behavior as second CSS)
   body {
     padding: 10px;
     overflow-y: auto;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .main {
@@ -338,7 +338,7 @@ RESPONSIVE (Same behavior as second CSS)
   }
 
   .game-container {
-    gap: 10px;
+    gap: 10px !important;
     width: 100%;
     justify-content: center;
   }
