@@ -34,7 +34,7 @@ align-items:center;
 
 .wrapper{
 width:100%;
-max-width:1300px;
+max-width:1500px;
 height:100%;
 padding:10px;
 }
@@ -364,6 +364,57 @@ box-shadow:
 
 }
 
+
+
+
+/* ================= 1400px ================= */
+@media screen and (min-width:1200px) and (max-width:1400px){
+
+.wrapper{
+max-width:1200px;
+}
+
+.frame{
+border-width:18px;
+padding:12px;
+}
+
+.top-nav{
+gap:14px;
+}
+
+.nav-btn{
+font-size:15px;
+padding:10px 22px;
+}
+
+}
+
+
+/* ================= 1920px ================= */
+@media screen and (min-width:1401px){
+
+.wrapper{
+max-width:1500px;
+}
+
+.frame{
+border-width:26px;
+padding:16px;
+}
+
+.top-nav{
+gap:22px;
+}
+
+.nav-btn{
+font-size:27px;
+padding:14px 30px;
+border-radius:40px;
+}
+
+}
+
 </style>
 </head>
 
@@ -383,7 +434,7 @@ box-shadow:
 
 <button class="nav-btn true" onclick="openPage('exercises/True_false.html',this)">True / False</button>
 
-<button class="nav-btn two" onclick="openPage('exercises/oneExample.html',this)">One Example</button>
+<!-- <button class="nav-btn two" onclick="openPage('exercises/oneExample.html',this)">One Example</button> -->
 
 <button class="nav-btn match" onclick="openPage('exercises/matching.html',this)">Matching</button>
 

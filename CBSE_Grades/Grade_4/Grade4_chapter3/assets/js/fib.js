@@ -1,26 +1,26 @@
 const questions = [
   {
-    q: "1. Aerial animals spend most of their time in ___________________.",
+    q: "1. Aerial animals spend most of their time in _____.",
     a: ["air"],
     img: "../images/FIB-1.png",
   },
   {
-    q: "2. The webbed feet of frogs and ducks help them to ____________________.",
+    q: "2. The webbed feet of frogs and ducks help them to _____.",
     a: ["swim"],
     img: "../images/FIB-2.png",
   },
   {
-    q: "3. Whales, dolphins and turtles move with the help of their ____________.",
+    q: "3. Whales, dolphins and turtles move with the help of their ____.",
     a: ["flippers"],
     img: "../images/FIB-3.png",
   },
   {
-    q: "4. ____________________ animals have wings to fly in air.",
+    q: "4. _______ animals have wings to fly in air.",
     a: ["aerial"],
     img: "../images/FIB-4.png",
   },
   {
-    q: "5. The ___________ of animals like porcupine and hedgehog protect them.",
+    q: "5. The _____ of animals like porcupine and hedgehog protect them.",
     a: ["spines"],
     img: "../images/FIB-5.png",
   },

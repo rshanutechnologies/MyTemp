@@ -3,36 +3,51 @@ const quiz=[
 
 {
 q:"1. What is reproduction?",
-options:["Producing new organisms","Reproducion","Reprodution"],
+options:[
+"The process by which living things produce young ones of their own kind is called reproduction.",
+"The process by which plants make their food using sunlight, water and air is called reproduction."
+],
 answer:0,
 img:"../assets/images/reproductiveak.png"
 },
 
 {
 q:"2. What are pollen grains?",
-options:["Male reproductive cells","Polen grains","Pollan grains"],
-answer:0,
+options:[
+"Pollen grains are green leaf-like parts of a flower that protect the bud before it blooms.",
+"Anther produces fine powdery particles called pollen grains that contain the male reproductive cells."
+],
+answer:1,
 img:"../assets/images/Pollengrains.png"
 },
 
 {
 q:"3. What is pollination?",
-options:["Transfer of pollen from anther to stigma","Pollinashun","Polination"],
+options:[
+"The transfer of the pollen grains from the anther to the stigma of the same flower or another flower of the same kind is called pollination.",
+"The process in which the ovary changes into a fruit after fertilization is called pollination."
+],
 answer:0,
 img:"../assets/images/pollinating.png"
 },
 
 {
 q:"4. Which part of a flower develops into a fruit?",
-options:["Ovary","Ovaryy","Ovarie"],
+options:[
+"The ovary develops into fruit.",
+"The petals of a flower grow bigger and develop into a fruit after fertilization."
+],
 answer:0,
 img:"../assets/images/ovaryak1.png"
 },
 
 {
-q:"5. Define grafting.",
-options:["Joining parts of two plants","Grafthing","Graffting"],
-answer:0,
+q:"5. Why is flower important?",
+options:[
+"Flower is important because it absorbs water from the soil and transports it to all parts of the plant.",
+"Flower is important because it is the reproductive part of the plant."
+],
+answer:1,
 img:"../assets/images/grafting.png"
 }
 

@@ -64,7 +64,7 @@ padding:16px;
 
 border-radius:30px;
 
-font-size:22px;
+font-size:19px;
 font-weight:400;
 color:#2f4f4f;
 cursor:pointer;
@@ -81,6 +81,7 @@ gap:10px;
 
 .option.correct{
 outline:4px solid #2ecc71;
+background: #02f969;
 }
 
 /* COLORS */

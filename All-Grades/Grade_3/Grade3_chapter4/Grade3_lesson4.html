@@ -412,6 +412,133 @@ iframe{
   }
 
 }
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  .board{
+    max-width: 1100px; /* keep your current design */
+  }
+
+  .card{
+    font-size: 18px;
+    padding: 10px 8px;
+  }
+
+  iframe{
+    border-radius: 18px;
+  }
+ 
+/* ICON SIZE INCREASE */
+.icon,
+.question-bubble{
+  width: 46px;
+  height: 46px;
+}
+
+.icon i{
+  font-size: 22px;
+}
+
+.qmark{
+  font-size: 22px;
+}
+
+.camera-icon{
+  width: 52px;
+  height: 36px;
+}
+
+}
+
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+  .board{
+    max-width: 1600px; /* increase width */
+  }
+
+  .card{
+    font-size: 26px;
+    padding: 14px 12px;
+  }
+
+  .icon,
+  .question-bubble{
+    width: 44px;
+    height: 44px;
+  }
+
+  .camera-icon{
+    width: 48px;
+    height: 34px;
+  }
+
+  iframe{
+    border-radius: 22px;
+  }
+
+  .icon,
+  .question-bubble{
+    width: 52px;
+    height: 52px;
+  }
+
+  .icon i,
+  .qmark{
+    font-size: 24px;
+  }
+
+  .camera-icon{
+    width: 58px;
+    height: 40px;
+  }
+}
+
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width: 1921px) {
+
+  .board{
+    max-width: 1600px; /* wider layout */
+  }
+
+  .card{
+    font-size: 26px;
+    padding: 18px 16px;
+  }
+
+  .icon,
+  .question-bubble{
+    width: 60px;
+    height: 60px;
+  }
+
+  .icon i,
+  .qmark{
+    font-size: 28px;
+  }
+
+  .camera-icon{
+    width: 66px;
+    height: 46px;
+  }
+  .main{
+    padding: 20px 40px;
+  }
+
+  iframe{
+    border-radius: 26px;
+  }
+
+}
+
 </style>
 </head>
 

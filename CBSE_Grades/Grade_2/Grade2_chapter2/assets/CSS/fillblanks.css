@@ -1171,14 +1171,115 @@ background:white;
 }
 
 /* Medium desktops */
-@media (min-width: 1280px) {
- body{
-    margin-top: -2%;
+@media (min-width: 1380px) {
+
+    body{
+         background-color: yellow !important;
+    }
+  /* ✅ MAIN CONTAINER BIG */
+  .main{
+    width: 1200px;
+    height: 720px;
+    padding: 30px;
   }
-  .quiz-nav{
-    margin-top:1%;
-  
-}
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    /* font-weight: 500; */
+    min-height: 140px;
+    padding-inline: 40px;
+  }
+
+  /* ✅ IMAGE BIGGER */
+  .left img{
+    width: 35LAND0px;
+    height: 300px;
+    margin-top: 5% !important;
+  }
+
+  /* ✅ INPUT BOX */
+  .input-box{
+    width: 60%;
+    height: 70px;
+    margin-top: 5% !important;
+  }
+
+  .input-box input{
+    font-size: 24px;
+  }
+
+  /* ✅ SUBMIT BUTTON (SYSTEM SIZE) */
+  .submit{
+    width: 180px;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .prev,
+  .next{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+    margin-top: 3% !important;
+  }
+
+  /* ✅ TOP BADGE + COUNT */
+  .badge{
+    font-size: 24px;
+    padding: 12px 30px;
+  }
+
+  .qcount{
+    font-size: 24px;
+  }
+
+  /* ✅ POPUP (IMPORTANT) */
+  .popup-content{
+    width: 480px;
+    padding: 40px;
+  }
+
+  .popup-title{
+    font-size: 32px;
+  }
+
+  .popup-msg{
+    font-size: 22px;
+  }
+
+  .popup-icon{
+    font-size: 90px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .popup-box.popup-final{
+    width: 560px;
+  }
+
+  .final-heading{
+    font-size: 32px;
+  }
+
+  /* ✅ LETTER GAME (IF USED) */
+  .tile{
+    width: 65px;
+    height: 65px;
+    font-size: 28px;
+  }
+
+  .slot{
+    width: 65px;
+    height: 65px;
+    font-size: 28px;
+  }
+
+  /* ✅ SPACING FIX */
+  .content{
+    padding: 40px;
+  }
+
 }
 
 /* Large desktops */

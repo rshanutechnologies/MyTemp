@@ -471,51 +471,112 @@ font-size:16px;
 }
 
 }
+  @media (min-width:1480px) {
+    body{
+      /* background-color: red !important; */
+      margin-top: 3% !important;
+    }
+   }
 
-@media (max-width:1100px){
+@media (min-width:1580px) {
 
+  /* ===== APP ===== */
+  .app{
+    width:100%;
+    height:100%;
+    padding:40px;
+    margin-top:-3%;
+  }
 
+  .template{
+    width:min(1400px,98vw);
+    height:min(800px,98vh);
+  }
 
-}
-/* ===============================
-   BIG DESKTOP FIX (1920px+)
-================================ */
+  /* ===== TITLE ===== */
+  .title{
+    font-size:44px !important;
+    min-height:100px;
+    width:1200px;
+  }
 
-@media (min-width:1150px){
+  /* ===== IMAGE ===== */
+  .animal-img{
+    width:260px;
+    height:200px;
+  }
 
-.app{
-    margin-top:2%;
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
+  /* ===== OPTIONS GRID ===== */
+  .options{
+    width:min(1100px,95%);
+    gap:40px;
+    margin-top:3%;
+  }
 
-.template{
-    justify-content:center;
-    /* background-color: yellow !important; */
-}
+  /* ===== OPTION CARD ===== */
+  .option{
+    padding:20px 20px 30px;
+    border-radius:28px;
+  }
 
-/* question position */
+  /* ===== OPTION IMAGE ===== */
+  .option-img{
+    width:130px;
+    height:130px;
+  }
 
-.title{
-    margin-top:0;
-    /* background-color: yellow; */
-    height: 50px !important;
-    /* background-color: red; */
-}
+  /* ===== OPTION TEXT ===== */
+  .option .label{
+    font-size:24px;
+    padding:10px 30px;
+    bottom:-22px;
+    border-radius:30px;
+  }
 
-/* options spacing */
-
-.options{
-    margin-top:45px;
-}
-
-/* navigation buttons */
-
-.quiz-nav{
-    margin-top:2%;
+  /* ===== NAVIGATION ===== */
+  .quiz-nav{
+    margin-top:-15%;
     gap:80%;
-}
+    padding:30px 0;
+  }
+
+  /* ===== BUTTONS (IMPORTANT SYSTEM) ===== */
+  .prev,
+  .next{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    font-size:20px;
+  }
+
+  /* ===== POPUP ===== */
+  .popup-content{
+    width:min(520px,90%);
+    padding:50px;
+    border-radius:30px;
+  }
+
+  .popup-icon{
+    font-size:90px;
+  }
+
+  .popup-title{
+    font-size:34px;
+  }
+
+  .popup-msg{
+    font-size:24px;
+  }
+
+  /* ===== FINAL POPUP ===== */
+  #stars{
+    font-size:50px;
+  }
+
+  .playAgain-btn{
+    padding:18px 36px;
+    font-size:22px;
+    border-radius:25px;
+  }
 
 }

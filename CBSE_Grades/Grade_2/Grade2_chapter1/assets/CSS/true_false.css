@@ -514,14 +514,69 @@ body{
 }
 
 /* Medium desktops */
-@media (min-width: 1280px) {
- body{
-    margin-top: -2%;
+/* 🔥 FULL SYSTEM 1280px */
+@media (min-width:1280px){
+
+  /* MAIN CARD BIG */
+  .quiz-card{
+    width: 1200px;
+    height: 720px;
+    padding: 30px;
   }
-  .quiz-nav{
-    margin-top:4%;
-  
-}
+
+  /* QUESTION (MAIN RULE) */
+  .question{
+    font-size: 44px;
+    padding: 40px;
+    min-height: 160px;
+    text-align: center;
+  }
+
+  /* IMAGE BIG */
+  .question-img{
+    width: 260px;
+    height: 300px;
+  }
+
+  /* TRUE / FALSE BUTTONS (UNIFORM) */
+  .tf-buttons{
+    gap: 80px;
+    margin-top: 10px;
+  }
+
+  .tf-buttons button{
+    width: 180px;
+    height: 70px;
+    font-size: 26px;
+  }
+
+  /* NAV BUTTONS SAME SIZE */
+  .prev,
+  .next{
+    width: 180px;
+    height: 70px;
+    font-size: 26px;
+  }
+
+  /* PROGRESS TEXT */
+  .progress{
+    font-size: 24px;
+  }
+
+  /* 🔥 POPUP UNIFORM SYSTEM */
+  .popup-title,
+  .popup-msg,
+  .final-heading{
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .popup-content,
+  .finalpopup-box{
+    width: 520px;
+    padding: 50px;
+  }
+
 }
 
 /* Large desktops */

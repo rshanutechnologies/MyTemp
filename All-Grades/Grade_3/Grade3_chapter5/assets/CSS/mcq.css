@@ -16,9 +16,11 @@ body{
 }
 .quiz-card{
   width:100%;
-  max-width:950px;   /* desktop limit */
+  max-width:100%;
+  padding:30px 60px;   /* 🔥 gives side spacing */
   padding:30px;
   margin-top: 10px;
+  
 }
 
 .top-title{
@@ -51,7 +53,8 @@ body{
   gap:30px;
   align-items:flex-start;
  margin-top: -20px;
- width: 100%;
+width:100%;
+  justify-content:space-between;
   
 }
 /* ✅ IMAGE FIXED */
@@ -518,4 +521,150 @@ button:disabled{opacity:.4} */
     padding:10px;
     
   } 
+}
+
+
+
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width: 1025px) and (max-width: 1440px){
+
+  .quiz-card{
+    max-width: 1300px;
+    padding: 30px;
+  }
+
+  .top-title{
+    font-size: 32px;
+    padding: 10px 18px;
+  }
+  .question{
+    font-size: 28px;
+  }
+
+  .quiz-image{
+    width: 280px;
+    height: 240px;
+  }
+
+  .opt-img{
+    width: 80px;
+    height: 55px;
+  }
+
+  .opt-text{
+    font-size: 22px;
+  }
+
+  .option{
+    padding: 12px 15px;
+  }
+
+  .nav button{
+    font-size: 20px;
+    width: 160px;
+  }
+
+}
+
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+  .quiz-card{
+    width:100%;
+    padding:40px 100px;   /* 🔥 expand sides */
+  }
+
+  .quiz-content{
+    gap:clamp(40px,6vw,120px);
+  }
+
+  .quiz-image{
+    width:35%;
+    max-width:420px;
+    height:auto;
+    aspect-ratio:1/1;
+  }
+
+  .quiz-right{
+    width:60%;
+  }
+
+  .question{
+    font-size:42px;
+  }
+  
+
+  .opt-img{
+    width: 100px;
+    height: 70px;
+  }
+
+
+  .opt-text{
+    font-size:30px;
+  }
+
+  .option{
+    padding:18px 20px;
+  }
+  
+  .top-title{
+    font-size: 32px;
+    padding: 10px 18px;
+  }
+
+  .nav button{
+    width:200px;
+    height:60px;
+    font-size:28px;
+    border-radius:40px;
+  }
+
+
+}
+@media screen and (min-width:1921px){
+
+  .quiz-card{
+    max-width:1400px;     /* 🔥 FIX: stop stretching */
+    margin:auto;          /* center layout */
+    padding:40px 60px;
+  }
+
+  .quiz-content{
+    gap:80px;             /* fixed gap instead of huge clamp */
+  }
+
+  .quiz-image{
+    width:320px;          /* fixed size (no % scaling) */
+    height:260px;
+  }
+
+  .quiz-right{
+    flex:1;
+    display:flex;
+    justify-content:center;   /* center options */
+  }
+
+  .options{
+    width:100%;
+    max-width:850px;     /* 🔥 VERY IMPORTANT */
+  }
+
+  .question{
+    font-size:36px;      /* reduce from 50 */
+  }
+
+  .opt-text{
+    font-size:24px;      /* reduce from 32 */
+  }
+
+  .option{
+    padding:14px 18px;   /* controlled size */
+  }
+
+  .top-title{
+    font-size:28px;
+  }
+
 }

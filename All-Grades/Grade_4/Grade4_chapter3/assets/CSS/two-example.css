@@ -131,7 +131,7 @@ body {
     border: 2px solid #f1f5f9;
     padding: 8px 15px;
     border-radius: 24px;
-    cursor: grab;
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -196,6 +196,11 @@ body {
     justify-content: center;
     background: #f8fafc;
     transition: 0.3s;
+}
+
+.dropbox-icon {
+    font-size: 30px;
+    margin-right: 10px
 }
 
 .drop-box.hover {
@@ -560,9 +565,18 @@ body {
         gap: 16px;
     }
 
+    .drop-box.filled {
+        font-size: 18px;
+    }
+
+    .dropbox-icon {
+        font-size: 25px;
+        margin-right: 8px
+    }
+
     .options-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 14px;
+        gap: 5px;
     }
 
     .option-card {
@@ -578,7 +592,7 @@ body {
     }
 
     .drop-box {
-        height: 64px;
+        height: 50px;
         font-size: 18px;
     }
 
@@ -600,6 +614,38 @@ body {
     /* Progress stays visible */
     .progress {
         position: static;
+    }
+
+    #finalPopup {
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .finalpopup-box {
+        width: 100%;
+        max-width: 320px;
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .final-heading {
+        font-size: 1.6em;
+        margin: 10px 0;
+    }
+
+    #finalScore {
+        font-size: 1.2em;
+    }
+
+    #stars {
+        font-size: 30px;
+    }
+
+    .playAgain-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
     }
 }
 
@@ -650,10 +696,10 @@ body {
     }
 
     .q-image {
-        width: 180px;
+        width: 150px;
     }
 
-    .option-card{
+    .option-card {
         padding: 10px;
         flex-direction: row;
     }
@@ -665,5 +711,125 @@ body {
     .nav-btn {
         font-size: 15px;
         padding: 9px;
+    }
+}
+
+/* =========================================
+   💻 DESKTOP / MONITOR (1025px – 1440px)
+========================================= */
+/* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .main-container {
+        max-width: 1100px;
+        height: 600px;
+    }
+
+    .question-text {
+        font-size: 32px;
+    }
+
+    .q-image {
+        width: 400px;
+        height: 360px;
+    }
+
+    .option-card {
+        padding: 16px;
+    }
+
+    .option-label {
+        font-size: 20px;
+    }
+
+    .option-emoji {
+        font-size: 34px;
+    }
+
+    .drop-box {
+        height: 80px;
+        font-size: 20px;
+    }
+
+    .nav-btn {
+        font-size: 20px;
+        padding: 12px 30px;
+    }
+} */
+
+
+/* =========================================
+   🖥️ LARGE MONITORS (1441px – 1920px)
+========================================= */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+    .main-container {
+        max-width: 1100px;
+        transform: scale(1.05);
+        transform-origin: center;
+    }
+
+    .question-text {
+        font-size: 44px;
+    }
+
+    .q-image {
+        width: 430px;
+        height: 380px;
+    }
+
+    .option-label {
+        font-size: 22px;
+    }
+
+    .option-emoji {
+        font-size: 36px;
+    }
+
+    .drop-box {
+        font-size: 22px;
+    }
+
+    .nav-btn {
+        font-size: 28px;
+        padding: 14px 34px;
+    }
+}
+
+
+/* =========================================
+   📺 EXTRA LARGE / 4K (1921px+)
+========================================= */
+@media screen and (min-width: 1921px) {
+
+    .main-container {
+        max-width: 1100px;
+        transform: scale(1.15);
+        transform-origin: center;
+    }
+
+     .question-text {
+        font-size: 44px;
+    }
+
+    .q-image {
+        width: 430px;
+        height: 380px;
+    }
+
+    .option-label {
+        font-size: 22px;
+    }
+
+    .option-emoji {
+        font-size: 36px;
+    }
+
+    .drop-box {
+        font-size: 22px;
+    }
+
+    .nav-btn {
+        font-size: 28px;
+        padding: 14px 34px;
     }
 }

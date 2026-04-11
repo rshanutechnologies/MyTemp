@@ -131,6 +131,14 @@ body {
     cursor: default
 }
 
+
+.matched-label{
+    font-size:14px;
+    margin-top:4px;
+    color:#15803d;
+    font-weight:600;
+}
+
 /* POPUP */
 .popup {
     position: fixed;
@@ -364,3 +372,81 @@ canvas {
         overflow: hidden;
     }
 }
+
+
+
+
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1250px) and (max-width:1920px){
+
+.game{
+width:1200px;
+}
+
+.level-progress{
+width:70%;
+margin-left:18%;
+}
+
+.item{
+height:150px;
+font-size:35px;
+
+margin-bottom: 20px;
+}
+
+.item img{
+width:120px;
+height:120px;
+}
+
+.level{
+width:70px;
+height:70px;
+}
+
+.container{
+gap:90px;
+}
+
+.matched-label{
+    font-size: 22px;
+}
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.game{
+width:1350px;
+}
+
+.level-progress{
+width:65%;
+margin-left:20%;
+}
+
+.item{
+height:115px;
+font-size:32px;
+}
+
+.item img{
+width:80px;
+height:80px;
+}
+
+.level{
+width:80px;
+height:80px;
+}
+
+.container{
+gap:50px;
+}
+
+}
+

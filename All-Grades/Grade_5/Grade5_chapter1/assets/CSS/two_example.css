@@ -377,3 +377,124 @@ button:disabled{
   }
 
 }
+@media (min-width: 1280px) {
+
+
+  body{
+    margin-top: -5% !important;
+  }
+  /* ❌ REMOVE SCALE */
+  .quiz{
+    transform: none;
+    margin-top: 0;
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+
+  /* ✅ TITLE */
+  .quiz-title{
+    font-size: 50px !important;
+    padding: 20px 30px;
+   
+  }
+ #answerInput{
+  height: 80px !important;
+  font-size: 30px !important;
+  margin-top: -2% !important;
+ }
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    min-height: 80px;
+    margin: 30px 0;
+  }
+
+  /* ✅ OPTIONS GRID */
+  .options{
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* ✅ OPTION CARD */
+  .option{
+    height: 260px;
+    border-radius: 26px;
+  }
+
+  /* ✅ OPTION IMAGE */
+  #questionImg{
+    width: 350px !important;
+    height: 350px !important;
+    margin-top: -5% !important;
+    /* background-color: yellow !important; */
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .nav button,
+  #submitBtn{
+    width: 180px;
+    height: 70px;
+    font-size: 24px !important;
+    border-radius: 999px;
+  }
+
+  /* ✅ NAV FIX (IMPORTANT) */
+  .nav{
+    justify-content: center;
+    gap: 60%;
+    margin-top: 40px;
+  }
+
+  .prev,
+  .next{
+    position: relative;
+    left: 0;
+    right: 0;
+  }
+
+  /* ✅ POPUP */
+  .popup-box{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-correct,
+  .popup-wrong{
+    font-size: 28px;
+  }
+
+  .popup-correct .happy,
+  .popup-wrong .sad{
+    font-size: 100px;
+  }
+
+  .popup-correct .stars{
+    font-size: 40px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .popup-box.popup-final{
+    width: 600px;
+  }
+
+  .popup-final-content{
+    font-size: 28px;
+  }
+
+  .popup-final-content .emoji{
+    font-size: 70px;
+  }
+
+  .stars{
+    font-size: 50px;
+  }
+
+  .restart,
+  .home{
+    font-size: 22px;
+    padding: 14px 28px;
+  }
+
+}

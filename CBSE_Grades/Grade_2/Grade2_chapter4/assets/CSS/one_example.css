@@ -579,6 +579,125 @@ font-size:50px;
 
 }
 
+
+@media (min-width: 1580px) {
+
+body{
+    margin-top: 3%;
+}
+   
+  /* ✅ MAIN WRAPPER */
+  .template{
+    width: 1300px;
+    height: 780px;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .title{
+    font-size: 44px;
+    min-height: 140px;
+    width: 1000px;
+    line-height: 1.4;
+  }
+
+  /* ✅ CONTAINER */
+  .quiz-container{
+    gap: 50px;
+  }
+
+  /* ✅ OPTIONS GRID */
+  .options{
+    gap: 40px;
+       /* margin-top: 100px !important; */
+       /* background-color: yellow !important; */
+       margin-top: 14% !important;
+   
+  }
+
+  /* ✅ OPTION CARD */
+  .option{
+    width: 280px;
+  
+  }
+
+  .option-card{
+    height: 240px;
+    margin-top: 0; /* FIX old 40% issue */
+  }
+
+  /* ✅ FLOATING IMAGE */
+  .option-img{
+    width: 220px;
+    height: 220px;
+    bottom: 90px;
+  }
+
+  /* ✅ PLATFORM */
+  .platform{
+    width: 220px;
+    height: 45px;
+    bottom: 1px !important;
+  }
+
+  /* ✅ LABEL */
+  .label{
+    font-size: 30px;
+    margin-top: -10% !important;
+    /* background-color: yellow !important; */
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .prev,
+  .next{
+      width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 20px;
+    margin-top: -35%;
+  }
+
+  /* ✅ NAV FIX */
+  .quiz-nav{
+    gap: 80%;
+    
+  }
+
+  /* ✅ POPUP */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-icon{
+    font-size: 100px;
+  }
+
+  .popup-title{
+    font-size: 34px;
+  }
+
+  .popup-msg{
+    font-size: 24px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .finalpopup-box{
+    width: 600px;
+    padding: 40px;
+  }
+
+  #stars{
+    font-size: 50px;
+  }
+
+  .playAgain-btn{
+    font-size: 20px;
+    padding: 14px 32px;
+  }
+
+}
+
 /* ===============================
    BIG DESKTOP FIX (1600px+)
 ================================ */

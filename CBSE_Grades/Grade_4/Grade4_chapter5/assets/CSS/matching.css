@@ -71,7 +71,7 @@ body {
     padding: 1px clamp(14px, 3vw, 24px);
 
     cursor: pointer;
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: clamp(16px, 2vw, 30px);
     color: #2f4f4f;
 
     box-shadow:
@@ -221,6 +221,44 @@ body {
     .left-img {
         width: 38px;
         height: 38px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+}
+/* DESKTOP — above 1366px only */
+@media (min-width: 1367px) {
+
+    .main {
+        max-width: 1200px;
+    }
+
+    .game-container {
+        gap: clamp(60px, 10vw, 140px);
+    }
+
+    .column {
+        gap: clamp(16px, 2vh, 24px);
+    }
+
+    .item {
+        width: clamp(380px, 38vw, 480px);
+        height: clamp(80px, 10.5vh, 105px);
+        font-size: 34px;
+        gap: clamp(14px, 2.5vw, 28px);
+        padding: 1px clamp(18px, 3vw, 28px);
+    }
+
+    .left .item {
+        width: clamp(380px, 38vw, 480px);
+    }
+
+    .right .item {
+        width: clamp(380px, 38vw, 480px);
+    }
+
+    .left-img {
+        width: clamp(70px, 7.5vw, 130px);
+        height: clamp(60px, 7.5vh, 110px);
         object-fit: contain;
         flex-shrink: 0;
     }

@@ -574,18 +574,18 @@ body {
 }
 
 @media (max-width: 468px) {
-   .wheel {
+  .wheel {
     width: 200px;
     height: 200px;
   }
 
-  .tag{
+  .tag {
     font-size: 16px;
     padding: 6px 10px;
     height: 90px;
   }
 
-  .game{
+  .game {
     gap: 25px;
   }
 
@@ -594,7 +594,7 @@ body {
     height: 50px;
   }
 
-  .option-label{
+  .option-label {
     font-size: 14px;
   }
 
@@ -621,5 +621,163 @@ body {
 
   .p5 {
     transform: rotate(72deg) translateY(-100px);
+  }
+}
+
+/* =========================================
+   💻 DESKTOP / MONITOR (1025px – 1440px)
+========================================= */
+/* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  .game {
+    max-width: 1300px;
+    transform: scale(1);
+    transform-origin: center;
+  }
+
+  .wheel {
+    width: 270px;
+    height: 270px;
+  }
+
+  .center {
+    width: 75px;
+    height: 75px;
+    font-size: 17px;
+  }
+
+  .tag {
+    font-size: 21px;
+  }
+
+  .quiz-type {
+    font-size: 26px;
+  }
+}
+ */
+
+/* =========================================
+   🖥️ LARGE MONITORS (1441px – 1920px)
+========================================= */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+  .game {
+    max-width: 1300px;
+    transform: scale(1.05);
+    transform-origin: center;
+    margin-top: -10%;
+  }
+
+  .wheel {
+    width: 400px;
+    height: 400px;
+  }
+
+  .center {
+    width: 80px;
+    height: 80px;
+    font-size: 18px;
+  }
+
+.plant {
+  position: absolute;
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+  background: #e0e0df;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.plant-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.plant img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+
+  .tag {
+    font-size: 22px;
+    height: 120px;
+  }
+
+  .quiz-type {
+    font-size: 28px;
+  }
+}
+
+
+/* =========================================
+   📺 EXTRA LARGE / 4K (1921px+)
+========================================= */
+@media screen and (min-width: 1921px) {
+
+ 
+  .game {
+    max-width: 1300px;
+    transform: scale(1.15);
+    transform-origin: center;
+    margin-top: -10%;
+  }
+
+  .wheel {
+    width: 400px;
+    height: 400px;
+  }
+
+  .center {
+    width: 80px;
+    height: 80px;
+    font-size: 18px;
+  }
+
+.plant {
+  position: absolute;
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+  background: #e0e0df;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.plant-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.plant img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+
+  .tag {
+    font-size: 22px;
+    height: 120px;
+  }
+
+  .quiz-type {
+    font-size: 28px;
   }
 }

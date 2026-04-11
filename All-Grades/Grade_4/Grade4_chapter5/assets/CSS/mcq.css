@@ -385,7 +385,7 @@ Desktop-like but tighter
 
      .card {
          gap: 24px;
-         
+
      }
 
      .image-box img {
@@ -541,7 +541,7 @@ Stacked layout
 ================================ */
  @media (max-width: 480px) {
 
-    body {
+     body {
          overflow-y: auto;
      }
 
@@ -563,5 +563,129 @@ Stacked layout
      button {
          font-size: 15px;
          padding: 8px 16px;
+     }
+ }
+
+ /* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+ /* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+     .quiz {
+         max-width: 1100px;
+         padding: 24px;
+     }
+
+     .question-box {
+         font-size: 32px;
+         height: 120px;
+     }
+
+     .card {
+         gap: 40px;
+     }
+
+     .image-box img {
+         width: 320px;
+         height: 320px;
+     }
+
+     .options-box {
+         gap: 16px;
+     }
+
+     .option {
+         font-size: 20px;
+         padding: 22px 18px;
+     }
+
+     button {
+         font-size: 20px;
+         padding: 12px 30px;
+     }
+
+ } */
+
+
+ /* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+ @media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+     .quiz {
+         max-width: 1200px;
+         padding: 28px;
+     }
+
+     .question-box {
+         font-size: 44px;
+         height: 130px;
+     }
+
+     .card {
+         gap: 50px;
+     }
+
+     .image-box img {
+         width: 360px;
+         height: 360px;
+         object-fit: contain;
+     }
+
+     .options-box {
+         gap: 18px;
+     }
+
+     .option {
+         font-size: 38px;
+         padding: 24px 20px;
+     }
+
+     button {
+         font-size: 30px;
+         padding: 20px 34px;
+     }
+
+ }
+
+
+ /* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+ @media screen and (min-width: 1921px) {
+
+     .quiz {
+         max-width: 1300px;
+         padding: 32px;
+     }
+
+     
+     .question-box {
+         font-size: 44px;
+         height: 130px;
+     }
+
+     .card {
+         gap: 50px;
+     }
+
+     .image-box img {
+         width: 360px;
+         height: 360px;
+         object-fit: contain;
+     }
+
+     .options-box {
+         gap: 18px;
+     }
+
+     .option {
+         font-size: 38px;
+         padding: 24px 20px;
+     }
+
+     button {
+         font-size: 30px;
+         padding: 20px 34px;
      }
  }

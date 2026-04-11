@@ -1,4 +1,3 @@
-
 const quiz=[
 
 {
@@ -61,54 +60,46 @@ let selectedAnswer = Array(quiz.length).fill(null);
 
 const question=document.getElementById("question");
 const optionsDiv=document.getElementById("options");
-const dropZone=document.getElementById("dropZone");
 
 const prev=document.getElementById("prev");
 const next=document.getElementById("next");
 
 
-function speak(t) {
-  speechSynthesis.cancel();
- 
-  const msg = new SpeechSynthesisUtterance(t);  
- 
-  msg.lang = "en-UK";  
-  msg.volume = 0.25;    
-  msg.rate = 1;
-  msg.pitch = 1;
- 
-  speechSynthesis.speak(msg);  
+function speak(t){
+speechSynthesis.cancel();
+const msg=new SpeechSynthesisUtterance(t);
+msg.lang="en-UK";
+msg.volume=0.25;
+speechSynthesis.speak(msg);
 }
 
 
 function load(){
 
 question.innerText=quiz[index].q;
-
 document.getElementById("questionImage").src=quiz[index].img;
 
 optionsDiv.innerHTML="";
-dropZone.innerHTML='<span class="placeholder">Drop here</span>';
 
 quiz[index].options.forEach((o,i)=>{
 
 let div=document.createElement("div");
+div.className="option";
 
-div.className="drag-item";
-div.innerHTML=`<img src="${o.img}">${o.text}`;
+div.innerHTML=`
+<img src="${o.img}" class="opt-img">
+<span>${o.text}</span>
+`;
 
-div.draggable=true;
-div.dataset.index=i;
-
-div.addEventListener("dragstart",()=>div.classList.add("dragging"));
-div.addEventListener("dragend",()=>div.classList.remove("dragging"));
+div.onclick=()=>check(i);
 
 optionsDiv.appendChild(div);
 
 });
 
 if(answered[index]){
-dropZone.innerHTML="✔ "+quiz[index].options[selectedAnswer[index]].text;
+optionsDiv.children[selectedAnswer[index]]
+.classList.add("correctAnswer");
 }
 
 prev.disabled=index===0;
@@ -116,27 +107,6 @@ next.disabled=!answered[index];
 
 }
 
-/* allow drop */
-
-dropZone.addEventListener("dragover",(e)=>{
-e.preventDefault();
-});
-
-/* drop */
-
-dropZone.addEventListener("drop",(e)=>{
-
-e.preventDefault();
-
-const dragged=document.querySelector(".dragging");
-
-if(!dragged) return;
-
-const selected=parseInt(dragged.dataset.index);
-
-check(selected);
-
-});
 
 function popup(type){
 
@@ -152,14 +122,12 @@ if(type==="correct"){
 icon.textContent="🎉";
 title.textContent="Correct!";
 msg.textContent="Well done!";
-
 speak("Correct");
 }
 else{
 icon.textContent="😔";
 title.textContent="Wrong!";
 msg.textContent="Try again!";
-
 speak("Wrong answer");
 }
 
@@ -169,13 +137,19 @@ popup.style.display="none";
 
 }
 
+
 function check(i){
 
 if(answered[index]) return;
 
+const all=document.querySelectorAll(".option");
+
 if(i===quiz[index].answer){
 
-dropZone.innerHTML="✔ "+quiz[index].options[i].text;
+answered[index]=true;            // ✅ only when correct
+selectedAnswer[index]=i;
+
+all[i].classList.add("correctAnswer");
 
 popup("correct");
 
@@ -185,19 +159,16 @@ spread:70,
 origin:{y:0.6}
 });
 
-answered[index]=true;
-selectedAnswer[index]=i;
-
 score++;
-
-next.disabled=false;
+next.disabled=false;             // ✅ allow next only correct
 
 if(index===quiz.length-1){
 
 setTimeout(()=>{
 
 document.getElementById("final").style.display="block";
-document.getElementById("score").innerText="Your Score "+score+"/"+quiz.length;
+document.getElementById("score").innerText=
+"Your Score "+score+"/"+quiz.length;
 
 confetti({
 particleCount:300,
@@ -205,34 +176,34 @@ spread:180
 });
 
 },1000);
-prev.disabled = true;
 
+prev.disabled=true;
 }
 
 }else{
 
+all[i].style.outline="4px solid #e74c3c";
 popup("wrong");
+
+// ❌ do NOT enable next
+next.disabled=true;
 
 }
 
 }
 
 next.onclick=()=>{
-
-if(index < quiz.length-1){
+if(index<quiz.length-1){
 index++;
 load();
 }
-
 }
 
 prev.onclick=()=>{
-
 if(index>0){
 index--;
 load();
 }
-
 }
 
 load();

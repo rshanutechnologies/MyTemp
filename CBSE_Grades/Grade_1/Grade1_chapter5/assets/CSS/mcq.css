@@ -496,3 +496,143 @@ body {
   }
 
 }
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  .template {
+    max-width: 1300px;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .animal-img {
+    width: 260px;
+    height: 200px;
+  }
+
+  .options {
+    min-width: 1200px;
+    height: 200px;
+    gap: 24px;
+  }
+
+  .option-img {
+    width: 130px;
+    height: 130px;
+  }
+
+  .option .label {
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+
+  .quiz-nav {
+    margin-top: 80px;
+  }
+
+  .prev,
+  .next {
+    font-size: 22px;
+    padding: 14px 36px;
+  }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+  .template {
+    max-width: 1400px;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+
+  .animal-img {
+    width: 300px;
+    height: 230px;
+  }
+
+  .options {
+    min-width: 1400px;
+    height: 220px;
+    gap: 28px;
+  }
+
+  .option-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .option .label {
+    font-size: 22px;
+    padding: 12px 24px;
+  }
+
+  .quiz-nav {
+    margin-top: 100px;
+  }
+
+  .prev,
+  .next {
+    font-size: 24px;
+    padding: 16px 40px;
+  }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+  .template {
+    max-width: 1500px;
+  }
+
+  .title {
+    font-size: 42px;
+  }
+
+  .animal-img {
+    width: 340px;
+    height: 260px;
+  }
+
+  .options {
+    max-width: 1200px;
+    height: 240px;
+    gap: 32px;
+  }
+
+  .option-img {
+    width: 170px;
+    height: 170px;
+  }
+
+  .option .label {
+    font-size: 24px;
+    padding: 14px 28px;
+  }
+
+  .quiz-nav {
+    margin-top: 120px;
+  }
+
+  .prev,
+  .next {
+    font-size: 26px;
+    padding: 18px 44px;
+  }
+
+}

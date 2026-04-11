@@ -1,4 +1,5 @@
 let dragged = null;
+let selected = null;
 let score = 0;
 
 /* ✅ elements */
@@ -75,53 +76,71 @@ function flyTickToCircle(i, fromEl) {
   }, 850);
 }
 
-/* ✅ drag start */
+
+
+
+/* click LEFT puzzles */
 document.querySelectorAll(".puzzle").forEach((p, idx) => {
-  p.ondragstart = () => {
-    dragged = p;
-    dragged.dataset.index = idx; // progress index
-  };
+  p.addEventListener("click", () => {
+    if (p.classList.contains("disabled")) return;
+
+    // remove previous selection
+    document.querySelectorAll(".puzzle").forEach(el =>
+      el.classList.remove("selected")
+    );
+
+    selected = p;
+    selected.dataset.index = idx;
+    p.classList.add("selected");
+  });
 });
 
-/* ✅ drop */
+
+/* click RIGHT slots */
 document.querySelectorAll(".slot").forEach((slot) => {
-  slot.ondragover = (e) => e.preventDefault();
-  slot.ondrop = () => {
-    if (!dragged) return;
+  slot.addEventListener("click", () => {
+    if (!selected) return;
 
-    const dragIndex = Number(dragged.dataset.index || 0);
+    const dragIndex = Number(selected.dataset.index || 0);
 
-    if (dragged.dataset.key === slot.dataset.key) {
-      // ✅ Correct
+    if (selected.dataset.key === slot.dataset.key) {
+      // ✅ correct
       showFeedback("correct");
       speak("Correct");
 
-      // ✅ fly tick to progress circle from slot position
       flyTickToCircle(dragIndex, slot);
 
       setTimeout(() => {
-        // mark circle active
         const c = progressWrap.children[dragIndex];
         if (c) {
           c.classList.add("active");
           c.textContent = "✔";
         }
 
-        // unlock slot and disable puzzle
-        slot.innerHTML = `<img src="${dragged.dataset.img}"><div class="label">${slot.dataset.key}</div>`;
-        dragged.classList.add("disabled");
+        slot.innerHTML = `
+          <img src="${selected.dataset.img}">
+          <div class="label">${slot.dataset.key}</div>
+        `;
+
+        selected.classList.add("disabled");
+        selected.classList.remove("selected");
+
+        selected = null;
 
         score++;
+
         if (score === document.querySelectorAll(".puzzle").length) {
           setTimeout(showFinalPopup, 900);
         }
+
       }, 900);
+
     } else {
-      // ❌ Wrong
+      // ❌ wrong
       showFeedback("wrong");
       speak("Try again");
     }
-  };
+  });
 });
 
 /* ✅ final popup */

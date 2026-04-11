@@ -826,13 +826,77 @@ body{
 
 /* Medium desktops */
 @media (min-width: 1280px) {
- body{
-    margin-top: 2%;
+
+  /* ✅ MAIN CONTAINER FULL SCALE */
+  .template{
+    width: 1280px;
+    height: 800px;
   }
-  .quiz-nav{
-    margin-top:1%;
-  
-}
+
+  /* ✅ QUESTION (your system) */
+  .title{
+    font-size: 44px;
+    /* font-weight: 500; */
+    width: 900px;
+    min-height: 140px;
+  }
+
+  /* ✅ OPTIONS GRID BIGGER SPACING */
+  .options{
+    gap: 40px;
+    margin-top: 25% !important;
+    justify-items: center;
+  }
+
+  /* ✅ OPTION BUTTON (your fixed system) */
+  .option{
+    width: 180px;
+    height: 70px;
+    margin-top: 0;
+  }
+
+  .option .label{
+    font-size: 24px;
+  }
+
+  /* ✅ IMAGE ABOVE OPTIONS */
+  .option-img{
+    width: 200px !important;
+    height: 200px !important;
+    top: -60px;
+  }
+
+  /* ✅ NAV BUTTONS (FIXED SIZE) */
+  .prev,
+  .next{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+  }
+
+  /* ✅ POPUP (CONSISTENT LARGE) */
+  .popup-content{
+    width: 480px;
+    padding: 40px;
+  }
+
+  .popup-title{
+    font-size: 32px;
+  }
+
+  .popup-msg{
+    font-size: 22px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .popup-box.popup-final{
+    width: 520px;
+  }
+
+  /* ✅ PROGRESS WIDTH */
+  .progress-top{
+    width: 900px;
+  }
 }
 
 /* Large desktops */

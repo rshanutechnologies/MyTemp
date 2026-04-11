@@ -466,3 +466,116 @@ canvas {
 
 
 }
+
+
+/* ================= 1025px — 1440px ================= */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1225px) and (max-width:1920px){
+
+.container{
+    display: grid;
+max-width:1350px;
+gap:70px;
+}
+
+.image-circle{
+width:350px;
+height:320px;
+position: relative;
+top:40%;
+left: 20%;
+}
+
+.question-box{
+font-size:44px !important;
+padding:28px 32px;
+margin-left: -30%;
+width: 900px;
+}
+
+.answer-area input{
+font-size:30px;
+width:80%;
+}
+
+.check-btn{
+padding:16px 60px;
+font-size:18px;
+}
+
+.progress-line {
+  margin-top: -425px;
+}
+
+
+.level{
+width:70px;
+height:70px;
+margin-top: -850px;
+}
+
+.nav-btn{
+width:90px;
+height:90px;
+font-size: 28px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.container{
+    display: grid;
+max-width:1500px;
+gap:90px;
+}
+
+.image-circle{
+width:350px;
+height:320px;
+position: relative;
+top:40%;
+left: 20%;
+}
+
+.question-box{
+font-size:44px !important;
+padding:28px 32px;
+margin-left: -30%;
+width: 900px;
+}
+
+.answer-area input{
+font-size:30px;
+width:80%;
+}
+
+.check-btn{
+padding:16px 60px;
+font-size:18px;
+}
+
+.progress-line {
+  margin-top: -425px;
+}
+
+
+.level{
+width:70px;
+height:70px;
+margin-top: -850px;
+}
+
+.nav-btn{
+width:90px;
+height:90px;
+font-size: 28px;
+}
+
+}
+
+

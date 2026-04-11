@@ -745,14 +745,115 @@ pointer-events:none;
 
 
 /* Medium desktops */
-@media (min-width: 1280px) {
- body{
-    margin-top: -2%;
+@media (min-width: 1380px) {
+
+  /* ✅ MAIN CONTAINER (FULL EXPAND) */
+  .quiz{
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
   }
-  .quiz-nav{
-    margin-top:1%;
-  
-}
+
+  /* ✅ QUESTION (BIG SYSTEM) */
+  .question{
+    font-size: 44px;
+    min-height: 160px;
+    max-width: 1000px;
+    margin: 50px auto;
+    line-height: 1.4;
+    margin-bottom: 0px !important;
+    /* background-color: yellow ; */
+  }
+
+  /* ✅ OPTIONS GRID (SPACING BIG) */
+  .options{
+    gap: 60px;
+    margin-top: -30px;
+  }
+
+  /* ✅ OPTION BOX (BIG CARD) */
+  .option{
+    height: 260px;
+    border-radius: 24px;
+  }
+
+   #questionImg{
+  height: 300px !important;
+  width: 300x !important;
+  /* background-color:yellow  !important; */
+  margin-top: -5% !important;
+} 
+
+  /* ✅ NAV BUTTONS (BIG SYSTEM SIZE) */
+  .prev,
+  .next{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+  }
+
+ 
+  .prev{
+    left: -260px;
+  }
+
+  .next{
+    right: -260px;
+  }
+
+  /* ✅ POPUP (IMPORTANT) */
+  .popup-content{
+    width: 480px;
+    padding: 40px;
+  }
+
+  .popup-title{
+    font-size: 32px;
+  }
+
+  .popup-msg{
+    font-size: 22px;
+  }
+
+  .popup-icon{
+    font-size: 90px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .popup-box.popup-final{
+    width: 560px;
+  }
+
+  .final-heading{
+    font-size: 32px;
+  }
+
+  /* ✅ INPUT / ANSWER SLOTS (BIG) */
+  .slot{
+    width: 75px;
+    height: 75px;
+    font-size: 32px;
+  }
+
+  /* ✅ LETTER BUBBLES (BIG) */
+  .bubble{
+    width: 65px;
+    height: 65px;
+    font-size: 26px;
+  }
+
+  /* ✅ JAR (FULL WIDTH EXPAND) */
+  .jar{
+    width: 800px;
+    height: 120px;
+    gap: 18px;
+  }
+
+  /* ✅ NAV WRAPPER SPACING */
+  .nav{
+    margin-top: -6%;
+  }
+
 }
 
 /* Large desktops */

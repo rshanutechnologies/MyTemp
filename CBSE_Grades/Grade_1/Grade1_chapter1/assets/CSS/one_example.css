@@ -493,7 +493,7 @@ FINAL POPUP RESPONSIVE ONLY
 
 @media (max-width: 480px) {
 
-     .kid-card {
+    .kid-card {
         width: 260px;
         padding: 15px;
     }
@@ -527,6 +527,125 @@ FINAL POPUP RESPONSIVE ONLY
     .playAgain-btn {
         width: 100%;
         padding: 12px;
+    }
+
+}
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .main-container {
+        width: 1000px;
+        height: 650px;
+    }
+
+    .question-box {
+        font-size: 34px;
+    }
+
+    .question-image img {
+        height: 170px;
+    }
+
+    .option {
+        width: 280px;
+        height: 160px;
+        font-size: 22px;
+    }
+
+    .option img {
+        width: 110px;
+        height: 100px;
+    }
+
+    .option:nth-child(1) {
+        transform: translateX(-200px);
+    }
+
+    .option:nth-child(2) {
+        transform: translateX(200px);
+    }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+    .main-container {
+        width: 1100px;
+        height: 700px;
+    }
+
+    .question-box {
+        font-size: 38px;
+    }
+
+    .question-image img {
+        height: 190px;
+    }
+
+    .option {
+        width: 300px;
+        height: 170px;
+        font-size: 24px;
+    }
+
+    .option img {
+        width: 120px;
+        height: 110px;
+    }
+
+    .option:nth-child(1) {
+        transform: translateX(-230px);
+    }
+
+    .option:nth-child(2) {
+        transform: translateX(230px);
+    }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+    .main-container {
+        width: 1200px;
+        height: 750px;
+    }
+
+    .question-box {
+        font-size: 42px;
+    }
+
+    .question-image img {
+        height: 210px;
+    }
+
+    .option {
+        width: 320px;
+        height: 180px;
+        font-size: 26px;
+    }
+
+    .option img {
+        width: 130px;
+        height: 120px;
+    }
+
+    .option:nth-child(1) {
+        transform: translateX(-260px);
+    }
+
+    .option:nth-child(2) {
+        transform: translateX(260px);
     }
 
 }

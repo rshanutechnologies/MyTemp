@@ -501,3 +501,137 @@ button:disabled {
         width: 100%;
     }
 }
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .main {
+        width: 1000px;
+    }
+
+    .question {
+        font-size: 32px;
+    }
+
+    .left img {
+        width: 340px;
+        height: 230px;
+    }
+
+    #inputsContainer {
+        gap: 24px;
+        height: 70px;
+    }
+
+    .input-box input {
+        font-size: 24px;
+    }
+
+    .input-box button {
+        font-size: 18px;
+        padding: 10px 22px;
+    }
+
+    .quiz-nav {
+        gap: 260px;
+    }
+
+    .prev,
+    .next {
+        font-size: 22px;
+        padding: 14px 36px;
+    }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+    .main {
+        width: 1100px;
+    }
+
+    .question {
+        font-size: 36px;
+    }
+
+    .left img {
+        width: 380px;
+        height: 260px;
+    }
+
+    #inputsContainer {
+        gap: 28px;
+        height: 75px;
+    }
+
+    .input-box input {
+        font-size: 26px;
+    }
+
+    .input-box button {
+        font-size: 20px;
+        padding: 12px 26px;
+    }
+
+    .quiz-nav {
+        gap: 300px;
+    }
+
+    .prev,
+    .next {
+        font-size: 24px;
+        padding: 16px 40px;
+    }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+    .main {
+        width: 1200px;
+    }
+
+    .question {
+        font-size: 40px;
+    }
+
+    .left img {
+        width: 420px;
+        height: 280px;
+    }
+
+    #inputsContainer {
+        gap: 32px;
+        height: 80px;
+    }
+
+    .input-box input {
+        font-size: 28px;
+    }
+
+    .input-box button {
+        font-size: 22px;
+        padding: 14px 30px;
+    }
+
+    .quiz-nav {
+        gap: 340px;
+    }
+
+    .prev,
+    .next {
+        font-size: 26px;
+        padding: 18px 44px;
+    }
+
+}

@@ -671,3 +671,150 @@ button:disabled {
   }
 
 }
+
+/* ===================================== */
+/* ===== 1280px PURE SIZE INCREASE ===== */
+/* ===================================== */
+
+@media (min-width: 1580px) {
+   
+ 
+  /* APP (same layout, just slightly wider feel) */
+  .app {
+    width: 600px;
+    height: 550px;
+    gap: 40px;
+    padding: 20px;
+    margin-top: -8% !important;
+  }
+
+  /* TITLE */
+  .title-pill {
+    width: 600px;
+    font-size: 36px;
+    padding: 18px 24px;
+    font-weight: 500;
+  }
+
+  /* QUESTION */
+  .question-pill {
+    width: min(1400px, 96vw);
+    height: 140px;
+    padding: 20px 28px;
+
+  }
+
+  .question-text {
+    font-size: 44px; /* ✅ your rule */
+    text-align: center;
+    height: 100px !important;
+    /* background-color: red !important; */
+  
+  }
+
+  /* IMAGE */
+  .image-box {
+    width: 280px;
+    height: 160px;
+  }
+
+  .question-image {
+    width: 260px;
+    height: 150px;
+  }
+  /* ===== OPTIONS (BIGGER SAME DESIGN) ===== */
+
+.options {
+  width: min(1300px, 98vw);
+  gap: 40px; /* slightly bigger spacing */
+  margin-top: 3%;
+}
+
+.option {
+  min-height: 180px;
+  border-radius: 22px;
+  border-width: 5px;
+}
+
+.opt-top {
+  height: 180px;
+  /* background-color: yellow !important; */
+}
+
+.opt-emoji-big {
+  font-size: 72px;
+  line-height: 72px;
+}
+
+.opt-name {
+  height: 60px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.opt-img {
+  width: 220px;
+  height: 180px;
+}
+  /* NAV */
+  .nav {
+    width: 600px;
+      margin-top: 4%;
+  }
+
+  .nav-btn {
+    width: 180px;   /* ✅ fixed */
+    height: 70px;   /* ✅ fixed */
+    font-size: 22px;
+
+    border-radius: 40px;
+  
+  }
+
+  /* POPUP */
+  .popup-box {
+    width: 360px;
+    padding: 30px;
+    border-radius: 24px;
+  }
+
+  .popup-box.popup-final {
+    width: 700px;
+  }
+
+  .popup-title {
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  .popup-emoji {
+    font-size: 90px;
+  }
+
+  .popup-tip {
+    font-size: 26px;
+  }
+
+  .popup-final-content {
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  .popup-final-content .emoji {
+    font-size: 80px;
+  }
+
+  .stars {
+    font-size: 34px;
+  }
+
+  /* FINAL BUTTONS */
+  .restart,
+  .home {
+    width: 180px;
+    height: 70px;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+}

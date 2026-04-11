@@ -322,7 +322,7 @@
             cursor: pointer;
         }
 
-   @media (max-width: 1050px) {
+        @media (max-width: 1050px) {
             body {
                 padding: 12px;
                 align-items: center;
@@ -331,7 +331,7 @@
 
             .game {
                 padding: 24px;
-                
+
             }
 
             .quiz-type {
@@ -467,7 +467,7 @@
         }
 
         @media (max-width: 480px) {
-             body {
+            body {
                 overflow-y: hidden;
             }
 
@@ -502,4 +502,128 @@
             .popup-content p {
                 font-size: 1.1em;
             }
+        }
+
+        /* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+        /* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+            .game {
+                width: min(1000px, 95vw);
+                padding: 32px;
+            }
+
+            .title {
+                font-size: 30px;
+            }
+
+            .question-box {
+                font-size: 32px;
+                height: 100px;
+            }
+
+            .question-image img {
+                width: 280px;
+                height: 230px;
+            }
+
+            .answers {
+                gap: 28px;
+            }
+
+            .answer {
+                height: 120px;
+                font-size: 32px;
+            }
+
+            .nav button {
+                font-size: 20px;
+                padding: 12px 30px;
+            }
+
+        } */
+
+
+        /* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+        @media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+            .game {
+                width: min(1100px, 95vw);
+                padding: 36px;
+            }
+
+            .title {
+                font-size: 34px;
+            }
+
+            .question-box {
+                font-size: 44px;
+                height: 110px;
+            }
+
+            .question-image img {
+                width: 320px;
+                height: 320px;
+            }
+
+            .answers {
+                gap: 32px;
+            }
+
+            .answer {
+                height: 130px;
+                font-size: 34px;
+            }
+
+           .nav button {
+         font-size: 30px;
+         padding: 20px 34px;
+     }
+
+        }
+
+
+        /* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+        @media screen and (min-width: 1921px) {
+
+            .game {
+                width: min(1200px, 95vw);
+                padding: 40px;
+            }
+
+          
+            .title {
+                font-size: 34px;
+            }
+
+            .question-box {
+                font-size: 44px;
+                height: 110px;
+            }
+
+            .question-image img {
+                width: 320px;
+                height: 320px;
+            }
+
+            .answers {
+                gap: 32px;
+            }
+
+            .answer {
+                height: 130px;
+                font-size: 34px;
+            }
+
+           .nav button {
+         font-size: 30px;
+         padding: 20px 34px;
+     }
+
+
         }

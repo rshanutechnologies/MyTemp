@@ -27,7 +27,7 @@
       height: 100vh;
       width: 100vw;
       margin: 0;
-      font-family: 'Livvic', sans-serif;
+      font-family: 'Livvic' !important;
       background:
         radial-gradient(circle at top left, var(--bg1), transparent 55%),
         radial-gradient(circle at bottom right, var(--bg2), transparent 55%),
@@ -190,7 +190,7 @@
       font-size: clamp(14px, 2vh, 22px);
       border: 4px solid white;
       cursor: pointer;
-      font-family: 'Livvic';
+      font-family: 'Livvic' !important;
       min-width: 140px;
       
     }
@@ -214,7 +214,7 @@
       padding: 10px 25px;
       border-radius: 50px;
       border: 3px solid #fff;
-      font-family: "Livvic";
+      font-family: "Livvic" !important;
       font-weight: 800;
       cursor: pointer;
       font-size: 16px;
@@ -524,6 +524,108 @@
     font-size: 14px;
     min-width: 110px;
   }
+
+}
+
+
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1025px) and (max-width:1440px){
+
+.wrap{
+max-width:1200px;
+}
+
+.sentence{
+font-size:30pt;
+}
+
+.blank-input{
+width:60px;
+height:70px;
+font-size:28px;
+}
+
+.clue-box{
+width:320px;
+height:220px;
+}
+
+.hint-text{
+font-size:20pt;
+}
+
+.nav-btn{
+padding:14px 26px;
+font-size:18px;
+}
+
+} */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.wrap{
+max-width:1350px;
+}
+
+.sentence{
+font-size:44px;
+}
+
+.blank-input{
+width:70px;
+height:80px;
+font-size:32px;
+}
+
+.clue-box{
+width:360px;
+height:240px;
+}
+
+.hint-text{
+font-size:22pt;
+}
+
+.nav-btn{
+padding:16px 32px;
+font-size:20px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.wrap{
+max-width:1500px;
+}
+
+.sentence{
+font-size:38pt;
+}
+
+.blank-input{
+width:80px;
+height:90px;
+font-size:36px;
+}
+
+.clue-box{
+width:420px;
+height:280px;
+}
+
+.hint-text{
+font-size:24pt;
+}
+
+.nav-btn{
+padding:18px 36px;
+font-size:22px;
+}
 
 }
   </style>

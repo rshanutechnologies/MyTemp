@@ -318,34 +318,102 @@ left:30px;
   }
 }
 /* ============================= */
-/* LARGE SCREEN FIX */
+/* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
+@media screen and (min-width:1200px) and (max-width:1440px){
 
-@media (min-width:1400px){
+  .sidebar{
+    width:260px;
+  }
 
+  .menu button{
+    width:150px;
+    height:75px;
+    font-size:20px;
+  }
+
+  /* Adjust spacing (balanced like laptop) */
+  .menu button:nth-child(1){ top:60px; }
+  .menu button:nth-child(2){ top:200px; }
+  .menu button:nth-child(3){ top:340px; }
+  .menu button:nth-child(4){ top:480px; }
+
+}
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+  .sidebar{
+    width:340px;
+  }
+
+  .menu button{
+    width:180px;
+    height:90px;
+    font-size:24px;
+  }
+
+  /* circle knobs also scale */
+  .menu button::before{
+    width:55px;
+    height:55px;
+    top:-22px;
+  }
 .sidebar{
-width:280px;
-height:100vh;
-}
-
-.menu button:nth-child(1){
-top:80px;
-}
-
-.menu button:nth-child(2){
-top:240px;
-}
-
-.menu button:nth-child(3){
-top:400px;
-}
-
-.menu button:nth-child(4){
-top:560px;
-}
+    zoom: 0.9;   /* 🔥 perfect increase */
+  }
+  .menu button::after{
+    width:50px;
+    height:50px;
+    bottom:-22px;
+  }
+  /* Better spacing */
+  .menu button:nth-child(1){ top:80px; left:40px; }
+  .menu button:nth-child(2){ top:250px; right:30px; }
+  .menu button:nth-child(3){ top:420px; left:40px; }
+  .menu button:nth-child(4){ top:590px; right:30px; }
 
 }
 
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width:1921px){
+
+  .sidebar{
+    width:380px;
+  }
+
+  .menu button{
+    width:200px;
+    height:90px;
+    font-size:26px;
+    border-radius:24px;
+  }
+
+  .menu button::before{
+    width:55px;
+    height:55px;
+    top:-25px;
+  }
+.sidebar{
+    zoom: 1.4;   /* 🔥 bigger */
+  }
+  .menu button::after{
+    width:50px;
+    height:50px;
+    bottom:-25px;
+  }
+
+  /* Spacing for big screens */
+  .menu button:nth-child(1){ top:50px; left:50px; }
+  .menu button:nth-child(2){ top:220px; right:40px; }
+  .menu button:nth-child(3){ top:400px; left:50px; }
+  .menu button:nth-child(4){ top:580px; right:40px; }
+
+}
 </style>
 </head>
 

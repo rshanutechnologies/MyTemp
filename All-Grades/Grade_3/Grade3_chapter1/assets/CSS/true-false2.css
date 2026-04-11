@@ -283,20 +283,14 @@ body{
 }
 
 
-
-/* NAV */
-
 .nav{
+  width:100%;
+  max-width:900px;
+  margin:20px auto 0;
 
-  margin-top:-20px;
- display:flex;
+  display:flex;
   justify-content:space-between;
-  align-items:center;
-  margin-top:10px;
-  gap:10px;
-
 }
-
 
 
 .nav button{
@@ -667,5 +661,136 @@ body{
 @media (max-width:600px){
   .header{
     font-size:18px !important;
+  }
+}
+/* ================= MCQ STYLE RESPONSIVE ================= */
+
+/* Desktop */
+@media screen and (min-width: 1025px) and (max-width: 1440px){
+
+  .page{
+    max-width:1000px;   /* 🔥 bigger layout */
+  }
+
+  .question{
+    font-size:40px;     /* ✅ same as MCQ */
+  }
+
+  .question-image{
+    width:280px;
+  }
+
+  .shaft{
+    height:350px;
+  }
+
+  .elevator{
+    width:120px;
+    height:90px;
+    font-size:50px;
+  }
+
+  .btn{
+    width:220px;
+    height:70px;
+    font-size:22px;
+  }
+
+  .controls{
+    gap:40px;
+  }
+
+  .nav{
+    max-width:700px;
+    margin:20px auto 0;
+  }
+
+  .nav button{
+    font-size:30px;
+   padding:15px 40px;
+  }
+ 
+
+}
+
+/* Large Screens */
+@media screen and (min-width: 1441px) and (max-width: 1920px){
+
+  .page{
+    max-width:1200px;
+  }
+
+  .question{
+    font-size:38px;
+  }
+
+  .question-image{
+    width:320px;
+  }
+
+  .shaft{
+    height:380px;
+  }
+
+  .elevator{
+    width:130px;
+    height:100px;
+    font-size:55px;
+  }
+
+  .btn{
+    width:240px;
+    height:75px;
+    font-size:24px;
+  }
+
+  .controls{
+    gap:50px;
+  }
+
+  .nav{
+    max-width:800px;
+    margin:20px auto 0;
+  }
+}
+
+/* 4K Screens */
+@media screen and (min-width: 1921px){
+
+  .page{
+    max-width:1400px;
+  }
+
+  .question{
+    font-size:44px;
+  }
+
+  .question-image{
+    width:360px;
+  }
+
+  .shaft{
+    height:420px;
+  }
+
+  .elevator{
+    width:150px;
+    height:110px;
+    font-size:60px;
+  }
+
+  .btn{
+    width:260px;
+    height:80px;
+    font-size:26px;
+  }
+
+  .controls{
+    gap:60px;
+  }
+
+  .nav{
+    max-width:900px;
+    margin:30px auto 0;
   }
 }

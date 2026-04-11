@@ -453,6 +453,16 @@ body{
          font-size: 14px;
          padding: 6px 14px;
      }
+
+     .popup-box {
+    background: white;
+    padding: 28px;
+    border-radius: 28px;
+    width: 200px;
+    text-align: center;
+    animation: pop .4s ease;
+}
+     
 }
 
 
@@ -496,4 +506,141 @@ body{
          font-size: 14px;
          padding: 6px 14px;
      }
+}
+
+
+
+
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1225px) and (max-width:1640px){
+
+.quiz{
+max-width:1150px;
+}
+
+.main-title{
+font-size:1.3rem;
+padding:10px 28px;
+}
+
+.question{
+font-size:44px;
+height:70px;
+}
+
+.image-wrap{
+width:300px;
+height:300px;
+}
+
+.image-wrap img{
+width:280px;
+height:280px;
+}
+
+.option{
+height:80px;
+font-size:28rem;
+}
+
+.option img{
+width:80px;
+height:80px;
+}
+
+.nav button{
+font-size:28px;
+padding:10px 22px;
+}
+
+} */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1350px) and (max-width:1920px){
+
+.quiz{
+max-width:1300px;
+}
+
+.main-title{
+font-size:1.5rem;
+padding:12px 34px;
+}
+
+.question{
+font-size:44px;
+height:80px;
+}
+
+.image-wrap{
+width:340px;
+height:340px;
+}
+
+.image-wrap img{
+width:320px;
+height:320px;
+}
+
+.option{
+height:100px;
+font-size:28px;
+}
+
+.option img{
+width:140px;
+height:100px;
+}
+
+.nav button{
+font-size:28px;
+padding:12px 26px;
+margin-top: 40px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.quiz{
+max-width:1450px;
+}
+
+.main-title{
+font-size:1.7rem;
+padding:14px 40px;
+}
+
+.question{
+font-size:48px;
+height:90px;
+}
+
+.image-wrap{
+width:330px;
+height:330px
+}
+.image-wrap img{
+width:320px;
+height:300px;
+}
+
+.option{
+height:110px;
+font-size:30px;
+}
+
+.option img{
+width:90px;
+height:90px;
+}
+
+.nav button{
+font-size:30px;
+padding:14px 30px;
+}
+
 }

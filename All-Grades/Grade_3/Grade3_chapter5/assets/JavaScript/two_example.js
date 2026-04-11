@@ -1,4 +1,3 @@
-
 /* ✅ TTS ONLY */
 function speakText(text){
   if(!("speechSynthesis" in window)) return;
@@ -7,7 +6,7 @@ function speakText(text){
   utter.rate = 1;
   utter.pitch = 1;
   utter.volume = 0.25;
-  utter.lang = "en-UK"
+  utter.lang = "en-UK";
   window.speechSynthesis.speak(utter);
 }
 
@@ -35,6 +34,7 @@ function showPopup(isCorrect){
 
   setTimeout(()=> popup.style.display="none", 1200);
 }
+
 function showFinalPopup(){
   document.getElementById("finalPopup").style.display="flex";
   document.getElementById("finalScore").textContent =
@@ -43,8 +43,7 @@ function showFinalPopup(){
     "⭐".repeat(score);
 }
 
-
-/* ✅ Quiz Data (Your 2-correct + 2-wrong style) */
+/* ✅ Quiz Data */
 const quizData = [
   {
     q:"Q1. Primary consumers  __________   __________",
@@ -72,9 +71,9 @@ let index = 0;
 let score = 0;
 
 /* ✅ State */
-const solved = quizData.map(()=>({
-  picked:[],
-  done:false
+const solved = quizData.map(() => ({
+  picked: [],
+  done: false
 }));
 
 /* ✅ Elements */
@@ -87,7 +86,7 @@ const dropHint = document.getElementById("dropHint");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 
-/* ✅ Shuffle helper */
+/* ✅ Shuffle */
 function shuffle(arr){
   const a = [...arr];
   for(let i=a.length-1;i>0;i--){
@@ -109,6 +108,7 @@ function render(){
 
   // Drop zone restore
   droppedRow.innerHTML = "";
+
   if(state.picked.length === 0){
     dropHint.style.display = "block";
     dropZone.classList.remove("filled");
@@ -127,7 +127,7 @@ function render(){
     });
   }
 
-  // Options build
+  // Options
   const opts = shuffle([
     ...q.correct.map(t=>({text:t, correct:true})),
     ...q.wrong.map(t=>({text:t, correct:false}))
@@ -138,215 +138,73 @@ function render(){
   opts.forEach(opt=>{
     const wrap = document.createElement("div");
     wrap.className = "option-wrap";
-    wrap.draggable = true;
     wrap.dataset.text = opt.text;
     wrap.dataset.correct = opt.correct ? "1" : "0";
 
     const circle = document.createElement("div");
     circle.className = "option-circle";
-    circle.innerHTML = `<img src="../assets/images/${opt.text}.png" alt="${opt.text}">`;
+    circle.innerHTML = `<img src="../assets/images/${opt.text}.png">`;
 
     const txt = document.createElement("div");
     txt.className = "option-text";
     txt.textContent = opt.text;
 
-    // Restore correct already dropped
-  if(state.picked.includes(opt.text)){
-  circle.classList.add("correct");
-  wrap.classList.add("locked");   // ✅ only lock, no fade
-  wrap.draggable = false;         // ✅ stop dragging
-}
+    // Restore state
+    if(state.picked.includes(opt.text)){
+      circle.classList.add("correct");
+      wrap.classList.add("locked");
+    }
 
-
-    // If done → disable remaining wrong normally
     if(state.done && !state.picked.includes(opt.text)){
       wrap.classList.add("disabled");
-      wrap.draggable = false;
     }
 
     wrap.appendChild(circle);
     wrap.appendChild(txt);
     optionsEl.appendChild(wrap);
 
-    wrap.addEventListener("dragstart",(e)=>{
-      if(wrap.classList.contains("disabled")) return;
-      e.dataTransfer.setData("text/plain", JSON.stringify({
-        text: opt.text,
-        correct: opt.correct
-      }));
+    /* ✅ CLICK ONLY (MAIN LOGIC) */
+    wrap.addEventListener("click", () => {
+
+      if (wrap.classList.contains("disabled") ||
+          wrap.classList.contains("locked")) return;
+
+      if (state.done) return;
+      if (state.picked.includes(opt.text)) return;
+
+      // ❌ WRONG
+      if (!opt.correct){
+        speakText("Wrong");
+        showPopup(false);
+        return;
+      }
+
+      // ✅ CORRECT
+      speakText("Correct");
+      showPopup(true);
+
+      state.picked.push(opt.text);
+
+      wrap.classList.add("locked");
+      wrap.style.pointerEvents = "none";
+
+      if(state.picked.length === q.correct.length){
+        state.done = true;
+        score++;
+        nextBtn.disabled = false;
+
+        if(index === quizData.length - 1){
+          setTimeout(showFinalPopup, 1100);
+        }
+      }
+
+      render();
     });
-  });
-  if (window.innerWidth <= 768) {
-  enableMobileDrag();   // ✅ mobile only
-}
-}
-function enableMobileDrag() {
-  const options = document.querySelectorAll(".option-wrap");
-
-  options.forEach(option => {
-
-    // ❌ Remove old events first (important for re-render)
-    option.replaceWith(option.cloneNode(true));
-  });
-
-  const newOptions = document.querySelectorAll(".option-wrap");
-
-  newOptions.forEach(option => {
-
-    option.addEventListener("click", () => {
-
-      if (option.classList.contains("disabled") ||
-          option.classList.contains("locked")) return;
-
-      handleMobileDrop(option.dataset.text);
-
-    });
 
   });
 }
-function handleMobileDrop(text) {
 
-  const q = quizData[index];
-  const state = solved[index];
-
-  if (state.done) return;
-  if (state.picked.includes(text)) return;
-
-  if (!q.correct.includes(text)) {
-    speakText("Wrong");
-    showPopup(false);
-    return;
-  }
-
-  speakText("Correct");
-  showPopup(true);
-
-  state.picked.push(text);
-
-  if (state.picked.length === q.correct.length) {
-    state.done = true;
-    score++;
-    nextBtn.disabled = false;
-
-    if (index === quizData.length - 1) {
-      setTimeout(showFinalPopup, 1100);
-    }
-  }
-
-  render();
-}
-/* ✅ Drop Events */
-dropZone.addEventListener("dragover",(e)=> e.preventDefault());
-
-// dropZone.addEventListener("drop",(e)=>{
-//   e.preventDefault();
-//   const data = JSON.parse(e.dataTransfer.getData("text/plain"));
-
-//   const q = quizData[index];
-//   const state = solved[index];
-
-//   if(state.done) return;
-//   if(state.picked.includes(data.text)) return;
-
-//   // WRONG
-//   if(!data.correct){
-//     speakText("Wrong");
-//     showPopup(`
-//       <div class="popup-wrong">
-//         <span class="cross">❌ Wrong</span>
-//         <span class="sad">😢</span>
-//         <div class="tip">💡 You can do it!</div>
-//       </div>
-//     `);
-//     return;
-//   }
-
-//   // CORRECT
-//   speakText("Correct");
-//   showPopup(`
-//     <div class="popup-correct">
-//       <span class="check">✅ Correct</span>
-//       <span class="happy">🎉🥳</span>
-//     </div>
-//   `);
-
-//   state.picked.push(data.text);
-
-//   // if two correct completed → mark done and add score 1
-//   if(state.picked.length === q.correct.length){
-//     state.done = true;
-//     score++;
-//     nextBtn.disabled = false;
-
-//     // auto final popup at last question
-//     if(index === quizData.length - 1){
-//       setTimeout(showFinalPopup, 1100);
-//     }
-//   }
-
-//   render();
-// });
-dropZone.addEventListener("drop", (e) => {
-  e.preventDefault();
-
-  const data = JSON.parse(e.dataTransfer.getData("text/plain"));
-  const q = quizData[index];
-  const state = solved[index];
-
-  // ✅ stop if already completed
-  if (state.done) return;
-
-  // ✅ stop duplicate drops
-  if (state.picked.includes(data.text)) return;
-
-  // ✅ WRONG DROP
-  // WRONG DROP
-if (!data.correct) {
-  speakText("Wrong");
-  showPopup(false);   // ✅ here
-  return;
-}
-
-
-  // ✅ CORRECT DROP
-  // CORRECT DROP
-speakText("Correct");
-showPopup(true);   // ✅ here
-
-
-  // ✅ add only ONCE
-  state.picked.push(data.text);
-
-  // ✅ 🔥 Immediately lock the dragged option from right side
-  const allOptions = document.querySelectorAll(".option-wrap");
-  allOptions.forEach(opt => {
-    if (opt.dataset.text === data.text) {
-      opt.classList.add("locked");
-      opt.draggable = false;
-      opt.style.pointerEvents = "none";
-    }
-  });
-
-  // ✅ if both correct done
-  if (state.picked.length === q.correct.length) {
-    state.done = true;
-    score++;
-    nextBtn.disabled = false;
-
-    if (index === quizData.length - 1) {
-      setTimeout(showFinalPopup, 1100);
-    }
-  }
-
-  render();
- 
-
-});
-
-
-/* ✅ Final popup */
-
-/* ✅ Nav */
+/* ✅ Navigation */
 prevBtn.addEventListener("click",()=>{
   if(index > 0){
     index--;

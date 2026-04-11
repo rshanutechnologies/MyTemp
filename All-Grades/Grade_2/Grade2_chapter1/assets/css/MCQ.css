@@ -585,6 +585,7 @@ button:disabled {
   .container{
     width:100%;
     max-width:100%;
+    
     margin:auto;
     gap:16px;
     align-items:stretch;
@@ -830,14 +831,130 @@ button:disabled {
    ✅ LARGE SCREEN IMPROVEMENT (≥ 1400px)
 ===================================================== */
 
-/* @media (min-width: 1400px){
 
-  .container{
-    max-width:1100px;
-  }
 
-  .question-text{
-    font-size:38px !important;
-  }
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1225px) and (max-width:1640px){
 
-} 
+.container{
+width:min(1100px,95vw);
+}
+
+.question-text{
+font-size:40px !important;
+}
+
+.question-image{
+width:300px;
+height:300px;
+}
+
+.options{
+grid-template-columns:repeat(3,1fr);
+gap:14px;
+}
+
+.option-img{
+width:85px;
+height:85px;
+}
+
+.option-label{
+font-size:24px;
+}
+
+.nav{
+gap:550px;
+}
+
+.nav button{
+width:70px;
+height:70px;
+}
+
+} */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1350px) and (max-width:1920px){
+
+.container{
+width:min(1250px,95vw);
+}
+
+.question-text{
+font-size:44px !important;
+}
+
+.question-image{
+width:320px;
+height:320px;
+}
+
+.options{
+gap:18px;
+}
+
+.option-img{
+width:150px;
+height:150px;
+
+}
+
+.option-label{
+font-size:26px;
+}
+
+.nav{
+gap:700px;
+}
+
+.nav button{
+width:80px;
+height:80px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.container{
+width:min(1400px,95vw);
+}
+
+.question-text{
+font-size:44px !important;
+}
+
+.question-image{
+width:320px;
+height:320px;
+}
+
+.options{
+gap:18px;
+}
+
+.option-img{
+width:150px;
+height:150px;
+
+}
+
+.option-label{
+font-size:26px;
+}
+
+.nav{
+gap:700px;
+}
+
+.nav button{
+width:80px;
+height:80px;
+}
+
+
+}

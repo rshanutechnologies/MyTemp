@@ -525,3 +525,122 @@ body {
         font-size: .9em
     }
 }
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .main {
+        max-width: 1100px;
+    }
+
+    .question h2 {
+        font-size: 34px;
+    }
+
+    .image-container {
+        gap: 50px;
+    }
+
+    .image-box {
+        width: 320px;
+        padding: 24px 14px 28px;
+    }
+
+    .image-box img {
+        width: 190px;
+        height: 190px;
+    }
+
+    .image-bottom {
+        font-size: 21px;
+        padding: 16px 28px;
+    }
+
+    .controls button {
+        font-size: 22px;
+        padding: 14px 36px;
+    }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+    .main {
+        max-width: 1200px;
+    }
+
+    .question h2 {
+        font-size: 38px;
+    }
+
+    .image-container {
+        gap: 70px;
+    }
+
+    .image-box {
+        width: 360px;
+        padding: 26px 16px 30px;
+    }
+
+    .image-box img {
+        width: 210px;
+        height: 210px;
+    }
+
+    .image-bottom {
+        font-size: 23px;
+        padding: 18px 30px;
+    }
+
+    .controls button {
+        font-size: 24px;
+        padding: 16px 40px;
+    }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+    .main {
+        max-width: 1300px;
+    }
+
+    .question h2 {
+        font-size: 42px;
+    }
+
+    .image-container {
+        gap: 90px;
+    }
+
+    .image-box {
+        width: 400px;
+        padding: 28px 18px 32px;
+    }
+
+    .image-box img {
+        width: 240px;
+        height: 240px;
+    }
+
+    .image-bottom {
+        font-size: 25px;
+        padding: 20px 34px;
+    }
+
+    .controls button {
+        font-size: 26px;
+        padding: 18px 44px;
+    }
+
+}

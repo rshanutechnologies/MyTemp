@@ -396,40 +396,40 @@ body {
 ================================ */
 @media (max-width: 850px) {
 
-  body {
-    padding: 14px;
-    align-items: flex-start;
-    overflow-y: auto;
-  }
+    body {
+        padding: 14px;
+        align-items: flex-start;
+        overflow-y: auto;
+    }
 
-  .app {
-    padding: 20px;
-    margin-top: 50px;
-  }
+    .app {
+        padding: 20px;
+        margin-top: 50px;
+    }
 
-  .question {
-    font-size: 26px;
-    height: auto;
-  }
+    .question {
+        font-size: 26px;
+        height: auto;
+    }
 
-  .q-image {
-    width: 210px;
-    height: auto;
-  }
+    .q-image {
+        width: 210px;
+        height: auto;
+    }
 
-  .answers {
-    gap: 20px;
-  }
+    .answers {
+        gap: 20px;
+    }
 
-  .answer {
-    font-size: 22px;
-    height: 80px;
-  }
+    .answer {
+        font-size: 22px;
+        height: 80px;
+    }
 
-  .nav button {
-    font-size: 18px;
-    padding: 10px 26px;
-  }
+    .nav button {
+        font-size: 18px;
+        padding: 10px 26px;
+    }
 }
 
 
@@ -439,62 +439,94 @@ body {
 ================================ */
 @media (max-width: 768px) {
 
-  body {
-    padding: 0px 10px;
-    align-items: flex-start;
-    overflow-y: none;
-  }
+    body {
+        padding: 0px 10px;
+        align-items: flex-start;
+        overflow-y: none;
+    }
 
-  .app {
-    padding: 0px 16px;
-  }
+    .app {
+        padding: 0px 16px;
+    }
 
-  .progress {
-    width: 100%;
-    padding: 14px 22px;
-    border-radius: 25px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-}
+    .progress {
+        width: 100%;
+        padding: 14px 22px;
+        border-radius: 25px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+    }
 
-  .question-wrap {
-    gap: 24px;
-  }
+    .question-wrap {
+        gap: 24px;
+    }
 
-  .question {
-    font-size: 22px;
-    text-align: center;
-    justify-content: center;
-  }
+    .question {
+        font-size: 22px;
+        text-align: center;
+        justify-content: center;
+    }
 
-  .q-image {
-    width: 180px;
-    height: auto;
-  }
+    .q-image {
+        width: 180px;
+        height: auto;
+    }
 
-  /* TRUE / FALSE → vertical */
-  .answers {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
+    /* TRUE / FALSE → vertical */
+    .answers {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
 
-  .answer {
-    font-size: 20px;
-    height: 70px;
-  }
+    .answer {
+        font-size: 20px;
+        height: 70px;
+    }
 
-  .nav {
-    flex-direction: column;
-    gap: 12px;
-  }
+    .nav {
+        flex-direction: row;
+        gap: 12px;
+    }
 
-  .nav button {
-    width: 100%;
-    font-size: 16px;
-    padding: 10px;
-  }
+    .nav button {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    #finalPopup {
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .finalpopup-box {
+        width: 100%;
+        max-width: 320px;
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .final-heading {
+        font-size: 1.6em;
+        margin: 10px 0;
+    }
+
+    #finalScore {
+        font-size: 1.2em;
+    }
+
+    #stars {
+        font-size: 30px;
+    }
+
+    .playAgain-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
 }
 
 
@@ -503,21 +535,123 @@ body {
 ================================ */
 @media (max-width: 480px) {
 
-  .question {
-    font-size: 20px;
-  }
+    .question {
+        font-size: 20px;
+    }
 
-  .q-image {
-    width: 150px;
-  }
+    .q-image {
+        width: 150px;
+    }
 
-  .answer {
-    font-size: 18px;
-    height: 64px;
-  }
+    .answer {
+        font-size: 18px;
+        height: 64px;
+    }
 
-  .nav button {
-    font-size: 15px;
-    padding: 9px;
-  }
+    .nav button {
+        font-size: 15px;
+        padding: 9px;
+    }
+}
+
+/* =========================================
+   💻 DESKTOP / MONITOR (1025px – 1440px)
+========================================= */
+/* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .app {
+        max-width: 950px;
+        padding: 20px 40px;
+    }
+
+    .question {
+        font-size: 32px;
+    }
+
+    .q-image {
+        width: 260px;
+        height: 200px;
+    }
+
+    .answer {
+        font-size: 28px;
+        height: 100px;
+    }
+
+    .nav button {
+        font-size: 20px;
+        padding: 12px 30px;
+    }
+
+    .progress .item {
+        font-size: 32px;
+    }
+} */
+
+
+/* =========================================
+   🖥️ LARGE MONITORS (1441px – 1920px)
+========================================= */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+    .app {
+        max-width: 950px;
+        transform: scale(1.05);
+        transform-origin: center;
+    }
+
+    .question {
+        font-size: 44px;
+    }
+
+    .q-image {
+        width: 300px;
+        height: 280px;
+    }
+
+    .answer {
+        font-size: 30px;
+        font-weight: 700;
+    }
+ .nav button {
+        font-size: 28px;
+        padding: 14px 34px;
+    }
+    .progress .item {
+        font-size: 34px;
+    }
+}
+
+
+/* =========================================
+   📺 EXTRA LARGE / 4K (1921px+)
+========================================= */
+@media screen and (min-width: 1921px) {
+
+    .app {
+        max-width: 950px;
+        transform: scale(1.15);
+        transform-origin: center;
+    }
+
+    .question {
+        font-size: 44px;
+    }
+
+    .q-image {
+        width: 300px;
+        height: 280px;
+    }
+
+    .answer {
+        font-size: 30px;
+        font-weight: 700;
+    }
+ .nav button {
+        font-size: 28px;
+        padding: 14px 34px;
+    }
+    .progress .item {
+        font-size: 34px;
+    }
 }

@@ -614,3 +614,124 @@ body {
         font-size: 16px;
     }
 }
+
+/* =========================================
+   💻 DESKTOP / MONITOR (1025px – 1440px)
+========================================= */
+/* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .template {
+        width: 1100px;
+        padding: 30px;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .image-holder {
+        width: 120px;
+        height: 120px;
+    }
+
+    .option {
+        height: 140px;
+    }
+
+    .option img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .option .label {
+        font-size: 20px;
+    }
+
+    .prev,
+    .next {
+        font-size: 20px;
+        padding: 12px 28px;
+    }
+} */
+
+
+/* =========================================
+   🖥️ LARGE MONITORS (1441px – 1920px)
+========================================= */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+    .template {
+        width: 1100px;
+        transform: scale(1.05);
+        transform-origin: center;
+    }
+
+    .title {
+        font-size: 35px;
+    }
+
+    .image-holder {
+        width: 200px;
+        height: 200px;
+    }
+
+    .option {
+        height: 130px;
+    }
+
+    .option img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .option .label {
+        font-size: 24px;
+    }
+
+    .prev,
+    .next {
+        font-size: 24px;
+        padding: 14px 32px;
+    }
+}
+
+
+/* =========================================
+   📺 EXTRA LARGE / 4K (1921px+)
+========================================= */
+@media screen and (min-width: 1921px) {
+
+    .template {
+        width: 1100px;
+        transform: scale(1.15);
+        transform-origin: center;
+    }
+
+    .title {
+        font-size: 38px;
+    }
+
+    .image-holder {
+        width: 160px;
+        height: 160px;
+    }
+
+    .option {
+        height: 170px;
+    }
+
+    .option img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .option .label {
+        font-size: 24px;
+    }
+
+    .prev,
+    .next {
+        font-size: 22px;
+        padding: 14px 32px;
+    }
+}

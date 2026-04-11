@@ -122,9 +122,9 @@ div.innerHTML = `
     }
 
     div.classList.add("correct-lock");
-    div.style.background="#e6fff2";
-    div.style.borderRadius="16px";
-    div.style.pointerEvents="none";
+    // div.style.background="#e6fff2";
+    // div.style.borderRadius="16px";
+    // div.style.pointerEvents="none";
 
 }
 
@@ -175,8 +175,8 @@ if(selected === correct){
 
             opt.classList.add("correct-lock");
 
-            opt.style.background="#e6fff2";
-            opt.style.borderRadius="16px";
+            // opt.style.background="#e6fff2";
+            // opt.style.borderRadius="16px";
 
         }else{
 

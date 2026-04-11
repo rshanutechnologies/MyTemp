@@ -87,7 +87,7 @@ border-bottom:clamp(8px,1vw,15px) solid transparent;
 width:min(95%,1000px);
 padding:clamp(20px,4vw,50px);
 border-radius:30px;
-margin-left:clamp(0px,5vw,70px);
+margin-left:clamp(0px,7vw,90px);
 position:relative;
 }
 
@@ -192,18 +192,22 @@ transform:translate(-50%,-50%) scale(1);
 /* ============================= */
 /* RESULT */
 /* ============================= */
+
 .result-box{
 position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%) scale(0);
+
 background:#fff;
 padding:clamp(25px,3vw,40px);
 border-radius:30px;
 text-align:center;
+
 box-shadow:0 20px 50px rgba(0,0,0,0.25);
-z-index:1000;
 transition:.4s;
+
+width:min(90%,400px);
 }
 
 .result-box.show{
@@ -211,25 +215,31 @@ transform:translate(-50%,-50%) scale(1);
 }
 
 .result-box h2{
-font-size:clamp(22px,2vw,34px);
-margin-bottom:10px;
+font-size:clamp(24px,2vw,34px);
+margin-bottom: 10px;
 }
 
+
 .result-box p{
-font-size:clamp(16px,1.5vw,24px);
-margin-bottom:20px;
+font-size:clamp(18px,1.5vw,24px);
+margin-bottom: 20px; 
 }
 
 .play-btn{
 background:#4caf50;
 border:none;
-padding:clamp(10px,1.5vh,14px) clamp(20px,3vw,30px);
+
+width:clamp(140px,20vw,180px);
+height:clamp(40px,6vh,50px);
+
 font-size:clamp(14px,1vw,18px);
 border-radius:30px;
 color:white;
 cursor:pointer;
-}
 
+white-space:nowrap;
+margin-top: 10px; 
+}
 /* ============================= */
 /* RESPONSIVE (STRUCTURE ONLY) */
 /* ============================= */

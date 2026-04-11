@@ -1038,13 +1038,127 @@ font-size:20px;
 
 /* Medium desktops */
 @media (min-width: 1280px) {
- body{
-    margin-top: 3%;
+
+
+    body{
+        margin-top: -3% !important;
+    }
+  /* ✅ MAIN CONTAINER */
+  .main{
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
   }
+
+  /* ✅ TOP BAR */
+  .badge{
+    font-size: 24px;
+    padding: 12px 30px;
+  }
+
+  .qcount{
+    font-size: 24px;
+  }
+
+  /* ✅ IMAGE */
+  .left img{
+    width: 300px;
+    height: 300px;
+    margin-top: 12% !important;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    min-height: 140px;
+    padding-inline: 40px;
+  }
+
+  /* ✅ INPUT BOX BIG */
+  .input-box{
+    width: 70%;
+    height: 75px;
+    border-radius: 50px;
+  }
+
+  .input-box input{
+    font-size: 26px;
+  }
+
+  #answerInput{
+    font-size: 28px;
+  }
+
+  /* ✅ INPUT BUTTON */
+  .input-box button{
+    font-size: 22px;
+    padding: 12px 28px;
+  }
+
+  /* ✅ SUBMIT BUTTON (SYSTEM SIZE) */
+  .submit{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+  }
+
+  /* ✅ NAV BUTTONS (CONVERT TO SYSTEM STYLE) */
+  .prev,
+  .next{
+    width: 100px;
+    height: 100px;
+    border-radius: 80% !important;
+    font-size: 20px;
+  }
+
+  /* ✅ NAV SPACING */
   .quiz-nav{
-    margin-top:1%;
-  
-}
+    gap: 60%;
+  }
+
+  /* ✅ DOTS BIG */
+  .dot{
+    width: 35px;
+    height: 35px;
+  }
+
+  /* ✅ POPUP (IMPORTANT) */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-icon{
+    font-size: 100px;
+  }
+
+  .popup-title{
+    font-size: 34px;
+  }
+
+  .popup-msg{
+    font-size: 24px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .popup-box.popup-final{
+    width: 600px;
+  }
+
+  .popup-final-content{
+    font-size: 28px;
+  }
+
+  #stars{
+    font-size: 50px;
+  }
+
+  .playAgain-btn{
+    font-size: 20px;
+    padding: 14px 32px;
+  }
+
 }
 
 /* Large desktops */

@@ -173,7 +173,7 @@
       text-align: center;
     }
 
-      /* ==================================================
+    /* ==================================================
    📱 TABLETS (769px – 1024px)
 ================================================== */
     @media (max-width: 900px) {
@@ -216,7 +216,7 @@
       }
     }
 
-  
+
     /* ==================================================
    📱 MOBILES (≤768px)
 ================================================== */
@@ -276,9 +276,9 @@
       }
     }
 
-  
 
-      /* ==================================================
+
+    /* ==================================================
    📱 SMALL MOBILES (≤480px)
 ================================================== */
     @media (max-width: 480px) {
@@ -349,6 +349,102 @@
       }
     }
 
+    /* =========================================
+💻 DESKTOP (1025px – 1440px)
+========================================= */
+    /* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+      .app {
+        max-width: 1200px;
+        padding: 30px;
+      }
+
+      .match-row {
+        padding: 18px 20px;
+        gap: 20px;
+      }
+
+      .left-item {
+        font-size: clamp(20px, 1.6vw, 26px);
+      }
+
+      .answer-box {
+        width: 70px;
+        height: 55px;
+        font-size: 26px;
+      }
+
+      .option img {
+        height: clamp(100px, 9vh, 140px);
+      }
+    }
+ */
+
+    /* =========================================
+🖥 LARGE MONITORS (1441px – 1920px)
+========================================= */
+    @media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+      .app {
+        max-width: 1400px;
+        padding: 40px;
+      }
+
+      .match-row {
+        padding: 20px 25px;
+        gap: 25px;
+      }
+
+      .left-item {
+        font-size: 28px
+      }
+
+      .answer-box {
+        width: 80px;
+        height: 60px;
+        font-size: 30px;
+      }
+
+      .option img {
+        height: clamp(120px, 8vh, 160px);
+      }
+    }
+
+
+    /* =========================================
+🖥 4K / EXTRA LARGE (1921px+)
+========================================= */
+    @media screen and (min-width: 1921px) {
+
+      .app {
+        max-width: 1600px;
+        padding: 50px;
+      }
+
+      .match-row {
+        padding: 25px 30px;
+        gap: 30px;
+      }
+
+      .left-item {
+        font-size: clamp(26px, 1.3vw, 36px);
+      }
+
+      .answer-box {
+        width: 90px;
+        height: 70px;
+        font-size: 34px;
+      }
+
+      .option img {
+        height: clamp(140px, 7vh, 200px);
+        border-radius: 20px;
+      }
+
+      .title {
+        font-size: clamp(32px, 2vw, 48px);
+      }
+    }
   </style>
 </head>
 
@@ -501,11 +597,11 @@
       d.style.display = "flex";
       d.innerHTML = `
     <div class="final-card">
-      <h1 style="font-family:'Fredoka One';font-size: 42px; margin:0; color:#ff7a00;">🎉 GREAT JOB! 🎉</h1>
+      <h1 style="font-family:'Livvic';font-size: 42px; margin:0; color:#ff7a00;">🎉 GREAT JOB! 🎉</h1>
       <p style="font-size: 20px; color:#2F4F4F;">You matched all correctly!</p>
       <button onclick="location.reload()" style="
         margin-top:15px; padding:12px 30px; font-size:18px; border-radius:30px;
-        border:none; background:var(--primary); color:white; font-family:'Fredoka One'; cursor:pointer;">
+        border:none; background:var(--primary); color:white; font-family:'Livvic'; cursor:pointer;">
         PLAY AGAIN ↺
       </button>
     </div>`;

@@ -162,15 +162,15 @@ if(answered[index]) return;
 
 if(i===quiz[index].answer){
 
-showPopup(true);
-speak("Correct");
-
 answered[index]=true;
 score++;
 
-next.disabled=false;
+load();   // ✅ reload to apply CSS
 
-/* IF LAST QUESTION → SHOW FINAL POPUP */
+showPopup(true);
+speak("Correct");
+
+next.disabled=false;
 
 if(index===quiz.length-1){
 
@@ -181,11 +181,8 @@ document.getElementById("score").innerText="Your Score "+score+"/5";
 launchConfetti();
 prev.disabled = true;
 next.disabled = true;
+
 },1000);
-
-}else{
-
-load();
 
 }
 

@@ -587,3 +587,120 @@ font-size: 30px;
   }
 
 }
+
+@media (min-width: 1280px){
+
+  /* ❌ REMOVE SCALE */
+  body{
+    transform: none;
+    margin-top: 0;
+  }
+
+  /* ✅ MAIN GAME */
+  .game{
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+
+  /* ✅ TITLE */
+  .title{
+    font-size: 50px !important;
+    margin-top: -10px;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question-box{
+    font-size: 44px;
+    min-height: 140px;
+    height: 80px !important;
+  }
+
+  /* ✅ IMAGE */
+  #qImage{
+    width: 300px;
+    height: 240px;
+  }
+
+  /* ✅ ANSWERS (TRUE/FALSE BUTTONS) */
+  .answers{
+    gap: 100px;
+    margin-top: -40px !important;
+  }
+
+  .answer{
+    width: 220px;
+    height: 90px;
+    font-size: 28px;
+    border-radius: 999px;
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .nav button{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+  border-radius: 15px;
+       outline: 4px solid white !important;
+  }
+
+  .nav{
+    margin-top: 30px;
+    gap: 60%;
+    justify-content: center;
+  }
+
+  /* ✅ PROGRESS TRACK */
+  .train-track{
+    margin: 20px 0;
+  }
+
+  .train-track::before{
+    height: 12px;
+  }
+
+  .station{
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+  }
+
+  /* ✅ POPUP */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-icon{
+    font-size: 100px;
+  }
+
+  .popup-content h3{
+    font-size: 34px;
+  }
+
+  .popup-content p{
+    font-size: 24px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .finalpopup-box{
+    width: 600px;
+    padding: 40px;
+  }
+
+  .final-heading{
+    font-size: 34px;
+  }
+
+  #stars{
+    font-size: 50px;
+  }
+
+  .playAgain-btn{
+    font-size: 20px;
+    padding: 14px 32px;
+  }
+
+}

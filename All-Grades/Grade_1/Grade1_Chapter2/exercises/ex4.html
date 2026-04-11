@@ -11,13 +11,13 @@
       --ink:#2f4f4f; --btn1:#a0c4ff; --btn2:#bdb2ff; --btn3:#ee66aa;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box;    font-family: 'Livvic' !important;}
 
     body {
       margin: 0;
       height: 100vh;
       width: 100vw;
-      font-family: 'Livvic', sans-serif;
+      font-family: 'Livvic' !important;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -280,6 +280,111 @@
     position: relative;
     bottom: 0;
   }
+}
+
+
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1025px) and (max-width:1440px){
+
+.main-container{
+max-width:1300px;
+}
+
+#qText{
+font-size:30pt;
+}
+
+.scene{
+width:260px;
+height:260px;
+}
+
+.dice-face span{
+font-size:20px;
+}
+
+.action-btn{
+font-size:20px;
+padding:14px 28px;
+}
+
+.nav-side-btn{
+font-size:18px;
+padding:14px 24px;
+}
+
+} */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.main-container{
+max-width:1450px;
+}
+
+#qText{
+font-size:44px;
+}
+
+.scene{
+width:300px;
+height:300px;
+}
+
+.dice-face span{
+font-size:22px;
+}
+
+.action-btn{
+font-size:22px;
+padding:16px 32px;
+}
+
+.nav-side-btn{
+font-size:20px;
+padding:16px 28px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.main-container{
+max-width:1600px;
+}
+
+#qText{
+font-size:38pt;
+}
+
+.scene{
+width:340px;
+height:340px;
+}
+
+.dice-face span{
+font-size:24px;
+}
+
+.action-btn{
+font-size:24px;
+padding:18px 36px;
+}
+
+.nav-side-btn{
+font-size:22px;
+padding:18px 32px;
+}
+
+}
+
+button,
+.action-btn,
+.nav-side-btn {
+  font-family: "Livvic" !important;
 }
   </style>
 </head>

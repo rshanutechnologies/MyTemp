@@ -576,3 +576,107 @@ body {
     }
 
 }
+
+@media (min-width: 1380px) {
+
+  /* ❌ REMOVE SCALE */
+  .screen{
+    transform: none;
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    min-height: 140px;
+    margin-top: -2px;
+  }
+
+  /* ✅ IMAGE */
+  #qImg{
+    width: 320px;
+    height: 320px;
+  }
+
+  /* ✅ NEST AREA */
+  .nest{
+    gap: 100px;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  /* ✅ EGG */
+  .egg-wrap{
+    width: 140px;
+    height: 260px;
+  }
+
+  /* ✅ TRUE/FALSE BUTTONS */
+  .btn{
+    width: 180px;
+    height: 180px;
+    font-size: 26px;
+  }
+
+  /* ✅ CONTROLS */
+  .controls{
+    gap: 60px;
+    margin-top: 10px;
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .nav button{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+    border-radius: 999px;
+  }
+
+  /* ✅ NAV FIX */
+  .nav{
+    justify-content: center;
+    gap: 120px;
+    margin-top: 40px;
+  }
+
+  /* ✅ POPUP */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-icon{
+    font-size: 100px;
+  }
+
+  .popup-content h3{
+    font-size: 34px;
+  }
+
+  .popup-content p{
+    font-size: 24px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .finalpopup-box{
+    width: 600px;
+    padding: 40px;
+  }
+
+  .final-heading{
+    font-size: 34px;
+  }
+
+  #stars{
+    font-size: 50px;
+  }
+
+  .playAgain-btn{
+    font-size: 20px;
+    padding: 14px 32px;
+  }
+
+}

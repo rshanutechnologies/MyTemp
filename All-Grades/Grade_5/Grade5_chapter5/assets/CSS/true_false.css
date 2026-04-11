@@ -647,3 +647,128 @@ z-index:-1;
   }
 
 }
+
+/* ===================================== */
+/* ===== 1280px PURE SIZE UPGRADE ===== */
+/* ===================================== */
+
+@media (min-width: 1280px) {
+  body{
+    margin-top: -3% !important;
+  }
+  /* MAIN CARD */
+  .quiz-card {
+    width: 1100px;
+    height: 720px;
+  }
+
+  /* TITLE */
+  .quiz-title {
+    font-size: 40px;
+    padding: 20px 40px;
+  }
+
+  /* HEADER */
+  .header span {
+    font-size: 50px !important;
+    top: 20px;
+  }
+
+  /* QUESTION */
+  .question {
+    font-size: 44px !important;
+    height: 120px;
+    margin-top: 90px !important;
+  }
+
+  .question-img {
+    max-width: 420px;
+    height: 260px;
+  }
+
+  /* TRUE/FALSE BUTTONS */
+  .tf-buttons {
+    gap: 80px;
+    margin-top: 40px;
+  }
+
+  .tf-buttons button {
+    width: 250px;
+    height: 110px;
+    font-size: 30px;
+    border-radius: 30px;
+  }
+
+  /* DRAG LAYOUT */
+  .q-drag-layout {
+    padding: 0 80px;
+    margin-top: -20px;
+  }
+
+  .q-drag-layout img,
+  .drop-box {
+    width: 420px;
+    height: 260px;
+  }
+
+  .drop-text {
+    font-size: 28px;
+  }
+
+  .emoji {
+    font-size: 80px;
+  }
+
+  /* NAV BUTTONS */
+  .nav {
+    margin-top: 40px;
+
+  }
+
+  .nav button {
+    width: 180px;
+    height: 70px;
+    font-size: 22px;
+    border-radius: 40px;
+         outline: 5px solid white;
+  }
+
+  /* POPUP */
+  .popup-content {
+    max-width: 520px;
+    padding: 30px;
+  }
+
+  .popup-icon {
+    font-size: 6em;
+  }
+
+  .popup-content h3 {
+    font-size: 2.2em;
+  }
+
+  .popup-content p {
+    font-size: 1.5em;
+  }
+
+  /* FINAL POPUP */
+  .finalpopup-box {
+    padding: 30px 40px;
+  }
+
+  .final-heading {
+    font-size: 2.4em;
+  }
+
+  #stars {
+    font-size: 50px;
+  }
+
+  .playAgain-btn {
+    width: 180px;
+    height: 60px;
+    font-size: 18px;
+    border-radius: 30px;
+  }
+
+}

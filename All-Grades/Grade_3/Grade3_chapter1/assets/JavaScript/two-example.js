@@ -12,7 +12,7 @@ const questions = [
     q: "Animals that move using their limbs ........",
     answers: ["Kangaroo", "Rabbit"],
     options: [
-      { text: "Kangaroo", img: "../assets/images/kangaroo.png" },
+      { text: "Kangaroo", img: "../assets/images/kangaroo1.png" },
       { text: "Rabbit", img: "../assets/images/Rabbit.png" },
       { text: "Frog", img: "../assets/images/frog-img.png" },
     ],

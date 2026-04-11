@@ -58,7 +58,10 @@ if(r.dataset.match===selected.dataset.match){
 launchConfetti(); 
 speak("Correct")
 
-addMatchNumber(selected, r);   // ✅ CORRECT PLACE
+addMatchNumber(selected, r)
+
+/* draw matching line */
+drawLine(selected, r)
 
 selected.classList.add("matched")
 r.classList.add("matched")
@@ -66,16 +69,12 @@ r.classList.add("matched")
 score++
 
 if(score===5){
-
 setTimeout(()=>{
-
 document.getElementById("final").style.display="block"
 document.getElementById("score").innerText="Your Score 5/5"
 launchConfetti(); 
 },1000)
-
 }
-
 }else{
 
 
@@ -90,31 +89,31 @@ selected=null
 
 })
 
-// function drawLine(a,b){
+function drawLine(a,b){
 
-// const rectA=a.querySelector(".dot").getBoundingClientRect()
-// const rectB=b.querySelector(".dot").getBoundingClientRect()
+const rectA=a.querySelector(".dot").getBoundingClientRect()
+const rectB=b.querySelector(".dot").getBoundingClientRect()
 
-// const svgRect=svg.getBoundingClientRect()
+const svgRect=svg.getBoundingClientRect()
 
-// const x1=rectA.left-svgRect.left
-// const y1=rectA.top-svgRect.top+7
+const x1=rectA.left-svgRect.left
+const y1=rectA.top-svgRect.top+7
 
-// const x2=rectB.left-svgRect.left
-// const y2=rectB.top-svgRect.top+7
+const x2=rectB.left-svgRect.left
+const y2=rectB.top-svgRect.top+7
 
-// const path=document.createElementNS("http://www.w3.org/2000/svg","path")
+const path=document.createElementNS("http://www.w3.org/2000/svg","path")
 
-// const curve=`M${x1},${y1} C${x1+150},${y1} ${x2-150},${y2} ${x2},${y2}`
+const curve=`M${x1},${y1} C${x1+150},${y1} ${x2-150},${y2} ${x2},${y2}`
 
-// path.setAttribute("d",curve)
-// path.setAttribute("stroke","#4CAF50")
-// path.setAttribute("stroke-width","4")
-// path.setAttribute("fill","none")
+path.setAttribute("d",curve)
+path.setAttribute("stroke","#4CAF50")
+path.setAttribute("stroke-width","4")
+path.setAttribute("fill","none")
 
-// svg.appendChild(path)
+svg.appendChild(path)
 
-// }
+}
 
 function playAgain(){
 location.reload()

@@ -148,19 +148,17 @@ function showFinal() {
   document.getElementById("finalScore").textContent = `Score: ${score}/5`;
   document.getElementById("stars").textContent = "⭐".repeat(score);
 }
-
 function updateSlide() {
-  const viewport = document.querySelector(".viewport");
-  const slideHeight = viewport.clientHeight; // ✅ dynamic height
+  const slideHeight = path.children[0].offsetHeight;
 
   path.style.transform = `translateY(-${currentPage * slideHeight}px)`;
 
   prevBtn.disabled = currentPage === 0;
 
   const currentPageEl = path.children[currentPage];
-  const pageCompleted = [...currentPageEl.querySelectorAll("input")].every(
-    (input) => input.disabled
-  );
+
+  // ✅ FIX: check button disabled instead of input
+  const pageCompleted = currentPageEl.querySelector(".check").disabled;
 
   nextBtn.disabled = !pageCompleted;
 }

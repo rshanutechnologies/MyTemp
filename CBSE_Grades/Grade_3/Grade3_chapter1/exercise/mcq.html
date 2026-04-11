@@ -265,11 +265,13 @@ padding:clamp(10px, 2vh, 25px);
 
 .popup-content{
   background:#fef6ff;
-  padding:clamp(20px,5vw,60px);
-  border-radius:30px;
-  text-align:center;
-  box-shadow:0 20px 45px rgba(0,0,0,0.25);
-  width:min(90%, 400px);
+padding:clamp(30px,6vw,60px) clamp(30px,7vw,80px);
+border-radius:30px;
+text-align:center;
+box-shadow:0 20px 45px rgba(0,0,0,0.25);
+
+min-width:clamp(250px,40vw,350px);
+max-width:clamp(300px,60vw,500px);
 }
 
 .popup-emoji{
@@ -331,6 +333,159 @@ padding:clamp(10px, 2vh, 25px);
   .question {
     font-size: 30px;
   }
+}
+
+
+
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width:1025px) and (max-width:1440px){
+
+  .quiz-container{
+    max-width:1000px;
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:38px;
+    min-height:100px;
+  }
+
+ .question-img img{
+    width:250px;
+  }
+
+  /* OPTIONS */
+  .options{
+    gap:30px;
+  }
+
+  .circle{
+    height:150px;
+    width: 230px;
+  }
+
+  .circle img{
+    width:140px;
+  }
+
+  .option p{
+    font-size:22px;
+    padding:14px 28px;
+  }
+
+
+  /* BUTTONS */
+  .nav-btn{
+    width:180px;
+    height:60px;
+    font-size:22px;
+  }
+
+}
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+  .quiz-container{
+    max-width:1200px;
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:40px;   /* 🔥 bigger */
+    min-height:120px;
+  }
+
+  /* IMAGE */
+  .question-img img{
+    width:340px;
+  }
+
+  /* OPTIONS */
+  .options{
+    gap:35px;
+  }
+
+  .circle{
+    height:230px;
+    width: 270px;
+  }
+
+  .circle img{
+    width:160px;
+  }
+
+  .option p{
+    font-size:22px;
+    padding:14px 28px;
+  }
+
+  /* BUTTONS */
+  .nav-container{
+    padding:0 100px;
+  }
+
+  .nav-btn{
+    width:180px;
+    height:60px;
+    font-size:22px;
+  }
+
+}
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width:1921px){
+
+  .quiz-container{
+    max-width:1400px;
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:52px;
+    min-height:140px;
+  }
+
+  /* IMAGE */
+  .question-img img{
+    width:420px;
+  }
+
+  /* OPTIONS */
+  .options{
+    gap:30px;
+  }
+
+  .circle{
+    height:220px;
+  }
+
+  .circle img{
+    width:180px;
+  }
+
+  .option p{
+    font-size:34px;
+    padding:18px 36px;
+  }
+
+  /* BUTTONS */
+  .nav-container{
+    padding:0 140px;
+  }
+
+  .nav-btn{
+    width:200px;
+    height:70px;
+    font-size:26px;
+  }
+
 }
 
 </style>

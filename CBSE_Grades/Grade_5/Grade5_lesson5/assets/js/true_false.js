@@ -2,7 +2,7 @@
   {
     q: "Q1. The upper two chambers of the heart are called the ventricles.",
     a: false,
-    img: "../assets/images/heart-chambers.png"
+    img: "../assets/images/heart-chambers1.png"
   },
   {
     q: "Q2. Veins carry blood from the heart to the different parts of the body.",
@@ -22,7 +22,7 @@
   {
     q: "Q5. Inhalation is taking in oxygen rich air.",
     a: true,
-    img: "../assets/images/inhalation.png"
+    img: "../assets/images/inhalation2.png"
   }
 ];
 

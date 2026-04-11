@@ -24,7 +24,7 @@ body {
     align-items: center;
     justify-content: center;
 
-    gap: clamp(5px, 1.5vw, 12px);
+    gap: clamp(5px, 1.5vw, 10px);
 }
 
 /* QUESTION */
@@ -282,4 +282,52 @@ background: #e6fffa;
         align-items: center;
     }
 
+}
+
+/* ==================================================
+   ✅ DESKTOP ONLY (>=1400px) — TF SCALE + SIZE
+================================================== */
+@media (min-width: 1400px) {
+
+  /* SCALE WHOLE UI */
+  .quiz-container {
+    transform: scale(1.1);
+    transform-origin: center;
+     gap: 6px;
+  }
+
+  /* QUESTION */
+  .quiz-container .question-box {
+    font-size: 34px;
+  }
+
+  /* IMAGE */
+  .quiz-container .question-image img {
+    width: 320px;
+    height: 200px;
+  }
+
+  /* DROP BOX */
+  .quiz-container .drop-box {
+    width: 260px;
+    height: 70px;
+    font-size: 26px;
+  }
+
+  /* ANSWER BUTTONS (slight balance) */
+  .quiz-container .answer {
+    width: 105px;
+    height: 105px;
+    font-size: 40px;
+  }
+
+  /* NAV BUTTONS */
+  .quiz-container .nav button {
+    width: 140px;
+    height: 60px;
+    font-size: 22px;
+  }
+   .quiz-container .nav {
+    margin-top: 10px;
+  }
 }

@@ -320,7 +320,7 @@ height:18px;
 /* SVG LINES */
 
 svg{
-display:block;
+display:none;
 }
 
 }
@@ -356,4 +356,107 @@ width:20px;
 height:20px;
 }
 
+
+.final{
+width:90%;
+padding:40px;
 }
+
+.final h2{
+font-size:26px;
+}
+
+.final h3{
+font-size:22px;
+}
+
+.star{
+font-size:36px;
+}
+
+
+}
+
+
+
+
+
+/* ================= 1400px ================= */
+@media screen and (min-width:1350px) and (max-width:2000px){
+
+
+.container{
+max-width:1500px;
+height:92vh;
+}
+
+.matching{
+gap:260px;
+}
+
+.box{
+font-size:28px;
+min-height:90px !important;
+padding:12px 14px;
+}
+
+.right img{
+width:75px !important;
+height:75px !important;
+}
+
+.dot{
+width:32px;
+height:32px;
+font-size:20px;
+}
+
+.left{
+gap:1px;
+}
+
+.right{
+gap:1px;
+padding: 0px;
+}
+}
+
+
+/* ================= 1920px ================= */
+/* @media screen and (min-width:1401px){
+
+.container{
+max-width:1500px;
+height:92vh;
+}
+
+.matching{
+gap:260px;
+}
+
+.box{
+font-size:28px;
+min-height:95px !important;
+padding:12px 14px;
+}
+
+.right img{
+width:85px !important;
+height:85px !important;
+}
+
+.dot{
+width:32px;
+height:32px;
+font-size:20px;
+}
+
+.left{
+gap:19px;
+}
+
+.right{
+gap:18px;
+}
+
+} */

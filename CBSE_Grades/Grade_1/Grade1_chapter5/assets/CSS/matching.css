@@ -354,9 +354,9 @@ RESPONSIVE (Same behavior as second CSS)
     width: 100%;
   }
 
-.question-text {
-  font-size: 14px;
-}
+  .question-text {
+    font-size: 14px;
+  }
 
   .left-img,
   .right-img {
@@ -421,6 +421,89 @@ FINAL POPUP RESPONSIVE
     width: 100%;
     padding: 12px;
     font-size: 0.95em;
+  }
+
+}
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  .main {
+    max-width: 1000px;
+  }
+
+  .game-container {
+    gap: 140px;
+  }
+
+  .item {
+    width: 360px;
+    height: 90px;
+    font-size: 24px;
+  }
+
+  .left-img,
+  .right-img {
+    width: 65px;
+    height: 70px;
+  }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+  .main {
+    max-width: 1100px;
+  }
+
+  .game-container {
+    gap: 160px;
+  }
+
+  .item {
+    width: 380px;
+    height: 100px;
+    font-size: 26px;
+  }
+
+  .left-img,
+  .right-img {
+    width: 70px;
+    height: 75px;
+  }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+  .main {
+    max-width: 1200px;
+  }
+
+  .game-container {
+    gap: 180px;
+  }
+
+  .item {
+    width: 420px;
+    height: 110px;
+    font-size: 28px;
+  }
+
+  .left-img,
+  .right-img {
+    width: 75px;
+    height: 80px;
   }
 
 }

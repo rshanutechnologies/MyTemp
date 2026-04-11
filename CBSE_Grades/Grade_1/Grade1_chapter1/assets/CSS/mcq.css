@@ -465,7 +465,7 @@ body {
 
 @media (max-width:480px) {
 
-    body{
+    body {
         align-items: flex-start;
         padding-top: 55px;
     }
@@ -521,4 +521,135 @@ body {
     #stars {
         font-size: 1.6em;
     }
+}
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .quiz {
+        max-width: 1200px;
+    }
+
+    .question-box {
+        font-size: 34px;
+    }
+
+    .content {
+        gap: 50px;
+    }
+
+    .image-card {
+        width: 260px;
+        height: 280px;
+    }
+
+    .option {
+        width: 300px;
+        font-size: 24px;
+        padding: 32px 22px;
+    }
+
+    .option span {
+        font-size: 28px;
+    }
+
+    .controls {
+        width: 60%;
+    }
+
+    .controls button {
+        font-size: 20px;
+        padding: 14px 36px;
+    }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+    .quiz {
+        max-width: 1300px;
+    }
+
+    .question-box {
+        font-size: 38px;
+    }
+
+    .content {
+        gap: 60px;
+    }
+
+    .image-card {
+        width: 300px;
+        height: 320px;
+    }
+
+    .option {
+        width: 320px;
+        font-size: 26px;
+        padding: 34px 24px;
+    }
+
+    .option span {
+        font-size: 30px;
+    }
+
+    .controls {
+        width: 65%;
+    }
+
+    .controls button {
+        font-size: 22px;
+        padding: 16px 40px;
+    }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+    .quiz {
+        max-width: 1400px;
+    }
+
+    .question-box {
+        font-size: 42px;
+    }
+
+    .content {
+        gap: 70px;
+    }
+
+    .image-card {
+        width: 340px;
+        height: 360px;
+    }
+
+    .option {
+        width: 340px;
+        font-size: 28px;
+        padding: 36px 26px;
+    }
+
+    .option span {
+        font-size: 32px;
+    }
+
+    .controls {
+        width: 70%;
+    }
+
+    .controls button {
+        font-size: 24px;
+        padding: 18px 44px;
+    }
+
 }

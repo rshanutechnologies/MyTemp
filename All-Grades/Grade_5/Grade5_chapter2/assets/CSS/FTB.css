@@ -649,3 +649,117 @@ button:disabled {
     }
 
 }
+
+@media (min-width: 1380px) {
+
+  /* ❌ REMOVE SCALE */
+  .app{
+    transform: none;
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    min-height: 90px;
+    text-align: center;
+
+  
+  }
+
+  /* ✅ IMAGE */
+  .image-panel{
+    width: 300px;
+    height: 300px;
+    margin-top: -2% !important;
+  }
+
+  .image-panel img{
+    width: 260px;
+    height: 260px;
+  }
+
+  /* ✅ CONTENT */
+  .content{
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  /* ✅ ANSWER AREA */
+  .answer-area{
+    gap: 20px;
+    margin-top: -20px;
+  }
+
+  .answer-area input{
+    width: 500px;
+    height: 70px;
+    font-size: 26px;
+  }
+
+  /* ✅ SUBMIT BUTTON (SYSTEM SIZE) */
+  .answer-area button{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+    border-radius: 999px;
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .nav-btn{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+    border-radius: 999px;
+    bottom: -30px;
+  }
+
+  .nav-btn.prev{
+    left: 100px;
+  }
+
+  .nav-btn.next{
+    right: 100px;
+  }
+
+  /* ✅ POPUP */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-icon{
+    font-size: 100px;
+  }
+
+  .popup-content h3{
+    font-size: 34px;
+  }
+
+  .popup-content p{
+    font-size: 24px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .finalpopup-box{
+    width: 600px;
+    padding: 40px;
+  }
+
+  .final-heading{
+    font-size: 34px;
+  }
+
+  #stars{
+    font-size: 50px;
+  }
+
+  .playAgain-btn{
+    font-size: 20px;
+    padding: 14px 32px;
+  }
+
+}

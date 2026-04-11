@@ -50,7 +50,7 @@ function speakText(t) {
 const quizData = [
   {
     question: "Our body has ________ parts.",
-    image: "../assets/images/MCQ1.png",
+    image: "../assets/images/BodyPartssWorkk.png",
     options: [
       {
         id: "b",
@@ -118,7 +118,7 @@ const quizData = [
       {
         id: "a",
         label: "skin ",
-        img: "../assets/images/opt32.png",
+        img: "../assets/images/skin1.png",
         correct: true,
         border: "#98B64D",
       },

@@ -470,3 +470,119 @@ body {
         font-size: .9em
     }
 }
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  .main {
+    max-width: 1050px;
+  }
+
+  .question h2 {
+    font-size: 32px;
+  }
+
+  .image-container {
+    gap: 50px;
+  }
+
+  .image-box {
+    width: 260px;
+  }
+
+  .image-box img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .image-bottom {
+    font-size: 22px;
+    padding: 18px 32px;
+  }
+
+  .controls button {
+    font-size: 20px;
+    padding: 14px 36px;
+  }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+  .main {
+    max-width: 1150px;
+  }
+
+  .question h2 {
+    font-size: 36px;
+  }
+
+  .image-container {
+    gap: 70px;
+  }
+
+  .image-box {
+    width: 300px;
+  }
+
+  .image-box img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .image-bottom {
+    font-size: 24px;
+    padding: 20px 36px;
+  }
+
+  .controls button {
+    font-size: 22px;
+    padding: 15px 40px;
+  }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+  .main {
+    max-width: 1250px;
+  }
+
+  .question h2 {
+    font-size: 40px;
+  }
+
+  .image-container {
+    gap: 90px;
+  }
+
+  .image-box {
+    width: 340px;
+  }
+
+  .image-box img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .image-bottom {
+    font-size: 26px;
+    padding: 22px 40px;
+  }
+
+  .controls button {
+    font-size: 24px;
+    padding: 16px 44px;
+  }
+
+}

@@ -546,3 +546,118 @@ button:disabled {
     font-size:0.95rem;
   }
 }
+
+
+
+
+
+
+/* ================= 1025px — 1440px ================= */
+@media screen and (min-width:1225px) and (max-width:1640px){
+
+.game{
+max-width:850px;
+}
+
+.question{
+font-size:40px !important;
+}
+
+.cards{
+gap:24px;
+}
+
+.card{
+width:180px;
+height:180px;
+}
+
+.face{
+font-size:20pt;
+}
+
+.q-img{
+width:260px;
+height:260px;
+}
+
+.nav button{
+width:70px;
+height:70px;
+}
+
+}
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.game{
+max-width:950px;
+}
+
+.question{
+font-size:44px !important;
+}
+
+.cards{
+gap:32px;
+}
+
+.card{
+width:220px;
+height:220px;
+}
+
+.face{
+font-size:24pt;
+}
+
+.q-img{
+width:300px;
+height:300px;
+}
+
+.nav button{
+width:80px;
+height:80px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.game{
+max-width:1100px;
+}
+
+.question{
+font-size:48px !important;
+}
+
+.cards{
+gap:40px;
+}
+
+.card{
+width:250px;
+height:250px;
+}
+
+.face{
+font-size:26pt;
+}
+
+.q-img{
+width:380px;
+height:380px;
+}
+
+.nav button{
+width:90px;
+height:90px;
+}
+
+}

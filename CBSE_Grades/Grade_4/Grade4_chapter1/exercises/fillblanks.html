@@ -1,52 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Fill in the Blanks Quiz</title>
+<meta charset="UTF-8">
+<title>Plant Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/CSS/fillblanks.css">
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/CSS/fillblanks.css">
 </head>
 
 <body>
 
-  <div class="quiz">
-    <div class="home" onclick="location.href='../index.html'">🏠 Home</div>
-    
-
-    <!-- <div class="header">
-    <div id="qCount">Question 1 of 5</div>
-  </div> -->
-
-    <div class="question" id="qText"></div>
-
-    <div class="illustration">
-      <img id="qImg">
-    </div>
-
-    <div class="input-box">
-      <input id="answerInput" placeholder="Type your answer">
-      <input id="answerInput2" placeholder="Type second answer" style="display:none;">
-    </div>
-
-   <div class="submit-row">
-  <button class="check" id="checkBtn">Submit</button>
-</div>
-<div class="buttons">
-  <button class="prev" id="prevBtn">← Prev</button>
-  <button class="next" id="nextBtn">Next →</button>
-</div>
-
+<div class="quiz">
+   <div class="home" onclick="location.href='../index.html'">🏠 Home</div>
+   <!-- <div class="quiz-title">Plant Quiz </div>  -->
+  <!-- QUESTION -->
+  <div class="question" id="question"></div>
+   <img
+    id="questionImg"
+    src=""
+    alt="Question image"
+    style="
+      width:200px;
+      height:200px;
+      object-fit:contain;
+      margin:2px auto;
+      display:block;
+    "
+  />
+  <!-- ✅ REQUIRED INPUT (ADDED) -->
+  <div style="margin:10px 0;">
+    <input
+      id="answerInput"
+      type="text"
+      placeholder="Type your answer..."
+      style="
+        width:60%;
+        height:52px;
+        font-size:22px;
+        padding:10px 16px;
+        border-radius:14px;
+        border:2px solid #ccc;
+        text-align:center;
+      "
+    />
   </div>
 
-  <!-- POPUP -->
-  <div id="popup" class="popup">
-    <div id="popupBox" class="popup-box"></div>
+  <!-- ✅ REQUIRED SUBMIT BUTTON (ADDED) -->
+  <button
+    id="submitBtn">
+    ✓ Submit
+  </button>
+
+  <!-- NAV -->
+  <div class="nav">
+    <button class="prev" id="prev" disabled>← Prev</button>
+    <button class="next" id="next" disabled>Next →</button>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script src="../assets/JavaScript/fillblanks.js"></script>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box" id="popupText"></div>
+</div>
+<audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+<script src="../assets/JavaScript/fillblanks.js"></script>
 </body>
-
 </html>

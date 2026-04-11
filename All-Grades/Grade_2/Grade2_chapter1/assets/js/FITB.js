@@ -7,7 +7,7 @@ const questions = [
   {
     q: "Our whole body is covered with ________.",
     a: "skin",
-    img: "../assets/images/opt32.png"
+    img: "../assets/images/skin1.png"
   },
   {
     q: "The ________ is located inside our head.",

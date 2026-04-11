@@ -289,6 +289,98 @@
         height: calc(100vh / 0.8);
       }
     }
+
+    /* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+    @media screen and (min-width: 1025px) and (max-width: 1440px) {
+      body {
+        overflow: hidden;
+      }
+
+      .board {
+        min-width: 1700px;
+        margin: 0 auto;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        width: 220px;
+        height: 70px;
+      }
+
+      .card span {
+        font-size: 18px;
+      }
+
+      .card img {
+        width: 32px;
+        height: 32px;
+      }
+
+    }
+
+
+    /* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+    @media screen and (min-width: 1441px) and (max-width: 1920px) {
+      body {
+        overflow: hidden;
+      }
+
+      .board {
+        max-width: 1600px;
+        /* 🔥 prevents stretching */
+        margin: 0 auto;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        width: 280px;
+        height: 70px;
+      }
+
+      .card span {
+        font-size: 20px;
+      }
+
+    }
+
+
+    /* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+    @media screen and (min-width: 1921px) {
+      body {
+        overflow: hidden;
+      }
+
+      .board {
+        max-width: 1600px;
+        /* 🔥 keeps same layout */
+        margin: 0 auto;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        width: 300px;
+        height: 75px;
+      }
+
+      .card span {
+        font-size: 22px;
+      }
+
+      .card img {
+        width: 40px;
+        height: 40px;
+      }
+
+    }
   </style>
 </head>
 

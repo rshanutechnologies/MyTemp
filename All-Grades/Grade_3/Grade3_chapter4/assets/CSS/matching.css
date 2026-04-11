@@ -395,3 +395,141 @@ body{
   }
 
 }
+
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width: 1025px) and (max-width: 1440px){
+
+  .game{
+    max-width: 950px;
+  }
+
+  .token{
+    font-size: 22px;
+    padding: 10px 14px;
+  }
+
+  .token span{
+    font-size: 32px;
+  }
+
+  .slot{
+    font-size: 22px;
+    height: 70px;
+  }
+
+  .drop{
+    min-width: 140px;
+    height: 34px;
+  }
+.slot .token{
+  width:250px;          /* remove 70% width */
+  min-width:110px;     /* optional */
+  padding:6px 10px;
+  font-size:30px;
+  box-shadow:none;
+}
+}
+
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width: 1441px) and (max-width: 1920px){
+
+  .game{
+    max-width: 1200px;
+  }
+
+  .board{
+    gap: 30px;
+  }
+
+  .token{
+    font-size: 35px;
+    padding: 12px 16px;
+  }
+
+  .token span{
+    font-size: 55px;
+  }
+
+  .slot{
+    font-size: 30px;
+    height: 120px;
+    padding: 18px;
+  }
+
+  .drop{
+    min-width: 160px;
+    height: 55px;
+  }
+.slot .token{
+  width:250px;          /* remove 70% width */
+  min-width:110px;     /* optional */
+  padding:6px 10px;
+  font-size:32px;
+  box-shadow:none;
+}
+}
+
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width: 1921px){
+
+  .game{
+    max-width: 1500px;
+  }
+
+  .board{
+    gap: 40px;
+  }
+
+  .token{
+    font-size: 28px;
+    padding: 14px 18px;
+  }
+
+  .token span{
+    font-size: 42px;
+  }
+
+  .slot{
+    font-size: 28px;
+    height: 90px;
+    padding: 20px;
+  }
+
+  .drop{
+    min-width: 180px;
+    height: 42px;
+  }
+
+  .popup-final{
+    width: 650px !important;
+  }
+  .slot .token{
+  width:250px;          /* remove 70% width */
+  min-width:110px;     /* optional */
+  padding:6px 10px;
+  font-size:35px;
+  box-shadow:none;
+}
+
+}
+
+/* ✅ TOKEN CLICK BORDER (LEFT SIDE) */
+.token.selected{
+  border: 1px solid #3b82f6;   /* blue border */
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.2);
+  transform: scale(1.05);
+}
+/* ✅ HIDE SCORE ON MOBILE */
+@media (max-width:600px){
+  #progressPill{
+    display:none !important;
+  }
+}

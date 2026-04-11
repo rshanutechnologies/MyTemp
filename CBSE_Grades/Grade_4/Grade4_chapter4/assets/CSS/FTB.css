@@ -13,12 +13,15 @@ body {
     overflow: hidden;
 }
 
-/* MAIN CONTAINER */
+/* ==============================
+   MAIN CONTAINER
+   Base = smallest screens
+============================== */
 .main-container {
-    width: clamp(300px, 90vw, 750px);
+    width: 95%;
+    max-width: 750px;
 }
 
-/* QUIZ CARD */
 .quiz-container {
     display: flex;
     flex-direction: column;
@@ -28,14 +31,15 @@ body {
 /* QUESTION */
 .question-area {
     width: 100%;
-    min-height: clamp(60px, 10vh, 90px);
+    min-height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .question-area h2 {
-    font-size: clamp(20px, 3vw, 30px);
+    font-size: 20px;
     font-weight: 500;
     color: #2f4f4f;
     text-align: center;
@@ -46,12 +50,12 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: clamp(8px, 2vw, 20px) 0;
+    margin: 10px 0 14px;
 }
 
 .image-area img {
-    width: clamp(180px, 35vw, 350px);
-    height: clamp(140px, 25vh, 220px);
+    width: 150px;
+    height: 110px;
     object-fit: contain;
     border-radius: 18px;
 }
@@ -62,26 +66,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(12px, 2vw, 20px);
+    gap: 14px;
 }
 
 /* INPUT */
 #answerInput {
     width: 100%;
-    max-width: clamp(260px, 60vw, 500px);
-    height: clamp(45px, 7vh, 60px);
-    padding: 0 clamp(12px, 2vw, 20px);
-
+    max-width: 420px;
+    height: 48px;
+    padding: 0 14px;
     border-radius: 15px;
     border: 3px solid rgb(255, 183, 117);
-
-    font-size: clamp(17px, 2vw, 22px);
+    font-size: 17px;
     font-weight: 400;
-
-    box-shadow:
-        0 6px 14px rgba(0, 0, 0, 0.1),
-        inset 0 2px 6px rgba(0, 0, 0, 0.08);
-
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1), inset 0 2px 6px rgba(0,0,0,0.08);
     transition: all .25s ease;
 }
 
@@ -91,7 +89,7 @@ body {
 }
 
 #answerInput:disabled {
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: 16px;
 }
 
 #answerInput::placeholder {
@@ -102,22 +100,16 @@ body {
 #submitBtn {
     background: linear-gradient(#a1da7b, #83c05a);
     box-shadow: 0 4px 0 rgb(101, 173, 101);
-    border: none;
-    padding: clamp(10px, 2vw, 13px) clamp(30px, 5vw, 50px);
+    border: 3px solid #fff;
+    padding: 10px 36px;
     border-radius: 25px;
     color: white;
-    font-size: clamp(16px, 2vw, 18px);
+    font-size: 16px;
     cursor: pointer;
-    border: 3px solid #fff;
 }
 
-#submitBtn:disabled {
-    opacity: 0.5;
-}
-
-#submitBtn:active {
-    transform: translateY(2px);
-}
+#submitBtn:disabled { opacity: 0.5; }
+#submitBtn:active   { transform: translateY(2px); }
 
 /* STATES */
 .input-correct {
@@ -131,7 +123,7 @@ body {
 }
 
 @keyframes wrongBlink {
-    0%,100% {
+    0%, 100% {
         border-color: rgb(247, 121, 121);
         background: #ffeaea;
     }
@@ -140,30 +132,26 @@ body {
 /* NAV BUTTONS */
 .nav-buttons {
     width: 100%;
-    margin-top: clamp(10px, 2vh, 15px);
+    margin-top: 14px;
     display: flex;
     justify-content: space-between;
 }
 
 .nav-buttons button {
-    width: clamp(90px, 15vw, 140px);
-    height: clamp(40px, 7vh, 55px);
-
+    width: 105px;
+    height: 42px;
     display: flex;
     justify-content: center;
     align-items: center;
-
     border-radius: 35px;
     border: 3px solid #ffffff;
-
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: 15px;
     font-weight: 400;
     color: #ffffff;
-
     cursor: pointer;
+    transition: .15s ease;
 }
 
-/* BUTTON COLORS (UNCHANGED) */
 #prevBtn {
     background: linear-gradient(#86cfe5, #66b6d2);
     box-shadow: 0 4px 0 #3e9dbb;
@@ -174,11 +162,13 @@ body {
     box-shadow: 0 4px 0 #e08634;
 }
 
-.nav-buttons button:disabled {
-    opacity: .4;
-}
+#prevBtn:active { transform: translateY(4px); box-shadow: 0 2px 0 #3e9dbb; }
+#nextBtn:active { transform: translateY(4px); box-shadow: 0 2px 0 #e08634; }
+.nav-buttons button:disabled { opacity: .4; }
 
-/* ✅ CORRECT POPUP STYLE */
+/* ==============================
+   FEEDBACK POPUP
+============================== */
 .kid-popup {
     position: fixed;
     inset: 0;
@@ -194,51 +184,23 @@ body {
     padding: 25px;
     border-radius: 30px;
     text-align: center;
-    box-shadow: 0 15px 0 #ffd966, 0 25px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 0 #ffd966, 0 25px 40px rgba(0,0,0,0.2);
 }
 
-.kid-icon {
-    font-size: 4.5em;
-    margin-bottom: 10px;
-}
+.kid-icon { font-size: 4.5em; margin-bottom: 10px; }
+.kid-card h3 { font-size: 2em; margin-bottom: 8px; }
+.kid-card p  { font-size: 1.2em; }
 
-.kid-card h3 {
-    font-size: 2em;
-    margin-bottom: 8px;
-}
+.kid-correct .kid-card { background: #e6fffa; border: 6px solid #38d9a9; }
+.kid-correct h3 { color: #2f9e44; }
+.kid-correct p  { color: #1c7c54; }
+.kid-wrong .kid-card { background: #fff5f5; border: 6px solid #ffa8a8; }
+.kid-wrong h3 { color: #e03131; }
+.kid-wrong p  { color: #c92a2a; }
 
-.kid-card p {
-    font-size: 1.2em;
-}
-
-/* ✅ CORRECT / WRONG STATES */
-.kid-correct .kid-card {
-    background: #e6fffa;
-    border: 6px solid #38d9a9;
-}
-
-.kid-correct h3 {
-    color: #2f9e44;
-}
-
-.kid-correct p {
-    color: #1c7c54;
-}
-
-.kid-wrong .kid-card {
-    background: #fff5f5;
-    border: 6px solid #ffa8a8;
-}
-
-.kid-wrong h3 {
-    color: #e03131;
-}
-
-.kid-wrong p {
-    color: #c92a2a;
-}
-
-/* ✅ FINAL POPUP (same as MCQ) */
+/* ==============================
+   FINAL POPUP
+============================== */
 #finalPopup {
     position: fixed;
     inset: 0;
@@ -256,43 +218,98 @@ body {
     width: 450px;
 }
 
-/* ✅ spacing (as you wanted) */
-.final-kid-box h2 {
-    margin-bottom: 18px;
-}
+.final-kid-box h2 { margin-bottom: 18px; font-size: 1.6em; }
+.final-kid-box p  { margin-bottom: 14px; font-size: 1.1em; }
+#stars             { margin-bottom: 18px; font-size: 1.4em; }
 
-.final-kid-box p {
-    margin-bottom: 14px;
-}
-
-#stars {
-    margin-bottom: 18px;
-}
-
-/* ✅ play button */
 .playAgain-btn {
     background: #22c55e;
     color: #ffffff;
     border: none;
     padding: 12px 28px;
     border-radius: 50px;
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: 16px;
     cursor: pointer;
 }
 
-/* 🔥 SINGLE MEDIA QUERY */
-@media (max-width:900px) {
+/* ==============================
+   MOBILE
+============================== */
+@media (max-width: 760px) {
+    body { padding: 15px 0; }
+    .main-container { width: 100%; }
+}
 
-    body {
-        padding: 10px;
-        align-items: center;
-    }
 
-    .main-container {
-        width: 100%;
-    }
-     /* #prevBtn,
-    #nextBtn {
-        box-shadow: none;
-    } */
+/* ==============================
+   FIXED DESKTOP BREAKPOINTS ✅
+   (Adjusted for iframe width)
+============================== */
+
+/* 🔥 earlier 900 → now 850 */
+@media (min-width: 850px) {
+
+    .main-container { max-width: 98%; padding: 0 32px; }
+
+    .question-area { min-height: 65px; margin-bottom: 12px; }
+    .question-area h2 { font-size: 24px; }
+
+    .image-area { margin: 12px 0 18px; }
+    .image-area img { width: 200px; height: 185px; }
+
+    #answerInput { max-width: 480px; height: 60px; font-size: 20px; }
+    #submitBtn   { font-size: 16px; padding: 10px 40px; }
+
+    .nav-buttons { margin-top: 20px; }
+    .nav-buttons button { width: 120px; height: 48px; font-size: 16px; }
+}
+
+
+/* 🔥 earlier 1050 → now 950 */
+@media (min-width: 950px) {
+
+    .main-container { padding: 0 38px; }
+
+    .question-area h2 { font-size: 30px; }
+
+    .image-area img { width: 225px; height: 200px; }
+
+    #answerInput { max-width: 540px; height: 56px; font-size: 22px; }
+    #submitBtn   { font-size: 17px; padding: 12px 55px; }
+
+    .nav-buttons button { width: 130px; height: 52px; font-size: 17px; }
+}
+
+
+/* 🔥 earlier 1100 → now 1050 */
+@media (min-width: 1050px) {
+
+    .main-container { padding: 0 44px; }
+
+    .question-area h2 { font-size: 36px; }
+
+    .image-area img { width: 250px; height: 220px; }
+
+    #answerInput { max-width: 600px; height: 65px; font-size: 24px; }
+    #submitBtn   { font-size: 18px; padding: 14px 56px; }
+
+    .nav-buttons { margin-top: 26px; }
+    .nav-buttons button { width: 140px; height: 56px; font-size: 18px; }
+}
+
+
+/* 🔥 earlier 1320 → now 1200 */
+@media (min-width: 1200px) {
+
+    .main-container { padding: 0 52px; }
+
+    .question-area h2 { font-size: 40px; }
+
+    .image-area img { width: 320px; height: 250px; }
+
+    #answerInput { max-width: 680px; height: 75px; font-size: 26px; }
+    #submitBtn   { font-size: 20px; padding: 16px 70px; }
+
+    .nav-buttons { margin-top: 30px; }
+    .nav-buttons button { width: 155px; height: 60px; font-size: 20px; }
 }

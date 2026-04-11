@@ -77,7 +77,8 @@ transform:scale(1.05);
 
 
 .option.correctAnswer{
-outline:4px solid #2ecc71;
+outline:6px solid #00ff1e;
+/* background: #00880b; */
 transform:scale(1.05);
 }
 
@@ -114,11 +115,11 @@ margin-top: -40px;
 
 }
 
-/* .imgbox img{
+.imgbox img{
 width:200px;
 height:200px;
 object-fit: contain;
-} */
+} 
 
 /* NAV BUTTONS */
 
@@ -314,11 +315,13 @@ display:none;
 .final h2{
 font-size:36px;
 margin-bottom:20px;
+font-weight: 100;
 }
 
 .final h3{
 font-size:28px;
 margin-bottom:20px;
+font-weight: 100;
 }
 
 .star{
@@ -559,3 +562,152 @@ font-size:36px;
 }
 
 
+
+
+
+/* ================= 1025px — 1440px ================= */
+@media screen and (min-width:1125px) and (max-width:1640px){
+
+.quiz{
+max-width:1250px;
+margin-top: 1%;
+}
+
+.question{
+font-size:40px;
+margin-bottom:40px;
+}
+
+.options{
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+margin-top: 2%;
+}
+
+.option{
+width:270px;
+font-size:28px;
+padding:10px;
+}
+
+.opt-img{
+width:70px;
+height:70px;
+}
+
+.imgbox{
+height:180px;
+margin-top: 40px;
+}
+
+.imgbox img{
+width:280px;
+height:280px;
+}
+
+.nav{
+gap:35px;
+}
+
+.nav button{
+font-size:24px;
+padding:18px 30px;
+}
+
+}
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.quiz{
+max-width:1300px;
+}
+
+.question{
+font-size:44px;
+margin-bottom:40px;
+}
+
+.options{
+gap:12px;
+}
+
+.option{
+width:200px;
+font-size:24px;
+padding:12px;
+}
+
+.opt-img{
+width:105px;
+height:105px;
+}
+
+.imgbox{
+height:220px;
+}
+
+.imgbox img{
+width:290px;
+height:290px;
+}
+
+.nav{
+gap:45px;
+}
+
+.nav button{
+font-size:24px;
+padding:18px 30px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.quiz{
+max-width:1500px;
+}
+
+.question{
+font-size:42px;
+margin-bottom:80px;
+}
+
+.options{
+gap:16px;
+}
+
+.option{
+width:230px;
+font-size:24px;
+padding:14px;
+}
+
+.opt-img{
+width:100px;
+height:100px;
+}
+
+.imgbox{
+height:260px;
+}
+
+.imgbox img{
+width:260px;
+height:260px;
+}
+
+.nav{
+gap:60px;
+}
+
+.nav button{
+font-size:24px;
+padding:18px 30px;
+}
+
+}

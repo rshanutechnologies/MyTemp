@@ -242,6 +242,97 @@ transform:translateY(-3px);
   }
 
 }
+
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width:1025px) and (max-width:1440px){
+
+  .container{
+    width:1100px;
+  }
+
+  .game{
+    gap:120px;
+  }
+
+  .column{
+    width:360px;
+  }
+
+  .item{
+    height:90px;
+    font-size:25px;
+    padding:16px 20px;
+  }
+
+  .left img{
+    width:55px;
+    height:55px;
+  }
+
+}
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+  .container{
+    width:1300px;
+  }
+
+  .game{
+    gap:180px;   /* 🔥 balanced spacing */
+  }
+
+  .column{
+    width:420px;
+  }
+
+  .item{
+    height:100px;
+    font-size:28px;   /* 🔥 bigger text */
+    padding:18px 26px;
+    border-radius:26px;
+  }
+
+  .left img{
+    width:65px;
+    height:65px;
+  }
+
+}
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width:1921px){
+
+  .container{
+    width:1500px;
+  }
+
+  .game{
+    gap:240px;
+  }
+
+  .column{
+    width:500px;
+  }
+
+  .item{
+    height:120px;
+    font-size:34px;
+    padding:22px 30px;
+  }
+
+  .left img{
+    width:80px;
+    height:80px;
+  }
+
+}
 </style>
 </head>
 

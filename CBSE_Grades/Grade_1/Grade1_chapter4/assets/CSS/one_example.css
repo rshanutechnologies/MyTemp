@@ -533,3 +533,125 @@ body {
         font-size: 1em
     }
 }
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .main {
+        max-width: 1050px;
+    }
+
+    .question h2 {
+        font-size: 32px;
+    }
+
+    .image-container {
+        gap: 50px;
+    }
+
+    .image-box {
+        width: 280px;
+        padding: 26px 22px;
+    }
+
+    .image-box img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .image-bottom {
+        font-size: 22px;
+        padding: 16px 28px;
+    }
+
+    .controls button {
+        width: 140px;
+        height: 60px;
+        font-size: 22px;
+    }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+    .main {
+        max-width: 1150px;
+    }
+
+    .question h2 {
+        font-size: 36px;
+    }
+
+    .image-container {
+        gap: 70px;
+    }
+
+    .image-box {
+        width: 320px;
+        padding: 28px 24px;
+    }
+
+    .image-box img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .image-bottom {
+        font-size: 24px;
+        padding: 18px 30px;
+    }
+
+    .controls button {
+        width: 150px;
+        height: 65px;
+        font-size: 24px;
+    }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+    .main {
+        max-width: 1250px;
+    }
+
+    .question h2 {
+        font-size: 40px;
+    }
+
+    .image-container {
+        gap: 90px;
+    }
+
+    .image-box {
+        width: 360px;
+        padding: 30px 26px;
+    }
+
+    .image-box img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .image-bottom {
+        font-size: 26px;
+        padding: 20px 34px;
+    }
+
+    .controls button {
+        width: 160px;
+        height: 70px;
+        font-size: 26px;
+    }
+
+}

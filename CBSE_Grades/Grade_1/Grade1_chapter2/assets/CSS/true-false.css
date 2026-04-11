@@ -475,3 +475,137 @@ body {
         font-size: 0.9em;
     }
 }
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .quiz-container {
+        max-width: 1000px;
+    }
+
+    .question-box {
+        font-size: 34px;
+    }
+
+    .question-image img {
+        width: 300px;
+        height: 220px;
+    }
+
+    .answers {
+        gap: 35px;
+    }
+
+    .answer {
+        height: 160px;
+        font-size: 34px;
+    }
+
+    .emoji-container {
+        width: 80px;
+        height: 80px;
+        font-size: 50px;
+    }
+
+    .answer-text {
+        font-size: 32px;
+    }
+
+    .nav button {
+        font-size: 20px;
+        padding: 14px 36px;
+    }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+    .quiz-container {
+        max-width: 1100px;
+    }
+
+    .question-box {
+        font-size: 38px;
+    }
+
+    .question-image img {
+        width: 340px;
+        height: 250px;
+    }
+
+    .answers {
+        gap: 40px;
+    }
+
+    .answer {
+        height: 180px;
+        font-size: 36px;
+    }
+
+    .emoji-container {
+        width: 90px;
+        height: 90px;
+        font-size: 55px;
+    }
+
+    .answer-text {
+        font-size: 34px;
+    }
+
+    .nav button {
+        font-size: 22px;
+        padding: 16px 40px;
+    }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+    .quiz-container {
+        max-width: 1200px;
+    }
+
+    .question-box {
+        font-size: 42px;
+    }
+
+    .question-image img {
+        width: 380px;
+        height: 280px;
+    }
+
+    .answers {
+        gap: 45px;
+    }
+
+    .answer {
+        height: 200px;
+        font-size: 38px;
+    }
+
+    .emoji-container {
+        width: 100px;
+        height: 100px;
+        font-size: 60px;
+    }
+
+    .answer-text {
+        font-size: 36px;
+    }
+
+    .nav button {
+        font-size: 24px;
+        padding: 18px 44px;
+    }
+
+}

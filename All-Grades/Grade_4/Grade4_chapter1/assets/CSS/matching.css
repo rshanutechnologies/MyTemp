@@ -319,15 +319,84 @@ body {
 
 @media (max-width: 480px) {
 
-    body{
+    body {
         padding-inline: 0;
     }
 
-    .main{
+    .main {
         padding: 0;
     }
 
-    .game{
+    .game {
         padding: 0px 6px;
+    }
+}
+
+/* =========================================
+   💻 DESKTOP / MONITOR (1025px – 1440px)
+========================================= */
+
+
+
+/* =========================================
+   🖥️ LARGE MONITORS (1441px – 1920px)
+========================================= */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+    .game {
+        max-width: 1200px;
+        transform: scale(1.05);
+        transform-origin: center;
+    }
+
+    .column h2 {
+        font-size: 26px;
+    }
+
+    .card {
+        height: 85px;
+        font-size: 26px;
+    }
+
+    .match-row {
+        height: 85px;
+        font-size: 26px;
+    }
+}
+
+
+/* =========================================
+   📺 EXTRA LARGE / 4K (1921px+)
+========================================= */
+@media screen and (min-width: 1921px) {
+
+    .game {
+        max-width: 1200px;
+        transform: scale(1.15);
+        transform-origin: center;
+    }
+
+    .column h2 {
+        font-size: 28px;
+    }
+
+    .card {
+        height: 78px;
+        font-size: 24px;
+        padding-left: 45px;
+    }
+
+    .action span {
+        font-size: 24px;
+    }
+
+    .action img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .match-row {
+        height: 78px;
+        font-size: 26px;
     }
 }

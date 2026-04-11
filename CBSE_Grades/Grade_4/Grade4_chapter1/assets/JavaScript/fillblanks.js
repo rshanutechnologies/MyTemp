@@ -1,12 +1,13 @@
+let popupTimer = null;
 // ================= QUESTIONS =================
-const questions = [
+const quizData= [
   {
     q: "Q.1 The gaseous exchange takes place with the help of _____________ in the leaves",
     a: "stomata",
     img: "../assets/images/FIB1.png",
   },
   {
-    q: "Q.2 The leaf stalk carries water from the stem to the leaf through a vein called the _______________,",
+    q: "Q.2 The leaf stalk carries wa ter from the stem to the leaf through a vein called the _______________,",
     a: "midrib",
     img: "../assets/images/FIB2.png",
   },
@@ -27,263 +28,161 @@ const questions = [
   },
 ];
 
-// ================= SPEECH =================
+let current = 0;
+let score = 0;
+
+const answered = Array(quizData.length).fill(false);
+const userAnswers = Array(quizData.length).fill("");
+
+const qEl = document.getElementById("question");
+const imgEl = document.getElementById("questionImg");
+const input = document.getElementById("answerInput");
+const submitBtn = document.getElementById("submitBtn");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+const popup = document.getElementById("popup");
+const popupText = document.getElementById("popupText");
+
+
+input.addEventListener("input", () => {
+  submitBtn.disabled = input.value.trim() === "";
+});
+
+// function speak(t){
+//   speechSynthesis.cancel();
+//   speechSynthesis.speak(new SpeechSynthesisUtterance(t));
+// }
+
 function speak(t) {
-  speechSynthesis.cancel();
+  speechSynthesis.cancel();   // optional but recommended
+
+
   const msg = new SpeechSynthesisUtterance(t);
-  msg.lang = "en-UK";
-  msg.volume = 0.25;
+    msg.lang = "en-UK";  
+  msg.volume = 0.25;   // 🔉 lower volume (0 to 1)
   msg.rate = 1;
   msg.pitch = 1;
+
   speechSynthesis.speak(msg);
 }
-
-// ================= CONFETTI =================
-function smallConfetti() {
-  if (typeof confetti !== "undefined") {
-    confetti({ particleCount: 40, spread: 70, origin: { y: 0.7 } });
-  }
-}
-
-function bigConfetti() {
-  if (typeof confetti === "undefined") return;
-
-  const duration = 500;
-  const end = Date.now() + duration;
-
-  (function frame() {
-    confetti({ particleCount: 7, angle: 60, spread: 55, origin: { x: 0 } });
-    confetti({ particleCount: 7, angle: 120, spread: 55, origin: { x: 1 } });
-    if (Date.now() < end) requestAnimationFrame(frame);
-  })();
-}
-
-// ================= STATE =================
-let index = 0;
-let score = 0;
-let popupTimer = null;
-
-const answers = Array(questions.length).fill(null);
-
-// ================= DOM =================
-const qText = document.getElementById("qText");
-const qImg = document.getElementById("qImg");
-const input = document.getElementById("answerInput");
-const input2 = document.getElementById("answerInput2");
-const check = document.getElementById("checkBtn");
-const prev = document.getElementById("prevBtn");
-const next = document.getElementById("nextBtn");
-const popup = document.getElementById("popup");
-const popupBox = document.getElementById("popupBox");
-
-// ================= LOAD =================
-function load() {
-  const q = questions[index];
-
-  if (qText) qText.textContent = q.q;
-
-  // ✅ SAFE IMAGE LOAD
-  if (qImg) {
-    qImg.src = q.img;
-    qImg.style.display = q.img ? "block" : "none";
-  }
-
-  const isDouble = Array.isArray(q.a);
-
-  input2.style.display = isDouble ? "block" : "none";
-
-  if (answers[index] === "correct") {
-    if (isDouble) {
-      input.value = q.a[0];
-      input2.value = q.a[1];
-      input2.disabled = true;
-    } else {
-      input.value = q.a;
-    }
-    input.disabled = true;
-  } else {
-    input.value = "";
-    input2.value = "";
-    input.disabled = false;
-    input2.disabled = false;
-  }
-
-  check.disabled = true;
-  prev.disabled = index === 0;
-  next.disabled = answers[index] !== "correct";
-}
-
-// ================= POPUP =================
-function showPopup(html, final = false) {
-  if (popupTimer) clearTimeout(popupTimer);
-
+function showPopup(html, final = false){
   popup.style.display = "flex";
-  popupBox.className = final ? "popup-box popup-final" : "popup-box";
-  popupBox.innerHTML = html;
+  popupText.className = final ? "popup-box popup-final" : "popup-box";
+  popupText.innerHTML = html;
 
-  if (!final) {
-    popupTimer = setTimeout(() => {
+  if(popupTimer) clearTimeout(popupTimer);
+
+  if(!final){
+    popupTimer = setTimeout(()=>{
       popup.style.display = "none";
     }, 1000);
   }
-
-  updateButton();
 }
 
-// ================= CHECK =================
-check.onclick = () => {
-  const q = questions[index];
-  const user1 = input.value.trim().toLowerCase();
+/* 🔄 LOAD QUESTION */
+function loadQuestion(){
+  const q = quizData[current];
 
-  if (Array.isArray(q.a)) {
-    const user2 = input2.value.trim().toLowerCase();
+  qEl.textContent = q.q;
 
-    if (user1 === q.a[0] && user2 === q.a[1]) {
+  /* ✅ SET IMAGE */
+  imgEl.src = q.img;
+  imgEl.style.display = "block";
 
-      if (answers[index] !== "correct") score++;
-      answers[index] = "correct";
+  input.value = userAnswers[current] || "";
+  input.disabled = answered[current];
+submitBtn.disabled = answered[current] || input.value.trim() === "";
 
-      speak("Correct");
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = !answered[current];
+}
 
-      // 🎉 CONFETTI
-      smallConfetti();
-      setTimeout(() => smallConfetti(), 200);
+/* ✅ SUBMIT */
+submitBtn.onclick = () => {
 
-      showPopup(`
-        <div class="popup-correct">
-          <div>✅ Correct</div>
-          <div class="happy">😊</div>
-          <div class="stars">${"⭐".repeat(score)}</div>
-        </div>
-      `);
+  const userAnsRaw = input.value.trim();
 
-      input.disabled = true;
-      input2.disabled = true;
-      check.disabled = true;
+  // 🚫 STEP 1: STOP if input is empty
+  if(userAnsRaw === ""){
+    showPopup(`
+      <div class="popup-wrong">
+        <div>⚠️ Please enter an answer</div>
+      </div>
+    `);
+    return;
+  }
 
-      if (index === questions.length - 1) {
-        setTimeout(() => {
-          bigConfetti();
-          showFinal();
-        }, 1400);
-      } else {
-        next.disabled = false;
-      }
+  if(answered[current]) return;
 
-    } else {
-      speak("Wrong");
-      input.value = "";
-      input2.value = "";
+  const userAns = userAnsRaw.toLowerCase();
+  const correctAns = quizData[current].a.toLowerCase();
 
-      showPopup(`
-        <div>
-          <div class="popup-title" style="color:#c62828;">❌ Wrong!</div>
-          <span class="popup-emoji">😢</span>
-          <div class="popup-tip">💡 Try again!</div>
-        </div>
-      `);
+  if(userAns === correctAns){
+    answered[current] = true;
+    userAnswers[current] = userAns;
+    score++;
+
+    speak("Correct");
+
+    showPopup(`
+      <div class="popup-correct">
+        <div>✅ Correct</div>
+        <div class="happy">😊</div>
+        <div class="stars">${"⭐".repeat(current + 1)}</div>
+      </div>
+    `);
+
+    nextBtn.disabled = false;
+
+    if(current === quizData.length - 1){
+      setTimeout(()=>{
+        showPopup(`
+          <div class="popup-final-content">
+            <div>🎉 Congratulations!</div>
+            <span class="emoji">🏆</span>
+            <div>You finished the quiz!</div>
+
+            <div class="final-score">
+              Score: <b>${score} / ${quizData.length}</b>
+            </div>
+
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+
+            <div class="final-actions">
+              <button class="restart" onclick="location.reload()">🔄 Restart</button>
+           
+            </div>
+          </div>
+        `, true);
+
+        nextBtn.disabled = true;
+        prevBtn.disabled = true;
+      }, 800);
     }
 
   } else {
+    speak("Wrong");
 
-    if (user1 === q.a.toLowerCase()) {
+    showPopup(`
+      <div class="popup-wrong">
+        <div>❌ Wrong</div>
+        <div class="sad">😢</div>
+        <div class="tip">💡 Try again!</div>
+      </div>
+    `);
 
-      if (answers[index] !== "correct") score++;
-      answers[index] = "correct";
-
-      speak("Correct");
-
-      // 🎉 CONFETTI
-      smallConfetti();
-      setTimeout(() => smallConfetti(), 200);
-
-      showPopup(`
-        <div class="popup-correct">
-          <div>✅ Correct</div>
-          <div class="happy">😊</div>
-          <div class="stars">${"⭐".repeat(score)}</div>
-        </div>
-      `);
-
-      input.disabled = true;
-      check.disabled = true;
-
-      if (index === questions.length - 1) {
-        setTimeout(() => {
-          bigConfetti();
-          showFinal();
-        }, 1400);
-      } else {
-        next.disabled = false;
-      }
-
-    } else {
-      speak("Wrong");
-      input.value = "";
-
-      showPopup(`
-        <div>
-          <div class="popup-title" style="color:#c62828;">❌ Wrong!</div>
-          <span class="popup-emoji">😢</span>
-          <div class="popup-tip">💡 Try again!</div>
-        </div>
-      `);
-    }
+    input.value = "";
   }
 };
 
-// ================= FINAL =================
-function showFinal() {
-  showPopup(`
-    <div class="popup-final-content">
-      🎉 Congratulations!
-      <span class="emoji">🏆</span>
-      <div>You finished the quiz!</div>
-      <div class="final-score">
-        Score: ${score}/${questions.length}
-      </div>
-      <div class="stars">${"⭐".repeat(score)}</div>
-      <div class="final-actions">
-        <button class="restart" onclick="location.reload()">🔄 Restart</button>
-        <button class="home" onclick="location.href='../index.html'">🏠 Home</button>
-      </div>
-    </div>
-  `, true);
-}
-
-// ================= NAV =================
-prev.onclick = () => {
-  index--;
-  load();
+nextBtn.onclick = () => {
+  current++;
+  loadQuestion();
 };
 
-next.onclick = () => {
-  index++;
-  load();
+prevBtn.onclick = () => {
+  current--;
+  loadQuestion();
 };
 
-// ================= BUTTON ENABLE =================
-function updateButton() {
-  const q = questions[index];
-
-  if (Array.isArray(q.a)) {
-    check.disabled =
-      input.disabled ||
-      input2.disabled ||
-      !input.value.trim() ||
-      !input2.value.trim();
-  } else {
-    check.disabled =
-      input.disabled ||
-      !input.value.trim();
-  }
-}
-
-input.oninput = updateButton;
-input2.oninput = updateButton;
-
-// ================= INIT =================
-prev.disabled = true;
-next.disabled = true;
-
-load();
+loadQuestion();

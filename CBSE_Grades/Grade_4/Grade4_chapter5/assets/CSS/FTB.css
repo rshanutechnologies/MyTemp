@@ -288,3 +288,60 @@ body {
         box-shadow: none;
     }
 }
+/* DESKTOP — above 1366px only */
+@media (min-width: 1367px) {
+
+    .main-container {
+        width: min(1000px, 90vw);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .quiz-container {
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .question-area h2 {
+        font-size: 45px;
+        min-height: 65px;
+    }
+
+    .image-area img {
+        width: clamp(280px, 28vw, 460px);
+        height: clamp(180px, 28vh, 300px);
+    }
+
+    .input-area {
+        gap: 18px;
+        width: 85%;
+    }
+     .quiz-container .input-box {
+    min-width: 300px;
+     min-height: 70px; 
+  }
+
+    .input-box {
+        /* min-width: clamp(160px, 20vw, 220px); */
+        padding: 14px 16px;
+        border-radius: 20px;
+    }
+
+    .input-box input {
+        height: clamp(48px, 7vh, 60px);
+        font-size: 20px;
+        border-radius: 12px;
+    }
+
+    .check-btn {
+        padding: 10px 30px;
+        font-size: 18px;
+        border-radius: 12px;
+    }
+
+    .nav-buttons button {
+        width: 150px;
+        height: 54px;
+        font-size: 20px;
+    }
+}

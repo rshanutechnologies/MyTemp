@@ -350,7 +350,7 @@ h1 {
         height: 34px;
     }
 
-    #line-canvas{
+    #line-canvas {
         display: none;
     }
 }
@@ -405,4 +405,123 @@ h1 {
         padding: 12px;
         font-size: 0.95em;
     }
+}
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .main {
+        max-width: 1000px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .game-container {
+        gap: 140px;
+    }
+
+    .item {
+        width: 360px;
+        height: 130px;
+        font-size: 24px;
+    }
+
+    .left-img {
+        width: 65px;
+        height: 70px;
+    }
+
+    .answer-box {
+        width: 65px;
+        height: 65px;
+    }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+    .main {
+        max-width: 1100px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .game-container {
+        gap: 160px;
+    }
+
+    .item {
+        width: 380px;
+        height: 140px;
+        font-size: 26px;
+    }
+
+    .left-img {
+        width: 70px;
+        height: 75px;
+    }
+
+    .answer-box {
+        width: 70px;
+        height: 70px;
+    }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+    .main {
+        max-width: 1200px;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .game-container {
+        gap: 180px;
+    }
+
+    .item {
+        width: 420px;
+        height: 150px;
+        font-size: 28px;
+    }
+
+    .left-img {
+        width: 75px;
+        height: 80px;
+    }
+
+    .answer-box {
+        width: 75px;
+        height: 75px;
+    }
+
 }

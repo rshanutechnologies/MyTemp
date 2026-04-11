@@ -574,7 +574,7 @@ font-size:22px;
 .tf-btn{
 
 font-size:16px;
-margin-top: -40px;
+margin-top: 20px;
 padding:10px 18px;
 
 }
@@ -584,7 +584,7 @@ padding:10px 18px;
 
 .imgbox img{
 
-max-width:150px;
+max-width:110px;
 
 }
 .options{
@@ -608,6 +608,131 @@ width:95%;
 
 font-size:36px;
 
+}
+
+}
+
+
+
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1225px) and (max-width:1640px){
+
+.quiz{
+max-width:1200px;
+}
+
+.question{
+font-size:40px;
+}
+
+.row{
+gap:30px;
+}
+
+.imgbox{
+margin-left:10%;
+}
+
+.imgbox img{
+max-width:400px;
+height:400px;
+object-fit: contain;
+}
+
+.tf-btn{
+font-size:40px;
+padding:18px 50px;
+}
+
+.nav{
+gap:60px;
+}
+
+.nav button{
+font-size:30px;
+padding:15px 28px;
+}
+
+} */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1350px) and (max-width:1920px){
+
+.quiz{
+max-width:1350px;
+}
+
+.question{
+font-size:44px;
+}
+
+.row{
+gap:50px;
+}
+
+.imgbox{
+margin-left:15%;
+}
+
+.imgbox img{
+max-width:400px;
+height:400px;
+}
+
+.tf-btn{
+font-size:24px;
+padding:22px 70px;
+}
+
+.nav{
+gap:80px;
+}
+
+.nav button{
+font-size:30px;
+padding:15px 28px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.quiz{
+max-width:1500px;
+}
+
+.question{
+font-size:40px;
+}
+
+.row{
+gap:70px;
+}
+
+.imgbox{
+margin-left:18%;
+}
+
+.imgbox img{
+max-width:380px;
+height:380px;
+}
+
+.tf-btn{
+font-size:28px;
+padding:26px 90px;
+}
+
+.nav{
+gap:100px;
+}
+
+.nav button{
+font-size:30px;
+padding:15px 28px;
 }
 
 }

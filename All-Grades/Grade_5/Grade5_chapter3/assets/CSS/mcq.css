@@ -696,3 +696,126 @@ body {
 .blue-icon {
   color: #2196f3;
 }
+
+@media (min-width: 1280px){
+
+  /* ❌ REMOVE SCALE */
+  .main-container{
+    transform: none;
+    width: 1300px;
+    height: 780px;
+    margin-top: 0;
+    gap: 30px;
+  }
+
+  /* ✅ TITLE */
+  .title{
+    font-size: 50px !important;
+    margin-top: 20px;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question-card h2{
+    font-size: 44px;
+    min-height: 140px;
+    margin-top: 0;
+  }
+
+  /* ✅ IMAGE */
+  .question-card img{
+    width: 260px;
+    height: 200px;
+  }
+
+  /* ✅ OPTIONS GRID */
+  .options-container{
+    gap: 30px;
+    margin-top: 0;
+  }
+
+  /* ✅ OPTION CARD */
+  .option-card{
+    padding: 24px;
+    border-radius: 24px;
+    gap: 20px;
+  }
+
+  /* ✅ EMOJI / IMAGE */
+  .emoji{
+    width: 140px;
+    height: 140px;
+  }
+
+  .option-card span{
+    font-size: 24px;
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .btn{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+    border-radius: 15px;
+       outline: 4px solid white !important;
+  }
+
+  /* ✅ NAV FIX */
+  .nav-container{
+    gap: 100px;
+    margin-top: 30px;
+  }
+
+  /* ✅ PROGRESS TRACK */
+  .train-track{
+    margin: 20px 0;
+  }
+
+  .train-track::before{
+    height: 12px;
+  }
+
+  .station{
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+  }
+
+  /* ✅ POPUP */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-icon{
+    font-size: 100px;
+  }
+
+  .popup-content h3{
+    font-size: 34px;
+  }
+
+  .popup-content p{
+    font-size: 24px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .finalpopup-box{
+    width: 600px;
+    padding: 40px;
+  }
+
+  .final-heading{
+    font-size: 34px;
+  }
+
+  #stars{
+    font-size: 50px;
+  }
+
+  .playAgain-btn{
+    font-size: 20px;
+    padding: 14px 32px;
+  }
+
+}

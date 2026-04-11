@@ -212,6 +212,62 @@ display:none;
 
 }
 
+/* ===================================== */
+/* ===== 1280px PURE SIZE UPGRADE ===== */
+/* ===================================== */
+
+@media (min-width: 1280px) {
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 360px;
+    padding: 40px 30px;
+   
+  }
+
+  /* BRAND TITLE */
+  .brand {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  /* NAV LINKS */
+  .sidebar ul {
+    gap: 26px;
+  }
+
+  .sidebar ul li a {
+    padding: 22px 28px;
+    font-size: 28px;
+    gap: 18px;
+    border-radius: 70% 30% 60% 40% / 40% 60% 40% 60%;
+     height: 110px !important;              /* fixed height */
+  padding: 0 22px;           /* remove vertical padding */
+  display: flex;
+  align-items: center;
+  }
+  
+
+  /* ICON (EMOJI) */
+  .sidebar ul li a .sticker {
+    font-size: 28px;
+  }
+
+  /* HOVER (keep same feel, just slightly stronger) */
+  .sidebar ul li a:hover {
+    transform: rotate(0deg) translateX(10px) scale(1.05);
+  }
+
+ 
+
+  /* MENU BUTTON */
+  .menu-toggle {
+    font-size: 28px;
+    padding: 10px 16px;
+   
+  }
+
+}
 </style>
 </head>
 

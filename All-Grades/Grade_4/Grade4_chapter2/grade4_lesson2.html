@@ -381,6 +381,69 @@
         height: calc(100vh / 0.85);
       }
     }
+
+    /* ========================================
+   💻 Desktop (1025px – 1440px)
+======================================== */
+    @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+      .board {
+        max-width: 1600px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .island-btn {
+        min-width: 150px;
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+
+
+    }
+
+
+    /* ========================================
+   🖥️ Large Screens (1441px – 1920px)
+======================================== */
+    @media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+      .board {
+        max-width: 1600px;
+        /* 🔥 locks spacing */
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .island-btn {
+        min-width: 150px;
+        font-size: 18px;
+        padding: 12px 20px;
+      }
+
+
+    }
+
+
+    /* ========================================
+   📺 4K Screens (1921px+)
+======================================== */
+    @media screen and (min-width: 1921px) {
+
+      .board {
+        max-width: 1600px;
+        /* 🔥 same layout */
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .island-btn {
+        min-width: 150px;
+        font-size: 20px;
+        padding: 14px 25px;
+      }
+
+    }
   </style>
 </head>
 

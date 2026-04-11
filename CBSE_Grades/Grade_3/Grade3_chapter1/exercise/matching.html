@@ -94,6 +94,7 @@ body{
 .left .item{
   background:var(--light-green);
   border-left:clamp(4px,0.5vw,6px) solid var(--green);
+  
 }
 
 .right .item{
@@ -235,8 +236,7 @@ svg{
 
 .play-again-btn{
   margin-top:20px;
-  padding:clamp(10px,2vh,12px) clamp(20px,4vw,28px);
-  font-size:clamp(14px,1.2vw,16px);
+  padding:10px 25px;
   border:none;
   border-radius:30px;
   cursor:pointer;
@@ -261,6 +261,140 @@ svg{
   }
 }
 
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width:1025px) and (max-width:1440px){
+
+  .container{
+    max-width:1200px;
+  }
+
+  .game{
+    gap:160px;   /* 🔥 bigger spacing */
+  }
+
+  .column{
+    width:380px;
+  }
+
+  .item{
+    font-size:25px;     /* 🔥 bigger text */
+    height:80px;
+    padding:18px;
+    border-radius:18px;
+  }
+
+  .left-img{
+    width:60px;
+    height:60px;
+  }
+
+  .right-text{
+    font-size:25px;
+  }
+
+  .oval-box{
+    width:80px;
+    height:40px;
+  }
+
+  .oval-box img{
+    width:35px;
+    height:35px;
+  }
+
+}
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+  .container{
+    max-width:1500px;
+  }
+
+  .game{
+    gap:180px;   /* 🔥 bigger spacing */
+  }
+
+  .column{
+    width:420px;
+  }
+
+  .item{
+    font-size:25px;     /* 🔥 bigger text */
+    height:120px;
+    padding:25px;
+    border-radius:25px;
+  }
+
+  .left-img{
+    width:60px;
+    height:60px;
+  }
+
+  .right-text{
+    font-size:25px;
+  }
+
+  .oval-box{
+    width:100px;
+    height:50px;
+  }
+
+  .oval-box img{
+    width:50px;
+    height:50px;
+  }
+
+}
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width:1921px){
+
+  .container{
+    max-width:1400px;
+  }
+
+  .game{
+    gap:220px;
+  }
+
+  .column{
+    width:450px;
+  }
+
+  .item{
+    font-size:32px;
+    height:130px;
+    padding:22px;
+    border-radius:20px;
+  }
+
+  .left-img{
+    width:70px;
+    height:70px;
+  }
+
+  .right-text{
+    font-size:32px;
+  }
+
+  .oval-box{
+    width:110px;
+    height:55px;
+  }
+
+  .oval-box img{
+    width:50px;
+    height:50px;
+  }
+
+}
 </style>
 </head>
 

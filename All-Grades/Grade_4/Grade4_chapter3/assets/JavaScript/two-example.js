@@ -118,17 +118,71 @@ function render() {
       div.style.opacity = "0.5";
       div.draggable = false;
     } else {
-      div.draggable = true;
-      div.ondragstart = (e) => {
-        e.dataTransfer.setData("text", e.target.closest(".option-card").id);
-        div.style.opacity = "0.5";
-      };
-      div.ondragend = () => {
-        div.style.opacity = "1";
-      };
+      // div.draggable = true;
+      // div.ondragstart = (e) => {
+      //   e.dataTransfer.setData("text", e.target.closest(".option-card").id);
+      //   div.style.opacity = "0.5";
+      // };
+      // div.ondragend = () => {
+      //   div.style.opacity = "1";
+      // };
+      div.onclick = () => handleOptionClick(o, div);
     }
     optBox.appendChild(div);
   });
+
+  function handleOptionClick(option, element) {
+    const q = questions[index];
+
+    // already filled both boxes
+    if (state[index].selected.length >= 2) return;
+
+    // already selected
+    if (state[index].selected.includes(option.id)) return;
+
+    // find first empty drop box
+    let target;
+    if (!document.getElementById("drop1").classList.contains("filled")) {
+      target = document.getElementById("drop1");
+    } else if (!document.getElementById("drop2").classList.contains("filled")) {
+      target = document.getElementById("drop2");
+    } else {
+      return;
+    }
+
+    // ✅ CORRECT
+    if (q.answers.includes(option.id)) {
+      state[index].selected.push(option.id);
+
+      showInDropZone(option, target);
+      
+
+      speak("Correct");
+      showPopup(true);
+      stars();
+
+      if (state[index].selected.length === q.answers.length) {
+        state[index].completed = true;
+        score++;
+        setTimeout(render, 500);
+
+        if (index === questions.length - 1) {
+          setTimeout(showFinal, 1600);
+        }
+      } else {
+        render();
+      }
+    }
+
+    // ❌ WRONG
+    else {
+      speak("Wrong");
+      showPopup(false);
+
+      element.classList.add("error");
+      setTimeout(() => element.classList.remove("error"), 400);
+    }
+  }
 
   state[index].selected.forEach((id, i) => {
     const optionData = q.options.find((o) => o.id === id);
@@ -138,45 +192,45 @@ function render() {
   updateUI();
 }
 
-function allowDrop(ev) {
-  ev.preventDefault();
-}
+// function allowDrop(ev) {
+//   ev.preventDefault();
+// }
 
-function drop(ev) {
-  ev.preventDefault();
-  const zone = ev.target.closest(".drop-box");
-  if (zone.classList.contains("filled")) return;
+// function drop(ev) {
+//   ev.preventDefault();
+//   const zone = ev.target.closest(".drop-box");
+//   if (zone.classList.contains("filled")) return;
 
-  const id = ev.dataTransfer.getData("text");
-  const q = questions[index];
+//   const id = ev.dataTransfer.getData("text");
+//   const q = questions[index];
 
-  if (q.answers.includes(id)) {
-    state[index].selected.push(id);
-    const optionData = q.options.find((o) => o.id === id);
-    showInDropZone(optionData, zone);
-    speak("Correct");
-    showPopup(true);
-    stars();
+//   if (q.answers.includes(id)) {
+//     state[index].selected.push(id);
+//     const optionData = q.options.find((o) => o.id === id);
+//     showInDropZone(optionData, zone);
+//     speak("Correct");
+//     showPopup(true);
+//     stars();
 
-    if (state[index].selected.length === q.answers.length) {
-      state[index].completed = true;
-      score++;
-      setTimeout(render, 500); // Re-render to apply disabled state to all
-      if (index === questions.length - 1) setTimeout(showFinal, 1600);
-    } else {
-      render(); // Re-render to disable the specific correct one
-    }
-  } else {
-    speak("Wrong");
-    showPopup(false);
-    const el = document.getElementById(id);
-    el.classList.add("error");
-    setTimeout(() => el.classList.remove("error"), 400);
-  }
-}
+//     if (state[index].selected.length === q.answers.length) {
+//       state[index].completed = true;
+//       score++;
+//       setTimeout(render, 500); // Re-render to apply disabled state to all
+//       if (index === questions.length - 1) setTimeout(showFinal, 1600);
+//     } else {
+//       render(); // Re-render to disable the specific correct one
+//     }
+//   } else {
+//     speak("Wrong");
+//     showPopup(false);
+//     const el = document.getElementById(id);
+//     el.classList.add("error");
+//     setTimeout(() => el.classList.remove("error"), 400);
+//   }
+// }
 
 function showInDropZone(option, target) {
-  target.innerHTML = `<span style="font-size:30px; margin-right:10px">${option.emoji}</span>
+  target.innerHTML = `<span class="dropbox-icon">${option.emoji}</span>
             <span style="font-weight:100; color:var(--success);">${option.label}</span>`;
   target.classList.add("filled");
 }
@@ -184,7 +238,7 @@ function showInDropZone(option, target) {
 function resetDropZone(id) {
   const zone = document.getElementById(id);
   zone.classList.remove("filled");
-  zone.innerHTML = `<span class="drop-hint">Drag & Drop here</span>`;
+  zone.innerHTML = `<span class="drop-hint">Click to Option</span>`;
 }
 
 function updateUI() {

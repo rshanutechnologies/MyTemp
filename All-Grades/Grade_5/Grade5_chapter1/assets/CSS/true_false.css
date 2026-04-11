@@ -404,3 +404,153 @@ button:disabled{
   }
 
 }
+
+@media (min-width: 1280px) {
+
+
+  body{
+    margin-top: -5% !important;
+  }
+  /* ❌ REMOVE SCALE */
+  .quiz-card{
+    transform: none;
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+
+  /* ✅ TITLE */
+  .quiz-title{
+    font-size: 50px !important;
+    padding: 20px 30px;
+  
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    min-height: 140px;
+    padding: 40px;
+    text-align: center;
+  }
+
+  /* ✅ IMAGE */
+  .question-img{
+    width: 400px;
+    height: 300px;
+    margin: 10px auto 20px;
+  }
+
+  /* ✅ TRUE/FALSE BUTTONS */
+  .tf-buttons{
+    gap: 80px;
+    margin-top: 40px;
+  }
+
+  .tf-buttons button{
+    width: 290px;
+    height: 100px;
+    font-size: 24px;
+    padding: 0;
+  }
+
+  /* ✅ NAV FIX (IMPORTANT) */
+  .nav{
+    position: relative;
+    transform: none;
+    margin-top: 40px;
+    padding: 0 80px;
+    justify-content: space-between;
+  }
+
+  .prev,
+  .next{
+    width: 180px;
+    height: 70px;
+    font-size: 24px !important;
+    border-radius: 999px;
+    margin: 0;
+  }
+
+/* ✅ POPUP BOX */
+.popup-box{
+  width: 380px;
+  padding: 50px;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px; /* 🔥 spacing between lines */
+}
+
+/* ✅ COMMON TEXT ALIGN */
+.popup-correct,
+.popup-wrong{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* 🔥 line spacing */
+
+  font-size: 28px;
+  text-align: center;
+}
+
+/* ✅ LINE 1 (TEXT) */
+.popup-correct .check,
+.popup-wrong .cross{
+  font-size: 26px;
+  font-weight: 500;
+}
+
+/* ✅ LINE 2 (EMOJI BIG) */
+.popup-correct .happy,
+.popup-wrong .sad{
+  font-size: 100px;
+  line-height: 1;
+}
+
+/* ✅ LINE 3 (STARS / MESSAGE) */
+.popup-correct .stars{
+  font-size: 40px;
+  margin-top: 5px;
+}
+
+/* OPTIONAL: WRONG TIP LINE */
+.popup-wrong .tip{
+  font-size: 22px;
+  margin-top: 5px;
+}
+
+/* ✅ FINAL POPUP CONTENT */
+.popup-final-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 28px;
+  text-align: center;
+}
+
+/* FINAL EMOJI */
+.popup-final-content .emoji{
+  font-size: 70px;
+  line-height: 1;
+}
+
+/* FINAL STARS */
+.popup-final-content .stars{
+  font-size: 50px;
+}
+ 
+
+  .restart,
+  .home{
+    font-size: 22px;
+    padding: 14px 28px;
+  }
+
+}

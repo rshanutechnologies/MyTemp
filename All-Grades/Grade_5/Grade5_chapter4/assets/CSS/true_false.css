@@ -695,3 +695,193 @@ button:disabled {
 
 
 }
+
+/* ===================================== */
+/* ===== 1280px PURE SIZE UPGRADE ===== */
+/* ===================================== */
+
+@media (min-width: 1680px) {
+  /* body{
+    margin-top: -5% !important;
+  } */
+  /* CARD */
+  .quiz-card {
+    width: 1100px;
+    height: 720px;
+     margin-top: -10% !important;
+  }
+
+  
+
+  /* PROGRESS */
+  .progress {
+    font-size: 22px;
+  }
+
+  /* QUESTION */
+  .question {
+    height: 150px !important;
+    font-size: 44px; /* ✅ IMPORTANT */
+    width: 1200px;
+  
+  
+  }
+
+  /* IMAGE */
+  .question-img {
+    max-width: 500px;
+    height: 280px;
+      margin-top: 3%;
+  }
+
+  /* TRUE / FALSE BUTTONS */
+  .tf-buttons {
+    gap: 80px;
+  }
+
+  .tf-buttons button {
+    width: 260px;   /* ✅ FIXED */
+    height: 120px;   /* ✅ FIXED */
+    font-size: 35px;
+
+    border-radius: 40px;
+   
+  }
+
+  /* NAV */
+  .nav button {
+    width: 180px;   /* ✅ FIXED */
+    height: 70px;
+    font-size: 22px;
+    border-radius: 40px;
+   
+  }
+  .nav{
+    margin-bottom:-18% !important;
+  }
+/* ===================================== */
+/* ===== FINAL POPUP CLEAN SYSTEM ===== */
+/* ===================================== */
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.0);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+/* MAIN BOX */
+.popup-box {
+  background: white;
+  width: 380px;
+  padding: 30px;
+  border-radius: 24px;
+  border: 2px solid #ffe100;
+  text-align: center;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+
+  /* 🔥 IMPORTANT FIX */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* FINAL POPUP BIG */
+.popup-box.popup-final {
+  width: 700px;
+}
+
+/* FORCE ALL TEXT NEW LINE */
+.popup-box div,
+.popup-box p,
+.popup-box span,
+.popup-box h3 {
+  display: block;
+  width: 100%;
+}
+
+/* ✅ CORRECT */
+.popup-correct {
+  color: #2e7d32;
+  font-size: 26px;
+  line-height: 1.5;
+}
+
+.popup-correct .happy {
+  font-size: 80px;
+}
+
+.popup-correct .stars {
+  font-size: 36px;
+  color: #ffca28;
+}
+
+/* ❌ WRONG */
+.popup-wrong {
+  color: #c62828;
+  font-size: 26px;
+  line-height: 1.5;
+}
+
+.popup-wrong .sad {
+  font-size: 80px;
+}
+
+.popup-wrong .tip {
+  font-size: 26px;
+}
+
+/* 🏆 FINAL */
+.popup-final-content {
+  font-size: 28px;
+  font-weight: 500;
+  color: #2e7d32;
+  line-height: 1.6;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-final-content .emoji {
+  font-size: 80px;
+}
+
+.popup-final-content .stars {
+  font-size: 36px;
+  color: #ffca28;
+}
+
+/* SCORE */
+.final-score {
+  margin-top: 10px;
+}
+
+/* ACTION BUTTONS */
+.final-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+
+
+  /* FINAL BUTTONS */
+  .restart,
+  .home {
+    width: 180px;
+    height: 70px;
+    font-size: 22px;
+    font-weight: 500;
+    border-radius: 40px;
+  }
+
+}

@@ -38,7 +38,7 @@
 }
 
 .header h1 {
-    font-size: 29px;
+    font-size: 30px;
     color: #4b3f35;
     font-weight: 500;
 }
@@ -639,6 +639,124 @@ button:disabled {
   input{
     width:90%;
     font-size:18px;
+  }
+
+}
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width: 1025px) and (max-width: 1440px){
+
+  .book{
+    max-width: 950px;
+  }
+
+  .story{
+    font-size: 30px;
+  }
+
+  .photo{
+    width: 200px;
+    height: 170px;
+  }
+
+  input{
+    font-size: 22px;
+    height: 48px;
+  }
+
+  button{
+    font-size: 20px;
+    width: 160px;
+  }
+
+}
+
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width: 1441px) and (max-width: 1920px){
+
+  .book{
+    max-width: 1200px;
+    height: 650px;
+  }
+
+  .header h1{
+    font-size: 34px;
+  }
+
+  .content{
+    grid-template-columns: 280px 1fr;
+    gap: 50px;
+  }
+
+  .photo{
+    width: 240px;
+    height: 200px;
+  }
+
+  .story{
+    font-size: 40px;
+  }
+
+  input{
+    font-size: 24px;
+    height: 55px;
+  }
+
+  button{
+    font-size: 24px;
+    width: 200px;
+    height: 60px;
+  }
+
+}
+
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width: 1921px){
+
+  .book{
+    max-width: 1500px;
+    height: 750px;
+  }
+
+  .header h1{
+    font-size: 40px;
+  }
+
+  .content{
+    grid-template-columns: 320px 1fr;
+    gap: 70px;
+  }
+
+  .photo{
+    width: 280px;
+    height: 230px;
+  }
+
+  .story{
+    font-size: 44px;
+    line-height: 1.6;
+  }
+
+  input{
+    font-size: 28px;
+    height: 60px;
+  }
+
+  button{
+    font-size: 24px;
+    width: 200px;
+    height: 60px;
+  }
+
+  .popup-box.final-wide{
+    width: 700px;
   }
 
 }

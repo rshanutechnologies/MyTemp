@@ -313,6 +313,81 @@
                 height: calc(100vh / 0.8);
             }
         }
+
+        /* ============================= */
+        /* Desktop / Monitor (1025–1440) */
+        /* ============================= */
+        @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+            .nav-group {
+                max-width: 1200px;
+            }
+
+            .island-btn {
+                font-size: clamp(15px, 1vw, 17px);
+                padding: 16px 20px;
+            }
+
+            .topbar {
+                height: 90px;
+            }
+        }
+
+        /* ============================= */
+        /* Large Monitors (1441–1920) */
+        /* ============================= */
+        @media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+            .nav-group {
+                max-width: 1400px;
+                gap: 30px;
+                padding: 14px;
+            }
+
+            .topbar {
+                height: 100px;
+            }
+
+            .island-btn {
+                font-size: clamp(17px, 1.1vw, 20px);
+                padding: 18px 24px;
+                border-radius: 16px;
+            }
+
+            .main {
+                padding: 20px 20px 0;
+            }
+        }
+
+        /* ============================= */
+        /* Extra Large Screens / 4K */
+        /* ============================= */
+        @media screen and (min-width: 1921px) {
+
+            .nav-group {
+                max-width: 1700px;
+                gap: 40px;
+                padding: 18px;
+            }
+
+            .topbar {
+                height: 120px;
+            }
+
+            .island-btn {
+                font-size: clamp(20px, 1.2vw, 26px);
+                padding: 22px 28px;
+                border-radius: 18px;
+            }
+
+            .main {
+                padding: 30px 40px 0;
+            }
+
+            iframe {
+                border-radius: 12px;
+            }
+        }
     </style>
 </head>
 

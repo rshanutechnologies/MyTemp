@@ -482,7 +482,7 @@ body {
 /* ---------- SMALL MOBILES (≤ 480px) ---------- */
 @media (max-width: 480px) {
 
-  .quiz-card{
+  .quiz-card {
     padding-block: 0;
   }
 
@@ -513,7 +513,7 @@ body {
 /* ---------- EXTRA SMALL (≤ 360px) ---------- */
 @media (max-width: 360px) {
 
-   .quiz-card{
+  .quiz-card {
     padding-block: 0;
   }
 
@@ -523,5 +523,107 @@ body {
 
   .tf-buttons button {
     font-size: 17px;
+  }
+}
+
+/* =========================================
+   💻 DESKTOP / MONITOR (1025px – 1440px)
+========================================= */
+/* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  .quiz-card {
+    width: 1320px;
+    padding: 20px;
+  }
+
+  .top-title {
+    font-size: 30px;
+  }
+
+  .question {
+    font-size: 32px;
+  }
+
+  .question-img {
+    max-width: 340px;
+    height: 220px;
+  }
+
+  .tf-buttons button {
+    font-size: 30px;
+    padding: 22px 55px;
+  }
+
+  .nav button {
+    font-size: 20px;
+    padding: 12px 26px;
+  }
+} */
+
+
+/* =========================================
+   🖥️ LARGE MONITORS (1441px – 1920px)
+========================================= */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+  .quiz-card {
+    width: 1320px;
+    transform: scale(1.05);
+    transform-origin: center;
+  }
+
+  .top-title {
+    font-size: 44px;
+  }
+
+  .question {
+    font-size: 35px;
+  }
+
+  .question-img {
+    max-width: 360px;
+    height: 280px;
+  }
+
+  .tf-buttons button {
+    font-size: 32px;
+  }
+  .nav button {
+    font-size: 28px;
+    padding: 14px 30px;
+  }
+}
+
+
+/* =========================================
+   📺 EXTRA LARGE / 4K (1921px+)
+========================================= */
+@media screen and (min-width: 1921px) {
+
+   .quiz-card {
+    width: 1320px;
+    transform: scale(1.15);
+    transform-origin: center;
+  }
+
+  .top-title {
+    font-size: 44px;
+  }
+
+  .question {
+    font-size: 44px;
+  }
+
+  .question-img {
+    max-width: 360px;
+    height: 280px;
+  }
+
+  .tf-buttons button {
+    font-size: 32px;
+  }
+  .nav button {
+    font-size: 28px;
+    padding: 14px 30px;
   }
 }

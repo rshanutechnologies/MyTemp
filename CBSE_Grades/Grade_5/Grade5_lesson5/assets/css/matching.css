@@ -543,3 +543,97 @@ h1 {
         font-size: 0.95em;
     }
 }
+
+
+
+
+
+
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1225px) and (max-width:1640px){
+
+.main{
+max-width:1000px;
+}
+
+.game-container{
+gap:90px;
+}
+
+.item{
+width:570px;
+height:110px;
+font-size:28px;
+}
+
+.left-img{
+width:55px;
+height:60px;
+}
+
+.answer-box{
+width:55px;
+height:55px;
+}
+
+} */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1450px) and (max-width:1920px){
+
+.main{
+max-width:1300px;
+}
+
+.game-container{
+gap:130px;
+}
+
+.item{
+width:600px;
+height:130px;
+font-size:28px;
+}
+
+.left-img{
+width:65px;
+height:70px;
+}
+
+.answer-box{
+width:65px;
+height:65px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+/* @media screen and (min-width:1921px){
+
+.main{
+max-width:1350px;
+}
+
+.game-container{
+gap:160px;
+}
+
+.item{
+width:520px;
+height:95px;
+font-size:30px;
+}
+
+.left-img{
+width:90px;
+height:90px;
+}
+
+.answer-box{
+width:75px;
+height:75px;
+}
+
+} */

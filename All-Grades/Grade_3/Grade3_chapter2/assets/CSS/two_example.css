@@ -23,14 +23,6 @@
       padding:18px 10px;
     }
 
-    /* ✅ UI SCALE */
-    .ui-scale{
-      transform:scale(1);
-      transform-origin:center top;
-      width:100%;
-      display:flex;
-      justify-content:center;
-    }
 
     .wrapper{
       width:736px;
@@ -520,4 +512,159 @@
     height:120px !important;
   }
 
+}
+
+
+@media screen and (min-width: 1441px) and (max-width: 1920px){
+
+  .wrapper{
+    width:1300px;
+  }
+
+  .process-wrap{
+    width:1050px;
+  }
+
+  .question-text{
+    font-size:42px;
+  }
+
+  .options{
+    width:1000px;
+    gap:24px;
+  }
+
+  .opt-btn{
+    height:200px;
+  }
+
+  .opt-img{
+    height:150px;
+  }
+
+  .opt-label{
+    font-size:26px;
+  }
+
+  .footer{
+    width:1000px;
+  }
+
+  .nav-btn{
+    width:160px;
+    height:55px;
+    font-size:22px;
+  }
+}
+
+@media screen and (min-width: 1921px){
+
+  .wrapper{
+    width:1500px;
+  }
+
+  .process-wrap{
+    width:1200px;
+  }
+
+  .question-text{
+    font-size:48px;
+  }
+
+  .options{
+    width:1150px;
+    gap:30px;
+  }
+
+  .opt-btn{
+    height:220px;
+  }
+
+  .opt-img{
+    height:170px;
+  }
+
+  .opt-label{
+    font-size:28px;
+  }
+
+  .footer{
+    width:1150px;
+  }
+
+  .nav-btn{
+    width:180px;
+    height:60px;
+    font-size:24px;
+  }
+}
+/* ===================================== */
+/* ✅ MOBILE POPUP SMALL (FIX)            */
+/* ===================================== */
+@media (max-width:600px){
+
+  .popup-box{
+    width:85% !important;
+    padding:14px !important;
+    border-radius:14px !important;
+  }
+
+  /* ✅ CORRECT POPUP */
+  .popup-correct{
+    font-size:16px !important;
+    padding:12px !important;
+  }
+
+  .popup-correct .check{
+    font-size:18px !important;
+  }
+
+  .popup-correct .happy{
+    font-size:36px !important;
+  }
+
+  .popup-correct .stars{
+    font-size:20px !important;
+  }
+
+  /* ✅ WRONG POPUP */
+  .popup-wrong{
+    font-size:16px !important;
+    padding:12px !important;
+  }
+
+  .popup-wrong .cross{
+    font-size:18px !important;
+  }
+
+  .popup-wrong .sad{
+    font-size:36px !important;
+  }
+
+  .popup-wrong .tip{
+    font-size:13px !important;
+  }
+
+  /* ✅ FINAL POPUP */
+  .popup-final-content{
+    font-size:16px !important;
+  }
+
+  .popup-final-content .emoji{
+    font-size:40px !important;
+  }
+
+  .popup-final-content .stars{
+    font-size:20px !important;
+  }
+
+  .restart{
+    font-size:16px !important;
+    padding:8px 12px !important;
+  }
+
+  /* ✅ FINAL BOX WIDTH */
+  .popup-box.final-wide{
+    width:90% !important;
+  }
 }

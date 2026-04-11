@@ -161,7 +161,7 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    cursor: grab;
+    cursor: pointer;
     font-weight: 500;
     transition: .25s ease;
     font-size: 20px;
@@ -527,6 +527,38 @@ button:disabled {
         font-size: 16px;
         padding: 9px 20px;
     }
+
+    #finalPopup {
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .finalpopup-box {
+        width: 100%;
+        max-width: 320px;
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .final-heading {
+        font-size: 1.6em;
+        margin: 10px 0;
+    }
+
+    #finalScore {
+        font-size: 1.2em;
+    }
+
+    #stars {
+        font-size: 30px;
+    }
+
+    .playAgain-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
 }
 
 
@@ -578,12 +610,124 @@ button:disabled {
         width: 30px;
     }
 
-    .footer{
+    .footer {
         margin: 0;
     }
 
     button {
         font-size: 15px;
         padding: 8px 18px;
+    }
+}
+
+/* =========================================
+   💻 DESKTOP / MONITOR (1025px – 1440px)
+========================================= */
+/* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .quiz {
+        width: 1000px;
+    }
+
+    .question {
+        font-size: 32px;
+    }
+
+    .image {
+        height: 210px;
+    }
+
+    .drop {
+        height: 160px;
+    }
+
+    .option {
+        font-size: 21px;
+        padding: 16px 20px;
+    }
+
+    .option img {
+        width: 42px;
+    }
+
+    button {
+        font-size: 20px;
+        padding: 12px 30px;
+    }
+} */
+
+
+/* =========================================
+   🖥️ LARGE MONITORS (1441px – 1920px)
+========================================= */
+@media screen and (min-width: 1250px) and (max-width: 1920px) {
+
+    .quiz {
+        width: 1200px;
+        transform: scale(1.05);
+        transform-origin: center;
+    }
+
+    .question {
+        font-size: 44px;
+    }
+
+    .image {
+        height: 230px;
+    }
+
+    .drop {
+        height: 170px;
+    }
+
+    .option {
+        font-size: 22px;
+    }
+
+    .option img {
+        width: 45px;
+    }
+
+     button {
+        font-size: 28px;
+        padding: 14px 34px;
+    }
+}
+
+
+/* =========================================
+   📺 EXTRA LARGE / 4K (1921px+)
+========================================= */
+@media screen and (min-width: 1921px) {
+
+    .quiz {
+        width: 1200px;
+        transform: scale(1.15);
+        transform-origin: center;
+    }
+
+    .question {
+        font-size: 44px;
+    }
+
+    .image {
+        height: 230px;
+    }
+
+    .drop {
+        height: 170px;
+    }
+
+    .option {
+        font-size: 22px;
+    }
+
+    .option img {
+        width: 45px;
+    }
+
+    button {
+        font-size: 28px;
+        padding: 14px 34px;
     }
 }

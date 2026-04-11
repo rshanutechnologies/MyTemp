@@ -43,9 +43,6 @@ const trueBtn=document.getElementById("trueBtn");
 const falseBtn=document.getElementById("falseBtn");
 const prevBtn=document.getElementById("prevBtn");
 const nextBtn=document.getElementById("nextBtn");
-// ✅ ADD HERE (only once)
-trueBtn.addEventListener("click", () => answer(true));
-falseBtn.addEventListener("click", () => answer(false));
 const popup=document.getElementById("popup");
 const popupText=document.getElementById("popupText");
 
@@ -79,11 +76,6 @@ function showPopup(html, final = false){
 
 
 
-// function speak(t){
-//   speechSynthesis.cancel();
-//   speechSynthesis.speak(new SpeechSynthesisUtterance(t));
-// }
-
 function speak(t) {
   speechSynthesis.cancel();   // optional but recommended
 
@@ -95,21 +87,6 @@ function speak(t) {
 
   speechSynthesis.speak(msg);
 }
-function smallConfetti() {
-  confetti({ particleCount: 40, spread: 70, origin: { y: 0.7 } });
-}
-
-function bigConfetti() {
-  const duration = 500;
-  const end = Date.now() + duration;
-
-  (function frame() {
-    confetti({ particleCount: 7, angle: 60, spread: 55, origin: { x: 0 } });
-    confetti({ particleCount: 7, angle: 120, spread: 55, origin: { x: 1 } });
-    if (Date.now() < end) requestAnimationFrame(frame);
-  })();
-}
-
 function loadQuestion(){
   const q = quizData[index];   // ✅ define first
 
@@ -122,10 +99,9 @@ function loadQuestion(){
 
   trueBtn.className = "true";
   falseBtn.className = "false";
-  trueBtn.classList.remove("correct","disabled");
-falseBtn.classList.remove("correct","disabled");
 
-
+  trueBtn.onclick = () => answer(true);
+  falseBtn.onclick = () => answer(false);
 
   if(q.answered){
     const correctBtn = q.a ? trueBtn : falseBtn;
@@ -156,14 +132,9 @@ function answer(user){
     const correctBtn = user ? trueBtn : falseBtn;
     const wrongBtn = user ? falseBtn : trueBtn;
 
-    correctBtn.classList.add("correct");
-    wrongBtn.classList.add("disabled");
-
-    // 🎉 CONFETTI ADDED HERE
-    if (typeof confetti !== "undefined") {
-      smallConfetti();
-      setTimeout(() => smallConfetti(), 200);
-    }
+    correctBtn.classList.add("correct");   // ✅ green border
+    correctBtn.onclick = null;             // ❌ no more clicks
+    wrongBtn.classList.add("disabled");    // ❌ disable wrong
 
     showPopup(`
       <div class="popup-correct">
@@ -173,18 +144,17 @@ function answer(user){
       </div>
     `);
 
+    // 👉 enable Next
     nextBtn.disabled = false;
+
+    // 👉 enable Prev from 2nd question
+   
 
     // 🏆 FINAL QUESTION
     if(index === quizData.length - 1){
       setTimeout(() => {
-        finalPopupShown = true;
-
-        // 🎉 FINAL CONFETTI BLAST
-        if (typeof confetti !== "undefined") {
-          bigConfetti();
-        }
-
+  finalPopupShown = true;
+        // 🔒 lock navigation
         prevBtn.disabled = true;
         nextBtn.disabled = true;
 
@@ -192,16 +162,17 @@ function answer(user){
           <div class="popup-final-content">
             🎉 Congratulations!
             <span class="emoji">🏆</span>
-            <div>You finished the quiz!</div>
+             <div>You finished the quiz!</div>
             <div class="final-score">
               Score: <b>${score}/${quizData.length}</b>
             </div>
+
             <div class="stars">⭐⭐⭐⭐⭐</div>
 
-            <div class="final-actions">
-              <button class="restart" onclick="location.reload()">🔄 Restart</button>
-              <button class="home" onclick="location.href='../index.html'">🏠 Home</button>
-            </div>
+             <div class="final-actions">
+            <button class="restart" onclick="location.reload()">🔄 Restart</button>
+          
+          </div>
           </div>
         `, true);
 
@@ -210,13 +181,12 @@ function answer(user){
 
   } else {
     showPopup(`
-  <div>
-    <div class="popup-title">❌ Wrong!</div>
-    <span class="popup-emoji">😢</span>
-    <div class="popup-tip">💡 Try again!</div>
-  </div>
-`);
-
+      <div class="popup-wrong">
+        <span class="cross">❌ Wrong</span>
+        <span class="sad">😢</span>
+        <div class="tip">💡 Try again!</div>
+      </div>
+    `);
   }
 }
 

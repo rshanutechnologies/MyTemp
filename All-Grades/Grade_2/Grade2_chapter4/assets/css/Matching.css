@@ -84,6 +84,7 @@
      padding: 24px;
      color: #2f4f4f;
      font-size: 1.5rem;
+     margin-top: -20px !important;
  }
 
  /* .item {
@@ -110,7 +111,8 @@
      /* width: 450px; */
      border-radius: 18px;
      padding: 14px 18px;
-     margin-bottom: 16px;
+     
+     
      margin: auto;
      /* margin-left: -20%; */
 
@@ -442,18 +444,139 @@
      .final-board {
    z-index: 9999 !important;
  }
+
+  .popup-box {
+        width: 92%;
+        padding: 20px;
+    }
+
+    .popup-emoji {
+        font-size: 60px;
+    }
+
+    .final-board {
+        width: 150px;
+        height: 150px;
+    }
+      .popup-box {
+    background: white;
+    padding: 28px;
+    border-radius: 28px;
+    width: 200px;
+    text-align: center;
+    animation: pop .4s ease;
+}
  }
 
- /* ===================================
-   DESKTOP ONLY SCALE (-10%)
-=================================== */
- /* @media (min-width: 1025px) {
 
-     .wrapper {
-         transform: scale(0.9);
-       
-         transform-origin: center center;
-         margin: auto;
-     }
 
- } */
+
+ 
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1225px) and (max-width:1640px){
+
+.wrapper{
+width:1000px;
+padding:26px;
+}
+
+.grid{
+gap:60px;
+}
+
+.item{
+height:72px;
+font-size:40px;
+}
+
+.left-content img{
+width:42px;
+height:42px;
+}
+
+.slot{
+width:42px;
+height:42px;
+min-width:42px;
+min-height:42px;
+}
+
+.fly-img{
+width:70px;
+height:70px;
+}
+
+} */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1350px) and (max-width:1920px){
+
+.wrapper{
+width:1150px;
+padding:30px;
+}
+
+.grid{
+gap:80px;
+}
+
+.item{
+height:130px;
+font-size:32px;
+margin-bottom: 20px;
+}
+
+.left-content img{
+width:120px;
+height:120px;
+}
+
+.slot{
+
+min-width:120px;
+min-height:120px;
+}
+
+.fly-img{
+width:120px !important;
+height:120px !important;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.wrapper{
+width:1300px;
+padding:34px;
+}
+
+.grid{
+gap:110px;
+}
+
+.item{
+height:130px;
+font-size:32px;
+margin-bottom: 20px;
+}
+
+.left-content img{
+width:120px;
+height:120px;
+}
+
+.slot{
+
+min-width:120px;
+min-height:120px;
+}
+
+.fly-img{
+width:120px !important;
+height:120px !important;
+}}
+

@@ -1,14 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nature Quiz</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nature Quiz</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 * {
@@ -20,106 +18,59 @@
 
 body {
     height: 100vh;
-    background: url("./assets/images/bg.png");
-    background-size: cover;
+    background: url("./assets/images/bg.png") center/cover no-repeat;
     overflow: hidden;
-    
 }
 
 /* APP */
 .app {
-    display: flex;
+    display: flex;               /* ✅ RESTORED */
     height: 100vh;
-    background: rgba(128, 128, 128, 0.26);
+    background: rgba(128,128,128,0.26);
 }
 
-/* SIDEBAR */
+/* SIDEBAR (DESKTOP + LAPTOP) */
 .sidebar {
-    width: clamp(200px, 16vw, 240px);
-
-    padding-top: clamp(10px, 2vw, 15px);
-    padding-bottom: clamp(8px, 1.5vw, 10px); /* 🔥 reduced */
-
-    padding-left: clamp(8px, 1.5vw, 12px);
-    padding-right: clamp(8px, 1.5vw, 12px);
-
+    width: clamp(200px, 18vw, 280px);
+    padding: 14px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    font-size: 20px;
+
 }
 
-/* PATH */
 .path {
-    width: 100%;
-    /* height: 100%; */
-
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-   padding-top: 10px;
-   margin-top: -10px;
-   gap: clamp(8px, 1.5vw, 14px);
-    
+    gap: 10px;
+    height: 100%;
 }
 
-/* LEAF */
 .leaf {
-    width: 100%;
-    padding: clamp(12px, 2vw, 16px); /* 🔥 increased height */
-    border-radius: 18px;
-
+    flex: 1;
+    padding: 12px 10px;
+    border-radius: 16px;
     background: #e5e5e5;
-    color: #222;
     text-align: center;
     font-weight: 700;
-
     cursor: pointer;
-    transition: 0.3s ease;
-
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     filter: grayscale(100%);
-}
-
-.leaf:hover {
-    transform: translateY(-4px);
+    transition: .3s ease;
 }
 
 .leaf.active {
-    filter: grayscale(0%);
-    color: #134e4a;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* COLORS */
-.leaf.l1.active { background: linear-gradient(135deg, #bae6fd, #7dd3fc); }
-.leaf.l2.active { background: linear-gradient(135deg, #fde68a, #facc15); }
-.leaf.l3.active { background: linear-gradient(135deg, #93ffb9, #78ffaa); }
-.leaf.l4.active { background: linear-gradient(135deg, #ffb3bc, #ff8e9f); }
-
-.leaf i {
-    font-size: clamp(16px, 2vw, 20px);
-    margin-bottom: 4px;
-}
-
-.leaf h3 {
-    font-size: clamp(14px, 1.8vw, 18px);
-    margin-bottom: 2px;
-}
-
-.leaf p {
-    font-size: clamp(10px, 1.5vw, 12px);
-    opacity: .8;
+    filter: grayscale(0);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
 }
 
 /* MAIN */
 .main {
     flex: 1;
     height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 iframe {
@@ -128,7 +79,7 @@ iframe {
     border: none;
 }
 
-/* MENU */
+/* MOBILE */
 .menu-btn {
     display: none;
 }
@@ -137,31 +88,7 @@ iframe {
     display: none;
 }
 
-/* 🔥 SINGLE BREAKPOINT */
 @media (max-width: 900px) {
-
-    body {
-        display: flex;                /* 🔥 FIX center */
-        justify-content: center;
-        align-items: center;
-    }
-
-    .app {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;     /* 🔥 center content */
-        align-items: center;
-    }
-
-    .main {
-        width: 100%;
-        height: 100%;
-
-        display: flex;
-        justify-content: center;     /* 🔥 ensure center */
-        align-items: center;
-    }
 
     .sidebar {
         display: none;
@@ -170,14 +97,14 @@ iframe {
     .menu-btn {
         display: block;
         position: fixed;
-        top: clamp(10px, 2vw, 15px);
-        right: clamp(10px, 2vw, 15px);
-        font-size: clamp(18px, 4vw, 24px);
+        top: 12px;
+        right: 12px;
+        font-size: 24px;
         background: #22c55e;
-        color: #fff;
+        color: white;
         border: none;
         border-radius: 10px;
-        padding: clamp(6px, 1.5vw, 10px);
+        padding: 8px;
         cursor: pointer;
         z-index: 5000;
     }
@@ -185,7 +112,7 @@ iframe {
     .offcanvas {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, .45);
+        background: rgba(0,0,0,.45);
         display: none;
         z-index: 4000;
     }
@@ -200,16 +127,13 @@ iframe {
         top: 0;
         width: clamp(240px, 70%, 320px);
         height: 100%;
-
         background: #ecfdf5;
-
-        padding: clamp(18px, 3vw, 24px);
-        padding-top: clamp(70px, 10vh, 90px);
+        padding: 20px;
+        padding-top: 80px;
 
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: clamp(16px, 3vw, 22px); /* 🔥 increased */
+        gap: 20px;
 
         transform: translateX(100%);
         transition: transform .3s ease;
@@ -218,128 +142,66 @@ iframe {
     .offcanvas.show .offcanvas-panel {
         transform: translateX(0);
     }
-
-    .offcanvas-panel .leaf {
-        width: 100%;
-        text-align: center;
-        padding: clamp(12px, 2.5vw, 16px); /* 🔥 increased */
-    }
 }
 </style>
 </head>
 
 <body>
 
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-    <div class="app">
+<div class="app">
 
-        <div class="sidebar">
-            <div class="path">
-
-                <div class="leaf l1 active" onclick="openPage(0)">
-                    <i class="fa-solid fa-check-double"></i>
-                    <h3>Choose Answer</h3>
-                </div>
-
-                <div class="leaf l2" onclick="openPage(1)">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <h3>Fill The Blanks</h3>
-                </div>
-
-                <div class="leaf l3" onclick="openPage(2)">
-                    <i class="fa-solid fa-scale-balanced"></i>
-                    <h3>True / False</h3>
-                </div>
-
-                <div class="leaf l4" onclick="openPage(3)">
-                    <i class="fa-solid fa-link"></i>
-                    <h3>Matching</h3>
-                </div>
-
-                <div class="leaf l2" onclick="openPage(4)">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <h3>Two Examples</h3>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="main">
-            <iframe id="quizFrame" src="./exercises/mcq.html"></iframe>
-        </div>
-
-    </div>
-
-    <!-- MOBILE -->
-    <div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
-        <div class="offcanvas-panel" onclick="event.stopPropagation()">
-
-            <div class="leaf l1 active" onclick="mobileOpen(0)">
-                <i class="fa-solid fa-check-double"></i>
-                <h3>Choose Answer</h3>
-            </div>
-
-            <div class="leaf l2" onclick="mobileOpen(1)">
-                <i class="fa-solid fa-pen-to-square"></i>
-                <h3>Fill The Blanks</h3>
-            </div>
-
-            <div class="leaf l3" onclick="mobileOpen(2)">
-                <i class="fa-solid fa-scale-balanced"></i>
-                <h3>True / False</h3>
-            </div>
-
-            <div class="leaf l4" onclick="mobileOpen(3)">
-                <i class="fa-solid fa-link"></i>
-                <h3>Matching</h3>
-            </div>
-
-            <div class="leaf l2" onclick="mobileOpen(4)">
-                <i class="fa-solid fa-pen-to-square"></i>
-                 <h3>Two Examples</h3>
-            </div>
-
+    <div class="sidebar">
+        <div class="path">
+            <div class="leaf active" onclick="openPage(0)">Choose Answer</div>
+            <div class="leaf" onclick="openPage(1)">Fill The Blanks</div>
+            <div class="leaf" onclick="openPage(2)">True / False</div>
+            <div class="leaf" onclick="openPage(3)">Matching</div>
+            <div class="leaf" onclick="openPage(4)">Two Examples</div>
         </div>
     </div>
 
-    <script>
-        const frame = document.getElementById("quizFrame");
+    <div class="main">
+        <iframe id="quizFrame" src="./exercises/mcq.html"></iframe>
+    </div>
+</div>
 
-        const pages = [
-            "./exercises/mcq.html",
-            "./exercises/FTB.html",
-            "./exercises/true_false.html",
-            "./exercises/matching.html",
-            "./exercises/two_example.html"
-        ];
+<div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
+    <div class="offcanvas-panel" onclick="event.stopPropagation()">
+        <div class="leaf active" onclick="mobileOpen(0)">Choose Answer</div>
+        <div class="leaf" onclick="mobileOpen(1)">Fill The Blanks</div>
+        <div class="leaf" onclick="mobileOpen(2)">True / False</div>
+        <div class="leaf" onclick="mobileOpen(3)">Matching</div>
+        <div class="leaf" onclick="mobileOpen(4)">Two Examples</div>
+    </div>
+</div>
 
-        function setActive(i) {
-            document.querySelectorAll(".sidebar .leaf").forEach((l, index) => {
-                l.classList.toggle("active", index === i);
-            });
+<script>
+const frame = document.getElementById("quizFrame");
 
-            document.querySelectorAll(".offcanvas-panel .leaf").forEach((l, index) => {
-                l.classList.toggle("active", index === i);
-            });
-        }
+const pages = [
+    "./exercises/mcq.html",
+    "./exercises/FTB.html",
+    "./exercises/true_false.html",
+    "./exercises/matching.html",
+    "./exercises/two_example.html"
+];
 
-        function openPage(i) {
-            setActive(i);
-            frame.src = pages[i];
-        }
+function openPage(i) {
+    frame.src = pages[i];
+}
 
-        function toggleMenu() {
-            if (window.innerWidth > 900) return; /* ✅ Changed from 1150 → 900 */
-            document.getElementById("offcanvas").classList.toggle("show");
-        }
+function toggleMenu() {
+    if (window.innerWidth > 900) return;
+    document.getElementById("offcanvas").classList.toggle("show");
+}
 
-        function mobileOpen(i) {
-            openPage(i);
-            toggleMenu();
-        }
-    </script>
+function mobileOpen(i) {
+    openPage(i);
+    toggleMenu();
+}
+</script>
 
 </body>
-
 </html>

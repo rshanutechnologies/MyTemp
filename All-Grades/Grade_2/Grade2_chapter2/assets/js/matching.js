@@ -5,10 +5,10 @@
 // ================================================
 
 const PAIRS = [
-  { id: 'q1', color: 'pair-c1', q: '1. Skull ( )', a: 'It protects our brain.', img: '../assets/images/q4-img.png' },
-  { id: 'q2', color: 'pair-c2', q: '2. Ribcage ( )', a: 'It protects our lungs and heart.', img: '../assets/images/q2-M.png' },
-  { id: 'q3', color: 'pair-c3', q: '3. Backbone ( )', a: 'It helps us stand up straight.', img: '../assets/images/q3-M.png' },
-  { id: 'q4', color: 'pair-c4', q: '4. Joints ( )', a: 'They help us bend our arms and legs.', img: '../assets/images/q1-img.png' }
+  { id: 'q1', color: 'pair-c1', q: '1. Skull ', a: 'It protects our brain.', img: '../assets/images/q4-img.png' },
+  { id: 'q2', color: 'pair-c2', q: '2. Ribcage ', a: 'It protects our lungs and heart.', img: '../assets/images/q2-M.png' },
+  { id: 'q3', color: 'pair-c3', q: '3. Backbone ', a: 'It helps us stand up straight.', img: '../assets/images/q3-M.png' },
+  { id: 'q4', color: 'pair-c4', q: '4. Joints ', a: 'They help us bend our arms and legs.', img: '../assets/images/q1-img.png' }
 ];
 
 const qsEl = document.getElementById("questions");

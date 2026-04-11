@@ -82,7 +82,7 @@ body{
   justify-content:center;                  /* center grid */
   gap:clamp(10px,2vw,22px);
   margin-top:-20px;
-   column-gap:300px;   /* 👈 increase horizontal gap */
+  column-gap:clamp(20px, 6vw, 120px);   /* 👈 increase horizontal gap */
   row-gap:20px;      /* 👈 vertical gap (optional) */
 }
 
@@ -270,15 +270,131 @@ button:disabled{
   }
 
   .popup-icon{
-    font-size:3em;        /* ✅ smaller icon */
+    font-size:2em;        /* ✅ smaller icon */
   }
 
   .popup-content h3{
-    font-size:1.2em;      /* ✅ smaller text */
+    font-size:1em;      /* ✅ smaller text */
   }
 
   .popup-content p{
-    font-size:0.95em;
+    font-size:0.85em;
   }
 
+}
+@media screen and (min-width: 1025px) and (max-width: 1440px){
+
+  .quiz{
+    width:100%;
+    max-width:1100px;
+  }
+
+  .question{
+    font-size:40px;
+  }
+
+  .options{
+    grid-template-columns:repeat(2, 200px); /* ✅ fixed like normal */
+    justify-content:center;
+    column-gap:80px;  /* ✅ controlled gap */
+    row-gap:30px;
+  }
+
+  .option{
+    width:180px;
+    height:180px;
+  }
+
+  .optImg{
+    width:100px;
+    height:100px;
+  }
+.option p{
+  margin:0;
+ font-size: 28px;
+  font-weight:500;
+  color:#1a3c50;
+}
+  button{
+    font-size:30px;
+   padding:15px 40px;
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 1920px){
+
+  .quiz{
+    width:95%;
+    max-width:1300px;
+  }
+
+  .question{
+    font-size:38px;
+  }
+
+  .options{
+    grid-template-columns:repeat(2, 240px); /* ✅ SAME STRUCTURE */
+    justify-content:center;
+    column-gap:100px;
+    row-gap:40px;
+  }
+
+  .option{
+    width:200px;
+    height:200px;
+  }
+
+  .optImg{
+    width:120px;
+    height:120px;
+  }
+
+  button{
+    font-size:18px;
+    padding:12px 28px;
+  }
+
+  .nav{
+    width:70%;
+    margin:auto;
+  }
+}
+
+@media screen and (min-width: 1921px){
+
+  .quiz{
+    width:95%;
+    max-width:1500px;
+  }
+
+  .question{
+    font-size:44px;
+  }
+
+  .options{
+    grid-template-columns:repeat(2, 280px); /* ✅ SAME LAYOUT */
+    justify-content:center;
+    column-gap:120px;
+    row-gap:50px;
+  }
+
+  .option{
+    width:230px;
+    height:230px;
+  }
+
+  .optImg{
+    width:140px;
+    height:140px;
+  }
+
+  button{
+    font-size:20px;
+    padding:14px 34px;
+  }
+
+  .nav{
+    width:60%;
+    margin:auto;
+  }
 }

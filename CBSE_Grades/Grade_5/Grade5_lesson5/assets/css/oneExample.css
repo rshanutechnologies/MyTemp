@@ -485,3 +485,127 @@ body {
         font-size: .9em
     }
 }
+
+
+
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1225px) and (max-width:1640px){
+
+.main{
+max-width:1050px;
+}
+
+.question h2{
+font-size:40px;
+}
+
+.image-container{
+gap:30px;
+}
+
+.image-box{
+width:300px;
+}
+
+.image-box img{
+width:300px;
+height:300px;
+}
+
+.base{
+width:180px;
+}
+
+.image-bottom{
+font-size:18px;
+}
+
+.controls button{
+width:120px;
+height:50px;
+font-size:22px;
+}
+
+} */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1350px) and (max-width:1920px){
+
+.main{
+max-width:1200px;
+}
+
+.question h2{
+font-size:40px;
+}
+
+.image-container{
+gap:50px;
+}
+
+.image-box{
+width:350px;
+}
+
+.image-box img{
+width:350px;
+height:350px;
+}
+
+.base{
+width:220px;
+}
+
+.image-bottom{
+font-size:20px;
+}
+
+.controls button{
+width:140px;
+height:60px;
+font-size:26px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.main{
+max-width:1350px;
+}
+
+.question h2{
+font-size:46px;
+}
+
+.image-container{
+gap:70px;
+}
+
+.image-box{
+width:400px;
+}
+
+.image-box img{
+width:400px;
+height:400px;
+}
+
+.base{
+width:250px;
+}
+
+.image-bottom{
+font-size:22px;
+}
+
+.controls button{
+width:160px;
+height:65px;
+font-size:28px;
+}
+
+}

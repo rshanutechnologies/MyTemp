@@ -1004,14 +1004,90 @@ padding:25px;
 }
 
 /* Medium desktops */
-@media (min-width: 1280px) {
- body{
-    margin-top: 1%;
+/* 🔥 FULL SYSTEM 1280px */
+@media (min-width:1280px){
+
+
+   body{
+     margin-left: -5% !important;
+    
+   }
+  /* MAIN TEMPLATE */
+  .template{
+    width: 1300px;
+    height: 800px;
   }
+
+  /* QUESTION (MAIN RULE) */
+  .title{
+    font-size: 44px;
+    min-height: 140px;
+    width: 1000px;
+    line-height: 1.4;
+  }
+
+  /* IMAGE BIG */
+  .animal-img{
+    width: 320px;
+    height: 300px;
+  }
+
+  /* OPTIONS BIG */
+  .option{
+    width: 260px;
+    height: 140px;
+    font-size: 28px;
+    gap: 18px;
+  }
+
+  .option img,
+  .option-icon{
+    width: 80px;
+    height: 80px;
+  }
+
+  .option .label{
+    font-size: 28px;
+  }
+
+  /* LAYOUT GAP */
+  .quiz-row{
+    gap: 120px;
+  }
+
+  /* 🔥 BUTTONS SAME SIZE */
+  .prev,
+  .next,
+  .playAgain-btn,
+  .home-btn{
+    width: 180px;
+    height: 70px;
+    font-size: 26px;
+  }
+
+  /* NAV SPACING */
   .quiz-nav{
-    margin-top:4%;
-  
-}
+    gap: 80px;
+  }
+
+  /* 🔥 POPUP SAME SYSTEM */
+  .popup-title,
+  .popup-msg,
+  .popup-correct,
+  .popup-wrong,
+  .popup-final-content,
+  .final-heading{
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .popup-content,
+  .popup-box,
+  .finalpopup-box{
+    width: 520px;
+    padding: 50px;
+  }
+
 }
 
 /* Large desktops */

@@ -110,11 +110,11 @@
 
         /* ================= DROP SLOT ================= */
         .slot {
-            background: #eef6ff;
-            border: 2px solid #cfe3ff;
+            
             border-radius: 12px;
             padding: 6px 14px;
-            font-size: 30px;
+            
+            
         }
 
         /* ================= CORRECT ================= */
@@ -206,6 +206,44 @@
     cursor:pointer;
     transition:0.25s;
 }
+
+
+
+
+
+
+
+
+
+.item.active{
+outline:4px solid #4CAF50;
+transform:scale(1.05);
+}
+
+.shake{
+animation:shake .3s;
+}
+
+@keyframes shake{
+0%{transform:translateX(0)}
+25%{transform:translateX(-5px)}
+50%{transform:translateX(5px)}
+75%{transform:translateX(-5px)}
+100%{transform:translateX(0)}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 1050px) {
 .item,
@@ -459,4 +497,44 @@
         font-size: 12px;
         padding: 8px 16px;
     }
+
+    
+#finalPopup{
+  padding:10px;
+}
+
+.final-box{
+  width:90%;
+  padding:20px 15px;
+  border-radius:20px;
+}
+
+/* trophy */
+.trophy{
+  font-size:55px;
+}
+
+/* title */
+.final-title{
+  font-size:22px;
+}
+
+/* score circle */
+.score-circle{
+  width:80px;
+  height:80px;
+  font-size:22px;
+}
+
+/* stars */
+.star-row{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+/* play again button */
+.playAgain-btn{
+  font-size:14px;
+  padding:10px 20px;
+}
 }

@@ -53,28 +53,31 @@ r.onclick=()=>{
 
 if(r.dataset.match===selected.dataset.match){
 
-    launchConfetti();
-    speak("Correct")
+launchConfetti();
+speak("Correct")
 
-    // 👉 ADD NUMBER TO BOTH SIDES
-    const num = selected.dataset.match
+const num = selected.dataset.match
 
-    addNumber(selected, num)
-    addNumber(r, num)
+addNumber(selected, num)
+addNumber(r, num)
 
-    selected.classList.add("matched")
-    r.classList.add("matched")
+selected.classList.add("matched")
+r.classList.add("matched")
 
-    score++;
+/* DRAW LINE ONLY DESKTOP */
+if(window.innerWidth > 900){
+drawLine(selected, r)
+}
 
-    if(score===5){
-        setTimeout(()=>{
-            document.getElementById("final").style.display="block"
-            document.getElementById("score").innerText="Your Score 5/5"
-            launchConfetti(); 
-        },1000)
-    }
+score++;
 
+if(score===5){
+setTimeout(()=>{
+document.getElementById("final").style.display="block"
+document.getElementById("score").innerText="Your Score 5/5"
+launchConfetti(); 
+},1000)
+}
 }else{
 
 

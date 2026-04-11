@@ -175,10 +175,15 @@ margin:0;
   transform:none !important;
 }
 .nav{
+  position:fixed;
+  bottom:10px;        /* push to bottom */
+  left:50%;
+  transform:translateX(-50%);
+  
   width:min(980px, 96vw);
   display:flex;
   justify-content:space-between;
-  padding: 0 clamp(10px, 4vw, 30px);  /* 🔥 responsive gap */
+  padding: 0 20px;
 }
 .nav button{
    width:160px;
@@ -462,5 +467,132 @@ gap:16px;   /* control spacing cleanly */
     padding:8px 12px;            /* ✅ inner spacing */
     gap:6px;                     /* icon + text gap */
   }
+
+}
+
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width: 1025px) and (max-width: 1440px){
+
+  .screen{
+    max-width: 950px;
+  }
+
+  .question{
+    font-size: 30px;
+  }
+
+  .question-image{
+    max-height: 180px;
+  }
+
+  .btn{
+    font-size: 24px;
+    width: 200px;
+    height: 60px;
+    margin-top: -10px;
+  }
+
+}
+
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width: 1441px) and (max-width: 1920px){
+
+  .screen{
+    max-width: 1200px;
+  }
+
+  .question{
+    font-size: 40px;
+  }
+
+  .question-image{
+    max-height: 220px;
+  }
+
+  .nest{
+    max-width: 750px;
+    height: 220px;
+  }
+
+  .chick{
+    font-size: 90px;
+  }
+
+  .btn{
+    font-size: 24px;
+    width: 200px;
+    height: 70px;
+  }
+
+  .nav button{
+   font-size: 24px;
+    width: 200px;
+    height: 60px;
+  }
+
+  .nav{
+      margin-top:20px;
+  }
+}
+
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width: 1921px){
+
+  .screen{
+    max-width: 1500px;
+  }
+
+  .question{
+    font-size: 46px;
+  }
+
+  .question-image{
+    max-height: 260px;
+  }
+
+  .nest{
+    max-width: 900px;
+    height: 260px;
+  }
+
+  .chick{
+    font-size: 110px;
+  }
+
+  .btn{
+    width: 300px;
+    height: 80px;
+    font-size: 26px;
+  }
+
+  .nav button{
+    font-size: 24px;
+    width: 200px;
+    height: 60px;
+  }
+
+  .popup-box.final-wide{
+    width: 650px;
+  }
+
+  .nav{
+  position:fixed;
+  bottom:-100px;        /* push to bottom */
+  left:50%;
+  transform:translateX(-50%);
+  
+  width:min(980px, 96vw);
+  display:flex;
+  justify-content:space-between;
+  padding: 0 20px;
+}
 
 }

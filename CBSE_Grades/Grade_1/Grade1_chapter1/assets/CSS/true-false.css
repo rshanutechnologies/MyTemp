@@ -406,7 +406,7 @@ body {
 
 @media (max-width:480px) {
 
-    body{
+    body {
         align-items: flex-start;
         padding-top: 55px;
     }
@@ -415,14 +415,15 @@ body {
         font-size: 20px;
     }
 
-    .quiz-container{
+    .quiz-container {
         padding: 25px 10px 0px;
     }
-.question-image img {
-    width: 200px;
-    height: 120px;
-    object-fit: contain;/
-}
+
+    .question-image img {
+        width: 200px;
+        height: 120px;
+        object-fit: contain;/
+    }
 
     .answer {
         font-size: 20px;
@@ -464,6 +465,128 @@ body {
         width: 100%;
         padding: 12px;
         font-size: 0.95em;
+    }
+
+}
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .quiz-container {
+        max-width: 1000px;
+    }
+
+    .question-box {
+        font-size: 34px;
+    }
+
+    .question-image img {
+        width: 320px;
+        height: 250px;
+    }
+
+    .answers {
+        gap: 35px;
+    }
+
+    .answer {
+        height: 100px;
+        font-size: 28px;
+    }
+
+    .icon-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 36px;
+    }
+
+    .nav button {
+        font-size: 20px;
+        padding: 14px 36px;
+    }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+    .quiz-container {
+        max-width: 1100px;
+    }
+
+    .question-box {
+        font-size: 38px;
+    }
+
+    .question-image img {
+        width: 360px;
+        height: 280px;
+    }
+
+    .answers {
+        gap: 40px;
+    }
+
+    .answer {
+        height: 110px;
+        font-size: 30px;
+    }
+
+    .icon-circle {
+        width: 55px;
+        height: 55px;
+        font-size: 38px;
+    }
+
+    .nav button {
+        font-size: 22px;
+        padding: 16px 40px;
+    }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+    .quiz-container {
+        max-width: 1200px;
+    }
+
+    .question-box {
+        font-size: 42px;
+    }
+
+    .question-image img {
+        width: 400px;
+        height: 300px;
+    }
+
+    .answers {
+        gap: 45px;
+    }
+
+    .answer {
+        height: 120px;
+        font-size: 32px;
+    }
+
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 40px;
+    }
+
+    .nav button {
+        font-size: 24px;
+        padding: 18px 44px;
     }
 
 }

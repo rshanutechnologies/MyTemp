@@ -111,8 +111,8 @@
 
     .q-text {
       font-size: clamp(1.2rem, 3.5vw, 2.5rem);
-      color: var(--dark);
-      font-weight: 600;
+      
+     color:#2f4f4f;
       line-height: 1.2;
       text-align: left;
       flex: 1;
@@ -137,7 +137,7 @@
       aspect-ratio: 1/1;
       border-radius: 30px;
       border: 6px solid white;
-      font-family: 'Fredoka One', cursive;
+      font-family: 'Livvic', cursive;
       font-size: clamp(40px, 6vw, 70px);
       cursor: pointer;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -177,7 +177,7 @@
     }
 
     .nav-btn {
-      font-family: 'Fredoka One', cursive;
+      font-family: 'Livvic', cursive;
       font-size: 1.1rem;
       padding: 12px 30px;
       border-radius: 50px;
@@ -250,7 +250,7 @@
       text-align: center;
     }
 
-   
+
     /* ==================================================
    📱 MOBILES (≤768px)
 ================================================== */
@@ -365,7 +365,7 @@
       }
     }
 
-     /* ==================================================
+    /* ==================================================
    📱 SMALL MOBILES (≤480px)
 ================================================== */
     @media (max-width: 480px) {
@@ -437,6 +437,103 @@
       }
     }
 
+    /* =========================================
+💻 DESKTOP (1025px – 1440px)
+========================================= */
+    /* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+      .app {
+        max-width: 1200px;
+        padding: 40px;
+      }
+
+      .q-text {
+        font-size: clamp(2rem, 2.5vw, 3rem);
+      }
+
+      .hint-sticker {
+        width: clamp(120px, 10vw, 160px);
+      }
+
+      .tf-btn {
+        width: clamp(150px, 14vw, 200px);
+        font-size: clamp(60px, 5vw, 80px);
+      }
+
+      .nav-btn {
+        font-size: 1.2rem;
+        padding: 14px 34px;
+      }
+    } */
+
+
+    /* =========================================
+🖥 LARGE MONITORS (1441px – 1920px)
+========================================= */
+    @media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+      .app {
+        max-width: 1400px;
+        padding: 50px;
+      }
+
+      .q-text {
+        font-size: 44px;
+        font-weight: normal !important;
+
+      }
+
+      .hint-sticker {
+        width: clamp(140px, 9vw, 200px);
+      }
+
+      .tf-btn {
+        width: clamp(180px, 12vw, 240px);
+        font-size: clamp(70px, 4vw, 100px);
+      }
+
+      .nav-btn {
+        font-size: 1.3rem;
+        padding: 16px 40px;
+      }
+    }
+
+
+    /* =========================================
+🖥 4K / EXTRA LARGE (1921px+)
+========================================= */
+    @media screen and (min-width: 1921px) {
+
+      .app {
+        max-width: 1600px;
+        padding: 60px;
+      }
+
+      .q-text {
+        font-size: clamp(3rem, 2vw, 4.5rem);
+      }
+
+      .hint-sticker {
+        width: clamp(180px, 8vw, 260px);
+      }
+
+      .tf-btn {
+        width: clamp(220px, 10vw, 300px);
+        font-size: clamp(80px, 3.5vw, 120px);
+        border-radius: 40px;
+      }
+
+      .nav-btn {
+        font-size: 1.5rem;
+        padding: 18px 50px;
+      }
+
+      .read-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 
@@ -595,7 +692,7 @@
       const d = document.createElement("div");
       d.className = "final-overlay";
       d.innerHTML = `
-      <h1 style="font-family:'Fredoka One';font-size:clamp(2rem, 8vw, 4rem); color: var(--primary)">🎉 WELL DONE! 🎉</h1>
+      <h1 style="font-family:'Livvic';font-size:clamp(2rem, 8vw, 4rem); color: var(--primary)">🎉 WELL DONE! 🎉</h1>
       <p style="font-size:1.5rem;color:var(--dark);">You completed the quiz successfully!</p>
       <button class="nav-btn" style="background:var(--secondary); margin-top:20px"
         onclick="location.reload()">PLAY AGAIN ↺</button>`;

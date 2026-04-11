@@ -646,6 +646,9 @@ button:disabled {
     border-radius:30px;
     font-size:18px;
 }
+
+
+
 @media (max-width:768px){
 
   body{
@@ -654,6 +657,7 @@ button:disabled {
       /* background:url("../images/bgbg.png") center/cover no-repeat; */
       background: transparent !important;
       margin-top: -100px !important;
+     
   }
   #answerInput{
     font-size: 15px !important;
@@ -757,4 +761,154 @@ button:disabled {
       
         margin-top: -100px !important;
     }
+}
+
+
+@media (min-width: 1280px) {
+
+
+    body{
+        margin-top: -3% !important;
+    }
+  /* ❌ REMOVE SCALE (VERY IMPORTANT) */
+  .main{
+    transform: none;
+    margin-top: 0;
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+
+  /* ✅ TITLE / BADGE */
+  .badge{
+    font-size: 50px !important;
+    padding: 20px 30px;
+    /* text-align: center; */
+  }
+
+  /* ✅ CONTENT FIX (CENTER EVERYTHING) */
+  .content{
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* ✅ IMAGE */
+  .center-img{
+    width: 300px;
+    height: 260px;
+    /* margin: 20px auto; */
+    margin-top: -24% !important;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    min-height: 140px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ✅ INPUT BOX */
+  .input-box{
+    width: 600px;
+    height: 75px;
+    border-radius: 50px;
+    margin: 30px auto;
+  }
+
+  .input-box input{
+    font-size: 26px;
+  }
+
+  /* ✅ SUBMIT BUTTON (SYSTEM SIZE) */
+  .submit{
+    width: 170px;
+    height: 60px;
+    font-size: 24px;
+    border-radius: 999px;
+    margin: 20px auto;
+    display: block;
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .prev,
+  .next{
+    width: 180px;
+    height: 70px;
+    font-size: 24px !important;
+    border-radius: 999px;
+    top: auto;
+    bottom: -20px;
+  }
+
+  .prev{
+    left: 80px;
+  }
+
+  .next{
+    right: 80px;
+  }
+
+  /* ✅ DOTS */
+  .dot{
+    width: 35px;
+    height: 35px;
+  }
+
+  /* ✅ POPUP */
+  .popup-box{
+    width: 380px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-correct,
+  .popup-wrong{
+    font-size: 28px;
+  }
+
+  .popup-correct .happy,
+  .popup-wrong .sad{
+    font-size: 100px;
+  }
+
+  .popup-correct .stars{
+    font-size: 40px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .popup-box.popup-final{
+    width: 600px;
+  }
+
+  .popup-final-content{
+    font-size: 28px;
+  }
+
+  .popup-final-content .emoji{
+    font-size: 70px;
+  }
+
+  .stars{
+    font-size: 50px;
+  }
+
+  .restart,
+  .home{
+    font-size: 22px;
+    padding: 14px 28px;
+  }
+
+}
+
+@media (max-width: 380px) {
+  body{
+    overflow-y:hidden !important;
+    /* height:auto; */
+    align-items:flex-start;
+      background:transparent !important;
+       margin-top:-2% !important;
+       overflow: hidden;
+  }
 }

@@ -48,7 +48,7 @@
     .island {
       width: 100%;
       position: relative;
-      padding: 18px 20px;
+      padding: 15px 20px;
       display: flex;
       align-items: center;
       gap: 16px;
@@ -262,7 +262,7 @@
       /* HIDE SIDEBAR */
       .sidebar {
         display: none;
-        
+
       }
 
       /* MENU BUTTON */
@@ -319,7 +319,7 @@
         animation: none;
       }
 
-      
+
     }
 
     /* ===================================================== */
@@ -329,7 +329,7 @@
     /* ===================================================== */
 
     @media (min-width: 900px) and (max-height: 800px) {
-      
+
       .app {
         transform: scaleY(0.95);
         transform-origin: top center;
@@ -351,6 +351,86 @@
         transform-origin: top center;
         height: calc(100vh / 0.8);
       }
+    }
+
+    /* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+    @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+      .sidebar {
+        width: 240px;
+        gap: 20px;
+        padding: 25px 10px;
+      }
+
+      .island {
+        padding: 25px 18px;
+        gap: 12px;
+      }
+
+      .icon {
+        font-size: 24px;
+      }
+
+      .label {
+        font-size: 16px;
+      }
+
+    }
+
+
+    /* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+    @media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+      .sidebar {
+        width: 350px;
+        gap: 24px;
+        padding: 30px 12px;
+      }
+
+      .island {
+        padding: 35px 20px;
+        gap: 14px;
+      }
+
+      .icon {
+        font-size: 28px;
+      }
+
+      .label {
+        font-size: 18px;
+      }
+
+    }
+
+
+    /* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+    @media screen and (min-width: 1921px) {
+
+      .sidebar {
+        width: 400px;
+        gap: 28px;
+        padding: 35px 10px;
+      }
+
+      .island {
+        padding: 35px 24px;
+        gap: 16px;
+      }
+
+      .icon {
+        font-size: 32px;
+      }
+
+      .label {
+        font-size: 22px;
+      }
+
     }
   </style>
 </head>

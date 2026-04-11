@@ -142,6 +142,11 @@ h1 {
     pointer-events: none;
 }
 
+.puzzle.selected{
+  outline:4px solid #4CAF50;
+  transform:scale(1.05);
+}
+
 /* RIGHT SLOT */
 .slot {
     width: 170px;
@@ -549,11 +554,144 @@ body {
    GLOBAL SCALE (-20% UI SIZE)
 ===================================== */
 
-.wrapper {
+ .wrapper {
     transform: scale(0.8);
-    /* 80% = reduce 20% */
+    
     transform-origin: center center;
     margin-top: -3%;
 
+} 
+
+
+
+
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1350px) and (max-width:1640px){
+body{
+  margin-top: 3%;
+}
+.wrapper{
+max-width:1150px;
+transform:scale(.9);
 }
 
+.grid{
+gap:80px;
+}
+
+.puzzle{
+width:200px;
+height:200px;
+}
+
+.slot{
+width:200px;
+height:200px;
+}
+
+.puzzle img,
+.slot img{
+width:80px;
+height: 80px;
+}
+
+.label{
+font-size:24px;
+}
+
+
+
+.puzzle span {
+   font-size: 24px;
+}
+
+
+
+.progress-wrap{
+    margin-top: -6%;
+    margin-right: 200px ;
+transform:scale(1);
+}
+
+}
+ */
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1350px) and (max-width:1920px){
+
+.wrapper{
+max-width:1100px;
+transform:scale(1);
+}
+
+.grid{
+gap:120px;
+}
+
+.puzzle{
+width:250px;
+height:125px;
+}
+
+.slot{
+width:250px;
+height:125px;
+}
+
+.puzzle img,
+.slot img{
+width:95px;
+height: 95px;
+}
+
+.label{
+font-size:26px;
+}
+
+
+
+.progress-wrap{
+      margin-top: -4%;
+    margin-right: 0px ;
+transform:scale(1.05);
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.wrapper{
+max-width:1450px;
+transform:scale(1.05);
+}
+
+.grid{
+gap:150px;
+}
+
+.puzzle{
+width:190px;
+height:140px;
+}
+
+.slot{
+width:200px;
+height:140px;
+}
+
+.puzzle img,
+.slot img{
+width:110px;
+}
+
+.label{
+font-size:18px;
+}
+
+.progress-wrap{
+transform:scale(1.1);
+}
+
+}

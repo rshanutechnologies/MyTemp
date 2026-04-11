@@ -537,7 +537,7 @@ input:focus {
 
 @media (max-width:480px) {
 
-    body{
+    body {
         align-items: flex-start;
         padding-top: 55px;
     }
@@ -607,6 +607,119 @@ input:focus {
 
     input {
         font-size: 14px;
+    }
+
+}
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .main-container {
+        width: 850px;
+    }
+
+    .question h2 {
+        font-size: 34px;
+    }
+
+    input {
+        width: 420px;
+        height: 65px;
+        font-size: 24px;
+    }
+
+    .right-section img {
+        width: 300px;
+        height: 300px;
+    }
+
+    #submitBtn {
+        font-size: 18px;
+        padding: 12px 50px;
+    }
+
+    #prevBtn,
+    #nextBtn {
+        font-size: 20px;
+        padding: 14px 36px;
+    }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+    .main-container {
+        width: 900px;
+    }
+
+    .question h2 {
+        font-size: 38px;
+    }
+
+    input {
+        width: 450px;
+        height: 70px;
+        font-size: 26px;
+    }
+
+    .right-section img {
+        width: 340px;
+        height: 340px;
+    }
+
+    #submitBtn {
+        font-size: 20px;
+        padding: 14px 55px;
+    }
+
+    #prevBtn,
+    #nextBtn {
+        font-size: 22px;
+        padding: 16px 40px;
+    }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+    .main-container {
+        width: 950px;
+    }
+
+    .question h2 {
+        font-size: 42px;
+    }
+
+    input {
+        width: 500px;
+        height: 75px;
+        font-size: 28px;
+    }
+
+    .right-section img {
+        width: 380px;
+        height: 380px;
+    }
+
+    #submitBtn {
+        font-size: 22px;
+        padding: 16px 60px;
+    }
+
+    #prevBtn,
+    #nextBtn {
+        font-size: 24px;
+        padding: 18px 44px;
     }
 
 }

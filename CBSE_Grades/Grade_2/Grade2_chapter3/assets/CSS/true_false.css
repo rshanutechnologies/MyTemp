@@ -529,13 +529,112 @@ body{
 
 /* Medium desktops */
 @media (min-width: 1280px) {
- body{
-    margin-top: 4%;
+
+
+  body{
+    margin-top: -3% !important;
   }
+  /* ✅ MAIN CARD */
+  .quiz-card{
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+
+  /* ✅ PROGRESS TEXT */
+  .progress{
+    font-size: 24px;
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    min-height: 140px;
+    padding: 40px;
+    text-align: center;
+  }
+
+  /* ✅ QUESTION IMAGE */
+  .question-img{
+    width: 300px;
+    height: 300px;
+    margin-top: 4% !important;
+  }
+
+  /* ✅ TRUE/FALSE BUTTONS */
+  .tf-buttons{
+    gap: 80px;
+    margin-top: 50px;
+  }
+
+  .tf-buttons button{
+    width: 250px;
+    height: 100px;
+    font-size: 24px;
+    padding: 0;
+      border:5px solid rgba(255,255,255,0.6);
+  outline:3px solid rgba(0,0,0,0.1);
+    box-shadow:
+    inset 0 4px 10px rgba(255,255,255,0.4),
+    inset 0 -4px 10px rgba(0,0,0,0.2),
+    0 0px 0px rgba(0,0,0,0.2);
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM STYLE) */
+  .prev,
+  .next{
+    width: 100px;
+    height: 100px;
+    border-radius: 80% !important;
+    font-size: 20px;
+    margin-top: -5% !important;
+  }
+
+  /* ✅ NAV POSITION */
   .nav{
-    margin-top:11%;
-  
-}
+    margin-top: 8%;
+  }
+
+  /* ✅ POPUP (IMPORTANT) */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-icon{
+    font-size: 100px;
+  }
+
+  .popup-title{
+    font-size: 34px;
+  }
+
+  .popup-msg{
+    font-size: 24px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .finalpopup-box{
+    width: 600px;
+    padding: 40px;
+  }
+
+  .final-heading{
+    font-size: 34px;
+  }
+
+  #stars{
+    font-size: 50px;
+  }
+
+  .playAgain-btn{
+    font-size: 20px;
+    padding: 14px 32px;
+  }
+
 }
 
 /* Large desktops */

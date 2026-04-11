@@ -524,3 +524,110 @@ body{
 }
 
 }
+
+@media (min-width: 1280px) {
+
+
+  body{
+    margin-top: -1% !important;
+  }
+  /* ✅ MAIN CARD */
+  .quiz-card{
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+
+  /* ✅ PROGRESS */
+  .progress{
+    font-size: 24px;
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    min-height: 140px;
+    padding: 40px;
+    text-align: center;
+  }
+
+  /* ✅ IMAGE */
+  .question-img{
+    width: 400px;
+    height: 300px;
+    margin: 10px auto 20px;
+  }
+
+  /* ✅ TRUE/FALSE BUTTONS */
+  .tf-buttons{
+    gap: 80px;
+    margin-top: 40px;
+  }
+
+  .tf-buttons button{
+    width: 350px;
+    height:130px;
+    font-size: 24px;
+    padding: 0;
+  }
+
+  /* ✅ NAV FIX (VERY IMPORTANT) */
+  .nav{
+    position: relative;
+    transform: none;
+    margin-top: 40px;
+    padding: 0 80px;
+    /* justify-content: space-evenly; */
+    gap: 40%;
+  }
+
+  .prev,
+  .next{
+      width: 180px;
+    height: 70px;
+    border-radius: 20px;
+    font-size: 24px;
+    border: 3px solid white;
+  }
+
+  /* ✅ POPUP */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-icon{
+    font-size: 100px;
+  }
+
+  .popup-title{
+    font-size: 34px;
+  }
+
+  .popup-msg{
+    font-size: 24px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .finalpopup-box{
+    width: 600px;
+    padding: 40px;
+  }
+
+  .final-heading{
+    font-size: 34px;
+  }
+
+  #stars{
+    font-size: 50px;
+  }
+
+  .playAgain-btn{
+    font-size: 20px;
+    padding: 14px 32px;
+  }
+
+}

@@ -13,7 +13,7 @@ body {
 }
 
 .main {
-    width: 900px;
+    width: 1000px;
 }
 
 .content {
@@ -39,7 +39,7 @@ body {
     align-items: center;
     justify-content: center;
     background: #eaf7f7;
-    font-size: 17px;
+    font-size: 22px;
 }
 
 .drop.correct {
@@ -349,23 +349,8 @@ button:disabled {
             transform: rotate(15deg);
         }
     }
-@media (min-width:1400px){
 
-  .main{
-    width:1100px;
-  }
-
-  .question{
-    font-size:34px;
-  }
-
-  .option span{
-    font-size:28px;
-  }
-
-}
-
-@media (max-width:800px){
+@media (max-width:700px){
 
   body{
     overflow:hidden;
@@ -459,7 +444,17 @@ button:disabled {
   .fancy-nav{
     margin-inline:10px;
   }
-
+.drop {
+    /* height: 90px; */
+    flex: 1;
+    border: 2px dashed #9acfd0;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eaf7f7;
+    font-size: 15px;
+}
 }
 
 @media (max-width:480px){
@@ -493,7 +488,17 @@ button:disabled {
     height:42px;
     font-size:14px;
   }
-
+.drop {
+    /* height: 90px; */
+    flex: 1;
+    border: 2px dashed #9acfd0;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eaf7f7;
+    font-size: 15px;
+}
 }
 @media (max-width:600px){
 
@@ -514,7 +519,9 @@ button:disabled {
   .popup-content p{
     font-size:0.9em;
   }
-
+.drop.correct {
+    font-size: 16px !important;
+}
 }
 
 @media (max-width:480px){
@@ -534,6 +541,210 @@ button:disabled {
 
   .popup-content p{
     font-size:0.8em;
+  }
+.drop.correct {
+    font-size: 16px !important;
+}
+}
+.option.selected {
+  border: 3px solid #38bdf8;
+  background: #e0f2fe;
+}
+.option {
+  transition: transform 0.2s;
+}
+.option:active {
+  transform: scale(0.9);
+}
+.drop.wrong {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-5px)}
+  50%{transform:translateX(5px)}
+  75%{transform:translateX(-5px)}
+  100%{transform:translateX(0)}
+}
+
+@media screen and (min-width:1025px) and (max-width:1440px){
+
+  .main{
+    width:1000px;
+   
+  }
+
+  .content{
+    gap:30px;
+    height:160px;
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:40px;
+  }
+
+  /* DROP BOX */
+  .drop{
+    padding:16px;
+    font-size:24px;
+  }
+
+  /* OPTIONS */
+  .option{
+    height:200px;
+  }
+
+  .option img{
+    width:120px;
+    height:140px;
+  }
+
+  .option span{
+    font-size:30px;
+  }
+
+  /* NAV BUTTONS */
+  .fancy-nav{
+    margin-inline:40px;
+    margin-top:30px;
+  }
+
+  .nav-btn .circle{
+    width:75px;
+    height:75px;
+    font-size:30px;
+  }
+
+  .nav-btn .label{
+    height:75px;
+    padding:24px 42px;
+    font-size:24px;
+  }
+}
+/* ============================= */
+/* Large Screens (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+  .main{
+    width:1200px;
+  }
+
+  .content{
+    gap:40px;
+    height:180px;
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:46px;
+  }
+
+  /* DROP BOX */
+  .drop{
+    padding:18px;
+    font-size:28px;
+  }
+
+  .drop.correct{
+    font-size:26px;
+  }
+
+  /* OPTIONS */
+  .option{
+    height:220px;
+  }
+
+  .option img{
+    width:140px;
+    height:160px;
+  }
+
+  .option span{
+    font-size:32px;
+  }
+
+  /* NAV BUTTONS */
+  .fancy-nav{
+    margin-inline:60px;
+    margin-top:35px;
+  }
+
+  .nav-btn .circle{
+    width:85px;
+    height:85px;
+    font-size:34px;
+  }
+
+  .nav-btn .label{
+    height:85px;
+    padding:26px 50px;
+    font-size:26px;
+  }
+
+}
+
+/* ============================= */
+/* 4K Screens (1921px+) */
+/* ============================= */
+@media screen and (min-width:1921px){
+
+  .main{
+    width:1400px;
+  }
+
+  .content{
+    gap:50px;
+    height:220px;
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:54px;
+  }
+
+  /* DROP BOX */
+  .drop{
+    padding:22px;
+    font-size:32px;
+  }
+
+  .drop.correct{
+    font-size:30px;
+  }
+
+  /* OPTIONS */
+  .option{
+    height:250px;
+  }
+
+  .option img{
+    width:160px;
+    height:180px;
+  }
+
+  .option span{
+    font-size:36px;
+  }
+
+  /* NAV BUTTONS */
+  .fancy-nav{
+    margin-inline:80px;
+    margin-top:40px;
+  }
+
+  .nav-btn .circle{
+    width:95px;
+    height:95px;
+    font-size:38px;
+  }
+
+  .nav-btn .label{
+    height:95px;
+    padding:30px 60px;
+    font-size:30px;
   }
 
 }

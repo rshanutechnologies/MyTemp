@@ -342,6 +342,103 @@ body::before {
 
 }
 
+@media screen and (min-width:1025px){
+
+  .app{
+    width:95%;
+    height:92%;
+  }
+
+  .quizFrame{
+    width:92%;
+    height:100%;
+  }
+
+  .sidebar{
+    right: -10px;
+    gap:20px;
+  }
+
+  .crayon{
+    width:180px;
+    height:75px;
+    font-size:20px;
+  }
+}
+
+@media screen and (min-width:1350px){
+
+
+  .sidebar{
+    right: -190px;
+    gap:20px;
+  }
+
+}
+
+
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+
+  .main{
+    justify-content:center;
+  }
+  .app{
+    width:92%;   /* 🔥 use more width */
+    height:92%;
+  }
+
+  .quizFrame{
+    width:100%;
+    max-width:none;   /* 🔥 REMOVE LIMIT */
+    height:100%;
+  }
+
+  .sidebar{
+    right:-180px;   /* keep position clean */
+  }
+
+  .crayon{
+    width:220px;
+    height:90px;
+    font-size:24px;
+  }
+}
+
+@media screen and (min-width:1921px){
+
+  .app{
+    width:90%;            /* 🔥 use more screen */
+    max-width:1800px;     /* 🔥 allow larger layout */
+  }
+
+  .quizFrame{
+    width:80%;
+    max-width:none;       /* 🔥 REMOVE LIMIT */
+    height:100%;
+  }
+
+  .main{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .sidebar{
+    right:0px;
+    gap:45px;
+  }
+
+  .crayon{
+    width:280px;
+    height:120px;
+    font-size:26px;
+  }
+
+}
+
+
 </style>
 </head>
 

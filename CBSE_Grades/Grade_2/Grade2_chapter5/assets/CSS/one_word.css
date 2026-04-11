@@ -811,3 +811,136 @@ opacity:.35;
 pointer-events:none;
 }
 
+
+@media (min-width: 1280px) {
+
+  /* ✅ MAIN QUIZ */
+  .quiz{
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    min-height: 140px;
+    margin-top: 10px;
+  }
+
+  /* ✅ OPTIONS GRID */
+  .options{
+    gap: 40px;
+  }
+
+  /* ✅ OPTION CARD */
+  .option{
+    height: 220px;
+  }
+
+  #questionImg{
+    width: 280px !important;
+    height: 280px !important;
+    /* background-color: yellow !important; */
+  }
+
+  /* ✅ ANSWER BOXES */
+  .answer-boxes{
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .box{
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+  }
+
+  /* ✅ ANSWER SLOTS */
+  .slot{
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+  }
+
+  /* ✅ JAR */
+  .jar{
+    width: 800px;
+    height: 140px;
+    gap: 18px;
+  }
+
+  /* ✅ BUBBLES */
+  .bubble{
+    width: 65px;
+    height: 65px;
+    font-size: 26px;
+  }
+
+  /* ✅ INPUT */
+  #answerInput{
+    width: 400px;
+    font-size: 26px;
+  }
+ .submitBtnn{
+    width: 180px;
+    height: 70px;
+    border-radius: 20px;
+    font-size: 24px;
+    border: 3px solid white;
+ }
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .prev,
+  .next{
+         width: 180px;
+    height: 70px;
+    border-radius: 20px;
+    font-size: 24px;
+    border: 3px solid white;
+  }
+
+  /* ✅ NAV FIX */
+  .nav{
+    padding: 30px 80px;
+    margin-top: -5px;
+  }
+
+  /* ✅ POPUP */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-icon{
+    font-size: 100px;
+  }
+
+  .popup-title{
+    font-size: 34px !important;
+  }
+
+  .popup-msg{
+    font-size: 24px !important;
+  }
+
+  /* ✅ FINAL POPUP */
+  .popup-box.popup-final{
+    width: 600px;
+  }
+
+  .popup-final-content{
+    font-size: 28px;
+  }
+
+  #stars{
+    font-size: 50px;
+  }
+
+  .restart,
+  .home{
+    font-size: 22px;
+    padding: 14px 28px;
+  }
+
+}

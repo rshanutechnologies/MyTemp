@@ -438,3 +438,120 @@ body {
 
 
 
+
+
+
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1225px) and (max-width:1640px){
+
+.main-container{
+width:900px;
+}
+
+.question-area h2{
+font-size:40px;
+}
+
+.image-area img{
+width:300px;
+height:300px;
+}
+
+.input-box{
+height:65px;
+}
+
+.input-box input{
+font-size:24px;
+
+}
+
+.input-box button{
+font-size:22px;
+padding:10px 26px;
+}
+
+.nav-buttons button{
+width:120px;
+height:50px;
+font-size:22px;
+}
+
+}
+ */
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1450px) and (max-width:1920px){
+
+.main-container{
+width:1150px;
+}
+
+.question-area h2{
+font-size:44px;
+}
+
+.image-area img{
+width:360px;
+height:400px;
+}
+
+.input-box{
+height:75px;
+
+}
+
+.input-box input{
+font-size:28px;
+}
+
+.input-box button{
+font-size:26px;
+padding:12px 30px;
+}
+
+.nav-buttons button{
+width:140px;
+height:60px;
+font-size:26px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.main-container{
+width:1200px;
+}
+
+.question-area h2{
+font-size:36px;
+}
+
+.image-area img{
+width:420px;
+height:400px;
+}
+
+.input-box{
+height:85px;
+}
+
+.input-box input{
+font-size:30px;
+}
+
+.input-box button{
+font-size:28px;
+padding:14px 34px;
+}
+
+.nav-buttons button{
+width:160px;
+height:65px;
+font-size:28px;
+}
+
+}

@@ -510,7 +510,7 @@ body {
 /* -------- SMALL MOBILES (≤ 480px) -------- */
 @media (max-width: 480px) {
 
-  .content{
+  .content {
     padding-block: 0;
   }
 
@@ -542,7 +542,7 @@ body {
 /* -------- EXTRA SMALL (≤ 360px) -------- */
 @media (max-width: 360px) {
 
-  .content{
+  .content {
     padding-block: 0;
   }
 
@@ -556,5 +556,98 @@ body {
 
   .input-box button {
     font-size: 15px;
+  }
+}
+
+/* =========================================
+   💻 DESKTOP / MONITOR (1025px – 1440px)
+========================================= */
+/* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  .main {
+    min-width: 1300px;
+  }
+
+  .question {
+    font-size: 32px;
+  }
+
+  .image-circle {
+    width: 220px;
+    height: 220px;
+  }
+
+  .input-box {
+    width: 520px;
+  }
+
+  .input-box input {
+    font-size: 24px;
+  }
+
+  .nav button {
+    font-size: 20px;
+    padding: 12px 28px;
+  }
+} */
+
+
+/* =========================================
+   🖥️ LARGE MONITORS (1441px – 1920px)
+========================================= */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+  .main {
+    min-width: 1300px;
+    transform: scale(1.05);
+    transform-origin: center;
+  }
+
+  .question {
+    font-size: 35px;
+  }
+
+  .image-circle {
+    width: 270px;
+    height: 270px;
+  }
+
+  .input-box input {
+    font-size: 28px;
+  }
+   .nav button {
+    font-size: 28px;
+    padding: 14px 32px;
+  }
+}
+
+
+/* =========================================
+   📺 EXTRA LARGE / 4K (1921px+)
+========================================= */
+@media screen and (min-width: 1921px) {
+
+  .main {
+    min-width: 1300px;
+    transform: scale(1.15);
+    transform-origin: center;
+  }
+
+  .question {
+    font-size: 38px;
+  }
+
+  .image-circle {
+    width: 260px;
+    height: 260px;
+  }
+
+  .input-box input {
+    font-size: 28px;
+  }
+
+  .nav button {
+    font-size: 22px;
+    padding: 14px 32px;
   }
 }

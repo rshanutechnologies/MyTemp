@@ -73,7 +73,8 @@ body{
 
 /* VIEWPORT */
 .viewport{
-  height:clamp(380px,55vh,480px);
+   min-height:500px;   /* ✅ flexible */
+  height:auto;
   width:100%;
   overflow:hidden;
   position:relative;
@@ -91,17 +92,19 @@ body{
 
 /* PAGE */
 .page{
-  height:clamp(380px,55vh,480px);
+  min-height:500px;
+  height:auto;
 
   display:flex;
   flex-direction:column;
-  justify-content:space-between; /* 🔥 alignment fix */
+  justify-content:center; /* 🔥 alignment fix */
   align-items:center;
 
   padding:clamp(10px,2vh,20px) 0;
   gap:clamp(10px,2vh,20px);
 
   text-align:center;
+   gap:20px;
 }
 
 /* IMAGE */
@@ -153,16 +156,18 @@ body{
   text-align:center;
 }
 
-/* INPUT BOX */
 .answer-box input{
-  width:clamp(220px,40vw,300px);
-  padding:clamp(8px,1.5vw,10px);
-  font-size:clamp(16px,2vw,22px);
+  width:clamp(260px, 45vw, 420px);   /* 🔥 bigger width */
+  padding:14px;
+
+  font-size:clamp(18px, 2.2vw, 26px);  /* 🔥 bigger text */
+
   border-radius:14px;
+  border:2px solid #cfeee5;
+  
   border:2px solid #cfeee5;
   color:#111;
 }
-
 .answer-box.correct input{
   border-color:#4caf50;
   background:#f1fff1;
@@ -172,32 +177,41 @@ body{
   background:#f1f5f4;
   cursor:not-allowed;
 }
+.answer-box input::placeholder{
+  font-size:16px;
+  color:#888;
+}
 
-/* CHECK BUTTON */
 .check{
-  padding:clamp(10px,2vw,15px) clamp(20px,4vw,30px);
+  display:block;
+  margin:20px auto;   /* 🔥 adds proper space */
+  
+  padding:14px 30px;
+  font-size:18px;
+
   border-radius:14px;
   border:none;
   background:linear-gradient(135deg,#1aa27a,#38d9a9);
   color:#fff;
-  font-weight:600;
+
   cursor:pointer;
-  font-size:clamp(14px,2vw,18px);
-  display:block;
-  margin:auto;
-  margin-top: clamp(10px, 2vh, 20px); /* 🔥 adds space */
+  position:relative;
+  z-index:10;
 
 }
-
 .check:disabled{
   opacity:.4;
 }
-
 .nav-btn{
   width:100%;
+  max-width:900px;   /* 🔥 IMPORTANT (limit width) */
+       /* center */
   display:flex;
   justify-content:space-between;
   align-items:center;
+ margin-top: -40px;   /* ✅ FIX */
+  position: relative;
+  z-index: 1000;      /* ✅ ensure clickable */
 }
 
 .nav-btn button{
@@ -308,4 +322,82 @@ body{
   .header{
     font-size:18px !important;
   }
+}
+
+/* ================= DESKTOP LIKE MCQ ================= */
+
+/* Desktop */
+@media screen and (min-width: 1025px) and (max-width: 1440px){
+
+  .node{
+    width:700px;
+  }
+
+  .question{
+    font-size:40px;   /* ✅ same as MCQ */
+  }
+
+  .answer-box input{
+    width:320px;
+    font-size:22px;
+    padding:12px;
+  }
+
+  .plain-img{
+    width:280px;
+    height:200px;
+  }
+
+  .nav-btn button{
+        font-size:30px;
+   padding:15px 40px;
+   min-width: 180px;
+  }
+}
+
+/* Large Screens */
+@media screen and (min-width: 1441px) and (max-width: 1920px){
+
+  .node{
+    width:800px;
+  }
+
+  .question{
+    font-size:38px;
+  }
+
+  .answer-box input{
+    width:350px;
+    font-size:22px;
+  }
+
+  .plain-img{
+    width:320px;
+    height:220px;
+  }
+
+}
+
+/* Extra Large (4K) */
+@media screen and (min-width: 1921px){
+
+  .node{
+    width:900px;
+  }
+
+  .question{
+    font-size:44px;
+  }
+
+  .answer-box input{
+    width:400px;
+    font-size:24px;
+  }
+
+  .plain-img{
+    width:350px;
+    height:240px;
+  }
+  
+
 }

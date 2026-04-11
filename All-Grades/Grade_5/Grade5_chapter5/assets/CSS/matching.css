@@ -550,3 +550,102 @@ z-index:-1;
   }
 
 }
+/* ===================================== */
+/* ===== 1280px PURE SIZE UPGRADE ===== */
+/* ===================================== */
+
+@media (min-width: 1280px) {
+
+  body{
+    margin-top: 3% !important;
+  }
+  /* QUIZ WRAPPER */
+  .quiz {
+    max-width: 1100px;
+  }
+
+  /* HEADER */
+  .header span {
+    font-size: 50px !important;
+    top: 25px;
+  }
+
+  /* MATCH AREA */
+  .match-area {
+    gap: 40px;
+  }
+
+  .column {
+    gap: 40px;
+  }
+
+  /* ITEMS */
+  .item {
+    font-size: 26px;
+    padding: 18px;
+    height: 150px !important;
+    border-radius: 20px;
+  }
+
+  .item img {
+    width: 110px;
+    height: 80px;
+  }
+  /* IMAGE (LEFT SIDE AFTER MATCH) */
+.left-img {
+  width: 110px !important;
+  height: 80px !important;
+  object-fit: contain;
+  margin-left: 12px;
+
+
+ 
+}
+
+  .item.correct::after,
+  .item.wrong::after {
+    font-size: 26px;
+  }
+
+  /* POPUP */
+  .popup-box {
+    width: 420px;
+    padding: 30px;
+    border-radius: 24px;
+  }
+
+  .popup-box.popup-final {
+    width: 720px;
+  }
+
+  .popup-correct,
+  .popup-wrong {
+    font-size: 26px;
+  }
+
+  .popup-correct .happy,
+  .popup-wrong .sad {
+    font-size: 80px;
+  }
+
+  .popup-final-content {
+    font-size: 28px;
+  }
+
+  .popup-final-content .emoji {
+    font-size: 80px;
+  }
+
+  .stars {
+    font-size: 36px;
+  }
+
+  /* BUTTONS */
+  button {
+    width: 180px;
+    height: 70px;
+    font-size: 22px;
+    border-radius: 40px;
+  }
+
+}

@@ -787,5 +787,173 @@ color: black;
 
 }
 
+@media (min-width: 1280px) {
+ body{
+  margin-top: -3% !important;
+  margin-left: -6% !important;
+ }
+  /* ❌ REMOVE OLD SCALE EFFECT */
+  .card{
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+
+  /* ✅ TITLE */
+  .quiz-title{
+    font-size: 50px !important;
+    padding: 20px 30px;
+   
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question-text,
+  .question-text *{
+    font-size: 44px;
+    line-height: 1.4;
+    min-width: 1000px !important;
+    /* background-color: yellow !important; */
+  }
+
+  .question-box{
+    min-height: 160px;
+  }
+
+  /* ✅ PROGRESS (BUBBLE ORBIT) */
+  .bubble-orbit{
+    height: 90px;
+  }
+
+  .bubble-dot{
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  .orbit-indicator{
+    font-size: 34px;
+  }
+  .options{
+    width:min(1000px, 100vw);
+    margin-top:24px;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    /* background-color: red !important; */
+    margin-top: 10% !important;
+    
+}
+
+  /* ✅ OPTIONS */
+  .option{
+    width: 240px;
+    height: 240px;
+    /* background-color: yellow !important; */
+  }
+
+  .option img{
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .opt-label{
+    font-size: 22px;
+    padding: 12px 30px;
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .nav-btn{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+    border-radius: 999px;
+  }
+
+  .controls{
+    gap: 120px;
+    margin-top: 80px;
+  }
+  
+/* ✅ POPUP BOX */
+.popup-box{
+  width: 380px;
+  padding: 50px;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px; /* 🔥 spacing between lines */
+}
+
+/* ✅ COMMON TEXT ALIGN */
+.popup-correct,
+.popup-wrong{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* 🔥 line spacing */
+
+  font-size: 28px;
+  text-align: center;
+}
+
+/* ✅ LINE 1 (TEXT) */
+.popup-correct .check,
+.popup-wrong .cross{
+  font-size: 26px;
+  font-weight: 500;
+}
+
+/* ✅ LINE 2 (EMOJI BIG) */
+.popup-correct .happy,
+.popup-wrong .sad{
+  font-size: 100px;
+  line-height: 1;
+}
+
+/* ✅ LINE 3 (STARS / MESSAGE) */
+.popup-correct .stars{
+  font-size: 40px;
+  margin-top: 5px;
+}
+
+/* OPTIONAL: WRONG TIP LINE */
+.popup-wrong .tip{
+  font-size: 22px;
+  margin-top: 5px;
+}
+
+/* ✅ FINAL POPUP CONTENT */
+.popup-final-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 28px;
+  text-align: center;
+}
+
+/* FINAL EMOJI */
+.popup-final-content .emoji{
+  font-size: 70px;
+  line-height: 1;
+}
+
+/* FINAL STARS */
+.popup-final-content .stars{
+  font-size: 50px;
+}
+  .restart,
+  .home{
+    font-size: 22px;
+    padding: 14px 28px;
+  }
+
+}
 
 

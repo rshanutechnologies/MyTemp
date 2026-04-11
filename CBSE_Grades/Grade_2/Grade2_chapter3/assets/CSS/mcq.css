@@ -482,13 +482,99 @@ font-size:16px;
 
 /* Medium desktops */
 @media (min-width: 1280px) {
- body{
-    margin-top: 8%;
+  body{
+    margin-top: -2% !important;
   }
+  /* ✅ MAIN WRAPPER */
+  .template{
+    width: 1300px;
+    height: 780px;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .title{
+    font-size: 44px;
+    min-height: 160px;
+    width: 1000px;
+    line-height: 1.4;
+  }
+
+  /* ✅ MAIN IMAGE */
+  .animal-img{
+    width: 240px;
+    height: 240px;
+  }
+
+  /* ✅ OPTIONS GRID */
+  .options{
+    width: 1100px;
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  /* ✅ OPTION CARD */
+  .option{
+    padding: 20px;
+    border-radius: 26px;
+  }
+
+  /* ✅ OPTION IMAGE */
+  .option-img{
+    width: 130px;
+    height: 130px;
+  }
+
+  /* ✅ OPTION LABEL */
+  .option .label{
+    font-size: 22px;
+    padding: 10px 30px;
+    bottom: -22px;
+  }
+
+  /* ✅ NAV BUTTONS (MAKE THEM BIG RECTANGLE LIKE SYSTEM) */
+  .prev,
+  .next{
+     width: 100px;
+    height: 100px;
+    border-radius: 80% !important;
+    font-size: 20px;
+    margin-top: 2% !important;
+  }
+
+  /* ✅ NAV SPACING */
   .quiz-nav{
-    margin-top:11%;
-  
-}
+    gap: 60%;
+  }
+
+  /* ✅ POPUP (IMPORTANT) */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-icon{
+    font-size: 100px;
+  }
+
+  .popup-title{
+    font-size: 34px;
+  }
+
+  .popup-msg{
+    font-size: 24px;
+  }
+
+  /* ✅ FINAL POPUP */
+  #stars{
+    font-size: 50px;
+  }
+
+  .playAgain-btn{
+    font-size: 20px;
+    padding: 14px 32px;
+  }
+
 }
 
 /* Large desktops */

@@ -358,3 +358,154 @@
 }
 
 }
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width: 1025px) and (max-width: 1440px){
+
+  .quiz-card{
+    width: 1200px;
+    height: 550px;
+    padding: 30px;
+  }
+  .top-title{
+    font-size: 28px;
+  }
+
+  .question{
+    font-size: 30px;
+    padding: 0 40px;
+  }
+
+  .qimg{
+    width: 280px;
+    height: 250px;
+  }
+
+  .tf-buttons{
+    gap: 60px;
+  }
+
+  .tf-buttons button{
+    font-size: 28px;
+    padding: 20px 50px;
+  }
+
+  .nav{
+    gap: 300px;
+  }
+
+  .nav button{
+    width: 160px;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+}
+
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width: 1441px) and (max-width: 1920px){
+
+  .quiz-card{
+    width: 1200px;
+    height: 550px;
+    padding: 30px;
+  }
+
+  .top-title{
+    font-size: 32px;
+    padding: 10px 18px;
+  }
+
+  .question{
+    font-size: 40px;
+    line-height: 1.4;
+    padding: 0 60px;
+    margin-bottom: 60px;
+  }
+
+  .qimg{
+    width: 340px;
+    height: 300px;
+    margin-bottom: 60px;
+  }
+
+  .tf-buttons{
+    gap: 80px;
+  }
+
+  .tf-buttons button{
+    font-size: 32px;
+    padding: 25px 80px;
+  }
+
+  .nav{
+    gap: 350px;
+    margin-top: 30px;
+  }
+
+  .nav button{
+    width:200px;
+    height:60px;
+    font-size:28px;
+    border-radius:40px;
+  }
+
+}
+
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width: 1921px){
+
+  .quiz-card{
+    width: 1500px;
+    height: 650px;
+    padding: 40px;
+  }
+
+  .top-title{
+    font-size: 36px;
+    padding: 12px 22px;
+  }
+
+  .question{
+    font-size: 46px;
+    line-height: 1.5;
+    padding: 0 80px;
+  }
+
+  .qimg{
+    width: 420px;
+    height: 360px;
+  }
+
+  .tf-buttons{
+    gap: 100px;
+  }
+
+  .tf-buttons button{
+    font-size: 36px;
+    padding: 26px 70px;
+  }
+
+  .nav{
+    gap: 400px;
+    margin-top: 40px;
+  }
+
+  .nav button{
+    width: 200px;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  .popup-content{
+    max-width: 500px;
+  }
+
+}

@@ -28,7 +28,6 @@
     .app {
       height: 100vh;
       display: flex;
-      /* background: #e5e7eb; */
     }
 
     .sidebar {
@@ -232,6 +231,83 @@
         height: calc(100vh / 0.8);
       }
     }
+
+    /* ============================= */
+    /* Desktop / Monitor (1025–1440) */
+    /* ============================= */
+    @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+      .sidebar {
+        width: 300px;
+        gap: 28px;
+      }
+
+      .menu-btn {
+        height: 75px;
+        font-size: clamp(15px, 1vw, 17px);
+        padding: 0 20px;
+      }
+
+      .icon-box {
+        width: 48px;
+        height: 48px;
+        font-size: 21px;
+      }
+    }
+
+    /* ============================= */
+    /* Large Monitors (1441–1920) */
+    /* ============================= */
+    @media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+      .sidebar {
+        width: 340px;
+        gap: 32px;
+        padding: 28px 16px;
+      }
+
+      .menu-btn {
+        height: 85px;
+        font-size: clamp(17px, 1.1vw, 20px);
+        padding: 0 24px;
+        border-radius: 22px;
+      }
+
+      .icon-box {
+        width: 55px;
+        height: 55px;
+        font-size: 24px;
+      }
+    }
+
+    /* ============================= */
+    /* Extra Large Screens / 4K */
+    /* ============================= */
+    @media screen and (min-width: 1921px) {
+
+      .sidebar {
+        width: 420px;
+        gap: 40px;
+        padding: 36px 20px;
+      }
+
+      .menu-btn {
+        height: 100px;
+        font-size: clamp(20px, 1.2vw, 26px);
+        padding: 0 30px;
+        border-radius: 26px;
+      }
+
+      .icon-box {
+        width: 65px;
+        height: 65px;
+        font-size: 28px;
+      }
+
+      iframe {
+        border-radius: 14px;
+      }
+    }
   </style>
 </head>
 
@@ -354,9 +430,7 @@
       openPage(i);
       toggleMenu();
     }
-
   </script>
-
 </body>
 
 </html>

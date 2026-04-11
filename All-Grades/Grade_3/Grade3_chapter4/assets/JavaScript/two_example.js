@@ -1,14 +1,13 @@
-
 function speakText(text){
-      if(!("speechSynthesis" in window)) return;
-      window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.rate = 1;
-      utter.pitch = 1;
-      utter.volume = 0.25;
-       utter.lang = "en-UK";
-      window.speechSynthesis.speak(utter);
-    }
+  if(!("speechSynthesis" in window)) return;
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.rate = 1;
+  utter.pitch = 1;
+  utter.volume = 0.25;
+  utter.lang = "en-UK";
+  window.speechSynthesis.speak(utter);
+}
 
 const popup = document.getElementById("popup");
 const popupText = document.getElementById("popupText");
@@ -16,7 +15,6 @@ const popupText = document.getElementById("popupText");
 function showPopup(html, final=false){
   popup.style.display = "flex";
 
-  /* FIX HERE */
   popupText.className = final
     ? "popup-box final-wide"
     : "popup-box";
@@ -28,8 +26,7 @@ function showPopup(html, final=false){
   }
 }
 
-
-/* ✅ QUESTIONS + IMAGE OPTIONS PATH FORMAT */
+/* QUESTIONS */
 const quizData = [
   {
     question: "Q1. Gases that dissolve in water",
@@ -63,16 +60,16 @@ const quizData = [
 let current = 0;
 let score = 0;
 
-const solvedMap = {}; // keep state
+const solvedMap = {};
 
 const questionTextEl = document.getElementById("questionText");
 const optionsBoxEl = document.getElementById("optionsBox");
-const dropAreaEl = document.getElementById("dropArea");
 const dropItemsEl = document.getElementById("dropItems");
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 
+/* RENDER */
 function renderQuestion(){
   const q = quizData[current];
   questionTextEl.textContent = q.question + " ________  ________";
@@ -89,7 +86,7 @@ function renderQuestion(){
   optionsBoxEl.innerHTML = "";
   dropItemsEl.innerHTML = "";
 
-  // restore dropped chips
+  // restore selected
   state.dropped.forEach(txt=>{
     const chip = document.createElement("div");
     chip.className = "drop-chip";
@@ -97,11 +94,9 @@ function renderQuestion(){
     dropItemsEl.appendChild(chip);
   });
 
-  // render options
   q.options.forEach((opt, idx)=>{
     const div = document.createElement("div");
     div.className = "option";
-    div.draggable = !state.solved;
     div.dataset.index = idx;
 
     div.innerHTML = `
@@ -111,61 +106,37 @@ function renderQuestion(){
 
     if(state.dropped.includes(opt.text)){
       div.classList.add("disabled");
-      div.draggable = false;
     }
 
     if(state.correctSet.has(opt.text)){
       div.classList.add("correct-picked");
-      div.draggable = false;
     }
 
-    // disable wrong after solved
     if(state.solved && !opt.correct){
       div.classList.add("disabled");
-      div.draggable = false;
     }
 
-    div.addEventListener("dragstart",(e)=>{
-      if(div.classList.contains("disabled")) return;
-      e.dataTransfer.setData("text/plain", idx);
+    /* ✅ CLICK EVENT */
+    div.addEventListener("click", ()=>{
+      handleOptionClick(idx);
     });
 
     optionsBoxEl.appendChild(div);
   });
 }
-/* HOME BUTTON REDIRECT */
-const homeBtn = document.getElementById("homeBtn");
 
-homeBtn.addEventListener("click", () => {
-  window.location.href = "../index1.html";
-});
-
-/* ✅ DROP EVENTS */
-dropAreaEl.addEventListener("dragover",(e)=>{
-  e.preventDefault();
-  dropAreaEl.classList.add("dragover");
-});
-dropAreaEl.addEventListener("dragleave",()=>{
-  dropAreaEl.classList.remove("dragover");
-});
-dropAreaEl.addEventListener("drop",(e)=>{
-  e.preventDefault();
-  dropAreaEl.classList.remove("dragover");
-
+/* CLICK LOGIC */
+function handleOptionClick(idx){
   const q = quizData[current];
   const state = solvedMap[current];
 
   if(state.solved) return;
-
-  const idx = parseInt(e.dataTransfer.getData("text/plain"), 10);
-  if(Number.isNaN(idx)) return;
 
   const opt = q.options[idx];
 
   if(state.dropped.length >= 2) return;
   if(state.dropped.includes(opt.text)) return;
 
-  // ✅ Correct Drop
   if(opt.correct){
     state.dropped.push(opt.text);
     state.correctSet.add(opt.text);
@@ -175,58 +146,51 @@ dropAreaEl.addEventListener("drop",(e)=>{
     chip.textContent = opt.text;
     dropItemsEl.appendChild(chip);
 
-    // correct popup every time
     speakText("Correct");
+
     showPopup(`
-  <div class="popup-correct">
-    <span class="check">✅ Correct</span>
-    <span class="happy">😊</span>
-    <div class="stars">${"⭐".repeat(current + 1)}</div>
-  </div>
-`);
+      <div class="popup-correct">
+        <span class="check">✅ Correct</span>
+        <span class="happy">😊</span>
+        <div class="stars">${"⭐".repeat(current + 1)}</div>
+      </div>
+    `);
 
-
-    // highlight correct option
+    // mark correct
     const optionDivs = document.querySelectorAll(".option");
     optionDivs[idx].classList.add("correct-picked");
-    optionDivs[idx].draggable = false;
 
-    // ✅ If 2 correct → solved
     if(state.correctSet.size === 2){
       state.solved = true;
       score++;
       nextBtn.disabled = false;
 
-      // disable all wrong options
-      const optionEls = document.querySelectorAll(".option");
-      optionEls.forEach((el, i)=>{
+      // disable wrong options
+      optionDivs.forEach((el, i)=>{
         if(!q.options[i].correct){
           el.classList.add("disabled");
-          el.draggable = false;
         }
       });
 
-      // ✅ Auto final popup if last question
       if(current === quizData.length - 1){
         setTimeout(showFinalPopup, 1100);
       }
     }
 
-  }else{
-    // ❌ Wrong Drop
+  } else {
     speakText("Wrong");
-  showPopup(`
-  <div class="popup-wrong">
-    <span class="cross">❌ Wrong</span>
-    <span class="sad">😢</span>
-    <div class="tip">💡 You can do it!</div>
-  </div>
-`);
 
-
+    showPopup(`
+      <div class="popup-wrong">
+        <span class="cross">❌ Wrong</span>
+        <span class="sad">😢</span>
+        <div class="tip">💡 You can do it!</div>
+      </div>
+    `);
   }
-});
+}
 
+/* NAVIGATION */
 function nextQuestion(){
   if(!solvedMap[current]?.solved) return;
   if(current < quizData.length - 1){
@@ -234,6 +198,7 @@ function nextQuestion(){
     renderQuestion();
   }
 }
+
 function prevQuestion(){
   if(current > 0){
     current--;
@@ -241,7 +206,13 @@ function prevQuestion(){
   }
 }
 
-/* ✅ FINAL SCORE POPUP AUTO */
+/* HOME BUTTON */
+const homeBtn = document.getElementById("homeBtn");
+homeBtn.addEventListener("click", () => {
+  window.location.href = "../index1.html";
+});
+
+/* FINAL */
 function showFinalPopup(){
   const stars = "⭐".repeat(
     Math.max(1, Math.round((score / quizData.length) * 5))
@@ -260,68 +231,6 @@ function showFinalPopup(){
     </div>
   `, true);
 }
-/* ===== MOBILE TOUCH SUPPORT ===== */
 
-let touchedOptionIndex = null;
-
-// 👉 select option on touch
-document.addEventListener("touchstart", (e) => {
-  const option = e.target.closest(".option");
-  if(!option) return;
-
-  if(option.classList.contains("disabled")) return;
-
-  touchedOptionIndex = parseInt(option.dataset.index);
-});
-
-// 👉 drop on touch
-dropAreaEl.addEventListener("touchend", () => {
-
-  if(touchedOptionIndex === null) return;
-
-  const q = quizData[current];
-  const state = solvedMap[current];
-
-  if(state.solved) return;
-
-  const opt = q.options[touchedOptionIndex];
-
-  if(state.dropped.length >= 2) return;
-  if(state.dropped.includes(opt.text)) return;
-
-  if(opt.correct){
-
-    state.dropped.push(opt.text);
-    state.correctSet.add(opt.text);
-
-    const chip = document.createElement("div");
-    chip.className = "drop-chip";
-    chip.textContent = opt.text;
-    dropItemsEl.appendChild(chip);
-
-    speakText("Correct");
-
-    const optionDivs = document.querySelectorAll(".option");
-    optionDivs[touchedOptionIndex].classList.add("correct-picked");
-    optionDivs[touchedOptionIndex].draggable = false;
-
-    if(state.correctSet.size === 2){
-      state.solved = true;
-      score++;
-      nextBtn.disabled = false;
-
-      if(current === quizData.length - 1){
-        setTimeout(showFinalPopup, 1000);
-      }
-    }
-
-  } else {
-    speakText("Wrong");
-  }
-
-  touchedOptionIndex = null;
-
-});
-/* start */
+/* START */
 renderQuestion();
-

@@ -501,13 +501,172 @@ body {
         width: 150px;
         height: 150px;
     }
+     
 }
 
-/* ===== DESKTOP SCALE (-20%) ===== */
-/* @media (min-width:800px) {
-    .main {
-        transform: scale(.8);
-        
-        transform-origin: top center;
-    }
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1225px) and (max-width:1640px){
+
+.main{
+max-width:1150px;
+}
+
+.questions{
+height:600px;
+}
+
+.question{
+width:380px;
+font-size:22px;
+}
+
+.question img{
+width:95px;
+height:60px;
+}
+
+.question-text{
+font-size:40px;
+}
+
+.input-row{
+width:320px;
+}
+
+.input-row input{
+font-size:18px;
+}
+
 } */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1750px) and (max-width:1920px){
+
+.main{
+max-width:1300px;
+}
+
+.questions{
+height:1000px;
+width: 1300px;
+}
+
+.question{
+width:500px;
+font-size:25px;
+}
+
+.q0 {
+    top: 40px;
+    left: 0;
+}
+
+.q1 {
+    top: 40px;
+    right: 0;
+}
+
+.q2 {
+    top: 260px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.q3 {
+    bottom: 275px;
+    left: 0;
+}
+
+.q4 {
+    bottom: 275px;
+    right: 0;
+}
+
+.question img{
+width:130px;
+height:130px;
+}
+
+.question-text{
+font-size:35px;
+}
+
+.input-row{
+width:460px;
+}
+
+.input-row input{
+font-size:28px;
+}
+
+.input-row button {
+  font-size: 22px;
+} 
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.main{
+max-width:1600px;
+}
+
+.questions{
+height:1000px;
+width: 1300px;
+}
+
+.question{
+width:500px;
+font-size:25px;
+}
+
+.q0 {
+    top: 40px;
+    left: 0;
+}
+
+.q1 {
+    top: 40px;
+    right: 0;
+}
+
+.q2 {
+    top: 260px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.q3 {
+    bottom: 230px;
+    left: 0;
+}
+
+.q4 {
+    bottom: 230px;
+    right: 0;
+}
+
+.question img{
+width:200px;
+height:200px;
+}
+
+.question-text{
+font-size:44px;
+}
+
+.input-row{
+width:460px;
+}
+
+.input-row input{
+font-size:28px;
+}
+
+.input-row button {
+  font-size: 22px;
+} 
+}

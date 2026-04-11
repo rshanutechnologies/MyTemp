@@ -462,7 +462,7 @@ body {
 
 
 @media (max-width:480px) {
-    .main{
+    .main {
         padding-inline: 10px;
     }
 
@@ -547,4 +547,123 @@ body {
         padding: 10px 20px;
         font-size: 0.9em;
     }
+}
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .quiz {
+        max-width: 1100px;
+    }
+
+    #question {
+        font-size: 34px;
+    }
+
+    .question-image img {
+        width: 260px;
+        height: 180px;
+    }
+
+    .options {
+        gap: 22px;
+    }
+
+    .option {
+        font-size: 22px;
+        padding: 16px 22px;
+    }
+
+    .option-img {
+        width: 110px;
+        height: 80px;
+    }
+
+    .controls button {
+        font-size: 20px;
+        padding: 14px 36px;
+    }
+
+}
+
+
+/* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+    .quiz {
+        max-width: 1200px;
+    }
+
+    #question {
+        font-size: 38px;
+    }
+
+    .question-image img {
+        width: 300px;
+        height: 200px;
+    }
+
+    .options {
+        gap: 26px;
+    }
+
+    .option {
+        font-size: 24px;
+        padding: 18px 24px;
+    }
+
+    .option-img {
+        width: 120px;
+        height: 90px;
+    }
+
+    .controls button {
+        font-size: 22px;
+        padding: 16px 40px;
+    }
+
+}
+
+
+/* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+    .quiz {
+        max-width: 1300px;
+    }
+
+    #question {
+        font-size: 42px;
+    }
+
+    .question-image img {
+        width: 340px;
+        height: 230px;
+    }
+
+    .options {
+        gap: 30px;
+    }
+
+    .option {
+        font-size: 26px;
+        padding: 20px 26px;
+    }
+
+    .option-img {
+        width: 130px;
+        height: 100px;
+    }
+
+    .controls button {
+        font-size: 24px;
+        padding: 18px 44px;
+    }
+
 }

@@ -376,6 +376,91 @@
         height: calc(100vh / 0.8);
       }
     }
+
+    /* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+    @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+      .sidebar {
+        width: 320px;
+      }
+
+      .bubble {
+        width: 140px;
+        height: 140px;
+      }
+
+    }
+
+
+    @media screen and (min-width: 1441px) and (max-width: 1680px) {
+
+      .sidebar {
+        width: 360px;
+      }
+
+      .bubble {
+        width: 160px;
+        height: 160px;
+      }
+
+      .bubble span{
+        font-size: 40px;
+      }
+
+      .bubble p {
+        font-size: 18px;
+      }
+
+    }
+
+    @media screen and (min-width: 1681px) and (max-width: 1920px) {
+
+      .sidebar {
+        width: 400px;
+      }
+
+      .bubble {
+        width: 180px;
+        height: 180px;
+      }
+
+       .bubble span{
+        font-size: 40px;
+      }
+
+       .bubble p {
+        font-size: 20px;
+      }
+
+    }
+
+
+    /* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+    @media screen and (min-width: 1921px) {
+
+
+      /* Sidebar / container height */
+      .sidebar {
+        width: 440px;
+      }
+
+      .bubble {
+        width: 200px;
+        height: 200px;
+      }
+
+       .bubble span{
+        font-size: 50 px;
+      }
+
+       .bubble p {
+        font-size: 22px;
+      }
+    }
   </style>
 </head>
 

@@ -13,12 +13,15 @@ body {
     overflow: hidden;
 }
 
-/* MAIN */
+/* ==============================
+   MAIN CONTAINER
+   Base = smallest screens
+============================== */
 .main-container {
-    width: clamp(300px, 90vw, 750px);
+    width: 95%;
+    max-width: 750px;
 }
 
-/* QUIZ */
 .quiz-container {
     display: flex;
     flex-direction: column;
@@ -28,14 +31,15 @@ body {
 /* QUESTION */
 .question-area {
     width: 100%;
-    min-height: clamp(50px, 8vh, 60px);
+    min-height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .question-area h2 {
-    font-size: clamp(18px, 3vw, 30px);
+    font-size: 30px;
     font-weight: 400;
     color: #2f4f4f;
     text-align: center;
@@ -46,12 +50,12 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: clamp(10px, 2vw, 15px) 0;
+    margin: 10px 0 14px;
 }
 
 .image-area img {
-    width: clamp(220px, 35vw, 340px);
-    height: clamp(140px, 25vh, 200px);
+    width: 220px;
+    height: 140px;
     object-fit: contain;
     border-radius: 20px;
     filter: grayscale(70%) brightness(.8);
@@ -67,25 +71,23 @@ body {
 /* INPUT AREA */
 .input-area {
     display: flex;
-    gap: clamp(10px, 2vw, 15px);
+    gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: clamp(8px, 2vh, 10px);
-    width: 100%; /* ✅ fix shrink */
+    margin-top: 10px;
+    width: 100%;
 }
 
 /* INPUT BOX */
 .input-box {
     flex: 1;
-    min-width: clamp(140px, 30vw, 160px);
-    max-width: 100%; /* ✅ prevent overflow */
-    height: clamp(55px, 8vh, 70px);
-
+    min-width: 140px;
+    max-width: 100%;
+    height: 58px;
     display: flex;
     align-items: center;
     gap: 6px;
     padding: 6px 10px;
-
     border-radius: 16px;
     border: 3px solid #f3b08f;
     background: #ffe8da;
@@ -109,9 +111,9 @@ body {
 /* INPUT */
 .input-box input {
     flex: 1;
-    min-width: 0; /* ✅ IMPORTANT fix */
+    min-width: 0;
     height: 40px;
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: 16px;
     border: none;
     outline: none;
     background: transparent;
@@ -119,48 +121,40 @@ body {
 
 /* BUTTON */
 .input-box button {
-    flex-shrink: 0; /* ✅ prevent disappearing */
-    padding: clamp(8px, 2vw, 10px) clamp(14px, 3vw, 24px);
+    flex-shrink: 0;
+    padding: 8px 16px;
     border-radius: 20px;
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: 14px;
     border: none;
     background: #6bc6f5;
     cursor: pointer;
 }
 
-.input-box button:disabled {
-    background: #b9dff5;
-}
+.input-box button:disabled { background: #b9dff5; }
 
 /* NAV */
 .nav {
-    width:100%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: clamp(15px, 3vh, 30px);
+    margin-top: 14px;
 }
 
 .nav button {
-    width: clamp(90px, 12vw, 140px);
-    height: clamp(40px, 7vh, 55px);
-
+    width: 105px;
+    height: 42px;
     display: flex;
     justify-content: center;
     align-items: center;
-
     border-radius: 35px;
     border: 3px solid #ffffff;
-
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: 15px;
     font-weight: 400;
     color: #ffffff;
-
     cursor: pointer;
     transition: .15s ease;
 }
 
-
-/* BUTTON COLORS */
 .prev {
     background: linear-gradient(#86cfe5, #66b6d2);
     box-shadow: 0 4px 0 #3e9dbb;
@@ -171,22 +165,13 @@ body {
     box-shadow: 0 4px 0 #e08634;
 }
 
-.prev:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 0 #3e9dbb;
-}
+.prev:active { transform: translateY(4px); box-shadow: 0 2px 0 #3e9dbb; }
+.next:active { transform: translateY(4px); box-shadow: 0 2px 0 #e08634; }
+.nav button:disabled { opacity: 0.4; cursor: not-allowed; }
 
-.next:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 0 #e08634;
-}
-
-.nav button:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
-
-/* POPUP */
+/* ==============================
+   FEEDBACK POPUP
+============================== */
 .kid-popup {
     position: fixed;
     inset: 0;
@@ -202,29 +187,20 @@ body {
     padding: 25px;
     border-radius: 30px;
     text-align: center;
-    box-shadow: 0 15px 0 #ffd966, 0 25px 40px rgba(0, 0, 0, .2);
+    box-shadow: 0 15px 0 #ffd966, 0 25px 40px rgba(0,0,0,.2);
 }
 
-.kid-icon {
-    font-size: 4.5em;
-    margin-bottom: 10px;
-}
+.kid-icon { font-size: 4.5em; margin-bottom: 10px; }
+.kid-card h3 { font-size: 2em; margin-bottom: 8px; }
+.kid-card p  { font-size: 1.2em; }
 
-.kid-card h3 {
-    font-size: 2em;
-    margin-bottom: 8px;
-}
+.kid-correct .kid-card { background: #e6fffa; border: 6px solid #38d9a9; }
+.kid-wrong .kid-card   { background: #fff5f5; border: 6px solid #ffa8a8; }
 
-.kid-card p {
-    font-size: 1.2em;
-}
-.kid-correct .kid-card {
-    background: #e6fffa;
-    border: 6px solid #38d9a9;
-}
-
-/* ✅ FINAL POPUP RESTORED EXACTLY */
- #finalPopup {
+/* ==============================
+   FINAL POPUP
+============================== */
+#finalPopup {
     position: fixed;
     inset: 0;
     display: none;
@@ -240,47 +216,158 @@ body {
     text-align: center;
     width: 450px;
 }
-/* 🔥 spacing inside final popup */
-.final-kid-box h2 {
-    margin-bottom: 18px;
-}
 
-.final-kid-box p {
-    margin-bottom: 14px;
-}
+.final-kid-box h2 { margin-bottom: 18px; font-size: 1.6em; }
+.final-kid-box p  { margin-bottom: 14px; font-size: 1.1em; }
+#stars             { margin-bottom: 18px; font-size: 1.4em; }
 
-#stars {
-    margin-bottom: 18px;
-}
-
-/* 🔥 play button style */
 .playAgain-btn {
     background: #22c55e;
     color: #ffffff;
     border: none;
     padding: 12px 28px;
     border-radius: 50px;
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: 16px;
     cursor: pointer;
 }
-.kid-wrong .kid-card {
-    background: #fff5f5;
-    border: 6px solid #ffa8a8;
+
+/* ==============================
+   MOBILE
+============================== */
+@media (max-width: 760px) {
+    body { padding: 15px 0; }
+    .main-container { width: 100%; }
 }
 
-/* 🔥 SINGLE MEDIA QUERY */
-@media (max-width:900px) {
+/* ==============================
+   DESKTOP BREAKPOINTS
+   Same logic as MCQ — target iframe width
+============================== */
 
-    body {
-        padding: 10px;
-        align-items: center;
-    }
+/* ~900px iframe (browser ~1130px) */
+@media (min-width: 900px) {
 
-    .main-container {
-        width: 100%;
-    }
+    .main-container { max-width: 98%; padding: 0 36px; }
 
-    .nav-buttons {
-        gap: clamp(10px, 4vw, 20px);
-    }
+    .question-area { min-height: 65px; margin-bottom: 12px; }
+    .question-area h2 { font-size: 34px; }
+
+    .image-area { margin: 12px 0 18px; }
+    .image-area img { width: 195px; height: 148px; }
+
+    .input-area { gap: 15px; margin-top: 12px; }
+    .input-box  { height: 64px; padding: 8px 14px; border-radius: 18px; }
+    .input-box input  { font-size: 18px; }
+    .input-box button { font-size: 15px; padding: 9px 20px; }
+    .input-area .input-box:only-child { max-width: 460px; }
+
+    .nav { margin-top: 22px; }
+    .nav button { width: 122px; height: 50px; font-size: 17px; }
+
+    .kid-card { width: 370px; padding: 30px; border-radius: 34px; }
+    .kid-icon { font-size: 5.2em; }
+    .kid-card h3 { font-size: 2.3em; }
+    .kid-card p  { font-size: 1.3em; }
+
+    .final-kid-box { width: 510px; padding: 36px 44px; border-radius: 40px; }
+    .final-kid-box h2 { font-size: 1.9em; margin-bottom: 20px; }
+    .final-kid-box p  { font-size: 1.2em; }
+    #stars { font-size: 1.7em; }
+    .playAgain-btn { font-size: 17px; padding: 13px 34px; }
+}
+
+/* ~1050px iframe (browser ~1280px) */
+@media (min-width: 1050px) {
+
+    .main-container { padding: 0 42px; }
+
+    .question-area { min-height: 74px; margin-bottom: 14px; }
+    .question-area h2 { font-size: 36px; }
+
+    .image-area { margin: 14px 0 21px; }
+    .image-area img { width: 225px; height: 170px; }
+
+    .input-area { gap: 17px; margin-top: 14px; }
+    .input-box  { height: 70px; padding: 8px 16px; border-radius: 20px; }
+    .input-box input  { font-size: 20px; }
+    .input-box button { font-size: 16px; padding: 10px 24px; }
+    .input-area .input-box:only-child { max-width: 520px; }
+
+    .nav { margin-top: 25px; }
+    .nav button { width: 134px; height: 54px; font-size: 18px; }
+
+    .kid-card { width: 410px; padding: 34px; border-radius: 38px; }
+    .kid-icon { font-size: 5.8em; }
+    .kid-card h3 { font-size: 2.5em; }
+    .kid-card p  { font-size: 1.38em; }
+
+    .final-kid-box { width: 550px; padding: 40px 50px; border-radius: 44px; }
+    .final-kid-box h2 { font-size: 2.1em; margin-bottom: 22px; }
+    .final-kid-box p  { font-size: 1.28em; }
+    #stars { font-size: 1.9em; }
+    .playAgain-btn { font-size: 18px; padding: 14px 38px; }
+}
+
+/* ~1150px iframe (browser ~1380–1423px) */
+@media (min-width: 1119px) {
+
+    .main-container { padding: 0 48px; }
+
+    .question-area { min-height: 82px; margin-bottom: 15px; }
+    .question-area h2 { font-size: 38px; }
+
+    .image-area { margin: 15px 0 24px; }
+    .image-area img { width: 255px; height: 192px; }
+
+    .input-area { gap: 20px; margin-top: 15px; }
+    .input-box  { height: 76px; padding: 10px 18px; border-radius: 22px; }
+    .input-box input  { font-size: 22px; }
+    .input-box button { font-size: 17px; padding: 11px 26px; }
+    .input-area .input-box:only-child { max-width: 580px; }
+
+    .nav { margin-top: 28px; }
+    .nav button { width: 148px; height: 58px; font-size: 20px; }
+
+    .kid-card { width: 450px; padding: 38px; border-radius: 42px; }
+    .kid-icon { font-size: 6.2em; }
+    .kid-card h3 { font-size: 2.7em; }
+    .kid-card p  { font-size: 1.45em; }
+
+    .final-kid-box { width: 590px; padding: 44px 56px; border-radius: 48px; }
+    .final-kid-box h2 { font-size: 2.3em; margin-bottom: 24px; }
+    .final-kid-box p  { font-size: 1.35em; }
+    #stars { font-size: 2.1em; }
+    .playAgain-btn { font-size: 19px; padding: 15px 42px; }
+}
+
+/* ~1320px iframe (browser ~1600px) */
+@media (min-width: 1399px) {
+
+    .main-container { padding: 0 58px; }
+
+    .question-area { min-height: 96px; margin-bottom: 18px; }
+    .question-area h2 { font-size: 42px; }
+
+    .image-area { margin: 18px 0 30px; }
+    .image-area img { width: 300px; height: 225px; }
+
+    .input-area { gap: 24px; margin-top: 18px; }
+    .input-box  { height: 84px; padding: 10px 22px; border-radius: 24px; }
+    .input-box input  { font-size: 24px; }
+    .input-box button { font-size: 18px; padding: 12px 30px; }
+    .input-area .input-box:only-child { max-width: 660px; }
+
+    .nav { margin-top: 34px; }
+    .nav button { width: 162px; height: 64px; font-size: 22px; }
+
+    .kid-card { width: 500px; padding: 44px; border-radius: 46px; }
+    .kid-icon { font-size: 7em; }
+    .kid-card h3 { font-size: 3em; }
+    .kid-card p  { font-size: 1.6em; }
+
+    .final-kid-box { width: 650px; padding: 52px 64px; border-radius: 52px; }
+    .final-kid-box h2 { font-size: 2.6em; margin-bottom: 28px; }
+    .final-kid-box p  { font-size: 1.5em; }
+    #stars { font-size: 2.4em; }
+    .playAgain-btn { font-size: 21px; padding: 16px 48px; }
 }

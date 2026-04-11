@@ -581,3 +581,148 @@ body{
   }
 
 }
+
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width: 1025px) and (max-width: 1440px){
+
+  .scale-wrapper{
+    transform: scale(
+      min(
+        calc(100vw / 960),
+        calc(100vh / 640)
+      )
+    );
+  }
+
+  .question-text{
+    font-size: 30px;
+  }
+
+  .opt-text{
+    font-size: 22px;
+  }
+
+  .drop-chip{
+    font-size: 20px;
+  }
+
+}
+
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width: 1441px) and (max-width: 1920px){
+
+
+  .board{
+    max-width: 1400px;
+   
+  }
+
+  .question-text{
+    font-size: 40px;
+    margin-top: -30px;
+  }
+
+  .content{
+    gap: 100px;
+  }
+
+  .options-box{
+    width: 300px;
+  }
+
+  .option img{
+    width: 80px;
+    height: 70px;
+  }
+
+  .opt-text{
+    font-size: 24px;
+  }
+
+  .drop-area{
+    width: 280px;
+    height: 280px;
+  }
+
+  .drop-chip{
+    font-size: 22px;
+  }
+
+  .btn{
+   font-size: 24px;
+    width: 200px;
+    height: 60px;
+  }
+  .content{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:80px;
+  margin-top: -2px;
+ 
+}
+
+}
+
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width: 1921px){
+
+  .scale-wrapper{
+    transform: scale(1.25);  /* full scaling for 4K */
+  }
+
+  .board{
+    max-width: 1500px;
+  }
+
+  .question-text{
+    font-size: 44px;
+     margin-top: -30px;
+  }
+
+  .content{
+    gap: 140px;
+  }
+
+  .options-box{
+    width: 420px;
+  }
+
+  .option img{
+    width: 95px;
+    height: 85px;
+  }
+
+  .opt-text{
+    font-size: 28px;
+  }
+
+  .drop-area{
+    width: 320px;
+    height: 320px;
+  }
+
+  .drop-chip{
+    font-size: 26px;
+  }
+
+  .btn{
+    font-size: 24px;
+    width: 200px;
+    height: 60px;
+  }
+
+  .popup-box.final-wide{
+    width: 650px;
+  }
+
+}

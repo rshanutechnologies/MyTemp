@@ -136,7 +136,7 @@ function render(){
     // add image on left item
     l.innerHTML = `
     <span>${dragged.l}</span>
-    <img src="${images[p.r]}" style="width:60px;height:40px;">
+    <img src="${images[p.r]}" style="width:60px;height:40px;" class="left-img">
     `;
   }
 });

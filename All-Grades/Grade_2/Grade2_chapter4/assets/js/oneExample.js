@@ -81,47 +81,58 @@ function render() {
     dropZone.style.background = "#d9f5dc";
     dropZone.ondrop = null;
   } else {
-    dropZone.textContent = "Drop answer here";
+   dropZone.textContent = "";
     dropZone.style.background = "#eaf7f7";
-    dropZone.ondragover = (e) => e.preventDefault();
-    dropZone.ondrop = handleDrop;
+    
   }
 
-  q.options
-    .sort(() => Math.random() - 0.5)
-    .forEach((o, i) => {
-      const d = document.createElement("div");
-      d.className = "option " + ["a", "b", "c"][i];
-      d.innerHTML = `<span>${o}</span>`;
-      d.draggable = !correct[index];
-      d.ondragstart = (e) => e.dataTransfer.setData("text", o);
-      optEl.appendChild(d);
-    });
+ q.options
+  .sort(() => Math.random() - 0.5)
+  .forEach((o, i) => {
+    const d = document.createElement("div");
+    d.className = "option " + ["a", "b", "c"][i];
+    d.innerHTML = `<span>${o}</span>`;
+
+    if (!correct[index]) {
+      d.onclick = () => handleClick(o);
+    } else {
+      d.classList.add("disabled");
+    }
+
+    optEl.appendChild(d);
+  });
 
   renderProgress();
   //   speak(q.q);
 }
 
-function handleDrop(e) {
-  const val = e.dataTransfer.getData("text");
+function handleClick(val) {
   const q = questions[index];
 
   if (val === q.answer) {
     userAnswers[index] = val;
     correct[index] = true;
+
+    // show answer
     dropZone.textContent = val;
     dropZone.style.background = "#d9f5dc";
-    dropZone.ondrop = null;
+
     nextBtn.style.opacity = "1";
+
+    // disable all options
+    document.querySelectorAll(".option").forEach(o => {
+      o.classList.add("disabled");
+      o.onclick = null;
+    });
+
     showPopup(true);
 
     if (index === questions.length - 1) {
       setTimeout(showFinalPopup, 1000);
     }
+
   } else {
-    dropZone.style.background = "#ffdcdc";
     showPopup(false);
-    setTimeout(() => (dropZone.style.background = "#eaf7f7"), 800);
   }
 }
 

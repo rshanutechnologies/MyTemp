@@ -496,3 +496,99 @@ button:disabled {
     font-size: 16px;
   }
 }
+
+/* =========================================
+   💻 DESKTOP (1025px – 1440px)
+========================================= */
+/* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  .quiz-box {
+    width: 1300px;
+    height: 620px;
+    padding: 45px 55px;
+  }
+
+  .question {
+    font-size: 32px;
+  }
+
+  .image-box img {
+    width: 460px;
+    height: 280px;
+  }
+
+  input {
+    width: 65%;
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 20px;
+    padding: 12px 30px;
+  }
+} */
+
+
+/* =========================================
+   🖥️ LARGE MONITORS (1441px – 1920px)
+========================================= */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+  .quiz-box {
+    width: 1300px;
+    height: 620px;
+    transform: scale(1.05);
+    transform-origin: center;
+    margin-top: -4%;
+  }
+
+  .question {
+    font-size: 44px;
+  }
+
+  .image-box img {
+    width: 500px;
+    height: 300px;
+  }
+
+  input {
+    font-size: 30px;
+  }
+
+  button {
+    font-size: 28px;
+    padding: 14px 34px;
+  }
+}
+
+
+/* =========================================
+   📺 4K SCREENS (1921px+)
+========================================= */
+@media screen and (min-width: 1921px) {
+
+  .quiz-box {
+    width: 1300px;
+    height: 620px;
+    transform: scale(1.15);
+    transform-origin: center;
+  }
+
+  .question {
+    font-size: 44px;
+  }
+
+  .image-box img {
+    width: 500px;
+    height: 300px;
+  }
+
+  input {
+    font-size: 30px;
+  }
+
+  button {
+    font-size: 28px;
+    padding: 14px 34px;
+  }
+}

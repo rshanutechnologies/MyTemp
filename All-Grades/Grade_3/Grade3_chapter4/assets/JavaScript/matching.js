@@ -25,89 +25,49 @@ homeBtn.addEventListener("click", () => {
   window.location.href = "../index1.html";
 });
 
-let dragged = null;
+let selectedToken = null;   // 🔥 NEW (instead of dragged)
 let score = 0;
 const total = document.querySelectorAll(".slot").length;
 const progressPill = document.getElementById("progressPill");
 
 function updateProgress(){
-  
+  if(progressPill){
+    progressPill.innerText = `${score} / ${total}`;
+  }
 }
 updateProgress();
 
-document.querySelectorAll('.token').forEach(token=>{
-  token.addEventListener('dragstart',()=>{
-    if(token.getAttribute("draggable") === "false") return;
-    dragged = token;
-  });
-});
-
-document.querySelectorAll('.slot').forEach(slot=>{
-  slot.addEventListener('dragover', e => e.preventDefault());
-
-  slot.addEventListener('drop', () => {
-    if(!dragged) return;
-    if(slot.classList.contains("filled")) return;
-
-    if(dragged.dataset.match === slot.dataset.match){
-      score++;
-      updateProgress();
-
-      speakText("Correct");
-
-      slot.classList.add('filled');
-      slot.querySelector('.drop')?.remove();
-
-      dragged.classList.add("correct-token");
-      dragged.setAttribute('draggable','false');
-
-      slot.appendChild(dragged);
-      dragged = null;
-
-      if(score === total){
-        setTimeout(()=>{
-          showPopup(`
-            <div class="popup-final-content">
-              🎉 Congratulations!
-              <span class="emoji">🏆</span>
-              You finished the quiz!
-              <div class="final-score">Score: <b>${score} / ${total}</b></div>
-              <div class="stars">${"⭐".repeat(score)}</div>
-              <button class="restart" onclick="location.reload()">🔄Restart</button>
-            </div>
-          `, true);
-        }, 1100);
-      }
-
-    } else {
-      speakText("Wrong");
-
-      slot.classList.add('wrong');
-      setTimeout(() => slot.classList.remove('wrong'), 350);
-    }
-  });
-});
-
-
-/* ===== MOBILE TOUCH SUPPORT (ADDED ONLY) ===== */
+/* ============================= */
+/* ✅ TOKEN CLICK (SELECT)       */
+/* ============================= */
 
 document.querySelectorAll('.token').forEach(token => {
 
-  token.addEventListener('touchstart', () => {
+  token.addEventListener('click', () => {
+
     if(token.getAttribute("draggable") === "false") return;
-    dragged = token;
+
+    // remove old selection
+    document.querySelectorAll('.token').forEach(t => t.classList.remove("selected"));
+
+    selectedToken = token;
+    token.classList.add("selected"); // optional highlight
   });
 
 });
 
+/* ============================= */
+/* ✅ SLOT CLICK (DROP)          */
+/* ============================= */
+
 document.querySelectorAll('.slot').forEach(slot => {
 
-  slot.addEventListener('touchend', () => {
+  slot.addEventListener('click', () => {
 
-    if(!dragged) return;
+    if(!selectedToken) return;
     if(slot.classList.contains("filled")) return;
 
-    if(dragged.dataset.match === slot.dataset.match){
+    if(selectedToken.dataset.match === slot.dataset.match){
 
       score++;
       updateProgress();
@@ -116,13 +76,15 @@ document.querySelectorAll('.slot').forEach(slot => {
       slot.classList.add('filled');
       slot.querySelector('.drop')?.remove();
 
-      dragged.classList.add("correct-token");
-      dragged.setAttribute('draggable','false');
+      selectedToken.classList.add("correct-token");
+      selectedToken.setAttribute('draggable','false');
 
-      slot.appendChild(dragged);
-      dragged = null;
+      slot.appendChild(selectedToken);
 
-      // ✅ final popup also works on mobile
+      selectedToken.classList.remove("selected");
+      selectedToken = null;
+
+      // 🎉 FINAL RESULT
       if(score === total){
         setTimeout(()=>{
           showPopup(`
@@ -135,7 +97,7 @@ document.querySelectorAll('.slot').forEach(slot => {
               <button class="restart" onclick="location.reload()">🔄Restart</button>
             </div>
           `, true);
-        }, 1100);
+        }, 800);
       }
 
     } else {
@@ -143,7 +105,7 @@ document.querySelectorAll('.slot').forEach(slot => {
       speakText("Wrong");
 
       slot.classList.add('wrong');
-      setTimeout(()=>slot.classList.remove('wrong'),300);
+      setTimeout(() => slot.classList.remove('wrong'), 300);
     }
 
   });

@@ -521,13 +521,91 @@ body{
 
 /* Medium desktops */
 @media (min-width: 1280px) {
- body{
-    margin-top: -2%;
+
+  /* ✅ MAIN CARD BIG */
+  .quiz-card{
+    width: 1200px;
+    height: 720px;
+    padding: 30px;
+    
   }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    /* font-weight: 500; */
+    max-width: 900px;
+    min-height: 140px;
+    line-height: 1.3;
+    margin-top: -5% !important;
+  }
+
+  /* ✅ IMAGE BIGGER */
+  #questionImg{
+    width: 350px;
+    height: 300px;
+  }
+
+  /* ✅ TRUE/FALSE BUTTONS (SYSTEM SIZE) */
+  .tf-buttons{
+    gap: 80px;
+    margin-top: 40px;
+  }
+
+  .tf-buttons button{
+    width: 300px;
+    height: 100px;
+    font-size: 24px;
+    padding: 0;
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .prev,
+  .next{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+  }
+
+  /* ✅ PROGRESS TEXT */
+  .progress{
+    font-size: 22px;
+    margin-left: auto;
+    margin-right: 10px;
+  }
+
+  /* ✅ POPUP (IMPORTANT) */
+  .popup-content{
+    width: 480px;
+    padding: 40px;
+  }
+
+  .popup-title{
+    font-size: 32px;
+  }
+
+  .popup-msg{
+    font-size: 22px;
+  }
+
+  .popup-icon{
+    font-size: 90px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .finalpopup-box{
+    width: 560px;
+  }
+
+  .final-heading{
+    font-size: 32px;
+  }
+
+  /* ✅ NAV POSITION FIX */
   .nav{
-    margin-top:6%;
-  
-}
+    margin-top: 5%;
+  }
+
 }
 
 /* Large desktops */

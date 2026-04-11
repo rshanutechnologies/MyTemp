@@ -554,7 +554,7 @@ body{
    ✅ LARGE SCREEN IMPROVEMENT
 ===================================================== */
 
-@media (min-width:1400px){
+/* @media (min-width:1400px){
 
   .main{
     max-width:1200px;
@@ -564,5 +564,157 @@ body{
   .heading{
     font-size:32px;
   }
+
+} */
+
+
+
+
+/* ================= 1025px — 1440px ================= */
+@media screen and (min-width:1225px) and (max-width:1640px){
+
+.main{
+max-width:1100px;
+margin:auto;
+}
+
+.heading{
+font-size:40px;
+}
+
+.card p{
+font-size:40px;
+height:70px;
+}
+
+.question-img{
+width:300px;
+height:300px;
+}
+
+.input-row{
+max-width:450px;
+height:60px;
+}
+
+.input-row input{
+font-size:26px;
+}
+
+.check-btn{
+font-size:16px;
+padding:12px 30px;
+}
+
+.nav{
+width:60%;
+}
+
+.nav button,
+.home-btn{
+width:70px;
+height:70px;
+margin-top: 12%;
+}
+
+}
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.main{
+max-width:1350px;
+margin:auto;
+margin-top: 4%;
+}
+
+.heading{
+font-size:44px !important;
+}
+
+.card p{
+font-size:44px;
+height:80px;
+}
+
+.question-img{
+width:250px;
+height:250px;
+}
+
+.input-row{
+max-width:520px;
+height:70px;
+}
+
+.input-row input{
+font-size:34px;
+}
+
+.check-btn{
+font-size:18px;
+padding:14px 36px;
+}
+
+.nav{
+width:55%;
+}
+
+.nav button,
+.home-btn{
+width:80px;
+height:80px;
+margin-top: 25%;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.main{
+max-width:1400px;
+margin:auto;
+}
+
+.heading{
+font-size:36px;
+}
+
+.card p{
+font-size:48px;
+height:90px;
+}
+
+.question-img{
+width:400px;
+height:400px;
+}
+
+.input-row{
+max-width:600px;
+height:80px;
+}
+
+.input-row input{
+font-size:34px;
+}
+
+.check-btn{
+font-size:20px;
+padding:16px 40px;
+}
+
+.nav{
+width:50%;
+}
+
+.nav button,
+.home-btn{
+width:90px;
+height:90px;
+}
 
 }

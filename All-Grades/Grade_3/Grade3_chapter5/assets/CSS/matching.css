@@ -585,3 +585,118 @@
       border-radius:20px;
 }
 }
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width: 1025px) and (max-width: 1440px){
+
+  .game{
+    max-width: 1100px;
+  }
+
+  .title{
+    font-size: 28px;
+  }
+
+  .play{
+    gap: 160px;
+  }
+
+  .item{
+    font-size: 22px;
+    padding: 14px;
+  }
+
+  #leftBank .emoji{
+    font-size: 50px;
+  }
+
+}
+
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width: 1441px) and (max-width: 1920px){
+
+  .game{
+    max-width: 1300px;
+    padding: 30px;
+  }
+
+  .title{
+    font-size: 32px;
+    padding: 10px 18px;
+  }
+
+  .play{
+    grid-template-columns: 480px 480px;
+    gap: 200px;
+  }
+
+  .item{
+    font-size: 30px;
+    padding: 18px;
+    border-radius: 18px;
+  }
+#leftBank .item{
+  font-size: 32px;   /* increase as you want */
+}
+  #leftBank .emoji{
+    font-size: 70px;
+    right: 40px;
+  }
+
+  .item img{
+    width: 60px;
+    height: 50px;
+  }
+
+  .popup-content{
+    max-width: 450px;
+  }
+
+}
+
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width: 1921px){
+
+  .game{
+    max-width: 1500px;
+    padding: 40px;
+  }
+
+  .title{
+    font-size: 40px;
+    padding: 12px 24px;
+  }
+
+  .play{
+    grid-template-columns: 550px 550px;
+    gap: 260px;
+  }
+
+  .item{
+    font-size: 30px;
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  #leftBank .emoji{
+    font-size: 80px;
+    right: 45px;
+  }
+
+  .item img{
+    width: 70px;
+    height: 60px;
+  }
+
+  .popup-content{
+    max-width: 520px;
+  }
+
+}

@@ -505,10 +505,47 @@ body {
     padding: 10px;
   }
 
-  .winner-img {
+ .winner-img {
     width: 150px;
     height: 150px;
   }
+    .final-box {
+      width: 300px;
+      border-radius: 28px;
+      padding: 15px 18px;
+      text-align: center;
+      background: white;
+      animation: popupZoom 0.5s ease;
+    }
+
+     .final-title {
+      font-size: 20px;
+      font-weight: 900;
+      margin: 8px 0;
+    }
+
+    .final-score {
+      font-size: 17px;
+      font-weight: 900;
+      margin: 10px 0 6px;
+      color: #0284c7;
+    }
+
+    .final-stars {
+      font-size: 24px;
+      margin: 10px 0 20px;
+    }
+
+    .restart-btn {
+      padding: 14px 32px;
+      border-radius: 30px;
+      border: none;
+      background: #ff9f43;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
 
 }
 
@@ -532,14 +569,176 @@ body {
 
 }
 
-@media (min-width:1400px) {
 
-  .game {
-    max-width: 1100px;
-  }
 
-  .question {
-    font-size: 32px;
-  }
+
+
+/* ================= 1025px — 1440px ================= */
+@media screen and (min-width:1225px) and (max-width:1640px){
+
+.game{
+max-width:1100px;
+min-height:680px;
+
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 110px;
+ 
+
+
+}
+
+.question{
+font-size:40px !important;
+margin-top: 5%;
+}
+
+
+.image-box {
+  height: 280px;
+  width: 280px;
+}
+
+
+.image-box img {
+  max-width: 80%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+
+.scene{
+height:340px;
+
+}
+
+.bridge{
+width:320px;
+
+}
+
+.kid{
+font-size:54px;
+}
+
+.btn{
+width:290px;
+height:82px;
+font-size:36px;
+}
+
+.nav button{
+font-size:25px;
+padding:14px 40px;
+margin-top: 30px;
+}
+
+}
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.game{
+max-width:1150px;
+min-height:720px;
+}
+
+.question{
+font-size:44px !important;
+}
+
+
+.image-box {
+  height: 300px;
+  width: 300px;
+}
+
+
+.image-box img {
+  max-width: 80%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+
+.scene{
+height:280px;
+}
+
+.bridge{
+width:380px;
+}
+
+.kid{
+font-size:64px;
+}
+
+.btn{
+width:220px;
+height:58px;
+font-size:18px;
+}
+
+.nav button{
+font-size:25px;
+padding:14px 40px;
+margin-top: 30px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.game{
+max-width:1300px;
+min-height:780px;
+}
+
+.question{
+font-size:48px !important;
+}
+
+.image-box {
+  height: 320px;
+  width: 320px;
+}
+
+
+.image-box img {
+  max-width: 80%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+
+.scene{
+height:320px;
+}
+
+.bridge{
+width:450px;
+}
+
+.kid{
+font-size:72px;
+}
+
+.btn{
+width:250px;
+height:64px;
+font-size:20px;
+}
+
+.nav button{
+font-size:24px;
+padding:18px 50px;
+}
 
 }

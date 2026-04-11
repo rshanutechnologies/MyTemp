@@ -1,251 +1,232 @@
 
-    // const correctSound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3");
-    // const wrongSound   = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3");
-
-    // function speakText(text){
-    //   if(!("speechSynthesis" in window)) return;
-    //   window.speechSynthesis.cancel();
-    //   const utter = new SpeechSynthesisUtterance(text);
-    //   utter.rate = 1;
-    //   utter.pitch = 1.08;
-    //   utter.volume = 1;
-    //   window.speechSynthesis.speak(utter);
-    // }
-    const correctSound = document.getElementById("correctSound");
-const wrongSound = document.getElementById("wrongSound");
-
-    function speakText(t) {
-  speechSynthesis.cancel();   // optional but recommended
-
-  const msg = new SpeechSynthesisUtterance(t);
-    msg.lang = "en-UK";  
-  msg.volume = 0.25;   // 🔉 lower volume (0 to 1)
-  msg.rate = 1;
-  msg.pitch = 1;
-
-  speechSynthesis.speak(msg);
-}
-function smallConfetti() {
-  confetti({ particleCount: 40, spread: 70, origin: { y: 0.7 } });
-}
-
-function bigConfetti() {
-  const duration = 500;
-  const end = Date.now() + duration;
-
-  (function frame() {
-    confetti({ particleCount: 7, angle: 60, spread: 55, origin: { x: 0 } });
-    confetti({ particleCount: 7, angle: 120, spread: 55, origin: { x: 1 } });
-    if (Date.now() < end) requestAnimationFrame(frame);
-  })();
-}
 
 const quizData = [
 {
-  // title: "  Pick the correct option ",
-  question: "Q.1The process by which a plant makes its own food in the presence of sunlight is called _______.",
-  image: "../assets/images/MCQ-1.png",
+  q: "Q.1 The process by which a plant makes its own food in the presence of sunlight is called ___.",
   options: [
-    { id: "a", label: "ventation",   image: "../assets/images/venation.png", correct: false, theme: "bg-blue" },
-    { id: "b", label: "photosynthesis", image: "../assets/images/photosynthesis1.png", correct: true, theme: "bg-orange" },
-    { id: "c", label: "respiration", image: "../assets/images/respiration.png", correct: false, theme: "bg-green" },
-    { id: "d", label: " phyllotaxy ", image: "../assets/images/phyllotaxy.png", correct: false, theme: "bg-yellow" },
-  ]
+    { text: "ventation", img: "../assets/images/venation.png" },
+    { text: "photosynthesis", img: "../assets/images/photosynthesis1.png" },
+    { text: "respiration", img: "../assets/images/respiration.png" },
+    { text: "phyllotaxy", img: "../assets/images/phyllotaxy.png" }
+  ],
+  correctIndex: 1
 },
-
 {
-  //  title: "  Pick the correct option ",
-  question: "Q.2 Which of the following is the main source of energy",
-  image: "../assets/images/MCQ-2.png",
+  q: "Q.2 Which of the following is the main source of energy?",
   options: [
-    { id: "a", label: "Plants", image: "../assets/images/plants.png", correct: false, theme: "bg-blue" },
-    { id: "b", label: "Animals", image: "../assets/images/animals.png", correct: false, theme: "bg-green" },
-    { id: "c", label: "Sunlight", image: "../assets/images/sunlight1.png", correct: true, theme: "bg-orange" },
-    { id: "d", label: "Chlorophyll", image: "../assets/images/Chlorophyll.png", correct: false, theme: "bg-yellow" },
-  ]
+    { text: "Plants", img: "../assets/images/plants.png" },
+    { text: "Animals", img: "../assets/images/animals.png" },
+    { text: "Sunlight", img: "../assets/images/sunlight1.png" },
+    { text: "Chlorophyll", img: "../assets/images/Chlorophyll.png" }
+  ],
+  correctIndex: 2
 },
-
 {
-  // title: "  Pick the correct option ",
-  question: "Q.3 Which of the following is the flat part of a leaf?",
-  image: "../assets/images/MCQ-3.png",
+  q: "Q.3 Which of the following is the flat part of a leaf?",
   options: [
-    { id: "a", label: "Lamina", image: "../assets/images/mcq3-1.png", correct: true, theme: "bg-blue" },
-    { id: "b", label: "Apex", image: "../assets/images/plants.png", correct: false, theme: "bg-green" },
-    { id: "c", label: "Vein", image: "../assets/images/mcq3-3.png", correct: false, theme: "bg-orange" },
-    { id: "d", label: "Chlorophyll", image: "../assets/images/chlorophyll.png", correct: false, theme: "bg-yellow" },
-  ]
+    { text: "Lamina", img: "../assets/images/mcq3-1.png" },
+    { text: "Apex", img: "../assets/images/plants.png" },
+    { text: "Vein", img: "../assets/images/mcq3-3.png" },
+    { text: "Chlorophyll", img: "../assets/images/chlorophyll.png" }
+  ],
+  correctIndex: 0
 },
-
 {
-  //  title: "  Pick the correct option ",
-  question: "Q.4 In _____________ venation, the veins run parallel to one another",
-  image: "../assets/images/MCQ-4.png",
+  q: "Q.4 In _____________ venation, the veins run parallel to one another.",
   options: [
-    { id: "a", label: "Vertical", image: "../assets/images/plants.png", correct: false, theme: "bg-green" },
-    { id: "b", label: "Linear", image: "../assets/images/respiration.png", correct: false, theme: "bg-blue" },
-    { id: "c", label: "Parallel", image: "../assets/images/mcq4-3.png", correct: true, theme: "bg-orange" },
-    { id: "d", label: "Reticulate", image: "../assets/images/Reticulate.png", correct: false, theme: "bg-yellow" },
-  ]
+    { text: "Vertical", img: "../assets/images/plants.png" },
+    { text: "Linear", img: "../assets/images/respiration.png" },
+    { text: "Parallel", img: "../assets/images/mcq4-3.png" },
+    { text: "Reticulate", img: "../assets/images/Reticulate.png" }
+  ],
+  correctIndex: 2
 },
-
 {
-   title: "  Pick the correct option ",
-  question: "Q.5 Which of the following has stored food in its stem?",
-  image: "../assets/images/MCQ-5.png",
+  q: "Q.5 Which of the following has stored food in its stem?",
   options: [
-    { id: "a", label: "cauliflower", image: "../assets/images/cauliflower.png", correct: false, theme: "bg-blue" },
-    { id: "b", label: "potato", image: "../assets/images/potatoo.png", correct: true, theme: "bg-orange" },
-    { id: "c", label: "spinach", image: "../assets/images/spinach.png", correct: false, theme: "bg-yellow" },
-    { id: "d", label: "carrot", image: "../assets/images/carrots.png", correct: false, theme: "bg-green" },
-  ]
+    { text: "cauliflower", img: "../assets/images/cauliflower.png" },
+    { text: "potato", img: "../assets/images/potatoo.png" },
+    { text: "spinach", img: "../assets/images/spinach.png" },
+    { text: "carrot", img: "../assets/images/carrots.png" }
+  ],
+  correctIndex: 1
 }
 ];
-
     let current = 0;
-    let score = 0;
-    const solvedMap = {};
+let score = 0;
+let answered = Array(quizData.length).fill(false);
 
-    const quizTitleEl = document.getElementById("quizTitle");
-    const questionTextEl = document.getElementById("questionText");
-    const questionImageEl = document.getElementById("questionImage");
-    const optionsWrapEl = document.getElementById("optionsWrap");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
+const questionText = document.getElementById("questionText");
+const qEmoji = document.getElementById("qEmoji");
+const optionsBox = document.getElementById("optionsBox");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const bubbleOrbit = document.getElementById("bubbleOrbit");
+const orbitIndicator = document.getElementById("orbitIndicator");
+const popup = document.getElementById("popup");
+const popupText = document.getElementById("popupText");
 
-    const popup = document.getElementById("popup");
-    const popupBox = document.getElementById("popupBox");
+// function speak(text){
+//   speechSynthesis.cancel();
+//   speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+// }
+function speak(t) {
+  speechSynthesis.cancel();
 
-    function showPopup(html, final=false){
-      popup.style.display = "flex";
-      popupBox.className = final ? "popup-box popup-final" : "popup-box";
-      popupBox.innerHTML = html;
-      if(!final) setTimeout(() => popup.style.display = "none", 1000);
+  const msg = new SpeechSynthesisUtterance(t);  
+
+  msg.lang = "en-UK";  
+  msg.volume = 0.25;    
+  msg.rate = 1;
+  msg.pitch = 1;
+
+  speechSynthesis.speak(msg);  
+}
+// function speak(t) {
+//   speechSynthesis.cancel();   // optional but recommended
+
+//   const msg = new SpeechSynthesisUtterance(t);
+//   msg.volume = 0.1;   // 🔉 lower volume (0 to 1)
+//   msg.rate = 1;
+//   msg.pitch = 1;
+
+//   speechSynthesis.speak(msg);
+// }
+
+function showPopup(html, final=false){
+  popup.style.display = "flex";
+  popupText.className = final ? "popup-box popup-final" : "popup-box";
+  popupText.innerHTML = html;
+  if(!final) setTimeout(()=>popup.style.display="none",1000);
+}
+
+/* ===== PROGRESS ===== */
+
+function buildProgress(){
+  bubbleOrbit.querySelectorAll(".bubble-step").forEach(e=>e.remove());
+  quizData.forEach(()=>{
+    const step=document.createElement("div");
+    step.className="bubble-step";
+    step.innerHTML='<div class="bubble-dot">⭐</div>';
+    bubbleOrbit.appendChild(step);
+  });
+}
+
+function moveIndicator(){
+  const steps=document.querySelectorAll(".bubble-step");
+  const step=steps[current];
+  const orbitRect=bubbleOrbit.getBoundingClientRect();
+  const stepRect=step.getBoundingClientRect();
+  orbitIndicator.style.left =
+    (stepRect.left - orbitRect.left + stepRect.width/2) + "px";
+}
+
+function updateProgress(){
+  document.querySelectorAll(".bubble-step").forEach((s,i)=>{
+    s.classList.toggle("active",i===current);
+    s.classList.toggle("done",i<current);
+  });
+  requestAnimationFrame(moveIndicator);
+}
+
+/* ===== QUIZ ===== */
+
+function loadQuestion(){
+  const q = quizData[current];
+  questionText.textContent = q.q;
+  qEmoji.textContent = q.emoji;
+  optionsBox.innerHTML = "";
+
+  q.options.forEach((opt, idx)=>{
+    const div=document.createElement("div");
+    div.className="option";
+    div.innerHTML=`<img src="${opt.img}"><div class="opt-label">${opt.text}</div>`;
+    div.onclick=()=>checkAnswer(div, idx);
+    optionsBox.appendChild(div);
+  });
+  /* 🔁 RESTORE STATE WHEN GOING BACK */
+if(answered[current]){
+  const correctIndex = quizData[current].correctIndex;
+
+  document.querySelectorAll(".option").forEach((o, i)=>{
+    o.classList.add("disabled");
+    if(i === correctIndex){
+      o.classList.remove("disabled");
+      o.classList.add("correct-lock");
     }
+  });
 
-    function renderQuestion(){
-      const q = quizData[current];
-      const solved = solvedMap[current]?.solved === true;
-      const correctId = solvedMap[current]?.correctId || null;
-
-    quizTitleEl.textContent = q.title || "Pick the correct option";
-      questionTextEl.textContent = q.question;
-      questionImageEl.src = q.image;
-      questionImageEl.parentElement.style.display = q.image ? "flex" : "none";
-      prevBtn.disabled = current === 0;
-      nextBtn.disabled = !solved;
-
-      optionsWrapEl.innerHTML = "";
-
-      q.options.forEach(opt => {
-        const optionDiv = document.createElement("div");
-        optionDiv.className = `option ${opt.theme}`;
-
-     optionDiv.innerHTML = `
-  <div class="opt-top">
-    <img src="${opt.image}" class="opt-img">
-  </div>
-  <div class="opt-name">${opt.label}</div>
-`;
+  nextBtn.disabled = false;
+}
 
 
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = !answered[current];
+  updateProgress();
+}
 
-        if(solved){
-          optionDiv.classList.add("disabled");
-          if(opt.id === correctId){
-            optionDiv.classList.remove("disabled");
-            optionDiv.classList.add("correct-highlight");
-          }
-        }
+function checkAnswer(optionDiv, selected){
+  if(answered[current]) return;
 
-        optionDiv.addEventListener("click", () => selectOption(opt));
-        optionsWrapEl.appendChild(optionDiv);
-      });
-    }
+  const correctIndex = quizData[current].correctIndex;
 
-   function selectOption(opt){
-  if(solvedMap[current]?.solved) return;
-
-  if(opt.correct){
-    solvedMap[current] = { solved:true, correctId: opt.id };
+  if(selected === correctIndex){
+    answered[current] = true;
     score++;
+    speak("Correct");
 
-    speakText("Correct");
-
-    correctSound.currentTime = 0;
-    correctSound.play();
-
-    // 🎉 CONFETTI FOR EVERY CORRECT CLICK
-    smallConfetti();
-    setTimeout(() => smallConfetti(), 200);
+    document.querySelectorAll(".option").forEach(o=>o.classList.add("disabled"));
+    optionDiv.classList.add("correct-lock");
 
     showPopup(`
       <div class="popup-correct">
-        <span class="check">✅ Correct</span>
+        <span>✅ Correct</span>
         <span class="happy">😊</span>
-        <div class="stars">${"⭐".repeat(score)}</div>
+        <div class="stars">${"⭐".repeat(current + 1)}</div>
       </div>
     `);
-
-    renderQuestion();
 
     if(current === quizData.length - 1){
-      setTimeout(() => {
+      setTimeout(()=>{
+       showPopup(`
+  <div class="popup-final-content">
+    🎉 Congratulations!
+    <span class="emoji">🏆</span>
+           <div>You finished the quiz!</div>
+    <div class="final-score">
+      Score: 5/5</b>
+    </div>
 
-        // 🎉 FINAL CONFETTI BLAST
-        bigConfetti();
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+  <div class="final-btn-row">
+    <button class="restart" onclick="location.reload()">🔄 Restart</button>
+   
+    </div>
+  </div>
+`, true);
 
-        showPopup(`
-          <div class="popup-final-content">
-            🎉 Congratulations!
-            <span class="emoji">🏆</span>
-            <div>You finished the quiz!</div>
-            <div class="final-score">
-              Score: ${score}/${quizData.length}
-            </div>
-            <div class="stars">${"⭐".repeat(score)}</div>
-
-            <div class="final-actions">
-              <button class="restart" onclick="location.reload()">🔄 Restart</button>
-              <button class="home" onclick="goHome()">🏠 Home</button>
-            </div>
-          </div>
-        `, true);
       }, 1100);
+    }else{
+      nextBtn.disabled = false;
     }
+  }else{
+    speak("Wrong");
+   showPopup(`
+  <div class="popup-wrong">
+    <span class="cross">❌ Wrong</span>
+    <span class="sad">😢</span>
+    <span class="tip">💡Try again!</span>
+  </div>
+`);
 
-  } else {
-    speakText("Wrong");
-
-    wrongSound.currentTime = 0;
-    wrongSound.play();
-
-    showPopup(`
-      <div>
-        <div class="popup-title" style="color:#c62828;">❌ Wrong!</div>
-        <span class="popup-emoji">😢</span>
-        <div class="popup-tip">💡 Try again!</div>
-      </div>
-    `);
   }
 }
 
-    prevBtn.addEventListener("click", () => {
-      if(current > 0){
-        current--;
-        renderQuestion();
-      }
-    });
+prevBtn.onclick = ()=>{ current--; loadQuestion(); };
+nextBtn.onclick = ()=>{ current++; loadQuestion(); };
 
-    nextBtn.addEventListener("click", () => {
-      if(!solvedMap[current]?.solved) return;
-      if(current < quizData.length - 1){
-        current++;
-        renderQuestion();
-      }
-    });
+buildProgress();
+loadQuestion();
+window.addEventListener("resize",()=>requestAnimationFrame(moveIndicator));
 
-    renderQuestion();
-  function goHome() {
-  window.location.href = "../index.html";
-}
+

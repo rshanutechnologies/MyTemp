@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Tick ✓ the Correct Answer</title>
   <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet"> -->
   <style>
     :root {
       --bg1: #fde2e4; --bg2: #e2f0fb; --bg3: #e8f8e8;
@@ -16,7 +16,7 @@
 
   /* exercises/ex1.html — UPDATE this block */
 body {
-  font-family: "Livvic", sans-serif;
+  font-family: "Livvic";
   background: radial-gradient(circle at top left, var(--bg1), transparent 55%),
               radial-gradient(circle at bottom right, var(--bg2), transparent 55%),
               radial-gradient(circle at center, var(--bg3), #ffffff 60%);
@@ -160,7 +160,7 @@ body {
       font-size: clamp(16px, 2vh, 24px);
       cursor: pointer;
       color: var(--q-text-color);
-      font-family: 'Fredoka One', cursive;
+     font-family: "livvic" !important;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     #backBtn { background: #f778a1; }
@@ -276,6 +276,79 @@ body {
     line-height: 1.2;
   }
  }
+
+
+ /* ================= 1025px — 1440px ================= */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.app{
+max-width:1400px;
+}
+
+.q-text{
+font-size:44px;
+}
+
+.opts{
+gap:3vw;
+}
+
+.opt{
+height:200px;
+}
+
+.label{
+font-size:44px;
+}
+
+.nav-btn{
+padding:16px 32px;
+font-size:20px;
+}
+
+.blank{
+min-width:190px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.app{
+max-width:1600px;
+}
+
+.q-text{
+font-size:38pt;
+}
+
+.opts{
+gap:3.5vw;
+}
+
+.opt{
+height:230px;
+}
+
+.label{
+font-size:26px;
+}
+
+.nav-btn{
+padding:18px 36px;
+font-size:22px;
+}
+
+.blank{
+min-width:210px;
+}
+
+}
   </style>
 </head>
 <body>
@@ -407,7 +480,7 @@ body {
       div.className = "final-modal-overlay";
       div.innerHTML = `
         <div class="final-modal">
-          <h1 style="font-family:'Fredoka One', cursive; color:#2c7a4b; font-size:45px; margin:0;">🎉 YOU WON! 🎉</h1>
+          <h1 style="font-family: "livvic", cursive; color:#2c7a4b; font-size:45px; margin:0;">🎉 YOU WON! 🎉</h1>
           <p style="font-size:24px; color:#2F4F4F; margin-top:14px;">Superstar! You are an expert ✅</p>
           <button class="nav-btn" style="position:static; margin-top:20px; background:#4cc9f0; color:white; border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
         </div>`;

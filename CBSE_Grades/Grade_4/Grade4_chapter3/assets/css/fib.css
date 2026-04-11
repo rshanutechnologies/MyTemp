@@ -288,3 +288,43 @@ background: #e6fffa;
         width: 100%;
     }
 }
+/* ==================================================
+   ✅ DESKTOP ONLY (>=1400px) — FIB SCALE + SIZE FIX
+================================================== */
+@media (min-width: 1400px) {
+
+  /* SCALE WHOLE UI */
+  .main-container {
+    transform: scale(1);
+    transform-origin: center;
+  }
+
+  /* QUESTION */
+  .quiz-container .question-area h2 {
+    font-size: 34px;
+  }
+
+  /* IMAGE */
+  .quiz-container .image-area img {
+    width: 360px;
+    height: 180px;
+  }
+
+  /* INPUT BOX */
+  .quiz-container .input-box input {
+    height: 60px;
+    font-size: 24px;
+  }
+
+  /* INPUT CONTAINER (little bigger feel) */
+  .quiz-container .input-box {
+    padding: 14px;
+  }
+
+  /* BUTTONS (slight increase) */
+  .quiz-container .nav-buttons button {
+    width: 140px;
+    height: 60px;
+    font-size: 22px;
+  }
+}

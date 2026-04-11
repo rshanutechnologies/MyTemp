@@ -35,7 +35,7 @@
     .app {
       width: 100%;
       max-width: 800px;
-      height: 100vh;
+       min-height: 100vh;
       padding: 15px;
       text-align: center;
       display: flex;
@@ -138,6 +138,8 @@
       max-width: 400px;
       margin: 0 auto;
       flex-shrink: 0;
+     
+      
     }
 
     .nav-btn {
@@ -149,6 +151,7 @@
       font-weight: 700;
       cursor: pointer;
       color: white;
+      
     }
 
     #prevBtn {
@@ -256,6 +259,99 @@
 
       /* Hide image on very small landscape screens to keep space */
     }
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  .app {
+    max-width: 1000px;
+    padding: 20px;
+  }
+
+  .q-text {
+    font-size: 2.2rem;
+  }
+
+  .big-hint-img {
+    max-height: 260px;
+  }
+
+  .char-box {
+    width: 50px;
+    height: 60px;
+    font-size: 28px;
+  }
+
+  .controls {
+    max-width: 420px;
+  }
+
+  .nav-btn {
+    font-size: 18px;
+    padding: 14px 0;
+  }
+
+}
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+  .app {
+    max-width: 1200px;
+    padding: 25px;
+  }
+
+  .q-text {
+    font-size: 2.8rem;
+  }
+
+  .big-hint-img {
+    max-height: 320px;
+  }
+
+  .char-box {
+    width: 60px;
+    height: 70px;
+    font-size: 32px;
+  }
+
+  .controls {
+    max-width: 500px;
+  }
+
+  .nav-btn {
+    font-size: 20px;
+    padding: 16px 0;
+  }
+
+}
+@media screen and (min-width: 1921px) {
+
+  .app {
+    max-width: 1400px;
+    padding: 30px;
+  }
+
+  .q-text {
+    font-size: 3.2rem;
+  }
+
+  .big-hint-img {
+    max-height: 380px;
+  }
+
+  .char-box {
+    width: 70px;
+    height: 80px;
+    font-size: 36px;
+  }
+
+  .controls {
+    max-width: 550px;
+  }
+
+  .nav-btn {
+    font-size: 22px;
+    padding: 18px 0;
+  }
+
+}
   </style>
 </head>
 

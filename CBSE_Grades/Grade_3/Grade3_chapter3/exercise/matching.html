@@ -187,11 +187,14 @@ z-index:1000;
 }
 
 .popup-content{
-background:white;
-padding:40px;
+background:linear-gradient(135deg,#ffffff,#f5fbff);
+padding:clamp(25px,4vw,55px);
 border-radius:25px;
 text-align:center;
+width:min(90%,480px);
+animation:bounce 0.4s;
 box-shadow:0 15px 35px rgba(0,0,0,0.25);
+border:4px solid #e8f4ff;
 }
 
 .popup-content button{
@@ -209,18 +212,12 @@ cursor:pointer;
 }
 
 #finalScore{
-/* ✅ UPDATED */
 font-size:clamp(20px,2vw,28px);
-
 font-weight:600;
 margin-top:15px;
 color:#2f4f4f;
 }
 
-#scorePopup .popup-content{
-width:480px;
-padding:55px;
-}
 
 .popup-content button{
 margin-top:20px;
@@ -344,6 +341,119 @@ cursor:pointer;
   width: min(80%, 300px);   /* smaller than before */
   padding: clamp(20px,3vw,35px);
 }
+
+}
+
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width:1025px) and (max-width:1440px){
+
+  .container{
+    max-width:1100px;
+  }
+
+  .game{
+    column-gap:200px;
+    row-gap:8px;
+  }
+
+  .left,
+  .right{
+    font-size:20px;
+    padding:18px;
+  }
+
+  .left-img{
+    width:35px;
+    height:35px;
+  }
+
+  .slot{
+    width:70px;
+    height:35px;
+  }
+
+  .slot img{
+    width:40px;
+    height:35px;
+  }
+
+}
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+  .container{
+    max-width:1300px;
+  }
+
+  .game{
+    column-gap:200px;   /* 🔥 balanced gap */
+    row-gap:16px;
+  }
+
+  .left,
+  .right{
+    font-size:26px;     /* 🔥 bigger text */
+    padding:15px;
+    border-radius:30px;
+  }
+
+  .left-img{
+    width:60px;
+    height:60px;
+  }
+
+  .slot{
+    width:95px;
+    height:45px;
+  }
+
+  .slot img{
+    width:50px;
+    height:45px;
+  }
+
+}
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width:1921px){
+
+  .container{
+    max-width:1500px;
+  }
+
+  .game{
+    column-gap:150px;
+    row-gap:20px;
+  }
+
+  .left,
+  .right{
+    font-size:32px;
+    padding:26px;
+    border-radius:35px;
+  }
+
+  .left-img{
+    width:75px;
+    height:75px;
+  }
+
+  .slot{
+    width:110px;
+    height:55px;
+  }
+
+  .slot img{
+    width:60px;
+    height:55px;
+  }
 
 }
 </style>

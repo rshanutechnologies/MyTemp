@@ -96,6 +96,31 @@ height:100px;
 
 /* NAV */
 
+
+
+.option{
+padding:12px 28px;
+border-radius:40px;
+font-size:20px;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.opt-img{
+width:100px;
+height:100px;
+}
+
+.correctAnswer{
+outline:4px solid #2ecc71;
+background: #03fa6a;
+}
+
+
+
 .nav{
 position:absolute;
 top:400px;
@@ -249,11 +274,13 @@ display:none;
 .final h2{
 font-size:36px;
 margin-bottom:20px;
+font-weight: 100;
 }
 
 .final h3{
 font-size:28px;
 margin-bottom:20px;
+font-weight: 100;
 }
 
 .star{
@@ -434,30 +461,31 @@ width:150px;
 height:150px;
 }
 
-.drop-zone{
-width:200px;
-height:60px;
-font-size:16px;
-}
+
 
 .options{
 flex-direction:column;
 align-items:center;
+margin-top: -15px;
 }
 
-.drag-item{
-font-size:14px;
-padding:8px 16px;
+.option{
+
+font-size:17px;
+
 }
 
-.drag-item img{
+.opt-img{
 width:60px;
 height:60px;
 }
 
+
+
 .nav{
 flex-direction:row;
 gap:15px;
+margin-top: 10px;
 }
 
 .nav button{
@@ -480,6 +508,155 @@ font-size:20px;
 
 .star{
 font-size:36px;
+}
+
+}
+
+
+
+
+
+/* ================= 1025px — 1440px ================= */
+@media screen and (min-width:1225px) and (max-width:1640px){
+
+.quiz{
+width:1050px;
+margin-top:-10%;
+}
+
+.question{
+font-size:40px;
+}
+
+.imgbox img{
+width:350px;
+height:350px;
+object-fit: contain;
+}
+
+/* .drop-zone{
+width:280px;
+height:70px;
+font-size:20px;
+}
+
+.drag-item{
+font-size:28px;
+
+padding:10px 24px;
+}
+
+.drag-item img{
+width:120px;
+height:120px;
+} */
+
+.option{
+
+font-size:25px;
+
+}
+
+.opt-img{
+width:130px;
+height:130px;
+}
+.nav{
+top:470px;
+right:300px;
+gap:30px;
+}
+
+.nav button{
+font-size:24px;
+padding:18px 30px;
+
+}
+
+}
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.quiz{
+width:1200px;
+margin-top:-12%;
+}
+
+.question{
+font-size:44px;
+}
+
+.imgbox img{
+width:350px;
+height:350px;
+}
+
+.option{
+
+font-size:28px;
+
+}
+
+.opt-img{
+width:130px;
+height:130px;
+}
+
+.nav{
+top:480px;
+right:420px;
+gap:40px;
+}
+
+.nav button{
+font-size:24px;
+padding:18px 30px;
+
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.quiz{
+width:1350px;
+margin-top:-14%;
+}
+
+.question{
+font-size:45px;
+}
+
+.imgbox img{
+width:360px;
+height:360px;
+}
+
+.option{
+
+font-size:25px;
+
+}
+
+.opt-img{
+width:130px;
+height:130px;
+}
+
+.nav{
+top:450px;
+right:520px;
+gap:50px;
+}
+
+.nav button{
+font-size:24px;
+padding:18px 30px;
+
 }
 
 }

@@ -574,3 +574,131 @@ button:disabled {
     }
 
 }
+
+/* ===================================== */
+/* ===== 1280px PURE SIZE UPGRADE ===== */
+/* ===================================== */
+
+@media (min-width: 1280px) {
+
+
+   body{
+    margin-top: 3% !important;
+   }
+  /* MAIN CARD */
+  .quiz {
+    width: 1050px;
+    max-height: 95vh;
+    padding: 50px 50px 40px;
+  }
+
+  /* HEADER */
+  .header span {
+    font-size: 50px !important;
+  }
+
+  /* PROGRESS */
+  .progress div {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+  }
+
+  /* QUESTION AREA */
+  .question-holder {
+    height: 180px;
+  }
+
+  .question {
+    font-size: 44px !important;
+    padding: 20px 30px;
+    height: 140px !important;
+  }
+
+  .question-emoji {
+    font-size: 70px;
+  }
+
+  .question-img {
+    width: 260px;
+    height: 220px;
+  }
+
+  /* OPTIONS */
+  .options {
+    gap: 30px;
+  }
+
+  .option {
+    width: 300px;
+    padding: 22px;
+    font-size: 24px;
+    border-radius: 18px;
+  }
+
+  .option span {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .option-img {
+    width: 140px !important;
+    height: 100px !important;
+  }
+
+  /* NAV BUTTONS */
+  .nav button {
+    width: 180px;
+    height: 70px;
+    font-size: 22px;
+    border-radius: 40px;
+  }
+  button{
+     outline: 5px solid white !important;
+  }
+
+  /* POPUP */
+  .popup-content {
+    max-width: 500px;
+    padding: 30px;
+  }
+
+  .popup-icon {
+    font-size: 6em;
+  }
+
+  .popup-content h3 {
+    font-size: 2.2em;
+  }
+
+  .popup-content p {
+    font-size: 1.5em;
+  }
+
+  /* FINAL POPUP */
+  .finalpopup-box {
+    padding: 30px 40px;
+  }
+
+  .final-heading {
+    font-size: 2.4em;
+  }
+
+  #stars {
+    font-size: 50px;
+  }
+
+  .playAgain-btn {
+    width: 180px;
+    height: 60px;
+    font-size: 18px;
+    border-radius: 30px;
+  }
+
+  /* HINT */
+  .hint {
+    font-size: 26px;
+  }
+
+}

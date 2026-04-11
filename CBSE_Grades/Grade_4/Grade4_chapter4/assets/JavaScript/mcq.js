@@ -7,7 +7,7 @@ const quizData = [
       "../assets/images/mcq1-2.png|Hydrogen",
       "../assets/images/oxygen.png|Oxygen",
       "../assets/images/mcq1-4.png|Nitrogen",
-    ],
+    ],              
     a: 2,
   },
 

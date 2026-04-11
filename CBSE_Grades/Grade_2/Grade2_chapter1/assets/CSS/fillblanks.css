@@ -1056,20 +1056,155 @@ body{
 }
 
 /* Medium desktops */
-@media (min-width: 1280px) {
- body{
-    margin-top: -0%;
+/* 🚀 BIG DESKTOP MODE (1280px+) */
+@media (min-width:1280px){
+
+  /* GLOBAL SCALE FEEL */
+  body{
+    transform: scale(1.08);
+    transform-origin: top center;
+    margin-left: -5% !important;
+    /* background-color: yellow !important; */
+    
   }
+
+  /* MAIN CONTAINER */
+  .main{
+    width: 1200px;
+    height: 750px;
+    padding: 30px;
+  }
+
+  /* TOP BADGE + COUNT */
+  .badge{
+    font-size: 26px;
+    padding: 14px 40px;
+  }
+
+  .qcount{
+    font-size: 26px;
+  }
+
+  /* QUESTION TEXT */
+  .question{
+    font-size: 44px;
+    min-height: 160px;
+    line-height: 1.4;
+  }
+
+  /* IMAGE BIG */
+  .left img{
+    width: 300px;
+    height: 300px;
+  }
+
+  /* INPUT BOX BIG */
+  .input-box{
+    height: 80px;
+    width: 70%;
+    border-radius: 30px;
+  }
+
+  .input-box input{
+    font-size: 28px;
+  }
+
+  /* SUBMIT BUTTON */
+  .submit{
+    width: 160px;
+    height: 65px;
+    font-size: 26px;
+  }
+
+  /* NAV BUTTONS */
+  .prev,
+  .next{
+    width: 180px;
+    height: 70px;
+    font-size: 26px;
+  }
+
+  /* DOT PROGRESS */
+  .dot{
+    width: 40px;
+    height: 40px;
+  }
+
+  /* POPUP BIG */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+  }
+
+  .popup-icon{
+    font-size: 90px;
+  }
+
+  .popup-title{
+    font-size: 34px;
+  }
+
+  .popup-msg{
+    font-size: 24px;
+  }
+
+  /* FINAL POPUP */
+  .finalpopup-box{
+    padding: 40px;
+  }
+
+  .final-heading{
+    font-size: 2.5em;
+  }
+
+  #stars{
+    font-size: 60px;
+  }
+
+  /* PLAY AGAIN BUTTON */
+  .playAgain-btn{
+    font-size: 22px;
+    padding: 16px 36px;
+  }
+
+  /* HOME BUTTON */
+  .home-btn{
+    font-size: 24px;
+    padding: 14px 30px;
+  }
+
+  /* TILES BIG */
+  .tile{
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+  }
+
+  /* SLOTS BIG */
+  .slot{
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+  }
+
+  /* LETTER BANK GAP */
+  .letter-bank{
+    gap: 18px;
+  }
+
+  /* NAV SPACING */
   .quiz-nav{
-    margin-top:4%;
-  
-}
+    gap: 50px;
+    margin-top: 1% !important;
+  }
+
 }
 
 /* Large desktops */
 @media (min-width: 1440px) {
    body{
     margin-top: -1%;
+   
   }
     .quiz-nav{
     margin-top:4%;

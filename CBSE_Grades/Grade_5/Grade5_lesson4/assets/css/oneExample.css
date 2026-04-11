@@ -505,17 +505,17 @@ body::before{
 }
 
 .correct-lock{
-background:#e6fff2;
+/* background:#e6fff2;
 border:2px solid #2ecc71;
-box-shadow:0 0 15px rgba(46,204,113,0.4);
+box-shadow:0 0 15px rgba(46,204,113,0.4); */
 padding: 20px;
 margin-top: -20%;
 }
 
 .options.single{
 display:flex;
-justify-content:center;
-}
+justify-content:center; 
+} 
 /* ================= MOBILE ================= */
 /* ================= MOBILE ================= */
 @media (max-width:768px){
@@ -664,5 +664,156 @@ font-size:50px;
   padding:10px 20px;
 }
 
+
+}
+
+
+
+
+
+
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1225px) and (max-width:1640px){
+
+.template{
+width:min(1150px,98vw);
+height:min(680px,98vh);
+}
+
+.title{
+font-size:40px;
+width:700px;
+}
+
+.option{
+width:300px;
+margin-top: 20%;
+}
+
+.option-img{
+width:300px;
+height:300px;
+bottom:60px;
+}
+
+.label{
+font-size:30px;
+}
+
+.quiz-nav{
+gap:65%;
+}
+
+.prev,.next{
+width:100px;
+height:100px;
+font-size: 22px;
+}
+
+
+} */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1450px) and (max-width:1920px){
+ body{
+    margin-top: 2%;
+ }
+.template{
+width:min(1350px,98vw);
+height:min(760px,98vh);
+}
+
+.title{
+font-size:44px;
+width:820px;
+}
+
+.option{
+width:300px;
+margin-top: 40%;
+}
+
+.option-img{
+width:350px;
+height:350px;
+bottom:70px;
+}
+
+.label{
+font-size:30px;
+font-weight: 400;
+}
+
+.correct-lock{
+   text-align: center;
+   margin-top: 20%;
+   background: none;
+}
+.quiz-nav{
+gap:75%;
+}
+
+.prev,.next{
+width:100px;
+height:100px;
+font-size: 22px;
+}
+
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.template{
+width:min(1500px,98vw);
+height:min(820px,98vh);
+}
+
+body{
+    margin-top: 2%;
+ }
+/* .template{
+width:min(1350px,98vw);
+height:min(760px,98vh);
+} */
+
+.title{
+font-size:44px;
+width:820px;
+}
+
+.option{
+width:300px;
+margin-top: 40%;
+}
+
+.option-img{
+width:350px;
+height:350px;
+bottom:70px;
+}
+
+.label{
+font-size:30px;
+font-weight: 400;
+}
+
+.correct-lock{
+   text-align: center;
+   margin-top: 20%;
+   background: none;
+}
+.quiz-nav{
+gap:75%;
+}
+
+.prev,.next{
+width:100px;
+height:100px;
+font-size: 22px;
+}
 
 }

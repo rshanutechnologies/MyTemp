@@ -32,12 +32,13 @@
             flex-direction: column;
         }
 
+        /* ── TOPBAR ── laptop base (≤1366px) */
         .topbar {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: clamp(60px, 8vh, 100px);
-            margin: 0 clamp(10px, 3vw, 20px);
+            height: 70px;
+            margin: 0 14px;
         }
 
         .nav-group {
@@ -45,39 +46,31 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: clamp(8px, 1.5vw, 18px);
+            gap: 12px;
             width: 100%;
             max-width: 1150px;
-            padding: clamp(6px, 1vw, 10px);
+            padding: 8px;
         }
 
-        /* .nav-slider {
+        .nav-slider {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            height: calc(100% - 20px);
-            border-radius: 12px;
+            top: 0;
+            left: 0;
+            height: 100%;
+            border-radius: 40px;
             transition: transform .45s cubic-bezier(.65, .05, .36, 1), width .35s ease;
-            z-index: 1;
-        } */
-         .nav-slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    border-radius: 40px;
-    transition: transform .45s cubic-bezier(.65, .05, .36, 1), width .35s ease;
-    z-index: 0;
-}
+            z-index: 0;
+        }
 
+        /* ── ISLAND BTN ── laptop base (≤1366px) */
         .island-btn {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: clamp(6px, 1vw, 8px);
-            padding: clamp(10px, 1.5vw, 16px) clamp(12px, 2vw, 20px);
-            font-size: clamp(15px, 1.2vw, 20px);
+            gap: 8px;
+            padding: 13px 16px;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
             border-radius: 40px;
@@ -90,7 +83,7 @@
             opacity: .6;
             filter: grayscale(1);
             position: relative;
-    z-index: 2;
+            z-index: 2;
         }
 
         .island-btn:hover {
@@ -98,10 +91,9 @@
             opacity: .9;
         }
 
-        /* ✅ FIXED HERE */
         .island-btn.active {
             transform: scale(1.02);
-           box-shadow: 0 10px 20px rgba(0,0,0,0.18),0 0 0 2px white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.18), 0 0 0 2px white;
             opacity: 1;
             filter: none;
         }
@@ -115,7 +107,7 @@
 
         .main {
             flex: 1;
-            padding: clamp(6px, 1vw, 10px) 0 0;
+            padding: 8px 0 0;
         }
 
         iframe {
@@ -132,7 +124,28 @@
             display: none;
         }
 
-        @media(max-width:900px) {
+        /* ── DESKTOP ── above 1366px */
+        @media (min-width: 1367px) {
+
+            .topbar {
+                height: 90px;
+                margin: 0 20px;
+            }
+
+            .nav-group {
+                gap: 20px;
+                max-width: 1300px;
+                padding: 10px;
+            }
+
+            .island-btn {
+                padding: 22px 32px;
+                font-size: 20px;
+            }
+        }
+
+        /* ── MOBILE ── ≤900px */
+        @media (max-width: 900px) {
 
             .topbar {
                 display: none;
@@ -141,14 +154,14 @@
             .menu-btn {
                 display: block;
                 position: fixed;
-                top: clamp(10px, 2vw, 15px);
-                right: clamp(10px, 2vw, 15px);
-                font-size: clamp(18px, 3vw, 24px);
+                top: 12px;
+                right: 12px;
+                font-size: 20px;
                 background: #f59e0b;
                 color: white;
                 border: none;
                 border-radius: 8px;
-                padding: clamp(4px, 1vw, 6px) clamp(8px, 2vw, 12px);
+                padding: 5px 10px;
                 cursor: pointer;
                 z-index: 5000;
             }
@@ -170,14 +183,14 @@
                 position: absolute;
                 right: 0;
                 top: 0;
-                width: clamp(220px, 70vw, 280px);
+                width: 260px;
                 height: 100%;
                 background: url("./assets/images/BGGG.png");
-                padding: clamp(20px, 4vw, 30px);
-                padding-top: clamp(60px, 10vw, 80px);
+                padding: 24px;
+                padding-top: 70px;
                 display: flex;
                 flex-direction: column;
-                gap: clamp(20px, 5vw, 50px);
+                gap: 30px;
                 transform: translateX(100%);
                 transition: .35s;
                 overflow-y: auto;
@@ -194,9 +207,9 @@
                 flex: none;
                 width: 100%;
                 justify-content: flex-start;
-                padding: clamp(14px, 3vw, 18px) clamp(16px, 3vw, 20px);
+                padding: 16px 18px;
                 border-radius: 40px;
-                font-size: clamp(13px, 2.5vw, 15px);
+                font-size: 14px;
             }
 
             .offcanvas-panel .island-btn:nth-child(1).active { background: #FFE3C8; }

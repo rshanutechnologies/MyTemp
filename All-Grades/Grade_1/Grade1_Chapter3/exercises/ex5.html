@@ -86,8 +86,8 @@
     .q-text {
       text-align: center;
       font-size: clamp(1.2rem, 3.3vw, 2.2rem);
-      font-weight: 500;
-      color: #333;
+      
+      color: #2f4f4f;
       margin-top: -10px;
     }
 
@@ -195,7 +195,7 @@
       font-size: 1.1rem;
       background: #4cc9f0;
       border: 4px solid white;
-      font-family: 'Fredoka One';
+      font-family: 'Livvic';
       cursor: pointer;
       color: black;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -267,7 +267,7 @@
       max-width: 450px;
     }
 
- 
+
     /* ==================================================
    📱 MOBILES (≤768px)
 ================================================== */
@@ -335,10 +335,11 @@
    📱 TABLETS (769px – 1024px)
 ================================================== */
     @media (min-width: 769px) and (max-width: 900px) {
-body{
-  overflow: hidden;
- 
-}
+      body {
+        overflow: hidden;
+
+      }
+
       .app {
         width: 100%;
         height: 100vh;
@@ -347,7 +348,7 @@ body{
 
       .q-text {
         font-size: 1.8rem;
-        
+
       }
 
       #quiz-main {
@@ -356,7 +357,7 @@ body{
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-       
+
         gap: 50px;
         min-height: 0;
       }
@@ -364,7 +365,7 @@ body{
       .drop-box {
         width: 260px;
         height: 150px;
-       
+
       }
 
       .option {
@@ -396,7 +397,7 @@ body{
       }
     }
 
-       /* ==================================================
+    /* ==================================================
    📱 SMALL MOBILES (≤480px)
 ================================================== */
     @media (max-width: 480px) {
@@ -422,7 +423,7 @@ body{
       .q-counter {
         font-size: 0.95rem;
         padding: 4px 14px;
-        
+
       }
 
       .q-text {
@@ -488,6 +489,114 @@ body{
       }
     }
 
+    /* =========================================
+💻 DESKTOP (1025px – 1440px)
+========================================= */
+    /* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+      .app {
+        max-width: 1200px;
+        padding: 30px;
+      }
+
+      .q-text {
+        font-size: clamp(2rem, 2.5vw, 3rem);
+      }
+
+      .drop-box {
+        width: clamp(300px, 28vw, 420px);
+        height: clamp(180px, 18vh, 280px);
+      }
+
+      .option {
+        width: clamp(160px, 14vw, 220px);
+      }
+
+      .opt-label {
+        font-size: 1.6rem;
+      }
+
+      .nav-btn {
+        font-size: 1.2rem;
+        padding: 14px 30px;
+      }
+    } */
+
+
+    /* =========================================
+🖥 LARGE MONITORS (1441px – 1920px)
+========================================= */
+    @media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+      .app {
+        max-width: 1400px;
+        padding: 40px;
+      }
+
+      .q-text {
+        font-size: 44px;
+      }
+
+      .drop-box {
+        width: clamp(350px, 25vw, 500px);
+        height: clamp(200px, 16vh, 320px);
+      }
+
+      .option {
+        width: clamp(180px, 12vw, 260px);
+      }
+
+      .opt-label {
+        font-size: 1.8rem;
+      }
+
+      .nav-btn {
+        font-size: 1.3rem;
+        padding: 16px 36px;
+      }
+    }
+
+
+    /* =========================================
+🖥 4K / EXTRA LARGE (1921px+)
+========================================= */
+    @media screen and (min-width: 1921px) {
+
+      .app {
+        max-width: 1600px;
+        padding: 50px;
+      }
+
+      .q-text {
+        font-size: clamp(3rem, 2vw, 4.5rem);
+      }
+
+      .drop-box {
+        width: clamp(420px, 22vw, 600px);
+        height: clamp(260px, 14vh, 360px);
+        border-radius: 40px;
+      }
+
+      .option {
+        width: clamp(220px, 10vw, 300px);
+        border-radius: 30px;
+      }
+
+      .opt-label {
+        font-size: 2rem;
+      }
+
+      .nav-btn {
+        font-size: 1.5rem;
+        padding: 18px 45px;
+      }
+
+      .read-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 
@@ -679,9 +788,9 @@ body{
       overlay.className = "final-overlay";
       overlay.innerHTML = `
         <div class="final-card">
-            <h1 style="font-family:'Fredoka One'; font-size:3rem; color:#4cc9f0; margin:0;">🏆 DONE! 🏆</h1>
+            <h1 style="font-family:'Livvic'; font-size:3rem; color:#4cc9f0; margin:0;">🏆 DONE! 🏆</h1>
             <p style="font-size:1.5rem; margin:20px 0;">Fantastic! You completed the quiz.</p>
-            <button style="padding:15px 40px; font-size:1.5rem; cursor:pointer; background:#4cc9f0; color:white; border:none; border-radius:50px; font-family:Fredoka One;" onclick="location.reload()">PLAY AGAIN</button>
+            <button style="padding:15px 40px; font-size:1.5rem; cursor:pointer; background:#4cc9f0; color:white; border:none; border-radius:50px; font-family: 'Livvic';" onclick="location.reload()">PLAY AGAIN</button>
         </div>`;
       document.body.appendChild(overlay);
       confetti({ particleCount: 200, spread: 90, origin: { y: 0.5 } });

@@ -240,6 +240,7 @@ h1 {
     margin-block: 10px;
     cursor: pointer;
 }
+
 @media (max-width: 1050px) {
     body {
         padding: 14px;
@@ -250,7 +251,7 @@ h1 {
 
     .main {
         max-width: 900px;
-        
+
     }
 
     .quiz-type {
@@ -459,4 +460,111 @@ h1 {
     .icon {
         font-size: 20px;
     }
+}
+
+/* ========================================
+   💻 Desktop (1025px – 1440px)
+======================================== */
+/* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+    .main {
+        max-width: 1050px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .game-container {
+        gap: 110px;
+    }
+
+    .column {
+        width: 300px;
+    }
+
+    .item {
+        height: 78px;
+        font-size: 18px;
+        padding: 18px 20px;
+    }
+
+    .left-img,
+    .right-img {
+        width: 32px;
+        height: 32px;
+    }
+
+} */
+
+
+/* ========================================
+   🖥️ Large Screens (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+    .main {
+        max-width: 1150px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .game-container {
+        gap: 130px;
+    }
+
+    .column {
+        width: 320px;
+    }
+
+    .item {
+        height: 135px;
+        font-size: 26px;
+        padding: 20px 22px;
+    }
+
+    .left-img,
+    .right-img {
+        width: 95px;
+        height: 95px;
+    }
+
+}
+
+
+/* ========================================
+   📺 4K Screens (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+    .main {
+        max-width: 1250px;
+    }
+
+ h1 {
+        font-size: 34px;
+    }
+
+    .game-container {
+        gap: 130px;
+    }
+
+    .column {
+        width: 320px;
+    }
+
+    .item {
+        height: 135px;
+        font-size: 26px;
+        padding: 20px 22px;
+    }
+
+    .left-img,
+    .right-img {
+        width: 95px;
+        height: 95px;
+    }
+
 }

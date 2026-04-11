@@ -119,9 +119,9 @@ body {
   background: #f3bcfc;
 }
 
-  .card:hover {
-    transform: scale(1.03);
-  }
+.card:hover {
+  transform: scale(1.03);
+}
 
 .card.active {
   border: 2px solid #ffa702;
@@ -383,7 +383,8 @@ svg {
   }
 
   .card {
-    min-height: 130px;   /* ✅ fixes text cut issue */
+    min-height: 130px;
+    /* ✅ fixes text cut issue */
     font-size: 16px;
     padding: 14px 16px;
   }
@@ -447,4 +448,99 @@ svg {
     position: relative;
     padding-right: 32px;
   }
+}
+
+/* ========================================
+   💻 Desktop (1025px – 1440px)
+======================================== */
+/* @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  .quiz-container {
+    width: 1300px;
+    padding: 40px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .match-grid {
+    gap: 100px;
+    
+  }
+
+  .card {
+    height: 80px;
+    font-size: 21px;
+  }
+
+  .card-img {
+    width: 40px;
+    height: 40px;
+  }
+
+} */
+
+
+/* ========================================
+   🖥️ Large Screens (1441px – 1920px)
+======================================== */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+  .quiz-container {
+    width: 1300px;
+    padding: 45px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .match-grid {
+    gap: 120px;
+    /* slightly more space */
+  }
+
+  .card {
+    height: 120px;
+    font-size: 25px;
+  }
+
+  .card-img {
+    width: 90px;
+    height: 90px;
+  }
+
+}
+
+
+/* ========================================
+   📺 4K Screens (1921px+)
+======================================== */
+@media screen and (min-width: 1921px) {
+
+  .quiz-container {
+    width: 1300px;
+    padding: 50px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .match-grid {
+    gap: 120px;
+    /* slightly more space */
+  }
+
+  .card {
+    height: 120px;
+    font-size: 25px;
+  }
+
+  .card-img {
+    width: 90px;
+    height: 90px;
+  }
+
 }

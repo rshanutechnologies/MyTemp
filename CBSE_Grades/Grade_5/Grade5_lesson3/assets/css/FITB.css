@@ -306,11 +306,13 @@ display:none;
 .final h2{
 font-size:36px;
 margin-bottom:20px;
+font-weight: 100;
 }
 
 .final h3{
 font-size:28px;
 margin-bottom:20px;
+font-weight: 100;
 }
 
 .star{
@@ -569,3 +571,154 @@ font-size:36px;
 }
 
 
+
+
+/* ================= 1025px — 1440px ================= */
+@media screen and (min-width:1125px) and (max-width:1640px){
+
+.quiz{
+width:1150px;
+
+}
+
+.question{
+font-size:40px;
+}
+
+.blank{
+width:50%;
+height:58px;
+font-size:26px;
+}
+
+.letters{
+width:400px;
+padding:50px;
+gap:14px;
+margin-top: 20px;
+
+}
+
+.letter{
+width:50px;
+height:50px;
+font-size:24px;
+margin-left: -6%;
+}
+
+.imgbox{
+width:260px;
+}
+
+.imgbox img{
+width:400px;
+height:400px;
+}
+
+.nav{
+gap:50px;
+}
+
+.nav button{
+font-size:24px;
+padding:18px 30px;
+}
+}
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.quiz{
+width:1200px;
+}
+
+.question{
+font-size:44px;
+}
+
+.blank{
+height:55px;
+font-size:30px;
+}
+
+.letters{
+width:350px;
+padding:50px;
+gap:16px;
+}
+
+.letter{
+width:55px;
+height:55px;
+font-size:28px;
+}
+
+.imgbox{
+width:350px;
+height:350px;
+}
+
+.imgbox img{
+width:350px;
+height:350px;
+}
+
+.nav{
+gap:70px;
+}
+
+.nav button{
+font-size:24px;
+padding:18px 30px;
+}
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.quiz{
+width:1350px;
+}
+
+.question{
+font-size:38px;
+}
+
+.blank{
+height:60px;
+font-size:34px;
+}
+
+.letters{
+width:380px;
+padding:65px;
+gap:18px;
+}
+
+.letter{
+width:55px;
+height:55px;
+font-size:30px;
+}
+
+.imgbox{
+width:380px;
+}
+
+.imgbox img{
+width:360px;
+height:340px;
+}
+
+.nav{
+gap:90px;
+}
+
+.nav button{
+font-size:24px;
+padding:14px 36px;
+}
+
+}

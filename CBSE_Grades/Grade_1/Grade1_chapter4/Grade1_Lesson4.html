@@ -280,6 +280,82 @@
                 height: calc(100vh / 0.8);
             }
         }
+
+        /* ============================= */
+        /* Desktop / Monitor (1025–1440) */
+        /* ============================= */
+        @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+            .nav-group {
+                max-width: 1200px;
+                gap: 20px;
+            }
+
+            .topbar {
+                height: 90px;
+            }
+
+            .island-btn {
+                font-size: clamp(15px, 1vw, 17px);
+                padding: 16px 22px;
+            }
+        }
+
+        /* ============================= */
+        /* Large Monitors (1441–1920) */
+        /* ============================= */
+        @media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+            .nav-group {
+                max-width: 1400px;
+                gap: 28px;
+                padding: 14px;
+            }
+
+            .topbar {
+                height: 105px;
+            }
+
+            .island-btn {
+                font-size: clamp(17px, 1.1vw, 20px);
+                padding: 18px 26px;
+                border-radius: 50px;
+            }
+
+            .main {
+                padding: 20px 10px 0;
+            }
+        }
+
+        /* ============================= */
+        /* Extra Large Screens / 4K */
+        /* ============================= */
+        @media screen and (min-width: 1921px) {
+
+            .nav-group {
+                max-width: 1700px;
+                gap: 36px;
+                padding: 18px;
+            }
+
+            .topbar {
+                height: 125px;
+            }
+
+            .island-btn {
+                font-size: clamp(20px, 1.2vw, 26px);
+                padding: 22px 30px;
+                border-radius: 60px;
+            }
+
+            .main {
+                padding: 30px 20px 0;
+            }
+
+            iframe {
+                border-radius: 14px;
+            }
+        }
     </style>
 </head>
 

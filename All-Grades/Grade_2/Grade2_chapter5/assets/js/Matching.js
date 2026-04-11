@@ -130,13 +130,11 @@ function checkMatch() {
     selectedRight.classList.add("correct");
 
     // ✅ ADD LABEL
-    const label = document.createElement("div");
-    label.style.fontSize = "14px";
-    label.style.marginTop = "4px";
-    label.style.color = "#15803d";
-    label.style.fontWeight = "600";
-    label.innerText = "Matched with: " + selectedRight.dataset.text;
-    selectedLeft.appendChild(label);
+   const label = document.createElement("div");
+label.className = "matched-label";
+label.innerText = "Matched with: " + selectedRight.dataset.text;
+
+selectedLeft.appendChild(label);
 
     speak("Correct");
     showPopup("✅ Correct!", "correct");

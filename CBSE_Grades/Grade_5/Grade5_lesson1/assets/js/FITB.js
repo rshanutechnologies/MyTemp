@@ -2,7 +2,7 @@ const quiz = [
   {
     q: "1. Petals enclose and protect the ______ parts of a flower.",
     a: "reproductive",
-    options: ["reproductive","colorful","green","leaf"],
+    options: ["colorful","green","leaf","reproductive"],
    img:"../assets/images/reproductiveak.png"
   },
   {
@@ -14,7 +14,7 @@ const quiz = [
   {
     q: "3. The process by which the pollen grains get transferred from the anther to the stigma is called ______.",
     a: "pollinating",
-    options: ["pollination","running","jumping","singing"],
+    options: ["running","jumping","pollinating","singing"],
      img:"../assets/images/pollinating.png"
   },
   {
@@ -26,7 +26,7 @@ const quiz = [
   {
     q: "5. The fertilised female reproductive cell or zygote develops into a ______.",
     a: "seed",
-    options: ["seed","cake","ball","toy"],
+    options: ["cake","seed","ball","toy"],
      img:"../assets/images/seed.png"
   }
 ];

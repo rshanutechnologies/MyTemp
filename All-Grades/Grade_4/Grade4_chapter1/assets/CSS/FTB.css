@@ -446,7 +446,7 @@ button:disabled {
     #stars {
         font-size: 32px;
     }
-    
+
     .playAgain-btn {
         font-size: 15px;
         padding: 10px 22px;
@@ -472,5 +472,73 @@ button:disabled {
     .input-row input {
         font-size: 16px;
         padding: 0;
+    }
+}
+
+/* =========================================
+   🖥️ LARGE MONITORS (1441px – 1920px)
+========================================= */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+body{
+    margin-top: -50px;
+}
+    .main {
+        width: 900px;
+        transform: scale(1.05);
+        transform-origin: center;
+    }
+
+    .question {
+        font-size: 35px;
+    }
+
+    .question-box img {
+        width: 260px;
+        height: 230px;
+    }
+
+    .input-row input {
+        font-size: 28px;
+    }
+     .nav button {
+        
+        font-size: 28px;
+        padding: 14px 32px;
+    
+    }
+}
+
+
+/* =========================================
+   📺 EXTRA LARGE / 4K (1921px+)
+========================================= */
+@media screen and (min-width: 1921px) {
+    
+  body{
+    margin-top: -50px;
+}
+    .main {
+        width: 900px;
+        transform: scale(1.15);
+        transform-origin: center;
+    }
+
+    .question {
+        font-size: 44px;
+    }
+
+    .question-box img {
+        width: 300px;
+        height: 250px;
+    }
+
+    .input-row input {
+        font-size: 28px;
+    }
+     .nav button {
+        
+        font-size: 28px;
+        padding: 14px 32px;
+    
     }
 }

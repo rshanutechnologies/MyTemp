@@ -1,47 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Animal Quiz</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sea Animals Quiz</title>
 
-  <!-- ✅ Livvic Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/CSS/mcq.css">
+<!-- ✅ Livvic Font -->
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/CSS/mcq.css">
+
 </head>
 
 <body>
-  <div class="app">
-    <div class="home" onclick="location.href='../index.html'">🏠 Home</div>
 
-    <div class="title-pill" id="quizTitle">Animal Quiz</div>
 
-    <div class="question-pill">
-      <p class="question-text" id="questionText">Loading...</p>
-    </div>
+<div class="app">
 
-    <div class="content">
-  <div class="image-box">
-    <img class="question-image" id="questionImage" src="" />
+  <div class="home" onclick="location.href='../index.html'">🏠 Home</div>
+  <div class="card">
+
+<!-- <div class="quiz-title"> Plant Quiz </div> -->
+
+<div class="progress-top" >
+  <div class="bubble-orbit" id="bubbleOrbit">
+    <div class="orbit-indicator" id="orbitIndicator">🐝</div>
   </div>
-
-  <div class="options" id="optionsWrap"></div>
 </div>
 
-    <div class="nav">
-      <button class="nav-btn prev-btn" id="prevBtn" disabled>← Prev</button>
-      <button class="nav-btn next-btn" id="nextBtn" disabled>Next →</button>
-    </div>
-  </div>
+<div class="question-box">
+  <div class="q-emoji-wrap" id="qEmoji">🌼</div>
+  <div class="question-text" id="questionText"></div>
+</div>
 
-  <!-- ✅ POPUP -->
-  <div class="popup" id="popup">
-    <div class="popup-box" id="popupBox"></div>
-  </div>
+<div class="options" id="optionsBox"></div>
 
-  <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
-  <audio id="wrongSound" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script src="../assets/JavaScript/mcq.js"></script>
+<div class="controls">
+  <button class="nav-btn prev" id="prevBtn" disabled>←  Prev</button>
+  <button class="nav-btn next" id="nextBtn" disabled>Next →</button>
+</div>
+
+</div>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-box" id="popupText"></div>
+</div>
+
+<audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrongSound"
+        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+<script src="../assets/JavaScript/mcq.js"></script>
+
+
 </body>
 </html>

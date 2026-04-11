@@ -18,24 +18,23 @@
 
   /* ✅ Increase UI size by 20% from previous version */
   .ui-scale{
-    transform:scale(1.15); /* ✅ was 0.8 */
+ 
     transform-origin:center;
     width:100%;
     display:flex;
     justify-content:center;
     align-items:center;
   }
+.game{
+  width:100%;
+  max-width:900px;
 
-  .game{
-    width:100%;
-    max-width:720px;
-    /* background:#ffffff; */
-    border-radius:24px;
-    padding:26px 20px 20px;
-    /* box-shadow:0 12px 30px rgba(0,0,0,.12); */
-    text-align:center;
-    
-  }
+  height:90vh;   /* 🔥 keeps everything inside screen */
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;  /* 🔥 buttons fixed */
+}
 
   /* ✅ Question Box */
   
@@ -106,16 +105,17 @@
     box-shadow:0 0 0 6px rgba(46,125,50,0.10);
   }
 
-  /* ✅ NAV buttons */
   .nav-row{
-    margin-top:10px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:375px;
-  
-    
-  }
+  width:100%;
+  max-width:700px;
+  margin:20px auto 0;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  gap:20px;   /* ✅ clean spacing */
+}
   .chest.correct{
   background:#e6f7ee;
   border:3px solid #67c587;
@@ -369,21 +369,6 @@
   border-color:#5fd692;
 }
 
-/* ===================================== */
-/* ✅ LARGE MONITOR (1400px and above)   */
-/* ===================================== */
-@media (min-width:1400px){
-
-  .ui-scale{
-    transform:scale(1.25);
-  }
-
-  .game{
-    max-width:1000px;
-  }
-
-}
-
 
 
 
@@ -420,40 +405,6 @@
 }
 }
 
-@media (max-width:1000px){
-.question{
-  font-size: 30px !important;
-}
-  
-  body{
-    overflow:hidden;
-    padding:16px 10px;
-    align-items:center;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-top: 40px;
-  }
-
-  .ui-scale{
-    transform:scale(0.85);
-    transform-origin:top center;
-  }
-
-  
-.chest{
-  flex:0 0 200px;     /* ✅ increased width */
-  padding:24px 18px;  /* ✅ more inner space */
-  border-radius:20px;
-}
-
-  .nav-row{
-    gap:40px;
-    
-    
-  }
-
-}
 
 
 /* ===================================== */
@@ -498,4 +449,187 @@
     width:92vw;
   }
 
+}
+@media screen and (min-width:1025px) and (max-width:1440px){
+
+  .game{
+    max-width:900px;   /* ✅ keep balanced */
+  }
+
+  .question{
+    font-size:34px;    /* ✅ not too big */
+    text-align:center;
+  }
+
+  .q-img{
+    width:220px;       /* ✅ consistent */
+    height:180px;
+  }
+
+  .chests{
+    gap:30px;
+  }
+
+  .chest{
+    flex:0 0 180px;
+    padding:20px;
+  }
+
+  .chest span{
+    font-size:55px;
+  }
+
+  .chest p{
+    font-size:22px;
+  }
+
+  .nav-btn{
+    width:140px;
+    height:50px;
+    font-size:18px;
+  }
+}
+
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+  .game{
+    max-width:1100px;
+  }
+
+  .question{
+    font-size:42px;
+  }
+
+  .q-img{
+    width:350px;
+    height:250px;
+  }
+
+  .chest{
+    flex:0 0 220px;
+  }
+
+  .chest span{
+    font-size:75px;
+  }
+
+  .chest p{
+    font-size:26px;
+  }
+
+  .nav-btn{
+    width:160px;
+    height:55px;
+    font-size:22px;
+  }
+}
+
+@media screen and (min-width:1921px){
+
+  .game{
+    max-width:1300px;
+  }
+
+  .question{
+    font-size:48px;
+  }
+
+  .q-img{
+    width:400px;
+    height:280px;
+  }
+
+  .chest{
+    flex:0 0 250px;
+  }
+
+  .chest span{
+    font-size:85px;
+  }
+
+  .chest p{
+    font-size:28px;
+  }
+
+  .nav-btn{
+    width:180px;
+    height:60px;
+    font-size:24px;
+  }
+}
+.question,
+.q-img,
+.chests{
+  text-align:center;
+}
+
+/* ===================================== */
+/* ✅ MOBILE POPUP SMALL (FIX)            */
+/* ===================================== */
+@media (max-width:480px){
+
+  .popup-box{
+    width:85% !important;
+    padding:14px !important;
+    border-radius:14px !important;
+  }
+
+  /* ✅ CORRECT POPUP */
+  .popup-correct{
+    font-size:16px !important;
+    padding:12px !important;
+  }
+
+  .popup-correct .check{
+    font-size:18px !important;
+  }
+
+  .popup-correct .happy{
+    font-size:36px !important;
+  }
+
+  .popup-correct .stars{
+    font-size:20px !important;
+  }
+
+  /* ✅ WRONG POPUP */
+  .popup-wrong{
+    font-size:16px !important;
+    padding:12px !important;
+  }
+
+  .popup-wrong .cross{
+    font-size:18px !important;
+  }
+
+  .popup-wrong .sad{
+    font-size:36px !important;
+  }
+
+  .popup-wrong .tip{
+    font-size:13px !important;
+  }
+
+  /* ✅ FINAL POPUP */
+  .popup-final-content{
+    font-size:16px !important;
+  }
+
+  .popup-final-content .emoji{
+    font-size:40px !important;
+  }
+
+  .popup-final-content .stars{
+    font-size:20px !important;
+  }
+
+  .restart{
+    font-size:16px !important;
+    padding:8px 12px !important;
+  }
+
+  /* ✅ FINAL BOX WIDTH */
+  .popup-box.final-wide{
+    width:90% !important;
+  }
 }

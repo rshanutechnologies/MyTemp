@@ -701,3 +701,88 @@ body {
 }
 
 
+@media screen and (min-width:1025px) and (max-width:1440px){
+
+  .game{
+    max-width:1000px;
+    margin-top: 40px;
+  }
+
+  .train-frame{
+    width:100%;
+    max-width:1100px;
+  }
+
+  .title{
+    font-size:36px;
+  }
+
+  /* FIELD */
+  .field{
+    height:480px;
+  }
+
+  /* MAGNET */
+  .magnet{
+    font-size:70px;
+  }
+
+  /* ANIMALS */
+  .animal{
+    width:150px;
+    height:150px;
+    font-size:68px;
+  }
+
+  .animal span{
+    font-size:25px;
+  }
+
+  /* LABELS */
+  .labels{
+    gap:14px;
+  }
+
+  .label{
+    font-size:35px;
+    padding:14px;
+  }
+}
+
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+  .game{
+    max-width:1200px;
+  }
+
+  .train-frame{
+    max-width:1000px;
+  }
+
+  .title{
+    font-size:40px;
+  }
+
+  .field{
+    height:480px;
+  }
+
+  .magnet{
+    font-size:80px;
+  }
+
+  .animal{
+    width:130px;
+    height:130px;
+    font-size:56px;
+  }
+
+  .animal span{
+    font-size:25px;
+  }
+
+  .label{
+    font-size:20px;
+    padding:16px;
+  }
+}

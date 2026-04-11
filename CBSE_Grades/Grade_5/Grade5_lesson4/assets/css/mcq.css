@@ -159,6 +159,7 @@ body::before{
 
 .correct-lock{
   border:3px solid #2ecc71;
+  background: #11e71b;
 }
 
 /* ================= WRONG ================= */
@@ -631,6 +632,7 @@ body{
 .animal-img{
     width:130px;
     height:120px;
+    margin-top: 1%;
 }
 
 /* options */
@@ -708,6 +710,145 @@ body{
 .playAgain-btn{
   font-size:14px;
   padding:10px 20px;
+}
+
+}
+
+
+
+
+/* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1225px) and (max-width:1640px){
+
+.template{
+width:min(1200px,98vw);
+height:min(700px,98vh);
+}
+
+.title{
+font-size:40px;
+width:700px;
+}
+
+.animal-img{
+width:270px;
+height:300px;
+}
+
+.options{
+gap:24px;
+}
+
+.option-img{
+width:90px;
+height:90px;
+}
+
+.option .label{
+font-size:16px;
+padding:6px 22px;
+}
+
+.quiz-nav{
+gap:70%;
+}
+
+.prev,.next{
+width:100px;
+height:100px;
+font-size: 20px;
+}
+
+} */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.template{
+width:min(1350px,98vw);
+height:min(760px,98vh);
+}
+
+.title{
+font-size:44px;
+width:820px;
+}
+
+.animal-img{
+width:300px;
+height:350px;
+}
+
+.options{
+gap:30px;
+}
+
+.option-img{
+width:130px;
+height:130px;
+}
+
+.option .label{
+font-size:18px;
+padding:8px 26px;
+}
+
+.quiz-nav{
+gap:80%;
+margin-top: 80px;
+}
+
+.prev,.next{
+width:100px;
+height:100px;
+font-size: 22px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.template{
+width:min(1500px,98vw);
+height:min(820px,98vh);
+}
+
+.title{
+font-size:45px;
+width:900px;
+}
+
+.animal-img{
+width:330px;
+height:330px;
+}
+
+.options{
+gap:36px;
+}
+
+.option-img{
+width:130px;
+height:130px;
+}
+
+.option .label{
+font-size:20px;
+padding:10px 30px;
+}
+
+.quiz-nav{
+gap:85%;
+margin-top: 80px;
+}
+
+.prev,.next{
+width:110px;
+height:110px;
+font-size: 22px;
 }
 
 }

@@ -508,3 +508,74 @@ body {
         padding: 8px 16px;
     }
 }
+
+/* =========================================
+   💻 DESKTOP / MONITOR (1025px – 1440px)
+========================================= */
+
+
+
+/* =========================================
+   🖥️ LARGE MONITORS (1441px – 1920px)
+========================================= */
+@media screen and (min-width: 1350px) and (max-width: 1920px) {
+
+    .main-content {
+        max-width: 1000px;
+        transform: scale(1.05);
+        transform-origin: center;
+    }
+
+    .question {
+        font-size: 44px;
+        width: 100%;
+    }
+
+    .option {
+        font-size: 22px;
+    }
+
+    .option img {
+        width: 130px;
+        height: 130px;
+    }
+     .nav button {
+        
+        font-size: 28px;
+        padding: 14px 32px;
+    
+    }
+}
+
+
+/* =========================================
+   📺 EXTRA LARGE / 4K (1921px+)
+========================================= */
+@media screen and (min-width: 1921px) {
+
+    .main-content {
+        max-width: 1000px;
+        transform: scale(1.15);
+        transform-origin: center;
+    }
+
+    .question {
+        font-size: 44px;
+        width: 100%;
+    }
+
+    .option {
+        font-size: 22px;
+    }
+
+    .option img {
+        width: 130px;
+        height: 130px;
+    }
+     .nav button {
+        
+        font-size: 28px;
+        padding: 14px 32px;
+    
+    }
+}

@@ -53,7 +53,8 @@ const questions = [
 let index = 0;
 let score = 0;
 let dragged = null;
-
+let selectedOption = null;
+const isMobile = window.innerWidth >= 0;
 const state = questions.map(() => ({
   drops: [null, null],
   used: [],
@@ -87,7 +88,23 @@ function render() {
       div.style.pointerEvents = "none";
     }
 
-    div.addEventListener("dragstart", () => (dragged = opt.id));
+   // DRAG (desktop)
+div.addEventListener("dragstart", () => {
+  if (!isMobile) dragged = opt.id;
+});
+// CLICK (mobile) → DIRECT PLACE
+div.addEventListener("click", () => {
+  if (!isMobile) return;
+
+  if (state[index].used.includes(opt.id) || state[index].completed) return;
+
+  // find first empty drop
+  const emptyIndex = state[index].drops.findIndex(v => !v);
+
+  if (emptyIndex === -1) return; // no empty box
+
+  placeAnswer(drops[emptyIndex], emptyIndex, opt.id);
+});
     optionsEl.appendChild(div);
   });
 
@@ -132,21 +149,36 @@ function speak(t) {
 /* ========== DROP LOGIC (ONLY ONCE) ========== */
 drops.forEach((drop, i) => {
   drop.addEventListener("dragover", (e) => e.preventDefault());
+drop.addEventListener("click", () => {
+  if (!isMobile) return;
 
- drop.addEventListener("drop", () => {
+  if (!selectedOption || drop.dataset.locked) return;
+  if (state[index].used.includes(selectedOption)) return;
+
+  placeAnswer(drop, i, selectedOption);
+  selectedOption = null;
+});
+
+drop.addEventListener("drop", () => {
+  if (isMobile) return;
+
   if (!dragged || drop.dataset.locked) return;
   if (state[index].used.includes(dragged)) return;
 
-  // place answer
-  drop.textContent = dragged;
-  drop.dataset.locked = "true";
-  state[index].drops[i] = dragged;
-  state[index].used.push(dragged);
-
+  placeAnswer(drop, i, dragged);
   dragged = null;
+});
+});
+function placeAnswer(drop, i, value) {
+  drop.textContent = value;
+  drop.dataset.locked = "true";
+
+  state[index].drops[i] = value;
+  state[index].used.push(value);
+
   render();
 
-  // ✅ CHECK ONLY WHEN TWO ANSWERS ARE DROPPED
+  // CHECK ANSWERS
   if (state[index].drops.every((v) => v)) {
     const correctAnswers = questions[index].answers;
     const userAnswers = state[index].drops;
@@ -169,7 +201,6 @@ drops.forEach((drop, i) => {
       showPopup(false);
       speak("Wrong");
 
-      // reset both drops
       setTimeout(() => {
         state[index].drops = [null, null];
         state[index].used = [];
@@ -177,9 +208,9 @@ drops.forEach((drop, i) => {
       }, 600);
     }
   }
-});
+}
 
-});
+
 function showPopup(isCorrect) {
   const popup = document.getElementById("answerPopup");
   const icon = document.getElementById("popupIcon");

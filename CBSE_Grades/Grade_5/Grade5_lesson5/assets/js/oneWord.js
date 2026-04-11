@@ -15,7 +15,7 @@ const quizData = [
 {
     q: "Q3. The upper two chambers of the heart",
     a: "ATRIA",
-    img: "../assets/images/heart-chambers.png"
+    img: "../assets/images/heart-chambers1.png"
 },
 
 {

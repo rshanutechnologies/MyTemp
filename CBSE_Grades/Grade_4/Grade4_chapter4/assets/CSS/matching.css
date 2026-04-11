@@ -61,7 +61,7 @@ body {
 /* ITEMS */
 .item {
     width: 100%;
-    height: clamp(70px, 12vh, 82px);
+    height: clamp(70px, 12vh, 90px);
 
     background: #ffefef;
     box-shadow: 0 5px 14px rgba(0, 0, 0, .08);
@@ -77,7 +77,7 @@ body {
     border: 3px solid rgb(238, 194, 194);
 
     position: relative;
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: clamp(20px, 4vw, 26px);
     color: #2f4f4f;
 }
 
@@ -165,7 +165,7 @@ body {
         align-items: center;
     }
     .item {
-        font-size: clamp(14px, 1.8vw, 18px); /* 🔽 reduced */
+        font-size: clamp(20px, 2.4vw, 24px); /* 🔽 reduced */
     }
 
 
@@ -175,5 +175,63 @@ body {
 
     .column {
         max-width: 50%; /* ✅ still equal */
+    }
+}
+/* ==============================
+   DESKTOP IMPROVEMENT (iframe ~1100px+)
+============================== */
+@media (min-width: 1100px) {
+
+    .main {
+        width: min(1100px, 98vw); /* 🔥 expand layout */
+    }
+
+    .game-container {
+        gap: clamp(60px, 6vw, 120px); /* 🔥 more space between columns */
+    }
+
+    .column {
+        max-width: 480px; /* 🔥 slightly wider columns */
+    }
+
+    .item {
+        height: clamp(85px, 13vh, 110px); /* 🔥 bigger boxes */
+        font-size: clamp(27px, 2vw, 30px);
+        border-radius: 18px;
+        padding: 0 clamp(12px, 2vw, 20px);
+    }
+
+    .left-img {
+        width: clamp(55px, 6vw, 75px);
+        height: clamp(60px, 7vh, 85px);
+    }
+}
+
+
+/* ==============================
+   LARGE DESKTOP (iframe ~1300px+)
+============================== */
+@media (min-width: 1399px) {
+
+    .main {
+        width: min(1250px, 98vw);
+    }
+
+    .game-container {
+        gap: clamp(80px, 7vw, 150px); /* 🔥 even more breathing space */
+    }
+
+    .column {
+        max-width: 520px;
+    }
+
+    .item {
+        height: clamp(96px, 16vh, 140px); /* 🔥 larger */
+        font-size: 32px;
+    }
+
+    .left-img {
+        width: 80px;
+        height: 90px;
     }
 }

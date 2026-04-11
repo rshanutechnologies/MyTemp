@@ -91,12 +91,15 @@ function render() {
     div.id = o.id;
     div.innerHTML = `<span class="option-emoji">${o.emoji}</span><span class="option-label">${o.label}</span>`;
 
+    // if (!shouldBeDisabled) {
+    //   div.draggable = true;
+    //   div.ondragstart = (e) => {
+    //     e.dataTransfer.setData("text", e.target.closest(".option-card").id);
+    //   };
+    // }
     if (!shouldBeDisabled) {
-      div.draggable = true;
-      div.ondragstart = (e) => {
-        e.dataTransfer.setData("text", e.target.closest(".option-card").id);
-      };
-    }
+  div.onclick = () => handleOptionClick(o, div);
+}
     optBox.appendChild(div);
   });
 
@@ -108,47 +111,47 @@ function render() {
   updateUI();
 }
 
-function allowDrop(ev) {
-  ev.preventDefault();
-  ev.currentTarget.classList.add("hover");
-}
+// function allowDrop(ev) {
+//   ev.preventDefault();
+//   ev.currentTarget.classList.add("hover");
+// }
 
 // Remove hover on leave
 document.querySelectorAll(".drop-box").forEach((box) => {
   box.ondragleave = (e) => e.currentTarget.classList.remove("hover");
 });
 
-function drop(ev) {
-  ev.preventDefault();
-  const zone = ev.currentTarget;
-  zone.classList.remove("hover");
-  if (zone.classList.contains("filled")) return;
+// function drop(ev) {
+//   ev.preventDefault();
+//   const zone = ev.currentTarget;
+//   zone.classList.remove("hover");
+//   if (zone.classList.contains("filled")) return;
 
-  const id = ev.dataTransfer.getData("text");
-  const q = questions[index];
+//   const id = ev.dataTransfer.getData("text");
+//   const q = questions[index];
 
-  if (q.answers.includes(id)) {
-    state[index].selected.push(id);
-    const optionData = q.options.find((o) => o.id === id);
-    showInDropZone(optionData, zone);
-    speak("Correct");
-    showPopup(true);
+//   if (q.answers.includes(id)) {
+//     state[index].selected.push(id);
+//     const optionData = q.options.find((o) => o.id === id);
+//     showInDropZone(optionData, zone);
+//     speak("Correct");
+//     showPopup(true);
 
-    if (state[index].selected.length === q.answers.length) {
-      state[index].completed = true;
-      score++;
-      setTimeout(render, 500);
-      if (index === questions.length - 1) setTimeout(showFinal, 1600);
-    } else {
-      render();
-    }
-  } else {
-    speak("Wrong");
-    showPopup(false);
-    zone.classList.add("error");
-    setTimeout(() => zone.classList.remove("error"), 500);
-  }
-}
+//     if (state[index].selected.length === q.answers.length) {
+//       state[index].completed = true;
+//       score++;
+//       setTimeout(render, 500);
+//       if (index === questions.length - 1) setTimeout(showFinal, 1600);
+//     } else {
+//       render();
+//     }
+//   } else {
+//     speak("Wrong");
+//     showPopup(false);
+//     zone.classList.add("error");
+//     setTimeout(() => zone.classList.remove("error"), 500);
+//   }
+// }
 
 function showInDropZone(option, target) {
   target.innerHTML = `<span style="font-size:30px; margin-right:15px">${option.emoji}</span>
@@ -159,7 +162,7 @@ function showInDropZone(option, target) {
 function resetDropZone(id) {
   const zone = document.getElementById(id);
   zone.classList.remove("filled");
-  zone.innerHTML = `<span class="drop-hint">Drag and Drop here</span>`;
+  zone.innerHTML = `<span class="drop-hint">Click an option</span>`;
 }
 
 function updateUI() {
@@ -172,6 +175,58 @@ function updateUI() {
 function changeQuestion(step) {
   index += step;
   render();
+}
+
+function handleOptionClick(option, element) {
+  const q = questions[index];
+
+  // already filled both
+  if (state[index].selected.length >= 2) return;
+
+  // already selected
+  if (state[index].selected.includes(option.id)) return;
+
+  // find empty drop box
+  let target;
+  if (!document.getElementById("drop1").classList.contains("filled")) {
+    target = document.getElementById("drop1");
+  } else if (!document.getElementById("drop2").classList.contains("filled")) {
+    target = document.getElementById("drop2");
+  } else {
+    return;
+  }
+
+  // ✅ CORRECT
+  if (q.answers.includes(option.id)) {
+    state[index].selected.push(option.id);
+
+    showInDropZone(option, target);
+
+    speak("Correct");
+    showPopup(true);
+
+    if (state[index].selected.length === q.answers.length) {
+      state[index].completed = true;
+      score++;
+
+      setTimeout(render, 500);
+
+      if (index === questions.length - 1) {
+        setTimeout(showFinal, 1600);
+      }
+    } else {
+      render();
+    }
+  }
+
+  // ❌ WRONG
+  else {
+    speak("Wrong");
+    showPopup(false);
+
+    element.classList.add("error");
+    setTimeout(() => element.classList.remove("error"), 500);
+  }
 }
 
 /* POPUPS */

@@ -886,3 +886,118 @@ button:disabled {
   }
 
 }
+
+/* ===================================== */
+/* ===== 1280px PURE SIZE UPGRADE ===== */
+/* ===================================== */
+
+@media (min-width: 1280px) {
+
+  /* MAIN WRAPPER */
+  .main {
+    width: 1000px;
+  }
+
+  /* CARD */
+  .card {
+    padding: 40px;
+  }
+
+  /* HEADER */
+  .header span {
+    font-size: 50px !important;
+  }
+
+  /* TITLE BOX */
+  .title-box {
+    font-size: 36px;
+    padding: 18px 40px;
+  }
+
+  /* QUESTION */
+  .question {
+    font-size: 44px;
+    height: 120px;
+    margin-top: 30px;
+  }
+
+  /* LETTER INPUTS */
+  .letters {
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .letters input {
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+    border-radius: 14px;
+  }
+
+  /* IMAGE */
+  .image-box img {
+    width: 320px;
+    height: 260px;
+  }
+
+  /* ACTION BUTTON ROW */
+  .action-row {
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  /* NAV BUTTONS */
+  .nav {
+    margin-top: 70px;
+  }
+
+  .nav button,
+  .submit {
+    width: 180px;
+    height: 70px;
+    font-size: 22px;
+    border-radius: 40px;
+  }
+  button{
+     outline: 5px solid white;
+  }
+
+  /* POPUP */
+  .popup-content {
+    max-width: 520px;
+    padding: 30px;
+  }
+
+  .popup-icon {
+    font-size: 6em;
+  }
+
+  .popup-content h3 {
+    font-size: 2.2em;
+  }
+
+  .popup-content p {
+    font-size: 1.5em;
+  }
+
+  /* FINAL POPUP */
+  .finalpopup-box {
+    padding: 30px 40px;
+  }
+
+  .final-heading {
+    font-size: 2.4em;
+  }
+
+  #stars {
+    font-size: 50px;
+  }
+
+  .playAgain-btn {
+    width: 180px;
+    height: 60px;
+    font-size: 18px;
+    border-radius: 30px;
+  }
+
+}

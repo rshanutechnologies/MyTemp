@@ -730,16 +730,77 @@ pointer-events:none;
 }
 
 /* Medium desktops */
-@media (min-width: 1280px) {
- body{
-    margin-top: -3%;
-  }
-  .nav{
-    margin-top:-4%;
+/* 🔥 FULL SYSTEM 1280px */
+@media (min-width:1280px){
   
-}
-}
+  body{
+    margin-left: -5% !important;
+    /* background-color: yellow !important; */
+  }
+  /* MAIN QUIZ */
+  .quiz{
+    width: 1200px;
+    height: 720px;
+    padding: 30px;
+  }
 
+  /* QUESTION (MAIN RULE) */
+  .question{
+    font-size: 44px;
+    min-height: 140px;
+    line-height: 1.4;
+  }
+
+  /* OPTIONS BIG */
+  .option{
+    height: 220px;
+  }
+
+  .option img{
+    width: 300px !important;
+    height: 300px !important;
+  }
+  #questionImg{
+     width: 300px !important;
+    height: 300px !important;
+    /* background-color: yellow !important; */
+    margin-top: -5% !important;
+  }
+
+  /* 🔥 NAV BUTTONS SAME */
+  .prev,
+  .next,
+  .restart,
+  .home{
+    width: 180px;
+    height: 70px;
+    font-size: 26px;
+  }
+
+  /* NAV SPACING */
+  .nav{
+    gap: 40px;
+  }
+
+  /* 🔥 POPUP SAME SYSTEM */
+  .popup-title,
+  .popup-msg,
+  .popup-correct,
+  .popup-wrong,
+  .popup-final-content,
+  .final-heading{
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .popup-content,
+  .popup-box,
+  .finalpopup-box{
+    width: 520px;
+    padding: 50px;
+  }
+
+}
 /* Large desktops */
 @media (min-width: 1440px) {
    body{

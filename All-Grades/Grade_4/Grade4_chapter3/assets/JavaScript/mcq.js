@@ -124,6 +124,50 @@ function stars() {
   });
 }
 
+function handleOptionClick(option, element) {
+  if (answered[idx]) return;
+
+  const correctAnswer = data[idx].correct;
+
+  // ✅ CORRECT
+  if (option.t === correctAnswer) {
+    answered[idx] = true;
+
+    drop.querySelector(".drop-inner").textContent = option.t;
+    drop.classList.add("correct");
+
+    // lock all options
+    document.querySelectorAll(".option").forEach((o) => {
+      o.classList.add("locked");
+      if (o.dataset.v === option.t) {
+        o.classList.add("correct");
+      }
+    });
+
+    score++;
+    stars();
+    speak("Correct");
+    showPopup(true);
+
+    if (idx === data.length - 1) {
+      setTimeout(showFinal, 1600);
+    } else {
+      next.disabled = false;
+    }
+  }
+
+  // ❌ WRONG
+  else {
+    speak("Wrong");
+    showPopup(false);
+
+    element.style.transform = "translateX(-6px)";
+    setTimeout(() => {
+      element.style.transform = "translateX(0)";
+    }, 200);
+  }
+}
+
 function load() {
   document.getElementById("qIndex").textContent = `Q${idx + 1}.`;
   document.getElementById("qText").textContent = data[idx].q;
@@ -134,7 +178,7 @@ function load() {
     drop.classList.add("correct");
     drop.querySelector(".drop-inner").textContent = data[idx].correct;
   } else {
-    drop.querySelector(".drop-inner").textContent = "Drop your answer here";
+    drop.querySelector(".drop-inner").textContent = "Click on an option";
   }
 
   document.getElementById("questionImg").src = data[idx].img;
@@ -145,8 +189,9 @@ function load() {
   data[idx].options.forEach((o, i) => {
     const d = document.createElement("div");
     d.className = "option";
-    d.draggable = !answered[idx];
+    // d.draggable = !answered[idx];
     d.dataset.v = o.t;
+    d.onclick = () => handleOptionClick(o, d);
 
     const c = optionColors[i % optionColors.length];
     d.style.background = c.bg;
@@ -159,7 +204,7 @@ function load() {
       <span>${o.t}</span>
     `;
 
-    d.ondragstart = (e) => e.dataTransfer.setData("text", o.t);
+    // d.ondragstart = (e) => e.dataTransfer.setData("text", o.t);
 
     if (answered[idx]) {
       d.classList.add("locked");
@@ -172,35 +217,35 @@ function load() {
   prev.disabled = idx === 0;
 }
 
-drop.ondragover = (e) => e.preventDefault();
-drop.ondrop = (e) => {
-  e.preventDefault();
-  if (answered[idx]) return;
-  const v = e.dataTransfer.getData("text");
-  if (v === data[idx].correct) {
-    answered[idx] = true;
-    drop.querySelector(".drop-inner").textContent = v;
-    drop.classList.add("correct");
+// drop.ondragover = (e) => e.preventDefault();
+// drop.ondrop = (e) => {
+//   e.preventDefault();
+//   if (answered[idx]) return;
+//   const v = e.dataTransfer.getData("text");
+//   if (v === data[idx].correct) {
+//     answered[idx] = true;
+//     drop.querySelector(".drop-inner").textContent = v;
+//     drop.classList.add("correct");
 
-    if (idx === data.length - 1) {
-      setTimeout(showFinal, 1600);
-    } else {
-      next.disabled = false;
-    }
+//     if (idx === data.length - 1) {
+//       setTimeout(showFinal, 1600);
+//     } else {
+//       next.disabled = false;
+//     }
 
-    document.querySelectorAll(".option").forEach((o) => {
-      o.classList.add("locked");
-      if (o.dataset.v === v) o.classList.add("correct");
-    });
-    score++;
-    stars();
-    speak("Correct");
-    showPopup(true);
-  } else {
-    speak("Wrong");
-    showPopup(false);
-  }
-};
+//     document.querySelectorAll(".option").forEach((o) => {
+//       o.classList.add("locked");
+//       if (o.dataset.v === v) o.classList.add("correct");
+//     });
+//     score++;
+//     stars();
+//     speak("Correct");
+//     showPopup(true);
+//   } else {
+//     speak("Wrong");
+//     showPopup(false);
+//   }
+// };
 
 function restartQuiz() {
   idx = 0;

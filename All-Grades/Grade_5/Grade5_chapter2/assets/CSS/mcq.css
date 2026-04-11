@@ -547,10 +547,10 @@ button:disabled {
 
 }
 
-
+/* 
 @media (min-width:1000px){
    
-/* OPTIONS */
+
 .options {
     flex: 1;
     display: flex;
@@ -579,7 +579,7 @@ button:disabled {
     width: 96px !important;
     height: 90px !important;
 }
-}
+} */
 
 
 @media (max-width: 380px) {
@@ -597,5 +597,112 @@ button:disabled {
         width: 24px;
         height: auto;
     }
+
+}
+
+@media (min-width: 1380px) {
+
+  /* ❌ REMOVE SCALE */
+  .quiz{
+    transform: none;
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+
+  /* ✅ QUESTION (IMPORTANT SYSTEM) */
+  .question{
+    font-size: 44px;
+    min-height: 90px;
+    margin-bottom: 30px;
+  }
+
+  /* ✅ CONTENT */
+  .content{
+    gap: 10px;
+    margin-top: 0;
+  }
+
+  /* ✅ LEFT IMAGE */
+  .left img{
+    width: 180px;
+    height: 180px;
+  }
+
+  /* ✅ DROP BOX */
+  .drop-box{
+    height: 160px;
+    font-size: 26px;
+  }
+
+  /* ✅ OPTIONS */
+  .options{
+    gap: 10px;
+  }
+
+  .option{
+    width: 600px;
+    height: 90px;
+    font-size: 24px;
+    border-radius: 26px;
+  }
+
+  .option img{
+    width: 90px;
+    height: 90px;
+  }
+
+  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
+  .controls button{
+    width: 180px;
+    height: 70px;
+    font-size: 24px;
+    border-radius: 999px;
+  }
+
+  /* ✅ CONTROLS FIX */
+  .controls{
+    justify-content: center;
+    gap: 120px;
+    margin-top: 10px;
+  }
+
+  /* ✅ POPUP */
+  .popup-content{
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .popup-icon{
+    font-size: 100px;
+  }
+
+  .popup-content h3{
+    font-size: 34px;
+  }
+
+  .popup-content p{
+    font-size: 24px;
+  }
+
+  /* ✅ FINAL POPUP */
+  .finalpopup-box{
+    width: 600px;
+    padding: 40px;
+  }
+
+  .final-heading{
+    font-size: 34px;
+  }
+
+  #stars{
+    font-size: 50px;
+  }
+
+  .playAgain-btn{
+    font-size: 20px;
+    padding: 14px 32px;
+  }
 
 }

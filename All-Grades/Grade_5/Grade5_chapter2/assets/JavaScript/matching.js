@@ -1,4 +1,4 @@
-let draggedToken = null;
+let selectedToken = null;
 let matches = 0;
 let score = 0;
 const total = 5;
@@ -20,63 +20,6 @@ function speak(t) {
 
   speechSynthesis.speak(msg);
 }
-
-document.querySelectorAll(".tokens .token").forEach((token) => {
-  token.addEventListener("dragstart", (e) => {
-    // Prevent dragging if already disabled
-    if (token.classList.contains("disabled")) {
-      e.preventDefault();
-      return;
-    }
-    draggedToken = token;
-    token.style.opacity = "0.5";
-  });
-  token.addEventListener("dragend", () => {
-    if (draggedToken) draggedToken.style.opacity = "1";
-  });
-});
-
-document.querySelectorAll(".slot").forEach((slot) => {
-  slot.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    if (!slot.classList.contains("filled")) slot.classList.add("drag-over");
-  });
-
-  slot.addEventListener("dragleave", () => slot.classList.remove("drag-over"));
-
-  slot.addEventListener("drop", (e) => {
-    slot.classList.remove("drag-over");
-    if (slot.classList.contains("filled") || !draggedToken) return;
-
-    if (draggedToken.dataset.match === slot.dataset.match) {
-      matches++;
-      document.getElementById("progressBar").style.width =
-        (matches / total) * 100 + "%";
-
-      slot.classList.add("filled");
-      slot.querySelector(".drop-zone").remove();
-
-      // 1. CLONE the token to put a copy in the slot
-const emoji = draggedToken.querySelector("span").cloneNode(true);
-emoji.style.fontSize = "32px"; // optional
-slot.appendChild(emoji);
-
-
-
-      // 2. DISABLE the original left-side token
-      draggedToken.classList.add("disabled");
-      draggedToken.setAttribute("draggable", "false");
-
-      speak("Correct!");
-      score++;
-      draggedToken = null;
-
-      if (matches === total) setTimeout(showFinal, 800);
-    } else {
-      speak("Wrong");
-    }
-  });
-});
 
 function showFinal() {
   const finalPopup = document.getElementById("finalPopup");
@@ -108,3 +51,54 @@ function showFinal() {
     }
   })();
 }
+
+document.querySelectorAll(".tokens .token").forEach((token) => {
+  token.addEventListener("click", () => {
+
+    if (token.classList.contains("disabled")) return;
+
+    // remove old selection
+    document.querySelectorAll(".token").forEach(t => t.classList.remove("active"));
+
+    selectedToken = token;
+    token.classList.add("active");
+
+  });
+});
+document.querySelectorAll(".slot").forEach((slot) => {
+  slot.addEventListener("click", () => {
+
+    if (!selectedToken) return;
+    if (slot.classList.contains("filled")) return;
+
+    if (selectedToken.dataset.match === slot.dataset.match) {
+
+      matches++;
+
+      document.getElementById("progressBar").style.width =
+        (matches / total) * 100 + "%";
+
+      slot.classList.add("filled");
+      slot.querySelector(".drop-zone").remove();
+
+      // MOVE ITEM
+      const emoji = selectedToken.querySelector("span").cloneNode(true);
+      emoji.style.fontSize = "32px";
+      slot.appendChild(emoji);
+
+      selectedToken.classList.add("disabled");
+      selectedToken.classList.remove("active");
+
+      speak("Correct!");
+      score++;
+
+      selectedToken = null;
+
+      if (matches === total) setTimeout(showFinal, 800);
+
+    } else {
+      speak("Wrong");
+    }
+
+  });
+});

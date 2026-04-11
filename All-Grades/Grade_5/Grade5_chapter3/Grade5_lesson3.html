@@ -176,6 +176,70 @@ iframe{
 }
 
 }
+
+/* ========================================= */
+/* 💻 1280px NAV – BIG BOX STYLE (PREMIUM) */
+/* ========================================= */
+
+@media (min-width:1280px){
+
+  /* ===== NAV AREA ===== */
+  .nav-area{
+    width:360px;
+    padding:60px 30px;
+    gap:1px !important;                 /* 🔥 SPACE BETWEEN BUTTONS */
+  }
+
+  /* ===== NAV BUTTON ===== */
+  .nav-btn{
+    width:100%;               /* 🔥 FULL BOX */
+    height:80px;              /* 🔥 BIGGER THAN BEFORE */
+    
+    display:flex;
+    align-items:center;
+    gap:20px;
+
+    padding:0 28px;
+    margin-bottom:20px;
+
+    border-radius:24px;
+
+    font-size:24px;
+    font-weight:500;
+
+    background:#ffffff;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+
+    transition: all 0.3s ease;
+  }
+
+  /* ICON BIG */
+  .nav-btn i{
+    font-size:26px;
+  }
+
+  /* HOVER EFFECT */
+  .nav-btn:hover{
+    transform:translateY(-4px) scale(1.02);
+    box-shadow:0 16px 35px rgba(0,0,0,0.18);
+  }
+
+  /* ACTIVE STATE (VERY IMPORTANT LOOK) */
+  .nav-btn.active{
+    color:#fff;
+    transform:scale(1.03);
+    box-shadow:0 12px 30px rgba(0,0,0,0.2);
+  }
+
+  /* KEEP YOUR COLORS BUT STRONGER */
+  .choose.active{ background:#ff4d6d; }
+  .fill.active{ background:#219ebc; }
+  .truefalse.active{ background:#06d6a0; }
+  .match.active{ background:#ffb703; }
+  .oneword.active{ background:#f72585; }
+  .label.active{ background:#7209b7; }
+
+}
 </style>
 </head>
 

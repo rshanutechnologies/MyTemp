@@ -246,6 +246,89 @@
         height: calc(100vh / 0.8);
       }
     }
+
+    /* ============================= */
+    /* Desktop / Monitor (1025–1440) */
+    /* ============================= */
+    @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+      .sidebar {
+        width: 300px;
+        padding: 26px 22px;
+        gap: 24px;
+      }
+
+      .island-btn {
+        font-size: clamp(16px, 1vw, 18px);
+        padding: 18px 22px;
+      }
+
+      .option-num {
+        width: 46px;
+        height: 46px;
+        font-size: 17px;
+      }
+    }
+
+    /* ============================= */
+    /* Large Monitors (1441–1920) */
+    /* ============================= */
+    @media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+      .sidebar {
+        width: 340px;
+        padding: 30px 26px;
+        gap: 28px;
+      }
+
+      .island-btn {
+        font-size: clamp(18px, 1.1vw, 21px);
+        padding: 20px 26px;
+        border-radius: 22px;
+      }
+
+      .option-left {
+        gap: 18px;
+      }
+
+      .option-num {
+        width: 52px;
+        height: 52px;
+        font-size: 19px;
+      }
+    }
+
+    /* ============================= */
+    /* Extra Large Screens / 4K */
+    /* ============================= */
+    @media screen and (min-width: 1921px) {
+
+      .sidebar {
+        width: 420px;
+        padding: 36px 30px;
+        gap: 36px;
+      }
+
+      .island-btn {
+        font-size: clamp(20px, 1.2vw, 26px);
+        padding: 24px 30px;
+        border-radius: 26px;
+      }
+
+      .option-left {
+        gap: 22px;
+      }
+
+      .option-num {
+        width: 62px;
+        height: 62px;
+        font-size: 22px;
+      }
+
+      iframe {
+        border-radius: 14px;
+      }
+    }
   </style>
 </head>
 

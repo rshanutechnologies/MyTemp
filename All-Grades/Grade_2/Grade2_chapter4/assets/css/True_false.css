@@ -430,18 +430,132 @@ body{
          width: 45px;
          right: 6px;
      }
+
+      .popup-box {
+        width: 92%;
+        padding: 20px;
+    }
+
+    .popup-emoji {
+        font-size: 60px;
+    }
+
+    .final-board {
+        width: 150px;
+        height: 150px;
+    }
+      .popup-box {
+    background: white;
+    padding: 28px;
+    border-radius: 28px;
+    width: 200px;
+    text-align: center;
+    animation: pop .4s ease;
+}
  }
 
- /* ===================================
-   DESKTOP ONLY SIZE REDUCE (-10%)
-=================================== */
- /* @media (min-width: 800px) {
 
-     .quiz {
-         transform: scale(0.9);
-         
-         transform-origin: center center;
-         margin-top: -2%;
-     }
 
- } */
+ /* ================= 1025px — 1440px ================= */
+/* @media screen and (min-width:1225px) and (max-width:1640px){
+
+.quiz{
+max-width:950px;
+}
+
+.question{
+font-size:40px;
+height:65px;
+}
+
+.animal-img{
+width:220px;
+height:220px;
+}
+
+.btn{
+font-size:40px;
+padding:34px 56px;
+}
+
+.nav button{
+font-size:28px;
+padding:10px 18px;
+}
+
+.monkey{
+width:60px;
+right:30px;
+}
+
+} */
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1350px) and (max-width:1920px){
+
+.quiz{
+max-width:1100px;
+}
+
+.question{
+font-size:44px;
+height:75px;
+}
+
+.animal-img{
+width:260px;
+height:270px;
+}
+
+.btn{
+font-size:45px;
+padding:34px 56px;
+}
+
+.nav button{
+font-size:28px;
+padding:12px 22px;
+}
+
+.monkey{
+width:70px;
+right:40px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.quiz{
+max-width:1100px;
+}
+
+.question{
+font-size:44px;
+height:75px;
+}
+
+.animal-img{
+width:260px;
+height:270px;
+}
+
+.btn{
+font-size:45px;
+padding:34px 56px;
+}
+
+.nav button{
+font-size:28px;
+padding:12px 22px;
+}
+
+.monkey{
+width:70px;
+right:40px;
+}
+
+}

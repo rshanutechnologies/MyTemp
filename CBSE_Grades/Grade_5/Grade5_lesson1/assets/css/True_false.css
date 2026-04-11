@@ -508,7 +508,104 @@ flex-wrap:nowrap;
 
 }
 
+.final{
+width:90%;
+padding:40px;
+}
+
+.final h2{
+font-size:26px;
+}
+
+.final h3{
+font-size:22px;
+}
+
+.star{
+font-size:36px;
+}
+
 }
 
 
 
+
+/* ================= 1400px ================= */
+@media screen and (min-width:1200px) and (max-width:1400px){
+
+.quiz{
+width:100%;
+max-width:1100px;
+height:auto;
+}
+
+.question{
+font-size:48px;
+margin-bottom: 5%;
+
+}
+
+.tf-btn{
+width:300px;
+height:120px;
+font-size:26px;
+}
+
+.imgbox img{
+width:290px;
+height:290px !important;
+}
+
+.nav{
+left:58%;
+gap:30px;
+}
+
+.nav button{
+font-size:28px;
+padding:20px 34px;
+}
+
+}
+
+
+/* ================= 1920px ================= */
+@media screen and (min-width:1401px){
+
+.quiz{
+width:1300px;
+height:520px;
+}
+
+.question{
+font-size:44px;
+}
+
+.tf-btn{
+width:380px;
+height:90px;
+font-size:32px;
+}
+
+.tf-btn .icon{
+width:54px;
+height:54px;
+font-size:26px;
+}
+
+.imgbox img{
+width:340px;
+height:320px !important;
+}
+
+.nav{
+left:65%;
+gap:45px;
+}
+
+.nav button{
+font-size:22px;
+padding:14px 32px;
+}
+
+}

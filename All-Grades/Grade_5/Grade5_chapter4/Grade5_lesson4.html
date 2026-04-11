@@ -26,9 +26,11 @@
     body {
       display: flex;
       flex-direction: column;
-      background: url('./assets/images/bg2.png');
+      /* background: url('./assets/images/bg2.png'); */
+      background: linear-gradient(180deg, #e9fbf4, #dff7ee) !important;
+      /* background-color: #FFF1EB !important; */
       background-size: 100% 100%;
-      /* background: radial-gradient(circle at top, #fff5fb, #ffe6f5); */
+      
     }
 
     /* ===== NAVIGATION AREA ===== */
@@ -40,7 +42,8 @@
       gap: 100px;
       padding: 15px 0px;
       /* background: rgba(255, 255, 255, 0.575); */
-      background: rgba(235, 255, 247, 0.692);
+      /* background: rgba(235, 255, 247, 0.692); */
+      background: transparent !important;
     }
 
     /* ===== BUTTON BASE ===== */
@@ -185,7 +188,7 @@
       border: none;
       display: block;
       /* background:white; */
-      background: rgba(235, 255, 247, 0.692) !important;
+      /* background: rgba(235, 255, 247, 0.692) !important; */
     }
 
     .left-structure {
@@ -263,6 +266,9 @@
         width: 100%;
         height: 100%;
       }
+        .top-index {
+        background: radial-gradient(circle at top, #fff5fb, #ffe6f5) !important;
+        }
     }
 
     @media (max-width:1100px) {
@@ -374,6 +380,64 @@
       }
 
     }
+
+    /* ===================================== */
+/* ===== 1280px PURE SIZE UPGRADE ===== */
+/* ===================================== */
+
+@media (min-width: 1280px) {
+
+  /* TOP NAV BAR */
+  .top-index {
+    gap: 140px;
+    padding: 20px 0;
+  }
+
+  /* BUTTON WRAPPER */
+  .index-btn {
+    width: 200px;
+    height: 80px;
+    gap: 25px;
+  }
+
+  /* SVG */
+  .body-svg {
+    width: 120px;
+    height: 100px;
+  }
+
+  /* TEXT BUTTON */
+  .nav-text {
+    width:300px;
+    height: 180px !important;
+    font-size: 30px;
+    border-radius: 24px;
+  }
+
+  /* HOVER SCALE (KEEP SAME STYLE JUST SMOOTH) */
+  .index-btn:hover .body-svg {
+    transform: scale(1.35);
+  }
+
+  /* ACTIVE */
+  .index-btn.active .body-svg {
+    transform: scale(1.45);
+  }
+
+ 
+
+ 
+
+  /* STRUCTURE TITLE (if used later) */
+  .structure-title {
+    font-size: 40px;
+  }
+
+  .structure-img {
+    width: 160px;
+  }
+
+}
   </style>
 </head>
 

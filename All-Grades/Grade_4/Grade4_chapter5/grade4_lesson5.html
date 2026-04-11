@@ -39,12 +39,12 @@
       gap: 22px;
     }
 
-    .sidebar-title {
+    /* .sidebar-title {
       font-size: 26px;
       font-weight: 700;
       color: #0f766e;
       margin-bottom: 10px;
-    }
+    } */
 
     /* ===== ZIG-ZAG PATH ===== */
     .path {
@@ -327,6 +327,99 @@
         height: calc(100vh / 0.88);
       }
     }
+
+    /* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+    @media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+      .sidebar {
+        width: 300px;
+        padding: 25px 12px;
+        justify-content: center;
+        gap: 18px;
+      }
+
+      .sidebar-title {
+        font-size: 24px;
+      }
+
+      .leaf {
+        width: 220px;
+        padding: 16px 18px;
+      }
+
+      .leaf h3 {
+        font-size: 16px;
+      }
+
+      .leaf p {
+        font-size: 13px;
+      }
+
+    }
+
+
+    /* ========================================
+   🖥️ Large Monitors (1441px – 1920px)
+======================================== */
+    @media screen and (min-width: 1441px) and (max-width: 1920px) {
+
+      .sidebar {
+        width: 420px;
+        padding: 35px 18px;
+        gap: 24px;
+      }
+
+      .sidebar-title {
+        font-size: 28px;
+      }
+
+      .leaf {
+        width: 300px;
+        padding: 30px 22px;
+      }
+
+      .leaf h3 {
+        font-size: 19px;
+      }
+
+      .leaf p {
+        font-size: 15px;
+      }
+
+    }
+
+
+    /* ========================================
+   📺 Extra Large Screens / 4K (1921px+)
+======================================== */
+    @media screen and (min-width: 1921px) {
+
+      .sidebar {
+        width: 450px;
+        padding: 40px 20px;
+        gap: 28px;
+      }
+
+      .sidebar-title {
+        font-size: 32px;
+      }
+
+      .leaf {
+        width: 330px;
+        padding: 35px 20px;
+      }
+
+      .leaf h3 {
+        font-size: 22px;
+      }
+
+      .leaf p {
+        font-size: 17px;
+      }
+
+    }
   </style>
 </head>
 
@@ -338,7 +431,7 @@
 
     <!-- SIDEBAR -->
     <div class="sidebar">
-      <div class="sidebar-title">Learning Quiz</div>
+      <!-- <div class="sidebar-title">Learning Quiz</div> -->
 
       <div class="path">
         <div class="leaf l1 active" onclick="openPage(0)">

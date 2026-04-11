@@ -33,7 +33,7 @@ body{
 .quiz-container{
   width:100%;
   max-width:1200px;
-   height:clamp(550px, 80vh, 750px);
+   height:clamp(550px, 80vh, 700px);
    
   position:relative;
   padding-bottom:clamp(80px, 10vh, 120px);
@@ -80,7 +80,7 @@ body{
   justify-content:center;
   flex-wrap:wrap;
   gap:clamp(10px, 2vw, 20px);
-  margin-top: -10px;
+  margin-top: -30px;
 }
 
 .option{
@@ -141,7 +141,7 @@ body{
 /* ================= BUTTONS ================= */
 .nav-btn{
  position:absolute;
-  bottom:45px;   /* 🔥 ALWAYS SAME POSITION */
+  bottom:50px;   /* 🔥 ALWAYS SAME POSITION */
 
   padding:clamp(10px, 1vw, 14px) clamp(26px, 3.5vw, 42px);
   font-size:clamp(16px, 1.5vw, 22px);
@@ -286,8 +286,8 @@ body{
 
   /* TEXT SMALL */
   .option p{
-    font-size:14px;
-    padding:6px 12px;
+    font-size:12px;
+    padding:4px 10px;
   }
 
   /* BUTTONS */
@@ -306,6 +306,147 @@ body{
 
 }
 
+
+/* ============================= */
+/* Desktop / Monitor (1025px–1440px) */
+/* ============================= */
+@media screen and (min-width:1025px) and (max-width:1440px){
+
+  .quiz-container{
+    max-width:1100px;
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:40px;
+    min-height:90px;
+  }
+
+  /* IMAGE */
+  .question-image img{
+    width:280px;
+  }
+
+  /* OPTIONS */
+  .options{
+    gap:18px;
+  }
+
+  .circle{
+    width:160px;
+    height:160px;
+  }
+
+  .circle img{
+    width:60%;
+  }
+
+  .option p{
+    font-size:22px;
+    padding:8px 18px;
+  }
+
+  /* BUTTONS */
+  .nav-btn{
+    font-size:22px;
+    padding:12px 28px;
+  }
+
+}
+
+/* ============================= */
+/* Large Monitors (1441px–1920px) */
+/* ============================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+  .quiz-container{
+    max-width:1300px;
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:40px;   /* 🔥 bigger */
+    min-height:110px;
+  }
+
+  /* IMAGE */
+  .question-image img{
+    width:380px;
+  }
+
+  /* OPTIONS */
+  .options{
+    gap:25px;
+  }
+
+  .circle{
+    width:200px;
+    height:200px;
+  }
+
+  .circle img{
+    width:80%;
+  }
+
+  .option p{
+    font-size:28px;
+    padding:14px 28px;
+  }
+
+  /* BUTTONS */
+  .nav-btn{
+    font-size:22px;
+    padding:14px 36px;
+  }
+
+}
+
+/* ============================= */
+/* Extra Large Screens / 4K (1921px+) */
+/* ============================= */
+@media screen and (min-width:1921px){
+
+  .quiz-container{
+    max-width:1500px;
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:52px;
+    min-height:130px;
+  }
+
+  /* IMAGE */
+  .question-image img{
+    width:450px;
+  }
+
+  /* OPTIONS */
+  .options{
+    gap:30px;
+  }
+
+  .circle{
+    width:240px;
+    height:240px;
+  }
+
+  .circle img{
+    width:85%;
+  }
+
+  .option p{
+    font-size:34px;
+    padding:18px 36px;
+  }
+
+  /* BUTTONS */
+  .nav-btn{
+    font-size:26px;
+    padding:16px 42px;
+  }
+
+}
 
 </style>
 </head>

@@ -5,19 +5,35 @@
     font-family: 'Livvic', sans-serif;
 }
 
+/* FULL SCREEN */
 body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center; /* ✅ always center */
+    align-items: center;
     overflow: hidden;
 }
 
+/* MAIN */
 .game {
-    width: min(900px, 95vw);
+    width: min(1200px, 95vw); /* 🔥 increased */
     border-radius: 30px;
     padding: clamp(20px, 3vw, 30px);
     position: relative;
+}
+
+/* 🔥 SCALE FOR BIG SCREENS */
+@media (min-width:1200px) {
+    .game {
+        transform: scale(1.15);
+        transform-origin: center;
+    }
+}
+
+@media (min-width:1400px) {
+    .game {
+        transform: scale(1.18);
+    }
 }
 
 .quiz-type {
@@ -42,9 +58,10 @@ body {
 /* QUESTION */
 .question-box {
     padding: clamp(10px, 2vw, 30px);
-    font-size: clamp(22px, 3vw, 30px);
+    font-size: 30px;
+    font-weight: 500;
     color: #2f4f4f;
-    min-height: clamp(50px, 10vh, 80px);
+    min-height: clamp(60px, 10vh, 90px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,25 +77,25 @@ body {
 }
 
 .question-image img {
-    width: clamp(180px, 30vw, 280px);
-    height: clamp(140px, 25vh, 230px);
+    width: clamp(220px, 30vw, 360px); /* 🔥 bigger */
+    height: clamp(170px, 26vh, 300px);
     object-fit: contain;
 }
 
 /* ANSWERS */
 .answers {
-    width: 80%;
+    width: 70%; /* 🔥 more spread */
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(12px, 2vw, 25px);
-    margin-top: clamp(10px, 2vw, 20px);
+    gap: clamp(18px, 2vw, 35px);
+    margin-top: clamp(20px, 2vw, 30px);
     margin-inline: auto;
 }
 
 .answer {
-    height: clamp(70px, 12vh, 100px);
+    height: clamp(80px, 12vh, 110px); /* 🔥 bigger */
     border-radius: 30px;
-    font-size: clamp(18px, 2.5vw, 30px);
+    font-size: clamp(17px, 2vw, 20px);
     font-weight: 600;
     border: none;
     cursor: pointer;
@@ -111,12 +128,12 @@ body {
 .nav {
     display: flex;
     justify-content: space-between;
-    margin-top: clamp(15px, 3vh, 30px);
+    margin-top: clamp(25px, 3vh, 40px);
 }
 
 .nav button {
-    width: clamp(90px, 12vw, 140px);
-    height: clamp(40px, 7vh, 55px);
+    width: clamp(110px, 14vw, 170px); /* 🔥 bigger */
+    height: clamp(50px, 8vh, 65px);
 
     display: flex;
     justify-content: center;
@@ -188,29 +205,19 @@ body {
 .kid-card p {
     font-size: 1.2em;
 }
+
 .kid-correct .kid-card {
    background: #e6fffa;
     border: 6px solid #38d9a9;
 }
 
+.kid-wrong .kid-card {
+    background: #fff5f5;
+    border: 6px solid #ffa8a8;
+}
+
 /* FINAL POPUP (UNCHANGED) */
-/* #finalPopup {
-    position: fixed;
-    inset: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 4000;
-}
-
-.final-kid-box {
-    background: linear-gradient(135deg, #fff7d6, #e6fff5);
-    padding: 30px 35px;
-    border-radius: 35px;
-    text-align: center;
-    width: 450px;
-} */
- #finalPopup {
+#finalPopup {
     position: fixed;
     inset: 0;
     display: none;
@@ -226,7 +233,7 @@ body {
     text-align: center;
     width: 450px;
 }
-/* 🔥 spacing inside final popup */
+
 .final-kid-box h2 {
     margin-bottom: 18px;
 }
@@ -239,7 +246,6 @@ body {
     margin-bottom: 18px;
 }
 
-/* 🔥 play button style */
 .playAgain-btn {
     background: #22c55e;
     color: #ffffff;
@@ -249,25 +255,35 @@ body {
     font-size: clamp(14px, 2vw, 18px);
     cursor: pointer;
 }
-.kid-wrong .kid-card {
-    background: #fff5f5;
-    border: 6px solid #ffa8a8;
-}
 
-
-/* 🔥 SINGLE MEDIA QUERY */
+/* RESPONSIVE */
 @media (max-width:900px) {
 
     body {
         padding: 10px;
-        align-items: center; /* ✅ keep centered */
     }
 
     .game {
         width: 100%;
+        transform: scale(1);
     }
 
     .answers {
         width: 100%;
+    }
+
+    .question-box {
+        font-size: clamp(22px, 5vw, 26px);
+    }
+}
+
+@media (max-width:480px) {
+
+    .question-box {
+        font-size: clamp(20px, 5vw, 24px);
+    }
+
+    .answer {
+        font-size: clamp(17px, 4vw, 19px);
     }
 }

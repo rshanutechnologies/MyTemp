@@ -708,7 +708,7 @@ body {
 }
 
 @media (max-width:370px){
- @media (max-width:370px){
+
 
   body {
     overflow: hidden; /* ❌ NO SCROLL */
@@ -739,9 +739,52 @@ body {
     font-size: 14px;
   }
 
+   .winner-img {
+    width: 150px;
+    height: 150px;
+  }
+    .final-box {
+      width: 300px;
+      border-radius: 28px;
+      padding: 15px 18px;
+      text-align: center;
+      background: white;
+      animation: popupZoom 0.5s ease;
+    }
+
+     .final-title {
+      font-size: 20px;
+      font-weight: 900;
+      margin: 8px 0;
+    }
+
+    .final-score {
+      font-size: 17px;
+      font-weight: 900;
+      margin: 10px 0 6px;
+      color: #0284c7;
+    }
+
+    .final-stars {
+      font-size: 24px;
+      margin: 10px 0 20px;
+    }
+
+    .restart-btn {
+      padding: 14px 32px;
+      border-radius: 30px;
+      border: none;
+      background: #ff9f43;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
 }
+
   
-}
+
 
 /* ================= TABLET (KEEP 2 COLUMNS) ================= */
 @media (min-width:900px) {
@@ -752,5 +795,126 @@ body {
     gap: 18px;
   }
   
+
+}
+
+
+
+/* ================= 1025px — 1440px ================= */
+@media screen and (min-width:1225px) and (max-width:1640px){
+
+.wrap{
+max-width:1350px;
+}
+
+.topbar{
+  justify-content: space-between;
+  margin-top: -200px;
+  margin-bottom: 80px;
+}
+.board{
+gap:80px;
+}
+
+#questions,
+#answers{
+grid-template-rows:repeat(4,90px);
+gap: 50px;
+}
+
+.piece{
+height:120px;
+font-size:28px;
+}
+
+.q-piece{
+
+}
+
+.a-piece{
+
+
+}
+
+.title,
+.score{
+font-size:20px;
+}
+
+}
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.wrap{
+max-width:1200px;
+}
+
+.board{
+gap:26px;
+}
+
+#questions,
+#answers{
+grid-template-rows:repeat(4,105px);
+}
+
+.piece{
+height:105px;
+font-size:22px;
+}
+
+.q-piece{
+font-size:22px;
+}
+
+.a-piece{
+height:105px;
+font-size:26px;
+}
+
+.title,
+.score{
+font-size:23px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.wrap{
+max-width:1350px;
+}
+
+.board{
+gap:32px;
+}
+
+#questions,
+#answers{
+grid-template-rows:repeat(4,120px);
+}
+
+.piece{
+height:120px;
+font-size:24px;
+}
+
+.q-piece{
+font-size:24px;
+}
+
+.a-piece{
+height:120px;
+font-size:28px;
+}
+
+.title,
+.score{
+font-size:26px;
+}
 
 }
