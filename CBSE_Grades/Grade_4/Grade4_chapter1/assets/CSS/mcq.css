@@ -168,7 +168,7 @@ body::before{
 
 /* ===================== QUESTION BOX ===================== */
 
-.question-box{
+/* .question-box{
     width:min(780px, 92vw);
     border-radius:22px;
     padding:22px 18px 18px;
@@ -177,6 +177,17 @@ body::before{
     display:flex;
     align-items:flex-start;
     
+} */
+ .question-box{
+  width:min(780px, 92vw);
+  border-radius:22px;
+  padding:22px 18px 18px;
+  margin-top:18px;
+  min-height:100px;
+
+  display:flex;
+  flex-direction:column;   /* 🔥 ADD THIS */
+  align-items:center;      /* 🔥 CENTER EVERYTHING */
 }
 
 .q-emoji-wrap{
@@ -201,6 +212,12 @@ body::before{
     /* color:#2f4f4f !important; */
 color: black;
     text-align:center;
+}
+.question-img{
+  display:block;
+  margin:12px auto 0;
+  max-width:200px;
+  height:auto;
 }
 
 
@@ -594,8 +611,9 @@ color: black;
     align-items:center;
     text-align:center;
     padding:18px;
-    margin-top:10px;
+    margin-top:40px;
   }
+  
 
   .question-text,
   .question-text *{

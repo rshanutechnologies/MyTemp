@@ -89,6 +89,7 @@
       
       color: #2f4f4f;
       margin-top: -10px;
+      margin-bottom: 2%;
     }
 
     #quiz-main {
@@ -103,8 +104,8 @@
     }
 
     .drop-box {
-      width: clamp(200px, 45vw, 280px);
-      height: clamp(140px, 25vh, 200px);
+      width: 150px;
+      height: 100px;
       border: 4px dashed #444;
       border-radius: 30px;
       display: flex;
@@ -526,7 +527,7 @@
     /* =========================================
 🖥 LARGE MONITORS (1441px – 1920px)
 ========================================= */
-    @media screen and (min-width: 1441px) and (max-width: 1920px) {
+    @media screen and (min-width: 1350px) and (max-width: 1920px) {
 
       .app {
         max-width: 1400px;
@@ -560,7 +561,7 @@
     /* =========================================
 🖥 4K / EXTRA LARGE (1921px+)
 ========================================= */
-    @media screen and (min-width: 1921px) {
+    /* @media screen and (min-width: 1921px) {
 
       .app {
         max-width: 1600px;
@@ -596,7 +597,7 @@
         height: 60px;
         font-size: 1.5rem;
       }
-    }
+    } */
   </style>
 </head>
 
@@ -607,7 +608,7 @@
         <div id="q-counter" class="q-counter">Question 1 of 4</div>
         <button class="read-btn" onclick="readQuestion()">🔊</button>
       </div>
-      <p>Drag and drop the answer in given space</p>
+      <p>Click The answer in given space</p>
       <div id="q-text" class="q-text">Loading...</div>
     </div>
 
@@ -626,177 +627,169 @@
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
-    // Added state tracking to the quiz objects
-    const quiz = [
-      {
-        text: "Give one example for a living thing.", answer: "cat", isCorrect: false, userImg: null,
-        options: [
-          { id: "cat", img: "../uploads/cat.png", label: "Cat" },
-          { id: "rock", img: "../uploads/rock-img.png", label: "Rock" },
-          { id: "car", img: "../uploads/car-img.png", label: "Car" }]
-      },
+   const quiz = [
+  {
+    text: "Give one example for a living thing.", answer: "cat", isCorrect: false, userImg: null,
+    options: [
+      { id: "cat", img: "../uploads/cat.png", label: "Cat" },
+      { id: "rock", img: "../uploads/rock-img.png", label: "Rock" },
+      { id: "car", img: "../uploads/car-img.png", label: "Car" }]
+  },
+  {
+    text: "Give one example for a non-living thing.", answer: "book", isCorrect: false, userImg: null,
+    options: [
+      { id: "tree", img: "../uploads/tree-img.png", label: "Tree" },
+      { id: "book", img: "../uploads/book.png", label: "Book" },
+      { id: "bird", img: "../uploads/bird-img.png", label: "Bird" }]
+  },
+  {
+    text: "Give one example for a natural non-living thing.", answer: "rock", isCorrect: false, userImg: null,
+    options: [
+      { id: "rock", img: "../uploads/rock-img.png", label: "Rock" },
+      { id: "car", img: "../uploads/car-img.png", label: "Car" },
+      { id: "dog", img: "../uploads/dog-img.png", label: "Dog" }]
+  },
+  {
+    text: "Give one example for a man-made thing.", answer: "chair", isCorrect: false, userImg: null,
+    options: [
+      { id: "chair", img: "../uploads/chair-img.png", label: "Chair" },
+      { id: "tree", img: "../uploads/tree-img.png", label: "Tree" },
+      { id: "cow", img: "../uploads/cow-img.png", label: "Cow" }]
+  }
+];
 
-      {
-        text: "Give one example for a non-living thing.", answer: "book", isCorrect: false, userImg: null,
-        options: [
-          { id: "tree", img: "../uploads/tree-img.png", label: "Tree" },
-          { id: "book", img: "../uploads/book.png", label: "Book" },
-          { id: "bird", img: "../uploads/bird-img.png", label: "Bird" }]
-      },
+let current = 0;
 
-      {
-        text: "Give one example for a natural non-living thing.", answer: "rock", isCorrect: false, userImg: null,
-        options: [
-          { id: "rock", img: "../uploads/rock-img.png", label: "Rock" },
-          { id: "car", img: "../uploads/car-img.png", label: "Car" },
-          { id: "dog", img: "../uploads/dog-img.png", label: "Dog" }]
-      },
+const qCounter = document.getElementById("q-counter");
+const qText = document.getElementById("q-text");
+const dropBox = document.getElementById("dropBox");
+const optionsGrid = document.getElementById("options-grid");
+const nextBtn = document.getElementById("nextBtn");
+const backBtn = document.getElementById("backBtn");
+const smiley = document.getElementById("smiley");
 
-      {
-        text: "Give one example for a man-made thing.", answer: "chair", isCorrect: false, userImg: null,
-        options: [
-          { id: "chair", img: "../uploads/chair-img.png", label: "Chair" },
-          { id: "tree", img: "../uploads/tree-img.png", label: "Tree" },
-          { id: "cow", img: "../uploads/cow-img.png", label: "Cow" }]
-      }
-    ];
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-    let current = 0, dragged = null;
-    const qCounter = document.getElementById("q-counter");
-    const qText = document.getElementById("q-text");
-    const dropBox = document.getElementById("dropBox");
-    const optionsGrid = document.getElementById("options-grid");
-    const nextBtn = document.getElementById("nextBtn");
-    const backBtn = document.getElementById("backBtn");
-    const smiley = document.getElementById("smiley");
+/* TEXT TO SPEECH */
+function readQuestion() {
+  const utterance = new SpeechSynthesisUtterance(quiz[current].text);
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utterance);
+}
 
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+/* SOUND */
+function playSound(isSuccess) {
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.connect(gain); gain.connect(audioCtx.destination);
+  osc.frequency.value = isSuccess ? 800 : 110;
+  gain.gain.value = 0.1;
+  osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+}
 
-    // TEXT TO SPEECH LOGIC
-    function readQuestion() {
-      const utterance = new SpeechSynthesisUtterance(quiz[current].text);
-      const voices = window.speechSynthesis.getVoices();
-      const indianVoice = voices.find(v => v.lang === 'en-IN' || v.name.includes('India'));
-      if (indianVoice) utterance.voice = indianVoice;
-      utterance.rate = 0.9;
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(utterance);
-    }
+/* FEEDBACK */
+function showFeedback(isHappy) {
+  smiley.innerHTML = isHappy ? "🤩" : "😢";
+  smiley.classList.add("show");
+  setTimeout(() => smiley.classList.remove("show"), 1000);
+}
 
-    // Ensure voices are loaded for Chrome
-    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+/* RENDER */
+function render() {
+  const q = quiz[current];
 
-    function playSound(isSuccess) {
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain); gain.connect(audioCtx.destination);
-      osc.type = isSuccess ? "sine" : "sawtooth";
-      osc.frequency.setValueAtTime(isSuccess ? 800 : 110, audioCtx.currentTime);
-      gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-      osc.start(); osc.stop(audioCtx.currentTime + 0.3);
-    }
+  qCounter.textContent = `Question ${current + 1} of ${quiz.length}`;
+  qText.textContent = q.text;
 
-    function showFeedback(isHappy) {
-      smiley.innerHTML = isHappy ? "🤩" : "😢";
-      smiley.classList.add("show");
-      setTimeout(() => smiley.classList.remove("show"), 1000);
-    }
+  if (q.isCorrect) {
+    dropBox.innerHTML = `<img src="${q.userImg}">`;
+    dropBox.classList.add("locked");
+    nextBtn.style.visibility = (current === quiz.length - 1) ? "hidden" : "visible";
+  } else {
+    dropBox.innerHTML = "DROP HERE";
+    dropBox.classList.remove("locked");
+    nextBtn.style.visibility = "hidden";
+  }
 
-    function render() {
-      const q = quiz[current];
-      qCounter.textContent = `Question ${current + 1} of ${quiz.length}`;
-      qText.textContent = q.text;
+  backBtn.style.visibility = current === 0 ? "hidden" : "visible";
 
-      // UI Reset or Lock based on stored state
-      if (q.isCorrect) {
+  optionsGrid.innerHTML = q.options.map(o => `
+    <div class="opt-wrapper">
+      <div class="option ${q.isCorrect ? 'locked' : ''}" data-id="${o.id}">
+        <img src="${o.img}">
+      </div>
+      <div class="opt-label">${o.label}</div>
+    </div>
+  `).join("");
+
+  /* ✅ CLICK LOGIC (MAIN CHANGE) */
+  document.querySelectorAll(".option").forEach(option => {
+    option.addEventListener("click", () => {
+
+      if (q.isCorrect) return;
+
+      const selectedId = option.dataset.id;
+
+      if (selectedId === q.answer) {
+
+        q.isCorrect = true;
+        q.userImg = option.querySelector("img").src;
+
         dropBox.innerHTML = `<img src="${q.userImg}">`;
         dropBox.classList.add("locked");
-        nextBtn.style.visibility = (current === quiz.length - 1) ? "hidden" : "visible";
-      } else {
-        dropBox.innerHTML = "DROP HERE";
-        dropBox.classList.remove("locked");
-        nextBtn.style.visibility = "hidden";
-      }
 
-      backBtn.style.visibility = current === 0 ? "hidden" : "visible";
+        document.querySelectorAll(".option").forEach(opt => opt.classList.add("locked"));
 
-      optionsGrid.innerHTML = q.options.map(o => `
-        <div class="opt-wrapper">
-            <div class="option ${q.isCorrect ? 'locked' : ''}" 
-                 draggable="${!q.isCorrect}" 
-                 data-id="${o.id}">
-                <img src="${o.img}">
-            </div>
-            <div class="opt-label">${o.label}</div>
-        </div>`).join("");
+        showFeedback(true);
+        playSound(true);
 
-      document.querySelectorAll(".option").forEach(o => {
-        o.ondragstart = (e) => {
-          if (q.isCorrect) return e.preventDefault();
-          dragged = o;
-        };
-      });
-
-      dropBox.ondragover = e => e.preventDefault();
-      dropBox.ondrop = () => {
-        if (q.isCorrect) return;
-
-        if (dragged.dataset.id === q.answer) {
-          // Save state to current quiz object
-          q.isCorrect = true;
-          q.userImg = dragged.querySelector('img').src;
-
-          dropBox.innerHTML = dragged.querySelector('img').outerHTML;
-          dropBox.classList.add("locked");
-
-          document.querySelectorAll(".option").forEach(opt => opt.classList.add("locked"));
-
-          showFeedback(true);
-          confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-          playSound(true);
-
-          if (current === quiz.length - 1) setTimeout(showFinal, 1200);
-          else nextBtn.style.visibility = "visible";
+        if (current === quiz.length - 1) {
+          setTimeout(showFinal, 1200);
         } else {
-          dragged.classList.add("wrong");
-          showFeedback(false);
-          playSound(false);
-          setTimeout(() => dragged.classList.remove("wrong"), 600);
+          nextBtn.style.visibility = "visible";
         }
+
+      } else {
+        option.classList.add("wrong");
+        showFeedback(false);
+        playSound(false);
+        setTimeout(() => option.classList.remove("wrong"), 600);
       }
-    }
 
-    nextBtn.onclick = () => {
-      if (current < quiz.length - 1) {
-        window.speechSynthesis.cancel();
-        current++;
-        render();
-      }
-    };
+    });
+  });
+}
 
-    backBtn.onclick = () => {
-      if (current > 0) {
-        window.speechSynthesis.cancel();
-        current--;
-        render();
-      }
-    };
-
-    function showFinal() {
-      const overlay = document.createElement("div");
-      overlay.className = "final-overlay";
-      overlay.innerHTML = `
-        <div class="final-card">
-            <h1 style="font-family:'Livvic'; font-size:3rem; color:#4cc9f0; margin:0;">🏆 DONE! 🏆</h1>
-            <p style="font-size:1.5rem; margin:20px 0;">Fantastic! You completed the quiz.</p>
-            <button style="padding:15px 40px; font-size:1.5rem; cursor:pointer; background:#4cc9f0; color:white; border:none; border-radius:50px; font-family: 'Livvic';" onclick="location.reload()">PLAY AGAIN</button>
-        </div>`;
-      document.body.appendChild(overlay);
-      confetti({ particleCount: 200, spread: 90, origin: { y: 0.5 } });
-    }
-
+/* NAVIGATION */
+nextBtn.onclick = () => {
+  if (current < quiz.length - 1) {
+    current++;
     render();
+  }
+};
+
+backBtn.onclick = () => {
+  if (current > 0) {
+    current--;
+    render();
+  }
+};
+
+/* FINAL */
+function showFinal() {
+  const overlay = document.createElement("div");
+  overlay.className = "final-overlay";
+  overlay.innerHTML = `
+    <div class="final-card">
+      <h1>🏆 DONE! 🏆</h1>
+      <p>Fantastic! You completed the quiz.</p>
+      <button onclick="location.reload()">PLAY AGAIN</button>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+
+render();
   </script>
 </body>
 

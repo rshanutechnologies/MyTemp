@@ -63,7 +63,7 @@ function load() {
   input.value = answers[current] || "";
   input.disabled = answers[current] != null;
   input.classList.toggle("input-correct", answers[current] != null);
-  submit.disabled = input.value === "";
+  submit.disabled = input.value.trim() === "" || answers[current] != null;
   next.disabled = answers[current] == null;
   prev.disabled = current === 0;
 }
@@ -79,6 +79,7 @@ submit.onclick = () => {
     input.disabled = true;
     input.classList.add("input-correct");
     next.disabled = false;
+    submit.disabled = true;
     speak("Correct");
     showPopup(`
       <div class="popup-correct">
@@ -128,6 +129,7 @@ submit.onclick = () => {
       `,
     );
     input.value = "";
+    submit.disabled = true;
   }
 };
 

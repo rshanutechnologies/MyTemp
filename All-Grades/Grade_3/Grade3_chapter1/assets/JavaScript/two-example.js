@@ -22,7 +22,7 @@ const questions = [
     answers: ["Snake", "Earthworm"],
     options: [
       { text: "Snake", img: "../assets/images/snake-img.png" },
-      { text: "Earthworm", img: "../assets/images/earthwarm-img.png" },
+      { text: "Earthworm", img: "../assets/images/earthwarms.png" },
       { text: "Frog", img: "../assets/images/frog-img.png" },
     ],
   },

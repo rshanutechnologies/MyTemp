@@ -111,7 +111,7 @@ div.addEventListener("click", () => {
   // DROPS (restore state only)
   drops.forEach((drop, i) => {
     drop.className = "drop";
-    drop.textContent = "Drop answer here";
+    drop.textContent = "Click on a option";
     drop.dataset.locked = "";
 
     const saved = state[index].drops[i];

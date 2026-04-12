@@ -382,7 +382,7 @@ button:disabled {
 
   .option {
     height: auto;
-    min-height: 120px;
+    min-height: 90px;
     font-size: 16px;
     padding: 14px;
   }
@@ -415,8 +415,8 @@ button:disabled {
   }
 
   .opt-img {
-    width: 65px;
-    height: 55px;
+    width: 55px;
+    height: 40px;
   }
 
   .options {
@@ -425,6 +425,7 @@ button:disabled {
 
   .option {
     flex-direction: row;
+    justify-content: flex-start;
     font-size: 13px;
     padding: 12px;
   }

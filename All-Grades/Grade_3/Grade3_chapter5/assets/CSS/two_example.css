@@ -824,6 +824,7 @@ button:disabled{opacity:0.45;
   .drop-zone{
     width: 100%;
     min-height: 130px;
+    margin-top: -50px;
   }
 
   .right{

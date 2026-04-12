@@ -1,31 +1,31 @@
 const leftData = [
   {
     id: "1",
-    text: "1. Humidity",
+    text: "Humidity",
     match: "e",
     img: "../assets/images/humidity1.png",
   },
   {
     id: "2",
-    text: "2. Ozone layer",
+    text: "Ozone layer",
     match: "c",
     img: "../assets/images/ozone1.png",
   },
   {
     id: "3",
-    text: "3. Transpiration",
+    text: "Transpiration",
     match: "d",
     img: "../assets/images/transpiration.png",
   },
   {
     id: "4",
-    text: "4. Air pressure",
+    text: "Air pressure",
     match: "a",
     img: "../assets/images/air-pressure.png",
   },
   {
     id: "5",
-    text: "5. Oxygen",
+    text: "Oxygen",
     match: "b",
     img: "../assets/images/oxygen.png",
   },

@@ -668,7 +668,9 @@ body {
     .option-emoji {
         font-size: 20px;
     }
-
+    .option-label{
+        font-size: 13px;
+    }
     .btn {
         font-size: 15px;
         padding: 8px 16px;

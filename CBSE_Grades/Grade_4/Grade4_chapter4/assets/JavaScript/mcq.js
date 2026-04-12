@@ -1,6 +1,6 @@
 const quizData = [
   {
-    q: "Q1. __________________ is necessary for burning things.",
+    q: "Q1. ___is necessary for burning things.",
     img: "../assets/images/mcq-1.png",
     options: [
       "../assets/images/mcq1-1.png|Carbon dioxide",
@@ -12,7 +12,7 @@ const quizData = [
   },
 
   {
-    q: "Q2. Nitrogen constitutes _____________ of the atmosphere.",
+    q: "Q2. Nitrogen constitutes ____of the atmosphere.",
     img: "../assets/images/mcq-2.png",
     options: [
       "../assets/images/mcq2-1.png|21%",
@@ -24,7 +24,7 @@ const quizData = [
   },
 
   {
-    q: "Q3. The process in which water vapour changes into water due to cooling is called ______.",
+    q: "Q3. The process in which water vapour changes into water due to cooling is called ____.",
     img: "../assets/images/mcq-3.png",
     options: [
       "../assets/images/mcq3-1.png|Evaporation",
@@ -36,7 +36,7 @@ const quizData = [
   },
 
   {
-    q: "Q4. Water is also called a universal ______ as many things dissolve in it.",
+    q: "Q4. Water is also called a universal __ as many things dissolve in it.",
     img: "../assets/images/mcq-4.png",
     options: [
       "../assets/images/mcq4-1.png|Solution",
@@ -48,7 +48,7 @@ const quizData = [
   },
 
   {
-    q: "Q5. __________ is the droplets of water found on the leaves and flowers.",
+    q: "Q5. ___is the droplets of water found on the leaves and flowers.",
     img: "../assets/images/mcq5.png",
     options: [
       "../assets/images/fog.png|Fog",
@@ -79,33 +79,13 @@ function speak(t) {
   msg.pitch = 1;
   speechSynthesis.speak(msg);
 }
+
 function smallConfetti() {
   confetti({ particleCount: 40, spread: 70, origin: { y: 0.7 } });
 }
 
 function bigConfetti() {
-  const duration = 500;
-  const end = Date.now() + duration;
-
-  (function frame() {
-    confetti({
-      particleCount: 7,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
-      zIndex: 5000  // ✅ FIX
-    });
-
-    confetti({
-      particleCount: 7,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 },
-      zIndex: 5000  // ✅ FIX
-    });
-
-    if (Date.now() < end) requestAnimationFrame(frame);
-  })();
+  confetti({ particleCount: 60, spread: 90, origin: { y: 0.7 } });
 }
 
 function loadQuestion() {
@@ -117,17 +97,12 @@ function loadQuestion() {
 
   q.options.forEach((t, i) => {
     const d = document.createElement("div");
-    d.className = "option-card";
+    d.className = "option o" + ((i % 4) + 1);
 
     const img = t.split("|")[0];
     const text = t.split("|")[1];
 
-    d.innerHTML = `
-      <div class="opt-img"><img src="${img}"></div>
-      <div class="opt-text"> ${text}</div>
-    `;
-
-    // <div class="opt-text">${String.fromCharCode(65 + i)}. ${text}</div>
+    d.innerHTML = `<div class="option-img"><img src="${img}"></div>${text}`;
 
     if (answered[current] !== null) {
       if (i === q.a) d.classList.add("correct");
@@ -138,37 +113,24 @@ function loadQuestion() {
       if (answered[current] !== null) return;
 
       if (i === q.a) {
-  answered[current] = i;
-  score++;
+        answered[current] = i;
+        score++;
 
-  d.classList.add("correct");
+        d.classList.add("correct");
+        [...optEl.children].forEach((o) => {
+          if (o !== d) o.classList.add("disabled");
+        });
 
-  [...optEl.children].forEach((o) => {
-    if (o !== d) o.classList.add("disabled");
-  });
+        speak("Correct");
+        smallConfetti();
+        showPopup(true);
+        nextBtn.disabled = false;
 
-  speak("Correct");
-
-  // 🎉 ADD THIS (CONFETTI FIX)
-  // if (typeof confetti !== "undefined") {
-    smallConfetti();
-  //   setTimeout(() => bigConfetti(), 200);
-  // }
-
-  showPopup(true);
-  nextBtn.disabled = false;
-
-  if (answered.every((a) => a !== null)) {
-    setTimeout(() => {
-     smallConfetti() // 🎉 FINAL BLAST
-      showFinal();
-    }, 1600);
-  }
-} else {
-        d.classList.add("wrong");
-
+        if (answered.every((a) => a !== null)) setTimeout(showFinal, 1600);
+      } else {
         speak("Wrong");
         showPopup(false);
+        d.classList.add("wrong");
 
         setTimeout(() => {
           d.classList.remove("wrong");
@@ -225,7 +187,7 @@ function showFinal() {
   document.getElementById("stars").textContent = "⭐".repeat(score);
 
   popup.style.display = "flex";
-   bigConfetti();
+  bigConfetti();
 }
 
 loadQuestion();

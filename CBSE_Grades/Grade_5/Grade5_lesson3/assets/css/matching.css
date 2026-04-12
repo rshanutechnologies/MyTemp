@@ -263,22 +263,6 @@ button{
   height:40px !important;     /* increase height */
   object-fit:contain;
 }
-.final{
-    width:200px;
-    padding:30px;
-}
-
-.final h2{
-    font-size:24px;
-}
-
-.final h3{
-    font-size:20px;
-}
-
-.star{
-    font-size:34px;
-}
 }
 .right .item{
   display:flex;

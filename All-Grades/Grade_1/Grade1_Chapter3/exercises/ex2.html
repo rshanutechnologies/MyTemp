@@ -580,209 +580,200 @@
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
-    /* AUDIO SYSTEM */
-    let audioCtx = null;
+   let audioCtx = null;
 
-    function ensureAudio() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-    }
+function ensureAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+}
 
-    // TEXT TO SPEECH 
-    function readQuestion() {
-      const textToRead = quiz[current].text.replace("_____", "blank");
-      const utterance = new SpeechSynthesisUtterance(textToRead);
-      const voices = window.speechSynthesis.getVoices();
-      const indianVoice = voices.find(v => v.lang === 'en-IN' || v.name.includes('India'));
-      if (indianVoice) utterance.voice = indianVoice;
-      utterance.rate = 0.9;
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(utterance);
-    }
+function readQuestion() {
+  const textToRead = quiz[current].text.replace("_____", "blank");
+  const utterance = new SpeechSynthesisUtterance(textToRead);
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utterance);
+}
 
-    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
 
-    function playSuccessSound() {
-      ensureAudio();
-      const t = audioCtx.currentTime;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(523.25, t);
-      osc.frequency.exponentialRampToValueAtTime(783.99, t + 0.1);
-      gain.gain.setValueAtTime(0.1, t);
-      gain.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(t + 0.3);
-    }
+function playSuccessSound() {
+  ensureAudio();
+  const t = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(523.25, t);
+  osc.frequency.exponentialRampToValueAtTime(783.99, t + 0.1);
+  gain.gain.setValueAtTime(0.1, t);
+  gain.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  osc.stop(t + 0.3);
+}
 
-    function playWrongSound() {
-      ensureAudio();
-      const t = audioCtx.currentTime;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(150, t);
-      osc.frequency.linearRampToValueAtTime(100, t + 0.2);
-      gain.gain.setValueAtTime(0.1, t);
-      gain.gain.linearRampToValueAtTime(0.01, t + 0.2);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(t + 0.2);
-    }
+function playWrongSound() {
+  ensureAudio();
+  const t = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'sawtooth';
+  osc.frequency.setValueAtTime(150, t);
+  osc.frequency.linearRampToValueAtTime(100, t + 0.2);
+  gain.gain.setValueAtTime(0.1, t);
+  gain.gain.linearRampToValueAtTime(0.01, t + 0.2);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  osc.stop(t + 0.2);
+}
 
-    const quiz = [
-      {
-        text: "Animals are _____ things.",
-        answer: "living",
-        hint: "../uploads/cow-img.png",
-        words: ["leving", "living", "liivng"]
-      },
-      {
-        text: "A pencil is a _____ thing.",
-        answer: "non-living",
-        hint: "../uploads/pencil.png",
-        words: ["non-living", "non-leving", "none-living"]
-      },
-      {
-        text: "Plants don't _____ from one place to another.",
-        answer: "move",
-        hint: "../uploads/plants.png",
-        words: ["moove", "mov", "move"]
-      },
-      {
-        text: "_____ things have young ones.",
-        answer: "Living",
-        hint: "../uploads/yo.png",
-        words: ["Liiving", "Livin", "Living"]
-      },
-      {
-        text: "A mountain is a _____ thing.",
-        answer: "non-living",
-        hint: "../uploads/mountain-img.png",
-        words: ["non-leving", "non-living", "none-living"]
-      }
-    ];
+const quiz = [
+  {
+    text: "Animals are _____ things.",
+    answer: "living",
+    hint: "../uploads/cow-img.png",
+    words: ["leving", "living", "liivng"]
+  },
+  {
+    text: "A pencil is a _____ thing.",
+    answer: "non-living",
+    hint: "../uploads/pencil.png",
+    words: ["non-living", "non-leving", "none-living"]
+  },
+  {
+    text: "Plants don't _____ from one place to another.",
+    answer: "move",
+    hint: "../uploads/plants.png",
+    words: ["moove", "mov", "move"]
+  },
+  {
+    text: "_____ things have young ones.",
+    answer: "Living",
+    hint: "../uploads/yo.png",
+    words: ["Liiving", "Livin", "Living"]
+  },
+  {
+    text: "A mountain is a _____ thing.",
+    answer: "non-living",
+    hint: "../uploads/mountain-img.png",
+    words: ["non-leving", "non-living", "none-living"]
+  }
+];
 
-    const viewport = document.getElementById("slides-viewport");
-    const nextBtn = document.getElementById("nextBtn");
-    const backBtn = document.getElementById("backBtn");
-    const smiley = document.getElementById("smiley");
-    const finalOverlay = document.getElementById("final-overlay");
-    const progressText = document.getElementById("progress-text");
+const viewport = document.getElementById("slides-viewport");
+const nextBtn = document.getElementById("nextBtn");
+const backBtn = document.getElementById("backBtn");
+const smiley = document.getElementById("smiley");
+const finalOverlay = document.getElementById("final-overlay");
+const progressText = document.getElementById("progress-text");
 
-    let current = 0;
-    let draggedWord = null;
+let current = 0;
 
-    function init() {
-      quiz.forEach((q, i) => {
-        const slide = document.createElement("div");
-        slide.className = `slide ${i === 0 ? 'active' : ''}`;
-        slide.id = `slide-${i}`;
-        slide.innerHTML = `
-      <div class="i-text">Drag and Drop the correct word into the blank space</div>
+function init() {
+  quiz.forEach((q, i) => {
+    const slide = document.createElement("div");
+    slide.className = `slide ${i === 0 ? 'active' : ''}`;
+    slide.id = `slide-${i}`;
+    slide.innerHTML = `
+      <div class="i-text">Click the correct word</div>
       <div class="hint-container">
-        <img src="${q.hint}" class="hint-img" alt="hint">
+        <img src="${q.hint}" class="hint-img">
       </div>
       <div class="q-text" data-answered="false">
         ${q.text.replace("_____", `<span class="blank" data-correct="${q.answer}"></span>`)}
       </div>
       <div class="word-box">
         <div class="word-grid">
-          ${q.words.map(w => `<div class="word" draggable="true">${w}</div>`).join('')}
+          ${q.words.map(w => `<div class="word">${w}</div>`).join('')}
         </div>
       </div>
     `;
-        viewport.appendChild(slide);
+    viewport.appendChild(slide);
 
-        const blank = slide.querySelector(".blank");
-        const words = slide.querySelectorAll(".word");
+    const blank = slide.querySelector(".blank");
+    const words = slide.querySelectorAll(".word");
 
-        words.forEach(w => {
-          w.addEventListener("dragstart", () => {
-            ensureAudio();
-            draggedWord = w;
-            w.classList.add("dragging");
-          });
-          w.addEventListener("dragend", () => w.classList.remove("dragging"));
-        });
+    /* ✅ CLICK LOGIC */
+    words.forEach(w => {
+      w.addEventListener("click", () => {
 
-        blank.addEventListener("dragover", e => e.preventDefault());
-        blank.addEventListener("drop", () => {
-          if (!draggedWord) return;
-          if (draggedWord.textContent === blank.dataset.correct) {
-            handleCorrect(blank, draggedWord, slide);
-          } else {
-            handleWrong();
-          }
-        });
+        if (slide.querySelector(".q-text").dataset.answered === "true") return;
+
+        if (w.textContent === blank.dataset.correct) {
+          handleCorrect(blank, w, slide);
+        } else {
+          handleWrong();
+        }
+
       });
-      updateNav();
-    }
+    });
+  });
 
-    function handleCorrect(blank, word, slide) {
-      blank.textContent = word.textContent;
-      blank.classList.add("correct");
-      slide.querySelector(".word-grid").classList.add("locked");
-      slide.querySelector(".q-text").dataset.answered = "true";
+  updateNav();
+}
 
-      playSuccessSound();
-      showSmiley("😄");
-      confetti();
-      updateNav();
+function handleCorrect(blank, word, slide) {
+  blank.textContent = word.textContent;
+  blank.classList.add("correct");
 
-      if (current === quiz.length - 1) {
-        setTimeout(() => {
-          finalOverlay.style.display = "flex";
-          confetti({ particleCount: 200, spread: 70, origin: { y: 0.6 } });
-        }, 1500);
-      }
-    }
+  slide.querySelector(".word-grid").classList.add("locked");
+  slide.querySelector(".q-text").dataset.answered = "true";
 
-    function handleWrong() {
-      playWrongSound();
-      showSmiley("😢");
-    }
+  playSuccessSound();
+  showSmiley("😄");
+  confetti();
 
-    function showSmiley(char) {
-      smiley.textContent = char;
-      smiley.classList.add("show");
-      setTimeout(() => smiley.classList.remove("show"), 1000);
-    }
+  updateNav();
 
-    function updateNav() {
-      const currentSlide = document.getElementById(`slide-${current}`);
-      const isAnswered = currentSlide.querySelector(".q-text").dataset.answered === "true";
-      progressText.textContent = `Question ${current + 1} of ${quiz.length}`;
-      backBtn.style.visibility = current === 0 ? "hidden" : "visible";
-      nextBtn.style.visibility = isAnswered ? "visible" : "hidden";
-    }
+  if (current === quiz.length - 1) {
+    setTimeout(() => {
+      finalOverlay.style.display = "flex";
+      confetti({ particleCount: 200, spread: 70, origin: { y: 0.6 } });
+    }, 1500);
+  }
+}
 
-    nextBtn.onclick = () => {
-      if (current < quiz.length - 1) {
-        window.speechSynthesis.cancel();
-        document.getElementById(`slide-${current}`).classList.remove("active");
-        current++;
-        document.getElementById(`slide-${current}`).classList.add("active");
-        updateNav();
-      }
-    };
+function handleWrong() {
+  playWrongSound();
+  showSmiley("😢");
+}
 
-    backBtn.onclick = () => {
-      if (current > 0) {
-        window.speechSynthesis.cancel();
-        document.getElementById(`slide-${current}`).classList.remove("active");
-        current--;
-        document.getElementById(`slide-${current}`).classList.add("active");
-        updateNav();
-      }
-    };
+function showSmiley(char) {
+  smiley.textContent = char;
+  smiley.classList.add("show");
+  setTimeout(() => smiley.classList.remove("show"), 1000);
+}
 
-    init();
+function updateNav() {
+  const currentSlide = document.getElementById(`slide-${current}`);
+  const isAnswered = currentSlide.querySelector(".q-text").dataset.answered === "true";
+
+  progressText.textContent = `Question ${current + 1} of ${quiz.length}`;
+  backBtn.style.visibility = current === 0 ? "hidden" : "visible";
+  nextBtn.style.visibility = isAnswered ? "visible" : "hidden";
+}
+
+nextBtn.onclick = () => {
+  if (current < quiz.length - 1) {
+    document.getElementById(`slide-${current}`).classList.remove("active");
+    current++;
+    document.getElementById(`slide-${current}`).classList.add("active");
+    updateNav();
+  }
+};
+
+backBtn.onclick = () => {
+  if (current > 0) {
+    document.getElementById(`slide-${current}`).classList.remove("active");
+    current--;
+    document.getElementById(`slide-${current}`).classList.add("active");
+    updateNav();
+  }
+};
+
+init();
   </script>
 </body>
 
