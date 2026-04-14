@@ -77,26 +77,26 @@ const quizData=[
 
 {
 q:"Q.1 Water that is safe for drinking",
-a:"POTABLEWATER",
+a:"POTABLE",
 img:"../assets/images/PortableWak.png"
 },
 
 {
 q:"Q.2 This makes the air around us fresh and clean",
-a:"TREES",
+a:"Plants",
 img:"../assets/images/Treeak.png"
 },
 
 {
 q:"Q.3 The rainwater that goes down into the soil",
 a:"GROUNDWATER",
-img:"../assets/images/GroundW.png"
+img:"../assets/images/RainWaterGoSoil.png"
 },
 
 {
 q:"Q.4 People use this in villages to draw out ground water",
-a:"WELL",
-img:"../assets/images/Wellak.png"
+a:"Handpump",
+img:"../assets/images/VillageHandpump.png"
 }
 
 ];

@@ -49,8 +49,8 @@ body {
 }
 
 .answer-slot {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: #f3f8ff;
     border: 3px solid #dbcab0;
     border-radius: 20px;
@@ -68,6 +68,10 @@ body {
     color: #2e7d32;
 }
 
+.answer-gap {
+  width: 15px;
+}
+
 .letter-container {
     display: flex;
     justify-content: center;
@@ -77,7 +81,7 @@ body {
 }
 
 .letter-tile {
-    width: 75px;
+    width: 55px;
     height: 55px;
     border-radius: 20%;
     display: flex;
@@ -431,18 +435,26 @@ body {
         align-items: flex-start;
     }
 
+    .quiz-container{
+        padding: 20px 5px;
+    }
+
     .question-title {
         font-size: 20px;
     }
 
     #questionImage {
         width: 150px;
-        height: 120px;
+        height: 100px;
+    }
+
+    .answer-gap{
+        width: 10px;
     }
 
     .answer-slots {
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 5px;
     }
 
     .answer-slot {
@@ -452,7 +464,7 @@ body {
     }
 
     .letter-container {
-        gap: 8px;
+        gap: 5px;
     }
 
     .letter-tile {
@@ -461,8 +473,12 @@ body {
         font-size: 17px;
     }
 
+    #submitButton{
+        padding: 8px 25px;
+    }
+
     .quiz-navigation {
-        margin-top: 20px;
+        margin-top: 10px;
     }
 
     .kid-card {
@@ -505,7 +521,7 @@ body {
 /* ========================================
    💻 Desktop / Monitor (1025px – 1440px)
 ======================================== */
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
+@media screen and (min-width: 1325px) and (max-width: 1440px) {
 
     .quiz-container {
         width: 1000px;
@@ -517,18 +533,18 @@ body {
 
     #questionImage {
         width: 260px;
-        height: 180px;
+        height: 150px;
     }
 
     .answer-slot {
-        width: 65px;
-        height: 65px;
+        width: 55px;
+        height: 55px;
         font-size: 28px;
     }
 
     .letter-tile {
-        width: 80px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         font-size: 24px;
     }
 
@@ -548,7 +564,7 @@ body {
 /* ========================================
    🖥️ Large Monitors (1441px – 1920px)
 ======================================== */
-@media screen and (min-width: 1441px) and (max-width: 1920px) {
+@media screen and (min-width: 1541px) and (max-width: 1920px) {
 
     .quiz-container {
         width: 1100px;

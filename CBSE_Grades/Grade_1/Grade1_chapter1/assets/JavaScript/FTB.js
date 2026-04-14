@@ -26,7 +26,7 @@ const questions = [
   {
     question: "Q5. A mountain is a ______ thing.",
     hint: "It does not grow, breathe, or reproduce",
-    answer: "non living",
+    answer: "Natural non-living",
     image: "../assets/images/ftb-5.png",
   },
 ];

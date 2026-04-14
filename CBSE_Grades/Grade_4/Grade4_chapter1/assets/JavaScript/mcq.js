@@ -3,7 +3,7 @@
 const quizData = [
 {
   q: "Q.1 The process by which a plant makes its own food in the presence of sunlight is called ___.",
-  qImg: "/",
+  qImg: "../assets/images/MCQ-1.png",
   options: [
     { text: "ventation", img: "../assets/images/venation.png" },
     { text: "photosynthesis", img: "../assets/images/photosynthesis1.png" },
@@ -14,7 +14,7 @@ const quizData = [
 },
 {
   q: "Q.2 Which of the following is the main source of energy?",
-  qImg: "/assets/images/MCQ-2.png",
+  qImg: "../assets/images/MCQ-2.png",
   options: [
     { text: "Plants", img: "../assets/images/plants.png" },
     { text: "Animals", img: "../assets/images/animals.png" },
@@ -25,7 +25,7 @@ const quizData = [
 },
 {
   q: "Q.3 Which of the following is the flat part of a leaf?",
-  qImg: "/assets/images/MCQ-3.png",
+  qImg: "../assets/images/MCQ-3.png",
   options: [
     { text: "Lamina", img: "../assets/images/mcq3-1.png" },
     { text: "Apex", img: "../assets/images/plants.png" },
@@ -36,7 +36,7 @@ const quizData = [
 },
 {
   q: "Q.4 In _____________ venation, the veins run parallel to one another.",
-  qImg: "/assets/images/MCQ-4.png",
+  qImg: "../assets/images/MCQ-4.png",
   options: [
     { text: "Vertical", img: "../assets/images/plants.png" },
     { text: "Linear", img: "../assets/images/respiration.png" },
@@ -47,7 +47,7 @@ const quizData = [
 },
 {
   q: "Q.5 Which of the following has stored food in its stem?",
-  qImg: "/assets/images/MCQ-5.png",
+  qImg: "../assets/images/MCQ-5.png",
   options: [
     { text: "cauliflower", img: "../assets/images/cauliflower.png" },
     { text: "potato", img: "../assets/images/potatoo.png" },

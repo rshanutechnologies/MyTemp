@@ -56,7 +56,7 @@ answered:false
 {
 q:"Q.2 We should drink water from wherever it is available.",
 a:false,
-img:"../assets/images/BoyDrink.png",
+img:"../assets/images/DirtyWaterDrink.png",
 answered:false
 },
 

@@ -516,7 +516,7 @@ body {
   }
 
   .options {
-    min-width: 1200px;
+    min-width: 1000px;
     height: 200px;
     gap: 24px;
   }

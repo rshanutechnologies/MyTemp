@@ -70,7 +70,7 @@ body {
 .image-bottom {
     padding: 14px 24px;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 400;
     color: #2f4f4f;
     background: linear-gradient(135deg, #ffa4b6, #ff9b9b);
     border-radius: 16px;
@@ -562,8 +562,8 @@ body {
     }
 
     .image-bottom {
-        font-size: 22px;
-        padding: 16px 28px;
+        font-size: 20px;
+        padding: 16px 15px;
     }
 
     .controls button {

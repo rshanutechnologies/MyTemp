@@ -59,19 +59,19 @@ img: "../assets/images/WindMillak.png"
 
 {
 q: "Q.2 We get water in our houses through __________.",
-a: "tap",
+a: "taps",
 img: "../assets/images/Tapak.png"
 },
 
 {
-q: "Q.3 Fast and strong wind is called __________.",
+q: "Q.3 Fast and strong wind is called a  __________.",
 a: "storm",
 img: "../assets/images/Stormak.png"
 },
 
 {
 q: "Q.4 Sometimes there are __________ germs in water.",
-a: "harmful",
+a: "tiny",
 img: "../assets/images/harmfulGemesak.png"
 },
 

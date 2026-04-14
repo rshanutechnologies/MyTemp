@@ -1,7 +1,7 @@
 const quizData = [
   {
     q: "Q1. Plants with thin, soft and green stems",
-    a: "HERB",
+    a: "SMALL PLANT",
     img: "../assets/images/ow-11.png",
   },
   {
@@ -16,7 +16,7 @@ const quizData = [
   },
   {
     q: "Q4. Plants with thin and brown stems",
-    a: "CLIMBER",
+    a: "SMALL PLANT",
     img: "../assets/images/ow-14.png",
   },
   {
@@ -72,11 +72,19 @@ function shuffleLetters(array) {
 
 function createAnswerSlots(word) {
   answerSlotsContainer.innerHTML = "";
+
   for (let i = 0; i < word.length; i++) {
-    const slot = document.createElement("div");
-    slot.className = "answer-slot";
-    slot.onclick = () => removeLetterFromSlot(slot);
-    answerSlotsContainer.appendChild(slot);
+    if (word[i] === " ") {
+      // GAP BETWEEN WORDS
+      const gap = document.createElement("div");
+      gap.className = "answer-gap";
+      answerSlotsContainer.appendChild(gap);
+    } else {
+      const slot = document.createElement("div");
+      slot.className = "answer-slot";
+      slot.onclick = () => removeLetterFromSlot(slot);
+      answerSlotsContainer.appendChild(slot);
+    }
   }
 }
 
@@ -103,8 +111,10 @@ function removeLetterFromSlot(slot) {
 function generateLetterTiles(answer) {
   letterContainer.innerHTML = "";
   letterTiles = [];
-  let letters = answer.split("");
+
+  let letters = answer.replace(/\s/g, "").split(""); // REMOVE SPACES
   shuffleLetters(letters);
+
   letters.forEach((letter) => {
     const tile = document.createElement("div");
 
@@ -138,7 +148,7 @@ function validateSlotCompletion() {
 
   let word = [...slots].map((s) => s.textContent).join("");
 
-  if (word.length === correctAnswer.length) {
+  if (word.length === correctAnswer.replace(/\s/g, "").length) {
     submitButton.disabled = false;
   }
 }
@@ -215,9 +225,15 @@ function renderQuestion() {
     const slots = document.querySelectorAll(".answer-slot");
     const saved = storedAnswers[currentQuestionIndex].split("");
 
-    saved.forEach((letter, i) => {
-      slots[i].textContent = letter;
-      slots[i].classList.add("locked");
+    let index = 0;
+    slots.forEach((slot) => {
+      if (!slot.classList.contains("answer-slot")) return;
+
+      if (saved[index]) {
+        slot.textContent = saved[index];
+        slot.classList.add("locked");
+        index++;
+      }
     });
 
     generateLetterTiles(correctAnswer);
@@ -243,7 +259,7 @@ submitButton.onclick = () => {
 
   let guess = [...slots].map((s) => s.textContent).join("");
 
-  if (guess === correctAnswer) {
+  if (guess === correctAnswer.replace(/\s/g, "")) {
     quizScore++;
 
     showPopup(true);

@@ -51,7 +51,7 @@ function showFinal() {
 const quizData = [
   {
     q:"Q.1  Roots transport food and water to all the parts Reasoning Skills of a plant.",
-    a:true,
+    a:false,
     img:"../assets/images/RootTrasport.png",
     answered:false
   },
@@ -69,13 +69,13 @@ const quizData = [
   },
   {
     q:"Q.4  We get perfume from jasmine flower.  ",
-    a:false,
+    a:true,
     img:"../assets/images/JasminPerfume.png",
     answered:false
   },
   {
     q:"Q.5 Seeds grow into new plants. ",
-    a:false,
+    a:true,
     img:"../assets/images/SeedGrow.png",
     answered:false
   }

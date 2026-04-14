@@ -52,7 +52,7 @@ body {
     border-radius: 16px;
     background: #e5e5e5;
     text-align: center;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -65,6 +65,12 @@ body {
 .leaf.active {
     filter: grayscale(0);
     box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #22c55e, #4ade80); 
+      color: white;
+       transform: scale(1.03);  
+}
+.leaf:hover{
+  transform: scale(1.02);
 }
 
 /* MAIN */
@@ -190,6 +196,8 @@ const pages = [
 
 function openPage(i) {
     frame.src = pages[i];
+     document.querySelectorAll(".sidebar .leaf").forEach(el => el.classList.remove("active"));
+    document.querySelectorAll(".sidebar .leaf")[i].classList.add("active");
 }
 
 function toggleMenu() {
@@ -199,6 +207,9 @@ function toggleMenu() {
 
 function mobileOpen(i) {
     openPage(i);
+     document.querySelectorAll(".offcanvas .leaf").forEach(el => el.classList.remove("active"));
+    document.querySelectorAll(".offcanvas .leaf")[i].classList.add("active");
+
     toggleMenu();
 }
 </script>

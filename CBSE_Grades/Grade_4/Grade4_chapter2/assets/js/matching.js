@@ -1,132 +1,123 @@
-let selected = null
-let score = 0
+/* Build a map of data-match → right box color class BEFORE quiz starts */
+const rightColorMap = {};
+document.querySelectorAll("#right .box").forEach(b => {
+  const m = b.dataset.match;
+  const cls = Array.from(b.classList).find(c => /^c\d+$/.test(c));
+  if (cls) rightColorMap[m] = cls;
+});
 
-/* ✅ ADD: total matches (kept explicit, no behavior change) */
-const TOTAL_MATCHES = 5
+let selected = null;
+let score = 0;
+let matchNumber = 1;
+const left = document.querySelectorAll("#left .box");
+const right = document.querySelectorAll("#right .box");
+const svg = document.getElementById("lines");
 
-const left = document.querySelectorAll("#left .box")
-const right = document.querySelectorAll("#right .box")
-const svg = document.getElementById("lines")
+const isMobile = () => window.innerWidth <= 900;
 
 function speak(t) {
-  speechSynthesis.cancel()
- 
-  const msg = new SpeechSynthesisUtterance(t)
-  msg.lang = "en-UK"
-  msg.volume = 0.25
-  msg.rate = 1
-  msg.pitch = 1
- 
-  speechSynthesis.speak(msg)
+  speechSynthesis.cancel();
+  const msg = new SpeechSynthesisUtterance(t);
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
+  speechSynthesis.speak(msg);
 }
 
-function launchConfetti(){
+function launchConfetti() {
   confetti({
-    particleCount:120,
-    spread:70,
-    origin:{ y:0.6 }
-  })
-}
-
-/* ✅ ADD: final popup function (same as MCQ behavior) */
-function showFinalPopup(){
-  document.getElementById("final").style.display = "block"
-  document.getElementById("score").innerText =
-    "Your Score " + score + "/" + TOTAL_MATCHES
-
-  launchConfetti()
+    particleCount: 120,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
 }
 
 left.forEach(l => {
-
   l.onclick = () => {
-
-    if (l.classList.contains("matched")) return
-
-    left.forEach(i => i.classList.remove("selected"))
-    l.classList.add("selected")
-
-    selected = l
-  }
-
-})
+    if (l.classList.contains("matched")) return;
+    left.forEach(i => i.classList.remove("selected"));
+    l.classList.add("selected");
+    selected = l;
+  };
+});
 
 right.forEach(r => {
-
   r.onclick = () => {
-
-    if (!selected || r.classList.contains("matched")) return
+    if (!selected) return;
 
     if (r.dataset.match === selected.dataset.match) {
 
-      launchConfetti()
-      speak("Correct")
+      launchConfetti();
+      speak("Correct");
 
-      drawLine(selected, r)
+      const num = selected.dataset.match;
 
-      selected.classList.add("matched")
-      r.classList.add("matched")
+      /* Apply the right box's color class to the matched left box */
+      const colorCls = rightColorMap[num];
+      if (colorCls) selected.classList.add(colorCls);
 
-      score++
-      
+      selected.classList.add("matched");
+      r.classList.add("matched");
+
+      /* Numbers ONLY on mobile (≤900px), lines ONLY on desktop (>900px) */
+      if (isMobile()) {
+        addNumber(selected, num);
+        addNumber(r, num);
+      } else {
+        drawLine(selected, r);
+      }
+
+      score++;
+
       if (score === 5) {
         setTimeout(() => {
-          showFinalPopup()
-        }, 1000)
+          document.getElementById("final").style.display = "block";
+          document.getElementById("score").innerText = "Your Score 5/5";
+          launchConfetti();
+        }, 1000);
       }
 
     } else {
-
-      // ✅ FIX: small delay so speech works properly
-      setTimeout(() => {
-        speak("Wrong")
-      }, 100)
-
+      speak("Wrong");
     }
 
-    selected.classList.remove("selected")
-    selected = null
-  }
+    selected.classList.remove("selected");
+    selected = null;
+  };
+});
 
-})
+function addNumber(el, num) {
+  const badge = document.createElement("span");
+  badge.innerText = num;
+  badge.classList.add("match-number");
+  el.appendChild(badge);
+}
 
-function drawLine(leftEl, rightEl) {
+function drawLine(a, b) {
+  const rectA = a.querySelector(".dot").getBoundingClientRect();
+  const rectB = b.querySelector(".dot").getBoundingClientRect();
 
-  const svg = document.getElementById("lines");
-
-  const leftRect = leftEl.getBoundingClientRect();
-  const rightRect = rightEl.getBoundingClientRect();
   const svgRect = svg.getBoundingClientRect();
 
-  // start point (right side of left box)
-  const x1 = leftRect.right - svgRect.left;
-  const y1 = leftRect.top + leftRect.height / 2 - svgRect.top;
+  const x1 = rectA.left - svgRect.left;
+  const y1 = rectA.top - svgRect.top + 7;
 
-  // end point (left side of right box)
-  const x2 = rightRect.left - svgRect.left;
-  const y2 = rightRect.top + rightRect.height / 2 - svgRect.top;
+  const x2 = rectB.left - svgRect.left;
+  const y2 = rectB.top - svgRect.top + 7;
 
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-  const curve = Math.abs(x2 - x1) * 0.5;
+  const curve = `M${x1},${y1} C${x1 + 150},${y1} ${x2 - 150},${y2} ${x2},${y2}`;
 
-  const offset = Math.random() * 6 - 3; // small variation
-
-  const d = `
-    M ${x1} ${y1 + offset}
-    C ${x1 + curve} ${y1 + offset},
-      ${x2 - curve} ${y2 + offset},
-      ${x2} ${y2 + offset}
-  `;
-
-  path.setAttribute("d", d);
-  path.setAttribute("fill", "none");
- path.setAttribute("stroke", "#ffffff");
+  path.setAttribute("d", curve);
+  path.setAttribute("stroke", "#fff4f4");
   path.setAttribute("stroke-width", "4");
-  path.setAttribute("stroke-linecap", "round");
+  path.setAttribute("fill", "none");
 
   svg.appendChild(path);
 }
-function playAgain(){
-  location.reload()
+
+function playAgain() {
+  location.reload();
 }

@@ -574,13 +574,13 @@ height:80px;
 }
 
 .image-wrap{
-width:340px;
-height:340px;
+width:320px;
+height:320px;
 }
 
 .image-wrap img{
-width:320px;
-height:320px;
+width:280px;
+height:280px;
 }
 
 .option{
@@ -596,7 +596,7 @@ height:100px;
 .nav button{
 font-size:28px;
 padding:12px 26px;
-margin-top: 40px;
+margin-top: 0px;
 }
 
 }

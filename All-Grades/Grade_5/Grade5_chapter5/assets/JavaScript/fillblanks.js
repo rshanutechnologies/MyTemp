@@ -3,7 +3,7 @@ const questions = [
   {
     q: "Q.1 The upper arm is made of a long bone called the ____.",
     a: "humerus",
-    img: "../assets/images/humerus.png",
+    img: "../assets/images/humerusUpeerArm.png",
   },
   {
     q: "Q.2 The lower leg has two bones namely ____ and ____.",
@@ -13,7 +13,7 @@ const questions = [
   {
     q: "Q.3 Bones are held together at joints by ____.",
     a: "ligaments",
-    img: "../assets/images/ligaments.png",
+    img: "../assets/images/ligamentsNew.png",
   },
   {
     q: "Q.4 The backbone protects the ____.",

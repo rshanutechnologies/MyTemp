@@ -62,7 +62,7 @@ answered:false
 
 {
 q:"Q.3 We should drink atleast two to three glasses of water daily.",
-a:true,
+a:false,
 img:"../assets/images/BoyDrink.png",
 answered:false
 },
@@ -77,7 +77,7 @@ answered:false
 {
 q:"Q.5 We must not eat uncovered food.",
 a:true,
-img:"../assets/images/UncoverdFood.png",
+img:"../assets/images/UncoverdFood2.png",
 answered:false
 }
 

@@ -473,7 +473,7 @@ font-size:22px;
 
 
 /* ================= 1441px — 1920px ================= */
-@media screen and (min-width:1441px) and (max-width:1920px){
+@media screen and (min-width:1650px) and (max-width:1920px){
 
 .quiz-container{
 width:min(1150px,95vw);

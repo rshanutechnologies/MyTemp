@@ -5,12 +5,12 @@ const questions = [
 {
 q: "Q.1 A frog can live both on ______ and in water.",
 a: ["land"],
-img: "../assets/images/Froggak.png"
+img: "../assets/images/FrogWater&Land.png"
 },
 
 {
 q: "Q.2 Some animals like dogs live in ______ shelters.",
-a: ["kennel"],
+a: ["kennels"],
 img: "../assets/images/Kennel.png"
 },
 
@@ -22,13 +22,13 @@ img: "../assets/images/AquaticTurtle2.png"
 
 {
 q: "Q.4 Bears eat both ______ and ______.",
-a: ["plants","meat"],
+a: ["plants","animals"],
 img: "../assets/images/bear-img.png"
 },
 
 {
 q: "Q.5 The home of honeybees is called ______.",
-a: ["hive"],
+a: ["beehive"],
 img: "../assets/images/HoneyHome.png"
 }
 

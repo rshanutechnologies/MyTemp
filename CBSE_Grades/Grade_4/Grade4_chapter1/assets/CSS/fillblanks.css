@@ -55,8 +55,8 @@ body::before{
   margin:22px 0;
   font-size:30px;
   font-weight:400;
-  /* color:#2f4f4f; */
-  color: black;
+   color:#2f4f4f; 
+  
   max-height: 80px;
   
 }

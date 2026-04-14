@@ -114,8 +114,8 @@ body {
 }
 
 .image-box img {
-  height: 200px;
-  width: 250px;
+  height: 150px !important;
+  width: 250px !important;
 }
 
 /* BUTTON ROW */
@@ -764,15 +764,15 @@ button:disabled {
   }
 
   .letters input {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
   }
 
   /* Image smaller */
   .image-box img {
     width: 180px;
-    height: auto;
+    height: 140px !important;
   }
 
   /* Action Buttons Stack */

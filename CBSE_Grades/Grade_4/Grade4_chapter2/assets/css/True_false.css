@@ -38,7 +38,8 @@ margin-bottom:20px;
 .row{
 
 display:flex;
-justify-content:space-around;
+/* justify-content:space-around; */
+justify-content: center;
 align-items:center;
 
 gap:40px;
@@ -153,12 +154,14 @@ cursor:pointer;
 }
 
 .prev{
-background:#e8d3b3;
+background:#A2CB8B;
 }
 
 .next{
-background:#6ca8a4;
+
+background:#EA7B7B;
 color:white;
+
 }
 
 button:disabled{

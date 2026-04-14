@@ -24,18 +24,18 @@ const quizData = [
   title: "Q.3 A body-building food",
   options:[
     { text:"Chips", img:"../assets/images/chipsWB.png"},
-    { text:"Milk", img:"../assets/images/MilkWB.png"},
+    { text:"Egg", img:"../assets/images/eGGGG.png"},
   ],
-  answer: "Milk"
+  answer: "Egg"
 },
 
 {
   title: "Q.4 A food rich in vitamins",
   options:[
-    { text:"Vegetables", img:"../assets/images/Vegitabelsakk.png"},
+    { text:"Orange", img:"../assets/images/OrangeF2.png"},
     { text:"Bread", img:"../assets/images/BreadakWB.png"}
   ],
-  answer: "Vegetables"
+  answer: "Orange"
 },
 
 {

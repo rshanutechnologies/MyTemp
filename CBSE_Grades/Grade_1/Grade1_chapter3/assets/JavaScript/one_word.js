@@ -1,13 +1,13 @@
 const quizData = [
   {
     q: "Q1. Animals that live in water",
-    a: "AQUATIC",
+    a: "WATER ANIMALS",
     img: "../assets/images/aquatic.png",
   },
 
   {
     q: "Q2. Animals that live in our houses",
-    a: "PET",
+    a: "PET ANIMALS",
     img: "../assets/images/pet.png",
   },
 
@@ -19,7 +19,7 @@ const quizData = [
 
   {
     q: "Q4. Animals that are kept in farms",
-    a: "DOMESTIC",
+    a: "DOMESTIC ANIMALS",
     img: "../assets/images/domestic-animals.png",
   },
 
@@ -76,11 +76,20 @@ function shuffleLetters(array) {
 
 function createAnswerSlots(word) {
   answerSlotsContainer.innerHTML = "";
+
   for (let i = 0; i < word.length; i++) {
-    const slot = document.createElement("div");
-    slot.className = "answer-slot";
-    slot.onclick = () => removeLetterFromSlot(slot);
-    answerSlotsContainer.appendChild(slot);
+    if (word[i] === " ") {
+      // create gap
+      const gap = document.createElement("div");
+      gap.className = "answer-gap";
+      answerSlotsContainer.appendChild(gap);
+    } else {
+      const slot = document.createElement("div");
+      slot.className = "answer-slot";
+      slot.dataset.index = i;
+      slot.onclick = () => removeLetterFromSlot(slot);
+      answerSlotsContainer.appendChild(slot);
+    }
   }
 }
 
@@ -104,8 +113,10 @@ function removeLetterFromSlot(slot) {
 function generateLetterTiles(answer) {
   letterContainer.innerHTML = "";
   letterTiles = [];
-  let letters = answer.split("");
+
+  let letters = answer.replace(/\s/g, "").split(""); // remove spaces
   shuffleLetters(letters);
+
   letters.forEach((letter) => {
     const tile = document.createElement("div");
 
@@ -139,7 +150,7 @@ function validateSlotCompletion() {
 
   let word = [...slots].map((s) => s.textContent).join("");
 
-  if (word.length === correctAnswer.length) {
+  if (word.length === correctAnswer.replace(/\s/g, "").length) {
     submitButton.disabled = false;
   }
 }
@@ -245,7 +256,7 @@ submitButton.onclick = () => {
 
   let guess = [...slots].map((s) => s.textContent).join("");
 
-  if (guess === correctAnswer) {
+  if (guess === correctAnswer.replace(/\s/g, "")) {
     quizScore++;
 
     showPopup(true);

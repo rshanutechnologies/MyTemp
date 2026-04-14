@@ -9,11 +9,11 @@ const quiz = [
   },
   {
     q: "2. An object that we should not put into our ears",
-    img1: "../assets/images/pencil.png",
-    t1: "Pencil",
+    img1: "../assets/images/pin.png",
+    t1: "Pin",
     img2: "../assets/images/earbuds.png",
     t2: "Earbuds",
-    a: "pencil",
+    a: "pin",
   },
   {
     q: "3. We must use this to blow our nose",
@@ -33,11 +33,11 @@ const quiz = [
   },
   {
     q: "5. An activity that we do to keep our eyes healthy",
-    img1: "../assets/images/washing-eyes.png",
-    t1: "Washing eyes",
+    img1: "../assets/images/reading.png",
+    t1: "Reading in proper light",
     img2: "../assets/images/rubbing-eyes.png",
     t2: "Rubbing eyes",
-    a: "washing eyes",
+    a: "reading in proper light",
   },
 ];
 

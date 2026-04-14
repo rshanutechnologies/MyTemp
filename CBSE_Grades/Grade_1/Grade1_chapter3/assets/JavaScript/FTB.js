@@ -11,7 +11,7 @@ const questions = [
   },
   {
     q: "Q3. Sheep gives us ______ and ______.",
-    a: ["wool", "milk"],
+    a: ["wool", "meat"],
     img: "../assets/images/sheep.png",
   },
   {

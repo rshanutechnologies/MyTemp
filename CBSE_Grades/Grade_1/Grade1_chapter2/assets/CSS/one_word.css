@@ -102,6 +102,10 @@ body {
     pointer-events: none;
 }
 
+.answer-gap {
+    width: 15px;
+}
+
 #submitButton {
     margin-top: 15px;
     border-radius: 30px;
@@ -321,7 +325,7 @@ body {
     body {
         align-items: center;
         padding: 20px;
-        overflow: auto;
+        overflow: hidden;
     }
 
     .quiz-container {
@@ -459,6 +463,14 @@ body {
         width: 60px;
         height: 45px;
         font-size: 17px;
+    }
+
+    .answer-gap {
+        width: 8px;
+    }
+
+    #submitButton {
+        padding: 8px 25px;
     }
 
     .quiz-navigation {

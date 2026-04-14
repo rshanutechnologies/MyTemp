@@ -1065,6 +1065,7 @@ body{
     transform-origin: top center;
     margin-left: -5% !important;
     /* background-color: yellow !important; */
+      margin-top: -1% !important;
     
   }
 
@@ -1094,8 +1095,8 @@ body{
 
   /* IMAGE BIG */
   .left img{
-    width: 300px;
-    height: 300px;
+    width: 270px;
+    height: 270px;
   }
 
   /* INPUT BOX BIG */

@@ -4,11 +4,11 @@ const quizData = [
   title: "Q.1 A cereal",
   image: "../assets/images/Cerealak.png",
   options:[
-    { text:"Wheat", img:"../assets/images/Wheatak.png"},
+    { text:"Maize", img:"../assets/images/Wheatak.png"},
     { text:"Pumpkin", img:"../assets/images/PumpkinPlantY.png"},
     { text:"Fruits", img:"../assets/images/Fruitakk (2).png"}
   ],
-  answer: "Wheat"
+  answer: "Maize"
 },
 
 {
@@ -29,35 +29,35 @@ const quizData = [
   options:[
     // { text:"Cabbage", img:"../assets/images/Cabbageak.png"},
     { text:" Oleander", img:"../assets/images/Oleander.png"},
-    { text:"Spinach", img:"../assets/images/Spinch.png"},
-    // { text:"Mint", img:"../assets/images/MintPlant.png"}
+   
+    { text:"Mint", img:"../assets/images/MintPlant.png"},
     { text:"Castor Plant", img:"../assets/images/CastorPlant.png"},
   ],
-  answer: "Spinach"
+  answer: "Mint"
 },
 
 {
   title: "Q.4 A root that we eat",
   image: "../assets/images/RootM.png",
   options:[
-    { text:"Beetroot", img:"../assets/images/Radishak.png"},
+    { text:"Carrot", img:"../assets/images/Carrotakc.png"},
     // { text:"Radish", img:"../assets/images/Radishakk.png"},
       { text:" Monkshood", img:"../assets/images/Monkshood.png"},
        { text:"Manchineel", img:"../assets/images/ManchineelTree.png"}
     // { text:"Beetroot", img:"../assets/images/Radishak.png"}
   ],
-  answer: "Beetroot"
+  answer: "Carrot"
 },
 
 {
   title: "Q.5 A part of a plant",
   image: "../assets/images/Planttak.png",
   options:[
-    { text:"Stem", img:"../assets/images/stemM.png"},
+    { text:"Roots", img:"../assets/images/RootM.png"},
     { text:"Arms", img:"../assets/images/Arms.png"},
     { text:"Engine", img:"../assets/images/Engine.png"}
   ],
-  answer: "Stem"
+  answer: "Roots"
 }
 ];
 /* ================= STATE ================= */

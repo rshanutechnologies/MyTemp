@@ -9,7 +9,7 @@ options: [
 { text: "Wild Animals", img: "../assets/images/Tigerak.png" },
 { text: "Insects", img: "../assets/images/Butterflyak.png" }
 ],
-answer: "Domestic Animals"
+answer: "Pet Animals"
 },
 
 {

@@ -76,7 +76,7 @@ answered:false
 {
 q:"Q.5 Bones are covered with muscles.",
 a:true,
-img:"../assets/images/2Boness.png",
+img:"../assets/images/BonesCoveredMuscles.png",
 answered:false
 }
 

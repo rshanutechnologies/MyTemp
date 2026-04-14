@@ -76,13 +76,13 @@ const quizData=[
 
 {
 q:"Q.1 Small and bushy plants",
-a:"SHRUB",
+a:"SHRUBS",
 img:"../assets/images/S1.png"
 },
 
 {
 q:"Q.2 Small plants with soft stems",
-a:"HERB",
+a:"HERBS",
 img:"../assets/images/SmallPlantsak.png"
 },
 

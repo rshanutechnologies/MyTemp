@@ -60,7 +60,7 @@ const questions = [
 
   {
     q: "Q.2 The skin is an _ _ _ _ _ part of our body.",
-    a: "outer",
+    a: "External",
     img: "../assets/images/Skin.png"
   },
 
@@ -73,7 +73,7 @@ const questions = [
   {
     q: "Q.4 The _ _ _ _ _ helps us remember.",
     a: "brain",
-    img: "../assets/images/brain.png"
+    img: "../assets/images/Rememberingbrain.png"
   },
 
   {

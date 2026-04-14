@@ -15,27 +15,27 @@ const quizData = [
   title: "Q.2 An external part of our body",
   options:[
     { text:"Brain", img:"../assets/images/brain.png"},
-    { text:"Arms", img:"../assets/images/Arms.png"},
+     { text:"Ears", img:"../assets/images/ears.png"},
   ],
-  answer: "Arms"
+  answer: "Ears"
 },
 
 {
   title: "Q.3 An action that we do with our nose",
   options:[
     { text:"Hear", img:"../assets/images/BoyHear.png"},
-    { text:"Smell", img:"../assets/images/BoySmell.png"},
+    { text:"Smelling", img:"../assets/images/BoySmell.png"},
   ],
-  answer: "Smell"
+  answer: "Smelling"
 },
 
 {
   title: "Q.4 A part that is located inside our chest",
   options:[
-    { text:"Heart", img:"../assets/images/heartt.png"},
+    { text:"Lungs", img:"../assets/images/Lungs.png"},
     { text:"Ears", img:"../assets/images/ears.png"},
   ],
-  answer: "Heart"
+  answer: "Lungs"
 },
 
 {

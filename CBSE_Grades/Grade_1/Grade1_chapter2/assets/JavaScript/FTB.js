@@ -1,19 +1,19 @@
 const questions = [
   {
     question: "Q1. Carrots are ______.",
-    answer: "roots",
+    answer: "vegetables",
     image: "../assets/images/carrot-img.png",
   },
 
   {
     question: "Q2. ______ has many seeds.",
-    answer: "papaya",
+    answer: "strawberry",
     image: "../assets/images/seeds.png",
   },
 
   {
     question: "Q3. Pumpkin is a ______.",
-    answer: "vegetable",
+    answer: "weak plant",
     image: "../assets/images/pumpkin.png",
   },
 
@@ -25,7 +25,7 @@ const questions = [
 
   {
     question: "Q5. ______ has a trunk.",
-    answer: "tree",
+    answer: "mango tree",
     image: "../assets/images/tree.png",
   },
 ];

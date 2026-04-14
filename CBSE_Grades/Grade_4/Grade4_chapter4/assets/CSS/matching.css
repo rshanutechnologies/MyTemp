@@ -33,7 +33,8 @@ body {
     justify-content: center;
     align-items: center;
 
-    gap: clamp(20px, 5vw, 90px); /* responsive gap */
+    /* gap: clamp(20px, 5vw, 90px); */
+    gap:70px;
 }
 
 /* SVG */
@@ -77,7 +78,7 @@ body {
     border: 3px solid rgb(238, 194, 194);
 
     position: relative;
-    font-size: clamp(20px, 2vw, 22px);
+    font-size: clamp(19px, 2vw, 22px);
     color: #2f4f4f;
 }
 
@@ -169,15 +170,15 @@ body {
   font-size: 15px;
    /* height: auto;  */
  height: 80px; 
- font-size: 16px;      /* was bigger → slightly reduced */
+       /* was bigger → slightly reduced */
     line-height: 1.3;
 
 
 }
 
-.column:last-child .item{
+/* .column:last-child .item{
   font-size: 14px;
-}
+} */
 
 .item{
   height: auto;
@@ -200,7 +201,7 @@ body {
 
 
     .game-container {
-        gap: clamp(22px, 4vw, 40px);
+        gap: 39px;
     }
 
     .column {

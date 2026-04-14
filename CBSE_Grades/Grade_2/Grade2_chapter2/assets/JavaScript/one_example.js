@@ -76,7 +76,7 @@ const quizData = [
 {
 q:"Q.1 A bird that can swim",
 a:"DUCK",
-img:"../assets/images/BirdSwim.png"
+img:"../assets/images/BirdSwimInWater.png"
 },
 
 {

@@ -672,3 +672,13 @@ padding:20px;
 }
 
 }
+
+@media (min-width:1300px){
+
+/* center main container */
+ body{
+    margin-top: -25px !important;
+    /* background-color: red !important; */
+    
+ }
+}

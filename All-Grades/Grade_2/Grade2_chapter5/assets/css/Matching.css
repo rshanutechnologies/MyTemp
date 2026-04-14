@@ -208,6 +208,7 @@ canvas {
 @media (max-width:1200px) {
     .game {
         width: 95%;
+        
     }
 
     .level-progress {
@@ -225,6 +226,7 @@ canvas {
         height: auto;
         padding: 20px 10px;
         align-items: flex-start;
+       
     }
 
     .game {
@@ -379,10 +381,11 @@ canvas {
 
 
 /* ================= 1441px — 1920px ================= */
-@media screen and (min-width:1250px) and (max-width:1920px){
+@media screen and (min-width:1650px) and (max-width:1920px){
 
 .game{
 width:1200px;
+
 }
 
 .level-progress{

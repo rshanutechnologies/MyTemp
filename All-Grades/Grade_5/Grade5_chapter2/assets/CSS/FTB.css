@@ -671,8 +671,8 @@ button:disabled {
 
   /* ✅ IMAGE */
   .image-panel{
-    width: 300px;
-    height: 300px;
+    width: 270px;
+    height: 270px;
     margin-top: -2% !important;
   }
 
@@ -713,7 +713,7 @@ button:disabled {
     height: 70px;
     font-size: 24px;
     border-radius: 999px;
-    bottom: -30px;
+    bottom: -20px;
   }
 
   .nav-btn.prev{

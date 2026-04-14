@@ -53,8 +53,8 @@ const questions = [
 
 {
 q: "Q.1 __________ food keeps us fit and healthy.",
-a: "Balanced",
-img: "../assets/images/BalacedDiet.png" ,
+a: "Nutritious",
+img: "../assets/images/NutritiousFooood.png" ,
 },
 
 {

@@ -8,7 +8,7 @@ const quizData = [
       "../assets/images/two.png|two",
       "../assets/images/four.png|four",
     ],
-    a: 2,
+    a: 1,
   },
 
   {

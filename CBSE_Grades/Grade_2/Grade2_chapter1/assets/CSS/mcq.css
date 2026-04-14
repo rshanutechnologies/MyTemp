@@ -858,6 +858,7 @@ body{
     transform-origin: top center;
     /* background-color: yellow !important; */
     margin-left: -3% !important;
+    margin-top: -1% !important;
   }
 
   /* container bigger */
@@ -869,15 +870,15 @@ body{
   /* QUESTION TITLE */
   .title{
     font-size: 44px;
-    min-height: 120px;
+    min-height: 90px !important;
     width: 1000px;
     line-height: 1.4;
   }
 
   /* IMAGE BIG */
   .animal-img{
-    width: 320px;
-    height: 280px;
+    width: 270px;
+    height: 270px;
   }
 
   /* OPTIONS GRID */

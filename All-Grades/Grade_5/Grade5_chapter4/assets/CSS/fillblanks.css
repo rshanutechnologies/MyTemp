@@ -700,7 +700,21 @@ button:disabled {
 /* ===================================== */
 /* ===== 1280px PURE SIZE UPGRADE ===== */
 /* ===================================== */
+@media (min-width: 1580px) and (max-width: 1780px) {
 
+
+   .illustration img {
+    width: 200px !important;
+    height: 200px !important;
+    /* background-color: red !important; */
+  }
+
+  .buttons {
+    margin-top: 40px !important;
+    gap: 30px;
+  }
+
+}
 @media (min-width: 1580px) {
 
  

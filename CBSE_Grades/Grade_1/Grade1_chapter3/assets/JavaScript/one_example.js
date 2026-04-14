@@ -1,47 +1,47 @@
 const quiz = [
   {
     q: "Q1. An animal that has scales or hard shells on its body",
-    img1: "../assets/images/turtle.png",
-    t1: "Turtle",
+    img1: "../assets/images/crocodile.png",
+    t1: "Crocodile",
     img2: "../assets/images/tf-1.png",
     t2: "Crab",
-    a: "turtle",
+    a: "crocodile",
   },
 
   {
     q: "Q2. An animal that lives in water",
-    img1: "../assets/images/octopus.png",
-    t1: "Octopus",
+    img1: "../assets/images/fish.png",
+    t1: "Fish",
     img2: "../assets/images/elephant.png",
     t2: "Elephant",
-    a: "octopus",
+    a: "fish",
   },
 
   {
     q: "Q3. A wild animal",
     img1: "../assets/images/caaat.png",
     t1: "Cat",
-    img2: "../assets/images/tiger.png",
-    t2: "Tiger",
-    a: "tiger",
+    img2: "../assets/images/lion.png",
+    t2: "Lion",
+    a: "lion",
   },
 
   {
     q: "Q4. A domestic animal",
     img1: "../assets/images/cow.png",
     t1: "Cow",
-    img2: "../assets/images/crocodile.png",
-    t2: "Crocodile",
+    img2: "../assets/images/tiger.png",
+    t2: "Tiger",
     a: "cow",
   },
 
   {
     q: "Q5. A human-made shelter",
-    img1: "../assets/images/house.png",
-    t1: "House",
+    img1: "../assets/images/kennel.png",
+    t1: "Kennel",
     img2: "../assets/images/cave1.png",
     t2: "Cave",
-    a: "house",
+    a: "kennel",
   },
 ];
 

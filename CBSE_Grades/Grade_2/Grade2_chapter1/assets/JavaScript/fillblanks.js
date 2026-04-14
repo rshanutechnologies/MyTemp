@@ -171,11 +171,11 @@ function checkAnswer(correct) {
 /* ================= QUESTIONS ================= */
 
 const questions = [
-  { q: "Q.1 Potato is a _ _ _ _ _ _ _ _ _ _.", a: "stem",     img: "../assets/images/Potatoakkkk.png" },
-  { q: "Q.2 _ _ _ _ _ _ _ _ _ is a medicinal plant.", a: "tulsi",   img: "../assets/images/Tulsi.png" },
+  { q: "Q.1 Potato is a _ _ _ _ _ _ _ _ _ _.", a: "stem",     img: "../assets/images/Apotato.png" },
+  { q: "Q.2 _ _ _ _ _ _ _ _ _ is a medicinal plant.", a: "Neem",   img: "../assets/images/neem-img.png" },
   { q: "Q.3 _ _ _ _ _ _ prepare food for the plant.", a: "leaves",  img: "../assets/images/LeafFoodMakee.png" },
   { q: "Q.4 The root of a plant grows _ _ _ _ _ the ground.", a: "under",   img: "../assets/images/RootUnder.png" },
-  { q: "Q.5 Wood of _ _ _ _ tree is used to make furniture.", a: "teak",    img: "../assets/images/Teakak.png" }
+  { q: "Q.5 Wood of _ _ _ _ tree is used to make furniture.", a: "Oak",    img: "../assets/images/F-5.png" }
 ];
 
 let index = 0;

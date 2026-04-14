@@ -3,7 +3,7 @@ const quizData = [
     q: "Q1: Which is a living thing?",
     img: "../assets/images/owq-1.png",
     options: [
-      { img: "../assets/images/cat.png", text: "Cat" },
+      { img: "../assets/images/dog-1.png", text: "Dog" },
       { img: "../assets/images/rock.png", text: "Rock" },
     ],
     a: 0,
@@ -14,7 +14,7 @@ const quizData = [
     img: "../assets/images/owq-2.png",
     options: [
       { img: "../assets/images/ftb-3.png", text: "Tree" },
-      { img: "../assets/images/chair.png", text: "Chair" },
+      { img: "../assets/images/rock.png", text: "Rock" },
     ],
     a: 1,
   },
@@ -33,7 +33,7 @@ const quizData = [
     q: "Q4: Which is a human-made thing?",
     img: "../assets/images/owq-4.png",
     options: [
-      { img: "../assets/images/books.png", text: "Books" },
+      { img: "../assets/images/table.png", text: "Table" },
       { img: "../assets/images/flowers.png", text: "Flowers" },
     ],
     a: 0,

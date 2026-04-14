@@ -146,10 +146,9 @@ background:#999;
 outline:4px solid #ffffff;
 }
 
-/* MATCHED */
+/* MATCHED — only cursor, no background (color applied via JS) */
 
 .matched{
-background:#0dd80da7;
 cursor:default;
 }
 
@@ -256,7 +255,7 @@ flex-shrink:0;
     border-radius: 50%;
     width: 26px;
     height: 26px;
-    display: flex;
+    display: none; /* hidden by default — shown only on mobile via media query */
     align-items: center;
     justify-content: center;
     font-size: 14px;
@@ -394,8 +393,10 @@ min-height:45px;
 
 }
 
-
-
+/* show match numbers on mobile */
+.match-number {
+    display: flex;
+}
 
 
 
@@ -692,4 +693,4 @@ height:32px;
 font-size:16px;
 }
 
-} 
+}

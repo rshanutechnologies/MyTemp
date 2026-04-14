@@ -471,6 +471,13 @@ font-size:16px;
 }
 
 }
+
+ @media (min-width:1180px) {
+    body{
+      /* background-color: red !important; */
+      margin-top: 3% !important;
+    }
+   }
   @media (min-width:1480px) {
     body{
       /* background-color: red !important; */
@@ -480,6 +487,8 @@ font-size:16px;
 
 @media (min-width:1580px) {
 
+
+ 
   /* ===== APP ===== */
   .app{
     width:100%;
@@ -580,3 +589,4 @@ font-size:16px;
   }
 
 }
+

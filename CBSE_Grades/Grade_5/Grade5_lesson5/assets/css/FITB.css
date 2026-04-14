@@ -481,7 +481,7 @@ font-size:22px;
  */
 
 /* ================= 1441px — 1920px ================= */
-@media screen and (min-width:1450px) and (max-width:1920px){
+@media screen and (min-width:1650px) and (max-width:1920px){
 
 .main-container{
 width:1150px;

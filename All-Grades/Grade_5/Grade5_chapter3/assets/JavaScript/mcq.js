@@ -24,10 +24,10 @@ const questions = [
   {
     q: "Q.3 The average heart beat per minute in an adult is?",
     options: [
-      ["12", "../assets/images/heart1.png"],
-      ["60", "../assets/images/heart1.png"],
-      ["30", "../assets/images/heart1.png"],
-      ["72", "../assets/images/heart1.png"],
+      ["12", "../assets/images/heart12.png"],
+      ["60", "../assets/images/heart60.png"],
+      ["30", "../assets/images/heart30.png"],
+      ["72", "../assets/images/heart72.png"],
     ],
     answer: 3,
   },

@@ -126,9 +126,10 @@ body {
 
 /* ✅ BUTTONS (INCREASED) */
 .answer {
-    width: clamp(170px, 22vw, 230px);
-    height: clamp(75px, 10vh, 90px);
-
+    /* width: clamp(170px, 22vw, 230px);
+    height: clamp(75px, 10vh, 90px); */
+     width: 150px;     
+  height: 60px; 
     border-radius: 25px;
     font-size: clamp(17px, 2.3vw, 26px);
     font-weight: 600;
