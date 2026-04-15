@@ -3802,8 +3802,55 @@
   /////////////////////////////////////////////////////////////////////////////////////////////
   /* JS-only: Make Home cards navigate to "Select Grade" without changing existing HTML */
   /* JS-only: Make Home cards navigate to "Select Grade" (supports SSC + CBSE) */
-  (function bindHomeCardsNavigation() {
+  // (function bindHomeCardsNavigation() {
 
+  //   function wireHomeCardsOnce() {
+  //     const home = document.getElementById('homeContent');
+  //     if (!home || home.style.display === 'none') return;
+
+  //     home.querySelectorAll('.curriculum .curr-card').forEach(card => {
+  //       if (card.__wwBound) return;
+
+  //       const title = (card.querySelector('h2')?.textContent || '').trim().toLowerCase();
+
+  //       if (title === 'ssc' || title.includes('state syllabus')) {
+  //         card.addEventListener('click', () => {
+  //           if (typeof window.loadCurriculum === 'function') loadCurriculum('SSC');
+  //         });
+  //         card.style.cursor = 'pointer';
+  //         card.__wwBound = true;
+  //       } else if (title === 'cbse') {
+  //         card.addEventListener('click', () => {
+  //           if (typeof window.loadCurriculum === 'function') loadCurriculum('CBSE');
+  //         });
+  //         card.style.cursor = 'pointer';
+  //         card.__wwBound = true;
+  //       }
+  //     });
+  //   }
+
+  //   // First load
+  //   if (document.readyState === 'loading') {
+  //     document.addEventListener('DOMContentLoaded', wireHomeCardsOnce);
+  //   } else {
+  //     wireHomeCardsOnce();
+  //   }
+
+  //   // Rebind whenever you show Home again
+  //   if (typeof window.showHome === 'function' && !window.showHome.__wwRebind) {
+  //     const __orig = window.showHome;
+  //     window.showHome = function () {
+  //       const r = __orig.apply(this, arguments);
+  //       setTimeout(wireHomeCardsOnce, 0);
+  //       return r;
+  //     };
+  //     window.showHome.__wwRebind = true;
+  //   }
+  // })();
+
+//==------------------------------------------------------------------------------------------------------------------------------------------------------
+  /* Fixed: CBSE Card + Sidebar Click → Coming Soon Popup */
+  (function bindHomeCardsNavigation() {
     function wireHomeCardsOnce() {
       const home = document.getElementById('homeContent');
       if (!home || home.style.display === 'none') return;
@@ -3811,32 +3858,37 @@
       home.querySelectorAll('.curriculum .curr-card').forEach(card => {
         if (card.__wwBound) return;
 
-        const title = (card.querySelector('h2')?.textContent || '').trim().toLowerCase();
+        const title = (card.querySelector('h2')?.textContent || '').trim().toUpperCase();
 
-        if (title === 'ssc' || title.includes('state syllabus')) {
-          card.addEventListener('click', () => {
-            if (typeof window.loadCurriculum === 'function') loadCurriculum('SSC');
-          });
-          card.style.cursor = 'pointer';
-          card.__wwBound = true;
-        } else if (title === 'cbse') {
-          card.addEventListener('click', () => {
-            if (typeof window.loadCurriculum === 'function') loadCurriculum('CBSE');
-          });
-          card.style.cursor = 'pointer';
-          card.__wwBound = true;
-        }
+        if (title === 'SSC' || title.includes('STATE')) {
+          card.addEventListener('click', () => loadCurriculum('SSC'));
+        // } else if (title === 'CBSE') {
+        //   card.addEventListener('click', showCBSEComingSoonPopup);
+        // }
+
+//         } else if (title === 'CBSE') {
+//   card.addEventListener('click', showCBSEComingSoonUI);
+// }
+
+
+} else if (title === 'CBSE') {
+  card.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    handleCBSEClick(e);
+  });
+}
+        card.style.cursor = 'pointer';
+        card.__wwBound = true;
       });
     }
 
-    // First load
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', wireHomeCardsOnce);
     } else {
       wireHomeCardsOnce();
     }
 
-    // Rebind whenever you show Home again
     if (typeof window.showHome === 'function' && !window.showHome.__wwRebind) {
       const __orig = window.showHome;
       window.showHome = function () {
@@ -3847,6 +3899,97 @@
       window.showHome.__wwRebind = true;
     }
   })();
+
+
+  // function showCBSEComingSoonPopup() {
+  //   const popup = document.createElement('div');
+  //   popup.style.cssText = `
+  //     position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+  //     background: rgba(0,0,0,0.75); z-index: 9999; 
+  //     display: flex; align-items: center; justify-content: center;
+  //   `;
+
+  //   popup.innerHTML = `
+  //     <div style="background: white; border-radius: 24px; padding: 50px 60px; max-width: 460px; text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.3);">
+  //       <div style="font-size: 80px; margin-bottom: 20px;">🚧</div>
+  //       <h2 style="color: #0F6A5A; font-size: 32px; margin-bottom: 15px;">CBSE is Coming Soon!</h2>
+  //       <p style="color: #475569; font-size: 18px; line-height: 1.6;">
+  //         We are working hard to bring you complete CBSE content.<br>
+  //         Stay tuned!
+  //       </p>
+  //       <br><br>
+  //       <button onclick="closeCBSEPopupAndGoHome()" 
+  //               style="background: #0F6A5A; color: white; border: none; padding: 16px 40px; font-size: 18px; border-radius: 14px; cursor: pointer;">
+  //         Go Back to Home
+  //       </button>
+  //     </div>
+  //   `;
+
+  //   document.body.appendChild(popup);
+  // }
+
+  /* CBSE Warning UI (no popup) */
+  function showCBSEComingSoonUI() {
+    document.getElementById('homeContent').style.display = 'none';
+    const lessonDiv = document.getElementById('lessonContent');
+    lessonDiv.style.display = 'block';
+
+    lessonDiv.innerHTML = `
+      <div style="padding: 60px 40px; text-align: center; max-width: 700px; margin: 80px auto; background: white; border-radius: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.08);">
+        
+        <div style="font-size: 90px; margin-bottom: 30px;">🚧</div>
+        
+        <h1 style="color: #0F6A5A; font-size: 38px; margin-bottom: 20px; font-weight: 700;">
+          CBSE is Coming Soon!
+        </h1>
+        
+        <p style="color: #475569; font-size: 19px; line-height: 1.7; max-width: 520px; margin: 0 auto 40px;">
+          We are working hard to bring complete CBSE curriculum content to WiseWings EduLearn.<br>
+          It will be available very soon. Thank you for your patience!
+        </p>
+
+        <button onclick="showHome()" 
+                style="background: #0F6A5A; color: white; border: none; padding: 18px 50px; 
+                       font-size: 18px; font-weight: 600; border-radius: 16px; cursor: pointer; 
+                       box-shadow: 0 8px 20px rgba(15, 106, 90, 0.25);">
+          ← Go Back to Home
+        </button>
+      </div>
+    `;
+  }
+
+
+  // window.closeCBSEPopupAndGoHome = function() {
+  //   // Close all popups
+  //   document.querySelectorAll('div[style*="position: fixed"]').forEach(p => p.remove());
+    
+  //   // Go to Home
+  //   if (typeof window.showHome === 'function') {
+  //     window.showHome();
+  //   } else {
+  //     document.getElementById('homeContent').style.display = 'block';
+  //     document.getElementById('lessonContent').style.display = 'none';
+  //   }
+  // };
+
+  
+  /* Prevent CBSE from opening grades in sidebar */
+  (function blockCBSEFromSidebar() {
+    document.addEventListener('click', function(e) {
+      const menuTitle = e.target.closest('.sidebar .menu-title');
+      if (!menuTitle) return;
+
+      const text = menuTitle.textContent.trim().toUpperCase();
+      if (text === 'CBSE') {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        // showCBSEComingSoonPopup();
+        showCBSEComingSoonUI();
+      }
+    }, true);
+  })();
+
+  //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   ////////////////////////////////////////////////////////////////default selection remove
   /* ---- Sidebar UI reset so Home returns everything to normal ---- */
   function __resetSidebarUI() {
@@ -4465,6 +4608,8 @@
       observeChanges();
     });
   })();
+
+  
 </script>
 
 <body class=" home-theme ">
@@ -4495,11 +4640,19 @@
           <ul class="submenu" id="stateSyllabusSubmenu"></ul>
         </li>
 
-        <li>
+        <!-- <li>
           <div class="menu-title" onclick="toggleMenu(this)"><img src="./assets/images/image (9).png" alt="img"
               class="i" />CBSE <span class="arrow">▶</span></div>
           <ul class="submenu" id="cbseSubmenu"></ul>
-        </li>
+        </li> -->
+
+        <li id="cbseRootItem">
+  <div class="menu-title" id="cbseMenuTitle" onclick="handleCBSEClick(event)">
+    <img src="./assets/images/image (9).png" alt="img" class="i" />CBSE 
+    <span class="arrow" style="opacity:0.6;">🔒</span>
+  </div>
+  <ul class="submenu" id="cbseSubmenu" style="max-height:0; overflow:hidden; pointer-events:none;"></ul>
+</li>
       </ul>
     </aside>
 
@@ -4594,55 +4747,198 @@
   </div>
 
   <script>
+    // const grades = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'];
+
+    // /* ===== Sidebar population ===== */
+    // const stateSyllabusSubmenu = document.getElementById('stateSyllabusSubmenu');
+    // const cbseSubmenu = document.getElementById('cbseSubmenu');
+
+    // /* Subject names to show inside each Grade dropdown */
+    // const SUBJECT_NAMES = ['Mathematics', 'Science', 'English', 'Social Studies', 'Regional Language'];
+    // /* ---------- Show subject names in dropdown and open a "subject list" page ---------- */
+    // /* State Syllabus */
+    // grades.forEach(grade => {
+    //   const li = document.createElement('li');
+    //   li.innerHTML = `
+    // <div class="menu-title" onclick="toggleMenu(this)">
+    //   <i class="fa-solid fa-graduation-cap"></i> ${grade} <span class="arrow">▶</span>
+    // </div>
+    // <ul class="submenu">
+    //   ${SUBJECT_NAMES.map(name => `
+    //     <li><a onclick="loadSubjectList('SSC','${grade}','${name}')">${name}</a></li>
+    //   `).join('')}
+    // </ul>`;
+    //   stateSyllabusSubmenu.appendChild(li);
+    // });
+
+    // /* CBSE */
+    // grades.forEach(grade => {
+    //   const li = document.createElement('li');
+    //   li.innerHTML = `
+    // <div class="menu-title" onclick="toggleMenu(this)">
+    //   <i class="fa-solid fa-graduation-cap"></i> ${grade} <span class="arrow">▶</span>
+    // </div>
+    // <ul class="submenu">
+    //   ${SUBJECT_NAMES.map(name => `
+    //     <li><a onclick="loadSubjectList('CBSE','${grade}','${name}')">${name}</a></li>
+    //   `).join('')}
+    // </ul>`;
+    //   cbseSubmenu.appendChild(li);
+    // });
+
+    // function toggleMenu(el) {
+    //   const submenu = el.nextElementSibling;
+    //   const arrow = el.querySelector(".arrow");
+    //   if (submenu) { submenu.classList.toggle("open"); arrow.textContent = submenu.classList.contains("open") ? "▼" : "▶"; }
+    // }
+    // function showHome() {
+    //   document.getElementById('homeContent').style.display = 'block';
+    //   document.getElementById('lessonContent').style.display = 'none';
+    // }
+
+
+   ///----------------------------------------------------------------------------------------------------------------------------------------
+    // const grades = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'];
+
+    // /* ===== Sidebar population - CBSE now blocked ===== */
+    // const stateSyllabusSubmenu = document.getElementById('stateSyllabusSubmenu');
+    // const cbseSubmenu = document.getElementById('cbseSubmenu');
+
+    // const SUBJECT_NAMES = ['Mathematics', 'Science', 'English', 'Social Studies', 'Regional Language'];
+
+    // /* State Syllabus - Normal */
+    // grades.forEach(grade => {
+    //   const li = document.createElement('li');
+    //   li.innerHTML = `
+    //     <div class="menu-title" onclick="toggleMenu(this)">
+    //       <i class="fa-solid fa-graduation-cap"></i> ${grade} <span class="arrow">▶</span>
+    //     </div>
+    //     <ul class="submenu">
+    //       ${SUBJECT_NAMES.map(name => `
+    //         <li><a onclick="loadSubjectList('SSC','${grade}','${name}')">${name}</a></li>
+    //       `).join('')}
+    //     </ul>`;
+    //   stateSyllabusSubmenu.appendChild(li);
+    // });
+
+    /* CBSE - Blocked: Show Coming Soon instead of opening grades */
+    // grades.forEach(grade => {
+    //   const li = document.createElement('li');
+    //   li.innerHTML = `
+    //     <div class="menu-title" onclick="showCBSEComingSoonPopup()">
+    //       <i class="fa-solid fa-graduation-cap"></i> ${grade} <span class="arrow">▶</span>
+    //     </div>
+    //     <ul class="submenu"></ul>`;   // Empty submenu so nothing opens
+    //   cbseSubmenu.appendChild(li);
+    // });
+
+    // function toggleMenu(el) {
+    //   const submenu = el.nextElementSibling;
+    //   const arrow = el.querySelector(".arrow");
+    //   if (submenu) {
+    //     submenu.classList.toggle("open");
+    //     arrow.textContent = submenu.classList.contains("open") ? "▼" : "▶";
+    //   }
+    // }
+
+    // function showHome() {
+    //   document.getElementById('homeContent').style.display = 'block';
+    //   document.getElementById('lessonContent').style.display = 'none';
+    // }
+
+
     const grades = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'];
+  const SUBJECT_NAMES = ['Mathematics', 'Science', 'English', 'Social Studies', 'Regional Language'];
 
-    /* ===== Sidebar population ===== */
-    const stateSyllabusSubmenu = document.getElementById('stateSyllabusSubmenu');
-    const cbseSubmenu = document.getElementById('cbseSubmenu');
+  const stateSyllabusSubmenu = document.getElementById('stateSyllabusSubmenu');
+  const cbseSubmenu = document.getElementById('cbseSubmenu');
 
-    /* Subject names to show inside each Grade dropdown */
-    const SUBJECT_NAMES = ['Mathematics', 'Science', 'English', 'Social Studies', 'Regional Language'];
-    /* ---------- Show subject names in dropdown and open a "subject list" page ---------- */
-    /* State Syllabus */
-    grades.forEach(grade => {
-      const li = document.createElement('li');
-      li.innerHTML = `
-    <div class="menu-title" onclick="toggleMenu(this)">
-      <i class="fa-solid fa-graduation-cap"></i> ${grade} <span class="arrow">▶</span>
+  /* ==================== SSC - Normal Behavior ==================== */
+  grades.forEach(grade => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div class="menu-title" onclick="toggleMenu(this)">
+        <i class="fa-solid fa-graduation-cap"></i> ${grade} <span class="arrow">▶</span>
+      </div>
+      <ul class="submenu">
+        ${SUBJECT_NAMES.map(name => `
+          <li><a onclick="loadSubjectList('SSC','${grade}','${name}')">${name}</a></li>
+        `).join('')}
+      </ul>`;
+    stateSyllabusSubmenu.appendChild(li);
+  });
+
+  /* ==================== CBSE - No Grades, Direct Warning UI ==================== */
+  grades.forEach(grade => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div class="menu-title" onclick="showCBSEComingSoonUI()">
+        <i class="fa-solid fa-graduation-cap"></i> ${grade} <span class="arrow">▶</span>
+      </div>
+      <ul class="submenu" style="display:none !important; max-height:0 !important;"></ul>`;
+    cbseSubmenu.appendChild(li);
+  });
+
+  /* Toggle only works for SSC - CBSE is blocked */
+  // function toggleMenu(el) {
+  //   if (el.textContent.trim().includes('CBSE')) return;   // Prevent opening under CBSE
+
+  //   const submenu = el.nextElementSibling;
+  //   const arrow = el.querySelector(".arrow");
+  //   if (submenu) {
+  //     submenu.classList.toggle("open");
+  //     arrow.textContent = submenu.classList.contains("open") ? "▼" : "▶";
+  //   }
+  // }
+
+  function toggleMenu(el) {
+  // Block CBSE from opening dropdown
+  if (el.closest('#cbseRootItem') || (el.textContent || '').includes('CBSE')) {
+    return;
+  }
+  
+  const submenu = el.nextElementSibling;
+  const arrow = el.querySelector(".arrow");
+  if (submenu) { 
+    submenu.classList.toggle("open"); 
+    arrow.textContent = submenu.classList.contains("open") ? "▼" : "▶"; 
+  }
+}
+
+  function showHome() {
+    document.getElementById('homeContent').style.display = 'block';
+    document.getElementById('lessonContent').style.display = 'none';
+  }
+
+
+
+
+
+
+  // Add this function - handles CBSE clicks (card + sidebar) without opening dropdown
+function handleCBSEClick(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  // Show Coming Soon UI
+  document.getElementById('homeContent').style.display = 'none';
+  const lessonDiv = document.getElementById('lessonContent');
+  lessonDiv.style.display = 'block';
+  
+  lessonDiv.innerHTML = `
+    <div class="crumbs">
+      <span onclick="showHome()">Home</span><span class="sep">›</span>
+      <span>CBSE</span>
     </div>
-    <ul class="submenu">
-      ${SUBJECT_NAMES.map(name => `
-        <li><a onclick="loadSubjectList('SSC','${grade}','${name}')">${name}</a></li>
-      `).join('')}
-    </ul>`;
-      stateSyllabusSubmenu.appendChild(li);
-    });
-
-    /* CBSE */
-    grades.forEach(grade => {
-      const li = document.createElement('li');
-      li.innerHTML = `
-    <div class="menu-title" onclick="toggleMenu(this)">
-      <i class="fa-solid fa-graduation-cap"></i> ${grade} <span class="arrow">▶</span>
+    <div class="cbse-assess-notice" style="text-align:center; padding:80px 40px; background:#fff0e6; border-radius:28px;">
+      <div style="font-size:80px; margin-bottom:20px;">🚧</div>
+      <h2 style="color:#0F6A5A; font-size:32px;">CBSE Curriculum Coming Soon!</h2>
+    
+      <button onclick="showHome()" style="background:#0F6A5A; color:white; border:none; padding:14px 32px; border-radius:40px; font-weight:600; margin-top:20px; cursor:pointer;">← Back to Home</button>
     </div>
-    <ul class="submenu">
-      ${SUBJECT_NAMES.map(name => `
-        <li><a onclick="loadSubjectList('CBSE','${grade}','${name}')">${name}</a></li>
-      `).join('')}
-    </ul>`;
-      cbseSubmenu.appendChild(li);
-    });
-
-    function toggleMenu(el) {
-      const submenu = el.nextElementSibling;
-      const arrow = el.querySelector(".arrow");
-      if (submenu) { submenu.classList.toggle("open"); arrow.textContent = submenu.classList.contains("open") ? "▼" : "▶"; }
-    }
-    function showHome() {
-      document.getElementById('homeContent').style.display = 'block';
-      document.getElementById('lessonContent').style.display = 'none';
-    }
-
+  `;
+}
+//-------------------------------------------------------------------------------------------------------------------------------
     /* =========================
        Your original lesson list builder (kept)
        ========================= */
@@ -5130,342 +5426,199 @@
        Subject list page – <Subject> - Lesson 1..5
        Works for BOTH SSC and CBSE (no behavior difference here)
        ========================= */
-  //   function loadSubjectList(curriculum, grade, subject) {
-  //     const lessonDiv = document.getElementById('lessonContent');
-  //     document.getElementById('homeContent').style.display = 'none';
-  //     lessonDiv.style.display = 'block';
+    function loadSubjectList(curriculum, grade, subject) {
+      const lessonDiv = document.getElementById('lessonContent');
+      document.getElementById('homeContent').style.display = 'none';
+      lessonDiv.style.display = 'block';
 
-  //     // ✅ Only Grade 1 + Science should show 4 lessons; everything else shows 5
-  //     // const isGrade1Science =
-  //     //   String(grade).trim().toLowerCase() === 'grade 1' &&
-  //     //   String(subject).trim().toLowerCase() === 'science';
+      // ✅ Only Grade 1 + Science should show 4 lessons; everything else shows 5
+      // const isGrade1Science =
+      //   String(grade).trim().toLowerCase() === 'grade 1' &&
+      //   String(subject).trim().toLowerCase() === 'science';
 
-  //     // const maxLessons = isGrade1Science ? 4 : 5;
+      // const maxLessons = isGrade1Science ? 4 : 5;
 
-  //     const data = (curriculum === 'CBSE') ? CBSE_LINKS : SSC_LINKS;
+      const data = (curriculum === 'CBSE') ? CBSE_LINKS : SSC_LINKS;
 
-  //     // Get lessons object (like {Lesson 1: url, Lesson 2: url...})
-  //     const lessonsObj = data?.[grade]?.[subject] || {};
+      // Get lessons object (like {Lesson 1: url, Lesson 2: url...})
+      const lessonsObj = data?.[grade]?.[subject] || {};
 
-  //     // Convert to array
-  //     const lessonKeys = Object.keys(lessonsObj);
+      // Convert to array
+      const lessonKeys = Object.keys(lessonsObj);
 
-  //     // Total lessons = number of links
-  //     const maxLessons = lessonKeys.length;
+      // Total lessons = number of links
+      const maxLessons = lessonKeys.length;
 
-  //     let cards = '';
+      let cards = '';
 
-  //     lessonKeys.forEach((lessonName, index) => {
-  //       cards += `
-  //   <div class="subject-card" onclick="loadSubject('${curriculum}','${grade}','${lessonName}','${subject}')">
-  //     <div style="display:flex;align-items:center;gap:8px;">
-  //       <h3>${subject} - ${lessonName}</h3>
-  //       <i class="fa-regular fa-clock" title="Estimated 30 min"></i>
-  //       <i class="fa-solid fa-book-open" title="Lesson"></i>
-  //     </div>
+      lessonKeys.forEach((lessonName, index) => {
+        cards += `
+    <div class="subject-card" onclick="loadSubject('${curriculum}','${grade}','${lessonName}','${subject}')">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <h3>${subject} - ${lessonName}</h3>
+        <i class="fa-regular fa-clock" title="Estimated 30 min"></i>
+        <i class="fa-solid fa-book-open" title="Lesson"></i>
+      </div>
 
-  //     <p style="margin:6px 0 0; color:#475569; font-size:14px;">
-  //       Exercise for ${lessonName}<br>
-  //       <span style="display:inline-flex; align-items:center; gap:6px;">
-  //         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-  //              viewBox="0 0 24 24" fill="none" stroke="currentColor"
-  //              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  //           <path d="M14 3.5V8a1 1 0 0 0 1 1h4.5" />
-  //           <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/>
-  //           <path d="M9 13h6M9 17h6M9 9h2"/>
-  //         </svg>
-  //         <span>Interactive assessments</span>
-  //       </span>
-  //     </p>
+      <p style="margin:6px 0 0; color:#475569; font-size:14px;">
+        Exercise for ${lessonName}<br>
+        <span style="display:inline-flex; align-items:center; gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3.5V8a1 1 0 0 0 1 1h4.5" />
+            <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/>
+            <path d="M9 13h6M9 17h6M9 9h2"/>
+          </svg>
+          <span>Interactive assessments</span>
+        </span>
+      </p>
 
-  //     <span class="arrow-corner">></span>
-  //   </div>`;
-  //     });
+      <span class="arrow-corner">></span>
+    </div>`;
+      });
 
-  //     lessonDiv.innerHTML = `
-  //   <div class="crumbs">
-  //     <span onclick="showHome()">Home</span><span class="sep">›</span>
-  //     <span onclick="loadCurriculum('${curriculum}')">${curriculum}</span><span class="sep">›</span>
-  //     <span onclick="loadGrade('${curriculum}','${grade}')">${grade}</span><span class="sep">›</span>
-  //     <span>${subject}</span>
-  //   </div>
+      lessonDiv.innerHTML = `
+    <div class="crumbs">
+      <span onclick="showHome()">Home</span><span class="sep">›</span>
+      <span onclick="loadCurriculum('${curriculum}')">${curriculum}</span><span class="sep">›</span>
+      <span onclick="loadGrade('${curriculum}','${grade}')">${grade}</span><span class="sep">›</span>
+      <span>${subject}</span>
+    </div>
 
-  //   <div class="top-header1">
-  //     <h1>${subject} - Lessons</h1>
-  //     <p>Complete All Lessons To Master This Subject</p>
-  //     <div class="lesson-stats">
-  //       <div class="stat-box">
-  //         <h3>${maxLessons}</h3>
-  //         <p>Total Lessons</p>
-  //       </div>
-  //       <div class="stat-box">
-  //         <div class="stat-icon-text">
-  //           <i class="fa-solid fa-list-ol"></i>
-  //           <h3>0/${maxLessons}</h3>
-  //         </div>
-  //         <p>Completed</p>
-  //       </div>
-  //     </div>
-  //   </div>
+    <div class="top-header1">
+      <h1>${subject} - Lessons</h1>
+      <p>Complete All Lessons To Master This Subject</p>
+      <div class="lesson-stats">
+        <div class="stat-box">
+          <h3>${maxLessons}</h3>
+          <p>Total Lessons</p>
+        </div>
+        <div class="stat-box">
+          <div class="stat-icon-text">
+            <i class="fa-solid fa-list-ol"></i>
+            <h3>0/${maxLessons}</h3>
+          </div>
+          <p>Completed</p>
+        </div>
+      </div>
+    </div>
 
-  //   <h2 style="margin-top:40px;">${subject} Lessons</h2>
-  //   <div class="subject-container">
-  //     ${cards}
-  //   </div>
+    <h2 style="margin-top:40px;">${subject} Lessons</h2>
+    <div class="subject-container">
+      ${cards}
+    </div>
 
-  //   <br><br>
-  //   <button onclick="loadGrade('${curriculum}','${grade}')" class="B"> ⬅ Back</button>
-  // `;
+    <br><br>
+    <button onclick="loadGrade('${curriculum}','${grade}')" class="B"> ⬅ Back</button>
+  `;
 
-  //     attachProgress();
-  //     applyLessonListStyling(subject);
-  //   }
+      attachProgress();
+      applyLessonListStyling(subject);
+    }
 
 
-  //   /* =========================
-  //      Subject detail page (Lesson view)
-  //      - SSC: render index.html in iframe (same as before)
-  //      - CBSE: NO iframe; show only the red text
-  //      ========================= */
+    /* =========================
+       Subject detail page (Lesson view)
+       - SSC: render index.html in iframe (same as before)
+       - CBSE: NO iframe; show only the red text
+       ========================= */
 
-  //   /* =========================
-  //      Subject detail page (Lesson view)
-  //      - SSC: Science loads iframe with correct lesson URL
-  //             Non-Science shows "Assessment loading soon...!"
-  //      - CBSE: unchanged (always shows red notice)
-  //      ========================= */
-  //   function loadSubject(curriculum, grade, lesson, subject) {
-  //     const lessonDiv = document.getElementById('lessonContent');
-  //     const main = document.querySelector('.main');
+    /* =========================
+       Subject detail page (Lesson view)
+       - SSC: Science loads iframe with correct lesson URL
+              Non-Science shows "Assessment loading soon...!"
+       - CBSE: unchanged (always shows red notice)
+       ========================= */
+    function loadSubject(curriculum, grade, lesson, subject) {
+      const lessonDiv = document.getElementById('lessonContent');
+      const main = document.querySelector('.main');
 
-  //     document.getElementById('homeContent').style.display = 'none';
-  //     lessonDiv.style.display = 'block';
-  //     if (main) main.classList.add("lesson-fullscreen");
+      document.getElementById('homeContent').style.display = 'none';
+      lessonDiv.style.display = 'block';
+      if (main) main.classList.add("lesson-fullscreen");
 
-  //     const isCBSE = String(curriculum).toUpperCase() === 'CBSE';
-  //     const isSSC = String(curriculum).toUpperCase() === 'SSC';
-  //     const isScience = String(subject).toLowerCase().trim() === 'science';
+      const isCBSE = String(curriculum).toUpperCase() === 'CBSE';
+      const isSSC = String(curriculum).toUpperCase() === 'SSC';
+      const isScience = String(subject).toLowerCase().trim() === 'science';
 
-  //     /* ===== 1) CBSE — unchanged (red notice) ===== */
-  //     // if (isCBSE) {
-  //     //   lessonDiv.innerHTML = `
-  //     //     <div class="lesson-wrapper">
-  //     //       <div class="crumbs lesson-crumbs" style="user-select:none;">
-  //     //         <span onclick="exitLesson()" style="cursor:pointer;">Home</span><span class="sep">›</span>
-  //     //         <span onclick="loadCurriculum('${curriculum}')" style="cursor:pointer;">${curriculum}</span><span class="sep">›</span>
-  //     //         <span onclick="loadGrade('${curriculum}','${grade}')" style="cursor:pointer;">${grade}</span><span class="sep">›</span>
-  //     //         <span onclick="loadSubjectList('${curriculum}','${grade}','${subject}')" style="cursor:pointer;">${subject}</span><span class="sep">›</span>
-  //     //         <span>${lesson}</span>
-  //     //       </div>
-  //     //       <div style="padding: 18px 12px;">
-  //     //         <div class="cbse-assess-notice">Assessment loading soon..........!</div>
-  //     //       </div>
-  //     //     </div>
-  //     //   `;
-  //     //   return;
-  //     // }
+      /* ===== 1) CBSE — unchanged (red notice) ===== */
+      // if (isCBSE) {
+      //   lessonDiv.innerHTML = `
+      //     <div class="lesson-wrapper">
+      //       <div class="crumbs lesson-crumbs" style="user-select:none;">
+      //         <span onclick="exitLesson()" style="cursor:pointer;">Home</span><span class="sep">›</span>
+      //         <span onclick="loadCurriculum('${curriculum}')" style="cursor:pointer;">${curriculum}</span><span class="sep">›</span>
+      //         <span onclick="loadGrade('${curriculum}','${grade}')" style="cursor:pointer;">${grade}</span><span class="sep">›</span>
+      //         <span onclick="loadSubjectList('${curriculum}','${grade}','${subject}')" style="cursor:pointer;">${subject}</span><span class="sep">›</span>
+      //         <span>${lesson}</span>
+      //       </div>
+      //       <div style="padding: 18px 12px;">
+      //         <div class="cbse-assess-notice">Assessment loading soon..........!</div>
+      //       </div>
+      //     </div>
+      //   `;
+      //   return;
+      // }
 
-  //     /* ===== 2) SSC — Only Science active ===== */
-  //     if (isSSC && !isScience) {
-  //       // For non-Science subjects, show the same "loading soon" message
-  //       lessonDiv.innerHTML = `
-  //     <div class="lesson-wrapper">
-  //       <div class="crumbs lesson-crumbs" style="user-select:none;">
-  //         <span onclick="exitLesson()" style="cursor:pointer;">Home</span><span class="sep">›</span>
-  //         <span onclick="loadCurriculum('${curriculum}')" style="cursor:pointer;">${curriculum}</span><span class="sep">›</span>
-  //         <span onclick="loadGrade('${curriculum}','${grade}')" style="cursor:pointer;">${grade}</span><span class="sep">›</span>
-  //         <span onclick="loadSubjectList('${curriculum}','${grade}','${subject}')" style="cursor:pointer;">${subject}</span><span class="sep">›</span>
-  //         <span>${lesson}</span>
-  //       </div>
-  //       <div style="padding: 18px 12px;">
-  //         <div class="cbse-assess-notice">Assessment loading soon..........!</div>
-  //       </div>
-  //     </div>
-  //   `;
-  //       return;
-  //     }
+      /* ===== 2) SSC — Only Science active ===== */
+      if (isSSC && !isScience) {
+        // For non-Science subjects, show the same "loading soon" message
+        lessonDiv.innerHTML = `
+      <div class="lesson-wrapper">
+        <div class="crumbs lesson-crumbs" style="user-select:none;">
+          <span onclick="exitLesson()" style="cursor:pointer;">Home</span><span class="sep">›</span>
+          <span onclick="loadCurriculum('${curriculum}')" style="cursor:pointer;">${curriculum}</span><span class="sep">›</span>
+          <span onclick="loadGrade('${curriculum}','${grade}')" style="cursor:pointer;">${grade}</span><span class="sep">›</span>
+          <span onclick="loadSubjectList('${curriculum}','${grade}','${subject}')" style="cursor:pointer;">${subject}</span><span class="sep">›</span>
+          <span>${lesson}</span>
+        </div>
+        <div style="padding: 18px 12px;">
+          <div class="cbse-assess-notice">Assessment loading soon..........!</div>
+        </div>
+      </div>
+    `;
+        return;
+      }
 
-  //     /* ===== 3) SSC — Science: render iframe and route per lesson ===== */
-  //     lessonDiv.innerHTML = `
-  //   <div class="lesson-wrapper">
-  //     <div class="crumbs lesson-crumbs" style="user-select:none;">
-  //       <span onclick="exitLesson()" style="cursor:pointer;">Home</span><span class="sep">›</span>
-  //       <span onclick="loadCurriculum('${curriculum}')" style="cursor:pointer;">${curriculum}</span><span class="sep">›</span>
-  //       <span onclick="loadGrade('${curriculum}','${grade}')" style="cursor:pointer;">${grade}</span><span class="sep">›</span>
-  //       <span onclick="loadSubjectList('${curriculum}','${grade}','${subject}')" style="cursor:pointer;">${subject}</span><span class="sep">›</span>
-  //        <span>${lesson}</span>
-  //     </div>
+      /* ===== 3) SSC — Science: render iframe and route per lesson ===== */
+      lessonDiv.innerHTML = `
+    <div class="lesson-wrapper">
+      <div class="crumbs lesson-crumbs" style="user-select:none;">
+        <span onclick="exitLesson()" style="cursor:pointer;">Home</span><span class="sep">›</span>
+        <span onclick="loadCurriculum('${curriculum}')" style="cursor:pointer;">${curriculum}</span><span class="sep">›</span>
+        <span onclick="loadGrade('${curriculum}','${grade}')" style="cursor:pointer;">${grade}</span><span class="sep">›</span>
+        <span onclick="loadSubjectList('${curriculum}','${grade}','${subject}')" style="cursor:pointer;">${subject}</span><span class="sep">›</span>
+         <span>${lesson}</span>
+      </div>
 
-  //     <iframe
-  //       id="assessFrame"
-  //       class="index-iframe"
-  //       src="index.html"
-  //       title="Assessment"
-  //       sandbox="allow-scripts allow-same-origin">
-  //     </iframe>
-  //   </div>
-  // `;
+      <iframe
+        id="assessFrame"
+        class="index-iframe"
+        src="index.html"
+        title="Assessment"
+        sandbox="allow-scripts allow-same-origin">
+      </iframe>
+    </div>
+  `;
 
-  //     // After render, set iframe src for SSC Science based on Grade × Lesson
-  //     try {
-  //       const frame = document.getElementById('assessFrame');
-  //       if (frame) {
-  //         // IMPORTANT: pass lesson to match your SSC_LINKS mapping
+      // After render, set iframe src for SSC Science based on Grade × Lesson
+      try {
+        const frame = document.getElementById('assessFrame');
+        if (frame) {
+          // IMPORTANT: pass lesson to match your SSC_LINKS mapping
 
-  //         // const url = getAssessmentUrlForSSC(grade, subject, lesson);
+          // const url = getAssessmentUrlForSSC(grade, subject, lesson);
 
-  //         const url = getAssessmentUrl(curriculum, grade, subject, lesson);
-  //         frame.src = url;
-  //       }
-  //     } catch (e) { /* no-op */ }
-  //   }
+          const url = getAssessmentUrl(curriculum, grade, subject, lesson);
+          frame.src = url;
+        }
+      } catch (e) { /* no-op */ }
+    }
 
 
     // FIXED: CBSE Subject Click → Show "Coming Soon" message (Minimal Change)
-    function loadSubjectList(curriculum, grade, subject) {
-        document.getElementById('homeContent').style.display = 'none';
-        const lessonDiv = document.getElementById('lessonContent');
-        lessonDiv.style.display = 'block';
-
-        if (String(curriculum).toUpperCase() === 'CBSE') {
-            // Show coming soon inside your existing design
-            lessonDiv.innerHTML = `
-                <div class="crumbs">
-                    <span onclick="showHome()">Home</span><span class="sep">›</span>
-                    <span onclick="loadCurriculum('${curriculum}')">${curriculum}</span><span class="sep">›</span>
-                    <span onclick="loadGrade('${curriculum}','${grade}')">${grade}</span><span class="sep">›</span>
-                    <span>${subject}</span>
-                </div>
-
-                <div class="top-header1">
-                    <h1>${subject} - Lessons</h1>
-                    <p>Complete All Lessons To Master This Subject</p>
-                </div>
-
-                <div style="padding: 60px 20px; text-align: center; background: #f8fafc; border-radius: 16px; margin: 40px 0;">
-                    <div style="font-size: 60px; margin-bottom: 20px;">⏳</div>
-                    <h2 style="color: #0F6A5A; font-size: 28px; margin-bottom: 12px;">Lesson will be coming soon!</h2>
-                    <p style="color: #475569; font-size: 17px; max-width: 500px; margin: 0 auto;">
-                        CBSE ${subject} lessons for ${grade} are under development.<br>
-                        We will notify you once they are ready.
-                    </p>
-                    <br><br>
-                    <button onclick="loadGrade('${curriculum}','${grade}')" class="B" style="font-size: 18px; padding: 16px 32px;">
-                        ⬅ Back to Subjects
-                    </button>
-                </div>
-            `;
-            return;
-        }
-
-        // SSC remains unchanged - your original code
-        const data = SSC_LINKS;
-        const lessonsObj = data?.[grade]?.[subject] || {};
-        const lessonKeys = Object.keys(lessonsObj);
-        const maxLessons = lessonKeys.length || 5;
-
-        let cards = '';
-        lessonKeys.forEach((lessonName) => {
-            cards += `
-                <div class="subject-card" onclick="loadSubject('${curriculum}','${grade}','${lessonName}','${subject}')">
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <h3>${subject} - ${lessonName}</h3>
-                        <i class="fa-regular fa-clock" title="Estimated 30 min"></i>
-                        <i class="fa-solid fa-book-open" title="Lesson"></i>
-                    </div>
-                    <p style="margin:6px 0 0; color:#475569; font-size:14px;">
-                        Exercise for ${lessonName}<br>
-                        <span style="display:inline-flex; align-items:center; gap:6px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 3.5V8a1 1 0 0 0 1 1h4.5" />
-                                <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/>
-                                <path d="M9 13h6M9 17h6M9 9h2"/>
-                            </svg>
-                            <span>Interactive assessments</span>
-                        </span>
-                    </p>
-                    <span class="arrow-corner">></span>
-                </div>`;
-        });
-
-        lessonDiv.innerHTML = `
-            <div class="crumbs">
-                <span onclick="showHome()">Home</span><span class="sep">›</span>
-                <span onclick="loadCurriculum('${curriculum}')">${curriculum}</span><span class="sep">›</span>
-                <span onclick="loadGrade('${curriculum}','${grade}')">${grade}</span><span class="sep">›</span>
-                <span>${subject}</span>
-            </div>
-            <div class="top-header1">
-                <h1>${subject} - Lessons</h1>
-                <p>Complete All Lessons To Master This Subject</p>
-                <div class="lesson-stats">
-                    <div class="stat-box"><h3>${maxLessons}</h3><p>Total Lessons</p></div>
-                    <div class="stat-box"><div class="stat-icon-text"><i class="fa-solid fa-list-ol"></i><h3>0/${maxLessons}</h3></div><p>Completed</p></div>
-                </div>
-            </div>
-            <h2 style="margin-top:40px;">${subject} Lessons</h2>
-            <div class="subject-container">${cards}</div>
-            <br><br>
-            <button onclick="loadGrade('${curriculum}','${grade}')" class="B"> ⬅ Back</button>
-        `;
-
-        attachProgress();
-        applyLessonListStyling(subject);
-    }
-
-    // Also update loadSubject for safety (individual lesson click)
-    function loadSubject(curriculum, grade, lesson, subject) {
-        if (String(curriculum).toUpperCase() === 'CBSE') {
-            const lessonDiv = document.getElementById('lessonContent');
-            document.getElementById('homeContent').style.display = 'none';
-            lessonDiv.style.display = 'block';
-
-            lessonDiv.innerHTML = `
-                <div class="crumbs">
-                    <span onclick="showHome()">Home</span><span class="sep">›</span>
-                    <span onclick="loadCurriculum('${curriculum}')">${curriculum}</span><span class="sep">›</span>
-                    <span onclick="loadGrade('${curriculum}','${grade}')">${grade}</span><span class="sep">›</span>
-                    <span onclick="loadSubjectList('${curriculum}','${grade}','${subject}')">${subject}</span><span class="sep">›</span>
-                    <span>${lesson}</span>
-                </div>
-
-                <div style="padding: 80px 20px; text-align: center; background: #f8fafc; border-radius: 16px; margin: 40px 0;">
-                    <div style="font-size: 70px; margin-bottom: 25px;">⏳</div>
-                    <h2 style="color: #0F6A5A; font-size: 30px;">Lesson will be coming soon!</h2>
-                    <p style="color: #475569; font-size: 18px; margin-top: 15px;">
-                        CBSE ${subject} - ${lesson} is under development.
-                    </p>
-                    <br>
-                    <button onclick="loadSubjectList('${curriculum}','${grade}','${subject}')" class="B" style="font-size:18px; padding:16px 40px;">
-                        ⬅ Back
-                    </button>
-                </div>
-            `;
-            return;
-        }
-
-        // SSC Science - keep your original iframe behavior
-        const lessonDiv = document.getElementById('lessonContent');
-        document.getElementById('homeContent').style.display = 'none';
-        lessonDiv.style.display = 'block';
-
-        const url = getAssessmentUrl(curriculum, grade, subject, lesson);
-
-        lessonDiv.innerHTML = `
-            <div class="lesson-wrapper">
-                <div class="crumbs lesson-crumbs">
-                    <span onclick="exitLesson()">Home</span><span class="sep">›</span>
-                    <span onclick="loadCurriculum('${curriculum}')">${curriculum}</span><span class="sep">›</span>
-                    <span onclick="loadGrade('${curriculum}','${grade}')">${grade}</span><span class="sep">›</span>
-                    <span onclick="loadSubjectList('${curriculum}','${grade}','${subject}')">${subject}</span><span class="sep">›</span>
-                    <span>${lesson}</span>
-                </div>
-                <iframe id="assessFrame" class="index-iframe" src="${url}" sandbox="allow-scripts allow-same-origin"></iframe>
-            </div>
-        `;
-    }
-
-
+   
     // Keep your existing exitLesson
     function exitLesson() {
       document.querySelector('.main').classList.remove("lesson-fullscreen");
@@ -5664,6 +5817,9 @@
         }
       });
     }
+
+
+    
   </script>
 
   <!-- =========================
@@ -5726,6 +5882,10 @@
         .forEach(ul => obs.observe(ul, { attributes: true }));
 
     })();
+
+
+
+    
   </script>
 
   <!-- =========================
@@ -6027,6 +6187,10 @@
 
       showHome();
     }
+
+
+
+    
   </script>
 
 </body>
