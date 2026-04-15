@@ -85,7 +85,7 @@
 /* label */
 .chest p{
   font-size:20px;
-  margin-top:10px;
+ 
   font-weight:600;
   color:#2f3a4a;
 }
@@ -457,13 +457,14 @@
   }
 
   .question{
-    font-size:34px;    /* ✅ not too big */
+    font-size:30px;    /* ✅ not too big */
     text-align:center;
   }
 
   .q-img{
-    width:220px;       /* ✅ consistent */
-    height:180px;
+    width:200px;       /* ✅ consistent */
+    height:140px;
+    object-fit: contain;
   }
 
   .chests{
