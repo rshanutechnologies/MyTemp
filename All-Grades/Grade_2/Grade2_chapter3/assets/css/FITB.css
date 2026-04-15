@@ -656,7 +656,8 @@ body {
           margin-top: -5%;
     }
 .question-text {
-        font-size: 22px;
+        font-size: 18px;
+        width: 80%;
     }
 
     /* .character-section img {
