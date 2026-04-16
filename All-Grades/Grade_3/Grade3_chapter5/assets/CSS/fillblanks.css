@@ -77,7 +77,7 @@ body{
   border-radius:20px;
   border:1px solid #ccc;
   padding:0 12px;
-  font-size:16px;
+  font-size:20px;
 }
 
 /* BUTTON */
@@ -325,7 +325,30 @@ body{
   cursor:pointer;
   font-size:18px;
 }
+/* 🔥 DISABLED BUTTON STYLE */
+button:disabled{
+  opacity:0.8;                 /* fade look */
+  cursor:not-allowed;          /* no pointer */
+  background:#cbd5e1 !important;  /* grey color */
+  color:#ffffff !important;
+  box-shadow:none;
+}
 
+/* NEXT disabled */
+.next:disabled{
+  background:#b0c4de !important;
+}
+
+/* PREV disabled */
+.prev:disabled{
+  background:#f5c27a !important;
+}
+
+/* CHECK disabled */
+.checkBtn-container button:disabled,
+.double-check button:disabled{
+  background:#80a7d8 !important;
+}
 /* ===== COMPACT MOBILE FIX ===== */
 @media (max-width:600px){
 

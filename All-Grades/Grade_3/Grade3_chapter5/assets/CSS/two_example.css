@@ -1015,3 +1015,20 @@ button:disabled{opacity:0.45;
     padding: 10px 18px;
   }
 }
+
+@media (max-width:600px){
+
+  body{
+    display:flex !important;
+    justify-content:center !important;
+    align-items:center !important;
+    min-height:100vh;
+    padding:0 !important;
+  }
+
+  .card{
+    width:95% !important;
+    margin:0 auto !important;
+  }
+
+}

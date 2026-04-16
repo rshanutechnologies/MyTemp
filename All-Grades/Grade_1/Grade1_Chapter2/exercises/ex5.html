@@ -109,7 +109,7 @@
     }
 
     .midBox.correct { border-color: #2ecc71; background: #f0fff4; }
-    .midBox.wrong { border-color: #ff595e; animation: shake 0.35s ease; }
+    .midBox.wrong { border-color: #ff595e; animation: shake 0.35s ease;  }
 
     .rhs-desc { font-size: clamp(25px, 2.5vh, 22px); font-weight: 500; text-align: left; line-height: 1.2; }
     .bulb { font-size: clamp(24px, 5vh, 40px); filter: grayscale(1); opacity: 0.3; transition: 0.3s; }
@@ -737,7 +737,7 @@ font-size:44px;
     if (usedLetters[val]) {
       box.className = "midBox wrong";
       playSound("wrong");
-      showFeedback("❌ Already Used!");
+      showFeedback("😭");
       setTimeout(() => { 
         box.className = "midBox"; 
         input.value = ""; 

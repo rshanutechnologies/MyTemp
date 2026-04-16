@@ -1,32 +1,35 @@
-//================= QUESTIONS =================
 const questions = [
   {
-    q: "Q.1 The upper arm is made of a long bone called the ____.",
+   q: "Q.1 The upper arm is made of a long bone called the ____.",
     a: "humerus",
-    img: "../assets/images/humerusUpeerArm.png",
+    a_mobile: "humerus",
+   img: "../assets/images/humerusUpeerArm.png",
   },
   {
-    q: "Q.2 The lower leg has two bones namely ____ and ____.",
+   q: "Q.2 The lower leg has two bones namely ____ and ____.",
     a: "tibia fibula",
+    a_mobile: "tibia fibula",
     img: "../assets/images/tibiafibula.png",
   },
   {
     q: "Q.3 Bones are held together at joints by ____.",
     a: "ligaments",
-    img: "../assets/images/ligamentsNew.png",
+    a_mobile: "ligam ents", // ok if you want 2 rows
+  img: "../assets/images/ligamentsNew.png",
   },
   {
-    q: "Q.4 The backbone protects the ____.",
+   q: "Q.4 The backbone protects the ____.",
     a: "spinal cord",
-    img: "../assets/images/spinalcord2.png",
+    a_mobile: "spinal cord",
+   img: "../assets/images/spinalcord2.png",
   },
   {
-    q: "Q.5 The long bones of the arms and the legs are filled with ____ at the centre.",
+   q: "Q.5 The long bones of the arms and the legs are filled with ____ at the centre.",
     a: "bone marrow",
-    img: "../assets/images/bonemarrow.png",
+    a_mobile: "bone marrow",
+  img: "../assets/images/bonemarrow.png",
   },
 ];
-
 let index = 0;
 let score = 0;
 const answered = Array(questions.length).fill(false);
@@ -39,6 +42,11 @@ const indicator = document.getElementById("indicator");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const checkBtn = document.getElementById("checkBtn");
+
+
+function isMobile() {
+  return window.innerWidth <= 768;
+}
 
 // ================= INPUT FLOW =================
 letters.addEventListener("input", (e) => {
@@ -125,8 +133,8 @@ function load() {
 
   letters.innerHTML = "";
 
-  const words = q.a.split(" ");
-
+ const answer = isMobile() ? (q.a_mobile || q.a) : q.a;
+const words = answer.split(" ");
   words.forEach((word, wi) => {
     const wordBox = document.createElement("div");
     wordBox.className = "word-group";
@@ -147,7 +155,8 @@ function load() {
   });
 
   if (answered[index]) {
-    const words = q.a.split(" ");
+ const answer = isMobile() ? (q.a_mobile || q.a) : q.a;
+const words = answer.split(" ");
     const groups = letters.querySelectorAll(".word-group");
 
     groups.forEach((group, wi) => {
@@ -186,7 +195,13 @@ checkBtn.onclick = () => {
     .join(" ")
     .toLowerCase();
 
-  if (user === questions[index].a) {
+const correctAnswer = (
+  isMobile()
+    ? (questions[index].a_mobile || questions[index].a)
+    : questions[index].a
+).toLowerCase();
+
+if (user === correctAnswer) {
     answered[index] = true;
     score++;
 

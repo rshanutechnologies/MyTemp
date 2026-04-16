@@ -711,253 +711,371 @@ font-family: "Livvic";
   <canvas id="confettiCanvas" class="confetti"></canvas>
 
   <script>
-    const questions = [
-      { prefix: "People who belong to a family are called______", blank: "FAMILY MEMBERS", suffix: ".", img: "../uploads/members.png", solved: false, currentInput: [] },
-      { prefix: "Father, mother and ______", blank: "CHILDREN", suffix: " live in a small family.", img: "../uploads/children.png", solved: false, currentInput: [] },
-      { prefix: "We brush our teeth and have bath in the ______", blank: "BATHROOM", suffix: ".", img: "../uploads/bathroom.png", solved: false, currentInput: [] },
-      { prefix: "We watch TV in the ______", blank: "LIVING ROOM", suffix: ".", img: "../uploads/livingroom.png", solved: false, currentInput: [] },
-      { prefix: "We cook food in the ______", blank: "KITCHEN", suffix: ".", img: "../uploads/kitchen.png", solved: false, currentInput: [] }
-    ];
+  const questions = [
+  { prefix: "People who belong to a family are called______", blank: "FAMILY MEMBERS", suffix: ".", img: "../uploads/members.png", solved: false, currentInput: [] },
+  { prefix: "Father, mother and ______", blank: "CHILDREN", suffix: " live in a small family.", img: "../uploads/children.png", solved: false, currentInput: [] },
+  { prefix: "We brush our teeth and have bath in the ______", blank: "BATHROOM", suffix: ".", img: "../uploads/bathroom.png", solved: false, currentInput: [] },
+  { prefix: "We watch TV in the ______", blank: "LIVING ROOM", suffix: ".", img: "../uploads/livingroom.png", solved: false, currentInput: [] },
+  { prefix: "We cook food in the ______", blank: "KITCHEN", suffix: ".", img: "../uploads/kitchen.png", solved: false, currentInput: [] }
+];
 
-    let idx = 0, filled = [], isAnimating = false, audioCtx = null;
-    const qNumber = document.getElementById("qNumber");
-    const questionText = document.getElementById("questionText");
-    const answerArea = document.getElementById("answerArea");
-    const clueImg = document.getElementById("clueImg"), nextBtn = document.getElementById("nextBtn"), prevBtn = document.getElementById("prevBtn");
-    const teacherPopup = document.getElementById("teacherPopup"), teacherImg = document.getElementById("teacherImg"), teacherMsg = document.getElementById("teacherMsg");
-    const feedbackSmiley = document.getElementById("feedbackSmiley"), confettiCanvas = document.getElementById("confettiCanvas"), ctx = confettiCanvas.getContext("2d");
+let idx = 0, filled = [], isAnimating = false, audioCtx = null;
+const qNumber = document.getElementById("qNumber");
+const questionText = document.getElementById("questionText");
+const answerArea = document.getElementById("answerArea");
+const clueImg = document.getElementById("clueImg"), nextBtn = document.getElementById("nextBtn"), prevBtn = document.getElementById("prevBtn");
+const teacherPopup = document.getElementById("teacherPopup"), teacherImg = document.getElementById("teacherImg"), teacherMsg = document.getElementById("teacherMsg");
+const feedbackSmiley = document.getElementById("feedbackSmiley"), confettiCanvas = document.getElementById("confettiCanvas"), ctx = confettiCanvas.getContext("2d");
 
-    function playTone(freqs, dur = 0.6, type = 'sine') {
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      const now = audioCtx.currentTime;
-      const g = audioCtx.createGain();
-      g.gain.setValueAtTime(0, now); g.gain.linearRampToValueAtTime(0.2, now + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
-      freqs.forEach(f => {
-        const o = audioCtx.createOscillator(); o.type = type; o.frequency.value = f; o.connect(g); o.start(now); o.stop(now + dur);
-      });
-      g.connect(audioCtx.destination);
-    }
+function playTone(freqs, dur = 0.6, type = 'sine') {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const now = audioCtx.currentTime;
+  const g = audioCtx.createGain();
+  g.gain.setValueAtTime(0, now); g.gain.linearRampToValueAtTime(0.2, now + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+  freqs.forEach(f => {
+    const o = audioCtx.createOscillator(); o.type = type; o.frequency.value = f; o.connect(g); o.start(now); o.stop(now + dur);
+  });
+  g.connect(audioCtx.destination);
+}
 
-    let particles = [];
-    function resize() { confettiCanvas.width = window.innerWidth; confettiCanvas.height = window.innerHeight; }
-    window.onresize = resize; resize();
+let particles = [];
+function resize() { confettiCanvas.width = window.innerWidth; confettiCanvas.height = window.innerHeight; }
+window.onresize = resize; resize();
 
-    function launchConfetti(count = 80) {
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * confettiCanvas.width, y: -20,
-        vx: (Math.random() - 0.5) * 10, vy: 2 + Math.random() * 5,
-        s: 5 + Math.random() * 8, c: `hsl(${Math.random() * 360},80%,60%)`
-      }));
-      if (!isAnimating) { isAnimating = true; renderConfetti(); }
-    }
+function launchConfetti(count = 80) {
+  particles = Array.from({ length: count }, () => ({
+    x: Math.random() * confettiCanvas.width, y: -20,
+    vx: (Math.random() - 0.5) * 10, vy: 2 + Math.random() * 5,
+    s: 5 + Math.random() * 8, c: `hsl(${Math.random() * 360},80%,60%)`
+  }));
+  if (!isAnimating) { isAnimating = true; renderConfetti(); }
+}
 
-    function renderConfetti() {
-      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-      particles.forEach((p, i) => {
-        ctx.fillStyle = p.c; ctx.fillRect(p.x, p.y, p.s, p.s);
-        p.x += p.vx; p.y += p.vy; p.vy += 0.1;
-        if (p.y > confettiCanvas.height) particles.splice(i, 1);
-      });
-      if (particles.length) requestAnimationFrame(renderConfetti); else isAnimating = false;
-    }
+function renderConfetti() {
+  ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+  particles.forEach((p, i) => {
+    ctx.fillStyle = p.c; ctx.fillRect(p.x, p.y, p.s, p.s);
+    p.x += p.vx; p.y += p.vy; p.vy += 0.1;
+    if (p.y > confettiCanvas.height) particles.splice(i, 1);
+  });
+  if (particles.length) requestAnimationFrame(renderConfetti); else isAnimating = false;
+}
 
-    function showQuestion(i) {
+function createPopupForBox(box, correctLetter, letterIndex) {
+  // Remove existing popup if any
+  const oldPopup = box.querySelector('.mini-popup');
+  if (oldPopup) oldPopup.remove();
+  
+  const popup = document.createElement("div");
+  popup.className = "mini-popup";
 
-      const q = questions[i];
-      idx = i;
+  const choices = [correctLetter];
 
-      qNumber.textContent = `Question ${i + 1} of ${questions.length}`;
-      clueImg.src = q.img;
-      questionText.innerHTML = "";
-      answerArea.innerHTML = "";
+  while (choices.length < 3) {
+    let r = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[Math.floor(Math.random() * 26)];
+    if (!choices.includes(r)) choices.push(r);
+  }
 
-      const words = q.blank.toUpperCase().split(" ");
+  choices.sort(() => Math.random() - 0.5).forEach(c => {
+    const btn = document.createElement("button");
+    btn.className = "letter-choice";
+    btn.textContent = c;
 
-      if (q.currentInput.length === 0) {
-        q.currentInput = new Array(q.blank.replaceAll(" ", "").length).fill(null);
-      }
-
-      filled = [...q.currentInput];
-
-      questionText.textContent = q.prefix + " " + q.suffix;
-      let globalIndex = 0;
-
-      words.forEach(word => {
-
-        const group = document.createElement("span");
-        group.className = "blank-group";
-
-        word.split("").forEach((char) => {
-
-          const letterIndex = globalIndex;
-
-          const box = document.createElement("span");
-          box.className = "blank-box";
-
-          if (filled[letterIndex]) {
-            box.textContent = filled[letterIndex];
-            box.classList.add("filled");
-
-            if (q.solved) {
-              box.classList.add("correct");
-            }
-          }
-
-          const popup = document.createElement("div");
-          popup.className = "mini-popup";
-
-          const choices = [char];
-
-          while (choices.length < 3) {
-            let r = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[Math.floor(Math.random() * 26)];
-            if (!choices.includes(r)) choices.push(r);
-          }
-
-          choices.sort(() => Math.random() - 0.5).forEach(c => {
-
-            const btn = document.createElement("button");
-            btn.className = "letter-choice";
-            btn.textContent = c;
-
-            btn.onclick = (e) => {
-
-              if (q.solved) return;
-
-              e.stopPropagation();
-
-              box.textContent = c;
-              box.classList.add("filled");
-
-              filled[letterIndex] = c;
-              q.currentInput[letterIndex] = c;
-
-              popup.classList.remove("show");
-              box.appendChild(popup);
-
-              checkAnswer();
-            };
-
-            popup.appendChild(btn);
-
-          });
-
-          box.onclick = (e) => {
-
-            if (q.solved) return;
-
-            if (box.classList.contains("filled")) return;
-
-            e.stopPropagation();
-            document.querySelectorAll(".mini-popup").forEach(p => p.classList.remove("show"));
-            popup.classList.add("show");
-          };
-          box.appendChild(popup);
-          group.appendChild(box);
-
-          globalIndex++;
-        });
-
-        answerArea.appendChild(group);
-
-      });
-
-      // sentenceLine.appendChild(suffix);
-
-      updateNav();
-    }
-
-    function checkAnswer() {
-
-      if (filled.includes(null)) return;
-
+    btn.onclick = (e) => {
       const currentQ = questions[idx];
+      if (currentQ.solved) return;
+      e.stopPropagation();
 
-      const correctAnswer = currentQ.blank.replaceAll(" ", "").toUpperCase();
+      // Set the letter
+      box.textContent = c;
+      box.classList.add("filled");
 
-      if (filled.join("") === correctAnswer) {
+      filled[letterIndex] = c;
+      currentQ.currentInput[letterIndex] = c;
 
-        currentQ.solved = true;
-
-        document.querySelectorAll(".blank-box").forEach(b => {
-          b.classList.add("correct");
-          b.classList.remove("pulse");
-        });
-
-        playTone([880, 1100]);
-        launchConfetti();
-
-        feedbackSmiley.textContent = "😃";
-        feedbackSmiley.classList.add("show");
-
-        teacherImg.src = '../uploads/yes.png';
-        teacherMsg.textContent = "Great job! 🎉";
-        teacherPopup.classList.add('show');
-
-        updateNav();
-
-        if (idx === questions.length - 1)
-          setTimeout(finishQuiz, 1500);
-
-      } else {
-
-        document.querySelectorAll(".blank-box").forEach(b => b.classList.add("wrong"));
-
-        playTone([180], 0.4, 'square');
-
-        feedbackSmiley.textContent = "😭";
-        feedbackSmiley.classList.add("show");
-
-        teacherImg.src = '../uploads/no.png';
-        teacherMsg.textContent = "Try again! ✍️";
-        teacherPopup.classList.add('show');
-
-        setTimeout(() => {
-          currentQ.currentInput =
-            new Array(currentQ.blank.replaceAll(" ", "").length).fill(null);
-
-          showQuestion(idx);
-
-        }, 1200);
+      popup.classList.remove("show");
+      
+      // Remove wrong class if any
+      box.classList.remove("wrong");
+      
+      // Check if all letters are filled
+      if (!filled.includes(null)) {
+        checkAnswer();
       }
-
-      setTimeout(() => {
-        feedbackSmiley.classList.remove("show");
-        teacherPopup.classList.remove('show');
-      }, 2000);
-    }
-
-    function updateNav() {
-      const currentQ = questions[idx];
-      prevBtn.disabled = idx === 0;
-      nextBtn.disabled = !currentQ.solved;
-      nextBtn.style.visibility = (idx === questions.length - 1 && currentQ.solved) ? "hidden" : "visible";
-      nextBtn.textContent = idx === questions.length - 1 ? "FINISH" : "NEXT ▶";
-    }
-
-    function finishQuiz() {
-      playTone([660, 880, 1320], 1.2);
-      const div = document.createElement("div");
-      div.className = "final-modal-overlay";
-      div.innerHTML = `<div class="final-modal">
-        <h2 style="color:#2c7a4b; font-size:40px; margin:0; font-weight:700;">🎉 YOU WON! 🎉</h2>
-        <p style="font-size:22px; margin:20px 0;">Superstar! You finished the quiz!</p>
-        <button class="nav-btn" style="background:var(--blue); color:white; border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
-      </div>`;
-      document.body.appendChild(div);
-      launchConfetti(150);
-    }
-
-    document.getElementById("readBtn").onclick = () => {
-      const q = questions[idx];
-      const u = new SpeechSynthesisUtterance(`${q.prefix} blank ${q.suffix}`);
-      u.lang = "en-IN"; window.speechSynthesis.speak(u);
     };
 
-    prevBtn.onclick = () => showQuestion(idx - 1);
-    nextBtn.onclick = () => { if (idx < questions.length - 1) showQuestion(idx + 1); else finishQuiz(); };
-    document.onclick = () => document.querySelectorAll(".mini-popup").forEach(p => p.classList.remove("show"));
+    popup.appendChild(btn);
+  });
+  
+  box.appendChild(popup);
+  return popup;
+}
 
-    showQuestion(0);
+function showQuestion(i) {
+  const q = questions[i];
+  idx = i;
+
+  qNumber.textContent = `Question ${i + 1} of ${questions.length}`;
+  clueImg.src = q.img;
+  questionText.innerHTML = "";
+  answerArea.innerHTML = "";
+
+  const words = q.blank.toUpperCase().split(" ");
+
+  if (q.currentInput.length === 0) {
+    q.currentInput = new Array(q.blank.replaceAll(" ", "").length).fill(null);
+  }
+
+  filled = [...q.currentInput];
+
+  questionText.textContent = q.prefix + " " + q.suffix;
+  let globalIndex = 0;
+
+  words.forEach(word => {
+    const group = document.createElement("span");
+    group.className = "blank-group";
+
+    word.split("").forEach((char) => {
+      const letterIndex = globalIndex;
+      const correctLetter = char;
+
+      const box = document.createElement("span");
+      box.className = "blank-box";
+      box.setAttribute("data-index", letterIndex);
+      box.setAttribute("data-correct", correctLetter);
+
+      if (filled[letterIndex]) {
+        box.textContent = filled[letterIndex];
+        box.classList.add("filled");
+
+        if (q.solved) {
+          box.classList.add("correct");
+        }
+      }
+
+      // Create popup for this box
+      const popup = createPopupForBox(box, correctLetter, letterIndex);
+
+      box.onclick = (e) => {
+        if (q.solved) return;
+        e.stopPropagation();
+        
+        // Close all other popups first
+        document.querySelectorAll(".mini-popup").forEach(p => p.classList.remove("show"));
+        
+        // If box already has a letter, remove it
+        if (box.classList.contains("filled")) {
+          removeLetterAtIndex(letterIndex, box);
+          return;
+        }
+        
+        // Otherwise show popup for empty box
+        const boxPopup = box.querySelector('.mini-popup');
+        if (boxPopup) {
+          boxPopup.classList.add("show");
+        }
+      };
+      
+      group.appendChild(box);
+      globalIndex++;
+    });
+    answerArea.appendChild(group);
+  });
+
+  updateNav();
+}
+
+// Function to remove letter at specific index
+function removeLetterAtIndex(index, boxElement) {
+  const currentQ = questions[idx];
+  
+  // Don't allow removal if question is solved
+  if (currentQ.solved) {
+    showTemporaryMessage("Question already solved! 🎉", "#2ecc71");
+    return;
+  }
+  
+  // Check if there's a letter to remove
+  if (filled[index] === null) {
+    showTemporaryMessage("No letter to remove!", "#ff6b6b");
+    return;
+  }
+  
+  // Remove the letter
+  filled[index] = null;
+  currentQ.currentInput[index] = null;
+  
+  // Clear the box
+  boxElement.textContent = "";
+  boxElement.classList.remove("filled");
+  
+  // Remove wrong class if present
+  boxElement.classList.remove("wrong");
+  
+  // Make sure popup exists and is properly attached
+  const correctLetter = boxElement.getAttribute("data-correct");
+  let popup = boxElement.querySelector('.mini-popup');
+  if (!popup) {
+    // Recreate popup if it doesn't exist
+    popup = createPopupForBox(boxElement, correctLetter, index);
+  }
+  
+  // Play removal sound
+  playTone([400], 0.2, 'sine');
+  
+  // Show feedback
+  showTemporaryMessage("Click again to answer! ✏️", "#ffa502");
+  
+  // Remove wrong class from all boxes when any letter is removed
+  document.querySelectorAll(".blank-box").forEach(b => {
+    b.classList.remove("wrong");
+  });
+}
+
+// Function to show temporary message
+function showTemporaryMessage(message, color) {
+  let msgDiv = document.getElementById("tempMessage");
+  if (!msgDiv) {
+    msgDiv = document.createElement("div");
+    msgDiv.id = "tempMessage";
+    msgDiv.style.cssText = `
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      z-index: 4000;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      white-space: nowrap;
+      font-family: 'Livvic', sans-serif;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    `;
+    document.body.appendChild(msgDiv);
+  }
+  
+  msgDiv.style.background = color;
+  msgDiv.textContent = message;
+  msgDiv.style.opacity = "1";
+  
+  setTimeout(() => {
+    msgDiv.style.opacity = "0";
+  }, 1500);
+}
+
+function checkAnswer() {
+  if (filled.includes(null)) return;
+
+  const currentQ = questions[idx];
+
+  const correctAnswer = currentQ.blank.replaceAll(" ", "").toUpperCase();
+
+  if (filled.join("") === correctAnswer) {
+    currentQ.solved = true;
+
+    document.querySelectorAll(".blank-box").forEach(b => {
+      b.classList.add("correct");
+      b.classList.remove("pulse");
+    });
+
+    playTone([880, 1100]);
+    launchConfetti();
+
+    feedbackSmiley.textContent = "😃";
+    feedbackSmiley.classList.add("show");
+
+    teacherImg.src = '../uploads/yes.png';
+    teacherMsg.textContent = "Great job! 🎉";
+    teacherPopup.classList.add('show');
+
+    updateNav();
+
+    if (idx === questions.length - 1)
+      setTimeout(finishQuiz, 1500);
+
+  } else {
+    document.querySelectorAll(".blank-box").forEach(b => b.classList.add("wrong"));
+
+    playTone([180], 0.4, 'square');
+
+    feedbackSmiley.textContent = "😭";
+    feedbackSmiley.classList.add("show");
+
+    teacherImg.src = '../uploads/no.png';
+    teacherMsg.textContent = "Try again! ✍️";
+    teacherPopup.classList.add('show');
+
+    setTimeout(() => {
+      // Clear all inputs but keep the structure
+      for (let i = 0; i < currentQ.currentInput.length; i++) {
+        currentQ.currentInput[i] = null;
+        filled[i] = null;
+      }
+      
+      // Refresh the display and ensure popups exist
+      const boxes = document.querySelectorAll(".blank-box");
+      boxes.forEach((box, idx) => {
+        box.textContent = "";
+        box.classList.remove("filled", "wrong");
+        
+        // Ensure popup exists
+        const correctLetter = box.getAttribute("data-correct");
+        let popup = box.querySelector('.mini-popup');
+        if (!popup) {
+          createPopupForBox(box, correctLetter, idx);
+        }
+      });
+      
+      // Close any open popups
+      document.querySelectorAll(".mini-popup").forEach(p => p.classList.remove("show"));
+      
+    }, 1200);
+  }
+
+  setTimeout(() => {
+    feedbackSmiley.classList.remove("show");
+    teacherPopup.classList.remove('show');
+  }, 2000);
+}
+
+function updateNav() {
+  const currentQ = questions[idx];
+  prevBtn.disabled = idx === 0;
+  nextBtn.disabled = !currentQ.solved;
+  nextBtn.style.visibility = (idx === questions.length - 1 && currentQ.solved) ? "hidden" : "visible";
+  nextBtn.textContent = idx === questions.length - 1 ? "FINISH" : "NEXT ▶";
+}
+
+function finishQuiz() {
+  playTone([660, 880, 1320], 1.2);
+  const div = document.createElement("div");
+  div.className = "final-modal-overlay";
+  div.innerHTML = `<div class="final-modal">
+    <h2 style="color:#2c7a4b; font-size:40px; margin:0; font-weight:700;">🎉 YOU WON! 🎉</h2>
+    <p style="font-size:22px; margin:20px 0;">Superstar! You finished the quiz!</p>
+    <button class="nav-btn" style="background:var(--blue); color:white; border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
+  </div>`;
+  document.body.appendChild(div);
+  launchConfetti(150);
+}
+
+document.getElementById("readBtn").onclick = () => {
+  const q = questions[idx];
+  const u = new SpeechSynthesisUtterance(`${q.prefix} blank ${q.suffix}`);
+  u.lang = "en-IN"; window.speechSynthesis.speak(u);
+};
+
+prevBtn.onclick = () => showQuestion(idx - 1);
+nextBtn.onclick = () => { if (idx < questions.length - 1) showQuestion(idx + 1); else finishQuiz(); };
+document.onclick = () => document.querySelectorAll(".mini-popup").forEach(p => p.classList.remove("show"));
+
+showQuestion(0);
   </script>
 </body>
 

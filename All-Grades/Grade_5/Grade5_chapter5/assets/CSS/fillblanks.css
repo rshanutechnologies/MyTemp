@@ -761,12 +761,15 @@ button:disabled {
   /* Letters smaller */
   .letters {
     gap: 6px;
+  
   }
 
+
   .letters input {
-    width: 30px;
-    height: 30px;
-    font-size: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    
   }
 
   /* Image smaller */
@@ -783,22 +786,32 @@ button:disabled {
 
   button {
     width: 100%;
-    font-size: 16px;
+    font-size: 15px !important;
   }
 
   /* Navigation Stack */
   .nav {
-    flex-direction: column;
+    flex-direction: row !important;
     gap: 10px;
-    margin-top: 30px;
+    margin-top: 70px;
   }
 
   .nav button {
     width: 50%;
     height: 50px;
-    font-size: 20px;
+    font-size: 15px !important;
+    padding: 0px !important;
   }
 
+
+   
+
+/* 
+.letters {
+  display: grid;
+  grid-template-columns: repeat(8, 55px); 
+  gap: 8px;
+} */
   /* Hide floating home button */
   .home {
     position: relative;

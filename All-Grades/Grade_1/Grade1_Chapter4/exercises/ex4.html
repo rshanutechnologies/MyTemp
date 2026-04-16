@@ -451,80 +451,360 @@ h4 {
 <div id="confetti" style="position:fixed;inset:0;pointer-events:none;z-index:9999;"></div>
 
 <script>
-let audioCtx=null;
-function ensureAudio(){
-  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-  if(audioCtx.state==="suspended") audioCtx.resume();
+let audioCtx = null;
+let correctCount = 0;
+const totalQuestions = document.querySelectorAll(".left .row").length;
+
+function ensureAudio() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === "suspended") audioCtx.resume();
   return audioCtx;
 }
 
-function playZzzSound(){
-  const c=ensureAudio(), t=c.currentTime;
-  const o=c.createOscillator(), g=c.createGain();
-  o.type="square"; o.frequency.value=180;
-  g.gain.setValueAtTime(0,t);
-  g.gain.linearRampToValueAtTime(.12,t+.01);
-  g.gain.exponentialRampToValueAtTime(.0001,t+.35);
-  o.connect(g); g.connect(c.destination);
-  o.start(t); o.stop(t+.35);
+function playZzzSound() {
+  const c = ensureAudio(), t = c.currentTime;
+  const o = c.createOscillator(), g = c.createGain();
+  o.type = "square";
+  o.frequency.value = 180;
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(.12, t + .01);
+  g.gain.exponentialRampToValueAtTime(.0001, t + .35);
+  o.connect(g);
+  g.connect(c.destination);
+  o.start(t);
+  o.stop(t + .35);
 }
 
-function playSuccessSound(){
-  const c=ensureAudio(), t=c.currentTime;
-  const g=c.createGain();
-  g.gain.setValueAtTime(.0001,t);
-  g.gain.linearRampToValueAtTime(.18,t+.02);
-  g.gain.exponentialRampToValueAtTime(.0001,t+.65);
+function playSuccessSound() {
+  const c = ensureAudio(), t = c.currentTime;
+  const g = c.createGain();
+  g.gain.setValueAtTime(.0001, t);
+  g.gain.linearRampToValueAtTime(.18, t + .02);
+  g.gain.exponentialRampToValueAtTime(.0001, t + .65);
   g.connect(c.destination);
-  [660,880,1100,1320].forEach((f,i)=>{
-    const o=c.createOscillator();
-    o.type="sine"; o.frequency.setValueAtTime(f,t+i*.02);
-    o.connect(g); o.start(t+i*.02); o.stop(t+.65);
+  [660, 880, 1100, 1320].forEach((f, i) => {
+    const o = c.createOscillator();
+    o.type = "sine";
+    o.frequency.setValueAtTime(f, t + i * .02);
+    o.connect(g);
+    o.start(t + i * .02);
+    o.stop(t + .65);
   });
 }
 
-function triggerConfetti(count=80){
-  const box=document.getElementById("confetti");
-  const colors=["#f778a1","#4cc9f0","#ffaa00","#2ed573","#ff4fd8"];
-  for(let i=0;i<count;i++){
-    const p=document.createElement("div");
-    p.className="confetti-piece";
-    p.style.left=Math.random()*100+"%";
-    p.style.background=colors[Math.random()*colors.length|0];
-    p.style.animationDuration=(1.2+Math.random())+"s";
+function triggerConfetti(count = 80) {
+  const box = document.getElementById("confetti");
+  if (!box) return;
+  const colors = ["#f778a1", "#4cc9f0", "#ffaa00", "#2ed573", "#ff4fd8"];
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement("div");
+    p.className = "confetti-piece";
+    p.style.left = Math.random() * 100 + "%";
+    p.style.background = colors[Math.random() * colors.length | 0];
+    p.style.animationDuration = (1.2 + Math.random()) + "s";
     box.appendChild(p);
+  }
+  setTimeout(() => {
+    if (box) box.innerHTML = "";
+  }, 2000);
+}
+
+function showSmiley(e) {
+  const s = document.getElementById("smiley");
+  if (!s) return;
+  s.textContent = e;
+  s.classList.add("show");
+  setTimeout(() => s.classList.remove("show"), 900);
+}
+
+function showFinalPopup() {
+  const score = correctCount;
+  const total = totalQuestions;
+  const percentage = (score / total) * 100;
+  
+  // Create final popup
+  const popup = document.createElement("div");
+  popup.className = "final-popup-overlay";
+  
+  let starRating = "";
+  if (percentage === 100) {
+    starRating = "⭐⭐⭐⭐⭐";
+  } else if (percentage >= 80) {
+    starRating = "⭐⭐⭐⭐";
+  } else if (percentage >= 60) {
+    starRating = "⭐⭐⭐";
+  } else if (percentage >= 40) {
+    starRating = "⭐⭐";
+  } else {
+    starRating = "⭐";
+  }
+  
+  let message = "";
+  if (percentage === 100) {
+    message = "Perfect Score! 🎉";
+  } else if (percentage >= 80) {
+    message = "Great Job! 🌟";
+  } else if (percentage >= 60) {
+    message = "Good Work! 📚";
+  } else if (percentage >= 40) {
+    message = "Keep Practicing! 💪";
+  } else {
+    message = "Try Again! 📖";
+  }
+  
+  popup.innerHTML = `
+    <div class="final-popup-card">
+      <div class="final-header">
+        <span class="trophy">🏆</span>
+        <h2>Quiz Completed!</h2>
+      </div>
+      <div class="final-score">
+        <div class="score-circle">
+          <span class="score-number">${score}</span>
+          <span class="score-total">/${total}</span>
+        </div>
+      </div>
+      <div class="final-message">${message}</div>
+      <div class="final-stars">${starRating}</div>
+      <div class="final-buttons">
+        <button class="restart-btn" onclick="location.reload()">🔄 Play Again</button>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(popup);
+  
+  // Play success sound and confetti for perfect score
+  if (percentage === 100) {
+    playSuccessSound();
+    triggerConfetti(150);
   }
 }
 
-function showSmiley(e){
-  const s=document.getElementById("smiley");
-  s.textContent=e;
-  s.classList.add("show");
-  setTimeout(()=>s.classList.remove("show"),900);
+function checkCompletion() {
+  if (correctCount === totalQuestions) {
+    setTimeout(() => {
+      showFinalPopup();
+    }, 500);
+  }
 }
 
-const bulbs=document.querySelectorAll(".option-row");
+const bulbs = document.querySelectorAll(".option-row");
 
-document.querySelectorAll(".left .row").forEach(row=>{
-  const input=row.querySelector("input");
-  const correct=row.dataset.answer;
+document.querySelectorAll(".left .row").forEach(row => {
+  const input = row.querySelector("input");
+  const correct = row.dataset.answer;
+  
+  // Initialize if already answered
+  if (input.disabled) {
+    correctCount++;
+  }
 
-  input.addEventListener("input",()=>{
-    const val=input.value.toLowerCase();
-    if(val===correct){
-      const target=[...bulbs].find(b=>b.dataset.key===val);
-      target.querySelector(".bulb").classList.add("on"); 
-      input.disabled=true;
+  input.addEventListener("input", () => {
+    const val = input.value.toLowerCase();
+    if (val === correct) {
+      const target = [...bulbs].find(b => b.dataset.key === val);
+      if (target) {
+        target.querySelector(".bulb").classList.add("on");
+      }
+      input.disabled = true;
+      correctCount++;
       playSuccessSound();
       triggerConfetti();
       showSmiley("😄");
-    } else if(val.length > 0) {
+      
+      // Check if quiz is completed
+      checkCompletion();
+    } else if (val.length > 0) {
       playZzzSound();
       showSmiley("😴");
-      input.value="";
+      input.value = "";
     }
   });
 });
+
+// Add CSS for final popup
+const style = document.createElement('style');
+style.textContent = `
+  .final-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .final-popup-card {
+    background: linear-gradient(135deg, #fff, #f0f0f0);
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .final-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .trophy {
+    font-size: 50px;
+    animation: bounce 0.5s ease;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .final-header h2 {
+    font-size: 32px;
+    color: #2f4f4f;
+    margin: 0;
+    font-family: 'Livvic', sans-serif;
+  }
+  
+  .score-circle {
+ 
+    width: 160px;
+    height: 160px;
+    margin: 20px auto;
+    background: linear-gradient(135deg, #4cc9f0, #f778a1);
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .score-number {
+    font-size: 65px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Livvic', sans-serif;
+  }
+  
+  .score-total {
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Livvic', sans-serif;
+  }
+  
+  .final-message {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2f4f4f;
+    margin: 20px 0 15px;
+    font-family: 'Livvic', sans-serif;
+  }
+  
+  .final-stars {
+    font-size: 40px;
+    letter-spacing: 8px;
+    margin: 15px 0 25px;
+  }
+  
+  .final-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .restart-btn {
+    padding: 14px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: 'Livvic', sans-serif;
+    background: linear-gradient(135deg, #4cc9f0, #2ecc71);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .restart-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  }
+  
+  .restart-btn:active {
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 500px) {
+    .final-popup-card {
+      padding: 30px 20px;
+    }
+    
+    .score-circle {
+      width: 130px;
+      height: 130px;
+    }
+    
+    .score-number {
+      font-size: 50px;
+    }
+    
+    .score-total {
+      font-size: 26px;
+    }
+    
+    .final-message {
+      font-size: 22px;
+    }
+    
+    .final-stars {
+      font-size: 32px;
+      letter-spacing: 5px;
+    }
+    
+    .final-header h2 {
+      font-size: 26px;
+    }
+    
+    .trophy {
+      font-size: 40px;
+    }
+    
+    .restart-btn {
+      padding: 12px 30px;
+      font-size: 16px;
+    }
+  }
+`;
+document.head.appendChild(style);
 </script>
 </body>
 </html>

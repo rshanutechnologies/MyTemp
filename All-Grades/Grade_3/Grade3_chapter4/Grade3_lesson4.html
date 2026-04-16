@@ -538,7 +538,32 @@ iframe{
   }
 
 }
+/* 🔥 FIX ACTIVE BLUE BUTTON HEIGHT (MOBILE) */
+@media (max-width:600px){
 
+  /* reduce overall height */
+  .offcanvas-panel .card.active{
+    padding:6px 8px !important;
+  }
+
+  /* reduce icon inside blue button */
+  .offcanvas-panel .card.active .icon{
+    width:26px !important;
+    height:26px !important;
+  }
+
+  /* reduce text size */
+  .offcanvas-panel .card.active{
+    font-size:14px !important;
+  }
+
+  /* reduce underline space */
+  .offcanvas-panel .card.active::after{
+    bottom:4px !important;
+    height:1.5px !important;
+  }
+
+}
 </style>
 </head>
 

@@ -34,6 +34,7 @@ const input1 = document.getElementById("answerInput1");
 const input2 = document.getElementById("answerInput2");
 const check1 = document.getElementById("checkBtn1");
 const check2 = document.getElementById("checkBtn2");
+
 let index = 0,
   score = 0;
 const answers = Array(5).fill(null);
@@ -48,14 +49,23 @@ const next = document.getElementById("nextBtn");
 
 function updateButtons() {
 
-  // single input
+  // ✅ If already answered → allow NEXT only
+  if (answers[index]) {
+    check.disabled = true;
+    check1.disabled = true;
+    check2.disabled = true;
+    next.disabled = false;
+    return;
+  }
+
+  // ✅ SINGLE INPUT
   if (!input.disabled) {
     check.disabled = !input.value.trim();
   } else {
     check.disabled = true;
   }
 
-  // double input
+  // ✅ DOUBLE INPUT
   if (!input1.disabled) {
     check1.disabled = !input1.value.trim();
   } else {
@@ -67,17 +77,20 @@ function updateButtons() {
   } else {
     check2.disabled = true;
   }
+
+  // 🔒 LOCK NEXT UNTIL CORRECT
+  next.disabled = true;
 }
 
 function load() {
   const q = questions[index];
-
+  next.disabled = true;
   qImg.src = q.img;
   qText.textContent = q.q;
   qCount.textContent = ``;
 
   prev.disabled = index === 0;
-  next.disabled = !answers[index];
+ 
 
   // RESTORE SAVED ANSWER
   if (answers[index]) {
