@@ -113,6 +113,10 @@ const b = answerEl;
   selected = [];
 }
 function drawLine(el1, el2) {
+
+  // 📱 STOP DRAWING LINE IN MOBILE
+  if (window.innerWidth <= 600) return;
+
   const svg = document.getElementById("lines");
   const gap = document.querySelector(".gap");
 
@@ -120,7 +124,6 @@ function drawLine(el1, el2) {
   const r2 = el2.getBoundingClientRect();
   const g = gap.getBoundingClientRect();
 
-  // 🔥 Detect which element is visually on the left
   const leftRect = r1.left < r2.left ? r1 : r2;
   const rightRect = r1.left < r2.left ? r2 : r1;
 

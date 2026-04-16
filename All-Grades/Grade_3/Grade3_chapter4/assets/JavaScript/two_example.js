@@ -72,7 +72,7 @@ const nextBtn = document.getElementById("nextBtn");
 /* RENDER */
 function renderQuestion(){
   const q = quizData[current];
-  questionTextEl.textContent = q.question + " ________  ________";
+  questionTextEl.textContent = q.question + " ______  ______";
 
   prevBtn.disabled = current === 0;
 

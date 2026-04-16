@@ -397,8 +397,10 @@ button:disabled {
 @media (max-width:768px){
 
   html, body{
-    height:auto;
+    height:100vh; 
     overflow:hidden;
+     align-items:center;   /* ✅ center vertically */
+    justify-content:center; /* (safe) */
     margin-top: -10px;
   }
 
@@ -745,6 +747,56 @@ button:disabled {
     height:95px;
     padding:30px 60px;
     font-size:30px;
+  }
+
+}
+@media (max-width:600px){
+
+  #finalPopup{
+    padding:10px;
+  }
+
+  .finalpopup-box{
+    width:200px !important;     /* 🔥 compact size */
+    padding:12px !important;
+    border-radius:14px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+
+  /* HEADING */
+  .final-heading{
+    font-size:14px !important;
+    margin:6px 0;
+  }
+
+  /* SCORE TEXT */
+  #finalScore{
+    font-size:12px !important;
+  }
+
+  /* STARS */
+  #stars{
+    font-size:16px !important;
+    margin:4px 0;
+  }
+
+  /* EACH STAR */
+  #stars span,
+  #stars div{
+    font-size:14px !important;
+  }
+
+  /* BUTTON */
+  .playAgain-btn{
+    font-size:12px !important;
+    padding:6px 12px !important;
+    border-radius:12px;
+    margin-top:6px;
   }
 
 }

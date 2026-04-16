@@ -324,6 +324,7 @@ body {
 .img-container{
     width:160px;
     height:120px;
+    margin-bottom: 40px;
 }
 
 .option{
@@ -332,6 +333,7 @@ body {
     border-radius:20px;
     width: 50%;
     margin: auto;
+     
 }
 
 /* progress circles smaller */
@@ -368,6 +370,7 @@ body {
 .option{
     padding:8px;
     font-size:13px;
+   
 }
 
 .level{

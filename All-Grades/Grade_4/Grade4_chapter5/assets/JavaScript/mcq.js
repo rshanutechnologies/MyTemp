@@ -3,10 +3,10 @@ const quizData = [
     q: "Q1. Living things require ______ for breathing.",
     img: "../assets/images/boy-img.png",
     options: [
-      { t: "🫁 argon" },
-      { t: "🟣 oxygen" },
-      { t: "🟢 nitrogen" },
-      { t: "🔴 carbon dioxide" },
+      { t: "argon", img: "../assets/images/Argon.png" },
+      { t: "oxygen", img: "../assets/images/oxygen.png" },
+      { t: "nitrogen", img: "../assets/images/Nitrogen.png" },
+      { t: "carbon dioxide", img: "../assets/images/CO2.png" },
     ],
     a: 1,
   },
@@ -14,10 +14,10 @@ const quizData = [
     q: "Q2. ______ of the Earth is covered by water.",
     img: "../assets/images/earth-img.png",
     options: [
-      { t: "🌊 80%" },
-      { t: "💧 10%" },
-      { t: "🌍 70%" },
-      { t: "🪣 20%" },
+      { t: "80%", img: "../assets/images/80.png" },
+      { t: "10%", img: "../assets/images/10.png" },
+      { t: "70%", img: "../assets/images/70.png" },
+      { t: "20%", img: "../assets/images/20.png" },
     ],
     a: 2,
   },
@@ -25,10 +25,10 @@ const quizData = [
     q: "Q3. The roots of trees and plants bind the soil preventing ______.",
     img: "../assets/images/tree-img.png",
     options: [
-      { t: "🌱 soil erosion" },
-      { t: "💎 minerals" },
-      { t: "🫁 oxygen" },
-      { t: "🏭 pollution" },
+      { t: "soil erosion", img: "../assets/images/soil-img.png" },
+      { t: "minerals", img: "../assets/images/minerals.png" },
+      { t: "oxygen", img: "../assets/images/oxygen.png" },
+      { t: "pollution", img: "../assets/images/polutions.png" },
     ],
     a: 0,
   },
@@ -36,10 +36,10 @@ const quizData = [
     q: "Q4. ______ is refined to make petrol or diesel.",
     img: "../assets/images/oil-img.png",
     options: [
-      { t: "🍂 Dead plant" },
-      { t: "🛢️ Crude oil" },
-      { t: "🔥 Fossil fuel" },
-      { t: "⚙️ Metal" },
+      { t: "Dead plant", img: "../assets/images/dead-plant.png" },
+      { t: "Crude oil", img: "../assets/images/crude-oil.png" },
+      { t: "Fossil fuel", img: "../assets/images/fossil-img1.png" },
+      { t: "Metal", img: "../assets/images/metal-img.png" },
     ],
     a: 2,
   },
@@ -47,10 +47,10 @@ const quizData = [
     q: "Q5. A ______ is a large area which is almost covered with woody vegetation or trees.",
     img: "../assets/images/forest-img.png",
     options: [
-      { t: "🌿 plant" },
-      { t: "🌳 forest" },
-      { t: "🪨 soil" },
-      { t: "🦴 fossil" },
+      { t: "plant", img: "../assets/images/plant.png" },
+      { t: "forest", img: "../assets/images/forest.png" },
+      { t: "soil", img: "../assets/images/soil.png" },
+      { t: "fossil", img: "../assets/images/fossil-img1.png" },
     ],
     a: 1,
   },
@@ -85,8 +85,13 @@ function loadQuestion() {
   q.options.forEach((o, i) => {
     const div = document.createElement("div");
     div.className = "option";
-    div.innerHTML = `<span>${o.t}</span>`;
-
+    // div.innerHTML = `<span>${o.t}</span>`;
+div.innerHTML = `
+  <div class="option-content">
+    <img src="${o.img}" class="option-img">
+    <span>${o.t}</span>
+  </div>
+`;
     // ✅ RESTORE STATE if already answered
     if (answered[current] !== null) {
       if (i === q.a) {

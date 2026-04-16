@@ -398,3 +398,44 @@ button:disabled{
     margin:auto;
   }
 }
+/* 📱 MOBILE FIX - CORRECT / WRONG POPUP */
+@media (max-width:600px){
+
+  .popup{
+    padding:10px; /* prevent edge touching */
+  }
+
+  .popup-content{
+    width:200px !important;     /* 🔥 force small */
+    min-height:120px !important;
+
+    padding:12px;
+    border-radius:14px;
+
+    display:flex;               /* 🔥 center everything */
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;          /* 🔥 fix text center */
+  }
+
+  .popup-icon{
+    font-size:1.8em;            /* smaller icon */
+    margin-bottom:6px;
+  }
+
+  .popup-content h3{
+    font-size:14px;
+    margin:4px 0;
+    text-align:center;
+    width:100%;
+  }
+
+  .popup-content p{
+    font-size:12px;
+    margin:0;
+    text-align:center;
+    width:100%;
+  }
+
+}

@@ -2,6 +2,8 @@
      box-sizing: border-box;
      font-family: 'Livvic', sans-serif;
      user-select: none;
+     margin: 0;
+     padding: 0;
  }
 
  body {
@@ -132,6 +134,19 @@
  .option:nth-child(4) {
      background: #ffefb8;
  }
+
+
+ .option-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.option-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
 
  /* CONTROLS */
  .controls {
@@ -551,8 +566,8 @@ Stacked layout
      }
 
      .image-box img {
-         width: 170px;
-         height: 170px;
+         width: 100px;
+         height: 100px;
      }
 
      .option {
@@ -564,7 +579,89 @@ Stacked layout
          font-size: 15px;
          padding: 8px 16px;
      }
- }
+
+
+     @media (max-width: 450px) {
+  
+
+    .finalpopup-box {
+        padding: 20px 25px;
+        border-radius: 15px;
+        max-width: 92%;
+        width: 92%;
+    }
+
+    .final-heading {
+        font-size: 1.5em;
+        margin: 15px;
+    }
+
+    #stars {
+        font-size: 30px;
+        margin-top: 8px;
+        letter-spacing: 3px;
+    }
+
+    .playAgain-btn {
+        padding: 10px 24px;
+        font-size: 14px;
+        margin-block: 8px;
+        border-radius: 18px;
+    }
+}
+
+/* 375px and below (iPhone SE, small devices) */
+@media (max-width: 375px) {
+    .finalpopup-box {
+        padding: 15px 20px;
+        border-radius: 12px;
+    }
+
+    .final-heading {
+        font-size: 1.3em;
+        margin: 10px;
+    }
+
+    #stars {
+        font-size: 25px;
+        margin-top: 6px;
+        letter-spacing: 2px;
+    }
+
+    .playAgain-btn {
+        padding: 8px 20px;
+        font-size: 13px;
+        margin-block: 6px;
+        border-radius: 16px;
+    }
+}
+
+/* 320px and below (very small devices) */
+@media (max-width: 320px) {
+    .finalpopup-box {
+        padding: 12px 15px;
+        border-radius: 10px;
+    }
+
+    .final-heading {
+        font-size: 1.1em;
+        margin: 8px;
+    }
+
+    #stars {
+        font-size: 20px;
+        margin-top: 5px;
+        letter-spacing: 1px;
+    }
+
+    .playAgain-btn {
+        padding: 6px 16px;
+        font-size: 12px;
+        margin-block: 5px;
+        border-radius: 14px;
+    }
+}
+}
 
  /* ========================================
    💻 Desktop / Monitor (1025px – 1440px)
@@ -640,6 +737,18 @@ Stacked layout
          font-size: 38px;
          padding: 24px 20px;
      }
+
+      .option-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.option-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
 
      button {
          font-size: 30px;

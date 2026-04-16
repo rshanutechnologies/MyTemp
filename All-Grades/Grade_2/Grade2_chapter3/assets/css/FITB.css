@@ -30,7 +30,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: -100px;
+    margin-top: -80px;
 }
 
 /* TOP BAR */
@@ -61,7 +61,7 @@ body {
     padding: 8px 14px;
     border-radius: 50px;
     position: relative;
-    top: 60px;
+    top: 70px;
     left: 450px;
 }
 
@@ -204,7 +204,7 @@ body {
 /* ✅ letters grid with more distance */
 .letters {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
     gap: 14px;
 }
 
@@ -759,7 +759,7 @@ body {
 
 
 /* ================= 1025px — 1440px ================= */
- @media screen and (min-width:1350px) and (max-width:1440px){
+ @media screen and (min-width:1450px) and (max-width:1500px){
 
 .game-wrapper{
 max-width:1500px;
@@ -809,7 +809,7 @@ font-weight: 100;
 
 
 /* ================= 1441px — 1920px ================= */
-@media screen and (min-width:1550px) and (max-width:1920px){
+@media screen and (min-width:1301px) and (max-width:1920px){
 body{
     margin-top: -1%;
 }
@@ -819,9 +819,9 @@ max-width:1250px;
 }
 
 .question-text{
-font-size:44px;
+font-size:44px !important;
 
-/* margin-bottom:8% ; */
+margin-bottom:3% ; 
 }
 
 .character-section{

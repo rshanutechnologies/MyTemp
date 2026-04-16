@@ -2,6 +2,8 @@
   box-sizing: border-box;
   font-family: "Livvic" !important;
   font-weight: 500;
+  margin: 0;
+  padding: 0;
 }
 
 body {

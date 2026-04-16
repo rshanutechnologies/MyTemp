@@ -460,3 +460,47 @@ html {
     font-size:28px;
   }
 }
+/* 📱 MATCHING FINAL POPUP FIX (MAKE SAME AS TRUE/FALSE) */
+@media (max-width:600px){
+
+  #finalPopup{
+    padding:10px; /* prevent edge touching */
+  }
+
+  .finalpopup-box{
+    width:220px !important;     /* 🔥 force small */
+    padding:15px !important;    /* 🔥 reduce padding */
+    border-radius:14px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+
+  .final-heading{
+    font-size:16px;
+    margin:10px 0;
+  }
+
+  #finalstars{
+    font-size:24px;   /* smaller stars */
+  }
+
+  .playAgain-btn{
+    font-size:13px;
+    padding:8px 16px;
+  }
+
+  .stars{
+    gap:4px;            /* reduce spacing */
+  }
+
+  .star{
+    font-size:22px !important;   /* 🔥 smaller stars */
+  }
+#lines{
+    display:none;
+  }
+}

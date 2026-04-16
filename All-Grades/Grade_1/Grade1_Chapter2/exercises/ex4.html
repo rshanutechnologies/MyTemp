@@ -282,7 +282,414 @@
   }
 }
 
+/* 800px and below - Tablets */
+@media (max-width: 800px) {
+  body {
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+    align-items: flex-start;
+  }
 
+  .main-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    gap: 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .quiz-area {
+    flex: none;
+    height: auto;
+    justify-content: center;
+    gap: 15px;
+    overflow-y: visible;
+  }
+
+  #qNumber {
+    font-size: 16px;
+    padding: 6px 20px;
+  }
+
+  .qRow {
+    gap: 12px;
+  }
+
+  #qText {
+    font-size: 22px;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .bird-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .scene {
+    width: 200px;
+    height: 200px;
+    margin: 10px 0;
+  }
+
+  /* Recalculate dice faces for tablet */
+  .face-front, .face-back, .face-right, .face-left, .face-top, .face-bottom {
+    transform: translateZ(100px);
+  }
+  .face-front { transform: rotateY(0deg) translateZ(100px); }
+  .face-back { transform: rotateY(180deg) translateZ(100px); }
+  .face-right { transform: rotateY(90deg) translateZ(100px); }
+  .face-left { transform: rotateY(-90deg) translateZ(100px); }
+  .face-top { transform: rotateX(90deg) translateZ(100px); }
+  .face-bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+  .btn-container {
+    gap: 12px;
+    margin: 10px 0;
+  }
+
+  .action-btn {
+    padding: 12px 25px;
+    font-size: 16px;
+  }
+
+  .nav-side-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    min-width: 120px;
+  }
+
+  #feedback {
+    font-size: 120px;
+  }
+}
+
+/* 600px and below - Large phones */
+@media (max-width: 600px) {
+  .main-container {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .quiz-area {
+    gap: 12px;
+  }
+
+  #qNumber {
+    font-size: 14px;
+    padding: 4px 16px;
+  }
+
+  .qRow {
+    gap: 10px;
+  }
+
+  #qText {
+    font-size: 20px;
+    max-width: 85%;
+  }
+
+  .bird-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .scene {
+    width: 170px;
+    height: 170px;
+  }
+
+  /* Recalculate dice faces for 600px */
+  .face-front, .face-back, .face-right, .face-left, .face-top, .face-bottom {
+    transform: translateZ(85px);
+  }
+  .face-front { transform: rotateY(0deg) translateZ(85px); }
+  .face-back { transform: rotateY(180deg) translateZ(85px); }
+  .face-right { transform: rotateY(90deg) translateZ(85px); }
+  .face-left { transform: rotateY(-90deg) translateZ(85px); }
+  .face-top { transform: rotateX(90deg) translateZ(85px); }
+  .face-bottom { transform: rotateX(-90deg) translateZ(85px); }
+
+  .dice-face span {
+    font-size: 14px;
+  }
+
+  .btn-container {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .action-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+
+  .nav-side-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+    min-width: 100px;
+  }
+
+  #feedback {
+    font-size: 100px;
+  }
+
+  .completion-card {
+    padding: 30px;
+    width: 95%;
+  }
+
+  .completion-card h2 {
+    font-size: 22px;
+  }
+}
+
+/* 450px and below - Small phones */
+@media (max-width: 450px) {
+  .main-container {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .quiz-area {
+    gap: 10px;
+  }
+
+  #qNumber {
+    font-size: 12px;
+    padding: 3px 12px;
+  }
+
+  .qRow {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #qText {
+    font-size: 18px;
+    max-width: 100%;
+    text-align: center;
+    order: 2;
+  }
+
+  .bird-btn {
+    width: 40px;
+    height: 40px;
+    order: 1;
+  }
+
+  .scene {
+    width: 150px;
+    height: 150px;
+  }
+
+  /* Recalculate dice faces for 450px */
+  .face-front, .face-back, .face-right, .face-left, .face-top, .face-bottom {
+    transform: translateZ(75px);
+  }
+  .face-front { transform: rotateY(0deg) translateZ(75px); }
+  .face-back { transform: rotateY(180deg) translateZ(75px); }
+  .face-right { transform: rotateY(90deg) translateZ(75px); }
+  .face-left { transform: rotateY(-90deg) translateZ(75px); }
+  .face-top { transform: rotateX(90deg) translateZ(75px); }
+  .face-bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+  .dice-face {
+    border-radius: 15px;
+    border-width: 3px;
+  }
+
+  .dice-face span {
+    font-size: 12px;
+  }
+
+  .btn-container {
+    gap: 8px;
+    margin: 5px 0;
+  }
+
+  .action-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .nav-side-btn {
+    padding: 8px 15px;
+    font-size: 13px;
+    min-width: 90px;
+    border-width: 3px;
+  }
+
+  #feedback {
+    font-size: 80px;
+  }
+
+  .completion-card {
+    padding: 25px;
+  }
+
+  .completion-card h2 {
+    font-size: 20px;
+  }
+
+  .completion-card p {
+    font-size: 14px;
+  }
+
+  .completion-card button {
+    padding: 10px 25px;
+    font-size: 16px;
+  }
+}
+
+/* 375px and below - iPhone SE / very small devices */
+@media (max-width: 375px) {
+  .main-container {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .quiz-area {
+    gap: 8px;
+  }
+
+  #qNumber {
+    font-size: 11px;
+    padding: 2px 10px;
+  }
+
+  .qRow {
+    gap: 6px;
+  }
+
+  #qText {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .bird-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .scene {
+    width: 130px;
+    height: 130px;
+  }
+
+  /* Recalculate dice faces for 375px */
+  .face-front, .face-back, .face-right, .face-left, .face-top, .face-bottom {
+    transform: translateZ(65px);
+  }
+  .face-front { transform: rotateY(0deg) translateZ(65px); }
+  .face-back { transform: rotateY(180deg) translateZ(65px); }
+  .face-right { transform: rotateY(90deg) translateZ(65px); }
+  .face-left { transform: rotateY(-90deg) translateZ(65px); }
+  .face-top { transform: rotateX(90deg) translateZ(65px); }
+  .face-bottom { transform: rotateX(-90deg) translateZ(65px); }
+
+  .dice-face {
+    border-radius: 12px;
+    border-width: 2px;
+    padding: 5px;
+  }
+
+  .dice-face span {
+    font-size: 10px;
+  }
+
+  .btn-container {
+    gap: 6px;
+  }
+
+  .action-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 15px;
+  }
+
+  .nav-side-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    min-width: 80px;
+    border-width: 2px;
+    border-radius: 12px;
+  }
+
+  #feedback {
+    font-size: 60px;
+  }
+
+  .completion-card {
+    padding: 20px;
+    border-radius: 25px;
+  }
+
+  .completion-card h2 {
+    font-size: 18px;
+  }
+
+  .completion-card p {
+    font-size: 12px;
+  }
+
+  .completion-card button {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Landscape mode for phones */
+@media (max-width: 800px) and (orientation: landscape) {
+  body {
+    overflow-y: auto;
+  }
+
+  .main-container {
+    flex-direction: row;
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .quiz-area {
+    flex: 2;
+    gap: 8px;
+  }
+
+  .scene {
+    width: 130px;
+    height: 130px;
+  }
+
+  /* Recalculate dice faces for landscape */
+  .face-front, .face-back, .face-right, .face-left, .face-top, .face-bottom {
+    transform: translateZ(65px);
+  }
+  .face-front { transform: rotateY(0deg) translateZ(65px); }
+  .face-back { transform: rotateY(180deg) translateZ(65px); }
+  .face-right { transform: rotateY(90deg) translateZ(65px); }
+  .face-left { transform: rotateY(-90deg) translateZ(65px); }
+  .face-top { transform: rotateX(90deg) translateZ(65px); }
+  .face-bottom { transform: rotateX(-90deg) translateZ(65px); }
+
+  #qText {
+    font-size: 18px;
+  }
+
+  .action-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .nav-side-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
 /* ================= 1025px — 1440px ================= */
 /* @media screen and (min-width:1025px) and (max-width:1440px){
 

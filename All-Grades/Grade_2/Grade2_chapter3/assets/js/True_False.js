@@ -186,7 +186,7 @@ function check(val) {
     }
   } else {
     // wrong => give chance
-    dropZone.innerHTML = "Drop here";
+    dropZone.innerHTML = "";
     result.textContent = "❌ Try again!";
     result.style.color = "#dc2626";
 

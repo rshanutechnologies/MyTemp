@@ -28,7 +28,7 @@
         text: "The ____________ covers our body from outside.",
         options: ["skin", "muscles", "bones"],
         answer: "skin",
-        img: "../assets/images/skin1.png"
+        img: "../assets/images/Skin1.png"
       }
     ];
 

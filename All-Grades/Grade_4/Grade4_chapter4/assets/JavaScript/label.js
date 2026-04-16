@@ -1,5 +1,7 @@
 const inputs = document.querySelectorAll("input");
 const checkBtn = document.getElementById("checkBtn");
+const popup = document.getElementById("popup");        // ← ADD THIS
+const popupText = document.getElementById("popupText"); // ← ADD THIS
 
 let activeInput = null;
 let correct = 0;
@@ -31,15 +33,15 @@ inputs.forEach((input) => {
   });
 });
 
-function speak(t) {
-  speechSynthesis.cancel();
-  const msg = new SpeechSynthesisUtterance(t);
-  msg.volume = 0.1; // 🔉 lower volume (0 to 1)
-  msg.rate = 1;
-  msg.pitch = 1;
+// function speak(t) {
+//   speechSynthesis.cancel();
+//   const msg = new SpeechSynthesisUtterance(t);
+//   msg.volume = 0.1; // 🔉 lower volume (0 to 1)
+//   msg.rate = 1;
+//   msg.pitch = 1;
 
-  speechSynthesis.speak(msg);
-}
+//   speechSynthesis.speak(msg);
+// }
 
 /* CHECK BUTTON CLICK */
 checkBtn.addEventListener("click", () => {
@@ -82,7 +84,7 @@ checkBtn.addEventListener("click", () => {
               <span class="emoji">🏆</span>
               You finished the quiz!
               <div class="final-score">
-                Score: <b>${quizData.length}/${quizData.length}</b>
+                  Score: <b>${inputs.length}/${inputs.length}</b>
               </div>
               <div class="stars">⭐⭐⭐⭐⭐</div>
               <div class="final-actions">

@@ -930,3 +930,53 @@
   }
 }
 
+/* 📱 SMALL FINAL POPUP (MOBILE ONLY) */
+@media (max-width:600px){
+
+  #finalPopup{
+    padding:10px;
+  }
+
+  .finalpopup-box{
+    width:220px !important;     /* small box */
+    padding:14px !important;    /* compact spacing */
+    border-radius:14px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+
+  /* TEXT */
+  .final-heading{
+    font-size:16px !important;
+    margin:8px 0;
+  }
+
+  /* SCORE TEXT (if used) */
+  #finalScore{
+    font-size:14px !important;
+  }
+
+  /* STARS */
+  #stars{
+    font-size:20px !important;
+    margin:6px 0;
+  }
+
+  /* EACH STAR */
+  #stars span,
+  #stars div{
+    font-size:18px !important;
+  }
+
+  /* BUTTON */
+  .playAgain-btn{
+    font-size:13px !important;
+    padding:8px 14px !important;
+    margin-top:8px;
+  }
+
+}

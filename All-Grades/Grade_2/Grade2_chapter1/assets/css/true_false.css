@@ -350,7 +350,7 @@ button:disabled {
 
 @media (max-width:640px){
  body{
-    overflow: auto;
+    overflow: hidden;
   }
   .cards{
     flex-direction:column;
