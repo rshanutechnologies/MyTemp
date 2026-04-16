@@ -273,6 +273,7 @@ body {
   padding: 6px;
   /* border:2px solid #bae6fd; */
   object-fit: contain;
+  display: none !important;
 }
 
 @media (max-width:900px) {
@@ -326,6 +327,7 @@ body {
   .right-img {
     width: 58px !important;
     height: 58px !important;
+    display: none !important;
   }
 
   .item span {
@@ -413,6 +415,7 @@ body {
   .right-img {
     width: 36px !important;
     height: 36px !important;
+    display: none !important;
   }
 
   .item span {
@@ -526,6 +529,7 @@ body {
   .right-img {
     width: 36px !important;
     height: 36px !important;
+    display: none !important;
   }
 
   .item span {
@@ -638,6 +642,7 @@ body {
   .right-img {
     width: 110px !important;
     height: 90px !important;
+    display: none !important;
   }
 
   .item span {

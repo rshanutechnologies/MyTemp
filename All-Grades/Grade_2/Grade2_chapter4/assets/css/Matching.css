@@ -429,6 +429,7 @@
          width: 28px;
          height: 28px;
          font-size: 12px;
+         display: none;
      }
 
      .left-content img {

@@ -409,7 +409,7 @@ button:disabled {
 
 @media (max-width:380px){
  body{
-    overflow: auto;
+    overflow: hidden;
   }
   .question{
     font-size:18px !important;

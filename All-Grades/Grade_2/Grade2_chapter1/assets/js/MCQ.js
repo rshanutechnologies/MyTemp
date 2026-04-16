@@ -134,7 +134,7 @@ const quizData = [
   },
   {
     question: "Our _____ helps us to remember. ",
-    image: "../assets/images/MCQ4.png",
+    image: "../assets/images/Rememberingbrain.png",
     options: [
       {
         id: "b",

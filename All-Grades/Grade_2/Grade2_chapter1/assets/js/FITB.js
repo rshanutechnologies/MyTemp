@@ -12,17 +12,17 @@ const questions = [
   {
     q: "The ________ is located inside our head.",
     a: "brain",
-    img: "../assets/images/opt41.png"
+    img: "../assets/images/T22.png"
   },
   {
     q: "Our ________ help us to pick things.",
     a: "hands",
-    img: "../assets/images/opt22.png"
+    img: "../assets/images/hands.png"
   },
   {
     q: "We have a pair of ________ under our back ribs.",
     a: "kidneys",
-    img: "../assets/images/opt42.png"
+    img: "../assets/images/newF_5.png"
   },
 ];
 

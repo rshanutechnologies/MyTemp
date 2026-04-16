@@ -4,31 +4,31 @@
         text: "The place where two bones join is called a ____________.",
         options: ["muscle", "skin", "joint"],
         answer: "joint",
-        img: "../assets/images/q1-img.png"
+        img: "../assets/images/BONESSS.png"
       },
       {
         text: "All bones together form the ______________ system.",
         options: ["muscular", "digestive", "skeletal"],
         answer: "skeletal",
-        img: "../assets/images/q2-img.png"
+        img: "../assets/images/BONESSSALL.png"
       },
       {
         text: "We should drink a glass of ________ daily.",
         options: ["water", "milk", "coke"],
         answer: "milk",
-        img: "../assets/images/q1-F.png"
+        img: "../assets/images/DBOY.png"
       },
       {
         text: "__________ and muscles together give shape to our body.",
         options: ["Face", "Skin", "Bones"],
         answer: "Bones",
-        img: "../assets/images/q4-img.png"
+        img: "../assets/images/q2-img.png"
       },
       {
         text: "The ____________ covers our body from outside.",
         options: ["skin", "muscles", "bones"],
         answer: "skin",
-        img: "../assets/images/q5-img.png"
+        img: "../assets/images/skin1.png"
       }
     ];
 

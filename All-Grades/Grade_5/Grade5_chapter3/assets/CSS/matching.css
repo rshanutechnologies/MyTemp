@@ -13,7 +13,18 @@ body {
   background: transparent;
   overflow: hidden;
 }
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
+.item-img {
+  width: 52px;        /* 🔥 small size */
+  height: 52px;       /* 🔥 same size */
+  object-fit: contain;
+  pointer-events: none;
+}
 .game {
   width: min(1100px, 96vw);
   border-radius: 32px;
@@ -345,6 +356,13 @@ svg path {
     padding: 15px;
        
   }
+  .item-img{
+    margin-left: 2%;
+  width: 32px;        /* 🔥 small size */
+  height: 32px;       /* 🔥 same size */
+ 
+}
+  
 
   .match-area {
     grid-template-columns: 1fr 1fr;
@@ -521,6 +539,19 @@ svg path {
     height: 780px;
     padding: 40px;
   }
+.item {
+  display: flex;
+  align-items: center;
+  gap: 50px !important;
+}
+
+.item-img {
+  width: 82px !important;        /* 🔥 small size */
+  height: 82px !important;       /* 🔥 same size */
+  object-fit: contain;
+  pointer-events: none;
+  /* background-color: yellow !important; */
+}
 
   /* ✅ TITLE */
   .title{

@@ -46,31 +46,31 @@ const questions = [
   {
     q: "An action that we do with our legs",
     a: "Walk",
-    image: "../assets/images/T1.png",
+    image: "../assets/images/T11.png",
     options: ["Walk", "Flying", "Gaming"]
   },
   {
     q: "A part that is located inside our head",
     a: "Brain",
-    image: "../assets/images/T2.png",
+    image: "../assets/images/T22.png",
     options: [ "Liver", "Heart","Brain"]
   },
   {
     q: "The sense organ that helps us to hear ",
     a: "Ears",
-    image: "../assets/images/T3.png",
+    image: "../assets/images/T33.png",
     options: [ "Nose", "Ears","Tongue"]
   },
   {
     q: "An internal organ",
     a: "Lungs",
-    image: "../assets/images/opt42.png",
+    image: "../assets/images/opt422.png",
     options: ["Lungs", "Skin", "Hand"]
   },
   {
     q: "An external organ",
     a: "Shoulder",
-    image: "../assets/images/shoulder.png",
+    image: "../assets/images/ExternalParts.png",
     options: [ "Lungs","Shoulder", "Brain"]
   }
 ];

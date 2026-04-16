@@ -27,11 +27,11 @@ const quizData = [
   },
   {
     q: "Q.3 The bird that lays the largest egg is the ________.",
-    img: "../assets/images/mcq3-img.png",
+    img: "../assets/images/x.png",
     options: [
       { t: "crow", cls: "blue", img: "🐦" },
       { t: "owl", cls: "orange", img: "🦉" },
-      { t: "ostrich", cls: "green", img: "🥚" },
+      { t: "ostrich", cls: "green", img: "🦤" },
       { t: "peacock", cls: "yellow", img: "🦚" },
     ],
     a: 2, // Option 3
@@ -52,7 +52,7 @@ const quizData = [
     img: "../assets/images/mcq5-img.png",
     options: [
       { t: "shell", cls: "blue", img: "🐚" },
-      { t: "albumen", cls: "orange", img: "🥚" },
+      { t: "albumen", cls: "orange", img: "⚪" },
       { t: "yolk", cls: "green", img: "🟡" },
       { t: "pupa", cls: "yellow", img: "🐛" },
     ],

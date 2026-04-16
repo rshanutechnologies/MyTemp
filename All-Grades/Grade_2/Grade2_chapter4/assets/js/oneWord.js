@@ -49,7 +49,7 @@ const questions = [
   },
   {
     q: "We get sugar from this plant",
-    img: "../assets/images/O-5.png",
+    img: "../assets/images/suger.png",
     options: [
       { text: "Sugarcane", img: "../assets/images/sugarcane.png" },
       { text: "Cotton", img: "../assets/images/cotton.png" },

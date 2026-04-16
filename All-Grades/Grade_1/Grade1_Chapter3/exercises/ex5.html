@@ -613,7 +613,7 @@
     </div>
 
     <div id="quiz-main">
-      <div class="drop-box" id="dropBox">DROP HERE</div>
+      <div class="drop-box" id="dropBox">Select Right Answer</div>
       <div class="options-container" id="options-grid"></div>
     </div>
 
@@ -707,7 +707,7 @@ function render() {
     dropBox.classList.add("locked");
     nextBtn.style.visibility = (current === quiz.length - 1) ? "hidden" : "visible";
   } else {
-    dropBox.innerHTML = "DROP HERE";
+    dropBox.innerHTML = "Select Right Answer";
     dropBox.classList.remove("locked");
     nextBtn.style.visibility = "hidden";
   }

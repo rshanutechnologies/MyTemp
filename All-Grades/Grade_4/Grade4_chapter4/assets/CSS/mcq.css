@@ -479,6 +479,7 @@ button:disabled {
 
   .question {
     font-size: 44px;
+    margin-bottom: 80px;
   }
 
   .option {

@@ -19,9 +19,6 @@
 
     body {
       font-family: "Livvic", sans-serif;
-      /* background-image: url("../uploads/bg2.png");
-  background-size: cover;
-  background-position: center; */
       height: 100vh;
       margin: 0;
       display: flex;
@@ -34,11 +31,9 @@
       width: 95%;
       max-width: 1000px;
       height: 100vh;
-      /* padding: 20px; */
       border-radius: 40px;
       display: flex;
       flex-direction: column;
-      /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); */
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -69,6 +64,7 @@
       padding: 10px 15px;
       border-radius: 20px;
       height: 28%;
+      position: relative;
     }
 
     .left-item {
@@ -101,10 +97,10 @@
       align-items: center;
       gap: 10px;
       font-size: clamp(16px, 2.5vw, 22px);
+      transition: all 0.3s ease;
     }
 
     .option img {
-      /* height: clamp(60px, 15vh, 100px); */
       height: 60px;
       width: 60px;
       aspect-ratio: 3/2;
@@ -117,7 +113,71 @@
       transition: all 0.3s ease;
     }
 
-    /* FEEDBACK GLOW - Target only the specific option box */
+    /* Matched image container - appears next to question */
+    .matched-image {
+      position: absolute;
+      right: -80px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(46, 213, 115, 0.2);
+      padding: 5px 12px;
+      border-radius: 30px;
+      animation: slideIn 0.5s ease;
+    }
+
+    .matched-image img {
+      height: 50px;
+      width: 50px;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 2px solid var(--correct);
+    }
+
+    .matched-image span {
+      font-size: 14px;
+      color: var(--correct);
+      font-weight: bold;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
+
+    /* Hide original option when matched */
+    .option.matched {
+      opacity: 0.3;
+      pointer-events: none;
+      filter: grayscale(0.5);
+      position: relative;
+    }
+
+    .option.matched::after {
+      content: "✓";
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      background: var(--correct);
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
     .option.correct img {
       border-color: var(--correct);
       box-shadow: 0 0 20px var(--correct);
@@ -133,7 +193,6 @@
       25% {
         transform: translateX(-6px);
       }
-
       75% {
         transform: translateX(6px);
       }
@@ -174,215 +233,60 @@
       text-align: center;
     }
 
-    /* ==================================================
-   📱 TABLETS (769px – 1024px)
-================================================== */
-    @media (max-width: 900px) {
-
-      .app {
-        width: 95%;
-        height: 100vh;
-        padding: 12px;
-      }
-
-      .title {
-        font-size: 1.8rem;
-      }
-
-      .match-row {
-        height: auto;
-        padding: 16px;
-      }
-
-      .left-item {
-        font-size: 1.25rem;
-      }
-
-      .option img {
-        height: 90px;
-      }
-
-      /* 🎉 FINAL POPUP */
-      .final-card {
-        width: 420px;
-        padding: 34px;
-      }
-
-      .final-card h1 {
-        font-size: 2.6rem;
-      }
-
-      .final-card p {
-        font-size: 1.35rem;
-      }
-    }
-
-
-    /* ==================================================
-   📱 MOBILES (≤768px)
-================================================== */
+    /* Responsive adjustments */
     @media (max-width: 768px) {
-
-      body {
-        overflow: hidden;
+      .matched-image {
+        right: -60px;
       }
-
-      .app {
-        width: 100%;
-        height: auto;
-        min-height: 100vh;
-        padding: 18px;
-        border-radius: 0;
-      }
-
-      .title {
-        font-size: 1.5rem;
-      }
-
-      .match-row {
-        grid-template-columns: 1.2fr 60px 1.2fr;
-        height: auto;
-      }
-
-      .left-item {
-        font-size: 1.1rem;
-      }
-
-      .answer-box {
-        width: 52px;
-        height: 42px;
-        font-size: 20px;
-      }
-
-      .option img {
-        height: 80px;
-      }
-
-      .smiley {
-        font-size: 110px;
-      }
-
-      /* 🎉 FINAL POPUP */
-      .final-card {
-        width: 85%;
-        padding: 26px;
-      }
-
-      .final-card h1 {
-        font-size: 2.2rem;
-      }
-
-      .final-card p {
-        font-size: 1.25rem;
+      .matched-image img {
+        height: 40px;
+        width: 40px;
       }
     }
 
-
-
-    /* ==================================================
-   📱 SMALL MOBILES (≤480px)
-================================================== */
     @media (max-width: 480px) {
-
-      body {
-        overflow-y: hidden;
-        align-items: flex-start;
-      }
-
-      .app {
-        width: 100%;
-        height: auto;
-        min-height: 100vh;
-        padding: 14px;
-        border-radius: 0;
-      }
-
-      .title {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
-      }
-
       .match-row {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
-        height: auto;
-        padding: 14px;
-        text-align: center;
       }
-
-      .left-item {
-        font-size: 1rem;
-        font-weight: 300;
-      }
-
-      .answer-box {
-        width: 50px;
-        height: 40px;
-        font-size: 18px;
-       
-      }
-
-      .option {
+      .matched-image {
+        position: static;
+        transform: none;
+        grid-column: span 2;
         justify-content: center;
-        font-size: 1rem;
+        margin-top: 8px;
       }
-
-      .option img {
-        height: 40px;
-      }
-
-      .smiley {
-        font-size: 90px;
-      }
-
-      /* 🎉 FINAL POPUP */
-      .final-card {
-        width: 90%;
-        padding: 20px;
-        border-radius: 24px;
-      }
-
-      .final-card h1 {
-        font-size: 1.8rem;
-      }
-
-      .final-card p {
-        font-size: 1.1rem;
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     }
 
-    /* =========================================
-💻 DESKTOP (1025px – 1440px)
-========================================= */
-    /* @media screen and (min-width: 1025px) and (max-width: 1440px) {
-
+    @media screen and (min-width: 1441px) {
       .app {
-        max-width: 1200px;
-        padding: 30px;
+        max-width: 1400px;
+        padding: 40px;
       }
-
-      .match-row {
-        padding: 18px 20px;
-        gap: 20px;
-      }
-
       .left-item {
-        font-size: clamp(20px, 1.6vw, 26px);
+        font-size: 28px;
       }
-
       .answer-box {
-        width: 70px;
-        height: 55px;
-        font-size: 26px;
+        width: 80px;
+        height: 60px;
+        font-size: 30px;
       }
-
       .option img {
-        height: clamp(100px, 9vh, 140px);
+        height: clamp(120px, 8vh, 160px);
       }
     }
- */
 
-    /* =========================================
+        /* =========================================
 🖥 LARGE MONITORS (1441px – 1920px)
 ========================================= */
     @media screen and (min-width: 1441px) and (max-width: 1920px) {
@@ -455,28 +359,31 @@
     <div class="title">Match the Following</div>
 
     <div class="match-container">
-      <div class="match-row">
+      <div class="match-row" data-question="1">
         <div class="left-item">1. Natural living thing</div>
-        <input class="answer-box" data-answer="b" maxlength="1">
-        <div class="option" data-id="a">
+        <input class="answer-box" data-answer="b" data-question-id="1" maxlength="1">
+        <div class="option" data-id="a" data-image-src="../uploads/mountain-img.png" data-image-label="Mountain">
           a) <img src="../uploads/mountain-img.png">
         </div>
+        <div class="matched-image-container"></div>
       </div>
 
-      <div class="match-row">
+      <div class="match-row" data-question="2">
         <div class="left-item">2. Man-made thing</div>
-        <input class="answer-box" data-answer="c" maxlength="1">
-        <div class="option" data-id="b">
+        <input class="answer-box" data-answer="c" data-question-id="2" maxlength="1">
+        <div class="option" data-id="b" data-image-src="../uploads/bird-img.png" data-image-label="Bird">
           b) <img src="../uploads/bird-img.png">
         </div>
+        <div class="matched-image-container"></div>
       </div>
 
-      <div class="match-row">
+      <div class="match-row" data-question="3">
         <div class="left-item">3. Natural non-living thing</div>
-        <input class="answer-box" data-answer="a" maxlength="1">
-        <div class="option" data-id="c">
+        <input class="answer-box" data-answer="a" data-question-id="3" maxlength="1">
+        <div class="option" data-id="c" data-image-src="../uploads/car-img.png" data-image-label="Car">
           c) <img src="../uploads/car-img.png">
         </div>
+        <div class="matched-image-container"></div>
       </div>
     </div>
 
@@ -489,6 +396,9 @@
     const inputs = document.querySelectorAll(".answer-box");
     const options = document.querySelectorAll(".option");
     const smiley = document.getElementById("smiley");
+    
+    // Track which options have been matched
+    const matchedOptions = new Set();
 
     function ensureAudio() {
       audioCtx ??= new (window.AudioContext || window.webkitAudioContext)();
@@ -526,62 +436,83 @@
       setTimeout(() => smiley.classList.remove("show"), 1200);
     }
 
-    // inputs.forEach(input => {
-    //   input.addEventListener("input", (e) => {
-    //     const val = e.target.value.toLowerCase();
-    //     if(!val) return;
-
-    //     const correctId = input.dataset.answer;
-    //     const targetOption = document.querySelector(`.option[data-id="${val}"]`);
-
-    //     if(!targetOption) return;
-
-    //     targetOption.classList.remove("wrong");
-
-    //     if(val === correctId) {
-    //       targetOption.classList.add("correct");
-    //       input.disabled = true;
-    //       correctCount++;
-    //       showSmiley("😄"); 
-    //       confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-    //       successSound();
-    //       if(correctCount === inputs.length) setTimeout(showFinal, 900);
-    //     } else {
-    //       targetOption.classList.add("wrong");
-    //       showSmiley("😢"); 
-    //       zzzSound();
-    //       setTimeout(() => targetOption.classList.remove("wrong"), 700);
-    //       e.target.value = ""; // Clear input for retry
-    //     }
-    //   });
-    // });
+    // Function to move image to the question row
+    function moveImageToQuestion(questionRow, optionElement, optionId) {
+      const imageSrc = optionElement.getAttribute('data-image-src');
+      const imageLabel = optionElement.getAttribute('data-image-label') || optionId;
+      const container = questionRow.querySelector('.matched-image-container');
+      
+      if (!container) return;
+      
+      // Create the matched image display
+      const matchedDiv = document.createElement('div');
+      matchedDiv.className = 'matched-image';
+      matchedDiv.innerHTML = `
+        <img src="${imageSrc}" alt="${imageLabel}">
+        <span>✓ Matched</span>
+      `;
+      
+      // Clear previous matched image if any
+      container.innerHTML = '';
+      container.appendChild(matchedDiv);
+      
+      // Mark original option as matched (hide/disable it)
+      optionElement.classList.add('matched');
+      
+      // Store that this option is now used
+      matchedOptions.add(optionId);
+    }
 
     inputs.forEach(input => {
       input.addEventListener("input", (e) => {
         let val = e.target.value.toLowerCase();
 
-        // ✅ ALLOW ONLY a, b, c
+        // Allow only a, b, c
         if (!["a", "b", "c"].includes(val)) {
-          e.target.value = ""; // block other letters
+          e.target.value = "";
           return;
         }
 
         const correctId = input.dataset.answer;
         const targetOption = document.querySelector(`.option[data-id="${val}"]`);
+        const currentQuestionRow = input.closest('.match-row');
 
         if (!targetOption) return;
+
+        // Check if this option has already been matched to another question
+        if (matchedOptions.has(val)) {
+          // Option already used - show error and clear
+          showSmiley("❌");
+          zzzSound();
+          e.target.value = "";
+          
+          // Flash the already matched option to indicate it's taken
+          targetOption.style.transition = '0.2s';
+          targetOption.style.opacity = '0.5';
+          setTimeout(() => {
+            targetOption.style.opacity = '';
+          }, 300);
+          return;
+        }
 
         targetOption.classList.remove("wrong");
 
         if (val === correctId) {
+          // CORRECT MATCH - Move the image to the question
           targetOption.classList.add("correct");
           input.disabled = true;
           correctCount++;
+          
+          // Move the image to the question row
+          moveImageToQuestion(currentQuestionRow, targetOption, val);
+          
           showSmiley("😄");
           confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
           successSound();
+          
           if (correctCount === inputs.length) setTimeout(showFinal, 900);
         } else {
+          // WRONG ANSWER
           targetOption.classList.add("wrong");
           showSmiley("😢");
           zzzSound();
@@ -593,20 +524,21 @@
 
     function showFinal() {
       confetti({ particleCount: 200, spread: 100, origin: { y: 0.5 } });
-      successSound(); showSmiley("🥳");
+      successSound(); 
+      showSmiley("🥳");
       const d = document.createElement("div");
       d.className = "final-overlay";
       d.style.display = "flex";
       d.innerHTML = `
-    <div class="final-card">
-      <h1 style="font-family:'Livvic';font-size: 42px; margin:0; color:#ff7a00;">🎉 GREAT JOB! 🎉</h1>
-      <p style="font-size: 20px; color:#2F4F4F;">You matched all correctly!</p>
-      <button onclick="location.reload()" style="
-        margin-top:15px; padding:12px 30px; font-size:18px; border-radius:30px;
-        border:none; background:var(--primary); color:white; font-family:'Livvic'; cursor:pointer;">
-        PLAY AGAIN ↺
-      </button>
-    </div>`;
+        <div class="final-card">
+          <h1 style="font-family:'Livvic';font-size: 42px; margin:0; color:#ff7a00;">🎉 GREAT JOB! 🎉</h1>
+          <p style="font-size: 20px; color:#2F4F4F;">You matched all correctly!</p>
+          <button onclick="location.reload()" style="
+            margin-top:15px; padding:12px 30px; font-size:18px; border-radius:30px;
+            border:none; background:var(--primary); color:white; font-family:'Livvic'; cursor:pointer;">
+            PLAY AGAIN ↺
+          </button>
+        </div>`;
       document.body.appendChild(d);
     }
   </script>

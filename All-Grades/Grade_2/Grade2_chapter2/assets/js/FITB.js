@@ -2,7 +2,7 @@ const questions = [
   {
     text: "<span class='blankSpot'></span> contains calcium that makes bones strong.",
     answer: "MILK",
-    img: "../assets/images/q1-F.png",
+    img: "../assets/images/BONESSS.png",
   },
   {
     text: "The muscles in our body form the <span class='blankSpot'></span> system.",
@@ -12,12 +12,12 @@ const questions = [
   {
     text: "The ribcage protects our <span class='blankSpot'></span> and <span class='blankSpot'></span>.",
     answer: ["HEART", "LUNGS"],
-    img: "../assets/images/q3-F.png",
+    img: "../assets/images/ribcage.png",
   },
   {
     text: "<span class='blankSpot'></span> help us bend our arms and legs.",
     answer: "JOINTS",
-    img: "../assets/images/q5-img.png",
+    img: "../assets/images/ArmsLegs.png",
   },
   {
     text: "An adult has <span class='blankSpot'></span> bones.",
