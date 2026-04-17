@@ -279,7 +279,7 @@ button:disabled{
  color:palevioletred;
     margin-top:0px;
     margin: 0 auto;
-    display: none !important;
+    /* display: none !important; */
     
 }
  .home {

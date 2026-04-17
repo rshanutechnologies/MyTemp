@@ -760,9 +760,9 @@ button:disabled {
 @media (min-width: 1280px) {
 
 
-    body{
-        margin-top: -2% !important;
-    }
+    /* body{
+        margin-top: -7% !important;
+    } */
   /* ❌ REMOVE SCALE (VERY IMPORTANT) */
   .main{
     transform: none;
@@ -777,7 +777,7 @@ button:disabled {
     font-size: 50px !important;
     padding: 20px 30px;
     /* text-align: center; */
-    /* display: none !important; */
+    display: none !important;
   }
 
   /* ✅ CONTENT FIX (CENTER EVERYTHING) */
