@@ -165,7 +165,7 @@ button:disabled{
 .popup{
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  /* background: rgba(0, 0, 0, 0.7); */
   display: none;
   align-items: center;
   justify-content: center;
@@ -181,7 +181,7 @@ button:disabled{
   width: 90%;
   animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   backdrop-filter: blur(15px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); */
 }
 
 @keyframes popIn {
@@ -455,7 +455,7 @@ button:disabled {
 
 @media (max-width:430px){
 body{
-  margin-top: -12%;
+  margin-top: -8%;
 }
   .question{
     font-size:18px;

@@ -30,6 +30,7 @@
       border-radius: 25px;
       font-size: 20px;
       font-weight: 600;
+      display: none !important;
     }
 
     /* PROGRESS */
@@ -223,7 +224,7 @@ background:#ffdcdc;
     .popup {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, .4);
+      /* background: rgba(0, 0, 0, .4); */
       display: flex;
       align-items: center;
       justify-content: center

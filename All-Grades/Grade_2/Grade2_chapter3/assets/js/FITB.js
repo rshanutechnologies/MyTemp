@@ -81,6 +81,9 @@ const ctx = canvas.getContext("2d");
 //   window.speechSynthesis.speak(u);
 // }
 
+
+
+
 function speak(t) {
   speechSynthesis.cancel(); // optional but recommended
 

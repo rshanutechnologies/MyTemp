@@ -36,6 +36,7 @@ body {
   position: relative;
   margin-top: -20px;
   margin-bottom: 40px;
+  display: none !important;
 
 }
 
@@ -222,7 +223,7 @@ button:disabled {
 .popup {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  /* background: rgba(0, 0, 0, 0.4); */
   display: none;
   justify-content: center;
   align-items: center;

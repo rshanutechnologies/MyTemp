@@ -30,6 +30,7 @@ body {
   gap: 18px;
   text-align: center;
   padding: 25px;
+  margin-top: 15% !important;
   
 }
 
@@ -52,6 +53,7 @@ body {
   margin-bottom: 110px;
   position: relative;
   top: -25px;
+  display: none !important;
 
 }
 
@@ -244,7 +246,7 @@ body {
 .popup {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  /* background: rgba(0, 0, 0, 0.4); */
   display: none;
   justify-content: center;
   align-items: center;

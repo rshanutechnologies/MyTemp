@@ -162,7 +162,7 @@ const quizData = [
   },
   {
     question: " Our eyes help us to _____. ",
-    image: "../assets/images/MCQ5.png",
+    image: "../assets/images/opt52.png",
     options: [
       {
         id: "a",
@@ -174,14 +174,14 @@ const quizData = [
       {
         id: "b",
         label: "see",
-        img: "../assets/images/opt52.png",
+        img: "../assets/images/MCQ5.png",
         correct: true,
         border: "#FF8A3D",
       },
       {
         id: "c",
         label: "taste",
-        img: "../assets/images/opt53.png",
+        img: "../assets/images/opt533.png",
         correct: false,
         border: "#98B64D",
       },

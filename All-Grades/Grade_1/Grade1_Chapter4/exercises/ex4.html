@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 
 <style>
-/* 1. VIEWPORT FLEX LOGIC - NO SCROLLBARS */
+/* VIEWPORT FLEX LOGIC - NO SCROLLBARS */
 html, body {
   height: 100%;
   margin: 0;
@@ -39,12 +39,13 @@ h4 {
   color: #ff7a00;
   font-weight: 500;
   margin: 10px 0;
- font-size: clamp(1.2rem, 3vw, 2rem);
+  font-size: clamp(1.2rem, 3vw, 2rem);
   flex-shrink: 0;
 }
+
 .hint-title {
   display: flex;
-  justify-content: center;   /* center horizontally */
+  justify-content: center;
   align-items: center;
   gap: 8px;
   font-weight: 600;
@@ -59,51 +60,76 @@ h4 {
 
 @keyframes glow {
   from { filter: drop-shadow(0 0 2px gold); }
-  to   { filter: drop-shadow(0 0 8px orange); }
+  to { filter: drop-shadow(0 0 8px orange); }
 }
 
-/* 2. FLEX TABLE LOGIC */
+/* MATCH TABLE */
 .match-table {
   background: rgba(255, 255, 255, 0.85);
   border-radius: 30px;
   padding: clamp(10px, 2vw, 25px);
   box-shadow: 0 15px 35px rgba(0,0,0,.15);
   display: flex;
-  flex: 1; /* Fills available height */
+  flex: 1;
   gap: 20px;
-  min-height: 0; /* Important for flex-child scrolling prevention */
+  min-height: 0;
 }
 
-/* LHS & RHS Column Logic */
 .left, .right {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly; /* Distributes rows in same line/height */
+  justify-content: space-evenly;
   height: 100%;
 }
 
-.left { flex: 1.6; }
+/* .left { flex: 1.6; } */
 .right { flex: 1; gap: 10px; }
 
-/* 3. ROW DESIGN */
-.row {
+/* LEFT ITEMS */
+.left-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background: rgba(255, 255, 255, 0.5);
-  padding: 8px 15px;
+  padding: 12px 15px;
   border-radius: 18px;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+   min-height: 70px !important; 
+}
+
+.left-item.selected {
+  border-color: #ff9800;
+  background: rgba(255, 152, 0, 0.2);
+  /* transform: scale(1.02); */
+  box-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+}
+
+.left-item.matched {
+  background: #4CAF50;
+  cursor: default;
+  border-color: #2e7d32;
 }
 
 .lhs {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 12px;
   flex: 1;
+  width: 100%;
 }
 
-.lhs-images { display: flex; gap: 8px; flex-shrink: 0; }
+.lhs-images {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
 .lhs-images img {
   width: clamp(45px, 6vw, 65px);
   height: clamp(45px, 6vw, 65px);
@@ -114,33 +140,39 @@ h4 {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.lhs span {
-  font-size: clamp(0.9rem, 1.8vw, 1.3rem);
-  font-weight: 500;
-  color: #2F4F4F;
+.lhs-images p {
+  font-size: clamp(12px, 2vw, 16px);
+  font-weight: 600;
+  margin: 0;
 }
 
-.mid input {
-  width: clamp(50px, 8vw, 75px);
-  height: clamp(45px, 6vh, 60px);
-  text-align: center;
-  font-size: 26px;
+/* Answer text that appears after matching */
+.answer-text {
+  font-size: 15px;
   font-weight: 700;
-  border-radius: 12px;
-
-  border: 3px solid #d6b8ff;
-  box-shadow: 0 0 10px rgba(214, 184, 255, 0.6);
-  outline: none;
-  background: #fff;
-}
-.mid input:disabled {
-  background: #f0fff4;
-  border-color: #2ed573;
-  color: #2ed573;
+  color: white;
+  /* background: #ff9800; */
+  padding: 8px 20px;
+  border-radius: 30px;
+  display: inline-block;
+  animation: slideIn 0.4s ease;
+  text-align: center;
+  margin-top: 5px;
 }
 
-/* RHS DESIGN */
-.option-row {
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RIGHT ITEMS */
+.right-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -151,7 +183,29 @@ h4 {
   font-size: clamp(1rem, 1.8vw, 1.4rem);
   font-weight: 600;
   color: #2F4F4F;
-  height: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+}
+
+.right-item.selected {
+  border-color: #ff9800;
+  background: rgba(255, 152, 0, 0.2);
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+}
+
+.right-item.matched {
+  background: #4CAF50;
+  opacity: 0.7;
+  cursor: default;
+  border-color: #2e7d32;
+  color: white;
+}
+
+.right-item.matched .bulb {
+  filter: none;
+  text-shadow: 0 0 20px gold;
 }
 
 .bulb {
@@ -165,7 +219,7 @@ h4 {
   text-shadow: 0 0 20px gold;
 }
 
-/* 5. FEEDBACKS */
+/* FEEDBACKS */
 #smiley {
   position: fixed;
   top: 50%; left: 50%;
@@ -176,235 +230,188 @@ h4 {
   pointer-events: none;
   z-index: 2000;
 }
-#smiley.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
-@keyframes fall { to { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+#smiley.show { 
+  opacity: 1; 
+  transform: translate(-50%, -50%) scale(1); 
+}
+
+@keyframes fall { 
+  to { 
+    transform: translateY(100vh) rotate(720deg); 
+    opacity: 0; 
+  } 
+}
+
 .confetti-piece {
-  position: absolute; width: 10px; height: 14px; top: -20px;
+  position: absolute; 
+  width: 10px; 
+  height: 14px; 
+  top: -20px;
   animation: fall 1.8s linear forwards;
 }
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
-
-  .app {
-    padding: 10px;
-  }
-
+  .app { padding: 10px; }
   .match-table {
-    flex-direction: column;   /* Stack vertically */
+    flex-direction: column;
     gap: 10px;
-    overflow-y: auto;  
-    
+    overflow-y: auto;
   }
-
   .left, .right {
     width: 100%;
     height: auto;
   }
-
-  .left {
-    gap: 30px;
-   
-    
-  }
-.left {
-    gap: 30px;
-   
-    
-  }
-
-  .row {
-    padding: 5px;
-  }
-
-  .lhs-images {
-    flex-wrap: wrap;          /* Prevent overflow */
-    gap: 6px;
-  }
-
-  .lhs-images img {
-    width: 45px;
-    height: 45px;
-  }
-
-  .lhs-images p {
-    font-size: 10px;
-    margin: 0 4px;
-  }
-
-  .mid input {
-    width: 50px;
-    height: 40px;
-    font-size: 20px;
-  }
-
-  .option-row {
-    padding: 12px 15px;
-    font-size: 16px;
-  }
-
+  .left { gap: 15px; }
+  .right { gap: 12px; }
+  .left-item { padding: 8px 12px; min-height: 100px; }
+  .lhs-images img { width: 45px; height: 45px; }
+  .answer-text { font-size: 0.9rem; padding: 5px 15px; }
 }
+
 @media (max-width: 480px) {
+  .match-table { padding: 10px; }
+  .left { gap: 12px; }
+  .right { gap: 10px; }
+  .lhs-images img { width: 34px; height: 34px; }
+  .lhs-images p { font-size: 9px; }
+  .left-item { padding: 6px 10px; min-height: 80px; }
+  .right-item { padding: 10px 15px; font-size: 13px; }
+  .answer-text { font-size: 0.8rem; padding: 4px 12px; }
+}
 
+@media (max-width: 800px) {
+  .app {
+    height: auto;
+    min-height: 100vh;
+  }
   .match-table {
-    padding: 10px;
-    gap: 6px;
+    flex: unset;
+    height: auto;
+    overflow: hidden;
   }
-  .left{
-    gap: 15px;
-  }
-.right{
-  gap: 7px;
- 
-}
-  .row {
-    padding: 4px 6px;
-  }
-
-  .lhs-images img {
-    width: 34px;
-    height: 34px;
-  }
-
-  .lhs-images p {
-    font-size: 9px;
-  }
-
-  .mid input {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-  }
-
-  .option-row {
-    padding: 8px;
-    font-size: 13px;
-  }
-  .left, .right {
-  justify-content: flex-start;   /* ✅ removes extra spacing */
-  gap: 12px;                     /* ✅ control spacing manually */
 }
 
-}
-
-@media (max-width: 800px){
-
-  .app{
-    height: auto;          /* ✅ remove fixed height */
-    min-height: 100vh;     /* keep full screen */
-  }
-
-  .match-table{
-    flex: unset;           /* ❌ stop forcing height */
-    height: auto;          /* ✅ content decides height */
-    overflow: hidden;      /* ✅ remove scroll */
-  }
-.left, .right {
-  justify-content: flex-start;   /* ✅ removes extra spacing */
-  gap: 12px;                     /* ✅ control spacing manually */
-}
-}
-
-/* =========================
-   SAME UI LIKE LAPTOP (SCALING SYSTEM)
-========================= */
+/* Desktop Scaling */
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
-
-  .app {
-    max-width: 1100px;
-    padding: 20px;
-  }
-
-  .match-table {
-    gap: 25px;
-    padding: 20px;
-  }
-
-  .lhs-images img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .lhs span {
-    font-size: 1.2rem;
-  }
-
-  .mid input {
-    width: 70px;
-    height: 55px;
-    font-size: 24px;
-  }
-
-  .option-row {
-    font-size: 1.3rem;
-    padding: 15px 20px;
-  }
-
+  .app { max-width: 1100px; padding: 20px; }
+  .match-table { gap: 25px; padding: 20px; }
+  .lhs-images img { width: 60px; height: 60px; }
+  .right-item { font-size: 1.3rem; padding: 15px 20px; }
 }
+
 @media screen and (min-width: 1441px) and (max-width: 1920px) {
-
-  .app {
-    max-width: 1300px;
-    padding: 25px;
-  }
-
-  .match-table {
-    gap: 30px;
-    padding: 25px;
-  }
-
-  .lhs-images img {
-    width: 75px;
-    height: 75px;
-  }
-
-  .lhs span {
-    font-size: 1.5rem;
-  }
-
-  .mid input {
-    width: 85px;
-    height: 65px;
-    font-size: 28px;
-  }
-
-  .option-row {
-    font-size: 1.6rem;
-    padding: 18px 25px;
-  }
-
+  .app { max-width: 1300px; padding: 25px; }
+  .match-table { gap: 30px; padding: 25px; }
+  .lhs-images img { width: 75px; height: 75px; }
+  .right-item { font-size: 1.6rem; padding: 18px 25px; }
 }
-@media screen and (min-width: 1921px) {
 
-  .app {
-    max-width: 1500px;
-    padding: 30px;
-  }
+/* Final Popup Styles */
+.final-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease;
+}
 
-  .match-table {
-    gap: 35px;
-    padding: 30px;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-  .lhs-images img {
-    width: 90px;
-    height: 90px;
-  }
+.final-popup-card {
+  background: linear-gradient(135deg, #fff, #f0f0f0);
+  padding: 40px;
+  border-radius: 30px;
+  text-align: center;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease;
+}
 
-  .lhs span {
-    font-size: 1.8rem;
-  }
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 
-  .mid input {
-    width: 100px;
-    height: 75px;
-    font-size: 32px;
-  }
+.final-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
 
-  .option-row {
-    font-size: 1.9rem;
-    padding: 20px 30px;
-  }
+.trophy {
+  font-size: 50px;
+  animation: bounce 0.5s ease;
+}
 
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.final-header h2 {
+  font-size: 32px;
+  color: #2f4f4f;
+  margin: 0;
+}
+
+.score-circle {
+  margin: 20px auto;
+}
+
+.score-number {
+  font-size: 65px;
+  font-weight: bold;
+  color: #ff9800;
+}
+
+.score-total {
+  font-size: 32px;
+  color: #666;
+}
+
+.final-message {
+  font-size: 26px;
+  font-weight: bold;
+  color: #2f4f4f;
+  margin: 20px 0 15px;
+}
+
+.final-stars {
+  font-size: 40px;
+  letter-spacing: 8px;
+  margin: 15px 0 25px;
+}
+
+.restart-btn {
+  padding: 14px 35px;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  background: linear-gradient(135deg, #4cc9f0, #2ecc71);
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.restart-btn:active {
+  transform: scale(0.98);
 }
 </style>
 </head>
@@ -412,37 +419,62 @@ h4 {
 <body>
 <div class="app">
   <h4 class="hint-title">
-  <span class="bulb-icon">💡</span>
-  Type Your Answer To Match
-</h4>
+    <span class="bulb-icon">💡</span>
+    Click Left Item, Then Click Right Item to Match
+  </h4>
+  
   <div class="match-table">
     <div class="left">
-      <div class="row" data-answer="c">
+      <div class="left-item" data-answer="c" data-answer-text="Pulses">
         <div class="lhs">
-          <div class="lhs-images"><p>Greengram</p><img src="../uploads/gg.jpg"><p>Blackgram</p><img src="../uploads/blg.jpg"></div>
+          <div class="lhs-images">
+            <p>Greengram</p>
+            <img src="../uploads/gg.jpg">
+            &
+            <p>Blackgram</p>
+            <img src="../uploads/blg.jpg">
+          </div>
+          <!-- Answer text will appear here after matching -->
         </div>
-        <div class="mid"><input maxlength="1"></div>
       </div>
 
-      <div class="row" data-answer="a">
+      <div class="left-item" data-answer="a" data-answer-text="Spices">
         <div class="lhs">
-          <div class="lhs-images"><p>Cumin</p><img src="../uploads/cumin.png"><p>Coriander</p><img src="../uploads/coriander.png"></div>
+          <div class="lhs-images">
+            <p>Cumin</p>
+            <img src="../uploads/cumin.png">
+            &
+            <p>Coriander</p>
+            <img src="../uploads/coriander.png">
+          </div>
+          <!-- Answer text will appear here after matching -->
         </div>
-        <div class="mid"><input maxlength="1"></div>
       </div>
 
-      <div class="row" data-answer="b">
+      <div class="left-item" data-answer="b" data-answer-text="Cereals">
         <div class="lhs">
-          <div class="lhs-images"><p>Rice</p><img src="../uploads/rice.png"><p>Wheat</p><img src="../uploads/wheat.png"></div>
+          <div class="lhs-images">
+            <p>Rice</p>
+            <img src="../uploads/rice.png">
+            &
+            <p>Wheat</p>
+            <img src="../uploads/wheat.png">
+          </div>
+          <!-- Answer text will appear here after matching -->
         </div>
-        <div class="mid"><input maxlength="1"></div>
       </div>
     </div>
 
     <div class="right">
-      <div class="option-row" data-key="a">a) Spices <span class="bulb">💡</span></div>
-      <div class="option-row" data-key="b">b) Cereals <span class="bulb">💡</span></div>
-      <div class="option-row" data-key="c">c) Pulses <span class="bulb">💡</span></div>
+      <div class="right-item" data-key="a">
+        a) Spices <span class="bulb">💡</span>
+      </div>
+      <div class="right-item" data-key="b">
+        b) Cereals <span class="bulb">💡</span>
+      </div>
+      <div class="right-item" data-key="c">
+        c) Pulses <span class="bulb">💡</span>
+      </div>
     </div>
   </div>
 </div>
@@ -453,7 +485,8 @@ h4 {
 <script>
 let audioCtx = null;
 let correctCount = 0;
-const totalQuestions = document.querySelectorAll(".left .row").length;
+let selectedLeft = null;
+const totalQuestions = document.querySelectorAll(".left-item").length;
 
 function ensureAudio() {
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -461,7 +494,7 @@ function ensureAudio() {
   return audioCtx;
 }
 
-function playZzzSound() {
+function playWrongSound() {
   const c = ensureAudio(), t = c.currentTime;
   const o = c.createOscillator(), g = c.createGain();
   o.type = "square";
@@ -509,10 +542,10 @@ function triggerConfetti(count = 80) {
   }, 2000);
 }
 
-function showSmiley(e) {
+function showSmiley(emoji) {
   const s = document.getElementById("smiley");
   if (!s) return;
-  s.textContent = e;
+  s.textContent = emoji;
   s.classList.add("show");
   setTimeout(() => s.classList.remove("show"), 900);
 }
@@ -522,33 +555,26 @@ function showFinalPopup() {
   const total = totalQuestions;
   const percentage = (score / total) * 100;
   
-  // Create final popup
   const popup = document.createElement("div");
   popup.className = "final-popup-overlay";
   
   let starRating = "";
+  let message = "";
+  
   if (percentage === 100) {
     starRating = "⭐⭐⭐⭐⭐";
-  } else if (percentage >= 80) {
-    starRating = "⭐⭐⭐⭐";
-  } else if (percentage >= 60) {
-    starRating = "⭐⭐⭐";
-  } else if (percentage >= 40) {
-    starRating = "⭐⭐";
-  } else {
-    starRating = "⭐";
-  }
-  
-  let message = "";
-  if (percentage === 100) {
     message = "Perfect Score! 🎉";
   } else if (percentage >= 80) {
+    starRating = "⭐⭐⭐⭐";
     message = "Great Job! 🌟";
   } else if (percentage >= 60) {
+    starRating = "⭐⭐⭐";
     message = "Good Work! 📚";
   } else if (percentage >= 40) {
+    starRating = "⭐⭐";
     message = "Keep Practicing! 💪";
   } else {
+    starRating = "⭐";
     message = "Try Again! 📖";
   }
   
@@ -558,23 +584,18 @@ function showFinalPopup() {
         <span class="trophy">🏆</span>
         <h2>Quiz Completed!</h2>
       </div>
-      <div class="final-score">
-        <div class="score-circle">
-          <span class="score-number">${score}</span>
-          <span class="score-total">/${total}</span>
-        </div>
+      <div class="score-circle">
+        <div class="score-number">${score}</div>
+        <div class="score-total">/${total}</div>
       </div>
       <div class="final-message">${message}</div>
       <div class="final-stars">${starRating}</div>
-      <div class="final-buttons">
-        <button class="restart-btn" onclick="location.reload()">🔄 Play Again</button>
-      </div>
+      <button class="restart-btn" onclick="location.reload()">🔄 Play Again</button>
     </div>
   `;
   
   document.body.appendChild(popup);
   
-  // Play success sound and confetti for perfect score
   if (percentage === 100) {
     playSuccessSound();
     triggerConfetti(150);
@@ -589,222 +610,107 @@ function checkCompletion() {
   }
 }
 
-const bulbs = document.querySelectorAll(".option-row");
-
-document.querySelectorAll(".left .row").forEach(row => {
-  const input = row.querySelector("input");
-  const correct = row.dataset.answer;
-  
-  // Initialize if already answered
-  if (input.disabled) {
-    correctCount++;
+function clearSelection() {
+  if (selectedLeft) {
+    selectedLeft.classList.remove("selected");
+    selectedLeft = null;
   }
+  document.querySelectorAll(".right-item").forEach(item => {
+    item.classList.remove("selected");
+  });
+}
 
-  input.addEventListener("input", () => {
-    const val = input.value.toLowerCase();
-    if (val === correct) {
-      const target = [...bulbs].find(b => b.dataset.key === val);
-      if (target) {
-        target.querySelector(".bulb").classList.add("on");
-      }
-      input.disabled = true;
+// Add click handlers for left items
+document.querySelectorAll(".left-item").forEach(leftItem => {
+  leftItem.addEventListener("click", (e) => {
+    e.stopPropagation();
+    
+    // Don't allow clicking on already matched items
+    if (leftItem.classList.contains("matched")) return;
+    
+    // Clear previous selection
+    clearSelection();
+    
+    // Select this left item
+    selectedLeft = leftItem;
+    selectedLeft.classList.add("selected");
+  });
+});
+
+// Add click handlers for right items
+document.querySelectorAll(".right-item").forEach(rightItem => {
+  rightItem.addEventListener("click", (e) => {
+    e.stopPropagation();
+    
+    // Don't allow clicking on already matched items
+    if (rightItem.classList.contains("matched")) return;
+    
+    // If no left item is selected, show hint
+    if (!selectedLeft) {
+      showSmiley("👆");
+      playWrongSound();
+      return;
+    }
+    
+    // Check if they match
+    const leftAnswer = selectedLeft.dataset.answer;
+    const rightKey = rightItem.dataset.key;
+    
+    if (leftAnswer === rightKey) {
+      // Get the answer text to display
+      const answerText = selectedLeft.dataset.answerText;
+      
+      // Correct match
+      selectedLeft.classList.add("matched");
+      rightItem.classList.add("matched");
+      
+      // Remove any existing answer text first
+      const existingAnswer = selectedLeft.querySelector('.answer-text');
+      if (existingAnswer) existingAnswer.remove();
+      
+      // Add answer text to left item
+      const answerDiv = document.createElement("div");
+      answerDiv.className = "answer-text";
+      answerDiv.innerHTML = answerText;
+      selectedLeft.querySelector('.lhs').appendChild(answerDiv);
+      
+      // Turn on bulb
+      const bulb = rightItem.querySelector(".bulb");
+      if (bulb) bulb.classList.add("on");
+      
       correctCount++;
       playSuccessSound();
-      triggerConfetti();
-      showSmiley("😄");
+      triggerConfetti(40);
+      showSmiley("🎉");
       
-      // Check if quiz is completed
+      // Clear selection
+      clearSelection();
+      
+      // Check if quiz is complete
       checkCompletion();
-    } else if (val.length > 0) {
-      playZzzSound();
-      showSmiley("😴");
-      input.value = "";
+    } else {
+      // Wrong match
+      showSmiley("❌");
+      playWrongSound();
+      
+      // Flash red on wrong match
+      rightItem.style.backgroundColor = "#ffebee";
+      setTimeout(() => {
+        rightItem.style.backgroundColor = "";
+      }, 300);
+      
+      // Clear selection after wrong match
+      clearSelection();
     }
   });
 });
 
-// Add CSS for final popup
-const style = document.createElement('style');
-style.textContent = `
-  .final-popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    animation: fadeIn 0.3s ease;
+// Click anywhere else to clear selection
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".left-item") && !e.target.closest(".right-item")) {
+    clearSelection();
   }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  .final-popup-card {
-    background: linear-gradient(135deg, #fff, #f0f0f0);
-    padding: 40px;
-    border-radius: 30px;
-    text-align: center;
-    max-width: 450px;
-    width: 90%;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: slideUp 0.4s ease;
-  }
-  
-  @keyframes slideUp {
-    from {
-      transform: translateY(50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  .final-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .trophy {
-    font-size: 50px;
-    animation: bounce 0.5s ease;
-  }
-  
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-  
-  .final-header h2 {
-    font-size: 32px;
-    color: #2f4f4f;
-    margin: 0;
-    font-family: 'Livvic', sans-serif;
-  }
-  
-  .score-circle {
- 
-    width: 160px;
-    height: 160px;
-    margin: 20px auto;
-    background: linear-gradient(135deg, #4cc9f0, #f778a1);
-    border-radius: 50%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  }
-  
-  .score-number {
-    font-size: 65px;
-    font-weight: bold;
-    color: white;
-    font-family: 'Livvic', sans-serif;
-  }
-  
-  .score-total {
-    font-size: 32px;
-    color: rgba(255, 255, 255, 0.8);
-    font-family: 'Livvic', sans-serif;
-  }
-  
-  .final-message {
-    font-size: 26px;
-    font-weight: bold;
-    color: #2f4f4f;
-    margin: 20px 0 15px;
-    font-family: 'Livvic', sans-serif;
-  }
-  
-  .final-stars {
-    font-size: 40px;
-    letter-spacing: 8px;
-    margin: 15px 0 25px;
-  }
-  
-  .final-buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  .restart-btn {
-    padding: 14px 35px;
-    border: none;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    font-family: 'Livvic', sans-serif;
-    background: linear-gradient(135deg, #4cc9f0, #2ecc71);
-    color: white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .restart-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-  }
-  
-  .restart-btn:active {
-    transform: translateY(0);
-  }
-  
-  @media (max-width: 500px) {
-    .final-popup-card {
-      padding: 30px 20px;
-    }
-    
-    .score-circle {
-      width: 130px;
-      height: 130px;
-    }
-    
-    .score-number {
-      font-size: 50px;
-    }
-    
-    .score-total {
-      font-size: 26px;
-    }
-    
-    .final-message {
-      font-size: 22px;
-    }
-    
-    .final-stars {
-      font-size: 32px;
-      letter-spacing: 5px;
-    }
-    
-    .final-header h2 {
-      font-size: 26px;
-    }
-    
-    .trophy {
-      font-size: 40px;
-    }
-    
-    .restart-btn {
-      padding: 12px 30px;
-      font-size: 16px;
-    }
-  }
-`;
-document.head.appendChild(style);
+});
 </script>
 </body>
 </html>
