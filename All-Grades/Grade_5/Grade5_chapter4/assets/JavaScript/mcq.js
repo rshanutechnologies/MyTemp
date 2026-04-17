@@ -51,7 +51,7 @@ const quizData = [
 
 {
   title: " Correct Option ",
-  question: "Q.3 An automatic quick reaction in response to a stimulus is called __________.",
+  question: "Q.3 An automatic quick reaction in response to a stimulus is called the __________.",
   image: "../assets/images/reflex.png",
   options: [
     { id: "a", label: "Optic Nerve", image: "../assets/images/nerves.png", correct: false, theme: "bg-blue" },
@@ -66,10 +66,10 @@ const quizData = [
   question: "Q.4 The adult human brain weighs __________ kgs.",
   image: "../assets/images/brain-weight.png",
   options: [
-    { id: "a", label: "1.4 kg", image: "../assets/images/Traju.png", correct: true, theme: "bg-green" },
-    { id: "b", label: "2.8 kg", image: "../assets/images/Traju.png", correct: false, theme: "bg-blue" },
-    { id: "c", label: "1.0 kg", image: "../assets/images/Traju.png", correct: false, theme: "bg-orange" },
-    { id: "d", label: "2.0 kg", image: "../assets/images/Traju.png", correct: false, theme: "bg-yellow" },
+    { id: "a", label: "1.4", image: "../assets/images/Traju.png", correct: true, theme: "bg-green" },
+    { id: "b", label: "2.8", image: "../assets/images/Traju.png", correct: false, theme: "bg-blue" },
+    { id: "c", label: "1.0", image: "../assets/images/Traju.png", correct: false, theme: "bg-orange" },
+    { id: "d", label: "2.0", image: "../assets/images/Traju.png", correct: false, theme: "bg-yellow" },
   ]
 },
 

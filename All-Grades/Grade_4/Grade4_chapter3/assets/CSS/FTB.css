@@ -606,6 +606,7 @@ button:disabled {
 
     .question {
         font-size: 44px;
+        margin-bottom: 5%;
     }
 
     .image-box img {
@@ -616,15 +617,20 @@ button:disabled {
     .input-box input {
         font-size: 28px;
         
+        
     }
 
     .controls button {
         font-size: 28px;
         padding: 14px 34px;
     }
-
+.progress {
+    margin-right: 10%;
+}
+    
     .progress .item {
-        font-size: 34px;
+        font-size: 28px;
+       
     }
 }
 

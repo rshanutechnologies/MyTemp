@@ -515,6 +515,7 @@ button {
  font-size: 30px;
   color:#00b4d8;
   margin-top: -5%;
+  display: none !important;
 }
 /* ===================================== */
 /* =========== MOBILE RESPONSIVE ======= */

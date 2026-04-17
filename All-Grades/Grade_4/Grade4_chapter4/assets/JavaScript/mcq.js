@@ -35,7 +35,7 @@ const quizData = [
         img: "../assets/images/Food_intestine.png",
       },
       {
-        text: " Food is churned into a paste, digestive juices mix with food and break down food into a simpler form. ",
+        text: " Food is churned into a paste, digestive juices mix with the food and break the down food into a simpler form. ",
         img: "../assets/images/Food_juices.png",
       },
       { text: "None of the above", img: "../assets/images/None.png" },
@@ -54,7 +54,7 @@ const quizData = [
     a: 2,
   },
   {
-    q: "4. The ________ is the hardest substance in the human body.",
+    q: "4. The ________ is the hardest substance present in the human body.",
     img: "../assets/images/tooth.png",
     options: [
       { text: "Enamel", img: "../assets/images/Enamelak.png" },

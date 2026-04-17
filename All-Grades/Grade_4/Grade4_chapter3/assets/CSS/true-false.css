@@ -594,7 +594,7 @@ body {
 /* =========================================
    🖥️ LARGE MONITORS (1441px – 1920px)
 ========================================= */
-@media screen and (min-width: 1350px) and (max-width: 1920px) {
+@media screen and (min-width: 1250px) and (max-width: 1920px) {
 
     .app {
         max-width: 950px;
@@ -603,7 +603,7 @@ body {
     }
 
     .question {
-        font-size: 44px;
+        font-size: 44px !important;
     }
 
     .q-image {

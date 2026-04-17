@@ -1216,6 +1216,9 @@ body {
 /* ================= 1025px — 1440px ================= */
 @media screen and (min-width:1225px) and (max-width:1640px){
 
+body{
+  margin-top: -4%;
+}
 .wrap{
 max-width:1350px;
 }
@@ -1252,6 +1255,10 @@ font-size:20px;
 
 /* ================= 1441px — 1920px ================= */
 @media screen and (min-width:1441px) and (max-width:1920px){
+
+body{
+  margin-top: -4%;
+}
 
 .wrap{
 max-width:1200px;

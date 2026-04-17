@@ -40,6 +40,7 @@ body {
   font-size: 30px;
   color:#00b4d8;
   margin-bottom: 5%;
+  display: none;
 }
 
 /* Container for the current question */

@@ -40,6 +40,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0px;
+    display: none !important;
    
     
    
@@ -58,6 +59,7 @@ body {
     color:#00a5a5;
     text-align: center;
     margin-left: 23%;
+    display: none;
 }
 
 .options{

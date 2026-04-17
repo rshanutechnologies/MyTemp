@@ -762,7 +762,7 @@ body {
 /* =========================================
    🖥️ LARGE MONITORS (1441px – 1920px)
 ========================================= */
-@media screen and (min-width: 1350px) and (max-width: 1920px) {
+@media screen and (min-width: 1250px) and (max-width: 1920px) {
 
     .main-container {
         max-width: 1100px;
@@ -771,7 +771,7 @@ body {
     }
 
     .question-text {
-        font-size: 44px;
+        font-size: 44px !important;
     }
 
     .q-image {

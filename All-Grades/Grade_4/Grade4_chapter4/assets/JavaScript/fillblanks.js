@@ -20,7 +20,7 @@ const questions = [
     img: "../assets/images/decay.png",
   },
   {
-    q: "5. The swallowed food enters a hollow tube-like organ called the __________.",
+    q: "5. The swallowed food from the mouth enters a hollow tube-like organ called the __________.",
     a: "oesophagus",
     img: "../assets/images/oesophagus.png",
   },

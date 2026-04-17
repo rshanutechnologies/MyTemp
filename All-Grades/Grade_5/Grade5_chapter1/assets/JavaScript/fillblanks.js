@@ -19,7 +19,7 @@ function showPopup(html, final=false){
 const questions = [
   {
     q: "Q.1 Petals enclose and protect the _ _ _ _ _ _ _ _ _  parts of a flower.",
-    a: "reproductive",
+    a: "reproductive parts",
     img: "../assets/images/Flowerrrak.png",
   },
   {

@@ -425,7 +425,10 @@ button:disabled {
 }
 
 @media (max-width:600px){
-
+body{
+  margin-top: 8% !important;
+  overflow: hidden !important;
+}
   .nav{
     justify-content:space-around;
     gap:20px;
@@ -454,9 +457,7 @@ button:disabled {
 
 
 @media (max-width:430px){
-body{
-  margin-top: -8%;
-}
+
   .question{
     font-size:18px;
     width: 100%;

@@ -37,13 +37,14 @@ body{
 
 /* ✅ FULL WIDTH QUESTION */
 .question{
-  font-size:28px;
+  font-size:30px;
  
   min-height:100px;
   width: 100%;
   
   color:#111111;
   text-align:left;
+  margin-top: 20px;
   
 }
 
@@ -52,7 +53,7 @@ body{
   display:flex;
   gap:30px;
   align-items:flex-start;
- margin-top: -20px;
+ 
 width:100%;
   justify-content:space-between;
   
@@ -104,8 +105,8 @@ width:100%;
   transition:0.2s;
 }
 .opt-img{
-  width:70px;          /* slightly smaller width */
-  height:45px;         /* increase height */
+  width:60px;          /* slightly smaller width */
+  height:40px;         /* increase height */
   object-fit:contain;
   flex-shrink:0;
 }

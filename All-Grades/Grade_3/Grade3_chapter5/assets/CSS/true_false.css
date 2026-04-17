@@ -55,11 +55,13 @@
 
 
     .top-title{
-      font-size:28px;
-      background:#ffe2d5;
-      color:#444;
-      padding:8px 16px;
-      width:max-content;  
+      font-size:25px;
+    font-weight:500;
+    background:#ffe2d5;
+    color:#444;
+    padding:8px 10px;
+    width:max-content;
+    margin:0 auto 0px;
       border-radius:20px;
       margin-top: -20px;
     }

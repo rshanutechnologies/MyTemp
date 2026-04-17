@@ -42,6 +42,7 @@ body {
 font-size: 30px;
   color:#00b4d8;
   margin-top: -2%;
+  display: none !important;
  
 }
 

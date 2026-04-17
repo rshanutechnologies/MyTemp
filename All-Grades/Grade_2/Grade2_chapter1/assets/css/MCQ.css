@@ -634,7 +634,7 @@ button:disabled {
   body{
     padding:12px;
     overflow-x: hidden;
-    
+     margin-top: 20% !important;
   }
 
   .container{
@@ -710,6 +710,7 @@ button:disabled {
   body{
     overflow:hidden;
     margin-left: 0% !important;
+   
 
   }
   .question-text{

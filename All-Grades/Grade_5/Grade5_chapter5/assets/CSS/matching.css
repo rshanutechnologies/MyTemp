@@ -197,7 +197,7 @@ button {
     margin-bottom: 20px;
     /* border:  2px solid yellow; */
     font-weight: 200 !important;
-    
+    display: none !important;
    
    
 }

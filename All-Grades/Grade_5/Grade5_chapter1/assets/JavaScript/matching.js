@@ -2,22 +2,22 @@ let popupTimer = null;
 
 const pairs = [
   {
-    l: "Yellowish sac-like structure on filament",
+    l: "The yellowish sac-like, bi-lobed structure on the filament",
     r: "Anther",
     img: "../assets/images/anther.png",
   },
   {
-    l: "Fine powdery particles on the anther",
+    l: "The fine powdery particles on the anther",
     r: "Pollen grains",
     img: "../assets/images/Pollengrains.png",
   },
   {
-    l: "Female reproductive part of a flower   ",
+    l: "The female reproductive part of a flower",
     r: "Pistil",
     img: "../assets/images/MQ3.png",
   },
   {
-    l: "Female reproductive unit",
+    l: "The female reproductive unit",
     r: "Carpel",
     img: "../assets/images/carpelak.png",
   },
@@ -27,7 +27,7 @@ const pairs = [
     img: "../assets/images/littleStyle.png",
   },
   {
-    l: "The Swollen lower part of carpel",
+    l: "The Swollen lower part of the carpel",
     r: "Ovary",
     img: "../assets/images/ovaryak.png",
   },

@@ -1,6 +1,6 @@
 const questions = [
   {
-    q: "Q.1 The largest part of the human brain is the ____.",
+    q: "Q.1 The ____ largest part of the brain.",
     a: "cerebrum",
     img: "../assets/images/Cerebrums.png",
   },
@@ -10,17 +10,17 @@ const questions = [
     img: "../assets/images/nerves.png",
   },
   {
-    q: "Q.3 Nerves are connected to the ____ or the ____.",
+    q: "Q.3 Nerves are directly connected to either the ____ or the ____.",
     a: ["brain", "spinal cord"],
     img: "../assets/images/spinalcords.png",
   },
   {
-    q: "Q.4 Actions controlled by the brain are called ____.",
+    q: "Q.4  The actions that are controlled by the brain are called ____.",
     a: "voluntary",
     img: "../assets/images/voluntaryactions.png",
   },
   {
-    q: "Q.5 CSF lies between the ____ and the ____.",
+    q: "Q.5 The cerebrospinal fluid lies between the ____ and the ____.",
     a: ["skull", "brain"],
     img: "../assets/images/Cerebrums.png",
   },

@@ -76,6 +76,7 @@ transform: translateX(-50%);
   align-items: center;
   gap: 8px;
   font-size: 30px;
+  display: none;
 }
 
 
@@ -679,11 +680,13 @@ z-index:-1;
     font-size: 44px !important;
     height: 120px;
     margin-top: 90px !important;
+
   }
 
   .question-img {
     max-width: 420px;
     height: 260px;
+   
   }
 
   /* TRUE/FALSE BUTTONS */

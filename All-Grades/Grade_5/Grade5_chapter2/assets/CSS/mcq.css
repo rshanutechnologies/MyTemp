@@ -66,6 +66,7 @@ body {
 .left img {
     width: 150px;
     height: 150px;
+    margin-bottom: 2%;
     object-fit: contain;
     border-radius: 20px;
     /* background: #eef2ff; */
@@ -608,6 +609,7 @@ button:disabled {
     width: 1300px;
     height: 780px;
     padding: 40px;
+  
   }
 
   /* ✅ QUESTION (IMPORTANT SYSTEM) */
@@ -627,6 +629,7 @@ button:disabled {
   .left img{
     width: 150px;
     height: 150px;
+    margin-bottom: 6% !important;
   }
 
   /* ✅ DROP BOX */

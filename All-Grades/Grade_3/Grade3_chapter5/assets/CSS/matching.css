@@ -47,13 +47,13 @@
     /* TITLE */
     .title {
     text-align:center;
-    font-size:28px;
+     font-size:25px;
     font-weight:500;
     background:#ffe2d5;
     color:#444;
-    padding:8px 16px;
+    padding:8px 10px;
     width:max-content;
-    margin:0 auto 14px;
+    margin:0 auto 0px;
       border-radius:20px;
     }
 

@@ -14,7 +14,7 @@ body{
   justify-content:center;
   align-items:center;
   overflow: hidden;
-  margin-top: -1%;
+  margin-top: 5%;
   background: transparent;
 }
 body::before{
@@ -173,6 +173,7 @@ body::before{
     margin-top:0px;
     /* margin: 0 auto; */
     margin-bottom: 15px !important;
+    display: none !important;
     
     
 }

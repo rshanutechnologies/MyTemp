@@ -15,7 +15,7 @@ const questions = [
     img: "../assets/images/shark.png",
   },
   {
-    q: "Desert animals store water in their bodies.",
+    q: "Desert animals have adaptive features like storing water in their bodies.",
     a: true,
     img: "../assets/images/da.png",
   },

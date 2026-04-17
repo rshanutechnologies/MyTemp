@@ -11,7 +11,7 @@ const questions = [
   },
 
   {
-    q: "Q.2 The dome-shaped muscular organ located below the lungs is called?",
+    q: "Q.2 The dome-shaped muscular organ located below the lungs is the?",
     options: [
       ["Heart", "../assets/images/heart1.png"],
       ["Diaphragm", "../assets/images/diaphragm.png"],
@@ -33,7 +33,7 @@ const questions = [
   },
 
   {
-    q: "Q.4 Which carries blood back from different parts of the body to the heart?",
+    q: "Q.4 The carries blood back from different parts of the body to the heart?",
     options: [
       ["Arteries", "../assets/images/arteries.png"],
       ["Veins", "../assets/images/veins.png"],

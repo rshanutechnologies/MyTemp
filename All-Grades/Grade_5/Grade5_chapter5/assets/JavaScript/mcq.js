@@ -40,9 +40,9 @@ const quizData = [
     q: "Q.4 The floating ribs are found in the ______.",
         options: [
   { text: "Spine", img:"../assets/images/spine.png" },
-  { text:  "Skull", img: "../assets/images/skull.png" },
   { text:  "Ribcage", img: "../assets/images/ribcage.png" },
-  { text: "Limbs", img: "../assets/images/limbs.png" }
+  { text: "Limbs", img: "../assets/images/limbs.png" },
+  { text:  "Skull", img: "../assets/images/skull.png" },
 ],
     correct: 1
   },

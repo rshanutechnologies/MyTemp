@@ -43,10 +43,14 @@ body{
   padding:12px 40px;
   border-radius:20px;
   white-space:nowrap;
-  font-size:28px;
+   font-size:25px;
     font-weight:500;
     background:#ffe2d5;
     color:#444;
+    padding:8px 10px;
+    width:max-content;
+    margin:0 auto 0px;
+      border-radius:20px;
 }
 
 /* CONTENT */

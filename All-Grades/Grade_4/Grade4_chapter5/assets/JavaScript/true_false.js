@@ -10,7 +10,7 @@ const questions = [
     img: "../assets/images/true-2.png",
   },
   {
-    q: "Q3. Takes one year for the formation of fossil fuels.",
+    q: "Q3. It takes one year for the formation of fossil fuels.",
     a: false,
     img: "../assets/images/true-3.png",
   },

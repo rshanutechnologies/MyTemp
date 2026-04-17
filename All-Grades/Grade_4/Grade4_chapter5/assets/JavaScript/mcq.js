@@ -41,7 +41,7 @@ const quizData = [
       { t: "Fossil fuel", img: "../assets/images/fossil-img1.png" },
       { t: "Metal", img: "../assets/images/metal-img.png" },
     ],
-    a: 2,
+    a: 1,
   },
   {
     q: "Q5. A ______ is a large area which is almost covered with woody vegetation or trees.",

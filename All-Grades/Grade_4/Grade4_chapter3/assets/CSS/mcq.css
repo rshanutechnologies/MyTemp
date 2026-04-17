@@ -672,6 +672,7 @@ button:disabled {
 
     .question {
         font-size: 44px;
+        line-height: 3rem;
     }
 
     .image {
