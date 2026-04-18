@@ -885,6 +885,241 @@
     }
 }
 
+
+/* =====================================================
+   ✅ MEDIA QUERY FOR 370px
+===================================================== */
+@media (max-width: 370px) {
+    body {
+        padding: 5px;
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .wrapper {
+        transform: scale(0.75);
+        margin-top: -5%;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .puzzle {
+        width: 90px;
+        height: 75px;
+    }
+
+    .puzzle img {
+        width: 50px;
+        height: 40px;
+    }
+
+    .puzzle span {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+
+    .slot {
+        width: 90px;
+        height: 75px;
+    }
+
+    .slot img {
+        width: 50px;
+        height: 40px;
+    }
+
+    .label {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+
+    .lock {
+        font-size: 24px;
+    }
+
+    .progress-wrap {
+        transform: scale(0.6);
+        top: -10px;
+        right: 0px;
+    }
+
+    .circle {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    .feedback-circle {
+        width: 100px;
+        height: 100px;
+        font-size: 45px;
+    }
+
+    .fly-tick {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .final-popup-box {
+        width: 90vw;
+        flex-direction: column;
+    }
+
+    .final-left {
+        width: 100%;
+        height: 80px;
+    }
+
+    .final-left img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .final-right {
+        padding: 12px;
+    }
+
+    .final-right h2 {
+        font-size: 16px;
+    }
+
+    .final-score {
+        font-size: 12px;
+    }
+
+    .final-stars {
+        font-size: 14px;
+    }
+
+    .restart-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+/* =====================================================
+   ✅ MEDIA QUERY FOR 400px
+===================================================== */
+@media (max-width: 430px) {
+    body {
+        padding: 10px;
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+         background-color: #c54522;
+    }
+
+    .wrapper {
+        transform: scale(0.85);
+        margin-top: -5% !important;
+       
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .puzzle {
+        width: 105px;
+        height: 85px;
+    }
+
+    .puzzle img {
+        width: 60px;
+        height: 50px;
+    }
+
+    .puzzle span {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+
+    .slot {
+        width: 105px;
+        height: 85px;
+    }
+
+    .slot img {
+        width: 60px;
+        height: 50px;
+    }
+
+    .label {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+
+    .lock {
+        font-size: 28px;
+    }
+
+    .progress-wrap {
+        transform: scale(0.7);
+        top: -5px;
+        right: 5px;
+    }
+
+    .circle {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+
+    .feedback-circle {
+        width: 120px;
+        height: 120px;
+        font-size: 55px;
+    }
+
+    .fly-tick {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+    }
+
+    .final-popup-box {
+        width: 92vw;
+        flex-direction: column;
+    }
+
+    .final-left {
+        width: 100%;
+        height: 90px;
+    }
+
+    .final-left img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .final-right {
+        padding: 15px;
+    }
+
+    .final-right h2 {
+        font-size: 18px;
+    }
+
+    .final-score {
+        font-size: 13px;
+    }
+
+    .final-stars {
+        font-size: 16px;
+    }
+
+    .restart-btn {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+}
+
 /* ================= LANDSCAPE MODE FOR PHONES ================= */
 @media (max-width: 800px) and (orientation: landscape) {
     body {
@@ -1101,7 +1336,7 @@
         function showFeedback(type) {
             feedbackPopup.style.display = "flex";
             feedbackCircle.className = "feedback-circle " + type;
-            feedbackCircle.textContent = type === "correct" ? "✓" : "✗";
+            feedbackCircle.textContent = type === "correct" ? "✔" : "✖";
             setTimeout(() => {
                 feedbackPopup.style.display = "none";
             }, 800);

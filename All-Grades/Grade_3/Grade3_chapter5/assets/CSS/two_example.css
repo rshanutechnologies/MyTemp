@@ -153,16 +153,11 @@ body{
   width:50%;
   display:grid;
   grid-template-columns: repeat(4, 1fr);   /* 🔥 4 in one row */
-  gap: 0px;
+  gap: 20px;
   align-items:center;
   justify-items:center;
 }
-.right{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  gap:30px;
-}
+
 /* OPTION */
 .option-wrap{
   text-align:center;
@@ -837,6 +832,7 @@ button:disabled{opacity:0.45;
     width: 100%;
     font-size: 32px;
     justify-content: center;
+     margin-top: -50px;
   
   }
 
@@ -889,6 +885,7 @@ button:disabled{opacity:0.45;
     width: 100%;
     font-size: 44px;
     justify-content: center;
+    margin-top: -100px;
   }
 
   .drop-zone{
