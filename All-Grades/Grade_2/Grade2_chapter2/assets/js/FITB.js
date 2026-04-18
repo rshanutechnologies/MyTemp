@@ -41,19 +41,18 @@ const scoreBox = document.getElementById("scoreBox");
 
 let blanks = [];
 let selectedLetters = [];
+let allTiles = []; // Store all tile elements for reference
 
-// function speak(t) { speechSynthesis.cancel(); speechSynthesis.speak(new SpeechSynthesisUtterance(t)); }
 function speak(t) {
-  speechSynthesis.cancel(); // optional but recommended
-
+  speechSynthesis.cancel();
   const msg = new SpeechSynthesisUtterance(t);
   msg.lang = "en-UK";
   msg.volume = 0.25;
   msg.rate = 1;
   msg.pitch = 1;
-
   speechSynthesis.speak(msg);
 }
+
 function shuffle(a) {
   return a.sort(() => Math.random() - 0.5);
 }
@@ -65,15 +64,92 @@ function getLetters(answer) {
   return shuffle(answer.split(""));
 }
 
-function createBlank(size) {
+function createBlank(size, blankIndex) {
   const row = document.createElement("span");
   row.className = "blank-row";
+  row.dataset.blankIndex = blankIndex;
   for (let i = 0; i < size; i++) {
     const b = document.createElement("div");
     b.className = "blank-box";
+    b.dataset.position = i;
+    
+    // Add click handler to remove letter from this box
+    b.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (locked[index]) return;
+      if (b.textContent) {
+        removeLetterFromBlank(blankIndex, i, b.textContent);
+      }
+    });
+    
     row.appendChild(b);
   }
   return row;
+}
+
+// NEW FUNCTION: Remove letter from specific blank box
+function removeLetterFromBlank(blankIndex, boxPosition, letterToRemove) {
+  // Find which tile has this letter and is not disabled (or is currently used)
+  // We need to find a tile that matches the letter and re-enable it
+  
+  // Calculate the global position in selectedLetters array
+  let globalPos = 0;
+  for (let i = 0; i < blankIndex; i++) {
+    globalPos += blanks[i].children.length;
+  }
+  globalPos += boxPosition;
+  
+  // Remove from selectedLetters array
+  if (globalPos < selectedLetters.length) {
+    selectedLetters.splice(globalPos, 1);
+  }
+  
+  // Clear the box
+  const blankBox = blanks[blankIndex].children[boxPosition];
+  blankBox.textContent = "";
+  
+  // Shift all remaining letters to fill the gap
+  let newSelectedLetters = [];
+  let currentPos = 0;
+  
+  // Rebuild selectedLetters by reading all blank boxes in order
+  for (let i = 0; i < blanks.length; i++) {
+    for (let j = 0; j < blanks[i].children.length; j++) {
+      const box = blanks[i].children[j];
+      if (box.textContent) {
+        newSelectedLetters.push(box.textContent);
+      }
+    }
+  }
+  
+  selectedLetters = newSelectedLetters;
+  
+  // Re-enable the tile that was removed
+  // Find a tile with matching letter that is disabled
+  const tiles = document.querySelectorAll(".tile");
+  for (let tile of tiles) {
+    if (tile.textContent === letterToRemove && tile.classList.contains("disabled")) {
+      tile.classList.remove("disabled");
+      break;
+    }
+  }
+  
+  // Update all blank boxes to show correct letters in order
+  let fillPos = 0;
+  for (let i = 0; i < blanks.length; i++) {
+    for (let j = 0; j < blanks[i].children.length; j++) {
+      if (fillPos < selectedLetters.length) {
+        blanks[i].children[j].textContent = selectedLetters[fillPos];
+        fillPos++;
+      } else {
+        blanks[i].children[j].textContent = "";
+      }
+    }
+  }
+  
+  // Update submit button state
+  const totalNeeded = blanks.reduce((s, b) => s + b.children.length, 0);
+  submitBtn.disabled = selectedLetters.length !== totalNeeded;
 }
 
 function loadQuestion() {
@@ -91,7 +167,7 @@ function loadQuestion() {
   const spots = document.querySelectorAll(".blankSpot");
   spots.forEach((spot, i) => {
     const ans = Array.isArray(q.answer) ? q.answer[i] : q.answer;
-    const blank = createBlank(ans.length);
+    const blank = createBlank(ans.length, i);
     spot.replaceWith(blank);
     blanks.push(blank);
   });
@@ -102,7 +178,7 @@ function loadQuestion() {
   optionsBox.appendChild(tileBox);
 
   if (locked[index]) {
-    submitBtn.disabled = true; // ⭐ keep disabled
+    submitBtn.disabled = true;
     nextBtn.disabled = false;
 
     const saved = userAnswers[index];
@@ -148,7 +224,6 @@ function loadQuestion() {
 submitBtn.onclick = () => {
   const q = questions[index];
 
-  // SINGLE ANSWER (normal question)
   if (!Array.isArray(q.answer)) {
     const userWord = selectedLetters.join("");
     if (userWord === q.answer) {
@@ -159,11 +234,9 @@ submitBtn.onclick = () => {
     return;
   }
 
-  // MULTIPLE BLANK ANSWER (like HEART + LUNGS)
   let pos = 0;
   let userWords = [];
 
-  // Split letters according to blank sizes
   q.answer.forEach((ans) => {
     const size = ans.length;
     const word = selectedLetters.slice(pos, pos + size).join("");
@@ -171,7 +244,6 @@ submitBtn.onclick = () => {
     pos += size;
   });
 
-  // Sort both arrays before comparing
   const sortedUser = [...userWords].sort().join(",");
   const sortedCorrect = [...q.answer].sort().join(",");
 
@@ -189,7 +261,7 @@ function handleCorrect(userWord) {
   score++;
   scoreBox.textContent = `Score: ${score}`;
 
-  submitBtn.disabled = true; // ⭐ disable after correct
+  submitBtn.disabled = true;
   nextBtn.disabled = false;
 
   showFeedback(true);
@@ -250,9 +322,12 @@ prevBtn.onclick = () => {
   index--;
   loadQuestion();
 };
+
 nextBtn.onclick = () => {
   index++;
   loadQuestion();
 };
+
+document.getElementById("restartBtn")?.addEventListener("click", restartQuiz);
 
 loadQuestion();

@@ -36,12 +36,12 @@
     }
 
     .header {
-      text-align: center;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      justify-content: center;
-    }
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+}
 
     .header h1 {
       font-weight: 500;
@@ -76,12 +76,13 @@
       text-align: center;
       font-size: 18px;
       color: #eff2f2;
-      font-weight: 500;
+      font-weight: 700;
     }
 
     .q-text {
       text-align: center;
-      font-size: clamp(1.2rem, 4vw, 2.5rem);
+      /* font-size: clamp(1.2rem, 4vw, 2.5rem); */
+       font-size: clamp(1.2rem, 3.5vw, 2.5rem);
       color: #f0f6f6;
       margin: 10px 0;
       font-weight: 500;
@@ -390,11 +391,11 @@
 
   <div class="app">
     <div class="header">
-      <h1>Pick the Correct Answer</h1>
-      <button class="read-btn" onclick="readQuestion()">🔊</button>
-    </div>
+  <div class="q-number" id="qNumber"></div>
+  <button class="read-btn" onclick="readQuestion()">🔊</button>
+</div>
 
-    <div id="quiz" style="width: 100%; display: flex; flex-direction: column; align-items: center;"></div>
+    <div id="quiz" style="width: 100%; display: flex; flex-direction: column; align-items: center;" ></div>
 
     <div class="nav-container">
       <button id="prevBtn" class="nav-btn">◀ PREV</button>
@@ -542,9 +543,10 @@
     function render() {
       locked = false;
       const q = quiz[current];
+      document.getElementById("qNumber").textContent =
+  `Question ${current + 1} of ${quiz.length}`;
 
-      quizBox.innerHTML = `
- <div class="q-number">Question ${current + 1} of ${quiz.length}</div>
+    quizBox.innerHTML = `
  <div class="q-text" id="qText">${q.text}</div>
  <div class="options">
  ${q.options.map((o, i) => `

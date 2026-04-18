@@ -345,10 +345,11 @@ svg path {
 @media (max-width:768px) {
 
   body {
-    overflow-y: auto;
+    overflow-y: hidden !important;
     align-items: flex-start;
     padding: 20px 10px;
     background: linear-gradient(135deg, #fef3c7, #e0f2fe, #dcfce7);
+    margin: 35px !important;
 
   }
 

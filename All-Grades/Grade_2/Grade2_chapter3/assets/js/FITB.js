@@ -16,26 +16,11 @@ const questions = [
     answer: "ANDHRAPRADESH",
     image: "../assets/images/F-3.png",
     letters: [
-      "A",
-      "N",
-      "D",
-      "H",
-      "R",
-      "A",
-      "P",
-      "R",
-      "A",
-      "D",
-      "E",
-      "S",
-      "H",
-      "L",
-      "T",
+      "A", "N", "D", "H", "R", "A", "P", "R", "A", "D", "E", "S", "H", "L", "T"
     ],
   },
   {
-    question:
-      "_______________ is one of the popular street foods of Hyderabad.",
+    question: "_______________ is one of the popular street foods of Hyderabad.",
     answer: "BIRYANI",
     image: "../assets/images/DinnerWB.png",
     letters: ["B", "I", "R", "Y", "A", "N", "I"],
@@ -52,8 +37,8 @@ let index = 0;
 let score = 0;
 
 const locked = Array(questions.length).fill(false);
-let typed = ""; // current chain text
-let chainButtons = []; // store clicked buttons for undo + line
+let typed = "";
+let chainButtons = [];
 
 const charImg = document.getElementById("charImg");
 const questionText = document.getElementById("questionText");
@@ -73,54 +58,64 @@ const flyTick = document.getElementById("flyTick");
 const canvas = document.getElementById("chainCanvas");
 const ctx = canvas.getContext("2d");
 
-// function speak(text){
-//   window.speechSynthesis.cancel();
-//   const u = new SpeechSynthesisUtterance(text);
-//   u.lang = "en-Uk";
-//   u.rate = 0.9;
-//   window.speechSynthesis.speak(u);
-// }
+// iOS FIXED speak function - same pattern as your MCQ
+let speechInitialized = false;
 
-
-
-
-// function speak(t) {
-//   speechSynthesis.cancel(); // optional but recommended
-
-//   const msg = new SpeechSynthesisUtterance(t);
-//   msg.lang = "en-US";
-//   msg.volume = 1;
-//   msg.rate = 1;
-//   msg.pitch = 1;
-
-//   speechSynthesis.speak(msg);
-// }
-
-
+function initSpeechOnUserInteraction() {
+  if (speechInitialized) return;
+  speechInitialized = true;
+  
+  // This "unlocks" speech on iOS
+  const silentMsg = new SpeechSynthesisUtterance(' ');
+  silentMsg.volume = 0;
+  window.speechSynthesis.speak(silentMsg);
+  window.speechSynthesis.cancel(); // cancel immediately
+}
 
 function speak(text) {
   if (!window.speechSynthesis) return;
-
+  
+  // Cancel any ongoing speech
+  window.speechSynthesis.cancel();
+  
   const msg = new SpeechSynthesisUtterance(text);
-
-  msg.lang = "en-GB";   // ✅ FIXED
-  msg.volume = .45;       // ✅ louder
-  msg.rate = 1;
+  msg.lang = "en-GB";
+  msg.volume = 0.8;
+  msg.rate = 0.9;
   msg.pitch = 1;
-
-  // ensure voices loaded (important for iOS)
-  let voices = speechSynthesis.getVoices();
-  if (voices.length === 0) {
-    speechSynthesis.onvoiceschanged = () => {
-      voices = speechSynthesis.getVoices();
-      msg.voice = voices.find(v => v.lang.includes("en")) || voices[0];
-      speechSynthesis.speak(msg);
+  
+  // Try to speak immediately (iOS will work after user interaction)
+  const trySpeak = () => {
+    window.speechSynthesis.speak(msg);
+  };
+  
+  // Check if voices are loaded
+  if (window.speechSynthesis.getVoices().length === 0) {
+    window.speechSynthesis.onvoiceschanged = () => {
+      trySpeak();
     };
   } else {
-    msg.voice = voices.find(v => v.lang.includes("en")) || voices[0];
-    speechSynthesis.speak(msg);
+    trySpeak();
   }
 }
+
+// Add this - initialize speech on first ANY user interaction
+function setupSpeechOnFirstTap() {
+  const events = ['click', 'touchstart', 'pointerdown'];
+  const handler = () => {
+    initSpeechOnUserInteraction();
+    // Remove listeners after first interaction
+    events.forEach(event => {
+      document.body.removeEventListener(event, handler);
+    });
+  };
+  events.forEach(event => {
+    document.body.addEventListener(event, handler);
+  });
+}
+
+// Call this when page loads
+setupSpeechOnFirstTap();
 
 /* shuffle tiles */
 function shuffle(arr) {
@@ -141,7 +136,7 @@ function initProgress() {
   }
 }
 
-/* answer boxes */
+/* answer boxes - ADDED CLICK TO REMOVE FEATURE */
 function renderBoxes(q) {
   answerBoxes.innerHTML = "";
   for (let i = 0; i < q.answer.length; i++) {
@@ -149,8 +144,44 @@ function renderBoxes(q) {
     box.className = "box";
     box.textContent = typed[i] ? typed[i] : "";
     if (typed[i]) box.classList.add("filled");
+    
+    // ADD THIS: Click on filled box to remove letter
+    box.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (locked[index]) return;
+      if (typed[i]) {
+        removeLetterAtPosition(i);
+      }
+    });
+    
     answerBoxes.appendChild(box);
   }
+}
+
+// NEW FUNCTION: Remove letter from specific position
+function removeLetterAtPosition(pos) {
+  const q = questions[index];
+  if (locked[index]) return;
+  if (pos >= typed.length) return;
+  
+  const letterToRemove = typed[pos];
+  
+  // Remove from typed string
+  typed = typed.slice(0, pos) + typed.slice(pos + 1);
+  
+  // Find and restore the button at this position
+  if (chainButtons[pos]) {
+    const btnToRestore = chainButtons[pos];
+    btnToRestore.classList.remove("used", "selected");
+    chainButtons.splice(pos, 1);
+  }
+  
+  // Re-render
+  renderBoxes(q);
+  drawChain();
+  
+  backBtn.disabled = typed.length === 0;
+  nextBtn.disabled = true;
 }
 
 /* canvas size */
@@ -174,6 +205,7 @@ function drawChain() {
   const lr = lettersBox.getBoundingClientRect();
 
   chainButtons.forEach((btn, i) => {
+    if (!btn) return;
     const br = btn.getBoundingClientRect();
     const x = br.left - lr.left + br.width / 2;
     const y = br.top - lr.top + br.height / 2;
@@ -196,7 +228,6 @@ function renderLetters(q) {
     lettersBox.appendChild(btn);
 
     btn.addEventListener("pointerenter", () => {
-      // ✅ swipe selecting while holding
       if (!isSwiping) return;
       addLetter(btn, letter);
     });
@@ -214,7 +245,6 @@ function renderLetters(q) {
     drawChain();
   });
 
-  // lock solved
   if (locked[index]) {
     [...lettersBox.children].forEach((b) => b.classList.add("used"));
   }
@@ -227,6 +257,7 @@ function startSwipe() {
   if (locked[index]) return;
   isSwiping = true;
 }
+
 function stopSwipe() {
   isSwiping = false;
 }
@@ -235,20 +266,16 @@ function stopSwipe() {
 function addLetter(btn, letter) {
   const q = questions[index];
   if (locked[index]) return;
-
   if (btn.classList.contains("used")) return;
   if (typed.length >= q.answer.length) return;
 
   typed += letter;
   chainButtons.push(btn);
-
   btn.classList.add("used", "selected");
   backBtn.disabled = typed.length === 0;
-
   renderBoxes(q);
   drawChain();
 
-  // auto check when full
   if (typed.length === q.answer.length) {
     setTimeout(checkAnswer, 250);
   }
@@ -267,7 +294,6 @@ function backspace() {
   }
   renderBoxes(q);
   drawChain();
-
   nextBtn.disabled = true;
   backBtn.disabled = typed.length === 0;
 }
@@ -288,7 +314,6 @@ function flyTickToProgress(circleIndex) {
   flyTick.style.opacity = "1";
   flyTick.style.left = from.left + from.width / 2 + "px";
   flyTick.style.top = from.top + from.height / 2 + "px";
-
   flyTick.getBoundingClientRect();
   flyTick.style.transition = "all .9s ease";
   flyTick.style.left = to.left + to.width / 2 + "px";
@@ -305,8 +330,6 @@ function flyTickToProgress(circleIndex) {
 /* check answer */
 function checkAnswer() {
   const q = questions[index];
-
-  // lock further tile selections
   stopSwipe();
 
   if (typed === q.answer) {
@@ -332,8 +355,6 @@ function checkAnswer() {
   } else {
     showFeedback("wrong");
     speak("Try again");
-
-    // reset and give chance again
     setTimeout(() => {
       resetChain();
     }, 700);
@@ -347,10 +368,7 @@ function resetChain() {
   chainButtons = [];
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   renderBoxes(questions[index]);
-
-  [...lettersBox.children].forEach((b) =>
-    b.classList.remove("used", "selected"),
-  );
+  [...lettersBox.children].forEach((b) => b.classList.remove("used", "selected"));
   nextBtn.disabled = true;
   backBtn.disabled = true;
 }
@@ -371,7 +389,6 @@ function loadQuestion() {
   nextBtn.disabled = !locked[index];
   backBtn.disabled = true;
 
-  // if solved already
   if (locked[index]) {
     typed = q.answer;
     renderBoxes(q);
@@ -384,11 +401,10 @@ function loadQuestion() {
 
 /* final popup */
 function showFinal() {
-  document.getElementById("finalScoreText").textContent =
-    `Score: ${score} / ${questions.length}`;
+  document.getElementById("finalScoreText").textContent = `Score: ${score} / ${questions.length}`;
   document.getElementById("finalStars").textContent = "⭐".repeat(score);
   document.getElementById("finalPopup").style.display = "flex";
-  speak("Congratulations");
+  // speak("Congratulations");
 }
 
 function restart() {
@@ -407,12 +423,14 @@ prevBtn.onclick = () => {
     loadQuestion();
   }
 };
+
 nextBtn.onclick = () => {
   if (index < questions.length - 1) {
     index++;
     loadQuestion();
   }
 };
+
 backBtn.onclick = backspace;
 document.getElementById("restartBtn").onclick = restart;
 

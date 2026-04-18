@@ -360,13 +360,14 @@ body {
 
   html,
   body {
-    overflow-y: auto;
+    overflow-y: hidden !important;
   }
 
   body {
     align-items: flex-start;
     padding: 20px 12px;
     margin-left: 10% !important;
+    margin-top: 60px !important;
   }
 
   /* TITLE */

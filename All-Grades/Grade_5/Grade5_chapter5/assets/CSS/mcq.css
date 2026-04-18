@@ -384,11 +384,12 @@ button:disabled {
   body{
     height:auto;
     min-height:100vh;
-    overflow-y:hidden;
+    overflow-y:hidden !important;
     overflow-x:hidden;
     align-items:flex-start;
     padding:12px 10px;
     margin:0;
+    margin-top: 30px !important;
   }
 
   /* QUIZ CARD */

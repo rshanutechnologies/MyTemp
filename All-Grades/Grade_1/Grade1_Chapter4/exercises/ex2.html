@@ -21,12 +21,13 @@
     }
 
     body {
-      font-family: "Livvic", sans-serif;
+      font-family: "Livvic";
       background: url(./uploads/bg4.png) no-repeat center center fixed;
       background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-top: -2% !important;
     }
 
     .app {
@@ -44,9 +45,11 @@
 
     /* HEADER STYLE WITH READ BUTTON */
     .header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
+       display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
     }
 
     .header h1 {
@@ -78,25 +81,27 @@
     }
 
     .q-number {
-      font-size: 16px;
-      color: #e4ebeb;
-      margin-bottom: 5px;
+     font-size: 16px;
+      color: #f3f5f5;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0;
     }
 
     /* 2. INLINE STICKER LOGIC */
     .question-row {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 15px;
       width: 100%;
-      margin-bottom: 10px;
+      margin-bottom: 40px;
     }
 
     .hint-sticker {
-      width: clamp(50px, 8vw, 80px);
-      height: clamp(50px, 8vw, 80px);
+   width: clamp(80px, 12vw, 120px);
+height: clamp(80px, 12vw, 120px);
       background: white;
       border-radius: 12px;
       padding: 5px;
@@ -113,6 +118,7 @@
 
     .q-text {
       font-size: clamp(1.2rem, 3.5vw, 2.5rem);
+      font-weight: 500;
       color: #ffffff;
       line-height: 1.2;
       margin: 0;
@@ -366,9 +372,9 @@
 <body>
   <div class="app">
     <div class="header">
-      <h1>Fill in the Blanks</h1>
-      <button class="read-btn" onclick="readQuestion()">🔊</button>
-    </div>
+  <div class="q-number" id="qNumber"></div>
+  <button class="read-btn" onclick="readQuestion()">🔊</button>
+</div>
     <div id="quiz" style="width: 100%;"></div>
     <div class="nav-container">
       <button id="prevBtn" class="nav-btn">◀ PREV</button>
@@ -457,13 +463,14 @@ function render() {
   nextBtn.style.display = "none";
   prevBtn.style.display = current > 0 ? "block" : "none";
   const q = quiz[current];
-
+document.getElementById("qNumber").textContent =
+  `Question ${current + 1} of ${quiz.length}`;
   quizBox.innerHTML = `
     <div style="display:flex; flex-direction:column; align-items:center;">
-      <div class="q-number">Question ${current + 1} of ${quiz.length}</div>
+     
       <div class="question-row">
-        <div class="hint-sticker"><img src="${q.hint}" alt="Hint"></div>
         <div class="q-text">${q.text.replace("_____", "<span class='blank' id='blank'></span>")}</div>
+        <div class="hint-sticker"><img src="${q.hint}" alt="Hint"></div>
       </div>
       <div class="letter-box" id="letterBox">${q.parts.map(p => `<div class="part" data-part="${p}">${p}</div>`).join("")}</div>
     </div>

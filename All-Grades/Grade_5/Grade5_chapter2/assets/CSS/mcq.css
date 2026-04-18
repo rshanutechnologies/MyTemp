@@ -375,7 +375,7 @@ button:disabled {
 @media (max-width: 768px) {
 
     body {
-        overflow: auto;
+        overflow: hidden !important;
         padding: 15px;
         height: auto;
           background-image: url("../images/L2bgg.png");

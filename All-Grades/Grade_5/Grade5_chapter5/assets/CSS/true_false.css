@@ -496,9 +496,10 @@ button:disabled{
 
   body{
     height:auto;
-    overflow-y:auto;
+    overflow-y:hidden !important;
     align-items:flex-start;
     padding:20px 12px;
+    margin-top: 13px !important;
   }
  body::before{
 content:"";

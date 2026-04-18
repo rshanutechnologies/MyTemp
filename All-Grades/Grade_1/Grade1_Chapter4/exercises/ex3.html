@@ -100,7 +100,8 @@ body{
 }
 
 .q-text {
-  font-size: clamp(1rem, 3.5vw, 2rem);
+  /* font-size: clamp(1rem, 3.5vw, 2rem); */
+   font-size: clamp(1.2rem, 3.5vw, 2.5rem) !important;
     color: #f3f5f5;
   font-weight: 500;
   text-align: center;
@@ -171,24 +172,23 @@ body{
 
 /* CONTROLS AREA */
 .controls {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 500px;
-  gap: 10px;
-  flex-shrink: 0;
+    display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      margin-top: 20px;
+      min-height: 60px;
 }
 
 .nav-btn {
-  flex: 1;
-  padding: clamp(12px, 2vh, 22px);
-  border-radius: 50px;
-  border: none;
-  font-size: clamp(14px, 3vw, 18px);
-  font-weight: 900;
-  cursor: pointer;
-  color: white;
-  transition: transform 0.2s;
+  font-size: 18px;
+      font-weight: 700;
+      padding: 12px 25px;
+      border-radius: 50px;
+      border: 4px solid white;
+      cursor: pointer;
+      color: white;
+      transition: 0.3s;
 }
 
 .nav-btn:active {
@@ -394,6 +394,23 @@ body{
   .card { width: 130px; height: 130px; font-size: 36px; }
   .q-hint-img { width: 160px; height: 160px; }
 }
+
+#smiley {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(.4);
+  font-size: 150px;
+  opacity: 0;
+  transition: .4s cubic-bezier(.17,.89,.32,1.49);
+  z-index: 10000;
+  pointer-events: none;
+}
+
+#smiley.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
 </style>
 </head>
 
@@ -507,6 +524,15 @@ function confetti() {
   setTimeout(() => { box.innerHTML = ""; }, 1500);
 }
 
+// nnew 
+
+function showSmiley(emoji) {
+  const s = document.getElementById("smiley");
+  s.textContent = emoji;
+  s.classList.add("show");
+  setTimeout(() => s.classList.remove("show"), 1200);
+}
+
 function showButterflies(target) {
   const rect = target.getBoundingClientRect();
   for (let j = 0; j < 10; j++) {
@@ -570,7 +596,7 @@ function updateButtonState() {
 
 function render() {
   solved = answered[i];
-  document.getElementById("qNumber").textContent = `Question ${i + 1} of ${quiz.length}`;
+  document.getElementById("qNumber").textContent = `QUESTION ${i + 1} of ${quiz.length}`;
   document.getElementById("qText").textContent = quiz[i].q;
   document.getElementById("hintImg").src = quiz[i].img;
   document.getElementById("nextBtn").disabled = !answered[i];
@@ -591,6 +617,7 @@ function checkAnswer(value) {
     
     playSuccessSound();
     confetti();
+    showSmiley("😄");
     const targetBtn = document.querySelector(`.card[data-val="${value}"]`);
     showButterflies(targetBtn);
     
@@ -603,7 +630,8 @@ function checkAnswer(value) {
       document.getElementById("nextBtn").disabled = false;
     }
   } else {
-    showSad();
+    showSmiley("😢");
+playWrongSound();
     // Shake animation for wrong answer
     const wrongBtn = document.querySelector(`.card[data-val="${value}"]`);
     wrongBtn.style.transform = "translateX(10px)";

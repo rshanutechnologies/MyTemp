@@ -589,10 +589,11 @@ display: none;
 @media (max-width:380px) {
 
   body {
-    overflow-y: auto;
+    overflow-y: hidden !important;
     align-items: flex-start;
     padding: 20px 0;
     background: linear-gradient(135deg, #fef3c7, #e0f2fe, #dcfce7);
+    margin-top: 15px !important;
   }
 
   .main-container {

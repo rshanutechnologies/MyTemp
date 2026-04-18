@@ -681,7 +681,8 @@ document.querySelectorAll(".right-item").forEach(rightItem => {
       correctCount++;
       playSuccessSound();
       triggerConfetti(40);
-      showSmiley("🎉");
+   
+      showSmiley("😄");
       
       // Clear selection
       clearSelection();
@@ -690,7 +691,8 @@ document.querySelectorAll(".right-item").forEach(rightItem => {
       checkCompletion();
     } else {
       // Wrong match
-      showSmiley("❌");
+          showSmiley("😢");
+
       playWrongSound();
       
       // Flash red on wrong match

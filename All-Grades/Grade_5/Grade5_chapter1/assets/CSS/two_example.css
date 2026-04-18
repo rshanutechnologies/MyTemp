@@ -301,7 +301,7 @@ button:disabled{
 @media (max-width:768px){
 
   body{
-    overflow-y:auto;
+    overflow-y:hidden !important;
     height:auto;
     align-items:flex-start;
     padding:20px 0;

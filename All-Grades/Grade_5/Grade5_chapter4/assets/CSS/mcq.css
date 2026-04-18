@@ -373,6 +373,8 @@ button:disabled {
 }
 
 @media (max-width: 520px) {
+
+
   .options {
     grid-template-columns: 1fr;
   }
@@ -447,12 +449,13 @@ button:disabled {
 
   html,
   body {
-    overflow-y: auto;
+    overflow-y: hidden !important;
   }
 
   body {
     align-items: flex-start;
     padding: 20px 10px;
+    margin-top: 15px !important;
   }
 
   /* APP CONTAINER */
@@ -561,14 +564,14 @@ button:disabled {
 
   html,
   body {
-    overflow-y: auto;
+    overflow-y: hidden !important;
     
   }
 
   body {
     align-items: flex-start;
     padding: 20px 10px;
-    margin-top: -15% !important;
+    margin-top: 5% !important;
     /* background-color: yellow !important; */
   }
 

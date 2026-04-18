@@ -42,7 +42,7 @@ body{
     align-items:center;
     padding:clamp(10px,1.5vw,14px) clamp(24px,2.5vw,30px);
    font-size: clamp(20px, 2.5vw + 1vh, 30px);
-  color:#2f4f4f;
+  color:#111111;
   line-height:1.4;
   padding:10px 16px;
   border-radius:16px;

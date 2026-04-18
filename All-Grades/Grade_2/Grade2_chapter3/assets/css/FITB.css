@@ -759,7 +759,7 @@ body {
 
 
 /* ================= 1025px — 1440px ================= */
- @media screen and (min-width:1450px) and (max-width:1500px){
+ @media screen and (min-width:1550px) and (max-width:1700px){
 
 .game-wrapper{
 max-width:1500px;
@@ -796,7 +796,7 @@ font-size:20px;
 .progress-bar{
 
 left:150%;
-top:20px;
+top:80%;
 }
 
 .nav{
@@ -807,9 +807,47 @@ font-weight: 100;
 
 } 
 
+@media screen and (min-width:1330px) and (max-width:1440px){
+  .question-text{
+font-size:44px !important;
+
+margin-bottom:3% ; 
+}
+
+.progress-bar{
+   
+left:200%;
+top:-2%;
+}
+
+}
+
+@media screen and (min-width:1430px) and (max-width:1450px){
+  .question-text{
+font-size:44px !important;
+
+margin-bottom:3% ; 
+}
+
+.progress-bar{
+   
+left:200%;
+top:-10%;
+}
+
+.letters{
+grid-template-columns:repeat(auto-fit,minmax(40px,1fr));
+margin-top: 0%;
+}
+
+.letters button{
+font-size:22px;
+
+}
+}
 
 /* ================= 1441px — 1920px ================= */
-@media screen and (min-width:1301px) and (max-width:1920px){
+@media screen and (min-width:1550px) and (max-width:1920px){
 body{
     margin-top: -1%;
 }
@@ -848,7 +886,7 @@ font-size:22px;
 
 .progress-bar{
 left:200%;
-top:100%;
+top:140% !important;
 }
 
 .nav button{

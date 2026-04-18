@@ -85,7 +85,8 @@
 
     .q-text {
       text-align: center;
-      font-size: clamp(1.2rem, 3.3vw, 2.2rem);
+      /* font-size: clamp(1.2rem, 3.3vw, 2.2rem); */
+         font-size: clamp(1.2rem, 3.5vw, 2.5rem) !important;
       
       color: #2f4f4f;
       margin-top: -10px;
@@ -112,7 +113,7 @@
       align-items: center;
       justify-content: center;
       background: #fff;
-      font-weight: bold;
+      font-weight: normal;
       color: #ccc;
       flex-shrink: 0;
       transition: all 0.3s ease;
@@ -613,7 +614,7 @@
     </div>
 
     <div id="quiz-main">
-      <div class="drop-box" id="dropBox">Select Right Answer</div>
+      <div class="drop-box" id="dropBox">Select  Answer</div>
       <div class="options-container" id="options-grid"></div>
     </div>
 
@@ -707,7 +708,7 @@ function render() {
     dropBox.classList.add("locked");
     nextBtn.style.visibility = (current === quiz.length - 1) ? "hidden" : "visible";
   } else {
-    dropBox.innerHTML = "Select Right Answer";
+    dropBox.innerHTML = "Select  Answer";
     dropBox.classList.remove("locked");
     nextBtn.style.visibility = "hidden";
   }

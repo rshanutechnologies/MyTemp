@@ -124,7 +124,7 @@ body{
   flex-wrap:nowrap;
   background:#ffffff;
   font-size:22px; /* ✅ reduced */
-  
+  color: #111111;
 }
 .slots .slot:nth-child(1){
   background:#fce7f3; /* pastel pink */

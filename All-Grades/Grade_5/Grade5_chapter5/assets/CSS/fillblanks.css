@@ -715,9 +715,10 @@ button:disabled {
 @media (max-width:768px) {
 
   body {
-    overflow-y: hidden;
+    overflow-y: hidden !important;
     align-items: flex-start;
     padding: 20px 12px;
+    margin-top: 30px !important;
   }
 
   body::before {

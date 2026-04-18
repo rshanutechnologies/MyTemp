@@ -524,10 +524,11 @@ button {
 @media (max-width:768px){
 
   body{
-    overflow-y:auto;
+    overflow-y:hidden !important;
     align-items:flex-start;
     padding:15px 0;
      background: linear-gradient(135deg, #fef3c7, #e0f2fe, #dcfce7);
+     margin-top: 5px !important;
   }
 
   .container{
