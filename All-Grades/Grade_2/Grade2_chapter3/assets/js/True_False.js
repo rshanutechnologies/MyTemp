@@ -191,7 +191,7 @@ function check(val) {
     result.style.color = "#dc2626";
 
     showFeedback("wrong");
-    speak("Wrong");
+    speak("Try again");
   }
 }
 

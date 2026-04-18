@@ -84,16 +84,42 @@ const ctx = canvas.getContext("2d");
 
 
 
-function speak(t) {
-  speechSynthesis.cancel(); // optional but recommended
+// function speak(t) {
+//   speechSynthesis.cancel(); // optional but recommended
 
-  const msg = new SpeechSynthesisUtterance(t);
-  msg.lang = "en-UK";
-  msg.volume = 0.25;
+//   const msg = new SpeechSynthesisUtterance(t);
+//   msg.lang = "en-US";
+//   msg.volume = 1;
+//   msg.rate = 1;
+//   msg.pitch = 1;
+
+//   speechSynthesis.speak(msg);
+// }
+
+
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+
+  const msg = new SpeechSynthesisUtterance(text);
+
+  msg.lang = "en-GB";   // ✅ FIXED
+  msg.volume = .45;       // ✅ louder
   msg.rate = 1;
   msg.pitch = 1;
 
-  speechSynthesis.speak(msg);
+  // ensure voices loaded (important for iOS)
+  let voices = speechSynthesis.getVoices();
+  if (voices.length === 0) {
+    speechSynthesis.onvoiceschanged = () => {
+      voices = speechSynthesis.getVoices();
+      msg.voice = voices.find(v => v.lang.includes("en")) || voices[0];
+      speechSynthesis.speak(msg);
+    };
+  } else {
+    msg.voice = voices.find(v => v.lang.includes("en")) || voices[0];
+    speechSynthesis.speak(msg);
+  }
 }
 
 /* shuffle tiles */
@@ -305,7 +331,7 @@ function checkAnswer() {
     }
   } else {
     showFeedback("wrong");
-    speak("Wrong");
+    speak("Try again");
 
     // reset and give chance again
     setTimeout(() => {

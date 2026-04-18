@@ -31,7 +31,7 @@
     }
 
     .game {
-      width: 90%;
+      width: 100%;
       
       max-width: 1100px;
      
@@ -40,7 +40,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-     margin-top: 20px;
+     margin-top: 80px;
      
     }
  
