@@ -114,7 +114,6 @@ shuffled.forEach(pair => {
   asEl.appendChild(createAnswer(pair));
 });;
 }
-
 function correct(questionEl, answerEl) {
   const id = questionEl.dataset.id;
   const pair = PAIRS.find(p => p.id === id);
@@ -129,11 +128,25 @@ function correct(questionEl, answerEl) {
   questionEl.classList.add("locked");
   answerEl.classList.add("locked", "matched");
 
-  // 🎨 apply SAME color as question
+  // 🎨 same color
   answerEl.classList.add(pair.color);
 
   // 🔒 disable clicking
   answerEl.style.pointerEvents = "none";
+
+  // 🔥 ADD NUMBER BADGE (MAIN LOGIC)
+  const matchNumber = matched.size; // 1,2,3,4
+
+  const qNum = document.createElement("div");
+  qNum.className = "match-num";
+  qNum.textContent = matchNumber;
+
+  const aNum = document.createElement("div");
+  aNum.className = "match-num";
+  aNum.textContent = matchNumber;
+
+  questionEl.appendChild(qNum);
+  answerEl.appendChild(aNum);
 
   showPopup(true, pair.img);
 
@@ -141,7 +154,6 @@ function correct(questionEl, answerEl) {
     setTimeout(showFinalPopup, 900);
   }
 }
-
 function wrong(answerEl) {
   answerEl.classList.add("shake");
   setTimeout(() => answerEl.classList.remove("shake"), 400);

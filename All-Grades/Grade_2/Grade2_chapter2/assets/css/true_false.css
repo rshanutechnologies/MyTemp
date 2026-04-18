@@ -9,7 +9,7 @@
 body {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: center !important;
   align-items: center;
   padding: 24px 16px;
   overflow: hidden;
@@ -26,15 +26,15 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
- 
+ justify-content: center;
   gap: 18px;
   text-align: center;
   padding: 25px;
-  margin-top: 15% !important;
+  margin-top: -7% !important;
   
 }
 
-.game {
+/* .game {
   width: 100%;
   max-width: 900px;
   min-height: 650px;
@@ -42,7 +42,7 @@ body {
   flex-direction: column;
   gap: 10px;
   padding: 25px;
-}
+} */
 
 /* TOP BAR */
 /* ✅ TOP BAR */
@@ -84,7 +84,7 @@ body {
 .question {
   font-size: 30px !important;
   font-weight: 400 !important;
-  color: #2f4f4f;
+  color: #1e3a5f;
 }
 
 /* SCENE */
@@ -132,7 +132,7 @@ body {
 
 .btn {
   width: 200px;
-  height: 54px;
+  height: 75px;
   border-radius: 999px;
   font-size: 16px;
   font-weight: 600;
@@ -210,9 +210,12 @@ body {
   justify-content: space-between;
   gap: 12px;
 
-  margin-top: 0;
+  margin-top: 60px;
   /* ⭐ pushes to bottom safely */
   padding-top: 10px;
+  display: flex;
+      justify-content: space-between;
+      gap: 30px;
 }
 
 .controls {
@@ -220,13 +223,14 @@ body {
 }
 
 .nav button {
-  padding: 16px 45px;
-  font-size: 22px;
-  font-weight: 700;
-  border-radius: 16px;
-  border: none;
-  cursor: pointer;
-  color: white;
+  padding: 14px 48px;
+      font-size: 22px;
+      font-weight: 700;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      transition: 0.2s;
 }
 
 .prev {
@@ -387,8 +391,8 @@ body {
 
 /* IMAGE CONTAINER */
 .image-box {
-  height: 180px;
-  width: 100%;
+  height: 200px !important;
+  width: 200px !important;
   max-width: 600px;
   margin: 0 auto;
   border-radius: 18px;
@@ -396,12 +400,13 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin-top: 20px;
 }
 
 
 .image-box img {
-  max-width: 80%;
-  max-height: 90%;
+  max-width: 180px !important;
+  max-height: 180px !important;
   object-fit: contain;
 }
 
@@ -478,7 +483,7 @@ body {
     overflow-y: hidden;
   }
     .box {
-  margin-top: -40%;
+  margin-top: -90%;
   height: 500px !important;
 }
   .question {
@@ -500,7 +505,7 @@ body {
 
   .nav {
     gap: 10px;
-    margin-top: -50%;
+    margin-top: -40%;
   }
 
   .nav button {
@@ -582,7 +587,7 @@ body {
 .game{
 max-width:1100px;
 min-height:680px;
-
+margin-top: 3% !important;
 }
 
 .topbar {
@@ -597,19 +602,20 @@ min-height:680px;
 
 .question{
 font-size:40px !important;
-margin-top: 5%;
+margin-top: 0%;
 }
 
 
 .image-box {
-  height: 280px;
-  width: 280px;
+  height: 300px;
+  width: 300px;
+  margin-bottom: 30px;
 }
 
 
 .image-box img {
-  max-width: 80%;
-  max-height: 90%;
+  max-width: 200px !important;
+  max-height: 200px !important;
   object-fit: contain;
 }
 

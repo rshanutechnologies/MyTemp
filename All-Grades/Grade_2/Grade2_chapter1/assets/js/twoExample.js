@@ -52,13 +52,13 @@ const questions = [
   {
     q: "A part that is located inside our head",
     a: "Brain",
-    image: "../assets/images/T22.png",
+    image: "../assets/images/humanhead.png",
     options: [ "Liver", "Heart","Brain"]
   },
   {
     q: "The sense organ that helps us to hear ",
     a: "Ears",
-    image: "../assets/images/T33.png",
+    image: "../assets/images/boygirlcon.png",
     options: [ "Nose", "Ears","Tongue"]
   },
   {

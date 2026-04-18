@@ -1,74 +1,795 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Choose Correct Option</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Quiz - One Line Layout</title>
   <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/MCQ.css">
-</head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Livvic', sans-serif;
+    }
 
+    body {
+      min-height: 100vh;
+      /* background: linear-gradient(145deg, #f1f5f9 0%, #e6edf4 100%); */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    /* main card container - clean without topbar */
+    .quiz-container {
+      width: 100%;
+      max-width: 1400px;
+      /* background: rgba(255, 255, 255, 0.96); */
+      border-radius: 56px;
+      /* box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2), 0 4px 14px rgba(0, 0, 0, 0.05); */
+      padding: 32px 36px;
+      transition: all 0.2s;
+      margin-top: -10%;
+    }
+
+    /* ----- ONE LINE LAYOUT: question | image | options row (horizontal) ----- */
+    .horizontal-layout {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      margin: 20px 0 40px 0;
+      flex-wrap: wrap;
+    }
+
+    /* question block (left) */
+    .question-block {
+      flex: 1.2;
+      min-width: 240px;
+    }
+    .question-text {
+      font-size: 30px !important;
+      font-weight: 400;
+      color: #1e3a5f;
+      line-height: 1.4;
+      /* background: #fef9e6; */
+      padding: 24px 28px;
+      border-radius: 48px;
+      /* box-shadow: 0 10px 20px rgba(0,0,0,0.05); */
+      /* border-left: 8px solid #ff94ab; */
+      word-break: break-word;
+    }
+
+    /* image block (center) */
+    .image-block {
+      flex: 0.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* background: #ffffffdb; */
+      border-radius: 48px;
+      padding: 20px;
+      /* box-shadow: 0 12px 22px rgba(0,0,0,0.08); */
+      min-width: 180px;
+
+    }
+    .quiz-image {
+      width: 100%;
+      max-width: 220px;
+      height: 200px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+      margin-top: -10%;
+    }
+    .quiz-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* options block (right) - 3 options in one horizontal row */
+    .options-row {
+      flex: 1.2;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .option {
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+      background: white;
+      border-radius: 40px;
+      padding: 18px 12px;
+      font-size: 28px;
+      font-weight: 800;
+      cursor: pointer;
+      border: 3px solid #ccc;
+      transition: all 0.2s ease;
+      user-select: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+      letter-spacing: 0.3px;
+    }
+    .option:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+    }
+    /* individual option brand colors */
+    .option:nth-child(1) { border-color: #4a90e2; color: #4a90e2; }
+    .option:nth-child(2) { border-color: #f5a623; color: #f5a623; }
+    .option:nth-child(3) { border-color: #7ed321; color: #7ed321; }
+    /* fallback for any 4th (not used) */
+    .option:nth-child(4) { border-color: #bd10e0; color: #bd10e0; }
+
+    .option.correct {
+      border-color: #2ecc71 !important;
+      color: #2ecc71 !important;
+      background: #e8f8ef;
+      box-shadow: 0 0 0 2px #2ecc7133;
+    }
+    .option.wrong {
+      border-color: #e74c3c !important;
+      color: #e74c3c !important;
+      background: #ffe9e7;
+      opacity: 0.9;
+    }
+    .option.disabled {
+      opacity: 0.45;
+      pointer-events: none;
+      filter: grayscale(0.05);
+    }
+
+    /* nav buttons */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 14px 48px;
+      font-size: 22px;
+      font-weight: 700;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      transition: 0.2s;
+      background: #5a8dee;
+      letter-spacing: 0.5px;
+    }
+    .next {
+      background: #ff9f43;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    button:hover:not(:disabled) {
+      transform: scale(1.02);
+      filter: brightness(1.03);
+    }
+
+    /* popup styles (correct/wrong feedback) */
+    .popup {
+      position: fixed;
+      inset: 0;
+      /* background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px); */
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .popup-box {
+      width: 360px;
+      background: white;
+      padding: 30px;
+      border-radius: 56px;
+      text-align: center;
+      animation: pop 0.3s ease;
+      box-shadow: 0 30px 40px rgba(0,0,0,0.2);
+    }
+    @keyframes pop {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .popup-box img {
+      width: 180px;
+      height: 130px;
+      object-fit: contain;
+      margin-bottom: 12px;
+      border-radius: 24px;
+    }
+    .popup-msg {
+      font-size: 28px;
+      font-weight: 900;
+    }
+    .popup-msg.correct { color: #2ecc71; }
+    .popup-msg.wrong { color: #e74c3c; }
+
+    /* final result popup */
+    .final-box {
+      width: 480px;
+      padding: 32px 28px;
+      background: white;
+    }
+    .winner-img {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 10px;
+      animation: liftTrophy 1.1s ease-in-out infinite;
+    }
+    @keyframes liftTrophy {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-16px) scale(1.05); }
+    }
+    .final-title { font-size: 28px; font-weight: 900; margin: 8px 0; color: #1e293b; }
+    .final-score { font-size: 22px; font-weight: 700; color: #0284c7; margin: 8px 0; }
+    .final-stars { font-size: 34px; margin: 12px 0 20px; letter-spacing: 4px; }
+    .restart-btn {
+      background: #ff9f43;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .restart-btn:hover {
+      transform: scale(1.02);
+      background: #ff8c2a;
+    }
+
+
+
+    
+    /* responsive: tablets -> stack vertically, but options still in row */
+    @media (max-width: 1000px) {
+      .quiz-container {
+        padding: 24px;
+      }
+      .horizontal-layout {
+        flex-direction: column;
+        gap: 28px;
+      }
+      .question-block, .image-block, .options-row {
+        width: 100%;
+      }
+      .options-row {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .option {
+        flex: 1 1 180px;
+        font-size: 20px;
+        padding: 14px 10px;
+      }
+      .question-text {
+        font-size: 26px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .quiz-container {
+        padding: 18px;
+      }
+      .option {
+        font-size: 17px;
+        min-width: 110px;
+        padding: 12px 6px;
+      }
+      .question-text {
+        font-size: 22px;
+        padding: 18px;
+      }
+      button {
+        padding: 10px 24px;
+        font-size: 18px;
+      }
+      .final-box {
+        width: 90%;
+        padding: 20px;
+      }
+      .winner-img {
+        width: 130px;
+        height: 130px;
+      }
+      .final-title { font-size: 22px; }
+      .final-score { font-size: 18px; }
+    }
+    /* extra small */
+    @media (max-width: 480px) {
+      .option {
+        font-size: 15px;
+        padding: 10px 6px;
+        min-width: 95px;
+      }
+      .question-text {
+        font-size: 19px;
+      }
+      .quiz-image {
+        max-width: 150px;
+      }
+    }
+
+       @media (max-width: 370px) {
+      .option {
+        font-size: 18px !important;
+        padding: 10px 6px;
+        min-width: 95px;
+        margin-top: -16px;
+      }
+      .question-text {
+        font-size: 20px !important;
+      } 
+      .quiz-image {
+        max-width: 150px;
+        height: 70px;
+        margin-top:-40px;
+      }
+    }
+
+
+    /* ================= 1025px — 1440px ================= */
+@media screen and (min-width:1025px) and (max-width:1440px){
+
+.quiz-container{
+max-width:1500px;
+padding:30px 40px;
+}
+
+.horizontal-layout{
+  flex-direction: column;
+gap:28px;
+}
+
+.question-text{
+font-size:44px !important;
+padding:20px 24px;
+}
+
+.quiz-image{
+max-width:200px;
+height:250px !important;
+object-fit: cover;
+}
+.options-row {
+      flex: 1.2;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 78px;
+      justify-content: flex-start;
+      align-items: center;
+    }
+.option{
+font-size:22px;
+padding:17px 25px !important;
+min-width:150px;
+
+}
+
+.nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+button{
+font-size:28px;
+padding:12px 36px;
+}
+
+}
+
+
+/* ================= 1441px — 1920px ================= */
+@media screen and (min-width:1441px) and (max-width:1920px){
+
+.quiz-container{
+max-width:1650px;
+padding:34px 48px;
+}
+
+.horizontal-layout{
+    flex-direction: column;
+gap:34px;
+}
+
+.question-text{
+font-size:44px !important;
+padding:24px 30px;
+}
+
+.quiz-image{
+max-width:240px;
+height:210px;
+}
+
+.option{
+font-size:24px;
+padding:18px 14px;
+min-width:150px;
+}
+
+button{
+font-size:22px;
+padding:14px 42px;
+}
+
+}
+
+
+/* ================= 1921px+ ================= */
+@media screen and (min-width:1921px){
+
+.quiz-container{
+max-width:1850px;
+padding:40px 60px;
+}
+
+.horizontal-layout{
+  flex-direction: column;
+gap:40px;
+}
+
+.question-text{
+font-size:36px !important;
+padding:28px 36px;
+}
+
+.quiz-image{
+max-width:280px;
+height:240px;
+}
+
+.option{
+font-size:26px;
+padding:20px 16px;
+min-width:170px;
+}
+
+button{
+font-size:24px;
+padding:16px 48px;
+}
+
+}
+    
+  </style>
+</head>
 <body>
 
-  <div class="quiz-container">
+<div class="quiz-container">
+  <!-- NO TITLE, NO SCORE BAR — removed completely as requested -->
 
-    <!-- ✅ TOP BAR -->
-    <div class="topbar" style="font-weight: 400;">
-      <div class="title">⭐ Correct Option</div>
-      <div class="score" id="scoreBox">Score: 0</div>
+  <!-- HORIZONTAL LAYOUT: question | image | options inline (3 in a row) -->
+  <div class="horizontal-layout">
+    <!-- left: question text -->
+    <div class="question-block">
+      <div class="question-text" id="qText"></div>
     </div>
 
-    <!-- ✅ MAIN CONTENT -->
-    <div class="content">
-
-      <!-- ✅ LEFT QUESTION -->
-      <div class="left">
-        <img id="qImage" src="" alt="">
-        <div class="question-text" id="qText"></div>
-      </div>
-
-      <!-- ✅ RIGHT OPTIONS -->
-      <div class="right" id="options"></div>
-
+    <!-- center: image -->
+    <div class="image-block">
+      <img id="qImage" class="quiz-image" src="" alt="quiz visual">
     </div>
 
-    <!-- ✅ NAV -->
-    <div class="nav">
-      <button class="prev" id="prevBtn">← Prev</button>
-      <button class="next" id="nextBtn" disabled>Next →</button>
-    </div>
+    <!-- right: three options in one line (flex row) -->
+    <div class="options-row" id="optionsContainer"></div>
   </div>
 
-  <!-- ✅ POPUP -->
-  <div class="popup" id="popup">
-    <div class="popup-box">
-      <div id="popupMedia"></div>
-      <div id="popupText" class="popup-msg"></div>
-    </div>
+  <!-- nav buttons (prev / next) -->
+  <div class="nav">
+    <button class="prev" id="prevBtn">← Prev</button>
+    <button class="next" id="nextBtn" disabled>Next →</button>
   </div>
-  <!-- ✅ FINAL POPUP -->
-  <!-- ✅ FINAL POPUP -->
-  <div class="popup" id="finalPopup">
-    <div class="popup-box final-box">
+</div>
 
-      <!-- ✅ BOY LIFT TROPHY IMAGE -->
-      <img id="winnerImg" class="winner-img" src="../assets/images/boy-trophy.png" alt="Winner">
-
-      <h2 class="final-title">🎉 Congratulations!</h2>
-      <p class="final-score" id="finalScore"></p>
-      <div class="final-stars" id="finalStars"></div>
-
-      <button class="restart-btn" onclick="restartQuiz()">🔄 Play Again</button>
-    </div>
+<!-- popup for correct/wrong feedback -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <div id="popupMedia"></div>
+    <div id="popupText" class="popup-msg"></div>
   </div>
+</div>
+
+<!-- final result popup -->
+<div class="popup" id="finalPopup">
+  <div class="popup-box final-box">
+    <img id="winnerImg" class="winner-img" src="../assets/images/boy-trophy.png" alt="Winner Trophy">
+    <h2 class="final-title">🎉 Congratulations!</h2>
+    <p class="final-score" id="finalScore"></p>
+    <div class="final-stars" id="finalStars"></div>
+    <button class="restart-btn" onclick="restartQuiz()">🔄 Play Again</button>
+  </div>
+</div>
 
 <audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
-    <audio id="wrongSound"
-        src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+<audio id="wrongSound" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
 
- <script src="../assets/js/MCQ.js"></script>
+<script>
+  // ---------- QUESTION BANK (exactly 3 options each) ----------
+  const questions = [
+    {
+      text: "The place where two bones join is called a ____________.",
+      options: ["muscle", "skin", "joint"],
+      answer: "joint",
+      img: "../assets/images/BONESSS.png"
+    },
+    {
+      text: "All bones together form the ______________ system.",
+      options: ["muscular", "digestive", "skeletal"],
+      answer: "skeletal",
+      img: "../assets/images/BONESSSALL.png"
+    },
+    {
+      text: "We should drink a glass of ________ daily.",
+      options: ["water", "milk", "coke"],
+      answer: "milk",
+      img: "../assets/images/DBOY.png"
+    },
+    {
+      text: "__________ and muscles together give shape to our body.",
+      options: ["Face", "Skin", "Bones"],
+      answer: "Bones",
+      img: "../assets/images/q2-img.png"
+    },
+    {
+      text: "The ____________ covers our body from outside.",
+      options: ["skin", "muscles", "bones"],
+      answer: "skin",
+      img: "../assets/images/Skin1.png"
+    }
+  ];
+
+  // ---------- GLOBAL STATE ----------
+  let currentIndex = 0;
+  let totalScore = 0;
+  const locked = Array(questions.length).fill(false);       // whether question answered correctly
+  const selectedOptionIdx = Array(questions.length).fill(null); // stores correct option index
+
+  // DOM elements
+  const qTextEl = document.getElementById("qText");
+  const qImageEl = document.getElementById("qImage");
+  const optionsContainer = document.getElementById("optionsContainer");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  // Helper: speak text (soft voice)
+  function speakText(t) {
+    if (window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(t);
+      utterance.lang = "en-UK";
+      utterance.rate = 0.9;
+      utterance.volume = 0.25;
+      window.speechSynthesis.speak(utterance);
+    }
+  }
+
+  // show popup (correct/wrong)
+  function showAnswerPopup(isCorrect, questionImgSrc) {
+    const popup = document.getElementById("popup");
+    const popupMediaDiv = document.getElementById("popupMedia");
+    const popupTextSpan = document.getElementById("popupText");
+
+    popupMediaDiv.innerHTML = "";
+    popupTextSpan.className = "popup-msg";
+
+    if (isCorrect) {
+      const img = document.createElement("img");
+      img.src = questionImgSrc;
+      img.alt = "correct visual";
+      popupMediaDiv.appendChild(img);
+      popupTextSpan.textContent = "Correct! ✅";
+      popupTextSpan.classList.add("correct");
+      speakText("Correct");
+      const correctAudio = document.getElementById("correctSound");
+      if (correctAudio) correctAudio.play().catch(e => console.log("audio blocked"));
+    } else {
+      popupMediaDiv.innerHTML = `<div style="font-size:70px;">😢</div>`;
+      popupTextSpan.textContent = "Wrong! ❌";
+      popupTextSpan.classList.add("wrong");
+      speakText("Wrong");
+      const wrongAudio = document.getElementById("wrongSound");
+      if (wrongAudio) wrongAudio.play().catch(e => console.log("audio blocked"));
+    }
+
+    popup.style.display = "flex";
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 1300);
+  }
+
+  // show final popup with score & stars (no title/score bar anywhere)
+  function showFinalPopup() {
+    const finalPopupDiv = document.getElementById("finalPopup");
+    const finalScoreSpan = document.getElementById("finalScore");
+    const finalStarsSpan = document.getElementById("finalStars");
+    
+    finalScoreSpan.textContent = `Score: ${totalScore} / ${questions.length}`;
+    const starCount = totalScore;
+    finalStarsSpan.textContent = "⭐".repeat(starCount);
+    
+    const winnerImg = document.getElementById("winnerImg");
+    winnerImg.style.animation = "none";
+    winnerImg.offsetHeight; // reflow
+    winnerImg.style.animation = "liftTrophy 1.1s ease-in-out infinite";
+    
+    finalPopupDiv.style.display = "flex";
+    speakText(`Congratulations! Your score is ${totalScore} out of ${questions.length}`);
+  }
+
+  // load current question, render 3 options in one line
+  function loadQuestion() {
+    const q = questions[currentIndex];
+    qTextEl.textContent = q.text;
+    qImageEl.src = q.img;
+    qImageEl.alt = "quiz illustration";
+
+    // clear options row
+    optionsContainer.innerHTML = "";
+
+    // update prev/next buttons
+    prevBtn.disabled = (currentIndex === 0);
+    nextBtn.disabled = !locked[currentIndex];
+
+    // iterate over options (exactly 3 items)
+    q.options.forEach((opt, idx) => {
+      const optDiv = document.createElement("div");
+      optDiv.className = "option";
+      optDiv.textContent = opt;
+
+      // if question already answered correctly
+      if (locked[currentIndex]) {
+        optDiv.classList.add("disabled");
+        if (selectedOptionIdx[currentIndex] === idx) {
+          optDiv.classList.remove("disabled");
+          optDiv.classList.add("correct");
+        }
+      } else {
+        // fresh state: attach click handler
+        optDiv.onclick = () => {
+          // prevent double locking
+          if (locked[currentIndex]) return;
+          
+          const isCorrect = (opt.trim().toLowerCase() === q.answer.trim().toLowerCase());
+          
+          if (isCorrect) {
+            // CORRECT ANSWER
+            locked[currentIndex] = true;
+            selectedOptionIdx[currentIndex] = idx;
+            totalScore++;
+            
+            // visually mark correct option, disable others
+            optDiv.classList.add("correct");
+            const allOptions = document.querySelectorAll("#optionsContainer .option");
+            allOptions.forEach(optEl => {
+              if (optEl !== optDiv) {
+                optEl.classList.add("disabled");
+              }
+            });
+            
+            // show popup with correct feedback (using question's image)
+            showAnswerPopup(true, q.img);
+            
+            // enable next button
+            nextBtn.disabled = false;
+            
+            // check if this was last question: if all questions locked, show final popup after delay
+            if (currentIndex === questions.length - 1) {
+              // if last question and answered correctly, schedule final popup
+              setTimeout(() => {
+                if (locked.every(v => v === true)) {
+                  showFinalPopup();
+                } else {
+                  // safety: still show final popup because this is last question
+                  showFinalPopup();
+                }
+              }, 1400);
+            }
+          } 
+          else {
+            // WRONG ANSWER: show temporary wrong style, play feedback, but don't lock
+            optDiv.classList.add("wrong");
+            showAnswerPopup(false, q.img);
+            // remove wrong class after short delay so user can try again
+            setTimeout(() => {
+              if (optDiv && optDiv.classList) {
+                optDiv.classList.remove("wrong");
+              }
+            }, 800);
+            // score unchanged, next stays disabled
+          }
+        };
+      }
+      optionsContainer.appendChild(optDiv);
+    });
+  }
+
+  // ---------- NAVIGATION ----------
+  prevBtn.onclick = () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      loadQuestion();
+    }
+  };
+
+  // next button logic: move to next question or show final if last
+  let finalShownFlag = false;
+  function resetFinalFlag() { finalShownFlag = false; }
+  
+  nextBtn.onclick = () => {
+    if (!locked[currentIndex]) return; // disabled anyway
+    
+    if (currentIndex === questions.length - 1) {
+      // last question and answered -> show final if not shown
+      if (!finalShownFlag && locked[currentIndex]) {
+        finalShownFlag = true;
+        showFinalPopup();
+        setTimeout(() => { finalShownFlag = false; }, 800);
+      }
+      return;
+    }
+    
+    // move to next question
+    if (currentIndex + 1 < questions.length) {
+      currentIndex++;
+      loadQuestion();
+    }
+  };
+
+  // restart quiz fully
+  window.restartQuiz = function() {
+    // reset all state variables
+    currentIndex = 0;
+    totalScore = 0;
+    for (let i = 0; i < locked.length; i++) {
+      locked[i] = false;
+      selectedOptionIdx[i] = null;
+    }
+    finalShownFlag = false;
+    
+    // hide any visible popups
+    const finalPopup = document.getElementById("finalPopup");
+    if (finalPopup) finalPopup.style.display = "none";
+    const instantPopup = document.getElementById("popup");
+    if (instantPopup) instantPopup.style.display = "none";
+    
+    // reload first question
+    loadQuestion();
+    speakText("Quiz restarted");
+  };
+
+  // initialize
+  loadQuestion();
+
+  // Additional: if user completes all questions without pressing next on last one, but last answer triggers final via timeout
+  // that's already covered in correct answer block for last index. Also final popup restart works.
+  // ensure that there is no score display anywhere (title/score removed completely from HTML)
+  // Also confirm no topbar exists in HTML structure — it's fully removed.
+  
+  // Edge: if all answers are correct before last question, final will be shown when last answer is given or next on last.
+  // Prevents duplicate final popups using flag.
+  
+  // Also for consistency, when restart, clear any pending timeouts (but simple restart is fine)
+  // make sure image assets are same as original references. 
+  // The layout: "first question then image then 3 options in one line" -> desktop: three columns: question | image | options-row (3 items inline)
+  // On mobile it adapts but options remain in a row wrapping.
+  // Perfect!
+</script>
 </body>
-
 </html>

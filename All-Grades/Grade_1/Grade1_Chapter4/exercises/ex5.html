@@ -251,13 +251,6 @@
       max-width: 400px;
     }
 
-    @media (max-height: 500px) {
-      .big-hint-img {
-        display: none;
-      }
-
-      /* Hide image on very small landscape screens to keep space */
-    }
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
 
   .app {
@@ -279,13 +272,22 @@
     font-size: 28px;
   }
 
-  .controls {
-    max-width: 420px;
-  }
+ .controls {
+       display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      margin-top: 20px;
+      min-height: 60px;
+     
+      
+    }
 
   .nav-btn {
     font-size: 18px;
     padding: 14px 0;
+    height: 70px;
+  width: 150px;
   }
 
 }
@@ -310,13 +312,22 @@
     font-size: 32px;
   }
 
-  .controls {
-    max-width: 500px;
-  }
+ .controls {
+       display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      margin-top: 20px;
+      min-height: 60px;
+     
+      
+    }
 
   .nav-btn {
     font-size: 20px;
     padding: 16px 0;
+     height: 70px;
+  width: 150px;
   }
 
 }
@@ -341,13 +352,22 @@
     font-size: 36px;
   }
 
-  .controls {
-    max-width: 550px;
-  }
+ .controls {
+       display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      margin-top: 20px;
+      min-height: 60px;
+     
+      
+    }
 
   .nav-btn {
     font-size: 22px;
     padding: 18px 0;
+     height: 70px;
+  width: 150px;
   }
 
 }
@@ -382,10 +402,10 @@
   <script>
     const quiz = [
       { q: "Small plants like coriander with thin, soft and green stems.", a: "HERBS", img: "../uploads/herbs.png" },
-      { q: "The part of the plant that grows underground.", a: "ROOT", img: "../uploads/roots.png" },
+      { q: "The part of the plant that grows underground.", a: "ROOT", img: "../uploads/earthqmark.png" },
       { q: "The part of the plant that grows above the ground.", a: "STEM", img: "../uploads/stem.png" },
       { q: "They are small and bushy plants.", a: "SHRUBS", img: "../uploads/shrubs.png" },
-      { q: "They grow from flowers.", a: "FRUITS", img: "../uploads/fruits.png" }
+      { q: "They grow from flowers.", a: "FRUITS", img: "../uploads/Flowerrrak.png" }
     ];
 
     let i = 0, audioCtx = null;

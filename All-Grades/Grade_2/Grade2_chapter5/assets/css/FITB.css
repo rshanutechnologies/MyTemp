@@ -168,10 +168,10 @@ body {
     padding: 16px 60px;
     border: none;
     border-radius: 40px;
-    background: linear-gradient(135deg, #b9f6e3, #8ee4cf);
+     background: linear-gradient(#ffd96a, #ffc107);
     font-size: 18px;
     font-weight: 600;
-    color: white;
+     color: #6b4b00;
     cursor: pointer;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }

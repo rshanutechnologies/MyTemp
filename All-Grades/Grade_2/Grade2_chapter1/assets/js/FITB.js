@@ -12,12 +12,12 @@ const questions = [
   {
     q: "The ________ is located inside our head.",
     a: "brain",
-    img: "../assets/images/T22.png"
+    img: "../assets/images/humanhead.png"
   },
   {
     q: "Our ________ help us to pick things.",
     a: "hands",
-    img: "../assets/images/hands.png"
+    img: "../assets/images/howtopick.png"
   },
   {
     q: "We have a pair of ________ under our back ribs.",
