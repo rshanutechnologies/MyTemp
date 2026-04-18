@@ -6,18 +6,13 @@
   font-family:'Livvic' !important;
  
 }
-
 body{
   height:100vh;
-  /* background: linear-gradient(to bottom, #CFE9FF 0%, #FFFFFF 100%); */
-   /* background:linear-gradient(180deg,#ff9aa2,#ffb7b2); */
-      
   display:flex;
-    justify-content:center;
-  align-items:flex-start;   /* ✅ move content up */
-  padding-top: 40px;        /* adjust spacing */
-  overflow:hidden;
-  padding-top: 3%;
+  justify-content:center;
+  align-items:center;
+
+  padding-top:20px;   /* ✅ fixed value (NOT %) */
 }
 
 /* MAIN CARD */
@@ -52,14 +47,12 @@ body{
     margin:0 auto 0px;
       border-radius:20px;
 }
-
-/* CONTENT */
 .content{
   display:flex;
-  gap:30px;
-
-  height:400px;
- 
+  flex-direction:column;   /* ✅ KEY FIX */
+  align-items:center;
+  gap:25px;
+  height:auto;
 }
 
 /* LEFT SIDE */
@@ -91,7 +84,17 @@ body{
  
  color:#111111;
 }
+.left{
+  width:100%;
+  max-width:900px;
+  text-align:center;
+  align-items:center;
+}
 
+.question-box{
+  width:100%;
+  justify-content:center;
+}
 /* ✅ DROP ZONE */
 .drop-zone{
  
@@ -109,7 +112,11 @@ body{
   text-align:center;
   
 }
-
+.drop-zone{
+  width:100%;
+  min-height:120px;
+  margin-top:-100px;
+}
 .drop-zone.filled{
   border:2px solid #22c55e;
   color:#111827;
@@ -149,6 +156,12 @@ body{
   gap: 0px;
   align-items:center;
   justify-items:center;
+}
+.right{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:30px;
 }
 /* OPTION */
 .option-wrap{
@@ -810,6 +823,7 @@ button:disabled{opacity:0.45;
     align-items: center;
     gap: 25px;
     height: auto;
+   
   }
 
   .left{
@@ -823,12 +837,13 @@ button:disabled{opacity:0.45;
     width: 100%;
     font-size: 32px;
     justify-content: center;
+  
   }
 
   .drop-zone{
     width: 100%;
     min-height: 130px;
-    margin-top: -50px;
+    margin-top: -70px;
   }
 
   .right{

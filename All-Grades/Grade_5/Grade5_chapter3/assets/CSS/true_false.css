@@ -497,12 +497,15 @@ font-size: 30px;
 @media (min-width: 800px){
 
   body{
-    transform: scale(0.8);        /* 🔥 10% smaller */
+    
     transform-origin: center;     /* keep centered */
     margin-top: -5%;
     overflow: hidden !important;
   }
-
+  .game{
+    transform: scale(0.9);
+    transform-origin: center;
+  }
 }
 
 
