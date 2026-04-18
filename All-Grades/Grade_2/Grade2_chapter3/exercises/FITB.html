@@ -221,7 +221,7 @@
         .popup {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.5);
+            
             display: none;
             justify-content: center;
             align-items: center;
@@ -1115,253 +1115,267 @@
         </div>
     </div>
 
-    <script>
-                const questions = [
-  {
-    q: "Delhi has an _____________ climate.",
-    a: "EXTREME",
-    img: "../assets/images/F-1.png",
- 
-  },
-  {
-    q: "_______________ Utsav is celebrated in Visakhapatnam.",
-    a: "VISAKHA",
-    img: "../assets/images/F-2.png",
-  
-  },
-  {
-    q: "Visakhapatnam is the most populated city in _______________.",
-    a: "ANDHRAPRADESH",
-    img: "../assets/images/F-3.png",
-   
-  },
-  {
-    q:
-      "_______________ is one of the popular street foods of Hyderabad.",
-    a: "BIRYANI",
-    img: "../assets/images/DinnerWB.png",
-   
-  },
-  {
-    q: "_______________ lies on the banks of Musi River.",
-    a: "HYDERABAD",
-    img: "../assets/images/C-4.png",
-    
-  },
-];
+   <script>
+    const questions = [
+        {
+            q: "Delhi has an _____________ climate.",
+            a: "EXTREME",
+            img: "../assets/images/F-1.png",
+        },
+        {
+            q: "_______________ Utsav is celebrated in Visakhapatnam.",
+            a: "VISAKHA",
+            img: "../assets/images/F-2.png",
+        },
+        {
+            q: "Visakhapatnam is the most populated city in _______________.",
+            a: "ANDHRAPRADESH",
+            img: "../assets/images/F-3.png",
+        },
+        {
+            q: "_______________ is one of the popular street foods of Hyderabad.",
+            a: "BIRYANI",
+            img: "../assets/images/DinnerWB.png",
+        },
+        {
+            q: "_______________ lies on the banks of Musi River.",
+            a: "HYDERABAD",
+            img: "../assets/images/C-4.png",
+        },
+    ];
 
-        let index = 0;
-        let score = 0;
-        const answers = Array(questions.length).fill(null);
+    let index = 0;
+    let score = 0;
+    const answers = Array(questions.length).fill(null);
 
-        // DOM Elements
-        const qText = document.getElementById("questionText");
-        const input = document.getElementById("answerInput");
-        const checkBtn = document.getElementById("checkBtn");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
-        const inputRow = document.getElementById("inputRow");
-        const qImg = document.getElementById("questionImg");
-        const progressBar = document.getElementById("progressBar");
-        const feedbackPopup = document.getElementById("feedbackPopup");
-        const feedbackCircle = document.getElementById("feedbackCircle");
-        const flyTick = document.getElementById("flyTick");
-        const finalPopup = document.getElementById("finalPopup");
-        const finalScoreText = document.getElementById("finalScoreText");
-        const finalStars = document.getElementById("finalStars");
+    // DOM Elements
+    const qText = document.getElementById("questionText");
+    const input = document.getElementById("answerInput");
+    const checkBtn = document.getElementById("checkBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const inputRow = document.getElementById("inputRow");
+    const qImg = document.getElementById("questionImg");
+    const progressBar = document.getElementById("progressBar");
+    const feedbackPopup = document.getElementById("feedbackPopup");
+    const feedbackCircle = document.getElementById("feedbackCircle");
+    const flyTick = document.getElementById("flyTick");
+    const finalPopup = document.getElementById("finalPopup");
+    const finalScoreText = document.getElementById("finalScoreText");
+    const finalStars = document.getElementById("finalStars");
 
-        // Speech function
-        function speak(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                setTimeout(() => {
-                    const utterance = new SpeechSynthesisUtterance(text);
-                    utterance.lang = "en-US";
-                    utterance.rate = 0.9;
-                    utterance.volume = 1;
-                    window.speechSynthesis.speak(utterance);
-                }, 50);
-            }
+    // Function to check answer with flexibility
+    function isAnswerCorrect(userAnswer, correctAnswer, questionIndex) {
+        // For 3rd question (index 2), accept both "ANDHRAPRADESH" and "ANDHRA PRADESH"
+        if (questionIndex === 2) {
+            const normalizedUser = userAnswer.replace(/\s/g, '');
+            const normalizedCorrect = correctAnswer.replace(/\s/g, '');
+            return normalizedUser === normalizedCorrect;
         }
+        // For all other questions, exact match
+        return userAnswer === correctAnswer;
+    }
 
-        // Initialize Progress Bar
-        function initProgress() {
-            progressBar.innerHTML = "";
-            for (let i = 0; i < questions.length; i++) {
-                const box = document.createElement("div");
-                box.className = "progress-box";
-                box.textContent = i + 1;
-                progressBar.appendChild(box);
-            }
-        }
-
-        // Update Progress Bar
-        function updateProgress() {
-            const boxes = document.querySelectorAll(".progress-box");
-            boxes.forEach((box, i) => {
-                if (answers[i]) {
-                    box.classList.add("done");
-                } else {
-                    box.classList.remove("done");
-                }
-            });
-        }
-
-        // Show Feedback Popup (big circle)
-        function showFeedback(type) {
-            feedbackPopup.style.display = "flex";
-            feedbackCircle.className = "feedback-circle " + type;
-            feedbackCircle.textContent = type === "correct" ? "✔" : "✖";
+    // Speech function
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
             setTimeout(() => {
-                feedbackPopup.style.display = "none";
-            }, 800);
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = "en-US";
+                utterance.rate = 0.9;
+                utterance.volume = 1;
+                window.speechSynthesis.speak(utterance);
+            }, 50);
         }
+    }
 
-        // Fly Tick Animation
-        function flyTickToProgress() {
-            const target = document.querySelector(`.progress-box:nth-child(${index + 1})`);
-            if (!target) return;
-            
-            const from = feedbackCircle.getBoundingClientRect();
-            const to = target.getBoundingClientRect();
-            
-            flyTick.style.transition = "none";
-            flyTick.style.opacity = "1";
-            flyTick.style.left = from.left + from.width / 2 + "px";
-            flyTick.style.top = from.top + from.height / 2 + "px";
-            
-            flyTick.offsetHeight;
-            flyTick.style.transition = "all 0.8s cubic-bezier(0.34, 1.2, 0.64, 1)";
-            flyTick.style.left = to.left + to.width / 2 + "px";
-            flyTick.style.top = to.top + to.height / 2 + "px";
-            flyTick.style.transform = "translate(-50%, -50%) scale(0.3)";
-            
-            setTimeout(() => {
-                flyTick.style.opacity = "0";
-                flyTick.style.transform = "translate(-50%, -50%) scale(1)";
-            }, 800);
+    // Initialize Progress Bar
+    function initProgress() {
+        progressBar.innerHTML = "";
+        for (let i = 0; i < questions.length; i++) {
+            const box = document.createElement("div");
+            box.className = "progress-box";
+            box.textContent = i + 1;
+            progressBar.appendChild(box);
         }
+    }
 
-        // Show Final Popup
-        function showFinalPopup() {
-            finalScoreText.textContent = `Score: ${score} / ${questions.length}`;
-            const stars = "⭐".repeat(score) + "☆".repeat(questions.length - score);
-            finalStars.textContent = stars;
-            finalPopup.style.display = "flex";
-            speak("Congratulations! You completed the quiz!");
-        }
-
-        // Load Question
-        function loadQuestion() {
-            const current = questions[index];
-            qText.textContent = current.q;
-            qImg.src = current.img;
-            
-            input.value = answers[index] || "";
-            input.disabled = !!answers[index];
-            inputRow.classList.toggle("correct", !!answers[index]);
-            checkBtn.disabled = !!answers[index] || !input.value.trim();
-            prevBtn.disabled = index === 0;
-            nextBtn.disabled = !answers[index];
-            
-            updateProgress();
-        }
-
-        // Check Answer
-        function checkAnswer() {
-            const userAnswer = input.value.trim().toUpperCase();
-            const correctAnswer = questions[index].a;
-            
-            if (!userAnswer) {
-                showFeedback("wrong");
-                speak("Please enter an answer!");
-                return;
-            }
-            
-            if (userAnswer === correctAnswer) {
-                if (!answers[index]) {
-                    answers[index] = userAnswer;
-                    score++;
-                    updateProgress();
-                    showFeedback("correct");
-                    speak("Correct! Well done!");
-                    
-                    setTimeout(() => {
-                        flyTickToProgress();
-                    }, 200);
-                    
-                    input.disabled = true;
-                    inputRow.classList.add("correct");
-                    checkBtn.disabled = true;
-                    nextBtn.disabled = false;
-                    
-                    if (score === questions.length) {
-                        setTimeout(() => {
-                            showFinalPopup();
-                        }, 1000);
-                    }
-                }
+    // Update Progress Bar
+    function updateProgress() {
+        const boxes = document.querySelectorAll(".progress-box");
+        boxes.forEach((box, i) => {
+            if (answers[i]) {
+                box.classList.add("done");
             } else {
-                showFeedback("wrong");
-                speak("Try again!");
-                input.value = "";
-                input.focus();
-            }
-        }
-
-        // Next Question
-        function nextQuestion() {
-            if (index < questions.length - 1 && answers[index]) {
-                index++;
-                loadQuestion();
-                input.focus();
-            }
-        }
-
-        // Previous Question
-        function prevQuestion() {
-            if (index > 0) {
-                index--;
-                loadQuestion();
-                input.focus();
-            }
-        }
-
-        // Restart Quiz
-        function restartQuiz() {
-            index = 0;
-            score = 0;
-            answers.fill(null);
-            finalPopup.style.display = "none";
-            initProgress();
-            loadQuestion();
-            speak("Quiz restarted! Good luck!");
-        }
-
-        // Input handler
-        input.oninput = () => {
-            if (!answers[index]) {
-                checkBtn.disabled = !input.value.trim();
-            }
-        };
-
-        // Enter key support
-        input.addEventListener("keypress", (e) => {
-            if (e.key === "Enter" && !checkBtn.disabled) {
-                checkAnswer();
+                box.classList.remove("done");
             }
         });
+    }
 
-        // Event Listeners
-        checkBtn.onclick = checkAnswer;
-        prevBtn.onclick = prevQuestion;
-        nextBtn.onclick = nextQuestion;
-        document.getElementById("restartBtn").onclick = restartQuiz;
+    // Show Feedback Popup (big circle)
+    function showFeedback(type) {
+        feedbackPopup.style.display = "flex";
+        feedbackCircle.className = "feedback-circle " + type;
+        feedbackCircle.textContent = type === "correct" ? "✔" : "✖";
+        setTimeout(() => {
+            feedbackPopup.style.display = "none";
+        }, 800);
+    }
 
-        // Initialize
+    // Fly Tick Animation
+    function flyTickToProgress() {
+        const target = document.querySelector(`.progress-box:nth-child(${index + 1})`);
+        if (!target) return;
+        
+        const from = feedbackCircle.getBoundingClientRect();
+        const to = target.getBoundingClientRect();
+        
+        flyTick.style.transition = "none";
+        flyTick.style.opacity = "1";
+        flyTick.style.left = from.left + from.width / 2 + "px";
+        flyTick.style.top = from.top + from.height / 2 + "px";
+        
+        flyTick.offsetHeight;
+        flyTick.style.transition = "all 0.8s cubic-bezier(0.34, 1.2, 0.64, 1)";
+        flyTick.style.left = to.left + to.width / 2 + "px";
+        flyTick.style.top = to.top + to.height / 2 + "px";
+        flyTick.style.transform = "translate(-50%, -50%) scale(0.3)";
+        
+        setTimeout(() => {
+            flyTick.style.opacity = "0";
+            flyTick.style.transform = "translate(-50%, -50%) scale(1)";
+        }, 800);
+    }
+
+    // Show Final Popup
+    function showFinalPopup() {
+        finalScoreText.textContent = `Score: ${score} / ${questions.length}`;
+        const stars = "⭐".repeat(score) + "☆".repeat(questions.length - score);
+        finalStars.textContent = stars;
+        finalPopup.style.display = "flex";
+        speak("Congratulations! You completed the quiz!");
+    }
+
+    // Load Question
+    function loadQuestion() {
+        const current = questions[index];
+        qText.textContent = current.q;
+        qImg.src = current.img;
+        
+        input.value = answers[index] || "";
+        input.disabled = !!answers[index];
+        inputRow.classList.toggle("correct", !!answers[index]);
+        checkBtn.disabled = !!answers[index] || !input.value.trim();
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = !answers[index];
+        
+        updateProgress();
+    }
+
+    // Check Answer
+    function checkAnswer() {
+        let userAnswer = input.value.trim().toUpperCase();
+        const correctAnswer = questions[index].a;
+        
+        if (!userAnswer) {
+            showFeedback("wrong");
+            speak("Please enter an answer!");
+            return;
+        }
+        
+        // For 3rd question, also accept with space
+        if (index === 2) {
+            // Allow "ANDHRA PRADESH" or "ANDHRAPRADESH"
+            if (userAnswer === "ANDHRA PRADESH" || userAnswer === "ANDHRAPRADESH") {
+                userAnswer = "ANDHRAPRADESH";
+            }
+        }
+        
+        if (isAnswerCorrect(userAnswer, correctAnswer, index)) {
+            if (!answers[index]) {
+                answers[index] = userAnswer;
+                score++;
+                updateProgress();
+                showFeedback("correct");
+                speak("Correct!");
+                
+                setTimeout(() => {
+                    flyTickToProgress();
+                }, 200);
+                
+                input.disabled = true;
+                inputRow.classList.add("correct");
+                checkBtn.disabled = true;
+                nextBtn.disabled = false;
+                
+                if (score === questions.length) {
+                    setTimeout(() => {
+                        showFinalPopup();
+                    }, 1000);
+                }
+            }
+        } else {
+            showFeedback("wrong");
+            speak("Try again!");
+            input.value = "";
+            input.focus();
+        }
+    }
+
+    // Next Question
+    function nextQuestion() {
+        if (index < questions.length - 1 && answers[index]) {
+            index++;
+            loadQuestion();
+            input.focus();
+        }
+    }
+
+    // Previous Question
+    function prevQuestion() {
+        if (index > 0) {
+            index--;
+            loadQuestion();
+            input.focus();
+        }
+    }
+
+    // Restart Quiz
+    function restartQuiz() {
+        index = 0;
+        score = 0;
+        answers.fill(null);
+        finalPopup.style.display = "none";
         initProgress();
         loadQuestion();
-    </script>
+        speak("Quiz restarted! Good luck!");
+    }
+
+    // Input handler
+    input.oninput = () => {
+        if (!answers[index]) {
+            checkBtn.disabled = !input.value.trim();
+        }
+    };
+
+    // Enter key support
+    input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter" && !checkBtn.disabled) {
+            checkAnswer();
+        }
+    });
+
+    // Event Listeners
+    checkBtn.onclick = checkAnswer;
+    prevBtn.onclick = prevQuestion;
+    nextBtn.onclick = nextQuestion;
+    document.getElementById("restartBtn").onclick = restartQuiz;
+
+    // Initialize
+    initProgress();
+    loadQuestion();
+</script>
 
 </body>
 </html>
