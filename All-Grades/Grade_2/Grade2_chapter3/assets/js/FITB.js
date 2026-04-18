@@ -73,34 +73,26 @@ const flyTick = document.getElementById("flyTick");
 const canvas = document.getElementById("chainCanvas");
 const ctx = canvas.getContext("2d");
 
-function speak(text){
+// FIXED: Improved speech function with iOS compatibility
+let isSpeaking = false;
+let speechQueue = [];
+
+function speak(text) {
+  // Cancel any ongoing speech
   window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = "en-Uk";
-   u.volume = 0.25;
-  u.rate = 1;
-  window.speechSynthesis.speak(u);
+  
+  // Small delay to ensure cancel completes (especially important on iOS)
+  setTimeout(() => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US";
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+    
+    // iOS requires user interaction first, but we're calling this from user-triggered events
+    window.speechSynthesis.speak(utterance);
+  }, 50);
 }
-
-
-
-
-
-
-// function speak(t) {
-//   speechSynthesis.cancel(); // optional but recommended
-
-//   const msg = new SpeechSynthesisUtterance(t);
-//   msg.lang = "en-UK";
-//   msg.volume = 0.25;
-//   msg.rate = 1;
-//   msg.pitch = 1;
-
-//   speechSynthesis.speak(msg);
-// }
-
-
-
 
 /* shuffle tiles */
 function shuffle(arr) {
@@ -175,16 +167,11 @@ function renderLetters(q) {
     btn.textContent = letter;
     lettersBox.appendChild(btn);
 
-    btn.addEventListener("pointerenter", () => {
-      // ✅ swipe selecting while holding
-      if (!isSwiping) return;
-      addLetter(btn, letter);
-    });
-
+    // FIXED: Removed pointerenter to prevent rapid chaining
+    // Only use pointerdown for selection
     btn.addEventListener("pointerdown", (e) => {
       e.preventDefault();
       if (locked[index]) return;
-      startSwipe();
       addLetter(btn, letter);
     });
   });
@@ -200,18 +187,12 @@ function renderLetters(q) {
   }
 }
 
-/* swipe system */
-let isSwiping = false;
-
-function startSwipe() {
-  if (locked[index]) return;
-  isSwiping = true;
-}
-function stopSwipe() {
-  isSwiping = false;
-}
+// FIXED: Removed swipe system entirely to prevent letter chaining
+// No more isSwiping, startSwipe, stopSwipe functions
 
 /* add letter */
+let addLetterTimeout = null;
+
 function addLetter(btn, letter) {
   const q = questions[index];
   if (locked[index]) return;
@@ -230,7 +211,9 @@ function addLetter(btn, letter) {
 
   // auto check when full
   if (typed.length === q.answer.length) {
-    setTimeout(checkAnswer, 250);
+    // Clear any pending timeout to prevent duplicate checks
+    if (addLetterTimeout) clearTimeout(addLetterTimeout);
+    addLetterTimeout = setTimeout(checkAnswer, 250);
   }
 }
 
@@ -286,15 +269,12 @@ function flyTickToProgress(circleIndex) {
 function checkAnswer() {
   const q = questions[index];
 
-  // lock further tile selections
-  stopSwipe();
-
   if (typed === q.answer) {
     locked[index] = true;
     score++;
 
     showFeedback("correct");
-    speak("Correct");
+    speak("Correct!");
     nextBtn.disabled = false;
     backBtn.disabled = true;
 
@@ -311,7 +291,7 @@ function checkAnswer() {
     }
   } else {
     showFeedback("wrong");
-    speak("Try again");
+    speak("Try again!");
 
     // reset and give chance again
     setTimeout(() => {
@@ -368,7 +348,7 @@ function showFinal() {
     `Score: ${score} / ${questions.length}`;
   document.getElementById("finalStars").textContent = "⭐".repeat(score);
   document.getElementById("finalPopup").style.display = "flex";
-  speak("Congratulations");
+  // speak("Congratulations! You completed all the questions!");
 }
 
 function restart() {
@@ -396,9 +376,7 @@ nextBtn.onclick = () => {
 backBtn.onclick = backspace;
 document.getElementById("restartBtn").onclick = restart;
 
-/* stop swipe anywhere */
-window.addEventListener("pointerup", stopSwipe);
-window.addEventListener("pointercancel", stopSwipe);
+// FIXED: Removed swipe-related event listeners
 window.addEventListener("resize", () => {
   resizeCanvas();
   drawChain();
