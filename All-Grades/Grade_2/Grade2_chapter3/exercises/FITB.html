@@ -1254,7 +1254,7 @@
         const stars = "⭐".repeat(score) + "☆".repeat(questions.length - score);
         finalStars.textContent = stars;
         finalPopup.style.display = "flex";
-        speak("Congratulations! You completed the quiz!");
+
     }
 
     // Load Question
@@ -1349,7 +1349,7 @@
         finalPopup.style.display = "none";
         initProgress();
         loadQuestion();
-        speak("Quiz restarted! Good luck!");
+        // speak("Quiz restarted! Good luck!");
     }
 
     // Input handler
