@@ -14,7 +14,7 @@ const quizData = [
   {
     q: "Shark is a ____ animal.",
     a: "water",
-    qImg: "../assets/images/M-5.png",
+    qImg: "../assets/images/shark.png",
   },
 
   {
@@ -26,7 +26,7 @@ const quizData = [
   {
     q: "____ is a flesh eating animal.",
     a: "tiger",
-    qImg: "../assets/images/MCQ_2.png",
+    qImg: "../assets/images/tiger.png",
   },
 ];
 
