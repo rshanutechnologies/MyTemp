@@ -125,6 +125,10 @@ cursor:not-allowed;
 transform:none;
 
 }
+
+.correctAnswer:disabled{
+    opacity:2.5;
+}
 /* NAV */
 
 .nav{

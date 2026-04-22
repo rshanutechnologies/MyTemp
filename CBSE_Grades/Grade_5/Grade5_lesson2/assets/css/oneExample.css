@@ -83,6 +83,10 @@ object-fit:contain;
 outline:5px solid #2ecc71;
 }
 
+.option.correctAnswer:disabled{
+    opacity: 2;;
+}
+
 /* NAV */
 
 .nav{

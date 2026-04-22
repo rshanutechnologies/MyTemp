@@ -339,14 +339,15 @@ flex:1;
 
 .right{
 flex:1;
+gap:17px
 }
 
 /* smaller text boxes */
 
 .box{
-font-size:12px;
-padding:8px 30px 8px 8px;
-min-height:45px;
+font-size:18px;
+padding:18px; 
+min-height:75px;
 }
 
 /* smaller images */
@@ -377,6 +378,59 @@ font-size:36px;
 
 }
 
+@media(max-width:468px){
+
+.matching{
+gap:20px;
+}
+
+/* balanced columns */
+
+.left{
+flex:1;
+
+}
+
+.right{
+flex:1;
+gap: 23px;
+}
+
+/* smaller text boxes */
+
+.box{
+font-size:12px;
+padding:8px;
+min-height:65px;
+}
+
+/* smaller images */
+
+.right img{
+width:20px !important;
+height:20px !important;
+}
+
+
+.final{
+width:90%;
+padding:40px;
+}
+
+.final h2{
+font-size:26px;
+}
+
+.final h3{
+font-size:22px;
+}
+
+.star{
+font-size:36px;
+}
+
+
+}
 
 
 
@@ -401,8 +455,8 @@ padding:12px 14px;
 }
 
 .right img{
-width:75px !important;
-height:75px !important;
+width:65px !important;
+height:65px !important;
 }
 
 .dot{
@@ -416,7 +470,7 @@ gap:1px;
 }
 
 .right{
-gap:1px;
+gap:15px;
 padding: 0px;
 }
 }
