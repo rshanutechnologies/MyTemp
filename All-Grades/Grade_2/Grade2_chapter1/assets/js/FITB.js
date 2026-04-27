@@ -26,12 +26,57 @@ const questions = [
   },
 ];
 
+
+window.addEventListener("drop", e => e.preventDefault(), true);
+window.addEventListener("dragover", e => e.preventDefault(), true);
+
 let index = 0,
   score = 0;
 const answers = Array(5).fill(null);
 
 const qText = document.getElementById("questionText");
 const input = document.getElementById("answerInput");
+/* 🚫 BLOCK DROP */
+input.addEventListener("drop", (e) => {
+  e.preventDefault();
+});
+
+/* 🚫 BLOCK PASTE */
+input.addEventListener("paste", (e) => {
+  e.preventDefault();
+});
+
+/* 🚫 BLOCK RIGHT CLICK */
+input.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+/* ✅ CLEAN BAD INPUT (FIXES URL / IMAGE DROP BUG) */
+input.addEventListener("input", () => {
+
+  let val = input.value;
+
+  // 🚨 remove unwanted injected text (your bug)
+  if (
+    val.includes("http") ||
+    val.includes("www.") ||
+    val.includes("blob:") ||
+    val.includes("data:") ||
+    val.match(/\.(png|jpg|jpeg|gif|webp)$/i)
+  ) {
+    input.value = "";
+    checkBtn.disabled = true;
+    return;
+  }
+
+  // ✅ allow only letters + space
+  input.value = val.replace(/[^a-zA-Z ]/g, "");
+
+  // enable button correctly
+  if (!answers[index]) {
+    checkBtn.disabled = !input.value.trim();
+  }
+});
 const checkBtn = document.getElementById("checkBtn");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");

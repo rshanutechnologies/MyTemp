@@ -90,6 +90,9 @@ input.oninput = () => {
   if (!answers[index]) check.disabled = !input.value.trim();
 };
 
+input.addEventListener("dragover", (e) => e.preventDefault());
+input.addEventListener("drop", (e) => e.preventDefault());
+
 check.onclick = () => {
   if (input.value.trim().toLowerCase() === questions[index].a) {
     answers[index] = questions[index].a;

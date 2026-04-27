@@ -204,6 +204,36 @@ nextBtn.onclick = () => {
 const popup = document.getElementById("popup");
 const popupText = document.getElementById("popupText");
 
+const imageBox = document.getElementById("image"); // your image element
+
+/* PREVENT DEFAULT BEHAVIOR */
+document.addEventListener("dragover", e => e.preventDefault());
+document.addEventListener("drop", e => e.preventDefault());
+
+imageBox.addEventListener("dragover", (e)=>{
+  e.preventDefault();
+  imageBox.style.border = "px dashed #4cc9f0";
+});
+
+/* DROP EVENT */
+imageBox.addEventListener("drop", (e)=>{
+  e.preventDefault();
+
+  imageBox.style.border = "none";
+
+  const file = e.dataTransfer.files[0];
+
+  if(file && file.type.startsWith("image/")){
+
+    const reader = new FileReader();
+
+    reader.onload = function(event){
+      imageBox.src = event.target.result; // show image
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
 function showPopup(html, final = false) {
   popup.style.display = "flex";
 

@@ -15,7 +15,7 @@ const questions = [
     img: "../assets/images/fb3-img.png",
   },
   {
-    q: "Q4. Plants take in the __________from the soil, with the help of water, through their ___________",
+    q: "Q4. Plants take in the __________ from the soil, with the help of water, through their ___________",
     a: ["minerals", "roots"],
     img: "../assets/images/fb4-img.png",
   },
@@ -25,97 +25,53 @@ const questions = [
     img: "../assets/images/fb5-img.png",
   },
 ];
-const singleInputBox = document.getElementById("singleInputBox");
-const doubleInputBox = document.getElementById("doubleInputBox");
-const singleCheck = document.getElementById("singleCheck");
-const doubleCheck = document.getElementById("doubleCheck");
 
-const input1 = document.getElementById("answerInput1");
-const input2 = document.getElementById("answerInput2");
-const check1 = document.getElementById("checkBtn1");
-const check2 = document.getElementById("checkBtn2");
+let index = 0;
+let score = 0;
+const answers = Array(questions.length).fill(null);
 
-let index = 0,
-  score = 0;
-const answers = Array(5).fill(null);
-
+/* ELEMENTS */
 const qImg = document.getElementById("qImg");
 const qText = document.getElementById("qText");
-const qCount = document.getElementById("qCount");
+
 const input = document.getElementById("answerInput");
+const input1 = document.getElementById("answerInput1");
+const input2 = document.getElementById("answerInput2");
+
 const check = document.getElementById("checkBtn");
 const prev = document.getElementById("prevBtn");
 const next = document.getElementById("nextBtn");
 
-function updateButtons() {
+const singleInputBox = document.getElementById("singleInputBox");
+const doubleInputBox = document.getElementById("doubleInputBox");
 
-  // ✅ If already answered → allow NEXT only
-  if (answers[index]) {
-    check.disabled = true;
-    check1.disabled = true;
-    check2.disabled = true;
-    next.disabled = false;
-    return;
-  }
+/* ========================= */
+/* LOAD */
+/* ========================= */
 
-  // ✅ SINGLE INPUT
-  if (!input.disabled) {
-    check.disabled = !input.value.trim();
-  } else {
-    check.disabled = true;
-  }
+function load(){
 
-  // ✅ DOUBLE INPUT
-  if (!input1.disabled) {
-    check1.disabled = !input1.value.trim();
-  } else {
-    check1.disabled = true;
-  }
-
-  if (!input2.disabled) {
-    check2.disabled = !input2.value.trim();
-  } else {
-    check2.disabled = true;
-  }
-
-  // 🔒 LOCK NEXT UNTIL CORRECT
-  next.disabled = true;
-}
-
-function load() {
   const q = questions[index];
-  next.disabled = true;
+
   qImg.src = q.img;
   qText.textContent = q.q;
-  qCount.textContent = ``;
 
   prev.disabled = index === 0;
- 
+  next.disabled = true;
 
-  // RESTORE SAVED ANSWER
-  if (answers[index]) {
-
-    input.value = answers[index];
-    input.disabled = true;
-    check.disabled = true;
-
-  } else {
-
-    input.value = "";
-    input.disabled = false;
-    check.disabled = true;
-
-  }
-  if (index === 0 || index === 3) {
-
+  /* DOUBLE INPUT */
+  if(Array.isArray(q.a)){
     singleInputBox.style.display = "none";
-    singleCheck.style.display = "none";
-
     doubleInputBox.style.display = "flex";
-    doubleCheck.style.display = "flex";
+  }else{
+    singleInputBox.style.display = "flex";
+    doubleInputBox.style.display = "none";
+  }
 
-    if (answers[index]) {
+  /* RESTORE ANSWER */
+  if(answers[index]){
 
+    if(Array.isArray(q.a)){
       const parts = answers[index].split(" ");
 
       input1.value = parts[0] || "";
@@ -124,181 +80,211 @@ function load() {
       input1.disabled = true;
       input2.disabled = true;
 
-      check1.disabled = true;
-      check2.disabled = true;
-
-      next.disabled = false;
-
-    } else {
-
-      input1.value = "";
-      input2.value = "";
-
-      input1.disabled = false;
-      input2.disabled = false;
-
-      check1.disabled = true;
-      check2.disabled = true;
-
-      next.disabled = true;
+    }else{
+      input.value = answers[index];
+      input.disabled = true;
     }
 
-  } else {
-    singleInputBox.style.display = "flex";
-    singleCheck.style.display = "flex";
+    check.disabled = true;
+    next.disabled = false;
 
-    doubleInputBox.style.display = "none";
-    doubleCheck.style.display = "none";
+  }else{
+
+    input.value = "";
+    input1.value = "";
+    input2.value = "";
+
+    input.disabled = false;
+    input1.disabled = false;
+    input2.disabled = false;
+
+    check.disabled = true;
   }
-  input.focus();
-  updateButtons();
 }
 
+/* ========================= */
+/* ENABLE CHECK BUTTON */
+/* ========================= */
 
-input.oninput = updateButtons;
+function updateCheckBtn(){
 
-/* ✅ ADD BELOW THIS */
-
-input1.oninput = updateButtons;
-input2.oninput = updateButtons;
-
-function speak(t) {
-  speechSynthesis.cancel();
-
-  const msg = new SpeechSynthesisUtterance(t);
-
-  msg.lang = "en-UK";
-  msg.volume = 0.25;
-  msg.rate = 1;
-  msg.pitch = 1;
-
-  speechSynthesis.speak(msg);
+  if(Array.isArray(questions[index].a)){
+    check.disabled = !(input1.value.trim() && input2.value.trim());
+  }else{
+    check.disabled = !input.value.trim();
+  }
 }
+
+input.oninput = updateCheckBtn;
+input1.oninput = updateCheckBtn;
+input2.oninput = updateCheckBtn;
+
+/* ========================= */
+/* CHECK ANSWER */
+/* ========================= */
+
 check.onclick = () => {
-  const typed = input.value.trim().toLowerCase();
 
-  if (typed === questions[index].a.toLowerCase()) {
-    answers[index] = typed;
+  let isCorrect = false;
+
+  if(Array.isArray(questions[index].a)){
+
+    const val1 = input1.value.trim().toLowerCase();
+    const val2 = input2.value.trim().toLowerCase();
+
+    const correct1 = questions[index].a[0].toLowerCase();
+    const correct2 = questions[index].a[1].toLowerCase();
+
+    isCorrect = (val1 === correct1 && val2 === correct2);
+
+    if(isCorrect){
+      answers[index] = val1 + " " + val2;
+    }
+
+  }else{
+
+    const typed = input.value.trim().toLowerCase();
+    const correct = questions[index].a.toLowerCase();
+
+    isCorrect = (typed === correct);
+
+    if(isCorrect){
+      answers[index] = typed;
+    }
+  }
+
+  if(isCorrect){
+
     score++;
 
     speak("Correct");
     showPopup(true);
 
     input.disabled = true;
-    check.disabled = true;
-    next.disabled = false;
-    updateButtons();
-
-    // 🔥 show final popup automatically on last question
-    if (index === questions.length - 1) {
-      setTimeout(showFinal, 1000);
-    }
-
-  } else {
-    speak("Wrong");
-    showPopup(false);
-    input.value = "";
-    check.disabled = true;
-  }
-};
-check1.onclick = () => {
-
-  const val1 = input1.value.trim().toLowerCase();
-  const correct1 = questions[index].a[0].toLowerCase();
-
-  if (val1 === correct1) {
-    speak("Correct");
-    showPopup(true);
     input1.disabled = true;
-
-  } else {
-    speak("Wrong");
-    showPopup(false);
-    input1.value = "";
-  }
-
-  updateButtons();   // ⭐ ADD THIS
-  checkBothFilled();
-};
-check2.onclick = () => {
-
-  const val2 = input2.value.trim().toLowerCase();
-  const correct2 = questions[index].a[1].toLowerCase();
-
-  if (val2 === correct2) {
-    speak("Correct");
-    showPopup(true);
     input2.disabled = true;
 
-  } else {
+    check.disabled = true;
+    next.disabled = false;
+
+    if(index === questions.length - 1){
+      setTimeout(showFinal,1000);
+    }
+
+  }else{
+
     speak("Wrong");
     showPopup(false);
-    input2.value = "";
-  }
 
-  updateButtons();   // ⭐ ADD THIS
-  checkBothFilled();
+    if(Array.isArray(questions[index].a)){
+      input1.value = "";
+      input2.value = "";
+    }else{
+      input.value = "";
+    }
+
+    check.disabled = true;
+  }
 };
-function checkBothFilled() {
 
-  if (input1.disabled && input2.disabled) {
+/* ========================= */
+/* NAV */
+/* ========================= */
 
-    answers[index] = input1.value + " " + input2.value;
-    score++;
-
-    next.disabled = false;
-  }
-
-  updateButtons();   // ⭐ ADD THIS
-}
 prev.onclick = () => {
   index--;
   load();
 };
 
-
 next.onclick = () => {
-  if (!answers[index]) return;
-
-  if (index === questions.length - 1) {
-    showFinal();
-    return;
-  }
+  if(!answers[index]) return;
 
   index++;
   load();
 };
 
+/* ========================= */
+/* POPUP */
+/* ========================= */
 
+function showPopup(isCorrect){
 
-function showPopup(isCorrect) {
   const popup = document.getElementById("answerPopup");
   const icon = document.getElementById("popupIcon");
   const title = document.getElementById("popupTitle");
   const msg = document.getElementById("popupMsg");
+
   popup.className = "popup " + (isCorrect ? "correct" : "wrong");
   popup.style.display = "flex";
-  if (isCorrect) {
+
+  if(isCorrect){
     icon.textContent = "🎉";
     title.textContent = "Correct!";
     msg.textContent = "Well done!";
-  } else {
+  }else{
     icon.textContent = "😔";
     title.textContent = "Wrong!";
     msg.textContent = "Try again!";
   }
-  setTimeout(() => {
-    popup.style.display = "none";
-  }, 1200);
+
+  setTimeout(()=>popup.style.display="none",1200);
 }
 
-function showFinal() {
-  const finalPopup = document.getElementById("finalPopup");
-  finalPopup.style.display = "flex";
+/* ========================= */
+/* FINAL */
+/* ========================= */
 
-  document.getElementById("finalScore").textContent = `Score: ${score}/5`;
+function showFinal(){
+  document.getElementById("finalPopup").style.display="flex";
+  document.getElementById("finalScore").textContent =
+    `Score: ${score}/${questions.length}`;
   document.getElementById("stars").textContent = "⭐".repeat(score);
 }
 
+/* ========================= */
+/* SPEECH */
+/* ========================= */
 
+function speak(t){
+  speechSynthesis.cancel();
+  const msg = new SpeechSynthesisUtterance(t);
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  speechSynthesis.speak(msg);
+}
+
+/* ========================= */
+/* DRAG FIX */
+/* ========================= */
+
+document.addEventListener("dragover", e => e.preventDefault());
+document.addEventListener("drop", e => e.preventDefault());
+
+input.addEventListener("drop", e => e.preventDefault());
+input1.addEventListener("drop", e => e.preventDefault());
+input2.addEventListener("drop", e => e.preventDefault());
+
+qImg.addEventListener("dragover", e=>{
+  e.preventDefault();
+  qImg.style.border="3px dashed #4cc9f0";
+});
+
+qImg.addEventListener("dragleave", ()=>{
+  qImg.style.border="none";
+});
+
+qImg.addEventListener("drop", e=>{
+  e.preventDefault();
+  qImg.style.border="none";
+
+  const file = e.dataTransfer.files[0];
+
+  if(file && file.type.startsWith("image/")){
+    const reader = new FileReader();
+    reader.onload = ev => qImg.src = ev.target.result;
+    reader.readAsDataURL(file);
+  }
+});
+
+/* START */
 load();

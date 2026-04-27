@@ -58,17 +58,30 @@ letters.addEventListener("input", (e) => {
     inputs[idx + 1].focus();
   }
 
-  checkBtn.disabled = inputs.some((i) => !i.value);
+checkBtn.disabled = inputs.some((i) => !i.value.trim());
 });
 
 letters.addEventListener("keydown", (e) => {
   const inputs = [...letters.querySelectorAll("input")];
   const idx = inputs.indexOf(e.target);
 
+  // ❌ block SPACE
+  if (e.key === " ") {
+    e.preventDefault();
+    return;
+  }
+
   if (e.key === "Backspace" && !e.target.value && idx > 0) {
     inputs[idx - 1].focus();
   }
 });
+
+// ❌ block paste
+letters.addEventListener("paste", (e) => e.preventDefault());
+
+// ❌ block drag/drop (images or text)
+letters.addEventListener("drop", (e) => e.preventDefault());
+letters.addEventListener("dragover", (e) => e.preventDefault());
 
 // ================= SPEAK =================
 // function speak(t) {
@@ -188,18 +201,22 @@ const words = answer.split(" ");
 
 // ================= CHECK ANSWER =================
 checkBtn.onclick = () => {
-  const user = [...letters.querySelectorAll(".word-group")]
-    .map((group) =>
-      [...group.querySelectorAll("input")].map((i) => i.value).join(""),
-    )
-    .join(" ")
-    .toLowerCase();
-
+const user = [...letters.querySelectorAll(".word-group")]
+  .map((group) =>
+    [...group.querySelectorAll("input")]
+      .map((i) => i.value.trim())
+      .join("")
+  )
+  .join(" ")
+  .trim();
 const correctAnswer = (
   isMobile()
     ? (questions[index].a_mobile || questions[index].a)
     : questions[index].a
-).toLowerCase();
+)
+  .toLowerCase()
+  .replace(/\s+/g, " ")
+  .trim();
 
 if (user === correctAnswer) {
     answered[index] = true;

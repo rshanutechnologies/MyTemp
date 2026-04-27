@@ -45,6 +45,19 @@ const qImg = (qText = answerInput = submitBtn = null);
 const qImgEl = document.getElementById("qImg");
 const qTextEl = document.getElementById("qText");
 const input = document.getElementById("answerInput");
+// 🚫 Block drag & drop inside input
+input.addEventListener("dragover", (e) => e.preventDefault());
+input.addEventListener("drop", (e) => e.preventDefault());
+
+// 🚫 Block paste
+input.addEventListener("paste", (e) => e.preventDefault());
+
+// 🚫 Block SPACE key
+input.addEventListener("keydown", (e) => {
+  if (e.key === " ") {
+    e.preventDefault();
+  }
+});
 const submit = document.getElementById("submitBtn");
 const prev = document.getElementById("prevBtn");
 const next = document.getElementById("nextBtn");

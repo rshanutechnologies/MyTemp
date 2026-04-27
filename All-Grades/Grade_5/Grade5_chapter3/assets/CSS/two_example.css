@@ -655,7 +655,7 @@ button {
   font-size: 44px;
   min-height: 140px;
   margin-bottom: 40px;
-  width: 100vw;
+  width: 80vw !important;
 
   display: flex;
   justify-content: flex-start;

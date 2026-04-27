@@ -498,18 +498,39 @@
 
       for (let k = 0; k < q.a.length; k++) {
         const input = document.createElement("input");
+
+        input.addEventListener("paste", e => e.preventDefault());
+input.addEventListener("drop", e => e.preventDefault());
+input.addEventListener("contextmenu", e => e.preventDefault());
+
         input.className = "char-box";
         input.maxLength = 1;
         input.setAttribute('autocomplete', 'off');
         letterRow.appendChild(input);
 
-        input.oninput = function () {
-          if (this.value.length === 1) {
-            const n = this.nextElementSibling;
-            if (n) n.focus(); else checkAnswer();
-          }
-        };
+        // input.oninput = function () {
+        //   if (this.value.length === 1) {
+        //     const n = this.nextElementSibling;
+        //     if (n) n.focus(); else checkAnswer();
+        //   }
+        // };
 
+        input.oninput = function () {
+
+  let val = this.value.toUpperCase();
+
+  // 🚫 allow ONLY A-Z
+  val = val.replace(/[^A-Z]/g, "");
+
+  // keep only 1 letter
+  this.value = val.slice(0, 1);
+
+  if (this.value.length === 1) {
+    const n = this.nextElementSibling;
+    if (n) n.focus();
+    else checkAnswer();
+  }
+};
         input.onkeydown = e => {
           if (e.key === "Backspace" && !input.value) {
             const p = input.previousElementSibling;

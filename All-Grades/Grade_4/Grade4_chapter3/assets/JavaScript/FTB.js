@@ -78,10 +78,13 @@ input.oninput = () => {
   if (!answers[index]) check.disabled = !input.value.trim();
 };
 
+input.addEventListener("dragover", (e) => e.preventDefault());
+input.addEventListener("drop", (e) => e.preventDefault());
+
 function speak(t) {
-  speechSynthesis.cancel();   
+  speechSynthesis.cancel();
   const msg = new SpeechSynthesisUtterance(t);
-  msg.volume = 0.1;   // 🔉 lower volume (0 to 1)
+  msg.volume = 0.1; // 🔉 lower volume (0 to 1)
   msg.rate = 1;
   msg.pitch = 1;
 

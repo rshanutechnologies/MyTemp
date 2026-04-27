@@ -113,6 +113,9 @@ function load() {
       btn.disabled = input.value.trim() === "";
     });
 
+    input.addEventListener("dragover", (e) => e.preventDefault());
+    input.addEventListener("drop", (e) => e.preventDefault());
+
     if (userAnswers[index].boxes[i].correct) {
       box.classList.add("correct");
       input.disabled = true;

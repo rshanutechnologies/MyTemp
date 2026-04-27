@@ -37,6 +37,19 @@ const userAnswers = Array(quizData.length).fill("");
 const qEl = document.getElementById("question");
 const imgEl = document.getElementById("questionImg");
 const input = document.getElementById("answerInput");
+// 🚫 Block drag & drop inside input
+input.addEventListener("dragover", (e) => e.preventDefault());
+input.addEventListener("drop", (e) => e.preventDefault());
+
+// 🚫 Block paste
+input.addEventListener("paste", (e) => e.preventDefault());
+
+// 🚫 Block SPACE key
+input.addEventListener("keydown", (e) => {
+  if (e.key === " ") {
+    e.preventDefault();
+  }
+});
 const submitBtn = document.getElementById("submitBtn");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
@@ -45,6 +58,9 @@ const popupText = document.getElementById("popupText");
 
 
 input.addEventListener("input", () => {
+  // ❌ remove spaces automatically
+  input.value = input.value.replace(/\s/g, "");
+
   submitBtn.disabled = input.value.trim() === "";
 });
 

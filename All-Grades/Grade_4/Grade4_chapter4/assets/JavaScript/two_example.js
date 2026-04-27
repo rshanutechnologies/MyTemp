@@ -70,6 +70,9 @@ function load() {
 
 input.oninput = () => (submit.disabled = input.value.trim() === "");
 
+input.addEventListener("dragover", (e) => e.preventDefault());
+input.addEventListener("drop", (e) => e.preventDefault());
+
 submit.onclick = () => {
   if (input.value.trim().toLowerCase() === questions[current].a) {
     answers[current] = input.value;

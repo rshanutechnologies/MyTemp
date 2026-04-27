@@ -144,6 +144,20 @@ const input = document.createElement("input");
 input.type = "text";
 input.placeholder = "Type answer here...";
 
+// 🚫 Block drag & drop
+input.addEventListener("dragover", (e) => e.preventDefault());
+input.addEventListener("drop", (e) => e.preventDefault());
+
+// 🚫 Block paste
+input.addEventListener("paste", (e) => e.preventDefault());
+
+// 🚫 Block SPACE key
+input.addEventListener("keydown", (e) => {
+  if (e.key === " ") {
+    e.preventDefault();
+  }
+});
+
 inputsContainer.appendChild(input);
 
 });

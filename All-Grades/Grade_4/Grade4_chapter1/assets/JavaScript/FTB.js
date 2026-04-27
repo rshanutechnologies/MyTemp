@@ -89,6 +89,9 @@ input.oninput = () => {
   if (!answers[index]) checkBtn.disabled = !input.value.trim();
 };
 
+input.addEventListener("dragover", (e) => e.preventDefault());
+input.addEventListener("drop", (e) => e.preventDefault());
+
 checkBtn.onclick = () => {
   const user = input.value.trim().toLowerCase();
   const correct = questions[index].a.toLowerCase();
@@ -109,6 +112,7 @@ checkBtn.onclick = () => {
     speak("Wrong");
     showPopup(false);
     input.value = "";
+    checkBtn.disabled = true;
   }
 };
 

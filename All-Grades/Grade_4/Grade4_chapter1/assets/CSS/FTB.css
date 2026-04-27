@@ -15,7 +15,7 @@ body {
 }
 
 .main {
-    width: 800px;
+    width: 950px;
 }
 
 /* PROGRESS */
@@ -80,17 +80,17 @@ body {
 }
 
 .input-row {
-    width: 450px;
+    width: 500px;
     height: 60px;
     display: flex;
     justify-content: space-between;
     gap: 10px;
     margin-inline: auto;
-    background: #ffffff;
-    padding: 0 20px;
+    /* background: #ffffff; */
+    padding: 0px;
     border-radius: 15px;
     align-items: center;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
 }
 
 /* Correct locked state */
@@ -106,10 +106,12 @@ body {
 .input-row input {
     flex: 0.95;
     padding: 12px 18px;
-    /* border-radius: 25px; */
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     border: none;
-    font-size: 18px;
-    height: 50px;
+    font-size: 20px;
+    height: 60px;
     color: #2F4F4F;
 }
 
@@ -121,9 +123,9 @@ body {
 }
 
 .input-row button {
-    width: 50px;
+    width: 100px;
     border: none;
-    padding: 8px 18px;
+    padding: 12px 18px;
     border-radius: 12px;
     background: #db74b0;
     color: #fff;
@@ -415,9 +417,20 @@ button:disabled {
 
     .input-row {
         width: 100%;
-        max-width: 420px;
+        max-width: 460px;
         height: 56px;
         margin-inline: auto;
+    }
+
+    .input-row button {
+        width: 80px;
+        border: none;
+        padding: 8px 10px;
+        border-radius: 12px;
+        background: #db74b0;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
     }
 
     .nav {
@@ -469,11 +482,13 @@ button:disabled {
         max-width: 340px;
         padding: 0 14px;
         margin-inline: auto;
+        gap: 3px;
     }
 
     .input-row input {
         font-size: 16px;
-        padding: 0;
+        height: 40px;
+        padding: 5px 10px;
     }
 }
 
@@ -481,11 +496,12 @@ button:disabled {
    🖥️ LARGE MONITORS (1441px – 1920px)
 ========================================= */
 @media screen and (min-width: 1350px) and (max-width: 1920px) {
-body{
-    margin-top: -50px;
-}
+    body {
+        margin-top: -50px;
+    }
+
     .main {
-        width: 900px;
+        width: 1000px;
         transform: scale(1.05);
         transform-origin: center;
     }
@@ -496,18 +512,27 @@ body{
     }
 
     .question-box img {
-        width: 260px;
-        height: 230px;
+        width: 240px;
+        height: 200px;
+    }
+
+    .input-row button {
+        width: 120px;
+        padding: 14px 18px;
+        font-size: 20px;
     }
 
     .input-row input {
-        font-size: 28px;
+        font-size: 22px;
+        padding: 12px 18px;
+        height: 65px;
     }
-     .nav button {
-        
+
+    .nav button {
+
         font-size: 28px;
         padding: 14px 32px;
-    
+
     }
 }
 
@@ -516,14 +541,19 @@ body{
    📺 EXTRA LARGE / 4K (1921px+)
 ========================================= */
 @media screen and (min-width: 1921px) {
-    
-  body{
-    margin-top: -50px;
-}
+
+    body {
+        margin-top: -50px;
+    }
+
     .main {
-        width: 900px;
+        width: 1200px;
         transform: scale(1.15);
         transform-origin: center;
+    }
+
+    .question-box {
+        width: 100%;
     }
 
     .question {
@@ -531,17 +561,33 @@ body{
     }
 
     .question-box img {
-        width: 300px;
-        height: 250px;
+        width: 220px;
+        height: 200px;
+        margin-top: 50px;
+    }
+
+    .input-row input:focus,
+    .input-row input:active {
+        outline: none;
+        border: none;
+        border-bottom: 2px solid rgb(184, 184, 184);
+    }
+
+    .input-row button {
+        width: 120px;
+        padding: 16px 18px;
+        font-size: 22px;
     }
 
     .input-row input {
-        font-size: 28px;
+        font-size: 25px;
+        padding: 12px 18px;
+        height: 70px;
     }
-     .nav button {
-        
+
+    .nav button {
         font-size: 28px;
         padding: 14px 32px;
-    
+
     }
 }

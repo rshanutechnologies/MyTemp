@@ -343,14 +343,6 @@ body{
   gap:12px;
 }
 
-.double-input input{
-  flex:1;
-  height:45px;
-  border-radius:20px;
-  border:1px solid #d0d0d0;
-  padding:0 15px;
-  font-size:20px;
-}
 
 .double-check{
   display:flex;
@@ -613,4 +605,15 @@ button:disabled{
   color:#fff;
   cursor:pointer;
   font-size:18px;
+}
+
+/* ✅ SAME SIZE FOR BOTH */
+.input-box input,
+.double-input input{
+  flex:1;
+  height:50px;              /* same height */
+  border-radius:30px;
+  border:2px solid #d0d0d0;
+  padding:0 20px;
+  font-size:20px;
 }

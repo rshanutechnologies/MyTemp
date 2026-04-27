@@ -30,12 +30,55 @@ const quizData = [
   },
 ];
 
+
+window.addEventListener("drop", e => e.preventDefault(), true);
+window.addEventListener("dragover", e => e.preventDefault(), true);
+
 let current = 0;
 let answered = Array(quizData.length).fill(false);
 let userAnswers = Array(quizData.length).fill("");
 const question = document.getElementById("question");
 const img = document.getElementById("questionImg");
 const input = document.getElementById("answerInput");
+/* 🚫 BLOCK DROP */
+input.addEventListener("drop", (e) => {
+  e.preventDefault();
+});
+
+/* 🚫 BLOCK PASTE */
+input.addEventListener("paste", (e) => {
+  e.preventDefault();
+});
+
+/* 🚫 BLOCK RIGHT CLICK */
+input.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+/* ✅ CLEAN BAD INPUT (FIXES YOUR BUG) */
+input.addEventListener("input", () => {
+
+  let val = input.value;
+
+  // 🚨 remove URL / dragged image / file path
+  if (
+    val.includes("http") ||
+    val.includes("www.") ||
+    val.includes("blob:") ||
+    val.includes("data:") ||
+    val.match(/\.(png|jpg|jpeg|gif|webp)$/i)
+  ) {
+    input.value = "";
+    checkBtn.disabled = true;
+    return;
+  }
+
+  // ✅ allow only letters
+  input.value = val.replace(/[^a-zA-Z ]/g, "");
+
+  // enable button properly
+  checkBtn.disabled = input.value.trim() === "" || answered[current];
+});
 const popup = document.getElementById("popup");
 const popupText = document.getElementById("popupText");
 const levels = document.querySelectorAll(".level");

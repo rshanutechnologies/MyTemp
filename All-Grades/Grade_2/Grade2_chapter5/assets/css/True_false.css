@@ -399,7 +399,7 @@ canvas {
 
 
 /* ================= 1441px — 1920px ================= */
-@media screen and (min-width:1250px) and (max-width:1920px){
+@media screen and (min-width:1450px) and (max-width:1920px){
 
 .container{
     display: grid;

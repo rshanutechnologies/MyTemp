@@ -2,28 +2,28 @@ const questions = [
   { 
     text: "Animals can prepare their own food.", 
     answer: false,
-    image: "../assets/images/tf1.png"
+    image: "../assets/images/tf.png"
 
   },
   { 
     text: "All animals eat only plants.", 
     answer: false,
-    image: "../assets/images/q2.png"
+    image: "../assets/images/tf2.png"
   },
   {
     text: "Snakes chew their prey.",
     answer: false,
-    image: "../assets/images/q3.png"
+    image: "../assets/images/tf3.png"
   },
   {
     text: "Mosquitoes suck the blood from our body.",
     answer: true,
-    image: "../assets/images/q4.png"
+    image: "../assets/images/tf4.png"
   },
   {
     text: "Animals that gnaw their food have sharp curved teeth.",
     answer: true,
-    image: "../assets/images/q5.png"
+    image: "../assets/images/tf5.png"
   },
 ];
 

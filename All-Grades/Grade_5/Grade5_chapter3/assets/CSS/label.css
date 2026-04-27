@@ -183,17 +183,17 @@
  /* LEFT INPUTS */
  .l1 {
      top: 100px;
-     left: 40px;
+     left: 30px;
  }
 
  .l2 {
      top: 260px;
-     left: 40px;
+     left: 20px;
  }
 
  .l3 {
-     top: 480px;
-     left: 40px;
+     top: 470px;
+     left: 20px;
  }
 
  .l4 {
@@ -205,26 +205,29 @@
 
  .line1 {
      top: 120px;
-     left: 205px;
+     left: 190px;
      width: 150px;
  }
 
  .line2 {
      top: 280px;
-     left: 205px;
+     left: 185px;
      width: 160px;
+     /* background-color: yellow; */
  }
 
  .line3 {
      top: 490px;
-     left: 205px;
+     left: 185px;
      width: 140px;
+      /* background-color: yellow; */
  }
 
  .line8 {
      top: 440px;
      left: 205px;
      width: 240px;
+    
  }
 
  /* NEW */
@@ -232,12 +235,12 @@
  /* RIGHT INPUTS */
  .r1 {
      top: 100px;
-     right: 135px;
+     right: 125px;
  }
 
  .r2 {
      top: 144px;
-     right: 40px;
+     right: 70px;
      /* background-color: yellow; */
  }
 
@@ -248,27 +251,28 @@
 
  .r4 {
      top: 245px;
-     right: 40px;
+     right: 18px;
  }
 
  .r5 {
      top: 370px;
-     right: 40px;
+     right: 28px;
  }
 
  /* NEW */
 
  .line4 {
-     top: 130px;
-     right: 300px;
+     top: 120px;
+     right: 290px;
      width: 120px;
  }
 
  .line5 {
      top: 160px;
-     right: 205px;
+     right: 235px;
      width: 105px;
      /* background-color: yellow; */
+     /* background-color: yellow !important; */
  }
 
  .line6 {
@@ -279,14 +283,16 @@
 
  .line7 {
      top: 265px;
-     right: 205px;
+     right: 180px;
      width: 225px;
+      
  }
 
  .line9 {
      top: 390px;
-     right: 205px;
+     right: 190px;
      width: 170px;
+    
  }
 
  /* NEW */
@@ -530,6 +536,9 @@
 
 @media (min-width: 1280px) {
 
+
+
+   
   /* ===== SCALE WHOLE LAYOUT ===== */
   .wrapper {
     transform: scale(1.2);          /* 🔥 full UI bigger */
@@ -551,24 +560,67 @@
 
  .l3 {
      top: 480px;
-     left: -40px !important;
+     left: -30px !important;
  }
 
  .l4 {
      top: 420px;
-     left: -40px !important;
+     left: -30px !important;
  }
 
 
  
+
+ /* NEW */
+
+ .line1 {
+     top: 120px;
+     left: 205px;
+     width: 150px;
+ }
+
+ .line2 {
+     top: 280px;
+     left: 205px;
+     width: 160px;
+     /* background-color: yellow; */
+ }
+
+ .line3 {
+     top: 490px;
+     left: 215px;
+     width: 140px;
+      /* background-color: yellow; */
+ }
+
+ .line8 {
+     top: 440px;
+     left: 215px;
+     width: 240px;
+    
+ }
+
+
+ 
+  .line9 {
+     top: 390px;
+     right: 210px;
+     width: 170px;
+     /* background-color: yellow; */
+    
+ } .r5 {
+     top: 370px;
+     right: 38px;
+ }
 
 
   .title{
     font-size: 40px !important;
   }
   input{
-    font-size: 25px !important;
+    font-size: 20px !important;
     width: 250px !important;
+    height: 40px !important;
   }
   /* ===== CHECK BUTTON (REAL SIZE) ===== */
   .check-btn {

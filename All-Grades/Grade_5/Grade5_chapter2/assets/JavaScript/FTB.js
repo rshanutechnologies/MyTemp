@@ -33,6 +33,19 @@ const answered = Array(questions.length).fill(false);
 const qEl = document.getElementById("question");
 const img = document.getElementById("image");
 const input = document.getElementById("answer");
+// 🚫 Block drag & drop inside input
+input.addEventListener("dragover", (e) => e.preventDefault());
+input.addEventListener("drop", (e) => e.preventDefault());
+
+// 🚫 Block paste
+input.addEventListener("paste", (e) => e.preventDefault());
+
+// 🚫 Block SPACE key
+input.addEventListener("keydown", (e) => {
+  if (e.key === " ") {
+    e.preventDefault();
+  }
+});
 const checkBtn = document.getElementById("checkBtn");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -69,6 +82,9 @@ function load() {
 }
 
 input.addEventListener("input", () => {
+  // ❌ remove spaces automatically
+  input.value = input.value.replace(/\s/g, "");
+
   checkBtn.disabled = !input.value.trim() || input.disabled;
 });
 

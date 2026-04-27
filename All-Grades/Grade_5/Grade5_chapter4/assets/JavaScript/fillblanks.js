@@ -59,6 +59,29 @@ const qText = document.getElementById("qText");
 const qImg = document.getElementById("qImg");
 const input = document.getElementById("answerInput");
 const input2 = document.getElementById("answerInput2");
+// ===== APPLY SAME RULES TO BOTH INPUTS =====
+[input, input2].forEach((inp) => {
+
+  // 🚫 Block drag & drop
+  inp.addEventListener("dragover", (e) => e.preventDefault());
+  inp.addEventListener("drop", (e) => e.preventDefault());
+
+  // 🚫 Block paste
+  inp.addEventListener("paste", (e) => e.preventDefault());
+
+  // 🚫 Block SPACE key
+  inp.addEventListener("keydown", (e) => {
+    if (e.key === " ") {
+      e.preventDefault();
+    }
+  });
+
+  // ❌ Remove spaces if somehow added
+  inp.addEventListener("input", () => {
+    inp.value = inp.value.replace(/\s/g, "");
+  });
+
+});
 const check = document.getElementById("checkBtn");
 const prev = document.getElementById("prevBtn");
 const next = document.getElementById("nextBtn");
@@ -128,7 +151,15 @@ check.onclick = () => {
 
     const user2 = input2.value.trim().toLowerCase();
 
-    if (user1 === q.a[0] && user2 === q.a[1]) {
+  const correctAnswers = q.a.map(a => a.toLowerCase());
+const userAnswers = [user1, user2];
+
+const isCorrect =
+  correctAnswers.includes(userAnswers[0]) &&
+  correctAnswers.includes(userAnswers[1]) &&
+  userAnswers[0] !== userAnswers[1];
+
+if (isCorrect) { 
 
       if (answers[index] !== "correct") score++;
 

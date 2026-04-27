@@ -33,6 +33,15 @@ inputs.forEach((input) => {
   });
 });
 
+inputs.forEach((input) => {
+  input.addEventListener("dragover", (e) => e.preventDefault());
+  input.addEventListener("drop", (e) => e.preventDefault());
+  input.addEventListener("paste", (e) => e.preventDefault());
+  input.addEventListener("copy", (e) => e.preventDefault());
+  input.addEventListener("cut", (e) => e.preventDefault());
+  input.addEventListener("contextmenu", (e) => e.preventDefault());
+});
+
 // function speak(t) {
 //   speechSynthesis.cancel();
 //   const msg = new SpeechSynthesisUtterance(t);

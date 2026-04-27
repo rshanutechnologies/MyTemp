@@ -1116,6 +1116,8 @@
     </div>
 
    <script>
+    window.addEventListener("drop", e => e.preventDefault(), true);
+window.addEventListener("dragover", e => e.preventDefault(), true);
     const questions = [
         {
             q: "Delhi has an _____________ climate.",
@@ -1151,6 +1153,46 @@
     // DOM Elements
     const qText = document.getElementById("questionText");
     const input = document.getElementById("answerInput");
+    /* 🚫 BLOCK DROP */
+input.addEventListener("drop", (e) => {
+    e.preventDefault();
+});
+
+/* 🚫 BLOCK PASTE */
+input.addEventListener("paste", (e) => {
+    e.preventDefault();
+});
+
+/* 🚫 BLOCK RIGHT CLICK */
+input.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+});
+
+/* ✅ CLEAN BAD INPUT (THIS FIXES YOUR BUG) */
+input.addEventListener("input", () => {
+
+    let val = input.value;
+
+    // remove URL / image path
+    if (
+        val.includes("http") ||
+        val.includes("www.") ||
+        val.includes("blob:") ||
+        val.includes("data:") ||
+        val.match(/\.(png|jpg|jpeg|gif|webp)$/i)
+    ) {
+        input.value = "";
+        return;
+    }
+
+    // allow only letters + space
+    input.value = val.replace(/[^a-zA-Z ]/g, "");
+
+    // enable button
+    if (!answers[index]) {
+        checkBtn.disabled = !input.value.trim();
+    }
+});
     const checkBtn = document.getElementById("checkBtn");
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");

@@ -30,6 +30,10 @@ const questions = [
   },
 ];
 
+
+window.addEventListener("drop", e => e.preventDefault(), true);
+window.addEventListener("dragover", e => e.preventDefault(), true);
+
 let correct = Array(questions.length).fill(false);
 let score = 0;
 let currentIndex = 0; // first active
@@ -71,7 +75,45 @@ function renderQuestions() {
 
     const input = div.querySelector("input");
     const btn = div.querySelector("button");
+/* 🚫 BLOCK DROP */
+input.addEventListener("drop", (e) => {
+  e.preventDefault();
+});
 
+/* 🚫 BLOCK PASTE */
+input.addEventListener("paste", (e) => {
+  e.preventDefault();
+});
+
+/* 🚫 BLOCK RIGHT CLICK */
+input.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+/* ✅ CLEAN BAD INPUT (FIXES URL DROP BUG) */
+input.addEventListener("input", () => {
+
+  let val = input.value;
+
+  // 🚨 remove URL / dragged image path
+  if (
+    val.includes("http") ||
+    val.includes("www.") ||
+    val.includes("blob:") ||
+    val.includes("data:") ||
+    val.match(/\.(png|jpg|jpeg|gif|webp)$/i)
+  ) {
+    input.value = "";
+    btn.disabled = true;
+    return;
+  }
+
+  // ✅ allow only letters + space
+  input.value = val.replace(/[^a-zA-Z ]/g, "");
+
+  // enable button
+  btn.disabled = input.value.trim() === "";
+});
 btn.disabled = input.value.trim() === "";
 
 // 🎯 Enable/disable based on typing
