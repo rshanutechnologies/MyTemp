@@ -819,7 +819,11 @@ margin-bottom:3% ;
 left:200%;
 top:-2%;
 }
-
+.nav{
+font-size:28px !important;
+padding:12px 30px;
+font-weight: 100;
+}
 }
 
 @media screen and (min-width:1430px) and (max-width:1450px){
@@ -844,6 +848,12 @@ margin-top: 0%;
 font-size:22px;
 
 }
+.nav{
+font-size:28px !important;
+padding:12px 30px;
+font-weight: 100;
+}
+
 }
 
 /* ================= 1441px — 1920px ================= */
@@ -890,6 +900,7 @@ top:140% !important;
 }
 
 .nav button{
+  
 font-size:28px !important;
 padding:12px 30px;
 }

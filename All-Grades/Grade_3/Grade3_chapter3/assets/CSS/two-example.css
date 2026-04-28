@@ -569,7 +569,68 @@ button:disabled {
   75%{transform:translateX(-5px)}
   100%{transform:translateX(0)}
 }
+/* ============================= */
+/* Tablet / Small Laptop (~1000px) */
+/* ============================= */
+@media screen and (min-width:769px) and (max-width:1024px){
 
+  .main{
+    width:95%;           /* flexible instead of fixed */
+  }
+
+  .content{
+    gap:20px;
+    height:auto;         /* allow flexible height */
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:28px;
+  }
+
+  /* DROP BOX */
+  .drop{
+    font-size:20px;
+    padding:12px;
+  }
+
+  .drop.correct{
+    font-size:18px;
+  }
+
+  /* OPTIONS */
+  .option{
+    height:170px;
+  }
+
+  .option img{
+    width:100px;
+    height:120px;
+  }
+
+  .option span{
+    font-size:22px;
+  }
+
+  /* NAV BUTTONS */
+  .fancy-nav{
+    margin-inline:30px;
+    margin-top:25px;
+  }
+
+  .nav-btn .circle{
+    width:60px;
+    height:60px;
+    font-size:24px;
+  }
+
+  .nav-btn .label{
+    height:60px;
+    padding:18px 32px;
+    font-size:18px;
+  }
+
+}
 @media screen and (min-width:1025px) and (max-width:1440px){
 
   .main{

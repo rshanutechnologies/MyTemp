@@ -120,7 +120,7 @@ body {
   line-height: 1.3;
 }
 
-/* POPUPS */
+/* 🔔 POPUP BASE */
 .popup {
   position: fixed;
   inset: 0;
@@ -128,78 +128,142 @@ body {
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 20;
 }
 
 .popup-box {
   background: white;
   padding: 28px;
   border-radius: 22px;
-  width: 320px;
-  border: 3px solid #d4af37;
+  width: 260px;
+  border: 2px solid #d7ee0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
+/* ✅ CORRECT POPUP */
 .popup-correct {
   color: #2e7d32;
-  font-size: 22px;
+  font-size: 24px;
+}
+
+.popup-correct .check {
+  font-size: 25px;
 }
 
 .popup-correct .happy {
-  font-size: 56px;
+  font-size: 60px;
 }
 
 .popup-correct .stars {
-  font-size: 28px;
+  font-size: 30px;
   color: #ffca28;
 }
 
+/* ❌ WRONG POPUP */
 .popup-wrong {
   color: #c62828;
-  font-size: 22px;
+  font-size: 24px;
+}
+
+.popup-wrong .cross {
+  font-size: 25px;
 }
 
 .popup-wrong .sad {
-  font-size: 56px;
+  font-size: 60px;
 }
 
-.popup-box.popup-final {
-  width: 420px;
-  min-height: 360px;
+.popup-wrong .tip {
+  color: #c62828;
+  font-size: 24px;
 }
 
+/* 🏆 FINAL POPUP */
 .popup-final-content {
   font-size: 24px;
+  font-weight: 900;
   color: #2e7d32;
 }
 
 .popup-final-content .emoji {
-  font-size: 64px;
+  font-size: 60px;
+}
+
+.popup-final-content .stars {
+  font-size: 30px;
+  color: #ffca28;
+}
+
+.final-score {
+  margin-top: 14px;
+}
+
+.restart {
+  margin-top: 12px;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 18px;
+  background: #1fb36b;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.popup-box.popup-final {
+  width: 560px;
+  /* 💥 FINAL WIDTH */
+  max-width: 90vw;
+}
+
+.popup-final-content {
+  font-size: 24px;
+  font-weight: 500;
+  color: #2e7d32;
+}
+
+.popup-final-content .emoji {
+  font-size: 60px;
+  display: block;
+  margin: 8px 0;
+}
+
+.stars {
+  font-size: 30px;
+  color: #ffca28;
+  margin: 10px 0;
 }
 
 .final-actions {
-  margin-top: 18px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 18px;
 }
 
 .restart,
 .home {
-  padding: 12px 20px;
+  margin-top: 12px;
   padding: 12px 30px;
   border: none;
   border-radius: 30px;
   font-size: 20px;
   color: white;
+  cursor: pointer;
 }
 
 .restart {
-  background: #ffb54a;
+  background: #ff9f3f;
 }
 
 .home {
-  background: #4fb8ff;
+  background: #3b82f6;
 }
 
 .final-actions {

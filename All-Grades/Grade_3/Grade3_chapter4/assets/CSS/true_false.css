@@ -261,7 +261,7 @@ margin:0;
 
 /* ✅ FINAL POPUP WIDER */
 .popup-box.final-wide{
-  width:520px;  /* ✅ increased width */
+  width:420px;  /* ✅ increased width */
 }
 
 /* ✅ CORRECT POPUP */
@@ -320,17 +320,17 @@ margin:0;
 .popup-final-content{
   width:100%;
   text-align:center;
-  font-size:24px;
-  font-weight:500;
+  font-size:20px;
+  font-weight:700;
   color:#2e7d32;
 }
 .popup-final-content .emoji{
-  font-size:60px;
+  font-size:50px;
   display:block;
   margin:10px 0;
 }
 .popup-final-content .stars{
-  font-size:30px;
+  font-size:26px;
   color:#ffca28;
   margin:12px 0;
 }
@@ -347,7 +347,7 @@ margin:0;
   border:none;
   border-radius:14px;
   cursor:pointer;
-  font-size:22px;
+  font-size:20px;
 }
 
 /* ✅ mobile final popup */

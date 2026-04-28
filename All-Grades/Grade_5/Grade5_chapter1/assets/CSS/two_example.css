@@ -445,7 +445,7 @@ button:disabled{
   .nav{
     justify-content: center;
     gap: 60%;
-    margin-top: 40px;
+    margin-top: 5px;
   }
 
   .prev,

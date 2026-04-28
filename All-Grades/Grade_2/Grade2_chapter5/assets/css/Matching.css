@@ -155,12 +155,13 @@ body {
     font-weight: bold;
     font-size: 20px;
     color: white;
+
     animation: bounceIn .5s ease;
     text-align: center;
 }
 
 .popup-box.correct {
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
 }
 
 .popup-box.wrong {
@@ -385,7 +386,7 @@ canvas {
 
 .game{
 width:1200px;
-
+margin-top: 3%;
 }
 
 .level-progress{

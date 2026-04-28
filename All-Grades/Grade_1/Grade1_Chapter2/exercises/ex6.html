@@ -250,6 +250,14 @@ font-size:22px;
 }
 
 }
+
+
+    .final-modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 3000; backdrop-filter: blur(8px);
+    }
+    .final-modal { background: #C2F4FF; padding: 5vh; border-radius: 40px; text-align: center; width: min(600px, 90%); }
   </style>
 </head>
 
@@ -381,10 +389,11 @@ font-size:22px;
         currentSlide++; renderSlide();
       } else {
         document.querySelector(".quiz-area").innerHTML = `
-          <h1 style="font-size:80px; margin:0;">🎉</h1>
-          <p style="font-size:32pt; font-weight:700; color:var(--text); margin:10px 0;">FULL OF COLOR!</p>
-          <p style="font-size:20pt; color:rgba(47,79,79,0.7);">You completed the quiz perfectly ✅</p>
-          <button class="nav-btn" style="background:var(--btnBlue); margin-top:20px;" onclick="location.reload()">REPLAY 🔁</button>`;
+         <div class="final-modal">
+          <h1 style="font-family: "livvic", cursive; color:#2c7a4b; font-size:45px; margin:0;">🎉 YOU WON! 🎉</h1>
+          <p style="font-size:24px; color:#2F4F4F; margin-top:14px;">Superstar! You are an expert ✅</p>
+          <button class="nav-btn" style="position:static; margin-top:20px; background:#4cc9f0; color:white; border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
+          </div>`;
         makeConfetti(); playSound(true);
       }
     }

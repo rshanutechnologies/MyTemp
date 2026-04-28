@@ -688,7 +688,8 @@ button:disabled {
     }
 
     .option img {
-        width: 45px;
+        width: 65px;
+        height: 65px;
     }
 
      button {

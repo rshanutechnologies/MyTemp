@@ -102,11 +102,12 @@
 
     .q-wrap {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 15px;
       width: 100%;
+
     }
 
     .q-text {
@@ -130,10 +131,12 @@
       justify-content: center;
       gap: clamp(20px, 8vw, 60px);
       width: 100%;
+     margin-top: 2%; 
     }
 
     .tf-btn {
       width: clamp(100px, 15vw, 170px);
+      
       aspect-ratio: 1/1;
       border-radius: 30px;
       border: 6px solid white;
@@ -173,7 +176,7 @@
     .nav-footer {
       display: flex;
       justify-content: space-between;
-      margin-top: 30px;
+      margin-top: 1px;
     }
 
     .nav-btn {
@@ -240,7 +243,7 @@
     .final-overlay {
       position: absolute;
       inset: 0;
-      background: #C2F4FF;
+      background: white;
       display: none;
       flex-direction: column;
       align-items: center;
@@ -248,6 +251,10 @@
       border-radius: 40px;
       z-index: 3000;
       text-align: center;
+       max-width: 400px;
+      width: 90%;
+      height: 280px;
+      margin: auto;
     }
 
 
@@ -258,6 +265,7 @@
 
       body {
         overflow: hidden;
+       
       }
 
       .app {
@@ -485,11 +493,13 @@
 
       .hint-sticker {
         width: clamp(140px, 9vw, 200px);
+        
       }
 
       .tf-btn {
         width: clamp(180px, 12vw, 240px);
         font-size: clamp(70px, 4vw, 100px);
+        
       }
 
       .nav-btn {
@@ -692,8 +702,8 @@
       const d = document.createElement("div");
       d.className = "final-overlay";
       d.innerHTML = `
-      <h1 style="font-family:'Livvic';font-size:clamp(2rem, 8vw, 4rem); color: var(--primary)">🎉 WELL DONE! 🎉</h1>
-      <p style="font-size:1.5rem;color:var(--dark);">You completed the quiz successfully!</p>
+      <h1 style="font-family:'Livvic';font-size:clamp(2rem, 8vw, 4rem); color: var(--primary)">GREAT JOB!</h1>
+      <p style="font-size:1.5rem;color:var(--dark); margin-top:-30px">Quiz Completed Successfully!</p>
       <button class="nav-btn" style="background:var(--secondary); margin-top:20px"
         onclick="location.reload()">PLAY AGAIN ↺</button>`;
       document.querySelector(".app").appendChild(d);

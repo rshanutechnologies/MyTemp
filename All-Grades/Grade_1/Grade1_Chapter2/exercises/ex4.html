@@ -177,7 +177,7 @@
       position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none;
       align-items: center; justify-content: center; z-index: 3000; backdrop-filter: blur(8px);
     }
-    .completion-card { background: white; padding: 40px; border-radius: 40px; text-align: center; width: 90%; max-width: 500px; }
+    .completion-card { background: #C2F4FF;; padding: 40px; border-radius: 40px; text-align: center; width: 90%; max-width: 500px; }
 
     .confetti { position: fixed; top: -10px; width: 10px; height: 12px; animation: fall 1.5s linear forwards; z-index: 2500; }
     @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
@@ -799,6 +799,18 @@ padding:18px 32px;
 
 }
 
+  .nav-btn {
+      background: #4cc9f0;
+      border: 4px solid white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: clamp(16px, 2vh, 24px);
+      cursor: pointer;
+      color: var(--q-text-color);
+     font-family: "livvic" !important;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
 button,
 .action-btn,
 .nav-side-btn {
@@ -846,17 +858,17 @@ button,
 
   <div class="overlay" id="completionOverlay">
     <div class="completion-card">
-      <h1 style="font-size:clamp(30px, 8vh, 50px); color:var(--ink); margin:0;">🏆 CHAMPION!</h1>
-      <p style="font-size:20px; color:#555; margin:15px 0;">You solved all the puzzles!</p>
-      <button class="action-btn" style="background:var(--btn1); box-shadow:none;" onclick="location.reload()">REPLAY 🔁</button>
+        <h1 style="font-family:livvic; color:#2c7a4b; font-size:45px; margin:0;">🎉 YOU WON! 🎉</h1>
+          <p style="font-size:24px; color:#2F4F4F; margin-top:14px;">Superstar! You are an expert ✅</p>
+          <button class="nav-btn" style="position:static; margin-top:20px; background:#4cc9f0; color:white; border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
     </div>
   </div>
 
   <script>
     const questions = [
-      { q: "The part of the body that helps us to write and eat.", options: [{ name: "Legs", img: "../uploads/legs.png" }, { name: "Hands", img: "../uploads/hand.png" }, { name: "Teeth", img: "../uploads/teeth.png" }], correct: 1, solved: false },
-      { q: "We must wipe our body with this after we have a bath.", options: [{ name: "Soap", img: "../uploads/soap.png" }, { name: "Brush", img: "../uploads/brush.png" }, { name: "Towel", img: "../uploads/towel.png" }], correct: 2, solved: false },
-      { q: "The organ that helps us to see.", options: [{ name: "Eyes", img: "../uploads/eyes.png" }, { name: "Ears", img: "../uploads/ear.png" }, { name: "Nose", img: "../uploads/nose.png" }], correct: 0, solved: false }
+      { q: "The part of the body that helps us to write and eat.", options: [{ name: "Legs", img: "../uploads/legs.png" }, { name: "Hands", img: "../uploads/hand.png" }, { name: "Teeth", img: "../uploads/teeth.png" }], correct: 1, solved: false ,    selected: null   },
+      { q: "We must wipe our body with this after we have a bath.", options: [{ name: "Soap", img: "../uploads/soap.png" }, { name: "Brush", img: "../uploads/brush.png" }, { name: "Towel", img: "../uploads/towel.png" }], correct: 2, solved: false ,    selected: null },
+      { q: "The organ that helps us to see.", options: [{ name: "Eyes", img: "../uploads/eyes.png" }, { name: "Ears", img: "../uploads/ear.png" }, { name: "Nose", img: "../uploads/nose.png" }], correct: 0, solved: false ,    selected: null    }
     ];
 
     let currentIdx = 0, currentlyLanded = -1, rotationX = 0, rotationY = 0, audioCtx;
@@ -892,6 +904,23 @@ if (q.solved) {
 // ✅ PREV button logic
 prevBtn.disabled = (currentIdx === 0);
       hint.textContent = q.solved ? "Great job! Move to NEXT." : "Roll the dice 🎲";
+
+
+      // ✅ RESTORE PREVIOUS ANSWER
+if (q.selected !== null) {
+  currentlyLanded = q.selected;
+
+  const target = [
+    {x:0,y:-90},
+    {x:0,y:-180},
+    {x:0,y:-270}
+  ][currentlyLanded];
+
+  dice.style.transform = `rotateX(${target.x}deg) rotateY(${target.y}deg)`;
+
+  rollBtn.disabled = true;
+  checkBtn.disabled = true;
+}
     }
 
     rollBtn.onclick = () => {
@@ -913,6 +942,7 @@ prevBtn.disabled = (currentIdx === 0);
 
     checkBtn.onclick = () => {
       const q = questions[currentIdx];
+      q.selected = currentlyLanded;  // ✅ SAVE ANSWER
       if(currentlyLanded === q.correct){
         q.solved = true; feedback.textContent = "😄"; feedback.className = "show";
         hint.textContent = "Correct! Well done. 🌟";

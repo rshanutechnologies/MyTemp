@@ -347,11 +347,11 @@ button:disabled {
 }
 
 #stars {
-    font-size: 40px;
+    font-size: 30px;
     margin-top: 10px;
 }
 
-.playAgain-btn {
+/* .playAgain-btn {
     background: #1fb36b;
     color: #fff;
     border: none;
@@ -360,7 +360,7 @@ button:disabled {
     font-size: 16px;
     margin-block: 10px;
     cursor: pointer;
-}
+} */
 
 
 
@@ -371,7 +371,7 @@ button:disabled {
   color: #fff;
   padding: 12px 18px;
   border-radius: 999px;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 900;
   cursor: pointer;
   border: none;

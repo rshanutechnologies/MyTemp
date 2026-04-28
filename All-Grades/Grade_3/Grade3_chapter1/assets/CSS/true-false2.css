@@ -451,19 +451,14 @@ body{
 
 
 /* IMAGE */
-
 .question-image{
+  width:260px;        /* 🔥 fixed size */
+  height:200px;       /* 🔥 fixed height */
 
-  width:clamp(180px,25vw,300px);
-
-  height:auto;
-
-  object-fit:contain;
+  object-fit:contain; /* keep aspect ratio */
 
   display:block;
-
   margin:10px auto 15px;
-
 }
 
 

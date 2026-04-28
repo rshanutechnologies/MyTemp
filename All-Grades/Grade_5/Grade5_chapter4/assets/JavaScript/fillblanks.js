@@ -50,6 +50,12 @@ function speak(t) {
 
 let index = 0;
 let score = 0;
+function norm(s) {
+  return (s || "")
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .trim();
+}
 let popupTimer = null;
 
 // Only store "correct"
@@ -71,14 +77,12 @@ const input2 = document.getElementById("answerInput2");
 
   // 🚫 Block SPACE key
   inp.addEventListener("keydown", (e) => {
-    if (e.key === " ") {
-      e.preventDefault();
-    }
+  
   });
 
   // ❌ Remove spaces if somehow added
   inp.addEventListener("input", () => {
-    inp.value = inp.value.replace(/\s/g, "");
+    
   });
 
 });
@@ -145,13 +149,12 @@ check.onclick = () => {
 
   const q = questions[index];
 
-  const user1 = input.value.trim().toLowerCase();
+  const user1 = norm(input.value);
 
   if (Array.isArray(q.a)) {
 
-    const user2 = input2.value.trim().toLowerCase();
-
-  const correctAnswers = q.a.map(a => a.toLowerCase());
+const user2 = norm(input2.value);
+const correctAnswers = q.a.map(a => norm(a));
 const userAnswers = [user1, user2];
 
 const isCorrect =

@@ -150,7 +150,7 @@ function checkAnswer(i) {
             correctCount,
           );
           document.getElementById("finalPopup").style.display = "flex";
-          speak("Congratulations");
+          // speak("Congratulations");
         }, 600);
       }
     }, 950);

@@ -35,7 +35,7 @@ const questions = [
   },
   {
     question:
-      "_______________ is one of the popular street foods of Hyderabad.",
+      "___ is one of the popular street foods of Hyderabad.",
     answer: "BIRYANI",
     image: "../assets/images/DinnerWB.png",
     letters: ["B", "I", "R", "Y", "A", "N", "I"],

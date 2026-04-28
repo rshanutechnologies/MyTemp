@@ -169,7 +169,7 @@ function showFinalPopup(){
   winnerImg.offsetHeight; // force reflow
   winnerImg.style.animation = "liftTrophy 1.1s ease-in-out infinite";
 
-  speak(`Congratulations! Your score is ${score} out of ${questions.length}`);
+  // speak(`Congratulations! Your score is ${score} out of ${questions.length}`);
 }
 
 function restartQuiz(){

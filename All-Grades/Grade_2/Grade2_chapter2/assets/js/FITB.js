@@ -83,7 +83,7 @@
       document.getElementById("finalPopup").style.display = "flex";
       document.getElementById("finalScore").textContent = `Score: ${totalScore} / ${questions.length}`;
       document.getElementById("stars").textContent = "⭐".repeat(totalScore);
-      speak(`Congratulations! Your score is ${totalScore} out of ${questions.length}`);
+      // speak(`Congratulations! Your score is ${totalScore} out of ${questions.length}`);
     }
 
     function checkAndEnableSubmit() {
@@ -285,7 +285,7 @@ input.addEventListener("contextmenu", e => e.preventDefault());
       savedAnswers.fill(null);
       document.getElementById("finalPopup").style.display = "none";
       loadQuestion();
-      speak("Quiz restarted");
+      // speak("Quiz restarted");
     };
 
     // Initial load

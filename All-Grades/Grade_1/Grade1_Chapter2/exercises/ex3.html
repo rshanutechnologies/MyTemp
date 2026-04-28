@@ -167,7 +167,7 @@
       position: fixed; inset: 0; background: rgba(0,0,0,0.6);
       backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 3000;
     }
-    .final-modal { background: white; padding: 5vh; border-radius: 40px; text-align: center; width: min(600px, 90%); }
+    .final-modal {background: #C2F4FF; padding: 5vh; border-radius: 40px; text-align: center; width: min(600px, 90%); }
 
     @media (max-width: 600px) {
       .question-card { flex-direction: column; text-align: center; gap: 10px; }
@@ -405,9 +405,9 @@ button,
     function finishQuiz(){
       const modal = document.createElement("div"); modal.className = "final-modal-overlay";
       modal.innerHTML = `<div class="final-modal">
-        <h1 style="font-size:clamp(30px, 6vh, 54px); color:#2c7a4b;">🏆 SUPERSTAR!</h1>
-        <p style="font-size:clamp(18px, 3vh, 24px);">You finished all questions 🎉</p>
-        <button class="nav-btn" onclick="location.reload()" style="background:var(--pink); color:white; margin-top:20px;">PLAY AGAIN ↺</button>
+        <h1 style="font-family: "livvic", cursive; color:#2c7a4b; font-size:45px; margin:0;">🎉 YOU WON! 🎉</h1>
+          <p style="font-size:24px; color:#2F4F4F; margin-top:14px;">Superstar! You are an expert ✅</p>
+          <button class="nav-btn" style="position:static; margin-top:20px; background:#4cc9f0; color:white; border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
       </div>`;
       document.body.appendChild(modal); playTone(1100, 1);
     }

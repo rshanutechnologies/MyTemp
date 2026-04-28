@@ -41,14 +41,16 @@
 
     /* question block (left) */
     .question-block {
-      flex: 1.2;
+       flex: 1.2; 
       min-width: 240px;
+      
     }
     .question-text {
       font-size: 30px !important;
       font-weight: 400;
       color: #1e3a5f;
-      line-height: 1.4;
+      height: 120px;
+      /* line-height: 2rem; */
       /* background: #fef9e6; */
       padding: 24px 28px;
       border-radius: 48px;
@@ -335,7 +337,7 @@
 
 
     /* ================= 1025px — 1440px ================= */
-@media screen and (min-width:1025px) and (max-width:1440px){
+@media screen and (min-width:1225px) and (max-width:1440px){
 
 .quiz-container{
 max-width:1500px;

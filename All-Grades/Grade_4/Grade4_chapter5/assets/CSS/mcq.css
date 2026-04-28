@@ -137,16 +137,16 @@
 
 
  .option-content {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+     display: flex;
+     align-items: center;
+     gap: 10px;
+ }
 
-.option-img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-}
+ .option-img {
+     width: 50px;
+     height: 50px;
+     object-fit: contain;
+ }
 
  /* CONTROLS */
  .controls {
@@ -582,86 +582,86 @@ Stacked layout
 
 
      @media (max-width: 450px) {
-  
 
-    .finalpopup-box {
-        padding: 20px 25px;
-        border-radius: 15px;
-        max-width: 92%;
-        width: 92%;
-    }
 
-    .final-heading {
-        font-size: 1.5em;
-        margin: 15px;
-    }
+         .finalpopup-box {
+             padding: 20px 25px;
+             border-radius: 15px;
+             max-width: 92%;
+             width: 92%;
+         }
 
-    #stars {
-        font-size: 30px;
-        margin-top: 8px;
-        letter-spacing: 3px;
-    }
+         .final-heading {
+             font-size: 1.5em;
+             margin: 15px;
+         }
 
-    .playAgain-btn {
-        padding: 10px 24px;
-        font-size: 14px;
-        margin-block: 8px;
-        border-radius: 18px;
-    }
-}
+         #stars {
+             font-size: 30px;
+             margin-top: 8px;
+             letter-spacing: 3px;
+         }
 
-/* 375px and below (iPhone SE, small devices) */
-@media (max-width: 375px) {
-    .finalpopup-box {
-        padding: 15px 20px;
-        border-radius: 12px;
-    }
+         .playAgain-btn {
+             padding: 10px 24px;
+             font-size: 14px;
+             margin-block: 8px;
+             border-radius: 18px;
+         }
+     }
 
-    .final-heading {
-        font-size: 1.3em;
-        margin: 10px;
-    }
+     /* 375px and below (iPhone SE, small devices) */
+     @media (max-width: 375px) {
+         .finalpopup-box {
+             padding: 15px 20px;
+             border-radius: 12px;
+         }
 
-    #stars {
-        font-size: 25px;
-        margin-top: 6px;
-        letter-spacing: 2px;
-    }
+         .final-heading {
+             font-size: 1.3em;
+             margin: 10px;
+         }
 
-    .playAgain-btn {
-        padding: 8px 20px;
-        font-size: 13px;
-        margin-block: 6px;
-        border-radius: 16px;
-    }
-}
+         #stars {
+             font-size: 25px;
+             margin-top: 6px;
+             letter-spacing: 2px;
+         }
 
-/* 320px and below (very small devices) */
-@media (max-width: 320px) {
-    .finalpopup-box {
-        padding: 12px 15px;
-        border-radius: 10px;
-    }
+         .playAgain-btn {
+             padding: 8px 20px;
+             font-size: 13px;
+             margin-block: 6px;
+             border-radius: 16px;
+         }
+     }
 
-    .final-heading {
-        font-size: 1.1em;
-        margin: 8px;
-    }
+     /* 320px and below (very small devices) */
+     @media (max-width: 320px) {
+         .finalpopup-box {
+             padding: 12px 15px;
+             border-radius: 10px;
+         }
 
-    #stars {
-        font-size: 20px;
-        margin-top: 5px;
-        letter-spacing: 1px;
-    }
+         .final-heading {
+             font-size: 1.1em;
+             margin: 8px;
+         }
 
-    .playAgain-btn {
-        padding: 6px 16px;
-        font-size: 12px;
-        margin-block: 5px;
-        border-radius: 14px;
-    }
-}
-}
+         #stars {
+             font-size: 20px;
+             margin-top: 5px;
+             letter-spacing: 1px;
+         }
+
+         .playAgain-btn {
+             padding: 6px 16px;
+             font-size: 12px;
+             margin-block: 5px;
+             border-radius: 14px;
+         }
+     }
+ }
 
  /* ========================================
    💻 Desktop / Monitor (1025px – 1440px)
@@ -738,17 +738,17 @@ Stacked layout
          padding: 24px 20px;
      }
 
-      .option-content {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+     .option-content {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+     }
 
-.option-img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-}
+     .option-img {
+         width: 60px;
+         height: 60px;
+         object-fit: contain;
+     }
 
      button {
          font-size: 30px;
@@ -768,7 +768,7 @@ Stacked layout
          padding: 32px;
      }
 
-     
+
      .question-box {
          font-size: 44px;
          height: 130px;

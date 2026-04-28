@@ -215,7 +215,7 @@
       display: flex; align-items: center; justify-content: center;
       z-index: 300; backdrop-filter: blur(8px);
     }
-    .final-modal { background: #C2F4FF; padding: 5vh; border-radius: 40px; text-align: center; width: 85%; max-width: 500px; }
+    .final-modal {     background: white; padding: 5vh; border-radius: 40px; text-align: center; width: 85%; max-width: 500px; }
 
     .confetti-piece { position: absolute; width: 10px; height: 12px; top: -20px; animation: fall 2.5s linear forwards; z-index: 110; }
     @keyframes fall { to { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
@@ -609,7 +609,7 @@
       div.className = 'final-modal-overlay';
       div.innerHTML = `
         <div class="final-modal">
-          <h1 style="font-family: "Livvic";, cursive; color:#2c7a4b; margin:0; font-size:40px;">🎉 QUIZ DONE! 🎉</h1>
+          <h1 style="font-family: "Livvic";, cursive; color:#2c7a4b; margin:0; font-size:40px;">🎉 YOU WON! 🎉</h1>
           <p style="font-size:24px; margin: 20px 0;">Superstar! You are a family expert!</p>
           <button class="nav-btn" style="background:#4cc9f0; color:white; border:none; padding: 15px 40px;" onclick="location.reload()">PLAY AGAIN ↺</button>
         </div>`;

@@ -166,7 +166,7 @@ function check(val) {
 
     dropZone.classList.add("locked");
 
-    result.textContent = "🎉 Correct!";
+    result.textContent = "";
     result.style.color = "#16a34a";
 
     showFeedback("correct");
@@ -187,7 +187,7 @@ function check(val) {
   } else {
     // wrong => give chance
     dropZone.innerHTML = "";
-    result.textContent = "❌ Try again!";
+    result.textContent = "";
     result.style.color = "#dc2626";
 
     showFeedback("wrong");

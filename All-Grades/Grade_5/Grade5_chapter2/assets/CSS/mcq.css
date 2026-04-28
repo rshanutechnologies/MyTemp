@@ -609,6 +609,7 @@ button:disabled {
     width: 1300px;
     height: 780px;
     padding: 40px;
+    margin-top: -2% !important;
   
   }
 
@@ -627,8 +628,8 @@ button:disabled {
 
   /* ✅ LEFT IMAGE */
   .left img{
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     margin-bottom: 2% !important;
   }
 
@@ -667,7 +668,7 @@ button:disabled {
   .controls{
     justify-content: center;
     gap: 120px;
-    margin-top: 10px;
+    margin-top: 5px;
   }
 
   /* ✅ POPUP */

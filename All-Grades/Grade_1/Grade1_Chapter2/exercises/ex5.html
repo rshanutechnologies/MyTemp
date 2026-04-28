@@ -129,7 +129,7 @@
       position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none;
       align-items: center; justify-content: center; z-index: 3000; backdrop-filter: blur(8px);
     }
-    .completion-card { background: white; padding: 40px; border-radius: 40px; text-align: center; width: 90%; max-width: 500px; }
+    .completion-card { background: #C2F4FF;; padding: 40px; border-radius: 40px; text-align: center; width: 90%; max-width: 500px; }
 
     @keyframes shake {
       0%, 100% { transform: translateX(0); }
@@ -596,7 +596,17 @@ font-size:44px;
 }
 
 }
-
+  .nav-btn {
+      background: #4cc9f0;
+      border: 4px solid white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: clamp(16px, 2vh, 24px);
+      cursor: pointer;
+      color: var(--q-text-color);
+     font-family: "livvic" !important;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 <body>
@@ -666,9 +676,9 @@ font-size:44px;
 
   <div class="overlay" id="completionOverlay">
     <div class="completion-card">
-      <h1 style="font-size: clamp(30px, 6vh, 50px); color: #2c7a4b; margin: 0;">🏆 SUPERSTAR!</h1>
-      <p style="font-size: 20px; color: #555; margin: 15px 0;">All bulbs are glowing! You matched them perfectly!</p>
-      <button onclick="location.reload()" style="padding: 15px 40px; font-size: 20px; font-weight: 900; background: #a0c4ff; border: none; border-radius: 20px; cursor: pointer;">PLAY AGAIN ↺</button>
+        <h1 style="font-family: livvic, cursive; color:#2c7a4b; font-size:45px; margin:0;">🎉 YOU WON! 🎉</h1>
+          <p style="font-size:24px; color:#2F4F4F; margin-top:14px;">Superstar! You are an expert ✅</p>
+          <button class="nav-btn" style="position:static; margin-top:20px; background:#4cc9f0; color:white; border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
     </div>
   </div>
 

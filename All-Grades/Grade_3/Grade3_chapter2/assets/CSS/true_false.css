@@ -29,13 +29,19 @@
   width:100%;
   max-width:900px;
 
-  height:90vh;   /* 🔥 keeps everything inside screen */
+  
 
   display:flex;
   flex-direction:column;
   justify-content:space-between;  /* 🔥 buttons fixed */
 }
-
+.wrapper{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
   /* ✅ Question Box */
   
 
@@ -48,7 +54,7 @@
     overflow:hidden;
     word-break:break-word;
     width:100%;
-    margin-top: -20px;
+   
   
    
   }
@@ -401,12 +407,63 @@
     margin-top:25px;
   }
 .question{
-  font-size: 20px;
+  font-size: 22px;
 }
 }
 
 
+/* ===================================== */
+/* ✅ 800px RANGE FIX (769px–1024px)      */
+/* ===================================== */
+@media screen and (max-width:800px){
 
+  body{
+    overflow:auto;              /* fix center issue */
+    padding:20px;
+  }
+
+  .game{
+    max-width:700px;            /* tighter layout */
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:26px;
+    text-align:center;
+  }
+
+  /* IMAGE */
+  .q-img{
+    width:200px;
+    height:150px;
+  }
+
+  /* TRUE / FALSE BOXES */
+  .chests{
+    gap:20px;
+  }
+
+  .chest{
+    flex:0 0 150px;
+    padding:16px;
+  }
+
+  .chest span{
+    font-size:50px;
+  }
+
+  .chest p{
+    font-size:18px;
+  }
+
+  /* NAV BUTTONS */
+  .nav-btn{
+    width:130px;
+    height:48px;
+    font-size:16px;
+  }
+
+}
 /* ===================================== */
 /* ✅ SMALL MOBILE (480px and below)     */
 /* ===================================== */
@@ -415,7 +472,7 @@
     overflow:hidden;
     padding:16px 10px;
     align-items:flex-start;
-    margin-top: 50px;
+
   
   }
   .ui-scale{
@@ -423,7 +480,7 @@
   }
 
   .question{
-    font-size:18px;
+    font-size:20px;
   }
 
  .chest{

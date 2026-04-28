@@ -116,7 +116,7 @@
     /* Matched image container - appears next to question */
     .matched-image {
       position: absolute;
-      right: -80px;
+      right: -0px;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
@@ -218,16 +218,19 @@
     .final-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, .5);
-      backdrop-filter: blur(6px);
+      /* background: rgba(0, 0, 0, .5);
+      backdrop-filter: blur(6px); */
       display: none;
       justify-content: center;
       align-items: center;
       z-index: 3000;
+
     }
 
     .final-card {
-      background: #C2F4FF;
+       max-width: 400px;
+      width: 90%;
+      background: white;
       padding: 30px;
       border-radius: 40px;
       text-align: center;
@@ -236,7 +239,7 @@
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .matched-image {
-        right: -60px;
+        right: -10px;
       }
       .matched-image img {
         height: 40px;
@@ -531,11 +534,11 @@
       d.style.display = "flex";
       d.innerHTML = `
         <div class="final-card">
-          <h1 style="font-family:'Livvic';font-size: 42px; margin:0; color:#ff7a00;">🎉 GREAT JOB! 🎉</h1>
-          <p style="font-size: 20px; color:#2F4F4F;">You matched all correctly!</p>
+          <h1 style="font-family:'Livvic';font-size: 42px; margin:0; color:#4cc9f0;;">GREAT JOB!</h1>
+          <p style="font-size: 20px; color:#2F4F4F;">Quiz Completed Successfully!</p>
           <button onclick="location.reload()" style="
             margin-top:15px; padding:12px 30px; font-size:18px; border-radius:30px;
-            border:none; background:var(--primary); color:white; font-family:'Livvic'; cursor:pointer;">
+            border:none; background:#f778a1; color:white; font-family:'Livvic'; cursor:pointer;">
             PLAY AGAIN ↺
           </button>
         </div>`;

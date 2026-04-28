@@ -569,9 +569,14 @@ max-width:1000px;
 transform:scale(1);
 }
 .progress-wrap{
-      margin-top: -11%;
-    margin-right: 120px ;
+    position: relative;
+    top:10px;
+    right:-80%;
+    width: 180px;
+      /* margin-top: -11%;
+    margin-right: 120px ; */
 transform:scale(1);
+/* visibility: hidden; */
 }
  }
 

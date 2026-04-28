@@ -792,7 +792,7 @@ button:disabled {
     width: 300px;
     height: 260px;
     /* margin: 20px auto; */
-    margin-top: -24% !important;
+    margin-top: -35% !important;
   }
 
   /* ✅ QUESTION (IMPORTANT SYSTEM) */
@@ -833,7 +833,8 @@ button:disabled {
     font-size: 24px !important;
     border-radius: 999px;
     top: auto;
-    bottom: -20px;
+    /* bottom: -20px; */
+    margin-top: -3% !important;
   }
 
   .prev{

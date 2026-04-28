@@ -676,6 +676,13 @@ font-size:22px;
 }
 
 }
+
+    .final-modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 3000; backdrop-filter: blur(8px);
+    }
+    .final-modal { background: #C2F4FF; padding: 5vh; border-radius: 40px; text-align: center; width: min(600px, 90%); }
   </style>
 </head>
 
@@ -702,7 +709,7 @@ font-size:22px;
       </div>
 
       <div class="mini-controls">
-        <button id="clearBtn" class="small-btn">🧽 CLEAR</button>
+        <button id="clearBtn" class="small-btn" style="visibility: hidden;">🧽 CLEAR</button>
       </div>
     </div>
 
@@ -848,7 +855,11 @@ font-size:22px;
       playTone([660, 880, 1320], 1.2); launchConfetti(150);
       const div = document.createElement("div");
       div.className = "final-modal-overlay";
-      div.innerHTML = `<div class="final-modal"><h2>🎉 YOU WON! 🎉</h2><p style="font-size:22px; color:#555;">Superstar! You finished the quiz!</p><button class="btn" onclick="location.reload()">PLAY AGAIN ↺</button></div>`;
+      div.innerHTML = `   <div class="final-modal">
+          <h1 style="font-family: "livvic", cursive; color:#2c7a4b; font-size:45px; margin:0;">🎉 YOU WON! 🎉</h1>
+          <p style="font-size:24px; color:#2F4F4F; margin-top:14px;">Superstar! You are an expert ✅</p>
+          <button class="nav-btn" style="position:static; margin-top:20px; background:#4cc9f0; color:white; border:none;" onclick="location.reload()">PLAY AGAIN ↺</button>
+        </div>`;
       document.body.appendChild(div);
     }
 

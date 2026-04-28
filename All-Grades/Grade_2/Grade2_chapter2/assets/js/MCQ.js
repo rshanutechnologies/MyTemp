@@ -1,12 +1,12 @@
  const questions = [
     {
-      text: "The place where two bones join is called a ____________.",
+      text: "The place where two bones join is called a ____.",
       options: ["muscle", "skin", "joint"],
       answer: "joint",
       img: "../assets/images/BONESSS.png"
     },
     {
-      text: "All bones together form the ______________ system.",
+      text: "All bones together form the _____ system.",
       options: ["muscular", "digestive", "skeletal"],
       answer: "skeletal",
       img: "../assets/images/BONESSSALL.png"
@@ -106,7 +106,7 @@
     winnerImg.style.animation = "liftTrophy 1.1s ease-in-out infinite";
     
     finalPopupDiv.style.display = "flex";
-    speakText(`Congratulations! Your score is ${totalScore} out of ${questions.length}`);
+    // speakText(`Congratulations! Your score is ${totalScore} out of ${questions.length}`);
   }
 
   // load current question, render 3 options in one line
@@ -247,7 +247,7 @@
     
     // reload first question
     loadQuestion();
-    speakText("Quiz restarted");
+    // speakText("Quiz restarted");
   };
 
   // initialize

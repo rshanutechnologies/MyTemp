@@ -188,7 +188,7 @@ body {
 .nav {
     display: flex;
     gap: 14px;
-    margin-top: 8px;
+    /* margin-top: 8px; */
 }
 
 button {
@@ -466,7 +466,7 @@ button:active {
     position: static;
     justify-content: space-between;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .prev,
@@ -642,13 +642,13 @@ font-size:44px !important;
 
 .drop-zone{
 width:200px;
-height:150px;
+height:130px;
 font-size:22px;
 }
 
 .option{
-width:128px;
-height:128px;
+width:120px;
+height:120px;
 font-size:34px;
 }
 /* .progress-wrap {

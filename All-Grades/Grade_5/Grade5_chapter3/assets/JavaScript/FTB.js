@@ -80,11 +80,11 @@ function speak(t) {
 function norm(s) {
   return (s || "")
     .toLowerCase()
-    .replace(/[-–—]+/g, " ")
+    // .replace(/[-–—]+/g, " ")
     .replace(/&/g, "and")
     .replace(/vapou?r/g, "vapor")
     .replace(/\s+/g, " ")
-    .trim();
+    // .trim();
 }
 
 function isCorrect(user, expected) {
