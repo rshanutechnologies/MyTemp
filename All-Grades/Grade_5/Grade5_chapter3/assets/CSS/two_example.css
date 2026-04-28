@@ -19,6 +19,7 @@ body {
   max-width: 900px;
   padding: 20px;
   position: relative;
+  margin-top: -10%;
 }
 
 .home {

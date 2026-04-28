@@ -277,7 +277,7 @@ color: black;
     margin-top:70px;
     display:flex;
     justify-content: space-between;
-    gap:100px;
+    gap:400px !important;
    
 }
 

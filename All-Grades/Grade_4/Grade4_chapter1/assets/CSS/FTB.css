@@ -94,10 +94,10 @@ body {
 }
 
 /* Correct locked state */
-.input-row.correct {
+/* .input-row.correct {
     border: 3px solid #27ae60;
     background: #f2fff7;
-}
+} */
 
 .input-row.correct input {
     text-transform: uppercase;

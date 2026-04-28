@@ -436,6 +436,7 @@ button:disabled{
     overflow-y:auto;
     align-items:flex-start;
     padding:30px 20px;
+    
   }
 
   .quiz-card{
@@ -484,7 +485,11 @@ button:disabled{
     width:85%;
     height:auto;
   }
-
+.nav{
+    flex-direction:row;
+    gap:15px;
+    margin-top:30px;
+  }
 }
 
 
@@ -641,12 +646,24 @@ z-index:-1;
 
 } */
 
-@media (min-width:1000px){
+@media (min-width:800px){
     .popup-content{
     width:90%;
     height:40%;
     padding:15px;
   }
+  /* body{
+    background-color: yellow;
+  } */
+
+   .nav {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -10px;
+    gap:350px;
+    
+}
+
 
 }
 

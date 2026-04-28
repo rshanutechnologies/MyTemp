@@ -150,7 +150,7 @@ function load() {
   if (locked[index]) {
     dropZone.innerHTML = `<div class="option ${q.a ? "true" : "false"}">${q.a ? "T" : "F"}</div>`;
     dropZone.classList.add("locked");
-    result.textContent = "✅ Already Correct!";
+    result.textContent = "";
     result.style.color = "#16a34a";
   }
 }

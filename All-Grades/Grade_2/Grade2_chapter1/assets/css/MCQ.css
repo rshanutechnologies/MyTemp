@@ -310,7 +310,7 @@ body {
 .popup-correct .stars {
   font-size: 30px;
   color: #ffca28;
-  margin-top: 6px;
+  margin-top: -20px;
 }
 
 /* ❌ 2️⃣ WRONG POPUP — COMPLETE CODE (Your CSS) */
@@ -351,6 +351,7 @@ body {
   font-size: 24px;
   font-weight: 400;
   color: #2e7d32;
+
 }
 
 .popup-final-content .emoji {
@@ -362,7 +363,9 @@ body {
 .popup-final-content .stars {
   font-size: 20px;
   color: #ffca28;
-  margin: 12px 0;
+  
+  /* margin: 12px 0; */
+  margin-top: -80px;
 }
 
 .final-score {
@@ -437,6 +440,7 @@ button:disabled {
   text-align: center;
   max-width: 400px;
   width: 90%;
+   
   animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   /* backdrop-filter: blur(15px); */
   /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); */
@@ -484,7 +488,7 @@ button:disabled {
 .popup-content h3 {
   font-family: "Livvic";
   font-size: 2em;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   font-weight: 600;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -493,7 +497,7 @@ button:disabled {
   font-size: 1.3em;
   font-family: "Livvic";
   font-weight: 600;
-  line-height: 1.6;
+  /* line-height: 1.6; */
 }
 
 .popup.correct .popup-icon {

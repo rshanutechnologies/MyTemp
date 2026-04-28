@@ -1,7 +1,8 @@
 const questions = [
   {
     q: "Q.1 The ________ are the thick-walled blood vessels that carry blood from the heart to the different parts of the body.",
-    a: ["arteries"],
+     a: ["arteries"],
+    //  a: ["carbon dioxide", "water vapour"],
     img: "../assets/images/heart1-img.png",
   },
   {
@@ -84,7 +85,7 @@ function norm(s) {
     .replace(/&/g, "and")
     .replace(/vapou?r/g, "vapor")
     .replace(/\s+/g, " ")
-    // .trim();
+     .trim();
 }
 
 function isCorrect(user, expected) {
@@ -152,11 +153,7 @@ input.addEventListener("drop", (e) => e.preventDefault());
 input.addEventListener("paste", (e) => e.preventDefault());
 
 // 🚫 Block SPACE key
-input.addEventListener("keydown", (e) => {
-  if (e.key === " ") {
-    e.preventDefault();
-  }
-});
+
 
 inputsContainer.appendChild(input);
 
