@@ -96,7 +96,7 @@ body {
 
 .title {
   text-align: center;
-  font-size: 28px;
+  font-size: 25px;
   margin-bottom: 10px;
 }
 
@@ -417,6 +417,7 @@ body {
   .answer {
     width: 48%;
   }
+  
 }
 
 /* =========================
@@ -732,7 +733,7 @@ body {
     width: 100%;
     min-height: 60px;
     padding: 12px 14px;
-    font-size: 13px;
+    font-size: 13px !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -795,6 +796,7 @@ body {
   .answer{
     font-size:25px;
   }
+  
 
 }
 

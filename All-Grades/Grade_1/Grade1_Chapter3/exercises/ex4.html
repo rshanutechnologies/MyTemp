@@ -395,85 +395,175 @@
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
-    let audioCtx = null, correctCount = 0;
-    const inputs = document.querySelectorAll(".answer-box");
-    const options = document.querySelectorAll(".option");
-    const smiley = document.getElementById("smiley");
+   let audioCtx = null, correctCount = 0;
+const inputs = document.querySelectorAll(".answer-box");
+const options = document.querySelectorAll(".option");
+const smiley = document.getElementById("smiley");
+
+// Track which options have been matched
+const matchedOptions = new Set();
+
+function ensureAudio() {
+    if (!audioCtx) {
+        try {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            // Resume if suspended (browsers require user interaction)
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        } catch (e) {
+            console.warn("Web Audio API not supported");
+        }
+    }
+    return audioCtx;
+}
+
+function successSound() {
+    const ctx = ensureAudio();
+    if (!ctx) return;
     
-    // Track which options have been matched
-    const matchedOptions = new Set();
-
-    function ensureAudio() {
-      audioCtx ??= new (window.AudioContext || window.webkitAudioContext)();
-    }
-
-    function successSound() {
-      ensureAudio();
-      const t = audioCtx.currentTime;
-      [880, 1100, 1320].forEach((f, i) => {
-        const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+    const t = ctx.currentTime;
+    [880, 1100, 1320].forEach((f, i) => {
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = 'sine';
         o.frequency.value = f;
-        g.gain.setValueAtTime(.001, t + i * .12);
-        g.gain.linearRampToValueAtTime(.25, t + .05 + i * .12);
-        g.gain.exponentialRampToValueAtTime(.0001, t + .8 + i * .12);
-        o.connect(g); g.connect(audioCtx.destination);
-        o.start(t + i * .12); o.stop(t + .9 + i * .12);
-      });
-    }
+        g.gain.setValueAtTime(0.001, t + i * 0.12);
+        g.gain.linearRampToValueAtTime(0.3, t + 0.05 + i * 0.12);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.8 + i * 0.12);
+        o.connect(g);
+        g.connect(ctx.destination);
+        o.start(t + i * 0.12);
+        o.stop(t + 0.9 + i * 0.12);
+    });
+}
 
-    function zzzSound() {
-      ensureAudio();
-      const t = audioCtx.currentTime;
-      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
-      o.frequency.setValueAtTime(220, t);
-      o.frequency.exponentialRampToValueAtTime(140, t + .4);
-      g.gain.setValueAtTime(.001, t);
-      g.gain.exponentialRampToValueAtTime(.0001, t + .5);
-      o.connect(g); g.connect(audioCtx.destination);
-      o.start(t); o.stop(t + .5);
-    }
+function zzzSound() {
+    const ctx = ensureAudio();
+    if (!ctx) return;
+    
+    const t = ctx.currentTime;
+    
+    // Create a buzzer/wrong sound effect
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    
+    osc.type = 'sawtooth';  // Harsher sound for wrong answer
+    osc.frequency.setValueAtTime(440, t);
+    osc.frequency.exponentialRampToValueAtTime(220, t + 0.3);
+    
+    gain.gain.setValueAtTime(0.001, t);
+    gain.gain.linearRampToValueAtTime(0.35, t + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.5);
+    
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(t);
+    osc.stop(t + 0.5);
+    
+    // Add a second descending tone for more dramatic wrong effect
+    const osc2 = ctx.createOscillator();
+    const gain2 = ctx.createGain();
+    osc2.type = 'square';
+    osc2.frequency.setValueAtTime(330, t + 0.05);
+    osc2.frequency.exponentialRampToValueAtTime(165, t + 0.35);
+    gain2.gain.setValueAtTime(0.2, t + 0.05);
+    gain2.gain.exponentialRampToValueAtTime(0.0001, t + 0.55);
+    osc2.connect(gain2);
+    gain2.connect(ctx.destination);
+    osc2.start(t + 0.05);
+    osc2.stop(t + 0.55);
+}
 
-    function showSmiley(e) {
-      smiley.textContent = e;
-      smiley.classList.add("show");
-      setTimeout(() => smiley.classList.remove("show"), 1200);
+// Also add a simple beep fallback using Audio element if Web Audio fails
+function playWrongBeep() {
+    try {
+        // Create a simple oscillator as fallback
+        const ctx = ensureAudio();
+        if (ctx) {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.value = 300;
+            gain.gain.value = 0.2;
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
+            osc.stop(ctx.currentTime + 0.3);
+        }
+    } catch(e) {
+        console.log("Audio not available");
     }
+}
 
-    // Function to move image to the question row
-    function moveImageToQuestion(questionRow, optionElement, optionId) {
-      const imageSrc = optionElement.getAttribute('data-image-src');
-      const imageLabel = optionElement.getAttribute('data-image-label') || optionId;
-      const container = questionRow.querySelector('.matched-image-container');
-      
-      if (!container) return;
-      
-      // Create the matched image display
-      const matchedDiv = document.createElement('div');
-      matchedDiv.className = 'matched-image';
-      matchedDiv.innerHTML = `
+function showSmiley(e) {
+    smiley.textContent = e;
+    smiley.classList.add("show");
+    setTimeout(() => smiley.classList.remove("show"), 1200);
+}
+
+// Function to move image to the question row
+function moveImageToQuestion(questionRow, optionElement, optionId) {
+    const imageSrc = optionElement.getAttribute('data-image-src');
+    const imageLabel = optionElement.getAttribute('data-image-label') || optionId;
+    const container = questionRow.querySelector('.matched-image-container');
+    
+    if (!container) return;
+    
+    // Create the matched image display
+    const matchedDiv = document.createElement('div');
+    matchedDiv.className = 'matched-image';
+    matchedDiv.innerHTML = `
         <img src="${imageSrc}" alt="${imageLabel}">
         <span>✓ Matched</span>
-      `;
-      
-      // Clear previous matched image if any
-      container.innerHTML = '';
-      container.appendChild(matchedDiv);
-      
-      // Mark original option as matched (hide/disable it)
-      optionElement.classList.add('matched');
-      
-      // Store that this option is now used
-      matchedOptions.add(optionId);
-    }
+    `;
+    
+    // Clear previous matched image if any
+    container.innerHTML = '';
+    container.appendChild(matchedDiv);
+    
+    // Mark original option as matched (hide/disable it)
+    optionElement.classList.add('matched');
+    
+    // Store that this option is now used
+    matchedOptions.add(optionId);
+}
 
-    inputs.forEach(input => {
-      input.addEventListener("input", (e) => {
+// Initialize audio on first user interaction
+function initAudioOnFirstClick() {
+    const ctx = ensureAudio();
+    if (ctx && ctx.state === 'suspended') {
+        ctx.resume();
+    }
+}
+
+// Add click listener to resume audio (browsers require user interaction)
+document.body.addEventListener('click', function resumeAudio() {
+    const ctx = ensureAudio();
+    if (ctx && ctx.state === 'suspended') {
+        ctx.resume();
+    }
+}, { once: true });
+
+// Also resume on any input click
+inputs.forEach(input => {
+    input.addEventListener('click', () => {
+        const ctx = ensureAudio();
+        if (ctx && ctx.state === 'suspended') {
+            ctx.resume();
+        }
+    });
+});
+
+inputs.forEach(input => {
+    input.addEventListener("input", (e) => {
         let val = e.target.value.toLowerCase();
 
         // Allow only a, b, c
         if (!["a", "b", "c"].includes(val)) {
-          e.target.value = "";
-          return;
+            e.target.value = "";
+            return;
         }
 
         const correctId = input.dataset.answer;
@@ -484,66 +574,87 @@
 
         // Check if this option has already been matched to another question
         if (matchedOptions.has(val)) {
-          // Option already used - show error and clear
-          showSmiley("❌");
-          zzzSound();
-          e.target.value = "";
-          
-          // Flash the already matched option to indicate it's taken
-          targetOption.style.transition = '0.2s';
-          targetOption.style.opacity = '0.5';
-          setTimeout(() => {
-            targetOption.style.opacity = '';
-          }, 300);
-          return;
+            // Option already used - show error and clear
+            showSmiley("❌");
+            zzzSound();  // Wrong sound - should play now
+            
+            e.target.value = "";
+            
+            // Flash the already matched option to indicate it's taken
+            targetOption.style.transition = '0.2s';
+            targetOption.style.opacity = '0.5';
+            setTimeout(() => {
+                targetOption.style.opacity = '';
+            }, 300);
+            return;
         }
 
         targetOption.classList.remove("wrong");
 
         if (val === correctId) {
-          // CORRECT MATCH - Move the image to the question
-          targetOption.classList.add("correct");
-          input.disabled = true;
-          correctCount++;
-          
-          // Move the image to the question row
-          moveImageToQuestion(currentQuestionRow, targetOption, val);
-          
-          showSmiley("😄");
-          confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-          successSound();
-          
-          if (correctCount === inputs.length) setTimeout(showFinal, 900);
+            // CORRECT MATCH - Move the image to the question
+            targetOption.classList.add("correct");
+            input.disabled = true;
+            correctCount++;
+            
+            // Move the image to the question row
+            moveImageToQuestion(currentQuestionRow, targetOption, val);
+            
+            showSmiley("😄");
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            successSound();  // Success sound
+            
+            if (correctCount === inputs.length) setTimeout(showFinal, 900);
         } else {
-          // WRONG ANSWER
-          targetOption.classList.add("wrong");
-          showSmiley("😢");
-          zzzSound();
-          setTimeout(() => targetOption.classList.remove("wrong"), 700);
-          e.target.value = "";
+            // WRONG ANSWER - This should trigger wrong sound
+            targetOption.classList.add("wrong");
+            showSmiley("😢");
+            zzzSound();  // Wrong sound - FIXED: now properly called
+            
+            // Visual feedback for wrong answer
+            e.target.style.backgroundColor = '#ffe0e0';
+            setTimeout(() => {
+                e.target.style.backgroundColor = '';
+            }, 300);
+            
+            setTimeout(() => targetOption.classList.remove("wrong"), 700);
+            e.target.value = "";
         }
-      });
     });
+    
+    // Add keypress sound resume
+    input.addEventListener('keypress', () => {
+        const ctx = ensureAudio();
+        if (ctx && ctx.state === 'suspended') {
+            ctx.resume();
+        }
+    });
+});
 
-    function showFinal() {
-      confetti({ particleCount: 200, spread: 100, origin: { y: 0.5 } });
-      successSound(); 
-      showSmiley("🥳");
-      const d = document.createElement("div");
-      d.className = "final-overlay";
-      d.style.display = "flex";
-      d.innerHTML = `
+function showFinal() {
+    confetti({ particleCount: 200, spread: 100, origin: { y: 0.5 } });
+    successSound(); 
+    showSmiley("🥳");
+    const d = document.createElement("div");
+    d.className = "final-overlay";
+    d.style.display = "flex";
+    d.innerHTML = `
         <div class="final-card">
-          <h1 style="font-family:'Livvic';font-size: 42px; margin:0; color:#4cc9f0;;">GREAT JOB!</h1>
-          <p style="font-size: 20px; color:#2F4F4F;">Quiz Completed Successfully!</p>
-          <button onclick="location.reload()" style="
-            margin-top:15px; padding:12px 30px; font-size:18px; border-radius:30px;
-            border:none; background:#f778a1; color:white; font-family:'Livvic'; cursor:pointer;">
-            PLAY AGAIN ↺
-          </button>
+            <h1 style="font-family:'Livvic';font-size: 42px; margin:0; color:#4cc9f0;">GREAT JOB!</h1>
+            <p style="font-size: 20px; color:#2F4F4F;">Quiz Completed Successfully!</p>
+            <button onclick="location.reload()" style="
+                margin-top:15px; padding:12px 30px; font-size:18px; border-radius:30px;
+                border:none; background:#f778a1; color:white; font-family:'Livvic'; cursor:pointer;">
+                PLAY AGAIN ↺
+            </button>
         </div>`;
-      document.body.appendChild(d);
-    }
+    document.body.appendChild(d);
+}
+
+// Pre-warm audio context on page load (but suspended until user interaction)
+window.addEventListener('load', () => {
+    ensureAudio();
+});
   </script>
 </body>
 

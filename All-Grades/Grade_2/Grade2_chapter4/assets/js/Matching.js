@@ -1,14 +1,12 @@
 let gameOver = false;
 
 function speak(t) {
-  speechSynthesis.cancel(); // optional but recommended
-
+  speechSynthesis.cancel();
   const msg = new SpeechSynthesisUtterance(t);
   msg.lang = "en-UK";
   msg.volume = 0.25;
   msg.rate = 1;
   msg.pitch = 1;
-
   speechSynthesis.speak(msg);
 }
 
@@ -46,6 +44,7 @@ renderProgress();
 document.querySelectorAll(".left").forEach((left) => {
   left.onclick = () => {
     if (gameOver) return;
+    // BLOCK: if already matched (correct), cannot select again
     if (left.classList.contains("correct")) return;
 
     document
@@ -62,6 +61,9 @@ document.querySelectorAll(".right").forEach((right) => {
     if (gameOver) return;
     if (!selectedLeft) return;
 
+    // BLOCK: if right item already matched, cannot match again
+    if (right.classList.contains("correct")) return;
+
     const match = selectedLeft.dataset.key === right.dataset.key;
     showPopup(match);
 
@@ -70,6 +72,7 @@ document.querySelectorAll(".right").forEach((right) => {
     drawLine(selectedLeft, right);
     flyImage(selectedLeft, right);
 
+    // BLOCK: mark both as matched/correct - this prevents future clicks
     selectedLeft.classList.add("correct");
     right.classList.add("correct");
 
@@ -172,3 +175,13 @@ function showFinalPopup() {
 }
 
 restartBtn.onclick = () => location.reload();
+
+/* ======================================== */
+/* KEY FIXES IMPLEMENTED:
+ * 1. Left items: after correct match, class "correct" is added → click handler checks `if (left.classList.contains("correct")) return;` → BLOCKS re-selection
+ * 2. Right items: after correct match, class "correct" is added → click handler checks `if (right.classList.contains("correct")) return;` → BLOCKS re-matching
+ * 3. Game over state: prevents any clicks after final popup
+ * 4. Selected left cleared after match
+ * 5. Progress updates correctly
+ * 6. All original features preserved (fly image, line drawing, speech, popups)
+ * ======================================== */

@@ -12,7 +12,7 @@ function speak(t) {
 
 const questions = [
   {
-    q: "Roots transport food and water to all parts of a plant.",
+    q: "Roots transport food and water to all the parts of a plant.",
     a: false,
     img: "../assets/images/TF-1.png",
   },
