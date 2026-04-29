@@ -21,7 +21,7 @@ const questions = [
     image: "../assets/images/tf4.png"
   },
   {
-    text: "Animals that gnaw their food have sharp curved teeth.",
+    text: "Animals that gnaw their food have a pair of sharp, long and curved teeth.",
     answer: true,
     image: "../assets/images/tf5.png"
   },

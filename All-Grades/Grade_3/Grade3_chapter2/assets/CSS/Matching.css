@@ -634,6 +634,12 @@ body {
   pointer-events: none;
 }
 
+.q-text,
+.answer .label,
+.left-item,
+.right-item {
+  font-size: 18px;
+}
 /* =========================
    MOBILE ALIGNMENT FIX
 ========================= */
