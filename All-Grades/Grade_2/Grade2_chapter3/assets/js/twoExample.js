@@ -5,7 +5,8 @@ const questions = [
   { img: "../assets/images/T-Q3.png", answer: "Birla Temple" },
   { img: "../assets/images/T-Q4.png", answer: "India Gate" },
 ];
-
+window.addEventListener("drop", e => e.preventDefault(), true);
+window.addEventListener("dragover", e => e.preventDefault(), true);
 let solved = Array(questions.length).fill(false);
 let score = 0;
 
@@ -106,17 +107,46 @@ function render() {
 
     const input = document.getElementById("ans" + i);
 const btn = document.getElementById("btn" + i);
+/* 🚫 BLOCK DROP */
+input.addEventListener("drop", (e) => {
+  e.preventDefault();
+});
 
+/* 🚫 BLOCK PASTE */
+input.addEventListener("paste", (e) => {
+  e.preventDefault();
+});
+
+/* 🚫 BLOCK RIGHT CLICK */
+input.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
 // 🔒 Disable initially if empty
 btn.disabled = input.value.trim() === "" || solved[i];
 
 // 🎯 Enable only when user types
 input.addEventListener("input", () => {
-  if (input.value.trim() === "") {
+
+  let val = input.value;
+
+  // 🚨 REMOVE URL / IMAGE PATH (YOUR BUG FIX)
+  if (
+    val.includes("http") ||
+    val.includes("www.") ||
+    val.includes("blob:") ||
+    val.includes("data:") ||
+    val.match(/\.(png|jpg|jpeg|gif|webp)$/i)
+  ) {
+    input.value = "";
     btn.disabled = true;
-  } else {
-    btn.disabled = false;
+    return;
   }
+
+  // ✅ CLEAN TEXT (allow letters + space + ')
+  input.value = val.replace(/[^a-zA-Z ']/g, "");
+
+  // enable button
+  btn.disabled = input.value.trim() === "" || solved[i];
 });
 
 
