@@ -553,6 +553,24 @@
         font-size: 1.3rem;
         padding: 20px 50px;
       }
+       #result-card {
+    max-width: 400px;   /* 🔥 bigger like first code */
+    height: 250px;
+    padding: 40px;
+  }
+
+  #result-card h1 {
+    font-size: 3.5rem !important;
+  }
+
+  #result-card p {
+    font-size: 1.5rem !important;
+  }
+
+  #result-card .btn {
+    font-size: 1.2rem;
+    padding: 16px 40px;
+  }
     }
 
 
@@ -590,6 +608,24 @@
         height: 60px;
         font-size: 1.5rem;
       }
+       #result-card {
+    max-width: 400px;   /* 🔥 bigger like first code */
+    height: 250px;
+    padding: 40px;
+  }
+
+  #result-card h1 {
+    font-size: 3.5rem !important;
+  }
+
+  #result-card p {
+    font-size: 1.5rem !important;
+  }
+
+  #result-card .btn {
+    font-size: 1.2rem;
+    padding: 16px 40px;
+  }
     }
   </style>
 </head>
@@ -623,11 +659,11 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
     const quizData = [
-      { text: "Living things need water to <span class='blank' id='blank-0'></span>.", options: ["drink", "move", "fly"], correct: 0, imgs: ["../uploads/drink.png", "../uploads/move.png", "../uploads/fly.png"] },
-      { text: "Non-living things <span class='blank' id='blank-1'></span>.", options: ["breathe", "don't breathe", "eat"], correct: 1, imgs: ["../uploads/breathe.png", "../uploads/dontb.png", "../uploads/eat.png"] },
-      { text: "A book is a <span class='blank' id='blank-2'></span> thing.", options: ["man-made", "natural", "living"], correct: 0, imgs: ["../uploads/book.png", "../uploads/mountain-img.png", "../uploads/living.png"] },
-      { text: "Living things <span class='blank' id='blank-3'></span>.", options: ["don't die", "don't grow", "die"], correct: 2, imgs: ["../uploads/dontd.png", "../uploads/dontgrow.png", "../uploads/die.png"] },
-      { text: "Human beings are <span class='blank' id='blank-4'></span> things.", options: ["non-living", "living", "man-made"], correct: 1, imgs: ["../uploads/non-living.png", "../uploads/living.png", "../uploads/mm.png"] }
+      { text: "Living things need water to <span class='blank' id='blank-0'></span>.", options: ["Drink", "Move", "Fly"], correct: 0, imgs: ["../uploads/drink.png", "../uploads/move.png", "../uploads/fly.png"] },
+      { text: "Non-living things <span class='blank' id='blank-1'></span>.", options: ["Breathe", "Don't breathe", "Eat"], correct: 1, imgs: ["../uploads/breathe.png", "../uploads/dontb.png", "../uploads/eat.png"] },
+      { text: "A book is a <span class='blank' id='blank-2'></span> thing.", options: ["Man-made", "Natural", "Living"], correct: 0, imgs: ["../uploads/book.png", "../uploads/mountain-img.png", "../uploads/living.png"] },
+      { text: "Living things <span class='blank' id='blank-3'></span>.", options: ["Don't die", "Don't grow", "Die"], correct: 2, imgs: ["../uploads/dontd.png", "../uploads/dontgrow.png", "../uploads/die.png"] },
+      { text: "Human beings are <span class='blank' id='blank-4'></span> things.", options: ["Non-living", "Living", "Man-made"], correct: 1, imgs: ["../uploads/non-living.png", "../uploads/living.png", "../uploads/mm.png"] }
     ];
 
     let currentIdx = 0;
