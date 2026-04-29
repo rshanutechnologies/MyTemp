@@ -730,7 +730,8 @@ font-size:22px;
       { prefix: "The", blank: "TONGUE", suffix: "is the sense organ that helps us to taste.", status: false, img: "../uploads/tongue.png" },
       { prefix: "We hold things with our", blank: "HANDS", suffix: ".", status: false, img: "../uploads/hands.png" }
     ];
-
+window.addEventListener("drop", e => e.preventDefault(), true);
+window.addEventListener("dragover", e => e.preventDefault(), true);
     let idx = 0, inputs = [], audioCtx = null, isAnimating = false;
     const qNumber = document.getElementById("qNumber"), sentenceLine = document.getElementById("sentenceLine");
     const clueImg = document.getElementById("clueImg"), nextBtn = document.getElementById("nextBtn"), prevBtn = document.getElementById("prevBtn");
@@ -788,6 +789,20 @@ font-size:22px;
 
       for (let i = 0; i < word.length; i++) {
         const inp = document.createElement("input");
+        /* 🚫 BLOCK DROP */
+inp.addEventListener("drop", (e) => {
+  e.preventDefault();
+});
+
+/* 🚫 BLOCK PASTE */
+inp.addEventListener("paste", (e) => {
+  e.preventDefault();
+});
+
+/* 🚫 BLOCK RIGHT CLICK */
+inp.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
         inp.className = "blank-input";
         inp.maxLength = 1;
         inp.autocomplete = "off";
@@ -798,12 +813,29 @@ font-size:22px;
           inp.classList.add("correct");
         }
 
-        inp.addEventListener("input", () => {
-          if (questions[idx].status) return;
-          inp.value = inp.value.toUpperCase().replace(/[^A-Z]/g, "");
-          if (inp.value && inputs[i + 1]) inputs[i + 1].focus();
-          tryAutoCheck();
-        });
+      inp.addEventListener("input", () => {
+  if (questions[idx].status) return;
+
+  let val = inp.value;
+
+  // 🚨 REMOVE URL / DROP TEXT (MAIN FIX)
+  if (
+    val.includes("http") ||
+    val.includes("www.") ||
+    val.includes("blob:") ||
+    val.includes("data:")
+  ) {
+    inp.value = "";
+    return;
+  }
+
+  // ✅ ONLY A–Z
+  val = val.toUpperCase().replace(/[^A-Z]/g, "");
+  inp.value = val.slice(0, 1);
+
+  if (inp.value && inputs[i + 1]) inputs[i + 1].focus();
+  tryAutoCheck();
+});
 
         inp.addEventListener("keydown", (e) => {
           if (e.key === "Backspace" && !inp.value && inputs[i - 1]) inputs[i - 1].focus();
