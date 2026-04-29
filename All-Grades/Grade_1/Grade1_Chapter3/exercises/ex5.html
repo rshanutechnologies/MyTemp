@@ -670,7 +670,7 @@ const nextBtn = document.getElementById("nextBtn");
 const backBtn = document.getElementById("backBtn");
 const smiley = document.getElementById("smiley");
 
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+// const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 /* TEXT TO SPEECH */
 function readQuestion() {
@@ -680,21 +680,144 @@ function readQuestion() {
 }
 
 /* SOUND */
-function playSound(isSuccess) {
-  if (audioCtx.state === 'suspended') audioCtx.resume();
+ let audioCtx = null;
+
+// function ensureAudio() {
+//   audioCtx ??= new (window.AudioContext || window.webkitAudioContext)();
+// }
+
+function ensureAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();   // ⭐ THIS LINE FIXES YOUR ISSUE
+  }
+}
+
+/* ✅ SUCCESS SOUND (same as your 2nd code) */
+function successSound() {
+  ensureAudio();
+  const t = audioCtx.currentTime;
+
+  [880, 1100, 1320].forEach((f, i) => {
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+
+    o.frequency.value = f;
+
+    g.gain.setValueAtTime(0.001, t + i * 0.12);
+    g.gain.linearRampToValueAtTime(0.25, t + 0.05 + i * 0.12);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.8 + i * 0.12);
+
+    o.connect(g);
+    g.connect(audioCtx.destination);
+
+    o.start(t + i * 0.12);
+    o.stop(t + 0.9 + i * 0.12);
+  });
+}
+
+/* ❌ WRONG SOUND */
+function zzzSound() {
+  ensureAudio();
+  const t = audioCtx.currentTime;
+
+  const o = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+
+  o.frequency.setValueAtTime(220, t);
+  o.frequency.exponentialRampToValueAtTime(140, t + 0.4);
+
+  g.gain.setValueAtTime(0.001, t);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + 0.5);
+
+  o.connect(g);
+  g.connect(audioCtx.destination);
+
+  o.start(t);
+  o.stop(t + 0.5);
+}
+//  function zzzSound() {
+//       ensureAudio();
+//       const t = audioCtx.currentTime;
+//       const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+//       o.frequency.setValueAtTime(220, t);
+//       o.frequency.exponentialRampToValueAtTime(140, t + .4);
+//       g.gain.setValueAtTime(.001, t);
+//       g.gain.exponentialRampToValueAtTime(.0001, t + .5);
+//       o.connect(g); g.connect(audioCtx.destination);
+//       o.start(t); o.stop(t + .5);
+//     }
+
+
+
+
+
+function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();   // ⭐ IMPORTANT FIX
+  }
+}
+
+/* ✅ SUCCESS SOUND */
+function successSound() {
+  initAudio();
+  const t = audioCtx.currentTime;
+
+  const freqs = [523.25, 659.25, 783.99]; // pleasant tones
+
+  freqs.forEach((f, i) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(f, t + i * 0.1);
+
+    gain.gain.setValueAtTime(0.15, t + i * 0.1);
+    gain.gain.exponentialRampToValueAtTime(0.01, t + i * 0.1 + 0.3);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start(t + i * 0.1);
+    osc.stop(t + i * 0.1 + 0.3);
+  });
+}
+
+/* ❌ WRONG SOUND (FIXED & AUDIBLE) */
+function wrongSound() {
+  initAudio();
+  const t = audioCtx.currentTime;
+
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
-  osc.connect(gain); gain.connect(audioCtx.destination);
-  osc.frequency.value = isSuccess ? 800 : 110;
-  gain.gain.value = 0.1;
-  osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+
+  osc.type = 'sawtooth';   // stronger than sine
+  osc.frequency.setValueAtTime(120, t);
+  osc.frequency.linearRampToValueAtTime(60, t + 0.4);
+
+  gain.gain.setValueAtTime(0.2, t);   // 🔥 louder
+  gain.gain.linearRampToValueAtTime(0.01, t + 0.4);
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc.start(t);
+  osc.stop(t + 0.4);
 }
+
 
 /* FEEDBACK */
 function showFeedback(isHappy) {
   smiley.innerHTML = isHappy ? "🤩" : "😢";
   smiley.classList.add("show");
-  setTimeout(() => smiley.classList.remove("show"), 1000);
+  setTimeout(() => smiley.classList.remove("show"), 1200);
 }
 
 /* RENDER */
@@ -744,7 +867,7 @@ function render() {
         document.querySelectorAll(".option").forEach(opt => opt.classList.add("locked"));
 
         showFeedback(true);
-        playSound(true);
+     successSound();
 
         if (current === quiz.length - 1) {
           setTimeout(showFinal, 1200);
@@ -755,7 +878,8 @@ function render() {
       } else {
         option.classList.add("wrong");
         showFeedback(false);
-        playSound(false);
+    //  zzzSound();
+    wrongSound(); 
         setTimeout(() => option.classList.remove("wrong"), 600);
       }
 

@@ -738,12 +738,14 @@ function showFinalScore() {
 // Navigation
 document.getElementById("nextBtn").onclick = () => {
   window.speechSynthesis.cancel();
+
+  clearEffects();   // ✅ ADD THIS
+
   if (i < quiz.length - 1) {
     i++;
     render();
   }
 };
-
 document.getElementById("prevBtn").onclick = () => {
   window.speechSynthesis.cancel();
   if (i > 0) {
@@ -760,7 +762,20 @@ document.querySelectorAll(".card").forEach(btn => {
     }
   });
 });
+function clearEffects(){
+  // ❌ remove butterflies
+  document.querySelectorAll(".butterfly").forEach(el => el.remove());
 
+  // ❌ remove sparkles
+  document.querySelectorAll(".sparkle").forEach(el => el.remove());
+
+  // ❌ clear confetti
+  document.getElementById("confetti").innerHTML = "";
+
+  // ❌ hide smiley
+  const s = document.getElementById("smiley");
+  s.classList.remove("show");
+}
 // Initialize
 render();
 </script>

@@ -628,6 +628,66 @@
       o.start(t); o.stop(t + .5);
     }
 
+
+   
+
+function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();   // ⭐ IMPORTANT FIX
+  }
+}
+
+/* ✅ SUCCESS SOUND */
+function successSound() {
+  initAudio();
+  const t = audioCtx.currentTime;
+
+  const freqs = [523.25, 659.25, 783.99]; // pleasant tones
+
+  freqs.forEach((f, i) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(f, t + i * 0.1);
+
+    gain.gain.setValueAtTime(0.15, t + i * 0.1);
+    gain.gain.exponentialRampToValueAtTime(0.01, t + i * 0.1 + 0.3);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start(t + i * 0.1);
+    osc.stop(t + i * 0.1 + 0.3);
+  });
+}
+
+/* ❌ WRONG SOUND (FIXED & AUDIBLE) */
+function wrongSound() {
+  initAudio();
+  const t = audioCtx.currentTime;
+
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  osc.type = 'sawtooth';   // stronger than sine
+  osc.frequency.setValueAtTime(120, t);
+  osc.frequency.linearRampToValueAtTime(60, t + 0.4);
+
+  gain.gain.setValueAtTime(0.2, t);   // 🔥 louder
+  gain.gain.linearRampToValueAtTime(0.01, t + 0.4);
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc.start(t);
+  osc.stop(t + 0.4);
+}
+
     function showSmiley(e) {
       smiley.textContent = e;
       smiley.classList.add("show");
@@ -660,8 +720,8 @@
             btn.classList.add("correct");
             qEl.dataset.answered = "true";
             showSmiley("😄");
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-            playSuccess();
+            confetti({ origin: { y: 0.8 } });
+           successSound();
 
             if (i === quiz.length - 1) {
               setTimeout(showFinal, 1300);
@@ -670,8 +730,8 @@
             }
           } else {
             btn.classList.add("wrong");
-            showSmiley("😢"); playZzz();
-            setTimeout(() => btn.classList.remove("wrong"), 700);
+            showSmiley("😢");wrongSound(); 
+            setTimeout(() => btn.classList.remove("wrong"), 500);
           }
         };
       });
@@ -679,6 +739,7 @@
 
     function showSlide(i) {
       window.speechSynthesis.cancel();
+      smiley.classList.remove("show");
       document.querySelectorAll(".slide").forEach((s, idx) => s.classList.toggle("active", idx === i));
       current = i;
       updateNav();
@@ -699,7 +760,7 @@
 
     function showFinal() {
       confetti({ particleCount: 250, spread: 100, origin: { y: 0.5 } });
-      playSuccess(); showSmiley("🥳");
+      playSuccess(); showSmiley("");
       const d = document.createElement("div");
       d.className = "final-overlay";
       d.innerHTML = `
