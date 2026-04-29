@@ -908,7 +908,8 @@ prevBtn.disabled = (currentIdx === 0);
 
 
       // ✅ RESTORE PREVIOUS ANSWER
-if (q.selected !== null) {
+// ✅ ONLY restore if correct answer
+if (q.solved && q.selected !== null) {
   currentlyLanded = q.selected;
 
   const target = [
@@ -943,7 +944,9 @@ if (q.selected !== null) {
 
     checkBtn.onclick = () => {
       const q = questions[currentIdx];
-      q.selected = currentlyLanded;  // ✅ SAVE ANSWER
+    if(currentlyLanded === q.correct){
+  q.selected = currentlyLanded;  // ✅ save only correct
+}
       if(currentlyLanded === q.correct){
         q.solved = true; feedback.textContent = "😄"; feedback.className = "show";
         hint.textContent = "Correct! Well done. 🌟";
