@@ -57,11 +57,13 @@ background: transparent;
     letter-spacing: 1px;
     margin-bottom: 5px;
     display: none;
+    
 }
 
 .sub-title {
     color: #51776a;
     font-size: 25px;
+    margin-top: -5%;
 }
 
 .progress-container {
@@ -99,7 +101,7 @@ background: transparent;
 
 .token,
 .slot {
-    height: 70px;
+    height: 90px;
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -109,7 +111,7 @@ background: transparent;
 .token {
     padding: 0 20px;
     cursor: grab;
-    font-size: 20px;
+    font-size: 24px;
     gap: 15px;
     color: #2f4f4f;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -147,7 +149,7 @@ background: transparent;
     border: 2px dashed #d1d5db;
     padding: 0 15px;
     justify-content: space-between;
-    font-size: 18px;
+    font-size: 22px;
     color: #2f4f4f;
 }
 

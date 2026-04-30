@@ -91,6 +91,7 @@
  .correct .animal {
      transform: scale(1.2);
      filter: drop-shadow(0 0 12px #4caf50);
+   
  }
 
  .wrong .animal {
@@ -283,6 +284,36 @@
      width: 70px;
      transition: bottom .5s ease;
  }
+
+
+
+ /* Add to your existing CSS */
+.true.highlight-correct,
+.false.highlight-correct {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.true:disabled,
+.false:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
 
  /* ======================= TABLET ======================= */
  @media (max-width:1024px) {
@@ -503,11 +534,13 @@ max-width:1100px;
 .question{
 font-size:44px;
 height:75px;
+margin-bottom: 4%;
+
 }
 
 .animal-img{
 width:260px;
-height:270px;
+height:240px;
 }
 
 .btn{

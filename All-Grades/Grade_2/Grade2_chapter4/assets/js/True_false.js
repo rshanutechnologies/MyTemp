@@ -87,6 +87,10 @@ function render() {
   falseBtn.style.boxShadow = "none";
   trueBtn.disabled = false;
   falseBtn.disabled = false;
+  
+  // Remove any existing highlight classes
+  trueBtn.classList.remove("highlight-correct");
+  falseBtn.classList.remove("highlight-correct");
 
   if (correct[index]) {
     stage.classList.add("correct");
@@ -107,36 +111,6 @@ function showAnswerPopup(ok) {
   }, 1200);
 }
 
-// function answer(choice) {
-//   if (correct[index]) return;
-
-//   const ok = choice === questions[index].a;
-//   showAnswerPopup(ok);
-
-//   if (!ok) {
-//     stage.classList.add("wrong");
-//     return; // ❌ DO NOT highlight or disable buttons
-//   }
-
-//   // ✅ Correct Answer
-//   correct[index] = true;
-//   selectedAnswers[index] = choice;
-//   stage.classList.remove("wrong");
-//   stage.classList.add("correct");
-
-//   monkey.className = "monkey step-" + correct.filter(Boolean).length;
-
-//   highlightButtons(); // highlight only when correct
-
-//   if (index === questions.length - 1) {
-//     quizEnded = true;
-//     setTimeout(showFinalPopup, 1200);
-//   } else {
-//     nextBtn.disabled = false;
-//   }
-// }
-
-
 function answer(choice) {
   if (correct[index]) return;
 
@@ -145,6 +119,10 @@ function answer(choice) {
 
   if (!ok) {
     stage.classList.add("wrong");
+    // Remove wrong class after animation
+    setTimeout(() => {
+      stage.classList.remove("wrong");
+    }, 500);
     return;
   }
 
@@ -154,7 +132,6 @@ function answer(choice) {
   stage.classList.remove("wrong");
   stage.classList.add("correct");
 
-  // ⭐ ADD THIS LINE
   renderProgress();
 
   monkey.className = "monkey step-" + correct.filter(Boolean).length;
@@ -172,13 +149,20 @@ function answer(choice) {
 function highlightButtons() {
   const trueBtn = document.querySelector(".true");
   const falseBtn = document.querySelector(".false");
+  const correctAnswer = questions[index].a;
 
-  if (questions[index].a === true) {
-    trueBtn.style.boxShadow = "0 0 15px #4caf50";
+  // Highlight only the correct option with green glow
+  if (correctAnswer === true) {
+    trueBtn.classList.add("highlight-correct");
+    trueBtn.style.boxShadow = "0 0 20px #4caf50";
+    // trueBtn.style.border = "2px solid #4caf50";
   } else {
-    falseBtn.style.boxShadow = "0 0 15px #4caf50";
+    falseBtn.classList.add("highlight-correct");
+    falseBtn.style.boxShadow = "0 0 20px #4caf50";
+    // falseBtn.style.border = "2px solid #4caf50";
   }
 
+  // Disable both buttons
   trueBtn.disabled = true;
   falseBtn.disabled = true;
 }
@@ -198,12 +182,17 @@ function showFinalPopup() {
 }
 
 prev.onclick = () => {
-  index--;
-  render();
+  if (index > 0) {
+    index--;
+    render();
+  }
 };
+
 next.onclick = () => {
-  index++;
-  render();
+  if (index < questions.length - 1) {
+    index++;
+    render();
+  }
 };
 
 restart.onclick = () => {
