@@ -575,11 +575,16 @@
       { text: "A rock is a man-made thing.", answer: "F", img: "../uploads/rock-img.png" }
     ];
 
+
+
     const viewport = document.getElementById("slides-viewport");
     const nextBtn = document.getElementById("nextBtn");
     const backBtn = document.getElementById("backBtn");
     const smiley = document.getElementById("smiley");
     const progressText = document.getElementById("progress-text");
+
+    let isTransitioning = false; // blocks fast clicks
+let quizFinished = false;   // stops everything after final
 
     let current = 0, audioCtx = null;
 
@@ -737,13 +742,31 @@ function wrongSound() {
       });
     });
 
-    function showSlide(i) {
-      window.speechSynthesis.cancel();
-      smiley.classList.remove("show");
-      document.querySelectorAll(".slide").forEach((s, idx) => s.classList.toggle("active", idx === i));
-      current = i;
-      updateNav();
-    }
+   function showSlide(i) {
+
+  // 🚫 block spam + stop after finish
+  if (isTransitioning || quizFinished) return;
+
+  // 🚫 prevent going out of range
+  if (i < 0 || i >= quiz.length) return;
+
+  isTransitioning = true;
+
+  window.speechSynthesis.cancel();
+  smiley.classList.remove("show");
+
+  document.querySelectorAll(".slide").forEach((s, idx) => {
+    s.classList.toggle("active", idx === i);
+  });
+
+  current = i;
+  updateNav();
+
+  // 🔒 unlock after small delay
+  setTimeout(() => {
+    isTransitioning = false;
+  }, 300);
+}
 
     function updateNav() {
       const currentSlide = document.getElementById(`slide-${current}`);
@@ -754,23 +777,40 @@ function wrongSound() {
     }
 
     nextBtn.onclick = () => {
-      if (current < quiz.length - 1) showSlide(current + 1);
-    };
-    backBtn.onclick = () => showSlide(current - 1);
+  if (!quizFinished && current < quiz.length - 1) {
+    showSlide(current + 1);
+  }
+};
 
-    function showFinal() {
-      confetti({ particleCount: 250, spread: 100, origin: { y: 0.5 } });
-      playSuccess(); showSmiley("");
-      const d = document.createElement("div");
-      d.className = "final-overlay";
-      d.innerHTML = `
-      <h1 style="font-family:'Livvic';font-size:clamp(2rem, 8vw, 4rem); color: var(--primary)">GREAT JOB!</h1>
-      <p style="font-size:1.5rem;color:var(--dark); margin-top:-30px">Quiz Completed Successfully!</p>
-      <button class="nav-btn" style="background:var(--secondary); margin-top:20px"
-        onclick="location.reload()">PLAY AGAIN ↺</button>`;
-      document.querySelector(".app").appendChild(d);
-      d.style.display = "flex";
-    }
+backBtn.onclick = () => {
+  if (!quizFinished && current > 0) {
+    showSlide(current - 1);
+  }
+};
+
+   function showFinal() {
+
+  quizFinished = true; // 🔥 lock navigation
+
+  confetti({ particleCount: 250, spread: 100, origin: { y: 0.5 } });
+  playSuccess();
+  showSmiley("");
+
+  // 🚫 disable buttons completely
+  nextBtn.style.pointerEvents = "none";
+  backBtn.style.pointerEvents = "none";
+
+  const d = document.createElement("div");
+  d.className = "final-overlay";
+  d.innerHTML = `
+    <h1 style="font-family:'Livvic';font-size:clamp(2rem, 8vw, 4rem); color: var(--primary)">GREAT JOB!</h1>
+    <p style="font-size:1.5rem;color:var(--dark); margin-top:-30px">Quiz Completed Successfully!</p>
+    <button class="nav-btn" style="background:var(--secondary); margin-top:20px"
+      onclick="location.reload()">PLAY AGAIN ↺</button>
+  `;
+  document.querySelector(".app").appendChild(d);
+  d.style.display = "flex";
+}
 
     showSlide(0);
   </script>

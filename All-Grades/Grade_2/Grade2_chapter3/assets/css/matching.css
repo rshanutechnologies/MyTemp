@@ -570,7 +570,7 @@ max-width:1000px;
 transform:scale(1);
 }
 .progress-wrap{
-    background-color: #22c55e;
+    /* background-color: #22c55e; */
     position: relative;
     top:-20px;
     right:-80%;

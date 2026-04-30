@@ -666,6 +666,9 @@
       { text: "Human beings are <span class='blank' id='blank-4'></span> things.", options: ["Non-living", "Living", "Man-made"], correct: 1, imgs: ["../uploads/non-living.png", "../uploads/living.png", "../uploads/mm.png"] }
     ];
 
+    let isTransitioning = false;
+let quizFinished = false;
+
     let currentIdx = 0;
     const results = new Array(quizData.length).fill(null);
 
@@ -792,13 +795,31 @@
       refreshUI();
     };
 
-    function changeSlide(dir) {
-      window.speechSynthesis.cancel();
-      document.querySelectorAll('.slide')[currentIdx].classList.remove('active');
-      currentIdx += dir;
-      document.querySelectorAll('.slide')[currentIdx].classList.add('active');
-      refreshUI();
-    }
+ function changeSlide(dir) {
+  if (isTransitioning || quizFinished) return;
+
+  const newIndex = currentIdx + dir;
+
+  // 🚫 prevent overflow
+  if (newIndex < 0 || newIndex >= quizData.length) return;
+
+  isTransitioning = true;
+
+  window.speechSynthesis.cancel();
+
+  document.querySelectorAll('.slide')[currentIdx].classList.remove('active');
+
+  currentIdx = newIndex;
+
+  document.querySelectorAll('.slide')[currentIdx].classList.add('active');
+
+  refreshUI();
+
+  // small delay to block spam clicking
+  setTimeout(() => {
+    isTransitioning = false;
+  }, 300);
+}
 
     function refreshUI() {
       document.getElementById('progress').textContent = `Question ${currentIdx + 1} of ${quizData.length}`;
@@ -818,13 +839,25 @@
       }, 900);
     }
 
-    function finishQuiz() {
-      document.getElementById('result-card').style.display = 'flex';
-      confetti({ particleCount: 250, spread: 100, origin: { y: 0.5 } });
-    }
+  function finishQuiz() {
+  quizFinished = true;
 
-    document.getElementById('nextBtn').onclick = () => changeSlide(1);
-    document.getElementById('backBtn').onclick = () => changeSlide(-1);
+  document.getElementById('result-card').style.display = 'flex';
+
+  // 🚫 disable buttons completely
+  document.getElementById('nextBtn').style.pointerEvents = 'none';
+  document.getElementById('backBtn').style.pointerEvents = 'none';
+
+  confetti({ particleCount: 250, spread: 100, origin: { y: 0.5 } });
+}
+
+ document.getElementById('nextBtn').onclick = () => {
+  if (!quizFinished) changeSlide(1);
+};
+
+document.getElementById('backBtn').onclick = () => {
+  if (!quizFinished) changeSlide(-1);
+};
 
     createQuiz();
   </script>

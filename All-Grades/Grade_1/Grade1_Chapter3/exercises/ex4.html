@@ -91,6 +91,16 @@
       border: 3px solid var(--correct);
       color: var(--correct);
     }
+     .q-number {
+      font-size: clamp(12px, 2vh, 18px);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.5);
+      padding: 0.5vh 20px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 1vh;
+      text-align: center;
+    }
 
     .option {
       display: flex;
@@ -370,7 +380,7 @@
 <body>
   <div class="app">
     <div class="title">Match the following</div>
-
+      <div class="q-number">Type a, b, c in the boxes ✅</div>
     <div class="match-container">
       <div class="match-row" data-question="1">
         <div class="left-item">1. Natural living thing</div>

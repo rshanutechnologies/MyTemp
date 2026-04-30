@@ -2,27 +2,27 @@ let popupTimer = null;
 
 const quizData = [
   {
-    q: "Q.1 The second whorl of a flower -_______.",
+    q: "Q.1 The second whorl of a flower -____.",
     a: "Petals",
     img: "../assets/images/petalsak.png"
   },
   {
-    q: "Q.2 The bi-lobed structure at the free end of a filament - _______.",
+    q: "Q.2 The bi-lobed structure at the free end of a filament - ____.",
     a: "Anther",
     img: "../assets/images/anther.png"
   },
   {
-    q: "Q.3 The reproductive cells that ovules contain -_______.",
+    q: "Q.3 The reproductive cells that ovules contain -____.",
     a: "Ova",
     img: "../assets/images/Eggcells.png"
   },
   {
-    q: "Q.4 A sweet liquid that some flowers produce -_______ .",
+    q: "Q.4 A sweet liquid that some flowers produce -____.",
     a: "Nectar",
     img: "../assets/images/Nectar.png"
   },
   {
-    q: "Q.5 The female reproductive cells- _______.",
+    q: "Q.5 The female reproductive cells- ____.",
     a: "Ova",
     img: "../assets/images/ovules.png"  
   }

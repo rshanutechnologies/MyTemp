@@ -18,10 +18,10 @@ const quizData = [
     q: "Q.2 The sequential development of an animal from the embryo to the adult stage is called its ________.",
     img: "../assets/images/mcq2-img.png",
     options: [
-      { t: "lifespan", cls: "blue", img: "⏳" },
-      { t: "life cycle", cls: "orange", img: "🔄" },
-      { t: "reproduction", cls: "green", img: "🐾" },
-      { t: "none of these", cls: "yellow", img: "❌" },
+      { t: "Lifespan", cls: "blue", img: "⏳" },
+      { t: "Life cycle", cls: "orange", img: "🔄" },
+      { t: "Reproduction", cls: "green", img: "🐾" },
+      { t: "None of these", cls: "yellow", img: "❌" },
     ],
     a: 1, // Option 2
   },
@@ -29,10 +29,10 @@ const quizData = [
     q: "Q.3 The bird that lays the largest egg is the ________.",
     img: "../assets/images/x.png",
     options: [
-      { t: "crow", cls: "blue", img: "🐦" },
-      { t: "owl", cls: "orange", img: "🦉" },
-      { t: "ostrich", cls: "green", img: "🦤" },
-      { t: "peacock", cls: "yellow", img: "🦚" },
+      { t: "Crow", cls: "blue", img: "🐦" },
+      { t: "Owl", cls: "orange", img: "🦉" },
+      { t: "Ostrich", cls: "green", img: "🦤" },
+      { t: "Peacock", cls: "yellow", img: "🦚" },
     ],
     a: 2, // Option 3
   },
@@ -51,10 +51,10 @@ const quizData = [
     q: "Q.5 The white content of an egg or egg white is called ________.",
     img: "../assets/images/mcq5-img.png",
     options: [
-      { t: "shell", cls: "blue", img: "🐚" },
-      { t: "albumen", cls: "orange", img: "⚪" },
-      { t: "yolk", cls: "green", img: "🟡" },
-      { t: "pupa", cls: "yellow", img: "🐛" },
+      { t: "Shell", cls: "blue", img: "🐚" },
+      { t: "Albumen", cls: "orange", img: "⚪" },
+      { t: "Yolk", cls: "green", img: "🟡" },
+      { t: "Pupa", cls: "yellow", img: "🐛" },
     ],
     a: 1, // Option 2
   },
