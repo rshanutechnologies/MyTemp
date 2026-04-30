@@ -473,6 +473,10 @@
     const userAnswers = Array(quiz.length).fill(null);
     let audioCtx = null;
 
+    function formatAnswer(word) {
+  return word.charAt(0).toLowerCase() + word.slice(1);
+}
+
     // Initialize audio context on first user interaction
     function initAudio() {
       if (!audioCtx) {
@@ -597,7 +601,7 @@
             userAnswers[current] = idx;
             opt.classList.add("correct");
             playSound('correct');
-            document.getElementById("qText").innerHTML = q.text.replace("____", `<b style="color:#2ed573">${q.options[idx].txt}</b>`);
+            document.getElementById("qText").innerHTML = q.text.replace("____", `<b style="color:#fff; font-weight:500">${formatAnswer(q.options[idx].txt)}</b>`);
             showSmiley("😄");
             confetti();
             if (current === quiz.length - 1) {
@@ -620,8 +624,10 @@
         const idx = userAnswers[current];
         const opt = document.querySelector(`.option[data-i="${idx}"]`);
         if (opt) {
-          opt.classList.add("correct");
-          document.getElementById("qText").innerHTML = q.text.replace("____", `<b style="color:#2ed573">${q.options[idx].txt}</b>`);
+       const word = formatAnswer(q.options[idx].txt);
+
+document.getElementById("qText").innerHTML =
+  q.text.replace("____", `<b style="color:#2ed573">${word}</b>`);
           nextBtn.style.display = "block";
         }
       }

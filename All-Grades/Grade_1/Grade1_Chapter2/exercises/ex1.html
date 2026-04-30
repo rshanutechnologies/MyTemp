@@ -89,8 +89,8 @@ body {
       min-width: 150px; 
       display: inline-block; 
       padding: 0 15px;
-      color: #28a745; 
-      font-weight: 700;
+      color: #2f4f4f; 
+      font-weight: 400;
       text-align: center;
       vertical-align: baseline;
       transition: all 0.3s;
@@ -191,6 +191,38 @@ body {
     .final-modal { background: #C2F4FF; padding: 5vh; border-radius: 40px; text-align: center; width: min(600px, 90%); }
 
     canvas.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 1500; }
+
+    /* Add to your existing CSS - reduces gaps */
+.question {
+  gap: 0.5vh !important;  /* Reduce from 1.5vh */
+}
+
+.q-text {
+  margin: 0 !important;
+  line-height: 1.2;
+}
+
+.blank {
+  min-width: 50px !important;
+  padding: 0 8px !important;
+  border-bottom-width: 3px !important;
+}
+
+.opts {
+  margin-top: 0 !important;
+  gap: 2vw !important;
+}
+
+.nav-area {
+  margin-top: 5px !important;
+  padding: 5px 5% !important;
+  height: auto !important;
+}
+
+.q-number {
+  margin-bottom: 0 !important;
+  padding: 3px 15px !important;
+}
     /* =========================
    RESPONSIVE LAYOUT PATCH
    ========================= */
@@ -365,7 +397,7 @@ min-width:210px;
 
   <script>
     const quiz = [
-      { text: "We breathe through our _____.", options: [{ label: "Nose", img: "../uploads/nose.png" }, { label: "Ears", img: "../uploads/ear.png" }, { label: "Eyes", img: "../uploads/eyes.png" }], correctIndex: 0 },
+      { text: "We breathe through our ____.", options: [{ label: "Nose", img: "../uploads/nose.png" }, { label: "Ears", img: "../uploads/ear.png" }, { label: "Eyes", img: "../uploads/eyes.png" }], correctIndex: 0 },
       { text: "We hear with our _____.", options: [{ label: "Nose", img: "../uploads/nose.png" }, { label: "Skin", img: "../uploads/skin.png" }, { label: "Ears", img: "../uploads/ear.png" }], correctIndex: 2 },
       { text: "We must wash our eyes with cool and ____ water.", options: [{ label: "Dirty", img: "../uploads/dirty.png" }, { label: "Clean", img: "../uploads/clean.png" }, { label: "Hot", img: "../uploads/hot.png" }], correctIndex: 1 },
       { text: "We should take a bath _____.", options: [{ label: "Twice in a week", img: "../uploads/twice-week.png" }, { label: "Once in a week", img: "../uploads/once-week.png" }, { label: "Every day", img: "../uploads/everyday.png" }], correctIndex: 2 },
@@ -394,78 +426,86 @@ min-width:210px;
       o.start(); o.stop(now + 0.5);
     }
 
-    function renderSlides() {
-      slidesRoot.innerHTML = "";
-      quiz.forEach((q, index) => {
-        const slide = document.createElement("div");
-        slide.className = "slide" + (index === 0 ? " active" : "");
-        // Unique ID for each blank to prevent target errors
-        const formattedText = q.text.replace("_____", `<span class="blank" id="blank-${index}"></span>`);
-        const formattedText2 = formattedText.replace("____", `<span class="blank" id="blank-${index}"></span>`);
+ function renderSlides() {
+  slidesRoot.innerHTML = "";
+  quiz.forEach((q, index) => {
+    const slide = document.createElement("div");
+    slide.className = "slide" + (index === 0 ? " active" : "");
+    
+    // Check if blank is at start of sentence
+    const beforeBlank = q.text.split("_____")[0].trim();
+    const isBlankAtStart = beforeBlank.length === 0;
+    
+    const formattedText = q.text.replace("_____", `<span class="blank" id="blank-${index}" data-is-start="${isBlankAtStart}"></span>`);
+    const formattedText2 = formattedText.replace("____", `<span class="blank" id="blank-${index}" data-is-start="${isBlankAtStart}"></span>`);
 
-        slide.innerHTML = `
-          <div class="question" id="q-wrap-${index}" data-answered="false">
-            <div class="q-number">Question ${index + 1} of ${quiz.length}</div>
-            <span class="q-text">${formattedText2}</span>
-            <button class="bird-btn"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
-            <div class="opts">
-              ${q.options.map((opt, i) => `
-                <div class="opt-container">
-                  <div class="opt" data-qidx="${index}" data-oidx="${i}"><img src="${opt.img}" alt="${opt.label}"></div>
-                  <div class="label">${opt.label}</div>
-                </div>`).join("")}
-            </div>
-          </div>`;
-        slidesRoot.appendChild(slide);
-        slide.querySelector(".bird-btn").onclick = () => {
-          const u = new SpeechSynthesisUtterance(q.text.replace(/_+/g, "blank"));
-          u.lang = "en-IN"; window.speechSynthesis.speak(u);
-        };
-        slide.querySelectorAll(".opt").forEach(el => el.onclick = () => handleOptionClick(el));
-      });
-    }
+    slide.innerHTML = `
+      <div class="question" id="q-wrap-${index}" data-answered="false">
+        <div class="q-number">Question ${index + 1} of ${quiz.length}</div>
+        <span class="q-text">${formattedText2}</span>
+        <button class="bird-btn"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        <div class="opts">
+          ${q.options.map((opt, i) => `
+            <div class="opt-container">
+              <div class="opt" data-qidx="${index}" data-oidx="${i}"><img src="${opt.img}" alt="${opt.label}"></div>
+              <div class="label">${opt.label}</div>
+            </div>`).join("")}
+        </div>
+      </div>`;
+    slidesRoot.appendChild(slide);
+    slide.querySelector(".bird-btn").onclick = () => {
+      const u = new SpeechSynthesisUtterance(q.text.replace(/_+/g, "blank"));
+      u.lang = "en-IN"; window.speechSynthesis.speak(u);
+    };
+    slide.querySelectorAll(".opt").forEach(el => el.onclick = () => handleOptionClick(el));
+  });
+}
 
-    function handleOptionClick(optEl) {
-      const qIndex = parseInt(optEl.dataset.qidx);
-      const oIndex = parseInt(optEl.dataset.oidx);
-      const questionWrap = document.getElementById(`q-wrap-${qIndex}`);
+function handleOptionClick(optEl) {
+  const qIndex = parseInt(optEl.dataset.qidx);
+  const oIndex = parseInt(optEl.dataset.oidx);
+  const questionWrap = document.getElementById(`q-wrap-${qIndex}`);
+  
+  if (questionWrap.dataset.answered === "true") return;
+
+  if (oIndex === quiz[qIndex].correctIndex) {
+    optEl.classList.add("correct");
+    questionWrap.dataset.answered = "true";
+    
+    const targetBlank = document.getElementById(`blank-${qIndex}`);
+    if(targetBlank) {
+      let answerText = quiz[qIndex].options[oIndex].label;
       
-      if (questionWrap.dataset.answered === "true") return;
-
-      if (oIndex === quiz[qIndex].correctIndex) {
-        optEl.classList.add("correct");
-        questionWrap.dataset.answered = "true";
-        
-        // Target the specific ID for this question's blank
-        const targetBlank = document.getElementById(`blank-${qIndex}`);
-        if(targetBlank) {
-          targetBlank.textContent = quiz[qIndex].options[oIndex].label;
-          targetBlank.style.borderBottomStyle = "solid"; // Make line solid on correct
-        }
-        
-        const container = optEl.closest(".question");
-        container.querySelectorAll(".opt-container").forEach(c => {
-          if (c.querySelector(".opt") !== optEl) c.classList.add("faded");
-        });
-
-        feedbackSmiley.innerText = "😃"; feedbackSmiley.classList.add("show");
-        setTimeout(() => feedbackSmiley.classList.remove("show"), 1200);
-        playSound('win');
-        
-        if (current === quiz.length - 1) {
-          setTimeout(showFinalModal, 1500);
-        } else {
-          bigNext.classList.add("show");
-        }
-      } else {
-        optEl.classList.add("wrong"); playSound('fail');
-        feedbackSmiley.innerText = "😭"; feedbackSmiley.classList.add("show");
-        setTimeout(() => {
-          optEl.classList.remove("wrong");
-          feedbackSmiley.classList.remove("show");
-        }, 1000);
-      }
+      // Convert to lowercase for all answers
+      answerText = answerText.toLowerCase();
+      
+      targetBlank.textContent = answerText;
+      targetBlank.style.borderBottomStyle = "solid";
     }
+    
+    const container = optEl.closest(".question");
+    container.querySelectorAll(".opt-container").forEach(c => {
+      if (c.querySelector(".opt") !== optEl) c.classList.add("faded");
+    });
+
+    feedbackSmiley.innerText = "😃"; feedbackSmiley.classList.add("show");
+    setTimeout(() => feedbackSmiley.classList.remove("show"), 1200);
+    playSound('win');
+    
+    if (current === quiz.length - 1) {
+      setTimeout(showFinalModal, 1500);
+    } else {
+      bigNext.classList.add("show");
+    }
+  } else {
+    optEl.classList.add("wrong"); playSound('fail');
+    feedbackSmiley.innerText = "😭"; feedbackSmiley.classList.add("show");
+    setTimeout(() => {
+      optEl.classList.remove("wrong");
+      feedbackSmiley.classList.remove("show");
+    }, 1000);
+  }
+}
 
     function showSlide(index) {
       const slides = Array.from(document.querySelectorAll(".slide"));

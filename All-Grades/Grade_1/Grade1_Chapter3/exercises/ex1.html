@@ -110,7 +110,7 @@
     }
 
     /* The Single Dashed Blank */
-    .blank {
+    /* .blank {
       display: inline-block;
       min-width: 150px;
       border-bottom: 4px dashed var(--dark);
@@ -126,7 +126,7 @@
       border-bottom-color: transparent;
       font-weight: 500;
       transform: scale(1.1);
-    }
+    } */
 
     /* Options UI */
     .opts-row {
@@ -627,6 +627,29 @@
     padding: 16px 40px;
   }
     }
+
+
+
+/* Single continuous blank line */
+.blank {
+  display: inline-block;
+  min-width: 50px;
+  width: auto;
+  border-bottom: 3px dashed var(--dark);
+  color: transparent;
+  font-weight: 500;
+  text-align: center;
+  font-size: inherit;
+  /* padding: 0 10px;
+  margin: 0; */
+  letter-spacing: normal;
+  background: transparent;
+}
+
+.blank.filled {
+  /* border-bottom: 3px solid var(--correct); */
+  color: var(--dark);
+}
   </style>
 </head>
 
@@ -733,14 +756,25 @@ let quizFinished = false;
       osc.stop(t + 0.4);
     }
 
-    function createQuiz() {
-      const viewport = document.getElementById('slides-viewport');
-      quizData.forEach((q, i) => {
-        const slide = document.createElement('div');
-        slide.className = `slide ${i === 0 ? 'active' : ''}`;
-        slide.id = `slide-${i}`;
-        slide.innerHTML = `
-      <div class="q-text">${q.text}</div>
+function createQuiz() {
+  const viewport = document.getElementById('slides-viewport');
+  quizData.forEach((q, i) => {
+    const slide = document.createElement('div');
+    slide.className = `slide ${i === 0 ? 'active' : ''}`;
+    slide.id = `slide-${i}`;
+    
+    // Use a single blank space character or em dash for continuous line
+    // Option 1: Use a single long dash
+    const blankContent = "______";
+    
+    // Option 2: Or use a styled empty span (better)
+    // We'll use an empty span with CSS styling
+    
+    slide.innerHTML = `
+      <div class="q-text">${q.text.replace(
+        `<span class='blank' id='blank-${i}'></span>`,
+        `<span class='blank' id='blank-${i}'>______</span>`
+      )}</div>
       <div class="opts-row">
         ${q.options.map((opt, idx) => `
           <div class="opt-wrapper">
@@ -752,48 +786,52 @@ let quizFinished = false;
         `).join('')}
       </div>
     `;
-        viewport.appendChild(slide);
-      });
-      refreshUI();
+    viewport.appendChild(slide);
+  });
+  refreshUI();
+}
+   window.handleChoice = (qIdx, optIdx) => {
+  if (results[qIdx] !== null) return;
+
+  const isCorrect = optIdx === quizData[qIdx].correct;
+  const box = document.getElementById(`opt-${qIdx}-${optIdx}`);
+  const blank = document.getElementById(`blank-${qIdx}`);
+
+  if (isCorrect) {
+    results[qIdx] = optIdx;
+    box.classList.add('correct');
+    
+    // Convert answer to small letter
+    let answerText = quizData[qIdx].options[optIdx];
+    answerText = answerText.toLowerCase();
+    blank.textContent = answerText;
+    
+    blank.classList.add('filled');
+    playSuccessSound();
+
+    const slide = document.getElementById(`slide-${qIdx}`);
+    slide.querySelectorAll('.opt-box').forEach((b, i) => {
+      b.classList.add('disabled');
+      if (i !== optIdx) b.classList.add('faded');
+    });
+
+    playFeedback("😄");
+    confetti({ origin: { y: 0.8 } });
+
+    if (qIdx === quizData.length - 1) {
+      setTimeout(() => {
+        finishQuiz();
+      }, 1200);
     }
 
-    window.handleChoice = (qIdx, optIdx) => {
-      if (results[qIdx] !== null) return;
-
-      const isCorrect = optIdx === quizData[qIdx].correct;
-      const box = document.getElementById(`opt-${qIdx}-${optIdx}`);
-      const blank = document.getElementById(`blank-${qIdx}`);
-
-      if (isCorrect) {
-        results[qIdx] = optIdx;
-        box.classList.add('correct');
-        blank.textContent = quizData[qIdx].options[optIdx];
-        blank.classList.add('filled');
-        playSuccessSound();
-
-        const slide = document.getElementById(`slide-${qIdx}`);
-        slide.querySelectorAll('.opt-box').forEach((b, i) => {
-          b.classList.add('disabled');
-          if (i !== optIdx) b.classList.add('faded');
-        });
-
-        playFeedback("😄");
-        confetti({ origin: { y: 0.8 } });
-
-        if (qIdx === quizData.length - 1) {
-          setTimeout(() => {
-            finishQuiz();
-          }, 1200);
-        }
-
-      } else {
-        box.classList.add('wrong');
-        playZzzSound();
-        playFeedback("😢");
-        setTimeout(() => box.classList.remove('wrong'), 500);
-      }
-      refreshUI();
-    };
+  } else {
+    box.classList.add('wrong');
+    playZzzSound();
+    playFeedback("😢");
+    setTimeout(() => box.classList.remove('wrong'), 500);
+  }
+  refreshUI();
+};
 
  function changeSlide(dir) {
   if (isTransitioning || quizFinished) return;
@@ -851,13 +889,8 @@ let quizFinished = false;
   confetti({ particleCount: 250, spread: 100, origin: { y: 0.5 } });
 }
 
- document.getElementById('nextBtn').onclick = () => {
-  if (!quizFinished) changeSlide(1);
-};
-
-document.getElementById('backBtn').onclick = () => {
-  if (!quizFinished) changeSlide(-1);
-};
+    document.getElementById('nextBtn').onclick = () => changeSlide(1);
+    document.getElementById('backBtn').onclick = () => changeSlide(-1);
 
     createQuiz();
   </script>
