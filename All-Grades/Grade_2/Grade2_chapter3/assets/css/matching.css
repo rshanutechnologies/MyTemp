@@ -446,7 +446,50 @@ body {
     }
 
 }
+@media screen and (min-width:900px) and (max-width:1000px) {
 
+  .wrapper {
+    max-width: 900px;
+    transform: scale(0.9);
+    margin-top: 0;
+  }
+
+  .grid {
+    gap: 50px;
+  }
+
+  .puzzle {
+    width: 140px;
+    height: 110px;
+  }
+
+  .slot {
+    width: 150px;
+    height: 110px;
+  }
+
+  .puzzle img,
+  .slot img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .label {
+    font-size: 14px;
+  }
+
+  .progress-wrap {
+    transform: scale(0.9);
+    top: 3%;
+    right: 2%;
+  }
+
+  .hint-btn-abs {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+}
 /* =====================================================
    ✅ MOBILE
 ===================================================== */

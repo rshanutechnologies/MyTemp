@@ -15,8 +15,8 @@ body{
 
 /* MAIN CARD */
 .quiz-card{
-    width:clamp(700px,75vw,800px);
-    max-width:85%;
+     width:95vw;
+    max-width:1200px;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -47,6 +47,9 @@ body{
   padding:10px 16px;
   border-radius:16px;
     margin-bottom:20px;
+     white-space:nowrap;          /* 🔥 force single line */
+    overflow:hidden;             /* prevent overflow break */
+    text-overflow:ellipsis;      /* optional: adds ... */
 }
 
 /* OPTIONS */

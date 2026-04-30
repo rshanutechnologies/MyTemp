@@ -1,6 +1,6 @@
 const questions = [
   {
-    q: "Q.1 The ____ largest part of the brain.",
+    q: "Q.1 The ____ is the largest part of the brain.",
     a: "cerebrum",
     img: "../assets/images/Cerebrums.png",
   },

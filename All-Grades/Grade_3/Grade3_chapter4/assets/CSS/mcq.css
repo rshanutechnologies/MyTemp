@@ -51,7 +51,8 @@
 
       /* ✅ Question bar */
       .question-pill{
-        width:min(980px, 96vw);
+         width:95vw;        /* 🔥 full screen width */
+  max-width:1400px;  /* allow long line */
         /* background:linear-gradient(180deg,#ffd16d,#f5b63f); */
         border-radius:12px;
         padding:16px 26px;
@@ -80,6 +81,7 @@
         display:-webkit-box;
         -webkit-box-orient:vertical;
         overflow:hidden;
+         white-space:nowrap;     /* 🔥 key line */
       
       }
 

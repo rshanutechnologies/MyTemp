@@ -11,7 +11,7 @@ const questions = [
   },
 
   {
-    q: "Q.2 The dome-shaped muscular organ located below the lungs is the?",
+    q: "Q.2 The dome-shaped muscular organ located below the lungs is the _____ .",
     options: [
       ["Heart", "../assets/images/heart1.png"],
       ["Diaphragm", "../assets/images/diaphragm.png"],
@@ -22,7 +22,7 @@ const questions = [
   },
 
   {
-    q: "Q.3 The average heart beat per minute in an adult is?",
+    q: "Q.3 The average heart beat per minute in an adult is ____.",
     options: [
       ["12", "../assets/images/heart12.png"],
       ["60", "../assets/images/heart60.png"],
@@ -33,7 +33,7 @@ const questions = [
   },
 
   {
-    q: "Q.4 The carries blood back from different parts of the body to the heart?",
+    q: "Q.4 The ____ carries back blood from different parts of the body to the heart.",
     options: [
       ["Arteries", "../assets/images/arteries.png"],
       ["Veins", "../assets/images/veins.png"],
@@ -44,7 +44,7 @@ const questions = [
   },
 
   {
-    q: "Q.5 The breathing in of air is called?",
+    q: "Q.5 The breathing in of air is called ____",
     options: [
       ["Inhalation", "../assets/images/inhalation.png"],
       ["Exhalation", "../assets/images/exhalation.png"],

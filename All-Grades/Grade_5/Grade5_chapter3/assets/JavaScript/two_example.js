@@ -1,26 +1,26 @@
 const questions = [
   {
-    q: "Q.1 The narrow, thin-walled blood vessels are called ____.",
+    q: "Q.1 The narrow, thin-walled blood vessels  ____.",
     o: ["Arteries", "Capillaries", "Capillary"],
     a: "Capillaries",
   },
   {
-    q: "Q.2 The organ that pumps blood throughout the body is ____.",
+    q: "Q.2 The organ that pumps blood throughout the body  ____.",
     o: ["Heart", "Cardiac muscle", "Lungs"],
     a: "Heart",
   },
   {
-    q: "Q.3 The upper two chambers of the heart are called ____.",
+    q: "Q.3 The upper two chambers of the heart  ____.",
     o: ["Atria", "Ventricles", "Atrium"],
     a: "Atria",
   },
   {
-    q: "Q.4 The soft, spongy, delicate organs in our body are ____.",
+    q: "Q.4 The soft, spongy, delicate organs in our body  ____.",
     o: ["Lungs", "Pulmonary organs", "Kidneys"],
     a: "Lungs",
   },
   {
-    q: "Q.5 The dome-shaped muscular part located below the lungs is ____.",
+    q: "Q.5 The dome-shaped muscular part located below the lungs  ____.",
     o: ["Diaphragm", "Thoracic diaphragm", "Ribs"],
     a: "Diaphragm",
   },

@@ -73,7 +73,8 @@ body {
   height: auto;               /* FIX: remove fixed height */
   margin-bottom: 25px;
   text-align: center;
-  margin-top: -10%;
+  margin-top: -15%;
+  
 }
 
 /* Image */
@@ -88,10 +89,12 @@ body {
 .question-text {
   width: 100%;
   max-width: 800px;
-  min-height: 80px;  /* FIX: remove forced tall area */
+  height: 120px;  /* FIX: remove forced tall area */
   font-size: 32px !important;
   color: #2f4f4f;
   margin: 0 auto;
+
+  /* background-color: yellow; */
 }
 
 /* Answer container */
@@ -101,7 +104,6 @@ body {
   border: 2px solid #ccc;
   padding: 20px 20px;
    display: flex;
-  
   gap: 12px;
   width: 100%;
   max-width: 600px;
@@ -115,6 +117,7 @@ body {
   font-size: 25px;
   border: none;
   background: transparent;
+  text-align: center;
 }
 .input-row input:focus {
   outline: none;

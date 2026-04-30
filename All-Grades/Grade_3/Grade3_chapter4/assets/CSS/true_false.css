@@ -19,9 +19,8 @@ margin:0;
 
 /* MAIN */
 .screen{
-  width:100%;
- 
-  max-width:900px;
+   width:95vw;
+  max-width:1400px;
   padding:18px;
   text-align:center;
   
@@ -38,6 +37,7 @@ margin:0;
  
   text-align:center;
   margin-top: -23px;
+  white-space:nowrap;
 }
 .question-image{
   max-height:180px;
