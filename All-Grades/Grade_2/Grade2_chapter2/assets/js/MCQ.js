@@ -1,19 +1,19 @@
  const questions = [
     {
       text: "The place where two bones join is called a ____.",
-      options: ["muscle", "skin", "joint"],
+      options: ["Muscle", "Skin", "Joint"],
       answer: "joint",
       img: "../assets/images/BONESSS.png"
     },
     {
       text: "All bones together form the _____ system.",
-      options: ["muscular", "digestive", "skeletal"],
+      options: ["Muscular", "Digestive", "Skeletal"],
       answer: "skeletal",
       img: "../assets/images/BONESSSALL.png"
     },
     {
       text: "We should drink a glass of ________ daily.",
-      options: ["water", "milk", "coke"],
+      options: ["Water", "Milk", "Coke"],
       answer: "milk",
       img: "../assets/images/DBOY.png"
     },
@@ -25,7 +25,7 @@
     },
     {
       text: "The ____________ covers our body from outside.",
-      options: ["skin", "muscles", "bones"],
+      options: ["Skin", "Muscles", "Bones"],
       answer: "skin",
       img: "../assets/images/Skin1.png"
     }

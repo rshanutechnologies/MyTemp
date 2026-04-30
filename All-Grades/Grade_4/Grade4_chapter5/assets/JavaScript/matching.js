@@ -1,5 +1,18 @@
 (function () {
   const leftData = [
+
+     {
+      id: "1",
+      text: "Type of soil",
+      match: "e",
+      img: "../assets/images/a-4.png",
+    },
+    {
+      id: "2",
+      text: "Planting trees",
+      match: "d",
+      img: "../assets/images/true-4.png",
+    },
     {
       id: "3",
       text: "Main source of water",
@@ -18,18 +31,8 @@
       match: "c",
       img: "../assets/images/a-3.png",
     },
-    {
-      id: "2",
-      text: "Planting trees",
-      match: "d",
-      img: "../assets/images/true-4.png",
-    },
-    {
-      id: "1",
-      text: "Type of soil",
-      match: "e",
-      img: "../assets/images/a-4.png",
-    },
+    
+   
   ];
 
   const rightData = [

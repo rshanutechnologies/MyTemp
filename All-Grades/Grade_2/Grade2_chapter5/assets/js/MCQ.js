@@ -2,31 +2,31 @@ const quizData = [
   {
     q: "Animals that live in our houses are called ____ animals.",
     qImg: "../assets/images/MCQ_1.png",
-    options: ["pet", "domestic", "wild"],
+    options: ["Pet", "Domestic", "Wild"],
     answer: 0,
   },
   {
     q: "Flesh-eating animals are also called ____.",
     qImg: "../assets/images/MCQ_2.png",
-    options: ["herbivores", "carnivores", "omnivores"],
+    options: ["Herbivores", "Carnivores", "Omnivores"],
     answer: 1,
   },
   {
     q: "Plant eating animals are also called ____.",
     qImg: "../assets/images/MCQ_3.png",
-    options: ["herbivores", "carnivores", "omnivores"],
+    options: ["Herbivores", "Carnivores", "Omnivores"],
     answer: 0,
   },
   {
     q: "Animals that live in forest are called ____ animals.",
     qImg: "../assets/images/MCQ_4.png",
-    options: ["pet", "domestic", "wild"],
+    options: ["Pet", "Domestic", "Wild"],
     answer: 2,
   },
   {
     q: "Duck is a ____ animal.",
     qImg: "../assets/images/MCQ_5.png",
-    options: ["wild", "aquatic", "pet"],
+    options: ["Wild", "Aquatic", "Pet"],
     answer: 1,
   },
 ];

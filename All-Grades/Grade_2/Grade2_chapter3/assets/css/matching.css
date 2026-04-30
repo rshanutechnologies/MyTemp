@@ -564,13 +564,15 @@ body {
 
 } 
  @media screen and (min-width:1350px) and (max-width:1400px){
+
 .wrapper{
 max-width:1000px;
 transform:scale(1);
 }
 .progress-wrap{
+    background-color: #22c55e;
     position: relative;
-    top:10px;
+    top:-20px;
     right:-80%;
     width: 180px;
       /* margin-top: -11%;

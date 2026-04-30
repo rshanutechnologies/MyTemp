@@ -54,21 +54,21 @@ const quizData = [
     options: [
       {
         id: "b",
-        label: " same ",
+        label: " Same ",
         img: "../assets/images/opt11.png",
         correct: false,
         border: "#FF8A3D",
       },
       {
         id: "a",
-        label: " different ",
+        label: " Different ",
         img: "../assets/images/opt12.png",
         correct: true,
         border: "#70B7FF",
       },
       {
         id: "c",
-        label: "opposite ",
+        label: "Opposite ",
         img: "../assets/images/opt13.png",
         correct: false,
         border: "#98B64D",
@@ -82,21 +82,21 @@ const quizData = [
     options: [
       {
         id: "b",
-        label: " legs ",
+        label: " Legs ",
         img: "../assets/images/opt21.png",
         correct: true,
         border: "#70B7FF",
       },
       {
         id: "c",
-        label: "hands ",
+        label: "Hands ",
         img: "../assets/images/opt22.png",
         correct: false,
         border: "#FFC542",
       },
       {
         id: "d",
-        label: "ears ",
+        label: "Ears ",
         img: "../assets/images/opt23.png",
         correct: false,
         border: "#98B64D",
@@ -110,21 +110,21 @@ const quizData = [
     options: [
       {
         id: "b",
-        label: " head ",
+        label: " Head ",
         img: "../assets/images/opt31.png",
         correct: false,
         border: "#FF8A3D",
       },
       {
         id: "a",
-        label: "skin ",
+        label: "Skin ",
         img: "../assets/images/skin1.png",
         correct: true,
         border: "#98B64D",
       },
       {
         id: "c",
-        label: "nose ",
+        label: "Nose ",
         img: "../assets/images/opt33.png",
         correct: false,
         border: "#70B7FF",
@@ -138,21 +138,21 @@ const quizData = [
     options: [
       {
         id: "b",
-        label: " brain",
+        label: " Brain",
         img: "../assets/images/opt41.png",
         correct: true,
         border: "#98B64D",
       },
       {
         id: "c",
-        label: " lungs ",
+        label: " Lungs ",
         img: "../assets/images/opt42.png",
         correct: false,
         border: "#FF8A3D",
       },
       {
         id: "a",
-        label: "stomach",
+        label: "Stomach",
         img: "../assets/images/opt43.png",
         correct: false,
         border: "#FFC542",
@@ -166,21 +166,21 @@ const quizData = [
     options: [
       {
         id: "a",
-        label: " hear",
+        label: " Hear",
         img: "../assets/images/opt51.png",
         correct: false,
         border: "#70B7FF",
       },
       {
         id: "b",
-        label: "see",
+        label: "See",
         img: "../assets/images/MCQ5.png",
         correct: true,
         border: "#FF8A3D",
       },
       {
         id: "c",
-        label: "taste",
+        label: "Taste",
         img: "../assets/images/opt533.png",
         correct: false,
         border: "#98B64D",

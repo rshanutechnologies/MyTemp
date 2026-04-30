@@ -16,7 +16,7 @@ const questions = [
     options: [
       { img: "../assets/images/stem.png", text: "Stem" },
       { img: "../assets/images/root.png", text: "Root" },
-      { img: "../assets/images/OPT-3.png", text: "Leaf" },
+      { img: "../assets/images/Leaffak.png", text: "Leaf" },
     ],
     answer: 1,
   },
