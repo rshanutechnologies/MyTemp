@@ -93,17 +93,23 @@ function speak(t) {
 
 function showPopup(isCorrect){
   const popup = document.getElementById("answerPopup");
+  const content = popup.querySelector(".popup-content"); // 🔥 target correct element
   const icon = document.getElementById("popupIcon");
   const title = document.getElementById("popupTitle");
   const msg = document.getElementById("popupMsg");
 
   popup.style.display = "flex";
 
+  // 🔥 REMOVE OLD STATES
+  content.classList.remove("correct", "wrong");
+
   if(isCorrect){
+    content.classList.add("correct");   // ✅ ADD CORRECT CLASS
     icon.textContent = "🎉";
     title.textContent = "Correct!";
     msg.textContent = "Well done!";
   }else{
+    content.classList.add("wrong");     // ✅ ADD WRONG CLASS
     icon.textContent = "😔";
     title.textContent = "Wrong!";
     msg.textContent = "Try again!";
@@ -113,7 +119,6 @@ function showPopup(isCorrect){
     popup.style.display="none";
   },1200);
 }
-
 function renderProgress() {
   progress.innerHTML = "";
   quizData.forEach((_, i) => {

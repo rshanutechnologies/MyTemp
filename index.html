@@ -1967,7 +1967,8 @@
       display: flex;
       align-items: center;
       /* vertical centering */
-      gap: 12px;
+      /* gap: 12px; */
+      gap:300px;
       /* space between chips */
       flex-wrap: wrap;
       margin-left: 10px;
@@ -2027,8 +2028,14 @@
       /* make text black */
       padding: 0 !important;
       /* flatten spacing */
-      margin: 0 !important;
+      /* margin: 0 !important; */
+      margin:auto !important;
       /* keep clean alignment */
+       display: flex;
+  flex-direction: column;
+  align-items: center;   /* horizontal center */
+  justify-content: center; /* vertical center (if height exists) */
+  text-align: center
     }
 
     /* Make only the Select Grade heading black */

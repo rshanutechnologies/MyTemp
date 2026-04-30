@@ -221,7 +221,7 @@ button:disabled {
     width: 90%;
     height: 50%;
     animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    backdrop-filter: blur(15px);
+    /* backdrop-filter: blur(15px); */
     /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); */
 }
 
@@ -269,12 +269,12 @@ button:disabled {
     color: #742a2a;
 }
 
-.popup.correct p {
-    color: #276749;
+.popup-content.correct p {
+  color: #276749 !important;
 }
 
-.popup.wrong p {
-    color: #9b2c2c;
+.popup-content.wrong p {
+  color: #9b2c2c !important;
 }
 /*final score POPUPS */
 #finalPopup {

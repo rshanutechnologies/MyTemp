@@ -185,7 +185,6 @@ body {
     margin-bottom: 10px;
 }
 
-
 /* .final-board{width:200px;height:200px;border-radius:50%;margin:auto;background:radial-gradient(circle,red 0%, red 15%,white 15%, white 30%,red 30%, red 45%,white 45%, white 60%,red 60%, red 75%,white 75%, white 90%,red 90%);}
 .pins{font-size:26px;margin-top:10px;animation:pins 1s infinite alternate;}
 @keyframes pins{from{transform:translateY(0)}to{transform:translateY(-10px)}}*/
@@ -302,9 +301,7 @@ body {
 }
 
 
-.step.correct.active {
-    background: #4caf50 !important;
-}
+
 
 
 
