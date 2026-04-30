@@ -244,18 +244,28 @@
     .final-overlay {
       position: absolute;
       inset: 0;
-      background: white;
+      /* background: white; */
       display: none;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       border-radius: 40px;
       z-index: 3000;
       text-align: center;
        max-width: 400px;
       width: 90%;
-      height: 280px;
+      height: 250px;
       margin: auto;
+     
+    }
+     .final-card {
+      background: #fff;
+      padding: 40px;
+      border-radius: 40px;
+      text-align: center;
+      width: 95%;
+      max-width: 450px;
+     
     }
 
 
@@ -803,10 +813,12 @@ backBtn.onclick = () => {
   const d = document.createElement("div");
   d.className = "final-overlay";
   d.innerHTML = `
-    <h1 style="font-family:'Livvic';font-size:clamp(2rem, 8vw, 4rem); color: var(--primary)">GREAT JOB!</h1>
+   <div class="final-card">
+    <h1 style="font-family:'Livvic';font-size:clamp(1.6rem, 6vw, 4rem); color: var(--primary); margin-top:-23px">GREAT JOB!</h1>
     <p style="font-size:1.5rem;color:var(--dark); margin-top:-30px">Quiz Completed Successfully!</p>
     <button class="nav-btn" style="background:var(--secondary); margin-top:20px"
       onclick="location.reload()">PLAY AGAIN ↺</button>
+      </div>
   `;
   document.querySelector(".app").appendChild(d);
   d.style.display = "flex";
