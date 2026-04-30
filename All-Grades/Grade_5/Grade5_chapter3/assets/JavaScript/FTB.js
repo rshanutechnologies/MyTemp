@@ -237,7 +237,7 @@ checkBtn.disabled = true;
     const canGoNext = pages[pageIndex].every((i) => answers[i]);
     const lastPage  = pageIndex >= pages.length - 1;
 
-    nextBtn.textContent = lastPage ? "Finish →" : "Next →";
+    nextBtn.textContent = lastPage ? "Next  →" : "Next →";
     nextBtn.disabled = !canGoNext;
 
     nextBtn.addEventListener("click", () => {

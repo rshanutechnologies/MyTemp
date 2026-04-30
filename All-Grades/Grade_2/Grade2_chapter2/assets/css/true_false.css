@@ -459,6 +459,7 @@ body {
     width: 100%;
     height: 48px;
     font-size: 15px;
+   
   }
 
   .controls {
@@ -469,6 +470,7 @@ body {
     flex: 1;
     font-size: 16px;
     padding: 12px;
+   
   }
 
   .image-box {
@@ -503,14 +505,18 @@ body {
     font-size: 14px;
   }
 
+  
   .nav {
-    gap: 10px;
+    gap: 40px;
     margin-top: -30%;
+    margin-left: 20px;
+    width: 90% !important;
   }
 
   .nav button {
-    font-size: 14px;
+    font-size: 18px;
     padding: 10px;
+  
   }
 
  .winner-img {

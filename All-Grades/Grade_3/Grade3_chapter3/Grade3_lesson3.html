@@ -76,7 +76,24 @@
 }
 
 
+.magnet{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
+/* ✅ FIX ICON ALIGNMENT */
+.icon{
+  width:28px;              /* same width for all icons */
+  display:flex;
+  justify-content:center;  /* center emoji */
+  font-size:22px;
+}
+
+/* TEXT */
+.text{
+  flex:1;
+}
 
     /* HOVER */
     .magnet:hover {
@@ -513,23 +530,25 @@
     <!-- ✅ LEFT SIDEBAR (STATIC) -->
     <div class="sidebar">
       <div class="board">
+<div class="magnet m1" onclick="openPage(0)">
+  <span class="icon">🎯</span>
+  <span class="text">Choose Option</span>
+</div>
 
-        <div class="magnet m1" onclick="openPage(0)">
-          🎯 Choose  Option
-        </div>
+<div class="magnet m2" onclick="openPage(1)">
+  <span class="icon">👍</span>
+  <span class="text">True or False</span>
+</div>
 
-        <div class="magnet m2" onclick="openPage(1)">
-          👍 True or False 
-        </div>
+<div class="magnet m3" onclick="openPage(2)">
+  <span class="icon">🧩</span>
+  <span class="text">Match The Following</span>
+</div>
 
-        <div class="magnet m3" onclick="openPage(2)">
-          🧩 Match The Following
-        </div>
-
-        <div class="magnet m4" onclick="openPage(3)">
-          🔢 Two Examples
-        </div>
-
+<div class="magnet m4" onclick="openPage(3)">
+  <span class="icon">🔢</span>
+  <span class="text">Two Examples</span>
+</div>
       </div>
     </div>
 

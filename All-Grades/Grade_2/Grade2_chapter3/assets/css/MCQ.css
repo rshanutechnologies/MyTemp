@@ -386,6 +386,7 @@ body {
   /* 🔥 center progress properly */
   .progress{
     margin: 15px auto;
+    margin-right: 10px;
     transform: scale(0.95);
   }
 
@@ -441,7 +442,7 @@ body {
         gap: 10px;
         justify-content: center;
 
-        margin-bottom: 20px;
+        margin-top:-30px;
         background: white;
         padding: 8px 14px;
         border-radius: 50px;
@@ -449,7 +450,7 @@ body {
         /* margin-left: auto;
   margin-right: auto; */
 
-        margin-left: 25px;
+        margin-right: 0px;
 
     }
 

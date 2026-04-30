@@ -283,8 +283,8 @@ button:disabled{
 }
 
 .nav button {
-    height: 80px;
-    width: 80px;
+    height: 70px;
+  width: 70px;
     padding: 10px;
     border-radius: 50%;
     border: none;
@@ -510,7 +510,7 @@ body{
   }
 
   .question{
-    font-size:22px;
+      font-size:18px !important;
     width:100%;
     margin:10px 0 18px;
     margin-bottom: 40px;

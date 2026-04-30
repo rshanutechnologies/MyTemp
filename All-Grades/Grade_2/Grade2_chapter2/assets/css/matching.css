@@ -836,12 +836,14 @@ background: lightgreen;
 
 
 /* ================= TABLET (KEEP 2 COLUMNS) ================= */
-@media (min-width:900px) {
+@media (min-width:800px) {
 
   .board {
     grid-template-columns: 1fr 1fr;
     /* ✅ stay left-right */
     gap: 18px;
+    /* background-color: yellow; */
+    margin-right: 4%;
   }
   
 

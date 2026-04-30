@@ -85,22 +85,29 @@ height: 180px;
 }
 
 .menu button{
-all:unset;
-width:240px;      /* smaller width */
-height:60px;
-cursor:pointer;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-font-size:19px;
-font-weight:600;
-color:#ffffff;
-background:linear-gradient(180deg,var(--c1),var(--c2));
-box-shadow:0 8px 16px rgba(0,0,0,0.15);
-clip-path: polygon(8% 0, 92% 0, 100% 30%, 100% 80%, 92% 100%, 8% 100%, 0 80%, 0 20%);
-border-radius:16px;
-transition:0.2s ease;
+  all:unset;
+  width:240px;
+  height:60px;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;   /* ✅ FIX: align from left */
+
+  gap:12px;
+  padding-left:20px;            /* ✅ FIX: same start spacing */
+
+  font-size:19px;
+  font-weight:600;
+  color:#ffffff;
+
+  background:linear-gradient(180deg,var(--c1),var(--c2));
+  box-shadow:0 8px 16px rgba(0,0,0,0.15);
+
+  clip-path: polygon(8% 0, 92% 0, 100% 30%, 100% 80%, 92% 100%, 8% 100%, 0 80%, 0 20%);
+  border-radius:16px;
+
+  transition:0.2s ease;
 }
 .menu button:hover{
 transform:translateY(-3px);

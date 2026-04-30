@@ -74,13 +74,20 @@ function renderProgress() {
   questions.forEach((_, i) => {
     const s = document.createElement("div");
     s.className = "step";
-    if (i === index) s.classList.add("active");
-    if (correct[i]) s.classList.add("correct");
+
+    // ⭐ prevent orange overriding green
+    if (i === index && !correct[i]) {
+      s.classList.add("active");
+    }
+
+    if (correct[i]) {
+      s.classList.add("correct");
+    }
+
     s.textContent = i + 1;
     progress.appendChild(s);
   });
 }
-
 function render() {
   const q = questions[index];
   qText.textContent = q.q;
@@ -109,6 +116,37 @@ function render() {
   renderProgress();
 }
 
+// function choose(i) {
+//   const q = questions[index];
+//   const options = document.querySelectorAll(".option");
+//   const clicked = options[i];
+//   const right = i === q.answer;
+
+//   if (right) {
+//     // CORRECT
+//     clicked.classList.add("correct");
+//     options.forEach((opt) => (opt.style.pointerEvents = "none"));
+//     correct[index] = true;
+//     nextBtn.disabled = false;
+//     showPopup(true);
+
+//     if (index === questions.length - 1) {
+//       setTimeout(showFinalPopup, 1000);
+//     }
+//   } else {
+//     // WRONG
+//     clicked.classList.add("wrong");
+//     options.forEach((opt) => (opt.style.pointerEvents = "none"));
+//     showPopup(false);
+
+//     // 🔁 return to normal after popup
+//     setTimeout(() => {
+//       clicked.classList.remove("wrong");
+//       options.forEach((opt) => (opt.style.pointerEvents = "auto"));
+//     }, 1200);
+//   }
+// }
+
 function choose(i) {
   const q = questions[index];
   const options = document.querySelectorAll(".option");
@@ -120,6 +158,10 @@ function choose(i) {
     clicked.classList.add("correct");
     options.forEach((opt) => (opt.style.pointerEvents = "none"));
     correct[index] = true;
+
+    // ⭐ ADD THIS LINE
+    renderProgress();
+
     nextBtn.disabled = false;
     showPopup(true);
 
@@ -132,14 +174,12 @@ function choose(i) {
     options.forEach((opt) => (opt.style.pointerEvents = "none"));
     showPopup(false);
 
-    // 🔁 return to normal after popup
     setTimeout(() => {
       clicked.classList.remove("wrong");
       options.forEach((opt) => (opt.style.pointerEvents = "auto"));
     }, 1200);
   }
 }
-
 function showPopup(ok) {
   popup.classList.remove("hidden");
   popupEmoji.textContent = ok ? "👍" : "👎";

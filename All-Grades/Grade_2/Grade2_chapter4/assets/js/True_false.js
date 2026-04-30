@@ -60,7 +60,7 @@ function renderProgress() {
   questions.forEach((_, i) => {
     const s = document.createElement("div");
     s.className = "step";
-    if (i === index) s.classList.add("active");
+    if (i === index && !quizEnded) s.classList.add("active");
     if (correct[i]) s.classList.add("correct");
     s.textContent = i + 1;
     progress.appendChild(s);
@@ -107,6 +107,36 @@ function showAnswerPopup(ok) {
   }, 1200);
 }
 
+// function answer(choice) {
+//   if (correct[index]) return;
+
+//   const ok = choice === questions[index].a;
+//   showAnswerPopup(ok);
+
+//   if (!ok) {
+//     stage.classList.add("wrong");
+//     return; // ❌ DO NOT highlight or disable buttons
+//   }
+
+//   // ✅ Correct Answer
+//   correct[index] = true;
+//   selectedAnswers[index] = choice;
+//   stage.classList.remove("wrong");
+//   stage.classList.add("correct");
+
+//   monkey.className = "monkey step-" + correct.filter(Boolean).length;
+
+//   highlightButtons(); // highlight only when correct
+
+//   if (index === questions.length - 1) {
+//     quizEnded = true;
+//     setTimeout(showFinalPopup, 1200);
+//   } else {
+//     nextBtn.disabled = false;
+//   }
+// }
+
+
 function answer(choice) {
   if (correct[index]) return;
 
@@ -115,7 +145,7 @@ function answer(choice) {
 
   if (!ok) {
     stage.classList.add("wrong");
-    return; // ❌ DO NOT highlight or disable buttons
+    return;
   }
 
   // ✅ Correct Answer
@@ -124,9 +154,12 @@ function answer(choice) {
   stage.classList.remove("wrong");
   stage.classList.add("correct");
 
+  // ⭐ ADD THIS LINE
+  renderProgress();
+
   monkey.className = "monkey step-" + correct.filter(Boolean).length;
 
-  highlightButtons(); // highlight only when correct
+  highlightButtons();
 
   if (index === questions.length - 1) {
     quizEnded = true;

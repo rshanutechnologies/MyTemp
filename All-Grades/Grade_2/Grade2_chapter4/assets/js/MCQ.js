@@ -137,6 +137,35 @@ function showAnswerPopup(isCorrect) {
   }, 1200);
 }
 
+// function choose(i, el) {
+//   if (correct[index]) return;
+
+//   const right = i === questions[index].answer;
+//   showAnswerPopup(right);
+
+//   if (!right) {
+//     el.classList.add("wrong");
+
+//     // ⭐ remove wrong border automatically
+//     setTimeout(() => {
+//       el.classList.remove("wrong");
+//     }, 700); // adjust timing if needed
+
+//     return;
+//   }
+
+//   correct[index] = true;
+//   el.classList.add("correct");
+//   [...optEl.children].forEach((o) => (o.style.pointerEvents = "none"));
+
+//   if (index === questions.length - 1) {
+//     quizEnded = true;
+//     setTimeout(showFinalPopup, 1200);
+//   } else {
+//     nextBtn.disabled = false;
+//   }
+// }
+
 function choose(i, el) {
   if (correct[index]) return;
 
@@ -145,18 +174,18 @@ function choose(i, el) {
 
   if (!right) {
     el.classList.add("wrong");
-
-    // ⭐ remove wrong border automatically
     setTimeout(() => {
       el.classList.remove("wrong");
-    }, 700); // adjust timing if needed
-
+    }, 700);
     return;
   }
 
   correct[index] = true;
   el.classList.add("correct");
   [...optEl.children].forEach((o) => (o.style.pointerEvents = "none"));
+
+  // ⭐ ADD THIS LINE (VERY IMPORTANT)
+  renderProgress();
 
   if (index === questions.length - 1) {
     quizEnded = true;

@@ -55,17 +55,39 @@ const progress = document.getElementById("progress");
 const dropZone = document.querySelector(".drop");
 const nextBtn = document.getElementById("next");
 
+// function renderProgress() {
+//   progress.innerHTML = "";
+//   questions.forEach((_, i) => {
+//     const s = document.createElement("div");
+//     s.className = "step";
+//     if (i === index) s.classList.add("active");
+//     if (correct[i]) s.classList.add("correct");
+//     s.textContent = i + 1;
+//     progress.appendChild(s);
+//   });
+// }
+
+
 function renderProgress() {
   progress.innerHTML = "";
   questions.forEach((_, i) => {
     const s = document.createElement("div");
     s.className = "step";
-    if (i === index) s.classList.add("active");
-    if (correct[i]) s.classList.add("correct");
+
+    // ⭐ only show active if NOT answered
+    if (i === index && !correct[i]) {
+      s.classList.add("active");
+    }
+
+    if (correct[i]) {
+      s.classList.add("correct");
+    }
+
     s.textContent = i + 1;
     progress.appendChild(s);
   });
 }
+
 
 function render() {
   const q = questions[index];
@@ -106,12 +128,46 @@ function render() {
   //   speak(q.q);
 }
 
+// function handleClick(val) {
+//   const q = questions[index];
+
+//   if (val === q.answer) {
+//     userAnswers[index] = val;
+//     correct[index] = true;
+
+//     // show answer
+//     dropZone.textContent = val;
+//     dropZone.style.background = "#d9f5dc";
+
+//     nextBtn.style.opacity = "1";
+
+//     // disable all options
+//     document.querySelectorAll(".option").forEach(o => {
+//       o.classList.add("disabled");
+//       o.onclick = null;
+//     });
+
+//     showPopup(true);
+
+//     if (index === questions.length - 1) {
+//       setTimeout(showFinalPopup, 1000);
+//     }
+
+//   } else {
+//     showPopup(false);
+//   }
+// }
+
+
 function handleClick(val) {
   const q = questions[index];
 
   if (val === q.answer) {
     userAnswers[index] = val;
     correct[index] = true;
+
+    // ⭐ ADD THIS LINE
+    renderProgress();
 
     // show answer
     dropZone.textContent = val;
