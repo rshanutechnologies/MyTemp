@@ -624,10 +624,11 @@
         const idx = userAnswers[current];
         const opt = document.querySelector(`.option[data-i="${idx}"]`);
         if (opt) {
+          opt.classList.add("correct");
        const word = formatAnswer(q.options[idx].txt);
 
 document.getElementById("qText").innerHTML =
-  q.text.replace("____", `<b style="color:#2ed573">${word}</b>`);
+  q.text.replace("____", `<b style="color:#fff; font-weight:500;">${word}</b>`);
           nextBtn.style.display = "block";
         }
       }
