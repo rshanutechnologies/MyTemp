@@ -54,8 +54,10 @@ body {
     text-align: center;
     font-weight: 600;
     cursor: pointer;
+    gap:6px;
+    font-size: 18px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     filter: grayscale(100%);
@@ -160,11 +162,11 @@ iframe {
 
     <div class="sidebar">
         <div class="path">
-            <div class="leaf active" onclick="openPage(0)">Choose Answer</div>
-            <div class="leaf" onclick="openPage(1)">Fill The Blanks</div>
-            <div class="leaf" onclick="openPage(2)">True / False</div>
-            <div class="leaf" onclick="openPage(3)">Matching</div>
-            <div class="leaf" onclick="openPage(4)">Two Examples</div>
+            <div class="leaf active" onclick="openPage(0)"><i class="fas fa-list"></i><span>Choose Answer</span></div>
+            <div class="leaf" onclick="openPage(1)"><i class="fas fa-pen"></i><span>Fill The Blanks</span></div>
+            <div class="leaf" onclick="openPage(2)"><i class="fas fa-check-circle"></i><span>True / False</span></div>
+            <div class="leaf" onclick="openPage(3)"> <i class="fas fa-link"></i><span>Matching</span></div>
+            <div class="leaf" onclick="openPage(4)"><i class="fas fa-lightbulb"></i><span>Two Examples</span></div>
         </div>
     </div>
 
@@ -175,11 +177,11 @@ iframe {
 
 <div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
     <div class="offcanvas-panel" onclick="event.stopPropagation()">
-        <div class="leaf active" onclick="mobileOpen(0)">Choose Answer</div>
-        <div class="leaf" onclick="mobileOpen(1)">Fill The Blanks</div>
-        <div class="leaf" onclick="mobileOpen(2)">True / False</div>
-        <div class="leaf" onclick="mobileOpen(3)">Matching</div>
-        <div class="leaf" onclick="mobileOpen(4)">Two Examples</div>
+        <div class="leaf active" onclick="mobileOpen(0)"> <i class="fas fa-list"></i>Choose Answer</div>
+        <div class="leaf" onclick="mobileOpen(1)"><i class="fas fa-pen"></i>Fill The Blanks</div>
+        <div class="leaf" onclick="mobileOpen(2)"><i class="fas fa-check-circle"></i>True / False</div>
+        <div class="leaf" onclick="mobileOpen(3)"> <i class="fas fa-link"></i>Matching</div>
+        <div class="leaf" onclick="mobileOpen(4)"> <i class="fas fa-lightbulb"></i>Two Examples</div>
     </div>
 </div>
 
