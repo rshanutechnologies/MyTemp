@@ -269,7 +269,7 @@
  }
 
  .correct .animal-img {
-     transform: scale(1.1);
+     /* transform: scale(1.1); */
      filter: drop-shadow(0 0 12px #70ff75b6);
  }
 
@@ -539,7 +539,7 @@ margin-bottom: 4%;
 }
 
 .animal-img{
-width:260px;
+width:240px;
 height:240px;
 }
 
