@@ -62,7 +62,8 @@ body{
   justify-content: center;
   font-size: 1.1rem;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
 
 .q-number { font-weight: 700;   color: #f3f5f5;; font-size: 16px; margin: 0; text-transform: uppercase; }
@@ -183,8 +184,13 @@ body{
 
 .final-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); display: flex; justify-content: center; align-items: center; z-index: 3000; }
 .final-card { background: white; padding: 30px; border-radius: 40px; text-align: center; width: 85%; max-width: 400px; }
-
-@media (max-width:380px){
+@media (max-width:800px) {
+        .q-text{
+          font-size: 27px !important;
+          font-weight: 400;
+        }
+      }
+@media (max-width:480px){
 
   /* OPTIONS GRID → 2 PER ROW */
   .options-container{

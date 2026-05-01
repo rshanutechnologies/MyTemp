@@ -246,6 +246,11 @@
       text-align: center;
     }
 
+     @media (max-width: 800px) {
+.left-item {
+        font-size: 22px !important;
+      }
+     }
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .matched-image {
@@ -257,10 +262,10 @@
       }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 500px) {
       .match-row {
         grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        gap: 5px;
       }
       .matched-image {
         position: static;

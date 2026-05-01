@@ -72,7 +72,8 @@
       font-size: 1.2rem;
       transition: 0.3s;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      visibility: hidden;
+      /* visibility: hidden; */
+      display: none;
     }
 
     .read-btn:hover {
@@ -120,7 +121,7 @@ height: clamp(80px, 12vw, 120px);
     .q-text {
       font-size: clamp(1.2rem, 3.5vw, 2.5rem);
       font-weight: 500;
-      color: #ffffff;
+      color: #F3F5F5;
       line-height: 1.2;
       margin: 0;
     }
@@ -272,6 +273,13 @@ height: clamp(80px, 12vw, 120px);
       max-width: 400px;
     }
 
+
+    @media (max-width:800px) {
+        .q-text{
+          font-size: 27px !important;
+          font-weight: 400;
+        }
+      }
     /* =========================
    SAME UI LIKE LAPTOP (SCALED)
 ========================= */

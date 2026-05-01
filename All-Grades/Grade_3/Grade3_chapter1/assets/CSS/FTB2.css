@@ -401,3 +401,56 @@ body{
   
 
 }
+@media (max-width:768px){
+
+  .popup-content{
+    max-width:260px;      /* ✅ smaller width */
+    width:85%;
+    padding:15px;
+    border-radius:15px;
+  }
+
+  .popup-icon{
+    font-size:2em;        /* ✅ smaller icon */
+  }
+
+  .popup-content h3{
+    font-size:1em;      /* ✅ smaller text */
+  }
+
+  .popup-content p{
+    font-size:0.85em;
+  }
+
+}
+@media (max-width:480px){
+
+  .popup-content{
+    width:90%;
+    padding:12px;
+
+    border-radius:14px;
+  }
+
+  .popup-icon{
+    font-size:2em;
+  }
+
+  .popup-content h3{
+    font-size:16px;
+  }
+
+  .popup-content p{
+    font-size:13px;
+  }
+}
+@media (max-width:600px){
+
+  .popup-content{
+    width:200px;
+    min-height:120px;
+
+    padding:12px;
+    border-radius:14px;
+  }
+}

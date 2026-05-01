@@ -65,7 +65,8 @@
       justify-content: center;
       font-size: 1.1rem;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      visibility: hidden;
+      /* visibility: hidden; */
+      display: none;
     }
 
     .q-number {
@@ -78,7 +79,7 @@
 
     .q-text {
       font-size: clamp(1.1rem, 3.5vw, 2.2rem);
-      color: #f1f5f5;
+      color: #f3f5f5;
       font-weight: 600;
       margin: 5px 0;
       line-height: 1.2;
@@ -251,6 +252,13 @@
       width: 85%;
       max-width: 400px;
     }
+
+    @media (max-width:800px) {
+        .q-text{
+          font-size: 27px !important;
+          font-weight: 400;
+        }
+      }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
 

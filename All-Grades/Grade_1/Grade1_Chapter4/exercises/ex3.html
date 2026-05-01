@@ -48,7 +48,7 @@ body{
   align-items: center;
   gap: 15px;
   flex-shrink: 0;
-  margin-right: -50px !important;
+  /* margin-right: -50px !important; */
 }
 
 .read-btn {
@@ -63,7 +63,8 @@ body{
   justify-content: center;
   font-size: 1.1rem;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
 
 .q-number { 
@@ -211,6 +212,12 @@ body{
   transform: none;
 }
 
+@media (max-width:800px) {
+        .q-text{
+          font-size: 27px !important;
+          font-weight: 400;
+        }
+      }
 /* Mobile Override */
 @media (max-width: 600px) {
   .q-text {

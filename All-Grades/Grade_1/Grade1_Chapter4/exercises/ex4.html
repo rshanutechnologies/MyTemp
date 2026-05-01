@@ -258,6 +258,7 @@ h4 {
     /* flex-direction: column; */
     gap: 10px;
     overflow-y: auto;
+    
   }
   .left, .right {
     width: 100%;
@@ -279,6 +280,79 @@ h4 {
   .left-item { padding: 6px 10px; min-height: 80px; }
   .right-item { padding: 10px 15px; font-size: 13px; }
   .answer-text { font-size: 0.8rem; padding: 4px 12px; }
+}
+
+/* =========================
+   📱 PHONE FIX (≤ 600px)
+   ========================= */
+@media (max-width: 600px) {
+
+  /* Keep layout side-by-side */
+  .match-table {
+    display: flex;
+    width: 100%;
+    flex-direction: row !important;
+    gap: 8px;
+    padding: 1px;
+
+  }
+
+  /* Proper width balance */
+  .left {
+    flex: 1.4;
+  }
+
+  .right {
+    flex: 1;
+  }
+
+  /* Prevent overflow issue */
+  .left, .right {
+    width: auto;
+  }
+
+  /* Reduce item size */
+  .left-item {
+    padding: 6px;
+    min-height: 55px !important;
+  }
+
+  .right-item {
+    padding: 5px;
+    font-size: 9px;
+  }
+
+  /* Reduce images */
+  .lhs-images {
+    gap: 4px;
+  }
+
+  .lhs-images img {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Reduce text */
+  .lhs-images p {
+    font-size: 9px;
+  }
+
+  /* Reduce spacing */
+  .left {
+    gap: 8px;
+  }
+
+  .right {
+    gap: 8px;
+  }
+
+  /* Keep everything inside screen */
+  .app {
+    height: 100vh;
+    overflow: hidden;
+    padding: 10px;
+  }
+
 }
 
 @media (max-width: 800px) {

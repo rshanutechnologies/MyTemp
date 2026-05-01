@@ -789,3 +789,13 @@ body{
     margin:30px auto 0;
   }
 }
+@media (max-width:600px){
+
+  .popup-content{
+    width:200px;
+    min-height:120px;
+
+    padding:12px;
+    border-radius:14px;
+  }
+}

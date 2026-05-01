@@ -412,7 +412,7 @@
 
   body{
     align-items:flex-start;
-    overflow: auto;
+    overflow: hidden;
     
     
   }
@@ -521,6 +521,18 @@
   .btn{
     height:50px;
     font-size:16px;
+  }
+
+  .question-text{
+    font-size:20px !important;
+    line-height:1.4;
+
+    white-space:normal !important;   /* ✅ ADD THIS */
+    word-break:break-word;
+    overflow-wrap:break-word;
+
+    display:block !important;
+    overflow:visible !important;
   }
 
 }

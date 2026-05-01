@@ -196,30 +196,11 @@ input.type = "text";
 input.className = "simple-input";
 input.placeholder = "Type here...";
 
-/* 🚨 DISABLE DEFAULT INPUT SYSTEM */
-input.readOnly = true;
 
 /* ✅ MANUAL TYPING ONLY */
-input.addEventListener("keydown", (e) => {
-
-  // allow A-Z and space
-  if (/^[a-zA-Z ]$/.test(e.key)) {
-    input.value += e.key.toUpperCase();
-  }
-
-  // allow numbers (for 206 type answer)
-  else if (/^[0-9]$/.test(e.key)) {
-    input.value += e.key;
-  }
-
-  // backspace
-  else if (e.key === "Backspace") {
-    input.value = input.value.slice(0, -1);
-  }
-
-  // ignore everything else
-  e.preventDefault();
-
+/* ✅ ALLOW NORMAL TYPING */
+input.addEventListener("input", () => {
+  input.value = input.value.toUpperCase();  // auto uppercase
   checkAndEnableSubmit();
 });
 
