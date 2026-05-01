@@ -368,7 +368,7 @@ function showFinal() {
     `Score: ${score} / ${questions.length}`;
   document.getElementById("finalStars").textContent = "⭐".repeat(score);
   document.getElementById("finalPopup").style.display = "flex";
-  speak("Congratulations");
+  // speak("Congratulations");
 }
 
 function restart() {
