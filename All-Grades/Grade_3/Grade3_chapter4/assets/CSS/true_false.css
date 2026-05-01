@@ -396,12 +396,6 @@ margin:0;
   margin:auto;
 }
 
-/* allow layout to grow on tall screens */
-@media (min-height:800px){
-  .screen{
-    transform:scale(1);
-  }
-}
 
 /* ===== FULL MOBILE RESPONSIVE (NO SCROLL) ===== */
 @media (max-width:600px){
@@ -427,7 +421,7 @@ gap:16px;   /* control spacing cleanly */
 
   /* ✅ IMAGE CONTROL */
   .question-image{
-    max-height:120px;   /* reduce size */
+    max-height:80px;   /* reduce size */
     margin-top:10px;
   }
 
