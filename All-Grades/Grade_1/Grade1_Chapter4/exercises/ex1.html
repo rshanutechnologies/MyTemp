@@ -275,7 +275,7 @@
       .options {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+        gap: 1px;
         justify-items: center;
       }
       .option {
@@ -307,8 +307,10 @@
     /* TABLET SCREENS (481px to 768px) */
     @media (min-width: 381px) and (max-width: 768px) {
       .options {
-        gap: 20px;
+        gap: 10px !important;
+       
       }
+      
       .option-img {
         width: 100px;
         height: 100px;

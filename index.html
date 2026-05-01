@@ -1967,13 +1967,20 @@
       display: flex;
       align-items: center;
       /* vertical centering */
-      /* gap: 12px; */
-      gap:300px;
+      gap: 12px;
+      /* gap:300px; */
       /* space between chips */
       flex-wrap: wrap;
       margin-left: 10px;
       /* wraps nicely on small screens */
     }
+
+    @media (max-width:500px){
+  #lessonContent .header-card .chips{
+    font-size: 12px;
+  }
+
+}
 
     /* Each chip: center icon/number + text perfectly */
     #lessonContent .header-card .chip {
@@ -2045,9 +2052,9 @@
 
     /* Make sidebar floating arrow button bigger */
     .sb-float-toggle {
-      width: 48px !important;
+      width: 40px !important;
       /* increase button width */
-      height: 70px !important;
+      height: 45px !important;
       /* increase button height */
       border-radius: 20px !important;
       /* keep rounded look */
