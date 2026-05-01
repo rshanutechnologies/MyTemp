@@ -536,7 +536,16 @@
   }
 
 }
+@media (max-width:1024px){
 
+  .question-text{
+    white-space:normal !important;   /* ✅ allow 2+ lines */
+    line-height:1.4;
+    word-break:break-word;
+    overflow-wrap:break-word;
+  }
+
+}
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
@@ -544,6 +553,7 @@
 
   .question-text{
     font-size: 30px;
+    
   }
 
   .options{

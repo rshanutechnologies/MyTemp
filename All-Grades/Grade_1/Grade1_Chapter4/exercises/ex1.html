@@ -613,7 +613,18 @@
             userAnswers[current] = idx;
             opt.classList.add("correct");
             playSound('correct');
-            document.getElementById("qText").innerHTML = q.text.replace("____", `<b style="color:#fff; font-weight:500">${formatAnswer(q.options[idx].txt)}</b>`);
+          // const word = formatAnswer(q.options[idx].txt);
+
+const word = formatAnswer(q.options[idx].txt);
+
+document.getElementById("qText").innerHTML =
+  q.text.replace(
+    "____",
+   `<span class="blank-wrap">
+    <span class="answer-text">${word}</span>
+    <span class="blank-line"></span>
+</span>`
+  );
             showSmiley("😄");
             confetti();
             if (current === quiz.length - 1) {
@@ -637,10 +648,21 @@
         const opt = document.querySelector(`.option[data-i="${idx}"]`);
         if (opt) {
           opt.classList.add("correct");
+      //  const word = formatAnswer(q.options[idx].txt);
+
+
        const word = formatAnswer(q.options[idx].txt);
 
+
+
 document.getElementById("qText").innerHTML =
-  q.text.replace("____", `<b style="color:#fff; font-weight:500;">${word}</b>`);
+  q.text.replace(
+    "____",
+    `<span class="blank-wrap">
+    <span class="answer-text">${word}</span>
+    <span class="blank-line"></span>
+</span>`
+  );
           nextBtn.style.display = "block";
         }
       }

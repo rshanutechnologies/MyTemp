@@ -175,7 +175,9 @@ margin:0;
   transform:none !important;
 }
 .nav{
-  position:fixed;
+  position:relative;     /* 🔥 IMPORTANT */
+  margin-top:20px;       /* space from buttons */
+ 
   bottom:10px;        /* push to bottom */
   left:50%;
   transform:translateX(-50%);
@@ -403,7 +405,7 @@ margin:0;
   body{
     height:100vh !important;
     overflow:hidden !important;   /* ✅ remove scroll */
-   margin-top: -40px;
+   margin-top: -30px;
     display:flex;
     align-items:flex-start;
     justify-content:center;
@@ -475,11 +477,20 @@ gap:16px;   /* control spacing cleanly */
   }
 
   .nav{
-    bottom:60px;   /* 🔥 move up */
+    bottom:10px;   /* 🔥 move up */
   }
 
 }
+@media (max-width:1024px){
 
+  .question{
+    white-space:normal !important;   /* ✅ allow 2+ lines */
+    line-height:1.4;
+    word-break:break-word;
+    overflow-wrap:break-word;
+  }
+
+}
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */

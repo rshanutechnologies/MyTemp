@@ -142,7 +142,7 @@ body {
 @keyframes fall { to { transform: translateY(110vh) rotate(620deg); opacity: 0; } }
 
 .overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none;
+  position: fixed; inset: 0;display: none;
   align-items: center; justify-content: center; z-index: 3000; backdrop-filter: blur(8px);
 }
 .completion-card { background: #C2F4FF; padding: 40px; border-radius: 40px; text-align: center; width: 90%; max-width: 500px; }
@@ -923,16 +923,16 @@ body {
 /* ============================================ */
 /* DARK MODE PREFERENCE */
 /* ============================================ */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --bg1: #2d2d3a;
     --bg2: #1e1e2a;
     --bg3: #252532;
     --ink: #f0f0f0;
     --boxBorder: #3a3a4a;
-  }
+  } */
   
-  body {
+  /* body {
     background: radial-gradient(circle at top left, #3a3a4a, #1a1a2a 60%);
   }
   
@@ -961,7 +961,7 @@ body {
   .completion-card h1, .completion-card p {
     color: #f0f0f0;
   }
-}
+} */
 
 /* ============================================ */
 /* PRINT STYLES */
