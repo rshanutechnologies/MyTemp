@@ -685,7 +685,7 @@ font-size:28px;
 .progress{
     position: relative;
         top: -40px;
-        right: 120px;
+        right: -55px;
         transform: scale(.9);
 
 transform:scale(1);
