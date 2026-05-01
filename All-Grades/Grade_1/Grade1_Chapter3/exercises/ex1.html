@@ -272,14 +272,34 @@
       }
     }
 
-    .smiley {
+    /* .smiley {
       position: fixed;
       font-size: 150px;
       pointer-events: none;
       opacity: 0;
       z-index: 200;
       transition: 0.5s;
-    }
+    } */
+
+    .smiley {
+  position: fixed;
+
+  width: 150px;
+  height: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 150px;
+  line-height: 1;
+
+  pointer-events: none;
+  opacity: 0;
+  z-index: 200;
+
+  transition: 0.5s;
+}
 
 
     /* ==================================================
@@ -682,11 +702,11 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
     const quizData = [
-      { text: "Living things need water to <span class='blank' id='blank-0'></span>.", options: ["Drink", "Move", "Fly"], correct: 0, imgs: ["../uploads/drink.png", "../uploads/move.png", "../uploads/fly.png"] },
-      { text: "Non-living things <span class='blank' id='blank-1'></span>.", options: ["Breathe", "Don't breathe", "Eat"], correct: 1, imgs: ["../uploads/breathe.png", "../uploads/dontb.png", "../uploads/eat.png"] },
-      { text: "A book is a <span class='blank' id='blank-2'></span> thing.", options: ["Man-made", "Natural", "Living"], correct: 0, imgs: ["../uploads/book.png", "../uploads/mountain-img.png", "../uploads/living.png"] },
-      { text: "Living things <span class='blank' id='blank-3'></span>.", options: ["Don't die", "Don't grow", "Die"], correct: 2, imgs: ["../uploads/dontd.png", "../uploads/dontgrow.png", "../uploads/die.png"] },
-      { text: "Human beings are <span class='blank' id='blank-4'></span> things.", options: ["Non-living", "Living", "Man-made"], correct: 1, imgs: ["../uploads/non-living.png", "../uploads/living.png", "../uploads/mm.png"] }
+      { text: "Living things need water to <span class='blank' id='blank-0'></span>.", options: ["Drink", "Move", "Fly"], correct: 0, imgs: ["../uploads/drink1.png", "../uploads/move1.png", "../uploads/fly1.png"] },
+      { text: "Non-living things <span class='blank' id='blank-1'></span>.", options: ["Breathe", "Don't breathe", "Eat"], correct: 1, imgs: ["../uploads/breathe1.png", "../uploads/dontb1.png", "../uploads/eat1.png"] },
+      { text: "A book is a <span class='blank' id='blank-2'></span> thing.", options: ["Man-made", "Natural", "Living"], correct: 0, imgs: ["../uploads/book.png", "../uploads/mountain-img1.png", "../uploads/living1.png"] },
+      { text: "Living things <span class='blank' id='blank-3'></span>.", options: ["Don't die", "Don't grow", "Die"], correct: 2, imgs: ["../uploads/dontd1.png", "../uploads/dontgrow1.png", "../uploads/die1.png"] },
+      { text: "Human beings are <span class='blank' id='blank-4'></span> things.", options: ["Non-living", "Living", "Man-made"], correct: 1, imgs: ["../uploads/non-living1.png", "../uploads/living1.png", "../uploads/mm1.png"] }
     ];
 
     let isTransitioning = false;
@@ -865,17 +885,22 @@ function createQuiz() {
       document.getElementById('nextBtn').style.visibility = (results[currentIdx] !== null && currentIdx < quizData.length - 1) ? 'visible' : 'hidden';
     }
 
-    function playFeedback(emoji) {
-      const s = document.getElementById('smiley');
-      s.textContent = emoji;
-      s.style.left = "50%"; s.style.top = "50%";
-      s.style.transform = "translate(-50%, -50%) scale(1.3)";
-      s.style.opacity = "1";
-      setTimeout(() => {
-        s.style.opacity = "0";
-        s.style.transform = "translate(-50%, -50%) scale(0.6)";
-      }, 900);
-    }
+   function playFeedback(emoji) {
+  const s = document.getElementById('smiley');
+
+  s.textContent = emoji;
+
+  s.style.left = "50%";
+  s.style.top = "50%";
+
+  s.style.transform = "translate(-50%, -50%) scale(1)";
+  s.style.opacity = "1";
+
+  setTimeout(() => {
+    s.style.opacity = "0";
+    s.style.transform = "translate(-50%, -50%) scale(0.5)";
+  }, 900);
+}
 
   function finishQuiz() {
   quizFinished = true;
