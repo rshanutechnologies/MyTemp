@@ -290,9 +290,11 @@ button:disabled {
     align-items:flex-start;
     padding:15px 0;
     background: linear-gradient(135deg, #fef3c7, #e0f2fe, #dcfce7);
+    
   }
    .title{
     font-size: 25px !important;
+   
   
   }
 
@@ -441,6 +443,7 @@ button:disabled {
     align-items:flex-start;
     padding:15px 0;
     background: linear-gradient(135deg, #fef3c7, #e0f2fe, #dcfce7);
+
   }
 
   .question img,
@@ -455,7 +458,7 @@ button:disabled {
 
   .question { flex-direction:column; height:auto; text-align:center; margin-top: -20px !important; }
   .question img { width:100px !important; height:100px !important; }
-  .question-text { font-size:20px; min-height:auto !important; }
+  .question-text { font-size:20px !important; min-height:auto !important; }
 
   .input-row {
     flex-direction: column; /* stack input + check button */
