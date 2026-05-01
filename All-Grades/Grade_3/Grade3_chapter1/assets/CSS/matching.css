@@ -277,12 +277,12 @@ html {
 
   .play-area{
     grid-template-columns: 1fr 35px 1fr;
-    margin-top: -30px;
+    margin-top: -35px;
   }
 
   .step{
     font-size:14px;
-    padding:45px 25px;
+    padding:50px 30px;
   }
 
   .step-text{
