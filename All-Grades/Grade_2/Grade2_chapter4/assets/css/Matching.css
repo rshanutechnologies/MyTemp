@@ -482,10 +482,10 @@
 
   body {
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
     align-items: flex-start;
-    padding-top: 70px;
-    margin-top: 0;
+   
+  
   }
 
   .wrapper {

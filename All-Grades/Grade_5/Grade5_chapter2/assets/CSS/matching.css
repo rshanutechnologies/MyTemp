@@ -247,6 +247,37 @@ background: transparent;
     display: none;
 }
 
+/* GREEN BORDER */
+.matched {
+  border: 2px solid #4CAF50 !important;
+}
+
+/* NUMBER BADGE */
+.match-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+
+  background: #4CAF50;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* IMPORTANT: parent relative */
+.token,
+.slot {
+  position: relative;
+}
+
 @media (max-width: 768px) {
 
     body {

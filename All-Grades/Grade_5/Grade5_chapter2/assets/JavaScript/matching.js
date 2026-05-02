@@ -79,12 +79,44 @@ document.querySelectorAll(".slot").forEach((slot) => {
         (matches / total) * 100 + "%";
 
       slot.classList.add("filled");
-      slot.querySelector(".drop-zone").remove();
+     if (selectedToken.dataset.match === slot.dataset.match) {
 
-      // MOVE ITEM
-      const emoji = selectedToken.querySelector("span").cloneNode(true);
-      emoji.style.fontSize = "32px";
-      slot.appendChild(emoji);
+  matches++;
+
+  document.getElementById("progressBar").style.width =
+    (matches / total) * 100 + "%";
+
+  const number = matches;
+
+  // ✅ ADD CLASS (green border)
+  selectedToken.classList.add("matched");
+  slot.classList.add("matched");
+
+  // ✅ ADD NUMBER BADGE LEFT
+  const leftBadge = document.createElement("div");
+  leftBadge.className = "match-badge";
+  leftBadge.textContent = number;
+  selectedToken.appendChild(leftBadge);
+
+  // ✅ ADD NUMBER BADGE RIGHT
+  const rightBadge = document.createElement("div");
+  rightBadge.className = "match-badge";
+  rightBadge.textContent = number;
+  slot.appendChild(rightBadge);
+
+  selectedToken.classList.add("disabled");
+  selectedToken.classList.remove("active");
+
+  speak("Correct!");
+  score++;
+
+  selectedToken = null;
+
+  if (matches === total) setTimeout(showFinal, 800);
+
+} else {
+  speak("Wrong");
+}
 
       selectedToken.classList.add("disabled");
       selectedToken.classList.remove("active");
