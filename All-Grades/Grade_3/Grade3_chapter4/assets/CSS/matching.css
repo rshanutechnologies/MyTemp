@@ -298,12 +298,13 @@ body{
 
   html, body{
     overflow-x:hidden;
-    overflow-y:auto;
+    overflow:hidden;
   }
 
   body{
     align-items:flex-start;
     padding:20px 10px;
+    margin-top: -40px;
   }
 
   /* KEEP LEFT & RIGHT SIDE BY SIDE */
@@ -371,7 +372,7 @@ body{
   }
 
   .token span{
-    font-size:18px;
+    font-size:45px;
   }
 
   /* SLOTS */
@@ -532,4 +533,17 @@ body{
   #progressPill{
     display:none !important;
   }
+}
+@media (max-width:600px){
+
+  .board{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    align-items:start;   /* ✅ align top */
+  }
+
+  .token, .slot{
+    width:100%;
+  }
+
 }

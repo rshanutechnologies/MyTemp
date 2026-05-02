@@ -44,8 +44,8 @@ body::before{
 
 /* ✅ MAIN WRAP */
 .app{
-    width:100VH;
-    height:100VH;
+    width:100vh;
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -59,10 +59,12 @@ body::before{
 .card{
    position: relative;
     width: 950px;
-    height: 580px;
+    height:100%;
+    /* height: 580px; */
     display:flex;
     flex-direction:column;
     align-items:center;
+     justify-content: space-between;
      position: relative;
     width: 950px;
     /* background: #fff; */
@@ -274,10 +276,10 @@ color: black;
 /* ===================== NAV BUTTONS ===================== */
 
 .controls{
-    margin-top:70px;
+    margin-top:auto;
     display:flex;
     justify-content: space-between;
-    gap:400px !important;
+    gap:20px !important;
    
 }
 
@@ -545,6 +547,13 @@ color: black;
 
   .stars{
     font-size: 25px;
+  }
+    .controls{
+    margin-top:30px;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    gap:20px;
   }
 
 }

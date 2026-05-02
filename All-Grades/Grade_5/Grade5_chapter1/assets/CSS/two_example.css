@@ -350,7 +350,7 @@ button:disabled{
   .nav{
     justify-content:center;
     gap:25px;
-    margin-top:20px;
+    margin-top:16px;
   }
 
   .prev,

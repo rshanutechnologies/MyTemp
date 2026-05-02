@@ -364,7 +364,7 @@ button:disabled{
     position:relative;
     bottom:auto;
     transform:none;
-    margin-top:25px;
+    margin-top:20px;
     justify-content:center;
     gap:20px;
   }

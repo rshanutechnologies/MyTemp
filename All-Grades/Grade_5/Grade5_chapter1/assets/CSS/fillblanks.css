@@ -721,13 +721,13 @@ button:disabled {
   } */
   .prev {
     position: absolute;
-    top: 80%;
+    top: 78%;
     left: 8%;
 }
 
 .next {
     position: absolute;
-    top: 80%;
+    top: 78%;
     right: 8% !important;
 }
 

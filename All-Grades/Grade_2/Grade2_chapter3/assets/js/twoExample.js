@@ -1,6 +1,6 @@
 /* ✅ QUESTIONS */
 const questions = [
-  { img: "../assets/images/T-Q2.png", answer: "Tipu Sultan's Palace"},
+  { img: "../assets/images/T-Q2.png", answer: "Tipu Sultan Palace"},
   { img: "../assets/images/T-Q1.png", answer: "Yarada Beach" },
   { img: "../assets/images/T-Q3.png", answer: "Birla Temple" },
   { img: "../assets/images/T-Q4.png", answer: "India Gate" },

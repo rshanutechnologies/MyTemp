@@ -513,7 +513,7 @@ body{
   }
 
   body{
-    margin-top:0 !important;      /* ✅ remove shift */
+    margin-top: -40px;
   }
 
   .viewport{
@@ -543,13 +543,13 @@ body{
   }
 
   .question-text{
-    font-size:22px !important;
+    font-size:20px !important;
     margin-top:10px !important;
   }
 
   .drop-area{
-    width:160px !important;
-    height:130px !important;
+    width:150px !important;
+    height:120px !important;
   }
 .drop-chip{
     font-size:14px !important;   /* ✅ smaller text */

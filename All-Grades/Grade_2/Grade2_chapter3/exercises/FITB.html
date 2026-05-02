@@ -1244,16 +1244,19 @@ input.addEventListener("input", () => {
     }
 
     // Update Progress Bar
-    function updateProgress() {
-        const boxes = document.querySelectorAll(".progress-box");
-        boxes.forEach((box, i) => {
-            if (answers[i]) {
-                box.classList.add("done");
-            } else {
-                box.classList.remove("done");
-            }
-        });
-    }
+ function updateProgress() {
+    const boxes = document.querySelectorAll(".progress-box");
+
+    boxes.forEach((box, i) => {
+        if (answers[i]) {
+            box.classList.add("done");
+            box.textContent = "✔"; // ✅ change number to tick
+        } else {
+            box.classList.remove("done");
+            box.textContent = i + 1; // 🔄 keep number if not answered
+        }
+    });
+}
 
     // Show Feedback Popup (big circle)
     function showFeedback(type) {

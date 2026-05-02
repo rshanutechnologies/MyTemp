@@ -559,6 +559,11 @@ body {
     .final-heading {
         font-size: 1.5em;
     }
+    .playAgain-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+}
 
 }
 
