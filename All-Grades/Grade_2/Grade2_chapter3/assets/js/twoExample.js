@@ -25,26 +25,42 @@ const circle = document.getElementById("feedbackCircle");
 //   window.speechSynthesis.speak(u);
 // }
 
-function speak(text) {
-  const msg = new SpeechSynthesisUtterance(text);
+// function speak(text) {
+//   const msg = new SpeechSynthesisUtterance(text);
 
-  msg.lang = "en-GB";   // ✅ correct
-  msg.volume = 1;       // ✅ full volume
-  msg.rate = 1;
-  msg.pitch = 1;
+//   msg.lang = "en-GB";   // ✅ correct
+//   msg.volume = 1;       // ✅ full volume
+//   msg.rate = 1;
+//   msg.pitch = 1;
 
-  // ✅ wait for voices (important for iOS)
-  const voices = speechSynthesis.getVoices();
-  if (voices.length > 0) {
-    msg.voice = voices.find(v => v.lang === "en-GB") || voices[0];
-  }
+//   // ✅ wait for voices (important for iOS)
+//   const voices = speechSynthesis.getVoices();
+//   if (voices.length > 0) {
+//     msg.voice = voices.find(v => v.lang === "en-GB") || voices[0];
+//   }
 
-  speechSynthesis.speak(msg);
-}
+//   speechSynthesis.speak(msg);
+// }
+let availableVoices = [];
 
 speechSynthesis.onvoiceschanged = () => {
-  speechSynthesis.getVoices();
+  availableVoices = speechSynthesis.getVoices();
 };
+
+function speak(text){
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-Uk";
+   u.volume = 0.25;
+  u.rate = 1;
+  window.speechSynthesis.speak(u);
+}
+
+
+
+// speechSynthesis.onvoiceschanged = () => {
+//   speechSynthesis.getVoices();
+// };
 
 /* ✅ progress circles init */
 function initProgress() {
