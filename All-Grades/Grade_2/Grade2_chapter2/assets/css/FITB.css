@@ -464,6 +464,7 @@
       .question-img {
         max-width: 160px;
         max-height: 130px;
+        
       }
       
       .inputs-container {
@@ -621,6 +622,7 @@
       .question-text {
         font-size: 18px;
         padding: 10px 15px;
+        
       }
       
       .simple-input {

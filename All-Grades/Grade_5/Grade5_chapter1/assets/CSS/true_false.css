@@ -341,8 +341,8 @@ button:disabled{
   }
 
   .question-img{
-    max-width:220px;
-    height:auto;
+    max-width:130px;
+    height:130px !important;
   }
 
   .tf-buttons{

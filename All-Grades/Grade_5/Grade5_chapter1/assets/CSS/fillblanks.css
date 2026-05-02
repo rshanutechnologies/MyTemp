@@ -723,12 +723,18 @@ button:disabled {
     position: absolute;
     top: 78%;
     left: 8%;
+     width:120px;
+    font-size:20px;
+    padding:10px 18px;
 }
 
 .next {
     position: absolute;
     top: 78%;
     right: 8% !important;
+     width:120px;
+    font-size:20px;
+    padding:10px 18px;
 }
 
 .badge{

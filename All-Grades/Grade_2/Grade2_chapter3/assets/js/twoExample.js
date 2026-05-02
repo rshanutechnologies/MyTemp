@@ -1,6 +1,6 @@
 /* ✅ QUESTIONS */
 const questions = [
-  { img: "../assets/images/T-Q2.png", answer: "Tipu Sultan Palace"},
+  { img: "../assets/images/T-Q2.png", answer: "Tipu Sultan's Palace"},
   { img: "../assets/images/T-Q1.png", answer: "Yarada Beach" },
   { img: "../assets/images/T-Q3.png", answer: "Birla Temple" },
   { img: "../assets/images/T-Q4.png", answer: "India Gate" },
@@ -83,7 +83,11 @@ function flyTickToCircle(circleIndex, fromEl) {
 }
 
 function norm(t) {
-  return t.trim().toLowerCase().replace(/\s+/g, " ");
+  return t
+    .trim()
+    .toLowerCase()
+    .replace(/[’‘]/g, "'")   // ✅ FIX FOR iOS
+    .replace(/\s+/g, " ");
 }
 
 /* ✅ UI */
@@ -143,7 +147,7 @@ input.addEventListener("input", () => {
   }
 
   // ✅ CLEAN TEXT (allow letters + space + ')
-  input.value = val.replace(/[^a-zA-Z ']/g, "");
+ input.value = val.replace(/[^a-zA-Z '’]/g, "");
 
   // enable button
   btn.disabled = input.value.trim() === "" || solved[i];

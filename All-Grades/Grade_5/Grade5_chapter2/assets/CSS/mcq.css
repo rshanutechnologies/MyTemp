@@ -11,6 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     /* background: linear-gradient(180deg, #baddfd 0%, #e5e3ff 100%) !important; */
+    
     background: transparent;
     overflow: hidden;
 }
@@ -378,7 +379,7 @@ button:disabled {
         overflow: hidden !important;
         padding: 15px;
         height: auto;
-          background-image: url("../images/L2bgg.png");
+      background-color: #F6EFE6;
   background-size: cover;        /* ✅ Makes image full screen */
   background-position: center;   /* ✅ Center the image */
   background-repeat: no-repeat;  /* ✅ Prevent repeat */
@@ -476,6 +477,17 @@ button:disabled {
     #stars {
         font-size: 30px;
     }
+    .options {
+    gap: 0px !important;   /* 🔥 remove vertical gap */
+}
+
+.option {
+    margin: 0 !important;  /* 🔥 remove extra spacing */
+}
+
+.content {
+    gap: 10px;   /* optional: reduce overall spacing */
+}
 }
 
 
@@ -487,6 +499,9 @@ button:disabled {
 
     .question {
         font-size: clamp(18px, 5vw, 22px);
+    }
+       .options{
+        margin-top: 10px !important;
     }
 
     .left img {
@@ -591,12 +606,15 @@ button:disabled {
         padding: 8px;
         height: auto;
         border-radius: 14px;
-        margin-top: 4%;
+        margin-top:8px !important;
     }
 
     .option img {
         width: 24px;
         height: auto;
+    }
+    .options{
+        margin-top: 10px !important;
     }
 
 }

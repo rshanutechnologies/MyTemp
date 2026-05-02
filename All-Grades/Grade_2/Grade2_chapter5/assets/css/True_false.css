@@ -385,10 +385,11 @@ canvas {
        .tf-buttons {
        
         flex-direction: row;
-        gap: 1px;
+        gap: 2px;
         margin-top: -40px;
-
+       width: 60%;
     }
+   
 
 }
 

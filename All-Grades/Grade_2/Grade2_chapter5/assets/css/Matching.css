@@ -302,10 +302,14 @@ canvas {
 
     /* CENTER PROGRESS */
     .level-progress {
-        width: 100%;
-        margin-left: 0;
+        width: 90%;          /* 👈 inner line smaller */
+    left: 5%;            /* 👈 keep centered */
         padding: 0 10px;
     }
+    .progress-line {
+    width: 90%;          /* 👈 inner line smaller */
+    left: 5%;            /* 👈 keep centered */
+}
 
     .level {
         width: 45px;
@@ -333,7 +337,9 @@ canvas {
     .item {
         font-size: 15px;
         gap: 10px;
-        
+        display: flex;
+        justify-content: center;
+        align-items: center;
     
     }
 

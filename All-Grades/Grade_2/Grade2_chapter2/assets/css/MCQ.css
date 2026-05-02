@@ -309,13 +309,25 @@
         font-size: 15px;
         padding: 10px 6px;
         min-width: 95px;
+     
       }
       .question-text {
-        font-size: 19px;
+        font-size: 18px;
+        margin-bottom: 7% !important;
+       
       }
       .quiz-image {
         max-width: 150px;
+        
       }
+    }
+
+       @media (max-width: 480px) {
+      .option {
+        margin-bottom: 2%;
+     
+      }
+     
     }
 
        @media (max-width: 370px) {

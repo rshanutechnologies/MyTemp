@@ -254,7 +254,7 @@ background: transparent;
         overflow: auto;
         align-items: flex-start;
         padding: 15px 10px;
-        background-image: url("../images/L2bgg.png");
+        background-color: #F6EFE6;
   background-size: cover;        /* ✅ Makes image full screen */
   background-position: center;   /* ✅ Center the image */
   background-repeat: no-repeat;  /* ✅ Prevent repeat */
@@ -289,6 +289,8 @@ background: transparent;
         width: 70px;
         height: 30px;
         font-size: 9px;
+        /* display: none; */
+        /* visibility: hidden !important; */
     }
 
     .slot-img {
@@ -321,7 +323,7 @@ background: transparent;
         overflow: auto;
         align-items: flex-start;
         padding: 15px 10px;
-        background-image: url("../images/L2bgg.png");
+    background-color: #F6EFE6;
   background-size: cover;        /* ✅ Makes image full screen */
   background-position: center;   /* ✅ Center the image */
   background-repeat: no-repeat;  /* ✅ Prevent repeat */

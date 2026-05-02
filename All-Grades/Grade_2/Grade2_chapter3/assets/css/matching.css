@@ -132,7 +132,7 @@ h1 {
     margin-top: 8px;
     background: #fff;
     color: #2f5d57;
-    padding: 6px 14px;
+    /* padding: 6px 14px; */
     border-radius: 12px;
     font-weight: 700;
 }
@@ -516,7 +516,7 @@ body {
     }
 
     .progress-wrap {
-        top: -2px;
+        top: 5px;
         right: 10px;
         transform: scale(.85);
     }
@@ -542,17 +542,20 @@ body {
     .grid {
         gap: 20px;
     }
+    
 
     .hint-btn-abs {
         font-size: 10px;
         padding: 7px 12px;
-        
+        display: none;
     }
 
      .feedback-circle{
     width:140px;
     height:140px;
     font-size:60px;
+  
+
   
   }
 

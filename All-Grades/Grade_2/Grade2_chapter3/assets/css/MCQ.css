@@ -442,7 +442,7 @@ body {
         gap: 10px;
         justify-content: center;
 
-        margin-top:-30px;
+        margin-top:-0px;
         background: white;
         padding: 8px 14px;
         border-radius: 50px;
@@ -450,7 +450,7 @@ body {
         /* margin-left: auto;
   margin-right: auto; */
 
-        margin-right: 0px;
+        margin-left: 30% !important;
 
     }
 
@@ -464,10 +464,12 @@ body {
         justify-content: center;
         text-align: center;
         font-size: 22px;
+        margin-bottom: 5%;
     }
 
     .options {
         width: 100%;
+        gap: 5px;
     }
 
     .option {
@@ -511,6 +513,7 @@ body {
     width:140px;
     height:140px;
     font-size:60px;
+   
   }
 
   .final-popup-box{

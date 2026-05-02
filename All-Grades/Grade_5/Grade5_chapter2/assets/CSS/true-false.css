@@ -452,7 +452,7 @@ body {
         padding: 20px 10px;
         overflow: auto;
         align-items: flex-start;
-         background-image: url("../images/L2bgg.png");
+       background-color: #F6EFE6;
   background-size: cover;        /* ✅ Makes image full screen */
   background-position: center;   /* ✅ Center the image */
   background-repeat: no-repeat;  /* ✅ Prevent repeat */

@@ -331,6 +331,7 @@
          overflow: auto;
          align-items: flex-start;
          padding-top: 80px;
+        
      }
 
      .home-btn {
@@ -345,8 +346,9 @@
 
      /* STACK COLUMNS */
      .grid {
-         grid-template-columns: 1fr;
+         grid-template-columns: 1fr 1fr;
          gap: 20px;
+          margin-top: 3%;
      }
 
      #canvas {
@@ -406,6 +408,10 @@
     }
      .item {
          font-size: 16px;
+        
+         display: flex;
+         justify-content: center;
+         align-items: center;
      }
 
      .home-btn {
@@ -471,7 +477,93 @@
  }
 
 
+/* ===================== 320px → 550px ===================== */
+@media (min-width:320px) and (max-width:550px) {
 
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    align-items: flex-start;
+    padding-top: 70px;
+    margin-top: 0;
+  }
+
+  .wrapper {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* ✅ ALWAYS SINGLE COLUMN */
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .column {
+    padding: 8px 0;
+    font-size: 1rem;
+  }
+
+  .item {
+    font-size: 16px;
+    padding: 10px;
+    height: 140px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .left-content {
+    gap: 10px;
+    margin-bottom: 0; /* ❌ remove that 80px bug */
+  }
+
+  .left-content img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .slot {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+
+  .progress {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .step {
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
+  }
+
+  .home-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .popup-box {
+    width: 90%;
+    padding: 18px;
+  }
+
+  .popup-emoji {
+    font-size: 50px;
+  }
+
+  .final-board {
+    width: 140px;
+    height: 140px;
+  }
+
+  .fly-img {
+    width: 42px;
+    height: 42px;
+  }
+}
 
  
 /* ================= 1025px — 1440px ================= */

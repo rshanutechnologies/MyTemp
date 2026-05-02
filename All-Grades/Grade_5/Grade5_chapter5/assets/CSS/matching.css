@@ -86,7 +86,7 @@ box-shadow:
   border:2px solid #dc2626;   /* clean red */
 }
 
-.item.correct::after{
+/* .item.correct::after{
   content:"✔";
   margin-left:auto;
   font-size:22px;
@@ -98,8 +98,11 @@ box-shadow:
   margin-left:auto;
   font-size:22px;
   color:#c62828;
+} */
+.item.correct::after,
+.item.wrong::after {
+  display: none;
 }
-
 
 
 .item img{
