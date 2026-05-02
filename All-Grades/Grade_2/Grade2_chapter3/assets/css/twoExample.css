@@ -316,7 +316,7 @@ body {
 
     .progress-wrap {
         position: fixed;
-        top: 7px;
+        top: 9px;
         right: 8px;
         display: flex;
         gap: 10px;

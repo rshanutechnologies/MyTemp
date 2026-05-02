@@ -3,6 +3,10 @@ let matches = 0;
 let score = 0;
 const total = 5;
 
+document.querySelectorAll(".tokens .token").forEach((token, index) => {
+  token.dataset.index = index + 1; // 1,2,3,4...
+});
+
 // function speak(text) {
 //   const msg = new SpeechSynthesisUtterance(text);
 //   window.speechSynthesis.cancel();
@@ -73,53 +77,38 @@ document.querySelectorAll(".slot").forEach((slot) => {
 
     if (selectedToken.dataset.match === slot.dataset.match) {
 
+      // progress
       matches++;
-
       document.getElementById("progressBar").style.width =
         (matches / total) * 100 + "%";
 
-      slot.classList.add("filled");
-     if (selectedToken.dataset.match === slot.dataset.match) {
+      // ✅ NUMBER FROM LEFT ORDER (IMPORTANT)
+      const number = selectedToken.dataset.index;
 
-  matches++;
+      // style
+      selectedToken.classList.add("matched");
+      slot.classList.add("matched");
 
-  document.getElementById("progressBar").style.width =
-    (matches / total) * 100 + "%";
+      // remove old badge if any (safety)
+      selectedToken.querySelector(".match-badge")?.remove();
+      slot.querySelector(".match-badge")?.remove();
 
-  const number = matches;
+      // LEFT badge
+      const leftBadge = document.createElement("div");
+      leftBadge.className = "match-badge";
+      leftBadge.textContent = number;
+      selectedToken.appendChild(leftBadge);
 
-  // ✅ ADD CLASS (green border)
-  selectedToken.classList.add("matched");
-  slot.classList.add("matched");
+      // RIGHT badge
+      const rightBadge = document.createElement("div");
+      rightBadge.className = "match-badge";
+      rightBadge.textContent = number;
+      slot.appendChild(rightBadge);
 
-  // ✅ ADD NUMBER BADGE LEFT
-  const leftBadge = document.createElement("div");
-  leftBadge.className = "match-badge";
-  leftBadge.textContent = number;
-  selectedToken.appendChild(leftBadge);
-
-  // ✅ ADD NUMBER BADGE RIGHT
-  const rightBadge = document.createElement("div");
-  rightBadge.className = "match-badge";
-  rightBadge.textContent = number;
-  slot.appendChild(rightBadge);
-
-  selectedToken.classList.add("disabled");
-  selectedToken.classList.remove("active");
-
-  speak("Correct!");
-  score++;
-
-  selectedToken = null;
-
-  if (matches === total) setTimeout(showFinal, 800);
-
-} else {
-  speak("Wrong");
-}
-
+      // disable + finalize
       selectedToken.classList.add("disabled");
       selectedToken.classList.remove("active");
+      slot.classList.add("filled");
 
       speak("Correct!");
       score++;

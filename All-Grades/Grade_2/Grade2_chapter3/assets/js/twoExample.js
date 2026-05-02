@@ -25,17 +25,26 @@ const circle = document.getElementById("feedbackCircle");
 //   window.speechSynthesis.speak(u);
 // }
 
-function speak(t) {
-  speechSynthesis.cancel(); // optional but recommended
+function speak(text) {
+  const msg = new SpeechSynthesisUtterance(text);
 
-  const msg = new SpeechSynthesisUtterance(t);
-  msg.lang = "en-UK";
-  msg.volume = 0.25;
+  msg.lang = "en-GB";   // ✅ correct
+  msg.volume = 1;       // ✅ full volume
   msg.rate = 1;
   msg.pitch = 1;
 
+  // ✅ wait for voices (important for iOS)
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    msg.voice = voices.find(v => v.lang === "en-GB") || voices[0];
+  }
+
   speechSynthesis.speak(msg);
 }
+
+speechSynthesis.onvoiceschanged = () => {
+  speechSynthesis.getVoices();
+};
 
 /* ✅ progress circles init */
 function initProgress() {
