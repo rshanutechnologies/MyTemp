@@ -188,6 +188,8 @@ document.getElementById("checkBtn").onclick = () => {
   if (input.value.trim().toLowerCase() === quizData[current].a) {
     answered[current] = true;
     userAnswers[current] = input.value.trim();
+    input.disabled = true;   // 🔒 lock input
+checkBtn.disabled = true; // 🔒 disable button
     flyImage();
     nextBtns.forEach((b) => (b.disabled = false));
 
