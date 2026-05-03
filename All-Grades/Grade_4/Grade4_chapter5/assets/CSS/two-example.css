@@ -534,7 +534,7 @@ body {
     body {
         padding: 14px;
         align-items: flex-start;
-        overflow-y: auto;
+        overflow-y: hidden !important;
     }
 
     .app-shell {
@@ -582,7 +582,7 @@ body {
     body {
         padding: 10px;
         align-items: flex-start;
-        overflow-y: auto;
+        overflow-y: hidden !important;
     }
 
     .app-shell {

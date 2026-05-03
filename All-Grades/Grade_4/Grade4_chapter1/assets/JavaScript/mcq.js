@@ -1,6 +1,6 @@
 const questions = [
   {
-    q: "Q1. Which of the following is the main source of energy?",
+    q: "Q1.Which of the following is the main source of energy?",
     img: "../assets/images/mcq1-img.png",
     options: [
       { t: "Plants", img: "../assets/images/plants.png" },
@@ -12,7 +12,7 @@ const questions = [
   },
 
   {
-    q: "Q2. The process by which a plant makes its own food in the presence of sunlight is called _____________ ?",
+    q: "Q2.The process by which a plant makes its own food in the presence of sunlight is called _____________ ?",
     img: "../assets/images/mcq2-img.png",
     options: [
       { t: "Venation", img: "../assets/images/Venation.png" },
@@ -24,7 +24,7 @@ const questions = [
   },
 
   {
-    q: "Q3. Which of the following is the flat part of the leaf?",
+    q: "Q3.Which of the following is the flat part of the leaf?",
     img: "../assets/images/mcq3-img.png",
     options: [
       { t: "Lamina", img: "../assets/images/lamina.png" },
@@ -36,7 +36,7 @@ const questions = [
   },
 
   {
-    q: "Q4. Which of the following plants has spiral phyllotaxy?",
+    q: "Q4.Which of the following plants has spiral phyllotaxy?",
     img: "../assets/images/mcq4-img.png",
     options: [
       { t: "Guava", img: "../assets/images/Guava.png" },
@@ -48,7 +48,7 @@ const questions = [
   },
 
   {
-    q: "Q5. Which of the following has stored food in its stem?",
+    q: "Q5.Which of the following has stored food in its stem?",
     img: "../assets/images/mcq5-img.png",
     options: [
       { t: "Cauliflower", img: "../assets/images/clouliflower.png" },

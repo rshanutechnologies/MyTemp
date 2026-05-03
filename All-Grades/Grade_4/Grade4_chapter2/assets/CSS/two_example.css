@@ -507,12 +507,13 @@ button:disabled {
   }
 
   .nav {
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
   }
 
   .nav button {
-    width: 100%;
+    width: 95px;
+    height: 42px;
     font-size: 15px;
     padding: 8px 14px;
   }

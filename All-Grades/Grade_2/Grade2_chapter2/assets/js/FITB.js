@@ -48,6 +48,8 @@
       speechSynthesis.speak(msg);
     }
 
+    
+
     // function showFeedback(isCorrect, imgSrc) {
     //   const popup = document.getElementById("feedbackPopup");
     //   const media = document.getElementById("popupMedia");
@@ -97,11 +99,14 @@ function showFeedback(isCorrect, imgSrc) {
     txt.textContent = "Correct! ✅";
     txt.classList.add("correct");
 
+  speak("Correct"); // ✅ voice
+
   } else {
     media.innerHTML = "<div class='popup-emoji'>😢</div>";
 
     txt.textContent = "Wrong! ❌";
     txt.classList.add("wrong");
+      speak("Wrong"); // ✅ voice
   }
 
   popup.style.display = "flex";

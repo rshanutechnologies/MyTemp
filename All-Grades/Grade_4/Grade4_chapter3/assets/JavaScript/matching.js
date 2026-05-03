@@ -1,7 +1,9 @@
 let activeConcept = null;
 let score = 0;
 const total = 5;
-const isMobile = window.innerWidth <= 768;
+function isMobile() {
+  return window.innerWidth <= 768;
+}
 let matchNumber = 1;
 
 /*  PROGRESS  */
@@ -99,20 +101,33 @@ document.querySelectorAll(".example").forEach((e) => {
     if (!activeConcept || e.classList.contains("matched")) return;
 
     if (e.dataset.value === activeConcept.dataset.answer) {
-      speak("Correct");
+     speak("Correct");
 
-      drawLine(activeConcept, e);
+if (!isMobile()) {
+  drawLine(activeConcept, e);
+} else {
+  // mobile numbers
+  activeConcept.setAttribute("data-match", matchNumber);
+  e.setAttribute("data-match", matchNumber);
 
-      activeConcept.classList.add("matched");
-      e.classList.add("matched");
+  activeConcept.classList.add("numbered");
+  e.classList.add("numbered");
 
-      activeConcept.classList.remove("active");
-      activeConcept = null;
-      score++;
+  matchNumber++;
+}
+
+activeConcept.classList.add("matched");
+e.classList.add("matched");
+
+activeConcept.classList.remove("active");
+activeConcept = null;
+score++;
       // stars();
 
       if (score === total) setTimeout(showFinal, 800);
-    } else {
+    } 
+    
+    else {
       speak("Wrong");
       e.classList.add("wrong");
       setTimeout(() => e.classList.remove("wrong"), 300);

@@ -355,8 +355,8 @@ svg {
   }
 
   .card {
-    height: 160px;
-    font-size: 18px;
+    height: 82px;
+    font-size: 10px;
     padding: 14px 18px;
   }
 
@@ -385,10 +385,14 @@ svg {
   }
 
   .card {
-    min-height: 130px;
+    min-height: 90px ;
     /* ✅ fixes text cut issue */
-    font-size: 16px;
+    font-size: 12px;
     padding: 14px 16px;
+  }
+
+  .card span{
+    font-size: 10px;
   }
 
   .card-img {
@@ -403,7 +407,7 @@ svg {
 @media (max-width: 360px) {
 
   .card {
-    min-height: 145px;
+    min-height: 70px;
     font-size: 15px;
   }
 

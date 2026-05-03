@@ -45,33 +45,33 @@ function speakText(t) {
 const questions = [
   {
     q: "An action that we do with our legs",
-    a: "Walk",
+    a: "🚶Walk",
     image: "../assets/images/T11.png",
-    options: ["Walk", "Flying", "Gaming"]
+    options: ["🚶Walk", "✈️ Flying", "🎮 Gaming"]
   },
   {
     q: "A part that is located inside our head",
-    a: "Brain",
+    a: "🧠 Brain",
     image: "../assets/images/humanhead.png",
-    options: [ "Liver", "Heart","Brain"]
+    options: [ "🥩 Liver", "🫀 Heart","🧠 Brain"]
   },
   {
     q: "The sense organ that helps us to hear ",
-    a: "Ears",
+    a: "👂 Ears",
     image: "../assets/images/boygirlcon.png",
-    options: [ "Nose", "Ears","Tongue"]
+    options: [ "👃 Nose", "👂 Ears","👅 Tongue"]
   },
   {
     q: "An internal organ",
-    a: "Lungs",
+    a: "🫁 Lungs",
     image: "../assets/images/opt422.png",
-    options: ["Lungs", "Skin", "Hand"]
+    options: ["🫁 Lungs", "🧍Skin", "✋ Hand"]
   },
   {
     q: "An external organ",
-    a: "Shoulder",
+    a: "💪 Shoulder",
     image: "../assets/images/ExternalParts.png",
-    options: [ "Lungs","Shoulder", "Brain"]
+    options: [ "🫁 Lungs","💪 Shoulder", "🧠 Brain"]
   }
 ];
 
@@ -125,7 +125,7 @@ function renderQuestion() {
     btn.style.background = c.bg;
     btn.style.color = c.text;
 
-    btn.innerHTML = `<span style="font-size:28px;">${c.icon}</span> <span>${opt}</span>`;
+    btn.innerHTML = `<span>${opt}</span>`;
 
     // ✅ disable once solved
     if (solved) btn.classList.add("disabled");

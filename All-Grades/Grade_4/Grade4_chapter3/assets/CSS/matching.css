@@ -452,6 +452,40 @@ body {
     padding: 10px;
     font-size: 14px;
   }
+
+  /* MOBILE NUMBER STYLE */
+
+
+  .concept.numbered::after,
+  .example.numbered::after {
+    content: attr(data-match);
+    position: absolute;
+    right: 10px;
+    top: 5%;
+    transform: translateY(-50%);
+    
+    width: 18px;
+    height:18px;
+    border-radius: 50%;
+    background: #22c55e;
+    color: #fff;
+    
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .concept,
+  .example {
+    position: relative;
+  }
+
+  #lines {
+    display: none;
+  }
+
+
 }
 
 @media (max-width: 480px) {

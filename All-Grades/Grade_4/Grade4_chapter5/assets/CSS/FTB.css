@@ -478,7 +478,7 @@ body {
   body {
     padding: 0px 12px;
     align-items: flex-start;
-    overflow-y: hidden;
+    overflow-y: hidden !important;
   }
 
   .main {
@@ -522,7 +522,7 @@ body {
   body {
     padding: 10px;
     align-items: flex-start;
-    overflow-y: auto;
+    overflow-y: hidden !important;
   }
 
   .main {

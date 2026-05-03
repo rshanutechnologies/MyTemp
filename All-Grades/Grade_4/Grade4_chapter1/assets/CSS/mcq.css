@@ -447,6 +447,7 @@ body {
         overflow: auto;
         scrollbar-width: none;
         -ms-overflow-style: none;
+       
     }
 
     body::-webkit-scrollbar {
@@ -469,6 +470,7 @@ body {
         font-size: 22px;
         height: auto;
         text-align: center;
+       
     }
 
     .q-no {
@@ -621,7 +623,9 @@ body {
         padding: 10px;
         padding-top: 0px;
         overflow-y: auto;
-        align-items: flex-start;
+        align-items: center;
+       
+        
     }
 
     .options-container {
@@ -638,6 +642,7 @@ body {
         height: 70px;
         margin-inline: 30px;
         justify-content: center;
+       
     }
 
     .option-card {

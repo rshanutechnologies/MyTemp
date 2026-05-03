@@ -68,7 +68,8 @@ body{
   border-radius:12px;
   margin:4px 0 6px 0;   /* ← remove auto centering */
   font-size:30px;
-  text-align:left;
+  text-align:center;
+
      color: #111111;
      margin-top: 25px;
 }
