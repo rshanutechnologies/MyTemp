@@ -569,6 +569,25 @@ body {
 
 }
 
+@media (max-width:375px) {
+  body{
+    overflow-y: hidden;
+     
+  }
+  .nav {
+    gap: 40px;
+    margin-top: -30%;
+    margin-left: 20px;
+    width: 90% !important;
+  }
+
+  .nav button {
+    font-size: 15px;
+    padding: 10px;
+  
+  }
+}
+
 @media (max-width:1024px) {
 
   .game {
