@@ -1,6 +1,7 @@
 let activeConcept = null;
 let score = 0;
 const total = 5;
+const isMobile = window.innerWidth <= 768;
 
 /*  PROGRESS  */
 // const progress = document.getElementById("progress");
