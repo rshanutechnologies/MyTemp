@@ -496,7 +496,7 @@ body {
 @media (max-width:768px) {
 
     .grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 28px;
         justify-items: center;
         margin-top: 5%;
@@ -504,7 +504,7 @@ body {
 
     #leftList,
     #rightList {
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         justify-content: center;
         gap: 12px;
@@ -519,11 +519,12 @@ body {
         top: 5px;
         right: 10px;
         transform: scale(.85);
+        display: none;
     }
 
     .hint-btn-abs {
         top: 10px;
-        left: 10px;
+        right: 10px;
         display: none;
     }
 
@@ -554,7 +555,7 @@ body {
     width:140px;
     height:140px;
     font-size:60px;
-  
+    
 
   
   }
@@ -607,7 +608,7 @@ body {
     
     transform-origin: center center;
     margin-top: -3%;
-
+    
 } 
 
 

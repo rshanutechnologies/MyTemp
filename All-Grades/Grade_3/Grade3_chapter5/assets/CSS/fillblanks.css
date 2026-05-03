@@ -624,3 +624,73 @@ button:disabled{
   padding:0 20px;
   font-size:20px;
 }
+/* ================= SMALL MOBILE (320px – 480px) ================= */
+@media (max-width:480px){
+
+  html, body{
+    overflow:hidden;   /* 🔥 prevent horizontal scroll */
+  }
+
+  .quiz{
+    width:100%;
+    padding:10px;
+    gap:12px;
+  }
+
+  /* IMAGE */
+  .image-box img{
+    width:120px;
+    height:auto;
+  }
+
+  /* QUESTION */
+  .question{
+    font-size:18px;
+    text-align:center;
+    line-height:1.4;
+    padding:0 5px;
+  }
+
+  /* INPUT */
+  .input-box,
+  .double-input{
+    width:100%;
+    justify-content:center;
+  }
+
+  .input-box input,
+  .double-input input{
+    width:90%;
+    max-width:240px;
+    height:38px;
+    font-size:14px;
+    padding:0 10px;
+    border-radius:16px;
+  }
+
+  /* CHECK BUTTON */
+  .checkBtn-container button,
+  .double-check button{
+    font-size:13px;
+    padding:8px 14px;
+    border-radius:14px;
+  }
+
+  /* NAV BUTTONS */
+  .footer{
+    gap:8px;
+  }
+
+  .footer button{
+    width:48%;
+    font-size:13px;
+    padding:8px;
+    border-radius:16px;
+  }
+
+  /* HEADER */
+  .header{
+    font-size:16px;
+  }
+
+}

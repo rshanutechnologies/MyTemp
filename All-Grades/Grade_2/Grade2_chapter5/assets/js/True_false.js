@@ -183,42 +183,51 @@ function checkAnswer(val) {
     speakText("Correct");
 
     if (current === quizData.length - 1) {
-      const score = answered.filter((a) => a).length;
-      setTimeout(() => {
-        popup.style.display = "flex";
-        popupText.className = "popup-box final";
 
-        popupText.innerHTML = `
-                  🎉 Congratulations!
-                  <div style="margin-top:10px;font-size:22px;font-weight:600;text-align:center">
-                  Score: ${score}/5
-                  </div>
+  // ✅ FIRST show correct popup
+  showPopup("✅ Correct!", "correct");
 
-                  <button id="restartBtn"
-                  style="
-                  margin-top:15px;
-                  padding:10px 20px;
-                  border:none;
-                  border-radius:20px;
-                  background:#28a745;
-                  color:#fff;
-                  font-size:16px;
-                  font-weight:bold;
-                  cursor:pointer;
-                  display:block;
-                  margin-inline:auto;
-                  ">
-                  🔄 Play Again
-                  </button>
-                  `;
+  const score = answered.filter((a) => a).length;
 
-        document
-          .getElementById("restartBtn")
-          .addEventListener("click", restartQuiz);
+  // ✅ THEN show final popup after delay
+  setTimeout(() => {
+    popup.style.display = "flex";
+    popupText.className = "popup-box final";
 
-        startConfetti();
-      }, 1000);
-    } else {
+    popupText.innerHTML = `
+      🎉 Congratulations!
+      <div style="margin-top:10px;font-size:22px;font-weight:600;text-align:center">
+      Score: ${score}/5
+      </div>
+
+      <button id="restartBtn"
+      style="
+      margin-top:15px;
+      padding:10px 20px;
+      border:none;
+      border-radius:20px;
+      background:#28a745;
+      color:#fff;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+      display:block;
+      margin-inline:auto;
+      ">
+      🔄 Play Again
+      </button>
+    `;
+
+    document
+      .getElementById("restartBtn")
+      .addEventListener("click", restartQuiz);
+
+    startConfetti();
+
+  }, 1200); // 🔥 delay AFTER correct popup
+}
+    
+    else {
       showPopup("✅ Correct!", "correct");
     }
   } else {
