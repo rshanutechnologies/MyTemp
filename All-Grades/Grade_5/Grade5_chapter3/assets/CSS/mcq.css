@@ -121,10 +121,10 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
 } */
 
-/* .option-card.correct {
-  border-color: green !important;
-  background: #e8f5e9;
-} */
+.option-card.correct{
+  border: 3px solid #4CAF50 !important;   /* ✅ green border */
+  background: #e8f5e9;                   /* optional light green */
+}
 
 /* .option-card.wrong {
   border-color: red !important;
@@ -490,6 +490,10 @@ display: none;
     font-size: 20px;
     height: auto;
     margin-top: -5%;
+    text-align: left !important;   /* ✅ fix alignment */
+  display: block !important;     /* remove flex */
+  width: 100%;
+  line-height: 1.5;
   }
 
   .question-card img {

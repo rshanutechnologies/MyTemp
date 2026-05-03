@@ -447,6 +447,10 @@ button:disabled {
     .question {
         font-size: clamp(20px, 5vw, 26px);
         padding: 0 10px;
+         text-align: left !important;   /* ✅ fix alignment */
+  width: 100%;
+  line-height: 1.5;
+  padding: 0 10px;
     }
 
     /* ANSWER AREA */

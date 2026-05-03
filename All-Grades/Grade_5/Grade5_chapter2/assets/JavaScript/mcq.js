@@ -1,7 +1,7 @@
 const quizData = [
   {
     q: "Q1. Which of the following statements best describes metamorphosis?",
-    img: "../assets/images/mcq1-img.png",
+    img: "../assets/images/mcq11-img.png",
     options: [
       {
         t: "Complete transformation from a caterpillar to an adult butterfly",

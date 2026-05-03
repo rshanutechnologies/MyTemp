@@ -83,13 +83,13 @@ function loadQuestion() {
     card.onclick = () => selectAnswer(i);
 
     // ✅ If question already solved
-    if (solved[current]) {
-      if (i !== q.answer) {
-        // ❌ Disable only wrong options
-        card.classList.add("disabled");
-      }
-      // ✅ Correct option remains clickable
-    }
+   if (solved[current]) {
+  if (i === q.answer) {
+    card.classList.add("correct");   // ✅ keep green border
+  } else {
+    card.classList.add("disabled");  // disable others
+  }
+}
   });
 
   prevBtn.disabled = current === 0;
@@ -162,7 +162,13 @@ function selectAnswer(i) {
     score++;
 
     // ✅ Disable all options (no green highlight)
-    options.forEach((o) => o.classList.add("disabled"));
+    options.forEach((o, index) => {
+  if (index === correct) {
+    o.classList.add("correct");   // ✅ add green border
+  } else {
+    o.classList.add("disabled");  // disable others
+  }
+});
 
     speak("Correct");
     showPopup(true);
