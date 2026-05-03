@@ -52,6 +52,7 @@ body::before{
     padding:18px;
       /* transform: scale(0.9); */
   /* transform-origin: center; */
+  
     
 }
 
@@ -174,7 +175,7 @@ body::before{
     width:min(780px, 92vw);
     border-radius:22px;
     padding:22px 18px 18px;
-    margin-top:18px;
+    margin-top:-30px;
     min-height:100px;
     display:flex;
     align-items:flex-start;
@@ -278,8 +279,10 @@ color: black;
 .controls{
     margin-top:auto;
     display:flex;
-    justify-content: space-between;
-    gap:20px !important;
+    justify-content: space-between !important;
+    gap:80px ;
+    margin-bottom: 30px !important;
+    width: 100% !important;
    
 }
 
@@ -519,7 +522,7 @@ color: black;
   /* CONTROLS */
   .controls{
     margin-top: 5px;  /* 70 × 0.85 */
-    gap: 85px;         /* 100 × 0.85 */
+    gap: 85px !important;         /* 100 × 0.85 */
   }
 
   .nav-btn{
@@ -553,7 +556,7 @@ color: black;
     display:flex;
     flex-direction:row;
     justify-content:center;
-    gap:20px;
+    gap:20px !important;
   }
 
 }
@@ -823,6 +826,7 @@ color: black;
     line-height: 1.4;
     min-width: 1000px !important;
     /* background-color: yellow !important; */
+    margin-left: -40px !important;
   }
 
   .question-box{

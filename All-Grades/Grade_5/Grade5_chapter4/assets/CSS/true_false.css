@@ -714,7 +714,8 @@ button:disabled {
   .quiz-card {
     width: 1100px;
     height: 720px;
-     margin-top: -10% !important;
+     margin-top: -3% !important;
+     /* background-color: yellow !important; */
   }
 
   
@@ -727,7 +728,7 @@ button:disabled {
   /* QUESTION */
   .question {
     height: 110px !important;
-    font-size: 44px; /* ✅ IMPORTANT */
+    font-size: 44px !important; /* ✅ IMPORTANT */
     width: 1200px;
   
   
@@ -736,7 +737,7 @@ button:disabled {
   /* IMAGE */
   .question-img {
     max-width: 500px;
-    height: 280px;
+    height: 200px;
       margin-top: 2%;
 
   }
@@ -747,8 +748,8 @@ button:disabled {
   }
 
   .tf-buttons button {
-    width: 260px;   /* ✅ FIXED */
-    height: 120px;   /* ✅ FIXED */
+    width: 200px;   /* ✅ FIXED */
+    height: 90px;   /* ✅ FIXED */
     font-size: 35px;
 
     border-radius: 40px;
@@ -764,7 +765,7 @@ button:disabled {
    
   }
   .nav{
-    margin-bottom:-12% !important;
+    margin-bottom:-4% !important;
   }
 /* ===================================== */
 /* ===== FINAL POPUP CLEAN SYSTEM ===== */

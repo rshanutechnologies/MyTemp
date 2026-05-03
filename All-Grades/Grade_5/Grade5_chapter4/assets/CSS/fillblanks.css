@@ -749,7 +749,7 @@ button:disabled {
   /* QUESTION */
 .question {
   height: 120px;
-  font-size: 44px;
+  font-size: 44px !important;
   /* background-color: yellow !important; */
   width: 1200px;
   margin-left: -9% !important;

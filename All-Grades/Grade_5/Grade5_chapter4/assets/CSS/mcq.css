@@ -634,7 +634,7 @@ button:disabled {
 
   /* NAV BUTTONS */
   .nav {
-    gap: 50px;
+    gap: 50px !important;
     justify-content: center;
   }
 

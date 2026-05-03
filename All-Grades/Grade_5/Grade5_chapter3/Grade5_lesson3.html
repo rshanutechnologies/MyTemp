@@ -40,7 +40,7 @@ body{
 
 .nav-btn{
   width:80%;
-  height:70px;
+  height:90px;
   display:flex;
   align-items:center;
   gap:18px;
@@ -155,6 +155,7 @@ iframe{
 
   .nav-area{
     width:288px;   /* 🔥 360px -20% */
+    
    
   }
   .nav-btn{
@@ -177,23 +178,75 @@ iframe{
 
 }
 
+
+@media (min-width:1280px) and (max-width:1679px){
+
+  .nav-area{
+    width:300px;       /* smaller */
+    padding:40px 20px;
+    gap:6px !important;
+  }
+
+  .nav-btn{
+    width:100%;
+    height:65px;       /* smaller height */
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    padding:0 20px;
+    margin-bottom:12px;
+
+    border-radius:18px;
+
+    font-size:18px;    /* smaller text */
+    font-weight:500;
+
+    background:#ffffff;
+    box-shadow:0 6px 18px rgba(0,0,0,0.10);
+
+    transition:0.3s ease;
+  }
+
+  .nav-btn i{
+    font-size:20px;    /* smaller icon */
+  }
+
+  .nav-btn:hover{
+    transform:translateY(-2px);
+  }
+
+  .nav-btn.active{
+    color:#fff;
+    transform:scale(1.02);
+  }
+
+  .choose.active{ background:#ff4d6d; }
+  .fill.active{ background:#219ebc; }
+  .truefalse.active{ background:#06d6a0; }
+  .match.active{ background:#ffb703; }
+  .oneword.active{ background:#f72585; }
+  .label.active{ background:#7209b7; }
+
+}
 /* ========================================= */
 /* 💻 1280px NAV – BIG BOX STYLE (PREMIUM) */
 /* ========================================= */
 
-@media (min-width:1480px){
+@media (min-width:1680px){
 
   /* ===== NAV AREA ===== */
   .nav-area{
     width:360px;
     padding:60px 30px;
-    gap:1px !important;                 /* 🔥 SPACE BETWEEN BUTTONS */
+    gap:10px !important;                 /* 🔥 SPACE BETWEEN BUTTONS */
   }
 
   /* ===== NAV BUTTON ===== */
   .nav-btn{
     width:100%;               /* 🔥 FULL BOX */
-    height:80px;              /* 🔥 BIGGER THAN BEFORE */
+    height:90px;              /* 🔥 BIGGER THAN BEFORE */
     
     display:flex;
     align-items:center;
@@ -238,6 +291,37 @@ iframe{
   .match.active{ background:#ffb703; }
   .oneword.active{ background:#f72585; }
   .label.active{ background:#7209b7; }
+
+}
+
+@media (min-width: 850px) and (max-width: 1000px){
+
+  
+  /* NAV AREA */
+  .nav-area{
+    width:260px;
+    padding:30px 20px;
+  }
+
+  /* BUTTONS */
+  .nav-btn{
+    width:100%;
+    height:60px;
+    font-size:16px;
+    padding:0 18px;
+    border-radius:16px;
+    gap:12px;
+    margin-bottom:14px;
+  }
+
+  .nav-btn i{
+    font-size:18px;
+  }
+
+  /* MAIN AREA */
+  .quiz-frame{
+    padding:20px;
+  }
 
 }
 </style>

@@ -492,6 +492,7 @@ input:focus {
   .ui-scale {
     transform: scale(0.9);
   }
+  
 
 }
 
@@ -516,7 +517,7 @@ input:focus {
   font-size: 25px;
 }
 .question{
-  font-size: 18px !important;
+  font-size: 26px !important;
 }
 }
 
@@ -530,7 +531,7 @@ input:focus {
     transform: scale(0.78);
   }
   .question{
-  font-size: 18px !important;
+  font-size: 20px !important;
 }
 
 }
