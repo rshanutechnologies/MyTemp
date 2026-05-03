@@ -526,8 +526,8 @@ body {
   }
 
  .winner-img {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
   }
     .final-box {
       width: 300px;
@@ -576,14 +576,15 @@ body {
   }
   .nav {
     gap: 40px;
-    margin-top: -30%;
+    margin-top: -20%;
     margin-left: 20px;
     width: 90% !important;
   }
 
   .nav button {
-    font-size: 15px;
-    padding: 12px;
+    font-size: 14px;
+    padding: 15px;
+    width: 150px;
   
   }
 }
