@@ -617,3 +617,68 @@ gap:16px;   /* control spacing cleanly */
 }
 
 }
+/* ✅ SMALL POPUP FOR MOBILE */
+@media (max-width:600px){
+
+  .popup{
+    padding:10px;   /* reduce outer spacing */
+  }
+
+  .popup-box{
+    width:85% !important;      /* 🔥 responsive */
+    max-width:240px;           /* 🔥 small size */
+    padding:14px;
+    border-radius:14px;
+  }
+
+  /* text size small */
+  .popup-title{
+    font-size:16px;
+  }
+
+  .popup-emoji{
+    font-size:40px;
+    margin:6px 0;
+  }
+
+  .popup-tip{
+    font-size:13px;
+  }
+
+  /* correct / wrong text */
+  .popup-correct,
+  .popup-wrong{
+    font-size:16px;
+    padding:12px;
+  }
+
+  .popup-correct .happy,
+  .popup-wrong .sad{
+    font-size:36px;
+  }
+
+  /* FINAL POPUP */
+  .popup-final,
+  .popup-box.final-wide{
+    width:90% !important;
+    max-width:260px !important;
+  }
+
+  .popup-final-content{
+    font-size:16px;
+  }
+
+  .popup-final-content .emoji{
+    font-size:40px;
+  }
+
+  .popup-final-content .stars{
+    font-size:20px;
+  }
+
+  .restart{
+    font-size:14px;
+    padding:8px 14px;
+  }
+
+}

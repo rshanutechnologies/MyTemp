@@ -179,7 +179,7 @@ button:disabled{opacity:.4} */
     gap:10px;
     /* box-shadow:0px 6px 0px rgba(0,0,0,0.08); */
     
-    margin-top: -20px;
+   
   }
  
   .prev{ background:#f29b1d; color:white; }
@@ -312,6 +312,9 @@ button:disabled{opacity:.4} */
   margin-top:12px;
   cursor:pointer;
 }
+
+
+
 /* ===== LARGE SCREEN SUPPORT ===== */
 @media (min-width:1400px){
   .quiz-card{
@@ -321,40 +324,6 @@ button:disabled{opacity:.4} */
 }
 
 
-
-/* ===== MOBILE ===== */
-@media (max-width:600px){
-
-  .quiz-card{
-    padding:16px;
-  }
-
-  .question{
-    font-size:20px;
-  }
-
-  .quiz-content{
-    flex-direction:column;
-    gap:20px;
-  }
-
-  .quiz-image{
-    max-width:220px;
-  }
-
-  .option{
-    font-size:16px;
-  }
-
-  .nav{
-    flex-direction:column;
-    gap:15px;
-  }
-
-  .nav button{
-    width:100%;
-  }
-} 
 .quiz-image{
   width:100%;
   max-width:300px;
@@ -423,108 +392,142 @@ button:disabled{opacity:.4} */
     font-size:16px;
   }
 
-  .nav{
-    display:flex !important;
-    flex-direction:row !important;          /* ✅ horizontal */
-    justify-content:space-between !important;
-    align-items:center;
-    gap:10px;
-  }
-
-  .nav button{
-    width:48% !important;   /* ✅ equal left-right */
-    font-size:14px;
-    padding:10px;
-  }
 
 }
-
-/* ===== MOBILE 2x2 GRID + IMAGE FIX ===== */
+/* ===== MOBILE (<=600px FIXED) ===== */
 @media (max-width:600px){
-  
-.top-title{
-    text-align:center;
+
+  body{
+    margin-top:0;
+    padding:10px;
+    overflow:hidden;   /* 🔥 important */
+  }
+
+  .quiz-card{
+    padding:12px;
+    margin-top:10px;
+  }
+
+  .top-title{
+    font-size:16px;
+    padding:6px 10px;
+    margin-top:5px;
+  }
+
+  .question{
     font-size:18px;
-    font-weight:500;
-    background:#ffe2d5;
-    color:#444;
-    padding:8px 10px;
-    width:max-content;
-    margin:0 auto 0px;
-      border-radius:20px;
-      margin-top: 5px;
-}
- .quiz-card{
-  margin-top: 18px;
- }
-  .options{
-    display:flex !important;
-    flex-direction:column !important;   /* ✅ one by one */
-    gap:5px;
+    line-height:1.4;
+    min-height:auto;
   }
 
-  .option{
-    display:flex !important;
-    flex-direction:row !important;      /* ✅ row layout */
+  .quiz-content{
+    flex-direction:column;
     align-items:center;
-    justify-content:flex-start;
-    gap:10px;
-    padding:12px 16px !important;
-    border-radius:16px;
-  }
-
-  /* radio */
-  .radio{
-    flex-shrink:0;
-  }
-
-  /* image */
-  .opt-img{
-    width:35px !important;
-    height:25px !important;
-  }
-
-  /* text */
-  .opt-text{
-    font-size:13px !important;
+    gap:12px;
   }
 
   /* ✅ SMALL IMAGE */
   .quiz-image{
-    width:130px !important;
-    height:90px !important;
-    margin:0 auto;
-    margin-top: 30px;
+    width:110px;
+    height:80px;
+    margin:10px auto;
   }
 
-  /* ✅ OPTION IMAGE SMALL */
+  .quiz-right{
+    width:100%;
+  }
+
+  .options{
+    gap:6px;
+  }
+
+  .option{
+    padding:10px;
+    border-radius:12px;
+  }
+
   .opt-img{
-    width:40px !important;
-    height:28px !important;
+    width:30px;
+    height:22px;
   }
 
-  /* ✅ TEXT SMALL */
   .opt-text{
-    font-size:14px !important;
+    font-size:13px;
   }
-.nav{
-    display:flex !important;
-    flex-direction:row !important;          /* ✅ horizontal */
-    justify-content:space-between !important;
-    align-items:center;
-    gap:10px;
-   
+
+  /* ✅ NAV BUTTON FIX */
+  .nav{
+    flex-direction:row;
+    gap:8px;
+    margin-top:30px;
+  
   }
 
   .nav button{
-    width:48% !important;   /* ✅ equal left-right */
+    width:50%;
+    font-size:13px;
+    padding:8px;
+  }
+
+  /* ✅ SMALL POPUP */
+  .popup-content{
+    width:85%;
+    max-width:260px;
+    padding:15px;
+    border-radius:14px;
+  }
+
+  .popup-icon{
+    font-size:2.5em;
+  }
+
+  .popup-content h3{
+    font-size:1.2em;
+  }
+
+  .popup-content p{
+    font-size:1em;
+  }
+
+  .restart{
+    padding:8px 16px;
     font-size:14px;
-    padding:10px;
-    
-  } 
+  }
 }
+/* ✅ FIXED MOBILE BUTTONS */
+@media (max-width:600px){
 
+  .nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-top:20px;
+    width:100%;
+  }
 
+  .nav button{
+    flex:1;                 /* 🔥 equal width */
+    height:40px;            /* fixed height */
+    font-size:14px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;              /* remove extra padding */
+  }
+
+  .prev{
+    background:#e6b566;
+    color:#fff;
+  }
+
+  .next{
+    background:#a9bfdc;
+    color:#fff;
+  }
+
+}
 
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */

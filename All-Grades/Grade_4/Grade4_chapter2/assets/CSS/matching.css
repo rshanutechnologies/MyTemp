@@ -580,7 +580,7 @@ body {
   }
 
   .tag {
-    font-size: 16px;
+    font-size: 12px;
     padding: 6px 10px;
     height: 90px;
   }
@@ -599,8 +599,8 @@ body {
   }
 
   .plant {
-    width: 105px;
-    height: 105px;
+    width: 90px;
+    height: 90px;
   }
 
   .p1 {
