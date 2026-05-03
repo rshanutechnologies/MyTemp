@@ -249,7 +249,7 @@ body::before {
   display:none;
   position:fixed;
   top:20px;
-  right:10px;
+  right:20px;
   background:#10b981;
   color:#fff;
   border:none;
@@ -322,25 +322,7 @@ body::before {
 
 }
 
-@media(max-width:1000px){
 
-  .sidebar{
-    display:none;   /* hide crayons */
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  .app{
-    flex-direction:column;
-  }
-
-  .main{
-    height:90dvh;
-  }
-
-}
 
 @media screen and (min-width:1025px){
 
@@ -437,8 +419,84 @@ body::before {
   }
 
 }
+/* 📱 Mobile */
+@media (max-width:600px){
+  .sidebar{
+    display:none;
+  }
 
+  .menu-btn{
+    display:block;
+  }
+}
 
+/* 📲 Tablet */
+@media (min-width:601px) and (max-width:1024px){
+  .sidebar{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+}
+
+/* 💻 Desktop */
+@media (min-width:1025px){
+  .sidebar{
+    display:flex;
+  }
+
+  .menu-btn{
+    display:none;
+  }
+}
+/* ================= FINAL CLEAN RESPONSIVE ================= */
+
+/* 📱 Mobile + 📲 Tablet */
+@media (max-width:1024px){
+
+  .sidebar{
+    display:none !important;
+  }
+
+  .menu-btn{
+    display:block !important;
+  }
+
+  .app{
+    flex-direction:column;
+  }
+
+  .main{
+    height:90dvh;
+  }
+}
+
+/* 💻 Desktop */
+@media (min-width:1025px){
+
+  .sidebar{
+    display:flex !important;
+  }
+
+  .menu-btn{
+    display:none !important;
+  }
+}
+
+/* 📱 Mobile + 📲 Tablet + small laptop */
+@media (max-width:1100px){
+
+  .sidebar{
+    display:none !important;
+  }
+
+  .menu-btn{
+    display:block !important;
+  }
+
+}
 </style>
 </head>
 

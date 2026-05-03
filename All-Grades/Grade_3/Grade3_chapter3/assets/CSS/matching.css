@@ -698,7 +698,7 @@ body {
 @media screen and (min-width:1025px) and (max-width:1440px){
 
   .game{
-    max-width:1000px;
+    max-width:1300px;
     margin-top: 40px;
   }
 
@@ -708,7 +708,7 @@ body {
   }
 
   .title{
-    font-size:36px;
+    font-size:30px;
   }
 
   /* FIELD */
@@ -723,8 +723,8 @@ body {
 
   /* ANIMALS */
   .animal{
-    width:150px;
-    height:150px;
+    width:140px;
+    height:140px;
     font-size:68px;
   }
 
@@ -747,6 +747,7 @@ body {
 
   .game{
     max-width:1200px;
+    
   }
 
   .train-frame{
@@ -828,6 +829,18 @@ body {
     padding:6px 12px !important;
     border-radius:12px;
     margin-top:6px;
+  }
+
+}
+@media screen and (min-width:800px) and (max-width:1200px){
+
+  .game{
+    max-width:1100px;
+    margin-top: 50px;
+  }
+
+  .labels{
+    grid-template-columns: repeat(5,1fr);
   }
 
 }

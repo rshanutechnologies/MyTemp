@@ -394,7 +394,63 @@ canvas {
 }
 
 
+/* ================= 800px - 900px (Tablet Mid Range ~850px) ================= */
+@media (min-width: 800px) and (max-width: 900px) {
 
+  .container {
+    gap: 30px;
+    padding: 10px;
+  }
+
+  /* Image */
+  .image-circle {
+    width: 150px;
+    height: 150px;
+    margin-left: 0;
+  }
+
+  /* Content */
+  .content {
+    width: 100%;
+    max-width: 480px;
+    margin-left: 0;
+  }
+
+  /* Question */
+  .question-box {
+    font-size: 24px !important;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  /* True/False buttons */
+  .tf-buttons {
+    gap: 15px;
+  }
+
+  .tf-btn {
+    padding: 14px 40px;
+    font-size: 18px;
+  }
+
+  /* Progress */
+  .level {
+    width: 50px;
+    height: 50px;
+  }
+
+  .progress-line {
+    height: 6px;
+  }
+
+  /* Navigation buttons */
+  .nav-btn {
+    width: 55px;
+    height: 55px;
+    font-size: 20px;
+  }
+
+}
 
 
 

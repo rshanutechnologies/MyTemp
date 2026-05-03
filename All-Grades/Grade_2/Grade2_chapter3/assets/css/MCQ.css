@@ -371,6 +371,29 @@ body {
 }
 
 
+@media (min-width: 430px) and (max-width: 800px) {
+
+  .final-popup-box {
+    width: 90%;
+    max-width: 420px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .final-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+
+}
+
+
 @media (max-width:990px){
 
   body{
@@ -422,6 +445,7 @@ body {
     font-size:18px;
     padding:8px 20px;
   }
+  
 
 }
 /* ================= MOBILE ================= */
@@ -447,8 +471,7 @@ body {
         padding: 8px 14px;
         border-radius: 50px;
         width: fit-content;
-        /* margin-left: auto;
-  margin-right: auto; */
+        
 
         margin-left: 30% !important;
 
@@ -504,6 +527,11 @@ body {
         width: 100%;
         height: 120px;
     }
+      .final-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
 
 
 
@@ -552,6 +580,11 @@ body {
     padding:8px 14px;
     margin: auto;
   }
+    .final-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
 
 }
 
@@ -663,6 +696,11 @@ body {
     padding:8px 14px;
     margin: auto;
   }
+    .final-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
 }
 /* ================= TABLET ================= */
 /* @media (max-width:1024px) {

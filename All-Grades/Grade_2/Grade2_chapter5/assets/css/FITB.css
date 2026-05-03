@@ -256,6 +256,8 @@ canvas {
         width: 50px;
         height: 50px;
     }
+    
+     
 }
 
 /* ================= MOBILE ================= */
@@ -265,6 +267,7 @@ canvas {
         align-items: center;
         padding: 8px;
          margin-top: -50px;
+         
     } 
 
     .container {
@@ -313,15 +316,18 @@ canvas {
         align-items: center;
     }
 
+ 
 }
 
-/* @media (min-width:769px){
+ /* @media (min-width:1159px){
 
   .prev{
     position:absolute;
     left:-20px;
     top:50%;
     transform:translateY(-50%);
+
+    
   }
 
   .next{
@@ -331,7 +337,7 @@ canvas {
     transform:translateY(-50%);
   }
 
-} */
+}  */
 /* ================= SMALL PHONES ================= */
 @media (max-width:420px) {
 
@@ -463,10 +469,63 @@ canvas {
         /* 10% smaller */
         transform-origin: center center;
     }
+    
 
 
 }
 
+/* ================= 800px - 900px (Perfect for 850px) ================= */
+@media (min-width: 800px) and (max-width: 900px) {
+
+  .container {
+    gap: 25px;
+    transform: scale(0.9); /* slightly smaller */
+  }
+
+  /* Image */
+  .image-circle {
+    width: 180px;
+    height: 180px;
+  }
+
+  /* Question */
+  .question-box {
+    font-size: 24px !important;
+    padding: 20px 22px;
+    margin-bottom: 40px;
+  }
+
+  /* Input */
+  .answer-area input {
+    width: 90%;
+    font-size: 22px;
+  }
+
+  /* Button */
+  .check-btn {
+    padding: 14px 40px;
+    font-size: 16px;
+    margin-top: 30px;
+  }
+
+  /* Progress */
+  .level {
+    width: 50px;
+    height: 50px;
+  }
+
+  .progress-line {
+    height: 6px;
+  }
+
+  /* Navigation buttons */
+  .nav-btn {
+    width: 55px;
+    height: 55px;
+    font-size: 20px;
+  }
+
+}
 
 /* ================= 1025px — 1440px ================= */
 

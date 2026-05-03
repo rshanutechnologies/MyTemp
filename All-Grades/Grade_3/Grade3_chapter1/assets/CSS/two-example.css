@@ -298,6 +298,9 @@ body{
     height:auto;
     padding:10px;
     text-align:center;
+      white-space:normal;        /* ✅ allow multiple lines */
+  overflow:visible;          /* ✅ no cut */
+  text-overflow:unset;       /* ✅ remove dots */
   }
 
   /* OPTIONS */
@@ -344,20 +347,16 @@ body{
     font-size:16px;
     text-align:center;
   }
+.nav-buttons{
+  justify-content:center;   /* ✅ keep center */
+  gap:12px;
+}
 
-  /* BUTTONS */
-  .nav-buttons{
-    width:100%;
-    justify-content:space-between;
-    gap:10px;
-  }
-
-  .btn{
-    width:32%;
-    font-size:14px;
-    padding:10px;
-    justify-content:center;
-  }
+.btn{
+  width:auto;               /* ❌ remove 25% */
+  font-size:14px;
+  padding:10px 14px;
+}
 
   /* HEADER FIX */
   .header{

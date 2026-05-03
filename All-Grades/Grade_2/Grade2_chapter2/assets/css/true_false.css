@@ -419,9 +419,10 @@ body {
 
   body {
     align-items: center;
+    justify-content: center;
     padding: 14px;
-     margin-top: 22% !important;
-    overflow-y: auto;
+     margin-top: 2% !important;
+    /* overflow-y: auto; */
   }
 
   .game {
@@ -464,10 +465,14 @@ body {
 
   .controls {
     gap: 12px;
+    
   }
 
   .nav button {
-    flex: 1;
+  
+    
+  justify-content: space-between;
+  width: 30%;
     font-size: 16px;
     padding: 12px;
    
@@ -483,9 +488,10 @@ body {
 @media (max-width:480px) {
   body{
     overflow-y: hidden;
+     
   }
     .box {
-  margin-top: -90%;
+ 
   height: 500px !important;
 }
   .question {

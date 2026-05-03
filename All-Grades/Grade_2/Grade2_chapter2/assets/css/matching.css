@@ -615,7 +615,7 @@ background: lightgreen;
 @media (max-width:600px) {
 
   body {
-    align-items: flex-start;
+    align-items: center;
     padding: 14px;
   
   }

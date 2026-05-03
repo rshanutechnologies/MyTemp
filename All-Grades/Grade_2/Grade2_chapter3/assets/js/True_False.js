@@ -11,7 +11,7 @@ const questions = [
   },
   {
     img: "../assets/images/TF-3.png",
-    q: "Bengaluru is also called 'the garden city of India.'",
+    q: "Bengaluru is also called 'the garden city of India.",
     a: true,
   },
   {

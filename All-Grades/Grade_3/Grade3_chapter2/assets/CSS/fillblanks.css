@@ -515,6 +515,9 @@ input:focus {
 .question{
   font-size: 25px;
 }
+.question{
+  font-size: 18px !important;
+}
 }
 
 
@@ -526,6 +529,9 @@ input:focus {
   .ui-scale {
     transform: scale(0.78);
   }
+  .question{
+  font-size: 18px !important;
+}
 
 }
 /* ===== MOBILE PERFECT ALIGNMENT ===== */
@@ -586,7 +592,9 @@ input:focus {
 /* ✅ MOBILE POPUP SMALL (FIX)            */
 /* ===================================== */
 @media (max-width:600px){
-
+.question{
+  font-size: 18px !important;
+}
   .popup-box{
     width:85% !important;
     padding:14px !important;
@@ -756,7 +764,9 @@ input:focus {
 }
 /* 📱 FINAL SCORE FULL SMALL (MOBILE) */
 @media (max-width:600px){
-
+.question{
+  font-size: 20px !important;
+}
   #finalPopup{
     padding:10px;
   }

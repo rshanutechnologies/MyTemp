@@ -483,9 +483,13 @@ button:disabled{
 /* ================= TABLET ================= */
 @media (min-width:601px) and (max-width:1024px){
 
-  .quiz{ max-width:900px; }
+  .quiz{ max-width:1300px; }
 
   .question{ font-size:30px; }
+  .image-box img{
+    width:220px;
+    height:180px;
+  }
 
 }
 
@@ -495,6 +499,9 @@ button:disabled{
   .quiz{ max-width:1100px; }
 
   .question{ font-size:30px; }
+  
+  
+   
 
 }
 

@@ -356,30 +356,7 @@
   /* ===================================== */
 /* ✅ LARGE MONITOR (1400px and above)   */
 /* ===================================== */
-@media (min-width:1400px){
 
-  .ui-scale{
-    transform:scale(1.1);
-  }
-
-  .wrapper{
-    width:900px;
-  }
-
-  .options{
-    width:850px;
-    margin-left:0;
-  }
-
-  .question-text{
-    font-size:34px;
-  }
-
-  .opt-btn{
-    height:180px;
-  }
-
-}
 
 
 

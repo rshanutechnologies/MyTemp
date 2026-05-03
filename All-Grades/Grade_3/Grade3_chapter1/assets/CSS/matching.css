@@ -95,7 +95,7 @@ body {
 }
 
 .step-text {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 /* ANSWERS */
@@ -109,7 +109,7 @@ body {
     background: rgb(247, 247, 236);
     border-radius: 999px;
     padding: 10px 18px;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
     transition: .25s;
     color: #2f4f4f;
@@ -273,7 +273,7 @@ html {
 
 /* ================= MOBILE (UNCHANGED DESIGN) ================= */
 
-@media (max-width:768px){
+@media (max-width:600px){
 
   .play-area{
     grid-template-columns: 1fr 35px 1fr;

@@ -48,37 +48,67 @@
       speechSynthesis.speak(msg);
     }
 
-    function showFeedback(isCorrect, imgSrc) {
-      const popup = document.getElementById("feedbackPopup");
-      const media = document.getElementById("popupMedia");
-      const txt = document.getElementById("feedbackText");
-      media.innerHTML = "";
+    // function showFeedback(isCorrect, imgSrc) {
+    //   const popup = document.getElementById("feedbackPopup");
+    //   const media = document.getElementById("popupMedia");
+    //   const txt = document.getElementById("feedbackText");
+    //   media.innerHTML = "";
       
-      if (isCorrect) {
-        const img = document.createElement("img");
-        img.src = imgSrc;
-        img.className = "popup-img";
-        media.appendChild(img);
-        txt.textContent = "Correct! ✅";
-        txt.classList.add("correct");
-        speak("Correct");
-        const correctSound = document.getElementById("correctSound");
-        if (correctSound) correctSound.play().catch(e => console.log);
-      } else {
-        media.innerHTML = "<div class='popup-emoji'>😢</div>";
-        txt.textContent = "Wrong! ❌";
-        txt.classList.add("wrong");
-        speak("Wrong");
-        const wrongSound = document.getElementById("wrongSound");
-        if (wrongSound) wrongSound.play().catch(e => console.log);
-      }
+    //   if (isCorrect) {
+    //     const img = document.createElement("img");
+    //     img.src = imgSrc;
+    //     img.className = "popup-img";
+    //     media.appendChild(img);
+    //     txt.textContent = "Correct! ✅";
+    //     txt.classList.add("correct");
+    //     speak("Correct");
+    //     const correctSound = document.getElementById("correctSound");
+    //     if (correctSound) correctSound.play().catch(e => console.log);
+    //   } else {
+    //     media.innerHTML = "<div class='popup-emoji'>😢</div>";
+    //     txt.textContent = "Wrong! ❌";
+    //     txt.classList.add("wrong");
+    //     speak("Wrong");
+    //     const wrongSound = document.getElementById("wrongSound");
+    //     if (wrongSound) wrongSound.play().catch(e => console.log);
+    //   }
       
-      popup.style.display = "flex";
-      setTimeout(() => {
-        popup.style.display = "none";
-      }, 1400);
-    }
+    //   popup.style.display = "flex";
+    //   setTimeout(() => {
+    //     popup.style.display = "none";
+    //   }, 1400);
+    // }
+function showFeedback(isCorrect, imgSrc) {
+  const popup = document.getElementById("feedbackPopup");
+  const media = document.getElementById("popupMedia");
+  const txt = document.getElementById("feedbackText");
 
+  media.innerHTML = "";
+
+  // ✅ REMOVE OLD CLASSES FIRST
+  txt.classList.remove("correct", "wrong");
+
+  if (isCorrect) {
+    const img = document.createElement("img");
+    img.src = imgSrc;
+    img.className = "popup-img";
+    media.appendChild(img);
+
+    txt.textContent = "Correct! ✅";
+    txt.classList.add("correct");
+
+  } else {
+    media.innerHTML = "<div class='popup-emoji'>😢</div>";
+
+    txt.textContent = "Wrong! ❌";
+    txt.classList.add("wrong");
+  }
+
+  popup.style.display = "flex";
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 1400);
+}
     function showFinalPopup() {
       document.getElementById("finalPopup").style.display = "flex";
       document.getElementById("finalScore").textContent = `Score: ${totalScore} / ${questions.length}`;
