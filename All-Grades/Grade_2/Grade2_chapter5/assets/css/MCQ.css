@@ -345,6 +345,11 @@ body {
     width:50px;
     height:50px;
 }
+.controls{
+    padding:0 12px;
+    
+    top:50%;
+}
 
 /* controls */
 .controls button{
@@ -355,7 +360,7 @@ body {
 }
 
 
-@media (max-width: 370px){
+@media (max-width: 375px){
 
 .quiz-container{
     width:100%;
@@ -385,6 +390,12 @@ body {
 /* controls */
 .controls{
     padding:0 6px;
+
+}
+.controls{
+   
+    
+    top:55%;
 }
 
 .controls button{
