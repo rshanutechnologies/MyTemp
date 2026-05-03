@@ -4,31 +4,31 @@ let finalPopupShown = false;
 
 const quizData = [
   {
-    q:"Q.1 A potato plant reproduces through its stem.",
+    q:"Q1. A potato plant reproduces through its stem.",
     a:true,
     img:"../assets/images/TFQQQ1.png",
     answered:false
   },
   {
-    q:"Q.2 Roots are the main parts of the plant that carry out sexual reproduction.",
+    q:"Q2. Roots are the main parts of the plant that carry out sexual reproduction.",
     a:false,
     img:"../assets/images/TFQQ2.png",
     answered:false
   },
   {
-    q:"Q.3 Flowers develop from buds.",
+    q:"Q3. Flowers develop from buds.",
     a:true,
     img:"../assets/images/TFQQ3.png",
     answered:false
   },
   {
-    q:"Q.4 The pistil forms the second whorl of a flower.",
+    q:"Q4. The pistil forms the second whorl of a flower.",
     a:false,
     img:"../assets/images/pistilaKKk.png",
     answered:false
   },
   {
-    q:"Q.5 All flowers have both the male and the female parts.",
+    q:"Q5. All flowers have both the male and the female parts.",
     a:false,
     img:"../assets/images/bisexualf.png",
     answered:false

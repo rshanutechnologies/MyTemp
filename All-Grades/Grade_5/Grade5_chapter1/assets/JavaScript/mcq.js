@@ -3,7 +3,7 @@
 
 const quizData = [
 {
- q:"Q.1 The ovary contains one or more small egg-like structures called the ____________________.",
+ q:"Q1. The ovary contains one or more small egg-like structures called the ____________________.",
  options:[
   {text:"Stigma",img:"../assets/images/stigmaak.png"},
   {text:"Style",img:"../assets/images/styleak.png"},
@@ -13,7 +13,7 @@ const quizData = [
  correctIndex:2
 },
 {
- q:"Q.2The style has a small disc-like structure at its tip called the __________.",
+ q:"Q2.The style has a small disc-like structure at its tip called the __________.",
  options:[
   {text:"anther",img:"../assets/images/anther.png"},
   {text:"stigma",img:"../assets/images/stigmaak.png"},
@@ -23,7 +23,7 @@ const quizData = [
  correctIndex:1
 },
 {
- q:"Q.3 The flower is attached to the stem by a structure called__________.",
+ q:"Q3. The flower is attached to the stem by a structure called__________.",
  options:[
   {text:"petal",img:"../assets/images/petalsak.png"},
   {text:"pistil",img:"../assets/images/pistilak.png"},
@@ -33,7 +33,7 @@ const quizData = [
  correctIndex:3
 },
 {
- q:"Q.4 The green coloured outermost leaf-like structures of a flower are called the __________.",
+ q:"Q4. The green coloured outermost leaf-like structures of a flower are called the __________.",
  options:[
   {text:"carpel",img:"../assets/images/carpelak.png"},
   {text:"sepals",img:"../assets/images/sepalsak.png"},
@@ -43,7 +43,7 @@ const quizData = [
  correctIndex:1
 },
 {
- q:"Q.5 The ____________________ is the male reproductive part of a flower.",
+ q:"Q5. The ____________________ is the male reproductive part of a flower.",
  options:[
   {text:"ovary",img:"../assets/images/ovaryak.png"},
   {text:"style",img:"../assets/images/styleak.png"},

@@ -1,6 +1,6 @@
 const quizData = [
   {
-    q: "Q.1 Which of the following statements best describes metamorphosis?",
+    q: "Q1. Which of the following statements best describes metamorphosis?",
     img: "../assets/images/mcq1-img.png",
     options: [
       {
@@ -15,7 +15,7 @@ const quizData = [
     a: 0, // Option 1
   },
   {
-    q: "Q.2 The sequential development of an animal from the embryo to the adult stage is called its ________.",
+    q: "Q2. The sequential development of an animal from the embryo to the adult stage is called its ________.",
     img: "../assets/images/mcq2-img.png",
     options: [
       { t: "Lifespan", cls: "blue", img: "⏳" },
@@ -26,7 +26,7 @@ const quizData = [
     a: 1, // Option 2
   },
   {
-    q: "Q.3 The bird that lays the largest egg is the ________.",
+    q: "Q3. The bird that lays the largest egg is the ________.",
     img: "../assets/images/x.png",
     options: [
       { t: "Crow", cls: "blue", img: "🐦" },
@@ -37,7 +37,7 @@ const quizData = [
     a: 2, // Option 3
   },
   {
-    q: "Q.4 Find the odd one from the following.",
+    q: "Q4. Find the odd one from the following.",
     img: "../assets/images/mcq4-img.png",
     options: [
       { t: "Kangaroo", cls: "blue", img: "🦘" },
@@ -48,7 +48,7 @@ const quizData = [
     a: 3, // Option 4: Turtle (it lays eggs, others are mammals)
   },
   {
-    q: "Q.5 The white content of an egg or egg white is called ________.",
+    q: "Q5. The white content of an egg or egg white is called ________.",
     img: "../assets/images/mcq5-img.png",
     options: [
       { t: "Shell", cls: "blue", img: "🐚" },

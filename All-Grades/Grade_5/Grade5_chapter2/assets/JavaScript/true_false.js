@@ -1,26 +1,26 @@
 const questions = [
   {
-    text: "Q.1 The process of shedding the skin several times before an animal grows into an adult is called hatching.",
+    text: "Q1. The process of shedding the skin several times before an animal grows into an adult is called hatching.",
     answer: false,
     img: "../assets/images/hatching.png"
   },
   {
-    text: "Q.2 A floating clump of frog eggs is called a spawn.",
+    text: "Q2. A floating clump of frog eggs is called a spawn.",
     answer: true,
     img: "../assets/images/spawn.png"
   },
   {
-    text: "Q.3 The life cycle of a butterfly has three stages.",
+    text: "Q3. The life cycle of a butterfly has three stages.",
     answer: false,
     img: "../assets/images/butterflyak.png"
   },
   {
-    text: "Q.4 Mammals protect their young ones until they are old enough to take care of themselves.",
+    text: "Q4. Mammals protect their young ones until they are old enough to take care of themselves.",
     answer: true,
     img: "../assets/images/Mammals.png"
   },
   {
-    text: "Q.5 Metamorphosis in frogs includes the loss of tail and the growing of legs.",
+    text: "Q5. Metamorphosis in frogs includes the loss of tail and the growing of legs.",
     answer: true,
     img: "../assets/images/frogg.png"
   },

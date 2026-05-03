@@ -1,30 +1,30 @@
 const questions = [
   {
-   q: "Q.1 The upper arm is made of a long bone called the ____.",
+   q: "Q1.The upper arm is made of a long bone called the ____.",
     a: "humerus",
     a_mobile: "humerus",
    img: "../assets/images/humerusUpeerArm.png",
   },
   {
-   q: "Q.2 The lower leg has two bones namely ____ and ____.",
+   q: "Q2.The lower leg has two bones namely ____ and ____.",
     a: "tibia fibula",
     a_mobile: "tibia fibula",
     img: "../assets/images/tibiafibula.png",
   },
   {
-    q: "Q.3 Bones are held together at joints by ____.",
+    q: "Q3.Bones are held together at joints by ____.",
     a: "ligaments",
     a_mobile: "ligam ents", // ok if you want 2 rows
   img: "../assets/images/ligamentsNew.png",
   },
   {
-   q: "Q.4 The backbone protects the ____.",
+   q: "Q4.The backbone protects the ____.",
     a: "spinal cord",
     a_mobile: "spinal cord",
    img: "../assets/images/spinalcord2.png",
   },
   {
-   q: "Q.5 The long bones of the arms and the legs are filled with ____ at the centre.",
+   q: "Q5.The long bones of the arms and the legs are filled with ____ at the centre.",
     a: "bone marrow",
     a_mobile: "bone marrow",
   img: "../assets/images/bonemarrow.png",

@@ -1,26 +1,26 @@
 const questions = [
   {
-    q: "Q.1 The ____ is the largest part of the brain.",
+    q: "Q1.The ____ is the largest part of the brain.",
     a: "cerebrum",
     img: "../assets/images/Cerebrums.png",
   },
   {
-    q: "Q.2 The brain is made up of millions of ____ cells.",
+    q: "Q2.The brain is made up of millions of ____ cells.",
     a: "nerve",
     img: "../assets/images/nerves.png",
   },
   {
-    q: "Q.3 Nerves are directly connected to either the ____ or the ____.",
+    q: "Q3.Nerves are directly connected to either the ____ or the ____.",
     a: ["brain", "spinal cord"],
     img: "../assets/images/spinalcords.png",
   },
   {
-    q: "Q.4  The actions that are controlled by the brain are called ____.",
+    q: "Q4.The actions that are controlled by the brain are called ____.",
     a: "voluntary",
     img: "../assets/images/voluntaryactions.png",
   },
   {
-    q: "Q.5 The cerebrospinal fluid lies between the ____ and the ____.",
+    q: "Q5.The cerebrospinal fluid lies between the ____ and the ____.",
     a: ["skull", "brain"],
     img: "../assets/images/Cerebrums.png",
   },

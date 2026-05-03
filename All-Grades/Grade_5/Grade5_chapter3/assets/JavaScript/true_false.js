@@ -1,26 +1,26 @@
 const questions = [
   {
-    q: "Q.1 The upper two chambers of the heart are called the ventricles.",
+    q: "Q1.The upper two chambers of the heart are called the ventricles.",
     a: false,
     img: "../assets/images/heart.png"
   },
   {
-    q: "Q.2 Veins carry blood from the heart to the different parts of the body.",
+    q: "Q2.Veins carry blood from the heart to the different parts of the body.",
     a: false,
     img: "../assets/images/veins.png"
   },
   {
-    q: "Q.3 Blood vessels are the tubes in which blood flows throughout the body.",
+    q: "Q3.Blood vessels are the tubes in which blood flows throughout the body.",
     a: true,
     img: "../assets/images/bloodvessel.png"
   },
   {
-    q: "Q.4 The heart does not pump blood at night.",
+    q: "Q4.The heart does not pump blood at night.",
     a: false,
     img: "../assets/images/heart1-img.png"
   },
   {
-    q: "Q.5 Inhalation is taking in oxygen rich air.",
+    q: "Q5.Inhalation is taking in oxygen rich air.",
     a: true,
     img: "../assets/images/lungs.png"
   },

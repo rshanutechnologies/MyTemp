@@ -308,7 +308,8 @@ button:disabled {
   .main { width:95%; padding:15px; }
 
   .question { flex-direction:column; height:auto; text-align:center; }
-  .question img { width:160px; height:auto; }
+  .question img { width:160px; height:100px !important;
+  margin-top: -30px !important; }
   .question-text { font-size:20px; min-height:auto !important; }
 
   .input-row {

@@ -1,27 +1,27 @@
 const questions = [
   {
-    q: "Q.1 The ________ are the thick-walled blood vessels that carry blood from the heart to the different parts of the body.",
+    q: "Q1.The ________ are the thick-walled blood vessels that carry blood from the heart to the different parts of the body.",
      a: ["arteries"],
     //  a: ["carbon dioxide", "water vapour"],
     img: "../assets/images/heart1-img.png",
   },
   {
-    q: "Q.2 The heart makes the sound ________ when it pumps blood.",
+    q: "Q2.The heart makes the sound ________ when it pumps blood.",
     a: ["lub-dub"],
     img: "../assets/images/heart2-img.png",
   },
   {
-    q: "Q.3 The ________ divides into two branches called the bronchi.",
+    q: "Q3.The ________ divides into two branches called the bronchi.",
     a: ["windpipe"],
     img: "../assets/images/heart3-img.png",
   },
   {
-    q: "Q.4 The lower two chambers of the heart are the ________.",
+    q: "Q4.The lower two chambers of the heart are the ________.",
     a: ["ventricles"],
     img: "../assets/images/heart1-img.png",
   },
   {
-    q: "Q.5 The air that we breathe out also contains ________ and ________.",
+    q: "Q5.The air that we breathe out also contains ________ and ________.",
     a: ["carbon dioxide", "water vapour"],
     img: "../assets/images/heart5-img.png",
   },

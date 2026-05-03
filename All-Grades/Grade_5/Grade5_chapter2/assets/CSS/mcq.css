@@ -143,9 +143,10 @@ body {
     background: #fff5cc
 }
 
-.option.correct {
-    /* border-color: #4caf50; */
-    cursor: default;
+.option.correct{
+  border: 3px solid #4CAF50;   /* ✅ green border */
+  background: #e9fff2;         /* optional light green */
+  cursor: default;
 }
 
 .option.disabled {
@@ -399,6 +400,11 @@ button:disabled {
         margin-bottom: 18px;
         padding: 0 10px;
     }
+    .option.correct{
+  border: 2px solid #4CAF50 !important;   /* ✅ green border */
+  background: #e9fff2;         /* optional light green */
+  cursor: default;
+}
 
     /* STACK CONTENT VERTICALLY */
     .content {

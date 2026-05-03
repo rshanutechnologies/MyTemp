@@ -493,11 +493,11 @@
 @media (max-width:768px){
      
     .wrapper{
-        display:none;   /* Hide full activity */
+        display:block;   /* Hide full activity */
     }
 
     .mobile-block{
-        display:flex;
+        display:none;
         position:fixed;
         inset:0;
         background:#ffffff;
@@ -511,7 +511,138 @@
         color:#2f4f4f;
         background: linear-gradient(135deg, #fef3c7, #e0f2fe, #dcfce7);
     }
-   
+   .line{
+    display: none;
+   }
+   .heart img {
+     width: 100%;
+ }
+}
+/* =========================================
+   ✅ UNIVERSAL RESPONSIVE SYSTEM
+========================================= */
+
+/* Base scaling control */
+.wrapper {
+  transform-origin: top center;
+}
+
+/* 📱 MOBILE (350px – 480px) */
+@media (max-width: 480px) {
+
+  body {
+    align-items: flex-start;
+    padding-top: 15px;
+    overflow-x: hidden;
+  }
+
+  .wrapper {
+    transform: scale(calc(100vw / 900));
+  }
+
+  .label {
+    width: 130px;
+  }
+
+  .label input {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  /* LEFT LINES */
+  .line1 { width: 120px; }
+  .line2 { width: 120px; }
+  .line3 { width: 140px; }
+  .line8 { width: 150px; }
+
+  /* RIGHT LINES */
+  .line4 { width: 65px;  }
+  .line5 { width: 120px; }
+  .line6 { width: 75px; }
+  .line7 { width: 110px; }
+  .line9 { width: 120px; }
+
+}
+
+
+
+/* 📱 LARGE MOBILE (481px – 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+
+  .wrapper {
+    transform: scale(calc(100vw / 900));
+  }
+
+  .label {
+    width: 140px;
+  }
+
+  .line1 { width: 140px; }
+  .line2 { width: 140px; }
+  .line3 { width: 160px; }
+  .line8 { width: 170px; }
+
+  .line4 { width: 80px;  }
+  .line5 { width: 140px; }
+  .line6 { width: 90px; }
+  .line7 { width: 130px; }
+  .line9 { width: 140px; }
+  
+  /* ===== ARROW LINE ===== */
+/* RIGHT SIDE FIRST ARROW */
+
+
+/* ===== ARROW HEAD ===== */
+
+
+}
+
+@media(max-width:410px){
+    .r1 {
+  top: 100px;
+  right: 30px !important;
+  width: 120px;
+}
+}
+
+
+/* 📲 TABLET (768px – 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .wrapper {
+    transform: scale(calc(100vw / 1100));
+  }
+
+}
+
+
+/* 💻 LAPTOP (1025px – 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+
+  .wrapper {
+    transform: scale(1);
+  }
+
+}
+
+
+/* 🖥️ LARGE SCREEN (1441px – 1920px) */
+@media (min-width: 1441px) and (max-width: 1920px) {
+
+  .wrapper {
+    transform: scale(1.2);
+  }
+
+}
+
+
+/* 📺 4K SCREENS */
+@media (min-width: 1921px) {
+
+  .wrapper {
+    transform: scale(1.4);
+  }
+
 }
 /* ========================================= */
 /* 💻 DESKTOP – REDUCE WHOLE PAGE BY 10% */

@@ -18,22 +18,22 @@ function showPopup(html, final=false){
 
 const questions = [
   {
-    q: "Q.1 Petals enclose and protect the _ _ _ _ _ _ _ _ _  parts of a flower.",
+    q: "Q1. Petals enclose and protect the _ _ _ _ _ _ _ _ _  parts of a flower.",
     a: "reproductive",
     img: "../assets/images/Flowerrrak.png",
   },
   {
-    q: "Q.2 Flowers in which both the male and the female parts are present on the same flower are called _ _ _ _ _ _ _ _ flowers.",
+    q: "Q2. Flowers in which both the male and the female parts are present on the same flower are called _ _ _ _ _ _ _ _ flowers.",
     a: "bisexual",
     img: "../assets/images/bisexualf.png",
   },
   {
-    q: "Q.3 The process of pollination happens with the help of _ _ _ _ _ _ _ _ _ _ _ agents.",
+    q: "Q3. The process of pollination happens with the help of _ _ _ _ _ _ _ _ _ _ _ agents.",
     a: "pollinating",
     img: "../assets/images/pollinatingak.png",
   },
-  { q: "Q.4 The _ _ _ _ _ _ is the female reproductive part of a flower.", a: "pistil", img: "../assets/images/NewPistil.png" },
-  { q: "Q.5 The fertilized female reproductive cell or zygote develops into a _ _ _ _.", a: "seed", img: "../assets/images/seed (1).png" },
+  { q: "Q4. The _ _ _ _ _ _ is the female reproductive part of a flower.", a: "pistil", img: "../assets/images/NewPistil.png" },
+  { q: "Q5. The fertilized female reproductive cell or zygote develops into a _ _ _ _.", a: "seed", img: "../assets/images/seed (1).png" },
 ];
 
 let index = 0,

@@ -268,9 +268,9 @@ color: black;
 }
 
 .option.correct-lock{
-    /* border-color:#2e7d32;
-    box-shadow:0 0 0 5px rgba(46,125,50,0.18); */
-    border: 2px dotted white;
+    /* border-color:#2e7d32; */
+    /* box-shadow:0 0 0 5px rgba(46,125,50,0.18); */
+    border: 2px solid #2e7d32;
       opacity:1;
 }
 
@@ -486,6 +486,7 @@ color: black;
   .question-text,
   .question-text *{
     font-size: 26px;   /* 30 × 0.85 */
+    
   }
 
   /* PROGRESS ORBIT */
@@ -607,6 +608,7 @@ color: black;
     text-align:center;
     padding:18px;
     margin-top:10px;
+     min-height: 140px;   /* ✅ set fixed height */
   }
 
   .question-text,
@@ -867,8 +869,8 @@ color: black;
   }
 
   .option img{
-    width: 200px !important;
-    height: 200px !important;
+    width: 180px !important;
+    height: 180px !important;
   }
 
   .opt-label{

@@ -1,26 +1,26 @@
 const questions = [
   {
-    q: "Q.1 The process by which living things are able to produce more of their own kind is called ________.",
+    q: "Q1. The process by which living things are able to produce more of their own kind is called ________.",
     a: "reproduction",
     img: "../assets/images/cats-img.png",
   },
   {
-    q: "Q.2 Dolphins and blue whales are ________ that live in water.",
+    q: "Q2. Dolphins and blue whales are ________ that live in water.",
     a: "mammals",
     img: "../assets/images/dolphin-img.png",
   },
   {
-    q: "Q.3 The process of birds sitting on their eggs to keep them warm is known as ________.",
+    q: "Q3. The process of birds sitting on their eggs to keep them warm is known as ________.",
     a: "incubation",
     img: "../assets/images/hen-img.png",
   },
   {
-    q: "Q.4 The ________ provides nutrition to the growing embryo.",
+    q: "Q4. The ________ provides nutrition to the growing embryo.",
     a: "yolk",
     img: "../assets/images/embryo-img.png",
   },
   {
-    q: "Q.5 A pupa is covered by a protective layer called the ________.",
+    q: "Q5. A pupa is covered by a protective layer called the ________.",
     a: "cocoon",
     img: "../assets/images/pupa -img.png",
   },

@@ -2,27 +2,27 @@ let popupTimer = null;
 
 const quizData = [
   {
-    q: "Q.1 The second whorl of a flower -____.",
+    q: "Q1. The second whorl of a flower.",
     a: "Petals",
     img: "../assets/images/petalsak.png"
   },
   {
-    q: "Q.2 The bi-lobed structure at the free end of a filament - ____.",
+    q: "Q2. The bi-lobed structure at the free end of a filament.",
     a: "Anther",
     img: "../assets/images/anther.png"
   },
   {
-    q: "Q.3 The reproductive cells that ovules contain -____.",
+    q: "Q3. The reproductive cells that ovules contain .",
     a: "Ova",
     img: "../assets/images/Eggcells.png"
   },
   {
-    q: "Q.4 A sweet liquid that some flowers produce -____.",
+    q: "Q4. A sweet liquid that some flowers produce .",
     a: "Nectar",
     img: "../assets/images/Nectar.png"
   },
   {
-    q: "Q.5 The female reproductive cells- ____.",
+    q: "Q5. The female reproductive cells .",
     a: "Ova",
     img: "../assets/images/ovules.png"  
   }
@@ -137,7 +137,8 @@ submitBtn.onclick = () => {
     answered[current] = true;
     userAnswers[current] = userAns;
     score++;
-
+input.disabled = true;        // 🔒 lock input
+submitBtn.disabled = true;    // 🔒 disable button
     speak("Correct");
 
     showPopup(`

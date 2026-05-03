@@ -2,7 +2,7 @@
 const quizData = [
   {
     image: "../assets/images/cranium.png",
-    q: "Q.1 The brain box is made up of ______ flat bones.",
+    q: "Q1.The brain box is made up of ______ flat bones.",
    
     options: [
   { text: "10", img: "../assets/images/10.png" },
@@ -14,7 +14,7 @@ const quizData = [
   },
   {
     image: "../assets/images/lowerjaw.png",
-    q: "Q.2 Which is the only movable joint in the skull?",
+    q: "Q2.Which is the only movable joint in the skull?",
     options: [
   { text: "Lower jaw", img: "../assets/images/lowerjaw.png" },
   { text:  "Upper jaw", img: "../assets/images/upperjaw.png" },
@@ -25,7 +25,7 @@ const quizData = [
   },
   {
     image: "../assets/images/atlas.png",
-    q: "Q.3 The first bone of the spine is the ______.",
+    q: "Q3.The first bone of the spine is the ______.",
   
         options: [
   { text: "Cranium", img: "../assets/images/cranium.png" },
@@ -37,7 +37,7 @@ const quizData = [
   },
   {
     image: "../assets/images/ribcage.png",
-    q: "Q.4 The floating ribs are found in the ______.",
+    q: "Q4.The floating ribs are found in the ______.",
         options: [
   { text: "Spine", img:"../assets/images/spine.png" },
   { text:  "Ribcage", img: "../assets/images/ribcage.png" },
@@ -48,7 +48,7 @@ const quizData = [
   },
   {
     image: "../assets/images/limbs2.png",
-    q: "Q.5 We have ______ pairs of limbs.",
+    q: "Q5.We have ______ pairs of limbs.",
    
            options: [
   { text: "12", img: "../assets/images/12.png" },

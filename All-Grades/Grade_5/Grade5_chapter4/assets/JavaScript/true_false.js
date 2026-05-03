@@ -4,31 +4,31 @@ let finalPopupShown = false;
 
 const quizData = [
   {
-    q: "Q.1. The skull is the most delicate organ of the body.",
+    q: "Q1.The skull is the most delicate organ of the body.",
     a: false,
     img: "../assets/images/skulll.png",
     answered: false
   },
   {
-    q: "Q.2. The cerebellum is the second largest part of the brain.",
+    q: "Q2.The cerebellum is the second largest part of the brain.",
     a: true,
     img: "../assets/images/cerebrummm.png",
     answered: false
   },
   {
-    q: "Q.3. The cerebrum connects the brain to the spinal cord.",
+    q: "Q3.The cerebrum connects the brain to the spinal cord.",
     a: false,
     img: "../assets/images/spinalcordd.png",
     answered: false
   },
   {
-    q: "Q.4. The sensory nerves are connected to the sense organs.",
+    q: "Q4.The sensory nerves are connected to the sense organs.",
     a: true,
     img: "../assets/images/sensorynerves.png",
     answered: false
   },
   {
-    q: "Q.5. The spinal cord is made up of nerve cells.",
+    q: "Q5.The spinal cord is made up of nerve cells.",
     a: true,
     img: "../assets/images/TFQQ5.png",
     answered: false

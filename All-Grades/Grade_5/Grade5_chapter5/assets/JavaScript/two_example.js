@@ -2,29 +2,29 @@
 
 const quizData = [
   {
-    q: "Q.1 What are the functions of the skeleton?",
+    q: "Q1.What are the functions of the skeleton?",
     a: "The skeleton gives shape and support to the body, protects internal organs, and helps in movement",
     img: "../assets/images/skeleton.png"
   },
   
 {
-  q: "Q.2 How many bones are there in:<br> a) a newborn baby  b) the backbone c) the skull d) the upper leg",
+  q: "Q2.How many bones are there in:<br> a) a newborn baby  b) the backbone c) the skull d) the upper leg",
   a: ["300", "33", "22", "1"],   // ✅ 4 answers
   img: "../assets/images/newborn.png",
   type: "multi"                 // 🔥 mark as special
 },
   {
-    q: "Q.3 What is a cartilage?",
+    q: "Q.3.What is a cartilage?",
     a: "Cartilage is a strong but flexible tissue found at the joints and ends of bones",
     img: "../assets/images/cartilage.png"
   },
   {
-    q: "Q.4 Give two functions of our backbone.",
+    q: "Q4.Give two functions of our backbone.",
     a: "The backbone supports the body and protects the spinal cord",
     img: "../assets/images/backbone.png"
   },
   {
-    q: "Q.5 What is posture? Why is it necessary to maintain a good posture?",
+    q: "Q5.What is posture? Why is it necessary to maintain a good posture?",
     a: "Posture is the position of our body while sitting or standing. Good posture keeps the body healthy and prevents pain",
     img: "../assets/images/posture.png"
   }

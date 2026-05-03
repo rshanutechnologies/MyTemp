@@ -3,35 +3,35 @@
 
 const quizData = [
   {
-    q: "Q.1 Cartilage is harder than bone.",
+    q: "Q1.Cartilage is harder than bone.",
     a: false, // ❌ cartilage is softer than bone
     img: "../assets/images/CartilageHardThanBone.png",
     answered: false ,
     userAnswer: null 
   },
   {
-    q: "Q.2 The bone marrow is a soft tissue.",
+    q: "Q2.The bone marrow is a soft tissue.",
     a: true, // ✅ correct
     img: "../assets/images/bonemarrowSoftTissue.png",
     answered: false,
     userAnswer: null 
   },
   {
-    q: "Q.3 Bones store vitamins in them.",
+    q: "Q3.Bones store vitamins in them.",
     a: false, // ❌ bones store minerals, not vitamins
     img: "../assets/images/humerusBonesStoreVitamins.png",
     answered: false,
     userAnswer: null 
   },
   {
-    q: "Q.4 Minerals like calcium and phosphorus make the bones strong.",
+    q: "Q4.Minerals like calcium and phosphorus make the bones strong.",
     a: true, // ✅ correct
     img: "../assets/images/BonesStrongWithMinerals.png",
     answered: false ,
     userAnswer: null 
   },
   {
-    q: "Q.5 A newborn baby has 206 bones.",
+    q: "Q5.A newborn baby has 206 bones.",
     a: false, // ❌ newborn has about 300 bones
     img: "../assets/images/newbornBaby.png",
     answered: false ,

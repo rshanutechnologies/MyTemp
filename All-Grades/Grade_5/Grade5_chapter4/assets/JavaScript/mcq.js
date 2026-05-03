@@ -27,7 +27,7 @@
 const quizData = [
 {
   title: " Correct Option ",
-  question: "Q.1 The __________ is the part of the brain that controls the heartbeat.",
+  question: "Q1.The __________ is the part of the brain that controls the heartbeat.",
   image: "../assets/images/Cerebrums.png",
   options: [
     { id: "a", label: "Cerebrum",   image: "../assets/images/Cerebrums.png", correct: false, theme: "bg-blue" },
@@ -39,7 +39,7 @@ const quizData = [
 
 {
    title: "  Correct Option ",
-  question: "Q.2 The organ that is enclosed in the skull is the __________.",
+  question: "Q2.The organ that is enclosed in the skull is the __________.",
   image: "../assets/images/skull.png",
   options: [
     { id: "a", label: "Head", image: "../assets/images/head.png", correct: false, theme: "bg-blue" },
@@ -51,7 +51,7 @@ const quizData = [
 
 {
   title: " Correct Option ",
-  question: "Q.3 An automatic quick reaction in response to a stimulus is called the __________.",
+  question: "Q3.An automatic quick reaction in response to a stimulus is called the __________.",
   image: "../assets/images/reflex.png",
   options: [
     { id: "a", label: "Optic Nerve", image: "../assets/images/nerves.png", correct: false, theme: "bg-blue" },
@@ -63,7 +63,7 @@ const quizData = [
 
 {
    title: " Correct Option ",
-  question: "Q.4 The adult human brain weighs __________ kgs.",
+  question: "Q4.The adult human brain weighs __________ kgs.",
   image: "../assets/images/brain-weight.png",
   options: [
     { id: "a", label: "1.4 kg", image: "../assets/images/1.4kg.png", correct: true, theme: "bg-green" },
@@ -75,7 +75,7 @@ const quizData = [
 
 {
    title: "  Correct Option ",
-  question: "Q.5 The human brain is made up of __________ different parts.",
+  question: "Q5.The human brain is made up of __________ different parts.",
   image: "../assets/images/brain-parts.png",
   options: [
     { id: "a", label: "Six", image: "../assets/images/six.png", correct: false, theme: "bg-blue" },
