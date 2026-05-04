@@ -69,6 +69,7 @@ body {
 .q-no {
     font-weight: 400;
     min-width: 45px;
+    
 }
 
 .q-text {
@@ -467,14 +468,24 @@ body {
     }
 
     .question {
+        display: block;
+        line-height: 1.4;
         font-size: 22px;
         height: auto;
         text-align: center;
        
     }
 
+
+
     .q-no {
         min-width: auto;
+        display: inline;
+        margin-right:4px ;
+    }
+
+    .q-text{
+        display: inline;
     }
 
     .question-card img {
@@ -643,6 +654,14 @@ body {
         margin-inline: 30px;
         justify-content: center;
        
+    }
+    .q-no {
+    font-weight: 400;
+    min-width: 45px;
+    font-size: 22px;
+}
+    .q-text{
+        font-size: 22px;
     }
 
     .option-card {

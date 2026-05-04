@@ -154,8 +154,7 @@ body {
 }
 .option.correct {
     /* border-color: #7ed957; */
-    border: transparent
-    ;
+     border: 3px solid #2e7d32;   /* ✅ green border */
 }
 
 .option.disabled {

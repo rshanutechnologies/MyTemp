@@ -77,9 +77,23 @@ function loadQuestion() {
   const qNo = document.querySelector(".q-no");
   const qTextSpan = document.querySelector(".q-text");
 
-  const [number, ...rest] = q.q.split(" ");
-  qNo.textContent = number;
-  qTextSpan.textContent = rest.join(" ");
+  // Remove Q1., Q2. etc from display text - show full question without number prefix
+  const fullQuestionText = q.q;
+  // Extract number part and rest
+  const firstSpaceIndex = fullQuestionText.indexOf(' ');
+  let numberPart = '';
+  let questionBody = fullQuestionText;
+  
+  if (firstSpaceIndex !== -1 && fullQuestionText[0] === 'Q') {
+    numberPart = fullQuestionText.substring(0, firstSpaceIndex);
+    questionBody = fullQuestionText.substring(firstSpaceIndex + 1);
+  } else {
+    numberPart = `Q${current + 1}.`;
+    questionBody = fullQuestionText;
+  }
+  
+  qNo.textContent = numberPart;
+  qTextSpan.textContent = questionBody;
 
   qImg.src = q.img;
 
@@ -97,6 +111,8 @@ function loadQuestion() {
     if (solved[current]) {
       card.classList.add("disabled");
       if (i === q.answer) card.classList.add("correct");
+    } else {
+      card.classList.remove("disabled");
     }
   });
 
@@ -146,13 +162,17 @@ function speak(t) {
 }
 
 prevBtn.onclick = () => {
-  current--;
-  loadQuestion();
+  if (current > 0) {
+    current--;
+    loadQuestion();
+  }
 };
 
 nextBtn.onclick = () => {
-  current++;
-  loadQuestion();
+  if (current < questions.length - 1 && solved[current]) {
+    current++;
+    loadQuestion();
+  }
 };
 
 function updateProgress() {
@@ -191,7 +211,7 @@ function showFinal() {
   document.getElementById("stars").textContent = "⭐".repeat(score);
 
   // 🎉 CONFETTI EFFECT
-  if (window.innerWidth >= 769) {
+  if (window.innerWidth >= 769 && typeof confetti === 'function') {
     const duration = 2000;
     const end = Date.now() + duration;
 
@@ -216,4 +236,5 @@ function showFinal() {
   }
 }
 
+// Initialize the quiz
 loadQuestion();
