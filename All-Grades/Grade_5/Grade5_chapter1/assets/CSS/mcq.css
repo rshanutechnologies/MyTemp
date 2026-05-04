@@ -655,9 +655,10 @@ color: black;
     padding:10px 18px;
   }
 
+
   /* POPUP */
   .popup-box{
-    width:65% !important;
+    width:70% !important;
     /* background-color: yellow !important; */
   }
 
@@ -665,6 +666,7 @@ color: black;
     width:75% !important;
   }
 
+  
   .popup-final-content{
     font-size:18px;
   }
