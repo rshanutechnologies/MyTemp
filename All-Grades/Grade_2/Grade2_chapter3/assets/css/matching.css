@@ -519,7 +519,7 @@ body {
         top: 5px;
         right: 10px;
         transform: scale(.85);
-        display: none;
+        
     }
 
     .hint-btn-abs {

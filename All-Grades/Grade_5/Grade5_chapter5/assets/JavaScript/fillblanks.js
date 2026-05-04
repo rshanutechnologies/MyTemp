@@ -202,18 +202,16 @@ const words = answer.split(" ");
 // ================= CHECK ANSWER =================
 checkBtn.onclick = () => {
 const user = [...letters.querySelectorAll(".word-group")]
-  .map((group) =>
+  .map(group =>
     [...group.querySelectorAll("input")]
-      .map((i) => i.value.trim())
+      .map(i => i.value.trim())
       .join("")
   )
   .join(" ")
+  .toLowerCase()          // ✅ ignore capital/small
+  .replace(/\s+/g, " ")   // ✅ fix extra spaces
   .trim();
-const correctAnswer = (
-  isMobile()
-    ? (questions[index].a_mobile || questions[index].a)
-    : questions[index].a
-)
+const correctAnswer = questions[index].a
   .toLowerCase()
   .replace(/\s+/g, " ")
   .trim();

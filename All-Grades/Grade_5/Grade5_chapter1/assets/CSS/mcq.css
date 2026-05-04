@@ -657,11 +657,12 @@ color: black;
 
   /* POPUP */
   .popup-box{
-    width:90%;
+    width:65% !important;
+    /* background-color: yellow !important; */
   }
 
   .popup-box.popup-final{
-    width:95%;
+    width:75% !important;
   }
 
   .popup-final-content{

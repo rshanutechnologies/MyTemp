@@ -741,6 +741,32 @@ button:disabled {
      font-size: clamp(20px, 5vw, 24px);
      text-align: center;
 }
+  /* POPUP */
+  .popup-box{
+    width:80% !important;
+    /* background-color: yellow !important; */
+    /* background-color: yellow !important; */
+    padding: 5px !important;
+
+  }
+
+  .popup-box.popup-final{
+    width:65% !important;
+  }
+
+  .popup-final-content{
+    font-size:18px;
+  }
+
+  .popup-final-content .emoji{
+    font-size:50px;
+  }
+
+  .stars{
+    font-size:24px;
+  }
+
+
 }
 /* ======================================= */
 /* ===== DESKTOP SIZE REDUCE -15% ======== */
