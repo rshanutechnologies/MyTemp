@@ -517,6 +517,7 @@
    .heart img {
      width: 100%;
  }
+ 
 }
 /* =========================================
    ✅ UNIVERSAL RESPONSIVE SYSTEM
@@ -534,12 +535,15 @@
     align-items: flex-start;
     padding-top: 15px;
     overflow-x: hidden;
+    
   }
+
 
   .wrapper {
     transform: scale(calc(100vw / 900));
   }
 
+   
   .label {
     width: 130px;
   }
@@ -547,8 +551,10 @@
   .label input {
     font-size: 14px;
     padding: 6px 10px;
+       background: rgba(255, 255, 255, 0.541);
+ border: 2px solid #94a3b8c7;
   }
-
+ 
   /* LEFT LINES */
   .line1 { width: 120px; }
   .line2 { width: 120px; }
@@ -591,7 +597,6 @@
   /* ===== ARROW LINE ===== */
 /* RIGHT SIDE FIRST ARROW */
 
-
 /* ===== ARROW HEAD ===== */
 
 
@@ -603,6 +608,7 @@
   right: 30px !important;
   width: 120px;
 }
+
 }
 
 

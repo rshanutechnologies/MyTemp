@@ -1,30 +1,30 @@
 const questions = [
   {
-    q: "Q1. Plants move around in search of food.",
+    q: "Q1.Plants move around in search of food.",
     a: false,
     answered: false,
     img: "../assets/images/g4-tf1.png",
   },
   {
-    q: "Q2. Stomata help in trapping the sunlight.",
+    q: "Q2.Stomata help in trapping the sunlight.",
     a: false,
     answered: false,
     img: "../assets/images/g4-tf2.png",
   },
   {
-    q: "Q3. The pitcher plant obtains all the required nutrients from insects.",
+    q: "Q3.The pitcher plant obtains all the required nutrients from insects.",
     a: false,
     answered: false,
     img: "../assets/images/g4-tf3.png",
   },
   {
-    q: "Q4. The stem makes food for the plant",
+    q: "Q4.The stem makes food for the plant",
     a: false,
     answered: false,
     img: "../assets/images/g4-tf4.png",
   },
   {
-    q: "Q5. Water and minerals absorbed by the roots travel up to the stem of the plant",
+    q: "Q5.Water and minerals absorbed by the roots travel up to the stem of the plant",
     a: true,
     answered: false,
     img: "../assets/images/g4-tf5.png",
@@ -59,16 +59,14 @@ function resetButtons() {
 function render() {
   const current = questions[index];
 
-  const qNo = document.querySelector(".q-no");
   const qTextSpan = document.querySelector(".q-text");
 
-  const [number, ...rest] = current.q.split(" ");
-  qNo.textContent = number;
-  qTextSpan.textContent = rest.join(" ");
+  qTextSpan.textContent = current.q;
 
   document.getElementById("questionImage").src = current.img;
 
   resetButtons();
+
 
   if (current.answered) {
     // setKidPosition(rightSide, false);

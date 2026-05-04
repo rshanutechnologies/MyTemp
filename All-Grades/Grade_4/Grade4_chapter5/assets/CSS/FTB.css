@@ -581,6 +581,7 @@ body {
 @media (max-width: 480px) {
   .question {
     font-size: 18px;
+      text-align: left;
   }
 
   .image-wrap img {

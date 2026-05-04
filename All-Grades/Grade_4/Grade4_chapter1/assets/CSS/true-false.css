@@ -64,7 +64,7 @@ body {
 /* ===== QUESTION ===== */
 .question {
     height: 50px;
-    display: flex;
+   
     align-items: flex-start;
     gap: 10px;
     font-size: 30px;
@@ -449,9 +449,10 @@ body {
     .question {
         font-size: 22px;
         height: auto;
-        text-align: center;
+        
     }
 
+    
     .scene {
         height: 150px;
     }
@@ -508,11 +509,16 @@ body {
 /* ================================
    📱 VERY SMALL MOBILES (≤ 360px)
    ================================ */
-@media (max-width: 360px) {
+@media (max-width: 480px) {
 
     .question {
+        width: 115%;
         font-size: 20px;
+        
+      
     }
+   
+
 
     .scene {
         height: 130px;

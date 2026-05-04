@@ -480,6 +480,9 @@ body {
     transform: scale(calc(100vw / 900));
     transform-origin: top center;
   }
+  .title{
+    font-size: 14px;
+  }
   .line{
     display: none;
 
@@ -488,12 +491,14 @@ body {
   /* LABEL SIZE */
   .label {
     width: 135px;
+
   }
 
   .label input {
-   
+   background: rgba(255, 255, 255, 0.105);
     font-size: 14px;
     padding: 6px 10px;
+    border: 2px solid #94a3b8c7;
   }
 
   /* LEFT LINES */
