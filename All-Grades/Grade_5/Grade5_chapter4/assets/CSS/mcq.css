@@ -482,7 +482,7 @@ button:disabled {
 
   .question-text {
     font-size: 20px;
-    text-align: center;
+    text-align: left !important;
   }
 
   /* IMAGE */

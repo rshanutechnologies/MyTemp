@@ -757,7 +757,7 @@ button:disabled {
     font-size: 20px;
     height: auto;
     margin: 20px 0;
-    text-align: center;
+    text-align: left !important;
   }
 
   /* Letters smaller */

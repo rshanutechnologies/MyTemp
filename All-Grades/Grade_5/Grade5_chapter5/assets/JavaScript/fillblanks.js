@@ -211,12 +211,18 @@ const user = [...letters.querySelectorAll(".word-group")]
   .toLowerCase()          // ✅ ignore capital/small
   .replace(/\s+/g, " ")   // ✅ fix extra spaces
   .trim();
-const correctAnswer = questions[index].a
+const answer = isMobile() 
+  ? (questions[index].a_mobile || questions[index].a) 
+  : questions[index].a;
+
+const correctAnswer = answer
   .toLowerCase()
   .replace(/\s+/g, " ")
   .trim();
 
-if (user === correctAnswer) {
+const normalize = (str) => str.toLowerCase().replace(/\s+/g, "");
+
+if (normalize(user) === normalize(correctAnswer)) {
     answered[index] = true;
     score++;
 

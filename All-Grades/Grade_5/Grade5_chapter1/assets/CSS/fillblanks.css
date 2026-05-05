@@ -683,15 +683,24 @@ button:disabled {
     padding:15px;
   }
 
-  .question{
-    font-size:20px;
+   .question{
+    display:block !important;        /* 🔥 remove flex */
+    
     width:100%;
+    margin:0;
+
+    text-align:left !important;      /* ✅ left align */
+    
+    font-size:20px;
+    line-height:1.1;
+
+    padding:0 20px;                 /* equal spacing */
   }
 
   .center-img{
-    width:150px;
-    height:150px;
-    margin-top: -50%;
+    width:120px;
+    height:120px;
+    margin-top: -40%;
   }
 
   .input-box{

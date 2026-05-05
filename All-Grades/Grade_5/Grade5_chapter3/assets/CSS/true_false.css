@@ -447,6 +447,7 @@ font-size: 30px;
     font-size:20px;
     height:auto;
     padding:20px 10px;
+    text-align: left !important;
   }
 
   /* IMAGE SMALLER */
