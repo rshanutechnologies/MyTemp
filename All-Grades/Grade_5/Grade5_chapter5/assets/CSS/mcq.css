@@ -437,7 +437,7 @@ button:disabled {
   .question{
     font-size:20px !important;
     padding:8px;
-    text-align:center;
+    text-align:left;
   }
 
   .question-img{
