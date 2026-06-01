@@ -82,12 +82,18 @@ function showPopup(html, final = false){
 /* 🔄 LOAD QUESTION */
 function loadQuestion(){
   const q = quizData[current];
+    input.classList.remove("correct-answer");
 
   qEl.textContent = q.q;
 
   /* ✅ SET IMAGE */
   imgEl.src = q.img;
   imgEl.style.display = "block";
+  if(answered[current]){
+  input.classList.add("correct-answer");
+} else {
+  input.classList.remove("correct-answer");
+}
 
   input.value = userAnswers[current] || "";
   input.disabled = answered[current];
@@ -121,6 +127,7 @@ submitBtn.onclick = () => {
     answered[current] = true;
     userAnswers[current] = userAns;
     score++;
+     input.classList.add("correct-answer");
 
     speak("Correct");
 

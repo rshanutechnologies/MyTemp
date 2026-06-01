@@ -21,7 +21,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background: transparent;
+    /* background:#6be28c; */
 }
 body::before{
     content:"";
@@ -241,7 +241,7 @@ body::before{
     margin-top:10px;
     display:flex;
     justify-content:center;
-    gap:10px;
+    gap:52px;
     flex-wrap:wrap;
     
 }
@@ -596,11 +596,11 @@ body::before{
 @media (max-width: 768px) {
 
   body{
-    overflow-y:auto;
+    overflow:hidden;
     height:auto;
     align-items:flex-start;
       /* background:url("../images/bgbg.png") center/cover no-repeat; */
-      background:transparent !important;
+      background:#ff9f3f;
   }
 
 
@@ -646,11 +646,11 @@ body::before{
     text-align:center;
   }
 
-  /* OPTIONS GRID */
   .options{
-    width:100%;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
     gap:12px;
-    justify-content:center;
+    width:100%;
   }
 
   /* .option{
@@ -658,7 +658,7 @@ body::before{
     height:170px;
   } */
    .option{
-    width:45%;
+    width:100%;
     min-height:140px;  /* ✅ smaller */
     height:auto;       /* ✅ allow shrink */
 }
@@ -838,178 +838,132 @@ body::before{
 
 }
 
-@media (min-width: 1280px) {
- body{
-  margin-top: -3% !important;
-  margin-left: -6% !important;
- }
-  /* ❌ REMOVE OLD SCALE EFFECT */
+/* @media (min-width: 1280px) {
+
+  .app{
+    width:100%;
+    height:100vh;
+    padding:20px;
+  }
+  body{
+    background-color: #c62828;
+  }
+
   .card{
-    width: 1300px;
-    height: 780px;
-    padding: 40px;
-  }
-
-  /* ✅ TITLE */
-  .quiz-title{
-    font-size: 50px !important;
-    padding: 20px 30px;
-   
-  }
-
-  /* ✅ QUESTION (IMPORTANT SYSTEM) */
-  .question-text,
-  .question-text *{
-    font-size: 44px;
-    line-height: 1.4;
-    min-width: 1000px !important;
-    /* background-color: yellow !important; */
+    width:min(1200px, 95vw);
+    height:auto;
+    min-height:650px;
+    padding:30px;
   }
 
   .question-box{
-    min-height: 160px;
+    width:100%;
+    min-height:auto;
   }
 
-  /* ✅ PROGRESS (BUBBLE ORBIT) */
-  .bubble-orbit{
-    height: 90px;
+  .question-text,
+  .question-text *{
+    font-size:38px;
+    line-height:1.4;
+    width:100%;
+    max-width:100%;
+    min-width:0 !important;
+    margin-left:0;
+    overflow-wrap:break-word;
+    word-break:break-word;
   }
 
-  .bubble-dot{
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
+  .question-img{
+    max-width:350px;
+    max-height:180px;
   }
 
-  .orbit-indicator{
-    font-size: 34px;
-  }
   .options{
-    width:min(1000px, 100vw);
-    /* margin-top:10px; */
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-    /* background-color: red !important; */
-    margin-top: 10px !important;
-    
-}
+    width:100%;
+    max-width:1100px;
+    gap:15px;
+  }
 
-  /* ✅ OPTIONS */
   .option{
-    width: 240px;
-    height: 240px;
-    /* background-color: yellow !important; */
+    width:220px;
+    min-height:220px;
+    height:auto;
   }
 
   .option img{
-    width: 200px !important;
-    height: 200px !important;
-  }
-
-  .opt-label{
-    font-size: 22px;
-    padding: 12px 30px;
-  }
-  .question-img{
-  max-height: 220px;   /* 🔥 increase from 120px */
-  max-width: 400px;    /* optional for wider images */
-}
-
-  /* ✅ NAV BUTTONS (SYSTEM SIZE) */
-  .nav-btn{
-    width: 180px;
-    height: 70px;
-    font-size: 24px;
-    border-radius: 999px;
+    max-width:180px;
+    max-height:180px;
+    width:auto !important;
+    height:auto !important;
   }
 
   .controls{
+    margin-top:20px;
+    gap:60px;
+  }
+
+  .nav-btn{
+    width:170px;
+    height:60px;
+    font-size:22px;
+  }
+} */
+
+@media (min-width: 1920px) {
+
+  .card{
+    width: 1600px;
+    height: 900px;
+    padding: 30px;
+  }
+
+  .question-box{
+    width: 1400px;
+    min-height: 180px;
+    margin-top: 10px;
+  }
+
+  .question-text,
+  .question-text *{
+    font-size: 40px;
+    line-height: 1.35;
+    margin-left: 0;
+    max-width: 1400px;
+    min-width: 0;
+  }
+
+  .question-img{
+    max-width: 450px;
+    max-height: 220px;
+  }
+
+  .options{
+    width: 1500px;
+    gap: 40px;
+  }
+
+  .option{
+    width: 280px;
+    min-height: 240px;
+  }
+
+  .option img{
+    max-width: 180px;
+    max-height: 180px;
+  }
+
+  .opt-label{
+    font-size: 24px;
+  }
+
+  .controls{
+    margin-top: 20px;
     gap: 120px;
-    /* margin-top: 80px; */
-     margin-top:20px; 
-  }
-  
-/* ✅ POPUP BOX */
-.popup-box{
-  width: 380px;
-  padding: 50px;
-  border-radius: 30px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 14px; /* 🔥 spacing between lines */
-}
-
-/* ✅ COMMON TEXT ALIGN */
-.popup-correct,
-.popup-wrong{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px; /* 🔥 line spacing */
-
-  font-size: 28px;
-  text-align: center;
-}
-
-/* ✅ LINE 1 (TEXT) */
-.popup-correct .check,
-.popup-wrong .cross{
-  font-size: 26px;
-  font-weight: 500;
-}
-
-/* ✅ LINE 2 (EMOJI BIG) */
-.popup-correct .happy,
-.popup-wrong .sad{
-  font-size: 100px;
-  line-height: 1;
-}
-
-/* ✅ LINE 3 (STARS / MESSAGE) */
-.popup-correct .stars{
-  font-size: 40px;
-  margin-top: 5px;
-}
-
-/* OPTIONAL: WRONG TIP LINE */
-.popup-wrong .tip{
-  font-size: 22px;
-  margin-top: 5px;
-}
-
-/* ✅ FINAL POPUP CONTENT */
-.popup-final-content{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-
-  font-size: 28px;
-  text-align: center;
-}
-
-/* FINAL EMOJI */
-.popup-final-content .emoji{
-  font-size: 70px;
-  line-height: 1;
-}
-
-/* FINAL STARS */
-.popup-final-content .stars{
-  font-size: 50px;
-}
-  .restart,
-  .home{
-    font-size: 22px;
-    padding: 14px 28px;
   }
 
+  .nav-btn{
+    width: 220px;
+    height: 70px;
+    font-size: 26px;
+  }
 }
-
-

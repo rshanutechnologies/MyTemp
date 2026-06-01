@@ -345,37 +345,106 @@ canvas {
     }
 }
 
-/* ==================================================
-   ✅ DESKTOP ONLY (>=1200px)
-================================================== */
-/* ==================================================
-   ✅ REAL DESKTOP ONLY (>=1400px)
-================================================== */
-@media (min-width: 1400px) {
+@media (min-width: 1024px) and (max-width: 1919px) {
 
   .quiz {
-    transform: scale(1.08);
-    transform-origin: center;
-  }
-   .quiz #question {
-    font-size: 34px;
-  }
-  .quiz .question-image img {
-    width: 340px;
-    height: 230px;
+    width: min(1300px, 95vw);
+    padding: 20px;
+    margin-top: -20px;
   }
 
-  .quiz .option-img {
-    width: 150px;
-    height: 150px;
+  .quiz-layout {
+    gap: 10px;
   }
 
-  .quiz .option-text {
-    font-size: 22px;
-    padding: 14px 22px !important; 
+  #question {
+    font-size: 30px;
+    line-height: 1.2;
+    margin-bottom: 0;
+  }
+
+  .question-image {
+    margin-top: 0;
+  }
+
+  .question-image img {
+    width: 280px;
+    height: 200px;
+  }
+
+  .options {
+    gap: 10px;
+  }
+
+  .option {
+    gap: 4px;
+  }
+
+  .option-img {
+    width: 105px;
+    height: 105px;
+  }
+
+  .option-text {
+    width: 170px;
+    height: 50px;
+    font-size: 18px;
+    padding: 8px 12px;
   }
 
   .controls {
-    margin-top: 15px;
+    margin-top: 8px;
+  }
+
+  .controls button {
+    width: 120px;
+    height: 50px;
+    font-size: 18px;
+  }
+}
+@media (min-width: 1920px) {
+
+  .quiz {
+    width: 1700px;
+    max-width: 95vw;
+    padding: 40px;
+   
+  }
+
+  .quiz-layout {
+    gap: 40px;
+  }
+
+  #question {
+    font-size: 40px;
+    line-height: 1.4;
+  }
+
+  .question-image img {
+    width: 450px;
+    height: 320px;
+  }
+
+  .option-img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .option-text {
+    width: 260px;
+    height: 75px;
+    font-size: 26px;
+    padding: 18px 24px;
+  }
+
+  .controls {
+    margin-top: 40px; /* pushes buttons slightly down */
+  }
+
+  .controls button {
+    width: 170px;
+    height: 70px;
+    font-size: 24px;
+    gap: 12px;
   }
 }
