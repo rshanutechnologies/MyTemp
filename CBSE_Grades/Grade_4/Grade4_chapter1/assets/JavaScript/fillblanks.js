@@ -23,7 +23,7 @@ const quizData= [
   },
   {
     q: "Q.5 The parasitic plants that completely depend on their host for nutrition are called ____",
-    a: "holoparasites",
+    a: "total parasites",
     img: "../assets/images/FIB5.png",
   },
 ];

@@ -14,7 +14,7 @@ const questions = [
   {
     q: "Q3. Nitrogen",
     a: ["78%", "plant growth"],
-    placeholders: ["% of gas", "One use"],
+    placeholders: ["% of gas", "fertilizers"],
     img: "../assets/images/mcq-2.png",
   },
   {

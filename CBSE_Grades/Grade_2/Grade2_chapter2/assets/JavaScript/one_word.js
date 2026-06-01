@@ -13,10 +13,10 @@ const quizData = [
 {
   title: "Q.2 Birds that cannot fly",
   options:[
-    { text:"Flightless birds", img:"../assets/images/FlighlessBird.png"},
-    { text:"Flying birds", img:"../assets/images/FlyBirds.png"},
+    { text:"Flightless", img:"../assets/images/FlighlessBird.png"},
+    { text:"Flying", img:"../assets/images/FlyBirds.png"},
   ],
-  answer: "Flightless birds"
+  answer: "Flightless"
 },
 
 {

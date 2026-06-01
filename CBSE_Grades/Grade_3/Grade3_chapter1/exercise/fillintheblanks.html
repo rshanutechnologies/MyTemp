@@ -436,7 +436,7 @@ const questions = [
   },
   {
     q: "Q3.Rabbits ________ or ________ using their limbs.",
-    answers: ["run","jump"],
+    answers: ["hop","leap"],
     img: "../images/rabbit.png"
   },
   {
@@ -446,7 +446,7 @@ const questions = [
   },
   {
     q: "Q5.Fishes use their ________ to swim.",
-    answers: ["fins"],
+    answers: ["tails"],
     img: "../images/fish.png"
   }
 ];
@@ -583,7 +583,7 @@ function checkAnswer(){
   // ✅ ===== Q3 STEP LOGIC =====
   if(index === 2){
 
-    const validWords = ["run", "jump"];
+    const validWords = ["hop", "leap"];
     const inputField = document.getElementById("input" + q3Step);
     const value = inputField.value.trim().toLowerCase();
 

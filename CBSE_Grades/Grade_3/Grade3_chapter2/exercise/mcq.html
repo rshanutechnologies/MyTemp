@@ -49,7 +49,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
+  text-align:left;
   width:100%;
   color:#2f4f4f;
   margin:0 auto;
@@ -141,7 +141,7 @@ body{
 /* ================= BUTTONS ================= */
 .nav-btn{
  position:absolute;
-  bottom:50px;   /* 🔥 ALWAYS SAME POSITION */
+  bottom:30px;   /* 🔥 ALWAYS SAME POSITION */
 
   padding:clamp(10px, 1vw, 14px) clamp(26px, 3.5vw, 42px);
   font-size:clamp(16px, 1.5vw, 22px);
@@ -310,7 +310,7 @@ body{
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
-@media screen and (min-width:1025px) and (max-width:1440px){
+@media screen and (min-width:1025px) and (max-width:1240px){
 
   .quiz-container{
     max-width:1100px;
@@ -320,11 +320,12 @@ body{
   .question{
     font-size:40px;
     min-height:90px;
+    margin-top: -20px;
   }
 
   /* IMAGE */
   .question-image img{
-    width:280px;
+    width:400px;
   }
 
   /* OPTIONS */
@@ -333,8 +334,8 @@ body{
   }
 
   .circle{
-    width:160px;
-    height:160px;
+    width:180px;
+    height:180px;
   }
 
   .circle img{
@@ -342,14 +343,15 @@ body{
   }
 
   .option p{
-    font-size:22px;
+    font-size:25px;
     padding:8px 18px;
   }
 
   /* BUTTONS */
   .nav-btn{
-    font-size:22px;
-    padding:12px 28px;
+    bottom:-50px;
+    font-size:28px;
+    padding:14px 35px;
   }
 
 }

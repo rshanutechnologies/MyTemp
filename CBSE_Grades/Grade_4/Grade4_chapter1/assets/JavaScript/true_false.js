@@ -4,31 +4,31 @@ let finalPopupShown = false;
 
 const quizData = [
   {
-    q: "Q.1. Plants move around in search of food",
+    q: "Q1.    Plants move around in search of food",
     a: false,
     img: "../assets/images/TF1.png",
     answered: false
   },
   {
-    q: "Q.2. Stomata help in trapping the sunlight.",
+    q: "Q2.     Stomata help in trapping the sunlight.",
     a: false,
     img: "../assets/images/TF2.png",
     answered: false
   },
   {
-    q: "Q.3. The pitcher plant obtains all the required nutrients from insects",
+    q: "Q3. The pitcher plant obtains all the required nutrients from insects",
     a: false,
     img: "../assets/images/TF3.png",
     answered: false
   },
   {
-    q: "Q.4. The stem makes food for the plant.",
+    q: "Q4. The stem makes food for the plant.",
     a: false,
     img: "../assets/images/TF4.png",
     answered: false
   },
   {
-    q: "Q.5. The transport of water, minerals and food takes place through the network of veins and the stem",
+    q: "Q5. The transport of water, minerals and food takes place through the network of veins and the stem",
     a: true,
     img: "../assets/images/TF.png",
     answered: false

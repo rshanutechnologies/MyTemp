@@ -212,7 +212,7 @@ body::before{
     width:100%;
     /* color:#2f4f4f !important; */
     color: #2f4f4f;
-    text-align:center;
+    text-align:left;
 }
 /* .question-img{
   display:block;

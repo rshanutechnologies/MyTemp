@@ -20,7 +20,7 @@ const quizData = [
       "../assets/images/class 2 leverr.png|class 2 lever",
       "../assets/images/Inclined plane.png|inclined plane",
     ],
-    a: 0, // class 3 lever
+    a: 1, // class 3 lever
   },
 
   {

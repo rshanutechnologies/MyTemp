@@ -55,8 +55,17 @@ padding-bottom: clamp(20px,4vh,40px);  /* ✅ breathing space */
 .question-card{
 font-size:clamp(20px,2.5vw + 1.2vh,36px);
 color:#2f4f4f;
-text-align:center;
-line-height:1.4;
+text-align:left;
+line-height:1.2;
+height: 70px;
+
+    /* Center text vertically */
+    display: flex;
+    align-items: center;
+
+    /* Prevent overflow */
+    overflow: hidden;
+    margin-top: -30px;
 }
 
 /* ============================= */
@@ -355,7 +364,7 @@ const quiz=[
 
 {
 q:"Q1. ______ is the hot gas that is produced when water boils.",
-a:"steam",
+a:"water vapour",
 img:"../images/ftb1.png"
 },
 
@@ -379,7 +388,7 @@ img:"../images/mass.png"
 
 {
 q:"Q5. The empty spaces between the molecules are called ______.",
-a:"spaces",
+a:"intermolecular spaces",
 img:"../images/space_img.png"
 }
 
