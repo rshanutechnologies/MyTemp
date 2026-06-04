@@ -180,7 +180,7 @@ filter:grayscale(70%);
 /* ================= NAVIGATION ================= */
 
 .quiz-nav{
-    margin-top:-20%;
+    margin-top:-10%;
     width:100%;
     display:flex;
     justify-content:center;
