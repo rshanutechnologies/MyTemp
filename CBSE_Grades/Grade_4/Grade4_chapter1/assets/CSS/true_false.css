@@ -460,7 +460,7 @@ button:disabled{
     margin: 0;
   }
 }
-@media (min-width: 1920px) {
+@media (min-width: 1600px) {
 
   .question{
     font-size: 40px !important;

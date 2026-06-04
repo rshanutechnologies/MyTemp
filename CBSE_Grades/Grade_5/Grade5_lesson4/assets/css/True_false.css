@@ -30,9 +30,10 @@
     /* background: #fff; */
     border-radius: 22px;
     /* border: 10px double rgb(235, 199, 0); */
-    padding: 20px;
+    /* padding: 20px; */
     /* box-shadow: 0 20px 50px rgba(0, 0, 0, .2) */
   border:6px solid transparent !important;
+  margin-top: 7%;
     }
    
 
@@ -57,8 +58,8 @@
     .question-img{
   display:block;
   margin:0 auto 20px;
-  max-width:320px;
-  height:200px;
+  width:190px !important;
+  height:190px !important;
   /* width: 200px; */
  margin-top: -20px;
   height: 250px;
@@ -107,16 +108,19 @@
   position: absolute;
   bottom: 3%;                 /* 🎯 vertical center */
   left: 0;
+  top:75%;
   width: 100%;
   transform: translateY(-50%);
   display: flex;
   justify-content: space-around;
   pointer-events: none;     /* allow clicks only on buttons */
+    
 }
 
 .nav button{
   pointer-events: auto;
    border: 2px solid white;
+
  
 }
 .prev{
@@ -504,6 +508,11 @@ body{
   gap: 30%;
 }
 
+.nav{
+ 
+  top:85%;
+
+}
 .prev,
 .next{
   width:80px;
@@ -591,7 +600,7 @@ body{
 
 
 /* ================= 1025px — 1440px ================= */
-@media screen and (min-width:1225px) and (max-width:1640px){
+@media screen and (min-width:1425px) and (max-width:1640px){
 
 .quiz-card{
 width:1000px;
@@ -615,6 +624,11 @@ gap:40px;
 font-size:24px;
 padding:18px 60px;
 height:70px;
+}
+.nav{
+ 
+  top:85%;
+
 }
 .prev,.next{
 width:100px;

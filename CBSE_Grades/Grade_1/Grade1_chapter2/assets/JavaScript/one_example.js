@@ -2,7 +2,7 @@ const quiz = [
   {
     q: "Q1. Give one example of a Big plant",
     img1: "../assets/images/mango.png",
-    t1: "Mango Tree",
+    t1: "Mango tree",
     img2: "../assets/images/rose.png",
     t2: "Rose",
     a: "mango tree",
@@ -20,7 +20,7 @@ const quiz = [
     img1: "../assets/images/pumpkin.png",
     t1: "Pumpkin",
     img2: "../assets/images/banyan-tree.png",
-    t2: "Banyan Tree",
+    t2: "Banyan tree",
     a: "pumpkin",
   },
   {

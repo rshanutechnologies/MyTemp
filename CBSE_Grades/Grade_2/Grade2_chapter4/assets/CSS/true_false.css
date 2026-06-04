@@ -50,10 +50,11 @@
       font-weight: 400;
       align-items: center;
        display:flex;
-  align-items:center;       /* vertical center */
-  text-align:center;        /* center text */
+  align-items:center; 
+  justify-content: center;      /* vertical center */
+  text-align:start;        /* center text */
   width:100%;
-  margin-left: 10%;
+  /* margin-left: 10%; */
 
       }
     .question-img{
@@ -89,23 +90,24 @@
   border-radius:28px;
   border:5px solid transparent;
   /* background:linear-gradient(145deg,#6ec6ff,#42a5f5); */
-  color:white;
+  color:rgb(0, 0, 0);
   cursor:pointer;
   /* box-shadow:0 6px 14px rgba(0,0,0,0.2); */
   transition:0.2s;
   height: 60px;
+  background-color: #8fb1e8;
 }
 
 .tf-buttons button:hover{
   transform:translateY(-3px);
 }
-
-    .true{background: linear-gradient(180deg, #2ee673, #16a34a);
+/* 
+    .true{background: linear-gradient(180deg, #9dffc3, #a0ffc2);
 color: white;}
     .false{background: linear-gradient(180deg, #ff6b6b, #e03131);
-color: white;}
+color: white;} */
 
-    .correct{ border:4px solid lightcoral!important; pointer-events:none; }
+    .correct{ border:4px solid rgb(255, 255, 255)!important; pointer-events:none; background-color: #1fb36b !important; }
     .disabled{ opacity:.45; pointer-events:none;  }
 
  
@@ -248,11 +250,11 @@ color:white;
 }
 
 .icon-true{
-background:#1fb36b;
+background:#b2ccbf;
 }
 
 .icon-false{
-background:#e53935;
+background:#ad9696;
 }
 
 .tf-buttons button{
@@ -508,16 +510,13 @@ padding:20px;
 }
 
 @media (min-width: 1580px) {
-   body{
-    margin-top: -2%;
-    /* background-color: yellow !important; */
-   }
+ 
   /* ✅ MAIN CARD */
   .quiz-card{
     width: 1300px;
     height: 780px;
     padding: 40px;
-    margin-top: 0;
+    margin-top: 7px !important;
   }
 
   /* ✅ PROGRESS */
@@ -533,8 +532,8 @@ padding:20px;
     min-height: 140px;
     padding: 40px;
     margin-left: 0;
-    text-align: center;
-    justify-content: center;
+    /* text-align: center;
+    justify-content: center; */
   }
 
   /* ✅ IMAGE */
@@ -636,8 +635,8 @@ padding:20px;
 
 .question{
     margin-left:0;
-    justify-content:center;
-    text-align:center;
+    /* justify-content:center;
+    text-align:center; */
     height: 200px;
 }
 

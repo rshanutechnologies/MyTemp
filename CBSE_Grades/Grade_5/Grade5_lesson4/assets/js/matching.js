@@ -122,7 +122,7 @@ function restart() {
     targets.forEach(t => {
         delete t.dataset.done;
         const s = t.querySelector('.slot');
-        s.textContent = "Drop here";
+        s.textContent = "";
         s.className = "slot";
     });
 

@@ -17,7 +17,7 @@ const questions = [
   {
     q: "Q4. The ______ is the sense organ that helps us to taste.",
     a: ["tongue"],
-    img: "../assets/images/tongue.png",
+    img: "../assets/images/tasting.png",
   },
   {
     q: "Q5. We must eat healthy and ______ diet.",

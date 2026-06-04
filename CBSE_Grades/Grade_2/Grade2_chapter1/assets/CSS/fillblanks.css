@@ -562,7 +562,7 @@ button:disabled {
     margin-top:3%;
     width:100%;
     display:flex;
-    justify-content:center;
+    justify-content:space-around;
     gap:30px;
     padding:20px 0;
     margin-bottom: 5%;

@@ -3,10 +3,10 @@ const quiz=[
 {
 q:"1. The ovary contains one or more small egg-like structures called the___.",
 options:[
-{text:"stigma",img:"../assets/images/stigmaak.png"},
-{text:"style",img:"../assets/images/MCQStyle.png"},
-{text:"ovules",img:"../assets/images/ovulesap.png"},
-{text:"ovary",img:"../assets/images/ovaryak.png"}
+{text:"Stigma",img:"../assets/images/stigmaak.png"},
+{text:"Style",img:"../assets/images/MCQStyle.png"},
+{text:"Ovules",img:"../assets/images/ovulesap.png"},
+{text:"Ovary",img:"../assets/images/ovaryak.png"}
 ],
 answer:2,
 img:"../assets/images/MQ3.png"
@@ -15,10 +15,10 @@ img:"../assets/images/MQ3.png"
 {
 q:"2. The style has a small disc-like structure at its tip called the _____ .",
 options:[
-{text:"anther",img:"../assets/images/Anther.png"},
-{text:"stigma",img:"../assets/images/stigmaak.png"},
-{text:"carpel",img:"../assets/images/carpelak.png"},
-{text:"ovule",img:"../assets/images/ovulesak.png"}
+{text:"Anther",img:"../assets/images/Anther.png"},
+{text:"Stigma",img:"../assets/images/stigmaak.png"},
+{text:"Carpel",img:"../assets/images/carpelak.png"},
+{text:"Ovule",img:"../assets/images/ovulesak.png"}
 ],
 answer:1,
 img:"../assets/images/stigmaapp.png"
@@ -27,10 +27,10 @@ img:"../assets/images/stigmaapp.png"
 {
 q:"3. The ______ is the female reproductive part of a flower.",
 options:[
-{text:"petal",img:"../assets/images/petalsak.png"},
-{text:"pistil",img:"../assets/images/pistilak.png"},
-{text:"sepal",img:"../assets/images/sepalsak.png"},
-{text:"style",img:"../assets/images/MCQStyle.png"}
+{text:"Petal",img:"../assets/images/petalsak.png"},
+{text:"Pistil",img:"../assets/images/pistilak.png"},
+{text:"Sepal",img:"../assets/images/sepalsak.png"},
+{text:"Style",img:"../assets/images/MCQStyle.png"}
 ],
 answer:3,
 img:"../assets/images/pistilap.png"
@@ -39,22 +39,22 @@ img:"../assets/images/pistilap.png"
 {
 q:"4. The green-coloured outermost leaf-like structures of a flower are called the _____.",
 options:[
-{text:"petal",img:"../assets/images/petals.png"},
-{text:"sepals",img:"../assets/images/sepalsak.png"},
-{text:"petals",img:"../assets/images/petalsak.png"},
-{text:"ovules",img:"../assets/images/ovulesak.png"}
+{text:"Carpels",img:"../assets/images/petals.png"},
+{text:"Sepals",img:"../assets/images/sepalsak.png"},
+{text:"Petals",img:"../assets/images/petalsak.png"},
+{text:"Ovules",img:"../assets/images/ovulesak.png"}
 ],
 answer:1,
 img:"../assets/images/sepalsak1.png"
 },
 
 {
-q:"5. Each carpel contains three parts - ovary, style and",
+q:"5. Each carpel contains three parts - the ovary, the style and",
 options:[
-{text:"petal",img:"../assets/images/petals.png"},
-{text:"pistil",img:"../assets/images/pistilak.png"},
-{text:"stigma",img:"../assets/images/stigmaak.png"},
-{text:"sepal",img:"../assets/images/sepalsak.png"}
+{text:"Petal",img:"../assets/images/petals.png"},
+{text:"Pistil",img:"../assets/images/pistilak.png"},
+{text:"Stigma",img:"../assets/images/stigmaak.png"},
+{text:"Sepal",img:"../assets/images/sepalsak.png"}
 ],
 answer:2,
 img:"../assets/images/stigmaak4.png"

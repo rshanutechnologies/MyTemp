@@ -2,7 +2,7 @@
 const quizData = [
 
 {
-title: "Q.1 Carrot is a ____________________.",
+title: "Q.1 Carrot is a _________.",
 image: "../assets/images/Carrotakc.png",
 options: [
 { text: "Stem", img: "../assets/images/stemM.png" },

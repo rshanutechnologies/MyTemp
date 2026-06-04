@@ -487,17 +487,18 @@ button:disabled {
 /* ========== ULTRA WIDE (min 1600px) ============== */
 /* ================================================= */
 
-@media (min-width: 1920px) {
+@media (min-width: 1600px) {
   .quiz {
     /* background-color: #c62828; */
     width: 1300px;
     height: 750px;
+    /* background-color: #22c55e; */
     
   }
 
   .question {
-    margin-bottom:-10px !important;
-    font-size: 38px !important;
+    /* margin-bottom:-10px !important; */
+    font-size: 40px !important;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;

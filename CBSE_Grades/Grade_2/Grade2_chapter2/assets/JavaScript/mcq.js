@@ -4,16 +4,16 @@ const quizData = [
 {
 title: "Q.1 Animals that live in our houses are called ________.",
 options: [
-{ text: "Domestic Animals", img: "../assets/images/Cow.png" },
-{ text: "Pet Animals", img: "../assets/images/Dogg.png" },
-{ text: "Wild Animals", img: "../assets/images/Tigerak.png" },
+{ text: "Domestic animals", img: "../assets/images/Cow.png" },
+{ text: "Pet animals", img: "../assets/images/Dogg.png" },
+{ text: "Wild animals", img: "../assets/images/Tigerak.png" },
 { text: "Insects", img: "../assets/images/Butterflyak.png" }
 ],
-answer: "Pet Animals"
+answer: "Pet animals"
 },
 
 {
-title: "Q.2 ____________________ is a flesh-eating animal.",
+title: "Q.2 _________ is a flesh-eating animal.",
 options: [
 { text: "Deer", img: "../assets/images/Deeraknew.png" },
 { text: "Zebra", img: "../assets/images/Zebraaknew.png" },
@@ -24,7 +24,7 @@ answer: "Lion"
 },
 
 {
-title: "Q.3 A ____________________ carries load for us.",
+title: "Q.3 A __________ carries load for us.",
 options: [
 { text: "Cat", img: "../assets/images/Catak.png" },
 { text: "Deer", img: "../assets/images/Deeraknew.png" },

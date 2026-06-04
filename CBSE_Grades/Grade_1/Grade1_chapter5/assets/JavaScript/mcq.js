@@ -36,7 +36,7 @@ const quizData = [
     title: "Q.4 Vegetarians eat ________ products.",
     image: "../assets/images/VegGirl.png",
     options: [
-      { text: "Plant and Animal", img: "../assets/images/PlantAnimal.png" },
+      { text: "Plant and animal", img: "../assets/images/PlantAnimal.png" },
       { text: "Different", img: "../assets/images/CanFood.png" },
       { text: "Animal", img: "../assets/images/Sheepak.png" },
       { text: "Plant", img: "../assets/images/Planttak.png" },

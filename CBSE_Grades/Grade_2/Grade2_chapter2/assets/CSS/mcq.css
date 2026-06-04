@@ -33,7 +33,7 @@ body::before{
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:24px;
+    padding:28px;
     margin-top: 5%;
 }
 
@@ -664,7 +664,7 @@ body::before{
 .option-img{
   position:absolute;
   top:-50px;
-  left:20%;
+  
   transform:translateX(-50%);
     transform:translateY(-70%);
 

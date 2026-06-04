@@ -49,7 +49,7 @@ img:"../assets/images/mcq_4.png"
 },
 
 {
-q:"5. Which feature enables dispersal of seeds by water?",
+q:"5. Which of the following features enable dispersal of seeds by water?",
 options:[
 {text:"Small size,light weight and hair-like structures",img:"../assets/images/mcq51.png"},
 {text:"Air-trapped fibres",img:"../assets/images/mcq52.png"},

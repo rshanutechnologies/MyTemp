@@ -7,7 +7,7 @@ const questions = [
   {
     q: "Q.2 We get milk from __________ and __________.",
     a: ["cows", "buffaloes"],
-    img: "../assets/images/CowBuffelo.png",
+    img: "../assets/images/milk.png",
   },
   {
     q: "Q.3 Non-vegetarians eat food from both plants and __________.",
@@ -88,6 +88,8 @@ function loadQuestion() {
 
     const input = document.createElement("input");
     input.placeholder = "Type your answer...";
+    input.addEventListener("drop", (e) => e.preventDefault());
+    input.addEventListener("dragover", (e) => e.preventDefault());
 
     const btn = document.createElement("button");
     btn.textContent = "Submit";

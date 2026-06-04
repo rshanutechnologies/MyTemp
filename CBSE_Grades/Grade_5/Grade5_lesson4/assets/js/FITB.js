@@ -98,6 +98,35 @@ const scoreBox = document.getElementById("scoreBox");
 
 const input1 = document.getElementById("answerInput1");
 const input2 = document.getElementById("answerInput2");
+
+/* ================= BLOCK IMAGE DROP & PASTE ================= */
+
+[input1, input2].forEach(inp => {
+
+  inp.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+
+  inp.addEventListener("drop", (e) => {
+    e.preventDefault();
+  });
+
+  inp.addEventListener("paste", (e) => {
+
+    const items = e.clipboardData?.items || [];
+
+    for (let item of items) {
+
+      if (item.kind === "file") {
+        e.preventDefault();
+        return false;
+      }
+
+    }
+
+  });
+
+});
 const submitBtn= document.getElementById("submitBtn");
 
 
@@ -151,7 +180,10 @@ function checkAnswer(){
 
       showPopup(true);
 
-      answers[index] = [user1,user2];
+     answers[index] = [
+  user1.charAt(0).toUpperCase() + user1.slice(1).toLowerCase(),
+  user2.charAt(0).toUpperCase() + user2.slice(1).toLowerCase()
+];
 
       input1.disabled = true;
       input2.disabled = true;
@@ -210,7 +242,9 @@ function checkAnswer(){
 
       showPopup(true);
 
-      answers[index] = [user1];
+      answers[index] = [
+  user1.charAt(0).toUpperCase() + user1.slice(1).toLowerCase()
+];
 
       input1.disabled = true;
       submitBtn.disabled = true;
@@ -267,10 +301,14 @@ function loadQuestion(){
 
   if(alreadyCorrect){
 
-    input1.value = alreadyCorrect[0].toUpperCase();
+    input1.value =
+  alreadyCorrect[0].charAt(0).toUpperCase() +
+  alreadyCorrect[0].slice(1).toLowerCase();
 
     if(q.a.length === 2){
-      input2.value = alreadyCorrect[1].toUpperCase();
+      input2.value =
+  alreadyCorrect[1].charAt(0).toUpperCase() +
+  alreadyCorrect[1].slice(1).toLowerCase();
     }
 
     input1.disabled=true;
@@ -286,15 +324,25 @@ function loadQuestion(){
 }
 
 [input1,input2].forEach(inp=>{
+
   inp.addEventListener("input",()=>{
 
-    if(input1.value.trim().length>0){
-      submitBtn.disabled=false;
+    // Allow only letters and spaces
+    inp.value = inp.value.replace(/[^a-zA-Z\s]/g,"");
+
+    // First letter capital, remaining small
+    inp.value =
+      inp.value.charAt(0).toUpperCase() +
+      inp.value.slice(1).toLowerCase();
+
+    if(input1.value.trim().length > 0){
+      submitBtn.disabled = false;
     }else{
-      submitBtn.disabled=true;
+      submitBtn.disabled = true;
     }
 
   });
+
 });
 
 /* ================= EVENTS ================= */

@@ -80,6 +80,10 @@ body {
     background: #eafff3;
 }
 
+.input-box.correct input{
+    text-transform: capitalize;
+}
+
 .input-box input {
     flex: 1;
     border: none;

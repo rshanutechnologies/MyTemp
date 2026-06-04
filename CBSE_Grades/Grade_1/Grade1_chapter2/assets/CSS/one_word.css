@@ -343,7 +343,7 @@ body {
 
     #questionImage {
         width: 200px;
-        height: 150px;
+        height: 145px;
     }
 
     .answer-slots {
@@ -363,7 +363,7 @@ body {
     }
 
     .quiz-navigation {
-        margin-top: 25px;
+        margin-top: 15px;
     }
 
     .final-kid-box {

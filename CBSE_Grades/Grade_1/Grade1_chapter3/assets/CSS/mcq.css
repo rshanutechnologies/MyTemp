@@ -48,6 +48,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: left;
 }
 
 .question-image {
@@ -84,7 +85,7 @@ body {
     background: #e8f5ff;
     box-shadow: 0 6px 0 rgba(0, 0, 0, .12);
     transition: .25s;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .option:hover {
@@ -364,7 +365,7 @@ body {
         font-size: 26px;
         height: auto;
         padding: 10px;
-        text-align: center;
+        text-align: left;
     }
 
     .question-image img {

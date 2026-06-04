@@ -25,7 +25,7 @@
 
     .quiz-card{
      position: relative;
-    width: 950px;
+    width: 850px;
     height: 580px;
     /* background: #fff; */
     border-radius: 22px;
@@ -50,6 +50,10 @@
       padding:30px 40px;
       color: #2f4f4f;
       font-weight: 400;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
     }
     .question-img{
@@ -529,7 +533,7 @@ body{
     font-size: 44px;
     padding: 40px;
     min-height: 160px;
-    text-align: center;
+    /* text-align: center; */
   }
 
   /* IMAGE BIG */

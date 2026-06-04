@@ -52,8 +52,9 @@
   padding:30px 40px;
   color:#2f4f4f;
   font-weight:400;
-
-  text-align:center;        /* short text center */
+  display: flex;
+  justify-content: center;
+  text-align:start;        /* short text center */
   line-height:1;
   height: 85px;
 }

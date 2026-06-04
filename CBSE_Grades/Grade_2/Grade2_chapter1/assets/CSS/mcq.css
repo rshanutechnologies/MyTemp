@@ -33,6 +33,7 @@ body::before{
     align-items:center;
     padding:24px;
     margin-top: 5%;
+    margin-left: -4%;
 }
 
 /* ✅ TEMPLATE CONTAINER */
@@ -115,6 +116,8 @@ body::before{
 /* ✅ OPTIONS GRID */
 .options{
     width:min(650px,95%);
+    /* width:80%; */
+    /* margin: auto; */
   margin-top:20px;
   display:grid;
   grid-template-columns:repeat(4,1fr); /* 4 options in one row */
@@ -529,8 +532,8 @@ body::before{
     margin-top:3%;
     width:100%;
     display:flex;
-    justify-content:center;
-    gap:30px;
+    justify-content:space-around;
+    gap:0px;
     padding:20px 0;
     margin-bottom: 5%;
 }

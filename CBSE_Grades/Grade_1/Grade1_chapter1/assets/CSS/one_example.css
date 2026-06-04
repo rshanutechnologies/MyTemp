@@ -579,6 +579,7 @@ FINAL POPUP RESPONSIVE ONLY
     .main-container {
         width: 1100px;
         height: 700px;
+        gap: 30px;
     }
 
     .question-box {
@@ -619,6 +620,7 @@ FINAL POPUP RESPONSIVE ONLY
     .main-container {
         width: 1200px;
         height: 750px;
+        gap: 50px;
     }
 
     .question-box {

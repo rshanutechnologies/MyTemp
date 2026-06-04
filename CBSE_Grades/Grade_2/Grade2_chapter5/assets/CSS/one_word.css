@@ -550,6 +550,17 @@ width:300px;
 text-align:center;
 display: none;
 }
+
+
+
+.disabled-btn{
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  background: #cccccc !important;
+  color: #666666 !important;
+  box-shadow: none !important;
+}
 /* ================= MOBILE RESPONSIVE ================= */
 
 @media (max-width:768px){

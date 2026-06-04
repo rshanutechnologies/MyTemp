@@ -73,6 +73,14 @@ input.addEventListener("input", () => {
   }
 });
 
+input.addEventListener("dragover", (e) => {
+  e.preventDefault();
+});
+
+input.addEventListener("drop", (e) => {
+  e.preventDefault();
+});
+
 function speak(t) {
   speechSynthesis.cancel();
   const msg = new SpeechSynthesisUtterance(t);

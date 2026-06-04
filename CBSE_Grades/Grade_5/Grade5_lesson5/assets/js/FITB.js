@@ -79,6 +79,31 @@ function loadQuestion() {
     const input = document.createElement("input");
     input.type = "text";
     input.placeholder = "Type here...";
+
+    /* Block image/file drop */
+
+input.addEventListener("dragover", (e) => {
+  e.preventDefault();
+});
+
+input.addEventListener("drop", (e) => {
+  e.preventDefault();
+});
+
+input.addEventListener("paste", (e) => {
+
+  const items = e.clipboardData?.items || [];
+
+  for (let item of items) {
+
+    if (item.kind === "file") {
+      e.preventDefault();
+      return false;
+    }
+
+  }
+
+});
     input.value = userAnswers[index].boxes[i].value;
 
     const btn = document.createElement("button");
@@ -86,8 +111,18 @@ function loadQuestion() {
     btn.disabled = input.value.trim() === "";
 
     input.addEventListener("input", () => {
-      btn.disabled = input.value.trim() === "";
-    });
+
+  // Block numbers and special characters
+  input.value = input.value.replace(/[^a-zA-Z\s]/g, "");
+
+  // First letter capital, remaining small
+  input.value =
+    input.value.charAt(0).toUpperCase() +
+    input.value.slice(1).toLowerCase();
+
+  btn.disabled = input.value.trim() === "";
+
+});
     if (userAnswers[index].boxes[i].correct) {
       box.classList.add("correct");
       input.disabled = true;
@@ -116,7 +151,12 @@ function checkAnswer(input, btn, box, i) {
     btn.style.cursor = "not-allowed";
 
     state.used.push(value);
-    state.boxes[i] = { value, correct: true };
+    state.boxes[i] = {
+  value:
+    value.charAt(0).toUpperCase() +
+    value.slice(1).toLowerCase(),
+  correct: true
+};
 
     speak("Correct");
     smallConfetti();

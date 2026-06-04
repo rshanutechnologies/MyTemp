@@ -249,22 +249,24 @@ currentTiles.push(tile);
 
 
 /* ================= PLACE LETTER ================= */
-
 function placeLetter(tile,letter){
 
-const slots=document.querySelectorAll(".slot");
+  // Don't allow editing after correct answer
+  if(answered[current]) return;
 
-const empty=[...slots].find(s=>!s.textContent);
+  const slots=document.querySelectorAll(".slot");
 
-if(!empty)return;
+  const empty=[...slots].find(s=>!s.textContent);
 
-empty.textContent=letter;
+  if(!empty) return;
 
-tile.classList.add("used");
+  empty.textContent=letter;
 
-tile.onclick=null;
+  tile.classList.add("used");
 
-checkSlotsFilled();
+  tile.onclick=null;
+
+  checkSlotsFilled();
 
 }
 
@@ -345,29 +347,34 @@ submitBtn.disabled=true;
 
 function removeLastLetter(){
 
-const slots=document.querySelectorAll(".slot");
+  // Don't allow editing after correct answer
+  if(answered[current]) return;
 
-const filled=[...slots].filter(s=>s.textContent);
+  const slots=document.querySelectorAll(".slot");
 
-if(filled.length===0)return;
+  const filled=[...slots].filter(s=>s.textContent);
 
-const last=filled[filled.length-1];
+  if(filled.length===0) return;
 
-const letter=last.textContent;
+  const last=filled[filled.length-1];
 
-last.textContent="";
+  const letter=last.textContent;
 
-const tile=currentTiles.find(t=>t.textContent===letter && t.classList.contains("used"));
+  last.textContent="";
 
-if(tile){
+  const tile=currentTiles.find(
+    t => t.textContent===letter && t.classList.contains("used")
+  );
 
-tile.classList.remove("used");
+  if(tile){
 
-tile.onclick=()=>placeLetter(tile,letter);
+    tile.classList.remove("used");
 
-}
+    tile.onclick=()=>placeLetter(tile,letter);
 
-submitBtn.disabled=true;
+  }
+
+  submitBtn.disabled=true;
 
 }
 
@@ -376,11 +383,13 @@ submitBtn.disabled=true;
 
 document.addEventListener("keydown",(e)=>{
 
-if(e.key==="Backspace"||e.key==="Delete"){
+  if(answered[current]) return;
 
-removeLastLetter();
+  if(e.key==="Backspace" || e.key==="Delete"){
 
-}
+    removeLastLetter();
+
+  }
 
 });
 

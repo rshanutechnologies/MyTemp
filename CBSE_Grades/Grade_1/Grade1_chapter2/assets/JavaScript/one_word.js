@@ -1,12 +1,12 @@
 const quizData = [
   {
     q: "Q1. Plants with thin, soft and green stems",
-    a: "SMALL PLANT",
+    a: "SMALL PLANTS",
     img: "../assets/images/ow-11.png",
   },
   {
     q: "Q2. Plants that live for few years",
-    a: "SHRUB",
+    a: "PLANTS",
     img: "../assets/images/ow-12.png",
   },
   {
@@ -16,7 +16,7 @@ const quizData = [
   },
   {
     q: "Q4. Plants with thin and brown stems",
-    a: "SMALL PLANT",
+    a: "SMALL PLANTS",
     img: "../assets/images/ow-14.png",
   },
   {
@@ -154,6 +154,10 @@ function validateSlotCompletion() {
 }
 
 function removeLastFilledSlot() {
+  if (answeredQuestions[currentQuestionIndex]) {
+    return;
+  }
+
   const slots = document.querySelectorAll(".answer-slot");
 
   const filled = [...slots].filter((s) => s.textContent);
@@ -303,6 +307,10 @@ previousButton.onclick = () => {
 };
 
 document.addEventListener("keydown", (e) => {
+  if (answeredQuestions[currentQuestionIndex]) {
+    return;
+  }
+
   if (e.key === "Backspace" || e.key === "Delete") {
     removeLastFilledSlot();
   }

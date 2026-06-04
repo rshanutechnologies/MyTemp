@@ -20,9 +20,9 @@ const leftData = [
 ];
 
 const rightData = [
-  { match: "a", text: "Butterfly" },
-  { match: "b", text: "Octopus" },
-  { match: "c", text: "Lion" },
+  { match: "a", text: "A. Butterfly" },
+  { match: "b", text: "B. Octopus" },
+  { match: "c", text: "C. Lion" },
 ];
 
 let selectedLeft = null;

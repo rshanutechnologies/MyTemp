@@ -88,7 +88,25 @@ box.className="input-box";
 
 const input = document.createElement("input");
 input.placeholder="Type your answer...";
+// Prevent image/file drop
+input.addEventListener("dragover", (e) => {
+  e.preventDefault();
+});
 
+input.addEventListener("drop", (e) => {
+  e.preventDefault();
+});
+
+input.addEventListener("paste", (e) => {
+  const items = e.clipboardData.items;
+
+  for (let item of items) {
+    if (item.kind === "file") {
+      e.preventDefault();
+      return false;
+    }
+  }
+});
 const btn = document.createElement("button");
 btn.textContent="Submit";
 btn.className="submit";
@@ -108,7 +126,17 @@ box.classList.add("correct");
 /* enable button when typing */
 
 input.addEventListener("input",()=>{
-btn.disabled = input.value.trim()==="";
+
+  // Allow only letters and spaces
+  input.value = input.value.replace(/[^a-zA-Z\s]/g, "");
+
+  // First letter capital, remaining small
+  input.value =
+    input.value.charAt(0).toUpperCase() +
+    input.value.slice(1).toLowerCase();
+
+  btn.disabled = input.value.trim() === "";
+
 });
 
 /* check answer */
@@ -149,7 +177,9 @@ input.disabled=true;
 btn.style.display="none";
 
 state.used.push(guess);
-state.values[i]=guess;
+state.values[i] =
+  guess.charAt(0).toUpperCase() +
+  guess.slice(1).toLowerCase();
 state.correct++;
 
 showPopup(true);

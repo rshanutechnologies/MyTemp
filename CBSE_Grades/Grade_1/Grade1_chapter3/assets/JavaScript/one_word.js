@@ -156,6 +156,9 @@ function validateSlotCompletion() {
 }
 
 function removeLastFilledSlot() {
+  if (answeredQuestions[currentQuestionIndex]) {
+    return;
+  }
   const slots = document.querySelectorAll(".answer-slot");
 
   const filled = [...slots].filter((s) => s.textContent);
@@ -304,6 +307,10 @@ previousButton.onclick = () => {
 };
 
 document.addEventListener("keydown", (e) => {
+  if (answeredQuestions[currentQuestionIndex]) {
+    return;
+  }
+
   if (e.key === "Backspace" || e.key === "Delete") {
     removeLastFilledSlot();
   }

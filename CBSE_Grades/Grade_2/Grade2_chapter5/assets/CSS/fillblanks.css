@@ -124,7 +124,8 @@ body::before{
     width: 100%;
     border: none;
     outline: none;
-    font-size: 22px
+    font-size: 22px;
+    text-transform: capitalize;
 }
 
 .submit-container {

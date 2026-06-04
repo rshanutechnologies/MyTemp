@@ -529,7 +529,7 @@ body {
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
 
     .quiz {
-        max-width: 1200px;
+        max-width: 1400px;
     }
 
     .question-box {
@@ -537,18 +537,20 @@ body {
     }
 
     .content {
-        gap: 50px;
+        gap: 30px;
+        height: 430px;
+        flex-direction: column;
     }
 
     .image-card {
-        width: 260px;
-        height: 280px;
+        width: 200px;
+        height: 230px;
     }
 
     .option {
-        width: 300px;
+        width: 400px;
         font-size: 24px;
-        padding: 32px 22px;
+        padding: 28px 22px;
     }
 
     .option span {
@@ -581,18 +583,20 @@ body {
     }
 
     .content {
-        gap: 60px;
+        gap: 30px;
+        height: 430px;
+        flex-direction: column;
     }
 
     .image-card {
-        width: 300px;
-        height: 320px;
+        width: 200px;
+        height: 230px;
     }
 
     .option {
-        width: 320px;
-        font-size: 26px;
-        padding: 34px 24px;
+        width: 400px;
+        font-size: 24px;
+        padding: 28px 22px;
     }
 
     .option span {
@@ -625,18 +629,20 @@ body {
     }
 
     .content {
-        gap: 70px;
+        gap: 30px;
+        height: 430px;
+        flex-direction: column;
     }
 
     .image-card {
-        width: 340px;
-        height: 360px;
+        width: 200px;
+        height: 230px;
     }
 
     .option {
-        width: 340px;
-        font-size: 28px;
-        padding: 36px 26px;
+        width: 400px;
+        font-size: 26px;
+        padding: 28px 22px;
     }
 
     .option span {

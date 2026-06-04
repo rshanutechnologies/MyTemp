@@ -97,6 +97,28 @@ const next     = document.getElementById("nextBtn");
 const scoreBox = document.getElementById("scoreBox");
 
 const input    = document.getElementById("answerInput");
+/* ================= BLOCK IMAGE DROP & PASTE ================= */
+
+input.addEventListener("dragover", (e) => {
+  e.preventDefault();
+});
+
+input.addEventListener("drop", (e) => {
+  e.preventDefault();
+});
+
+input.addEventListener("paste", (e) => {
+
+  const items = e.clipboardData?.items || [];
+
+  for (let item of items) {
+    if (item.kind === "file") {
+      e.preventDefault();
+      return false;
+    }
+  }
+
+});
 const submitBtn= document.getElementById("submitBtn");
 
 
@@ -171,7 +193,9 @@ submitBtn.disabled = true;
 
  if(alreadyCorrect){
 
-  input.value = q.a.toUpperCase();
+  input.value =
+  q.a.charAt(0).toUpperCase() +
+  q.a.slice(1).toLowerCase();
   input.disabled = true;
 
   submitBtn.style.display = "none";   // hide submit button
@@ -184,11 +208,15 @@ submitBtn.disabled = true;
 
 input.addEventListener("input", () => {
 
-  if(input.value.trim().length > 0){
-    submitBtn.disabled = false;
-  }else{
-    submitBtn.disabled = true;
-  }
+  // Allow only letters and spaces
+  input.value = input.value.replace(/[^a-zA-Z\s]/g, "");
+
+  // First letter capital, remaining small
+  input.value =
+    input.value.charAt(0).toUpperCase() +
+    input.value.slice(1).toLowerCase();
+
+  submitBtn.disabled = input.value.trim().length === 0;
 
 });
 

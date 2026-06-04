@@ -155,9 +155,11 @@ typedLetters=[...savedAnswers[current]];
 if(locked[current]){
 nextBtn.disabled=false;
 submitBtn.disabled=true;
+submitBtn.classList.add("disabled-btn");
 }else{
 nextBtn.disabled=true;
 submitBtn.disabled=typedLetters.length!==correctWord.length;
+submitBtn.classList.remove("disabled-btn");
 }
 
 prevBtn.disabled=current===0;
@@ -239,7 +241,7 @@ locked[current]=true;
 
 nextBtn.disabled=false;
 submitBtn.disabled=true;
-
+submitBtn.classList.add("disabled-btn");
 if(current===quizData.length-1){
 
 setTimeout(showFinal,1200);

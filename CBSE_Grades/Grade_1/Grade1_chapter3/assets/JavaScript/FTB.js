@@ -79,6 +79,8 @@ function loadQuestion() {
     input.type = "text";
     input.placeholder = "Type here...";
     input.value = userAnswers[index].boxes[i].value;
+    input.addEventListener("drop", (e) => e.preventDefault());
+    input.addEventListener("dragover", (e) => e.preventDefault());
 
     const btn = document.createElement("button");
     btn.textContent = "✓";
@@ -107,7 +109,15 @@ function checkAnswer(input, btn, box, i) {
   const answers = questions[index].a;
   const state = userAnswers[index];
 
-  if (answers.includes(value) && !state.used.includes(value)) {
+  let isCorrect = false;
+
+  if (index === 3) {
+    isCorrect = value === "six" || value === "6";
+  } else {
+    isCorrect = answers.includes(value);
+  }
+
+  if (isCorrect && !state.used.includes(value)) {
     box.classList.add("correct");
 
     input.disabled = true;
