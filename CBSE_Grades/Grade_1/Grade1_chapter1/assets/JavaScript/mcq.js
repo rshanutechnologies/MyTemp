@@ -1,41 +1,43 @@
+//
+
 const quizData = [
   {
     q: "Q1. Living things need water to ________.",
     img: "../assets/images/mcq-1.png",
-    options: ["🥤 drink", "🚶 move", "🦋 fly", "🏃 run"],
+    options: ["🥤 Drink", "🚶 Move", "🦋 Fly", "🏃 Run"],
     a: 0,
   },
   {
     q: "Q2. Non-living things ________.",
     img: "../assets/images/mcq-2.png",
-    options: ["🫁 breathe", "🚫 don't breathe", "🍽 eat", "⚰️ die"],
+    options: ["🫁 Breathe", "🚫 Don't breathe", "🍽 Eat", "⚰️ Die"],
     a: 1,
   },
   {
     q: "Q3. A book is a ________ thing.",
     img: "../assets/images/mcq-3.png",
     options: [
-      "🏭 human-made",
-      "🌿 natural",
-      "🐶 living",
-      "🪨 natural non-living",
+      "🏭 Human-made",
+      "🌿 Natural",
+      "🐶 Living",
+      "🪨 Natural non-living",
     ],
     a: 0,
   },
   {
     q: "Q4. Living things ________.",
     img: "../assets/images/mcq-4.png",
-    options: ["❌ don't die", "🚫 don't grow", "⚰️ die", "❤️ can't feel"],
+    options: ["❌ Don't die", "🚫 Don't grow", "⚰️ Die", "❤️ Can't feel"],
     a: 2,
   },
   {
-    q: "Q5.  Pencils and erasers are ________ things.",
+    q: "Q5. Pencils and erasers are ________ things.",
     img: "../assets/images/mcq-5.png",
     options: [
-      "🪨 natural non-living",
-      "🏭 human-made",
-      "🐾 living",
-      "🔄 both living and non-living",
+      "🪨 Natural non-living",
+      "🏭 Human-made",
+      "🐾 Living",
+      "🔄 Both living and non-living",
     ],
     a: 1,
   },

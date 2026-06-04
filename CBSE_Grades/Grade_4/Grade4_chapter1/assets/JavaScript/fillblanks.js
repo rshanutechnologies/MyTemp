@@ -7,7 +7,7 @@ const quizData= [
     img: "../assets/images/FIB1.png",
   },
   {
-    q: "Q.2 The leaf stalk carries wa ter from the stem to the leaf through a vein called the _______________,",
+    q: "Q.2 The leaf stalk carries wa ter from the stem to the leaf through a vein called the __________",
     a: "midrib",
     img: "../assets/images/FIB2.png",
   },

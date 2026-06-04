@@ -21,8 +21,8 @@ body {
     position: relative;
      background-image:
         linear-gradient(
-            rgba(255,255,255,0.5),
-            rgba(255,255,255,0.5)
+            rgba(255,255,255,0.7),
+            rgba(255,255,255,0.7)
         );
 
     background-image:
@@ -99,13 +99,14 @@ body::after {
     border-radius: 60px;
     background: #fef9e6;   /* warm pastel base */
     font-weight: 600;
-    font-size: 14px;
+    font-size: 16px;
     color: #2c5a2e;
     cursor: pointer;
     transition: all 0.25s ease-in-out;
     box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     border: 1px solid rgba(130, 180, 110, 0.2);
     letter-spacing: -0.2px;
+    height:100px
 }
 
 .leaf i {
@@ -113,14 +114,19 @@ body::after {
     width: 32px;
     text-align: center;
     transition: transform 0.2s ease;
+     opacity: 0.6;
 }
 
 /* individual pastel variations (still soft & harmonious) */
 .leaf:nth-child(1) { background: #fde9df; color: #9b6a4c; border-left: 5px solid #f3bc9b; }
-.leaf:nth-child(2) { background: #e0f3e8; color: #2d6a4f; border-left: 5px solid #99d6b4; }
+.leaf:nth-child(2) { background: #fde9df; color: #9b6a4c; border-left: 5px solid #f3bc9b; }
+.leaf:nth-child(3) { background: #fde9df; color: #9b6a4c; border-left: 5px solid #f3bc9b; }
+.leaf:nth-child(4) { background: #fde9df; color: #9b6a4c; border-left: 5px solid #f3bc9b; }
+.leaf:nth-child(5) { background: #fde9df; color: #9b6a4c; border-left: 5px solid #f3bc9b; }
+/* .leaf:nth-child(2) { background: #e0f3e8; color: #2d6a4f; border-left: 5px solid #99d6b4; }
 .leaf:nth-child(3) { background: #ffe5e5; color: #b35f5f; border-left: 5px solid #f5b0b0; }
 .leaf:nth-child(4) { background: #e8f0fe; color: #4f6d9a; border-left: 5px solid #b7c9e2; }
-.leaf:nth-child(5) { background: #f3e5f8; color: #8b5f9e; border-left: 5px solid #dcb8f0; }
+.leaf:nth-child(5) { background: #f3e5f8; color: #8b5f9e; border-left: 5px solid #dcb8f0; } */
 
 /* active state: fresh pastel gradient and lifted */
 .leaf.active {
@@ -130,6 +136,7 @@ body::after {
     border-left-width: 6px;
     transform: translateX(6px) scale(1.02);
     border-color: #b5d3a0;
+    opacity: 1;
 }
 
 .leaf.active i {
@@ -143,6 +150,7 @@ body::after {
     background: rgba(255, 250, 225, 0.95);
     box-shadow: 0 12px 20px -12px rgba(60, 40, 20, 0.25);
     border-left-color: #b9e0a2;
+     opacity: 0.9;
 }
 
 /* MAIN IFRAME AREA */
@@ -155,6 +163,8 @@ body::after {
 iframe {
     width: 100%;
     height: 100%;
+     border: none;
+    outline: none;
     /* border-radius: 32px; */
     /* background: #ffffffde; */
     /* box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2); */
@@ -167,8 +177,9 @@ iframe {
 .menu-btn {
     display: none;
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: auto;
+    top: 20px;
+    right: 20px;
     background: #fae3cf;
     border: none;
     width: 56px;
@@ -197,6 +208,9 @@ iframe {
     background: rgba(140, 130, 110, 0.3);
     backdrop-filter: blur(5px);
     z-index: 4500;
+}
+.offcanvas.show{
+    display:block;
 }
 
 .offcanvas-panel {
@@ -242,24 +256,15 @@ iframe {
     border-left-color: #aac78d;
 }
 
-/* close gesture */
 @media (max-width: 900px) {
     .sidebar {
-        display: none;
+        display: none !important;
     }
+
     .menu-btn {
-        display: flex;
+        display: flex !important;
         align-items: center;
         justify-content: center;
-    }
-    .main {
-        padding: 16px;
-    }
-    iframe {
-        /* border-radius: 28px; */
-    }
-    body::before, body::after {
-        opacity: 0.05;
     }
 }
 
@@ -278,6 +283,7 @@ iframe {
 
 /* ========== DESKTOP fine-tuning ========== */
 @media (min-width: 901px) {
+    
     .menu-btn {
         display: none;
     }
@@ -310,7 +316,7 @@ iframe {
     .leaf {
         font-size: 22px;
         padding: 24px 28px;
-        height:100px;
+        height:120px;
     }
 
     .leaf i {
@@ -322,7 +328,7 @@ iframe {
 <body>
 
 <button class="menu-btn" id="menuToggleBtn" aria-label="Menu">
-    <i class="fas fa-seedling"></i>
+    <i class="fas fa-bars"></i>
 </button>
 
 <div class="app">

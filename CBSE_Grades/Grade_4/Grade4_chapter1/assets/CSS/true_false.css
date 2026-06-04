@@ -142,7 +142,7 @@
 
     .nav{
   position: absolute;
-  bottom: 3%;                 /* 🎯 vertical center */
+  bottom: 10%;                 /* 🎯 vertical center */
   left: 0;
   width: 100%;
   transform: translateY(-50%);

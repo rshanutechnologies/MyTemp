@@ -86,7 +86,7 @@ body {
     box-shadow: 0 10px 22px rgba(0, 0, 0, .12);
     transition: .25s;
     background: var(--bg);
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .option:hover {
