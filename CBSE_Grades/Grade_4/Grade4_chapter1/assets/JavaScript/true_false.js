@@ -4,13 +4,13 @@ let finalPopupShown = false;
 
 const quizData = [
   {
-    q: "Q1.    Plants move around in search of food",
+    q: "Q1. Plants move around in search of food",
     a: false,
     img: "../assets/images/TF1.png",
     answered: false
   },
   {
-    q: "Q2.     Stomata help in trapping the sunlight.",
+    q: "Q2.Stomata help in trapping the sunlight.",
     a: false,
     img: "../assets/images/TF2.png",
     answered: false
@@ -72,6 +72,13 @@ function showPopup(html, final = false){
     }
   }, 1000);
 }
+function launchConfetti() {
+  confetti({
+    particleCount: 120,
+    spread: 90,
+    origin: { y: 0.6 }
+  });
+}
 
 
 
@@ -95,6 +102,17 @@ function loadQuestion(){
   imgEl.style.display = "block";
 
   questionEl.textContent = q.q;
+ const card = document.querySelector(".quiz-card");
+
+card.classList.remove("question-3", "question-5");
+
+if(index === 2){ // Q3
+  card.classList.add("question-3");
+}
+
+if(index === 4){ // Q5
+  card.classList.add("question-5");
+}
   progressEl.textContent = `Question ${index+1}/${quizData.length}`;
 
   trueBtn.className = "true";
@@ -114,6 +132,30 @@ function loadQuestion(){
   prevBtn.disabled = index === 0;
   nextBtn.disabled = !q.answered;
 }
+function launchFinalConfetti() {
+  const duration = 3000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 8,
+      angle: 60,
+      spread: 70,
+      origin: { x: 0 }
+    });
+
+    confetti({
+      particleCount: 8,
+      angle: 120,
+      spread: 70,
+      origin: { x: 1 }
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+}
 
 
 
@@ -126,6 +168,7 @@ function answer(user){
   speak(correct ? "Correct" : "Wrong");
 
   if(correct){
+    launchConfetti();
     q.answered = true;
     score++;
 
@@ -153,6 +196,7 @@ function answer(user){
     // 🏆 FINAL QUESTION
     if(index === quizData.length - 1){
       setTimeout(() => {
+         launchFinalConfetti();
   finalPopupShown = true;
         // 🔒 lock navigation
         prevBtn.disabled = true;

@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "Livvic", sans-serif;
+    font-family: "Livvic";
 }
 
 body {
@@ -26,6 +26,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background-color: #77811a; */
 }
 
 /* QUESTION */
@@ -39,8 +40,8 @@ body {
 }
 
 .question-area h2 {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 30px;
+    font-weight: 400;
     color: #2f4f4f;
     text-align: center;
 }
@@ -58,6 +59,10 @@ body {
     height: 110px;
     object-fit: contain;
     border-radius: 18px;
+    -webkit-user-drag: none;
+  
+  user-select: none;
+  pointer-events: none;
 }
 
 /* INPUT AREA */
@@ -116,6 +121,7 @@ body {
     text-transform: capitalize;
     border: 2px solid #4CAF50 !important;
     background: #e8f5e9 !important;
+    font-size: 26px !important;
 }
 
 .input-wrong {
@@ -139,7 +145,7 @@ body {
 
 .nav-buttons button {
     width: 105px;
-    height: 42px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -248,6 +254,9 @@ body {
 
 /* 🔥 earlier 900 → now 850 */
 @media (min-width: 850px) {
+    /* .quiz-container{
+        background-color: #4d2f9e;
+    } */
 
     .main-container { max-width: 98%; padding: 0 32px; }
 
@@ -260,13 +269,16 @@ body {
     #answerInput { max-width: 480px; height: 60px; font-size: 20px; }
     #submitBtn   { font-size: 16px; padding: 10px 40px; }
 
-    .nav-buttons { margin-top: 20px; }
-    .nav-buttons button { width: 120px; height: 48px; font-size: 16px; }
+   
 }
 
 
 /* 🔥 earlier 1050 → now 950 */
 @media (min-width: 950px) {
+    /* .quiz-container{
+        background-color: #7e1a1a;
+    } */
+
 
     .main-container { padding: 0 38px; }
 
@@ -283,10 +295,14 @@ body {
 
 /* 🔥 earlier 1100 → now 1050 */
 @media (min-width: 1050px) {
+    /* .quiz-container{
+        background-color: #0f0f0f;
+    } */
+
 
     .main-container { padding: 0 44px; }
 
-    .question-area h2 { font-size: 36px; }
+    .question-area h2 { font-size: 30px !important; }
 
     .image-area img { width: 250px; height: 220px; }
 
@@ -298,18 +314,79 @@ body {
 }
 
 
-/* 🔥 earlier 1320 → now 1200 */
-@media (min-width: 1200px) {
+@media (min-width: 1200px) and (max-width: 1440px) {
 
-    .main-container { padding: 0 52px; }
+    .main-container {
+        padding: 0 30px;
+    }
 
-    .question-area h2 { font-size: 40px; }
+    .question-area h2 {
+        font-size: 30px !important;
+        line-height: 1.3;
+    }
 
-    .image-area img { width: 320px; height: 250px; }
+    .image-area img {
+        width: 340px;
+        height: 270px;
+    }
 
-    #answerInput { max-width: 680px; height: 75px; font-size: 26px; }
-    #submitBtn   { font-size: 20px; padding: 16px 70px; }
+    #answerInput {
+        max-width: 620px;
+        height: 65px;
+        font-size: 28px;
+    }
 
-    .nav-buttons { margin-top: 30px; }
-    .nav-buttons button { width: 155px; height: 60px; font-size: 20px; }
+    #submitBtn {
+        font-size: 22px;
+        padding: 18px 80px;
+    }
+
+    .nav-buttons {
+        margin-top: 35px;
+    }
+
+    .nav-buttons button {
+        width: 170px;
+        height: 65px;
+        font-size: 22px;
+    }
+}
+@media (min-width: 1600px) {
+
+    .main-container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 0 80px;
+    }
+
+    .question-area h2 {
+        font-size: 40px !important;
+        line-height: 1.3;
+    }
+
+    .image-area img {
+        width: 450px;
+        height: 340px;
+    }
+
+    #answerInput {
+        max-width: 900px;
+        height: 95px;
+        font-size: 34px;
+    }
+
+    #submitBtn {
+        font-size: 26px;
+        padding: 20px 90px;
+    }
+
+    .nav-buttons {
+        margin-top: 40px;
+    }
+
+    .nav-buttons button {
+        width: 200px;
+        height: 75px;
+        font-size: 24px;
+    }
 }

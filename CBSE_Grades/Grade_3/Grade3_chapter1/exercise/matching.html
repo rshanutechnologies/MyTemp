@@ -236,6 +236,9 @@ svg{
   font-size:clamp(16px,1.5vw,20px);
 }
 
+.popup-content h2{
+  font-size:clamp(18px,3vw,28px);
+}
 .play-again-btn{
   margin-top:20px;
   padding:10px 25px;
@@ -635,7 +638,7 @@ function showResult(){
   if(score === leftData.length){
     popupTitle.style.color = "#2e7d32";
     popupMessage.style.color = "#2e7d32";
-    popupMessage.textContent = `Score: ${score}/${leftData.length} - Excellent 🌟`;
+    popupMessage.textContent = `Score: ${score}/${leftData.length}`;
   }
   else if(score > 3){
     popupTitle.style.color = "#1565c0";

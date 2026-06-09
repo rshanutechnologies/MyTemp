@@ -64,7 +64,7 @@ align-items:center;
 
 padding:10px 10px;
 
-border-radius:16px;
+border-radius:86px;
 
 font-size:24px;
 font-weight:400;
@@ -75,7 +75,7 @@ cursor:pointer;
 
 line-height:2;
 
-min-height:40px !important;
+height:70px !important;
 
 gap:12px;
 }
@@ -96,6 +96,7 @@ flex:1;
 display:flex;
 flex-direction:column;
 gap:12px;
+min-height:40px;
 }
 
 .left .box{
@@ -143,13 +144,14 @@ background:#999;
 /* SELECT */
 
 .selected{
-outline:4px solid #ffffff;
+/* outline:4px solid #ffffff; */
+background-color: #edffed;
 }
 
 /* MATCHED */
 
 .matched{
-background:#0dd80da7;
+background:#bbffbba7;
 cursor:default;
 }
 
@@ -230,11 +232,11 @@ box-shadow:0 4px 8px rgba(0,0,0,0.3);
 
 /* RIGHT COLORS */
 
-.c1{background:#6da8d8ae;}
-.c2{background:#86c651ab;}
-.c3{background:#f3c74dad;}
-.c4{background:#f39a2db7;}
-.c5{background:#d57ad3b7;}
+.c1{background:#c0e3ffae;}
+.c2{background:#dfffc4ab;}
+.c3{background:#fff1ccad;}
+.c4{background:#ffe0bab7;}
+.c5{background:#ffdcfeb7;}
 
 .left img{
 
@@ -645,8 +647,12 @@ padding:12px;
 }
 
 .left img{
-width:65px;
-height:65px;
+width:60px;
+height:60px;
+}
+
+.right{
+    height: 55px;
 }
 
 .match-number{
@@ -673,16 +679,17 @@ gap:280px;
 .box{
 font-size:35px;
 min-height: 110px !important;
+
 padding:14px;
 }
 
 .left img{
-width:65px;
-height:65px;
+width:60px;
+height:60px;
 }
 
 .right{
-min-height: 80px !important;
+height: 80px !important;
 padding:0px;
 }
 

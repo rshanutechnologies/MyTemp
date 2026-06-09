@@ -2,31 +2,31 @@
 const quiz=[
 
 {
-q:"1. A potato plant reproduces through its stem.",
+q:"Q1. A potato plant reproduces through its stem.",
 a:true,
 img:"../assets/images/TFQQQ1.png"
 },
 
 {
-q:"2. Roots are the main parts of the plant that carry out sexual reproduction.",
+q:"Q2. Roots are the main parts of the plant that carry out sexual reproduction.",
 a:false,
 img:"../assets/images/TFQQ2.png"
 },
 
 {
-q:"3. The swollen bottom part of the carpel is stigma.",
+q:"Q3. The swollen bottom part of the carpel is stigma.",
 a:true,
 img:"../assets/images/stigmaak1.png"
 },
 
 {
-q:"4. The pistil forms the second whorl of a flower.",
+q:"Q4. The pistil forms the second whorl of a flower.",
 a:false,
 img:"../assets/images/pistilak1.png"
 },
 
 {
-q:"5. All flowers have both the male and the female parts.",
+q:"Q5. All flowers have both the male and the female parts.",
 a:false,
 img:"../assets/images/bisexualf.png"
 }

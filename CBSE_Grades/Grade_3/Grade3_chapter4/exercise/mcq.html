@@ -369,7 +369,15 @@ font-weight:600;
 
 }
 
+.popup-emoji{
 
+font-size:60px;
+
+margin-bottom:8px;
+
+display:block;
+
+}
 </style>
 </head>
 
@@ -547,10 +555,14 @@ if(oldStars) oldStars.remove()
 // ⭐ show stars for correct answer
 if(type==="correct"){
 
+popup.innerHTML=`
+<div style="font-size:50px;">🎉</div>
+<div>Correct! Great Job!</div>
+`
+
 const stars=document.createElement("div")
 stars.className="popup-stars"
 
-// stars increase question by question
 stars.innerText="⭐".repeat(score)
 
 popup.appendChild(stars)
@@ -558,9 +570,15 @@ popup.appendChild(stars)
 popup.style.color="#2e7d32"
 
 }
-
 if(type==="wrong"){
+
+popup.innerHTML=`
+<div style="font-size:50px;">😭</div>
+<div>Oops! Try Again</div>
+`
+
 popup.style.color="#c62828"
+
 }
 
 popup.classList.add("show")

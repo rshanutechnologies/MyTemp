@@ -23,7 +23,7 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(to bottom,#cfefff,#fff6cc);
+
 padding:clamp(10px,2vw,30px);
 }
 
@@ -63,8 +63,8 @@ gap:clamp(20px,5vw,60px);
 
 /* IMAGE BOX */
 .image-box{
-width:clamp(240px,30vw,380px);
-height:clamp(180px,25vh,260px);
+width:clamp(250px,32vw,380px);
+height:clamp(190px,28vh,260px);
 margin:auto;
 
 display:flex;
@@ -168,7 +168,20 @@ box-shadow:0 5px 10px rgba(0,0,0,0.2);
 
 .prev{background:#55c3d6;}
 .next{background:#ff9c55;}
+.nav-buttons button:disabled{
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+    filter: grayscale(40%);
+}
 
+.prev:disabled{
+    background:#9eb6be;
+}
+
+.next:disabled{
+    background:#d8b39a;
+}
 /* POPUP */
 .popup{
 position:fixed;
@@ -486,7 +499,7 @@ correct:true
 
 {
 q:"Frogs chew their prey.",
-img:"../images/frog-img.png",
+img:"../images/frog.png",
 correct:false
 },
 
@@ -534,7 +547,14 @@ answered = false;
 }else{
 answered = false;
 }
+/* NAV BUTTONS */
 
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+
+prevBtn.disabled = (current === 0);
+
+nextBtn.disabled = !answered;
 }
 
 /* VOICE */
@@ -567,14 +587,14 @@ highlightAnswer(ans);
 
 showPopup("✅ Correct!", current+1);
 
+/* ENABLE NEXT BUTTON */
+document.querySelector(".next").disabled = false;
 
 confetti({
 particleCount:60,
 spread:80,
 origin:{y:0.6}
 });
-
-/* CHECK IF LAST QUESTION */
 
 if(current === questions.length - 1){
 
@@ -599,11 +619,15 @@ highlightAnswer(ans);
 
 showPopup("❌ Wrong!",0);
 
+/* KEEP NEXT DISABLED */
+document.querySelector(".next").disabled = true;
+
 setTimeout(()=>{
 document.getElementById("popup").style.display = "none";
 },1200);
 
 }
+
 
 }
 

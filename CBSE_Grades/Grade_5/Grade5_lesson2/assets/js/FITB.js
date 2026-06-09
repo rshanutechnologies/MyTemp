@@ -1,35 +1,35 @@
 const quiz=[
 
 {
-q:"1. Air provides ______ required for the baby plant to obtain energy.",
+q:"Q1. Air provides ______ required for the baby plant to obtain energy.",
 answer:"OXYGEN",
 letters:["O","X","Y","G","E","N","A","S","M","T"],
 img:"../assets/images/F1.png"
 },
 
 {
-q:"2. Seeds containing only one seed leaf or cotyledon are called ______.",
+q:"Q2. Seeds containing only one seed leaf or cotyledon are called ______.",
 answer:"MONOCOT",
 letters:["M","O","N","O","C","O","T","A","B"],
 img:"../assets/images/F2.png"
 },
 
 {
-q:"3. The ______ is an outer covering of the seed.",
+q:"Q3. The ______ is an outer covering of the seed.",
 answer:"SEEDCOAT",
 letters:["S","E","E","D","C","O","A","T","L"],
 img:"../assets/images/F3.png"
 },
 
 {
-q:"4. The seeds of Balsam are dispersed by ______.",
+q:"Q4. The seeds of Balsam are dispersed by ______.",
 answer:"EXPLOSION",
 letters:["E","X","P","L","O","S","I","O","N","A"],
 img:"../assets/images/F4.png"
 },
 
 {
-q:"5. The seeds of Xanthium are dispersed by ______.",
+q:"Q5. The seeds of Xanthium are dispersed by ______.",
 answer:"ANIMALS",
 letters:["A","N","I","M","A","L","S","O","T"],
 img:"../assets/images/F5.png"
@@ -118,9 +118,19 @@ if(savedAnswers[index].includes(l)){
 tile.classList.add("used");
 }
 
-tile.onclick=function(){
-addLetter(tile);
-};
+if(answered[index]){
+
+  tile.classList.add("used");
+  tile.style.pointerEvents="none";
+  tile.style.opacity="0.5";
+
+}else{
+
+  tile.onclick=function(){
+    addLetter(tile);
+  };
+
+}
 
 letters.appendChild(tile);
 
@@ -134,6 +144,7 @@ next.disabled=!answered[index];
 /* ADD LETTER */
 function addLetter(tile){
 
+if(answered[index]) return;
 let boxes=document.querySelectorAll(".blank");
 
 for(let i=0;i<boxes.length;i++){
@@ -164,7 +175,7 @@ checkWord();
 /* BACKSPACE REMOVE */
 
 document.addEventListener("keydown",function(e){
-
+if(answered[index]) return;
 if(e.key==="Backspace"){
 
 let boxes=document.querySelectorAll(".blank");

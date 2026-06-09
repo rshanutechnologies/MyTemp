@@ -2,7 +2,7 @@
 
 const quizData = [
 {
-  q: "Q.1 The process by which a plant makes its own food in the presence of sunlight is called ___.",
+  q: "Q1. The process by which a plant makes its own food in the presence of sunlight is called ___.",
   qImg: "../assets/images/MCQ-1.png",
   options: [
     { text: "ventation", img: "../assets/images/venation.png" },
@@ -13,7 +13,7 @@ const quizData = [
   correctIndex: 1
 },
 {
-  q: "Q.2 Which of the following is the main source of energy?",
+  q: "Q2. Which of the following is the main source of energy?",
   qImg: "../assets/images/MCQ-2.png",
   options: [
     { text: "Plants", img: "../assets/images/plants.png" },
@@ -24,7 +24,7 @@ const quizData = [
   correctIndex: 2
 },
 {
-  q: "Q.3 Which of the following is the flat part of a leaf?",
+  q: "Q3. Which of the following is the flat part of a leaf?",
   qImg: "../assets/images/MCQ-3.png",
   options: [
     { text: "Lamina", img: "../assets/images/mcq3-1.png" },
@@ -35,7 +35,7 @@ const quizData = [
   correctIndex: 0
 },
 {
-  q: "Q.4 In _____________ venation, the veins run parallel to one another.",
+  q: "Q4. In ____ venation, the veins run parallel to one another.",
   qImg: "../assets/images/MCQ-4.png",
   options: [
     { text: "Vertical", img: "../assets/images/plants.png" },
@@ -46,7 +46,7 @@ const quizData = [
   correctIndex: 2
 },
 {
-  q: "Q.5 Which of the following has stored food in its stem?",
+  q: "Q5. Which of the following has stored food in its stem?",
   qImg: "../assets/images/MCQ-5.png",
   options: [
     { text: "cauliflower", img: "../assets/images/cauliflower.png" },
@@ -57,6 +57,13 @@ const quizData = [
   correctIndex: 1
 }
 ];
+function launchConfetti() {
+  confetti({
+    particleCount: 120,
+    spread: 90,
+    origin: { y: 0.6 }
+  });
+}
     let current = 0;
 let score = 0;
 let answered = Array(quizData.length).fill(false);
@@ -140,6 +147,13 @@ function loadQuestion(){
   const q = quizData[current];
   
   questionText.textContent = q.q;
+  const questionBox = document.querySelector(".question-text");
+
+if (current === 0) { // Q2 and Q3
+  questionBox.classList.add("center-question");
+} else {
+  questionBox.classList.remove("center-question");
+}
   qEmoji.textContent = q.emoji;
   optionsBox.innerHTML = "";
   const qImgEl = document.getElementById("questionImage");
@@ -159,20 +173,22 @@ if(q.qImg){
     optionsBox.appendChild(div);
   });
   /* 🔁 RESTORE STATE WHEN GOING BACK */
-if(answered[current]){
+/* 🔁 RESTORE STATE WHEN GOING BACK */
+if (answered[current]) {
   const correctIndex = quizData[current].correctIndex;
 
-  document.querySelectorAll(".option").forEach((o, i)=>{
-    o.classList.add("disabled");
-    if(i === correctIndex){
+  document.querySelectorAll(".option").forEach((o, i) => {
+    if (i === correctIndex) {
       o.classList.remove("disabled");
       o.classList.add("correct-lock");
+    } else {
+      o.classList.add("disabled");
+      o.classList.remove("correct-lock");
     }
   });
 
   nextBtn.disabled = false;
 }
-
 
   prevBtn.disabled = current === 0;
   nextBtn.disabled = !answered[current];
@@ -185,12 +201,15 @@ function checkAnswer(optionDiv, selected){
   const correctIndex = quizData[current].correctIndex;
 
   if(selected === correctIndex){
+    launchConfetti();
     answered[current] = true;
     score++;
     speak("Correct");
 
     document.querySelectorAll(".option").forEach(o=>o.classList.add("disabled"));
+    // optionDiv.classList.add("correct-lock");
     optionDiv.classList.add("correct-lock");
+optionDiv.querySelector(".opt-label").classList.add("correct-label");
 
     showPopup(`
       <div class="popup-correct">
@@ -201,6 +220,28 @@ function checkAnswer(optionDiv, selected){
     `);
 
     if(current === quizData.length - 1){
+      const duration = 3000;
+const end = Date.now() + duration;
+
+(function frame() {
+  confetti({
+    particleCount: 6,
+    angle: 60,
+    spread: 55,
+    origin: { x: 0 }
+  });
+
+  confetti({
+    particleCount: 6,
+    angle: 120,
+    spread: 55,
+    origin: { x: 1 }
+  });
+
+  if (Date.now() < end) {
+    requestAnimationFrame(frame);
+  }
+})();
       setTimeout(()=>{
        showPopup(`
   <div class="popup-final-content">

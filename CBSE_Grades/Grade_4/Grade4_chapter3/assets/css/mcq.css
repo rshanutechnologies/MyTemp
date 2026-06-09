@@ -45,7 +45,7 @@ body {
 #question {
     margin-top: 5px;
     margin-bottom: 5px; /* reduced space */
-    font-size: clamp(20px, 3vw, 30px);
+    font-size: 30px;
     font-weight: 400;
     color: #2f4f4f;
     line-height: 1.3;
@@ -53,7 +53,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: left;
 }
 
 /* IMAGE */
@@ -107,7 +107,7 @@ body {
    width: clamp(140px, 20vw, 200px);   /* increased */
   height: clamp(45px, 7vh, 60px);     /* increased */
 
-  padding: clamp(10px, 1.5vw, 14px) clamp(14px, 2.5vw, 20px); /* more padding */
+  padding: clamp(10px, 1.5vw, 12px) clamp(14px, 2.5vw, 10px); /* more padding */
     
     display: flex;
     justify-content: center;
@@ -116,7 +116,7 @@ body {
 
 
     border-radius: 40px;
-     font-size: clamp(17px, 2.2vw, 22px); /* slightly bigger */
+     font-size: clamp(14px, 2vw, 17px); /* slightly bigger */
 
     font-weight: 500;
 
@@ -125,7 +125,7 @@ body {
 
     box-shadow: 0 6px 0 rgba(0, 0, 0, .12);
     transition: .25s;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 /* STATES */
@@ -345,12 +345,13 @@ canvas {
     }
 }
 
-@media (min-width: 1024px) and (max-width: 1919px) {
+/* @media (min-width: 1024px) and (max-width: 1919px) {
 
   .quiz {
     width: min(1300px, 95vw);
     padding: 20px;
     margin-top: -20px;
+    background-color: #665A48;
   }
 
   .quiz-layout {
@@ -401,18 +402,18 @@ canvas {
     height: 50px;
     font-size: 18px;
   }
-}
-@media (min-width: 1920px) {
+} */
+@media (min-width: 1600px) and (max-width: 1900px) {
 
   .quiz {
-    width: 1700px;
+    width: 1450px;
     max-width: 95vw;
-    padding: 40px;
+    padding: 35px;
    
   }
 
   .quiz-layout {
-    gap: 40px;
+    gap: 35px;
   }
 
   #question {
@@ -421,30 +422,30 @@ canvas {
   }
 
   .question-image img {
-    width: 450px;
-    height: 320px;
+    width: 400px;
+    height: 280px;
   }
 
   .option-img {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
 
   .option-text {
-    width: 260px;
-    height: 75px;
-    font-size: 26px;
-    padding: 18px 24px;
+    width: 230px;
+    height: 68px;
+    font-size: 22px;
+    padding: 16px 20px;
   }
 
   .controls {
-    margin-top: 40px; /* pushes buttons slightly down */
+    margin-top: 35px;
   }
 
   .controls button {
-    width: 170px;
-    height: 70px;
-    font-size: 24px;
-    gap: 12px;
+    width: 150px;
+    height: 62px;
+    font-size: 22px;
+    gap: 10px;
   }
 }

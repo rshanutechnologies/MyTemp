@@ -1,31 +1,31 @@
 const quiz=[
 
 {
-q:"1. The process of shedding the skin several times before an animal grows into an adult is called hatching.",
+q:"Q1. The process of shedding the skin several times before an animal grows into an adult is called hatching.",
 a:false,
 img:"../assets/images/moulting.png"
 },
 
 {
-q:"2. A floating clump of frog eggs is called a spawn.",
+q:"Q2. A floating clump of frog eggs is called a spawn.",
 a:true,
 img:"../assets/images/spawn.png"
 },
 
 {
-q:"3. The larva of a butterfly is called pupa.",
+q:"Q3. The larva of a butterfly is called pupa.",
 a:false,
 img:"../assets/images/butterfly_larva.png"
 },
 
 {
-q:"4. Mammals protect their young ones until they are old enough to take care of themselves.",
+q:"Q4. Mammals protect their young ones until they are old enough to take care of themselves.",
 a:true,
 img:"../assets/images/mammals_care.png"
 },
 
 {
-q:"5. The female frog lays eggs on land.",
+q:"Q5. The female frog lays eggs on land.",
 a:false,
 img:"../assets/images/frog_eggs.png"
 }

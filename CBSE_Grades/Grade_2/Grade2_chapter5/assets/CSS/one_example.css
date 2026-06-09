@@ -193,9 +193,9 @@ body::before{
 /* OPTION 1 (Breeze style) */
 /* OPTION 1 — Breeze (bright teal) */
 .option:nth-child(1) .label{
-  background:#cffffc;
-  border:3px solid #e7fffe;
-  color:#008f88;
+  background:#ffe1b5;
+  border:3px solid #ffdab8;
+  color:#c76b00;
   /* box-shadow:0 0 12px rgba(0,207,197,0.45); */
 }
 
@@ -647,7 +647,7 @@ font-size:50px;
   /* ✅ OPTIONS GRID */
   .options{
     gap: 40px !important;
-    margin-top: 40px;
+    margin-top: -40px;
   }
 
   /* ✅ OPTION CARD */
@@ -663,7 +663,7 @@ font-size:50px;
   .option-img{
     width: 250px;
     height: 250px;
-    bottom: 90px;
+    /* bottom: 90px; */
   }
 
   /* ✅ PLATFORM */

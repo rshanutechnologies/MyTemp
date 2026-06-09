@@ -1,7 +1,7 @@
 const quiz=[
 
 {
-q:"1. ________ is the feeding stage in the life cycle of a butterfly.",
+q:"Q1. ________ is the feeding stage in the life cycle of a butterfly.",
 options:[
 {text:"Egg",img:"../assets/images/Eggak.png"},
 {text:"Caterpillar",img:"../assets/images/Caterpillar.png"},
@@ -13,7 +13,7 @@ img:"../assets/images/MCQ_1.png"
 },
 
 {
-q:"2. The sequential development of an animal from the embryo to the adult stage is called its ________.",
+q:"Q2. The sequential development of an animal from the embryo to the adult stage is called its ________.",
 options:[
 {text:"Life span",img:"../assets/images/lifespan1.png"},
 {text:"Life cycle",img:"../assets/images/lifecycle.png"},
@@ -25,7 +25,7 @@ img:"../assets/images/MCQ_2.png"
 },
 
 {
-q:"3. ________ is a terrestrial mammal.",
+q:"Q3. ________ is a terrestrial mammal.",
 options:[
 {text:"Monkey",img:"../assets/images/monkey.png"},
 {text:"Bat",img:"../assets/images/bat.png"},
@@ -37,7 +37,7 @@ img:"../assets/images/MCQ_3.png"
 },
 
 {
-q:"4. Find the odd one from the following.",
+q:"Q4. Find the odd one from the following.",
 options:[
 {text:"Kangaroo",img:"../assets/images/kangaroo.png"},
 {text:"Rabbit",img:"../assets/images/Rabbitt.png"},
@@ -49,7 +49,7 @@ img:"../assets/images/MCQ_4.png"
 },
 
 {
-q:"5. A living organism that does not incubate its eggs is a ________.",
+q:"Q5. A living organism that does not incubate its eggs is a ________.",
 options:[
 {text:"Sparrow",img:"../assets/images/sparrow.png"},
 {text:"Eagle",img:"../assets/images/Eagle.png"},

@@ -100,7 +100,14 @@ function loadQuestion() {
     d.className = "option o" + ((i % 4) + 1);
 
     const img = t.split("|")[0];
-    const text = t.split("|")[1];
+   const text = t.split("|")[1]
+  .split(" ")
+  .map((word, index) =>
+    index > 0
+      ? word.charAt(0).toLowerCase() + word.slice(1)
+      : word
+  )
+  .join(" ");
 
     d.innerHTML = `<div class="option-img"><img src="${img}"></div>${text}`;
 

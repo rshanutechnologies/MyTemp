@@ -26,12 +26,18 @@
     body {
       display: flex;
       flex-direction: column;
-      /* background: url('./assets/images/bg2.png'); */
-      background:url("./assets/images/background.png") center/cover no-repeat;
-      /* background-color: #FFF1EB !important; */
-      background-size: 100% 100%;
-      
+      background: url("./assets/images/background.png") center / cover no-repeat;
     }
+    .menu-overlay{
+    position:fixed;
+    inset:0;
+    background:url("./assets/images/background.png") center/cover no-repeat;
+    z-index:998;
+    display:none;
+}
+.menu-overlay.active{
+    display:block;
+}
 
     /* ===== NAVIGATION AREA ===== */
     .top-index {
@@ -41,9 +47,8 @@
       align-items: center;
       gap: 100px;
       padding: 15px 0px;
-      /* background: rgba(255, 255, 255, 0.575); */
-      /* background: rgba(235, 255, 247, 0.692); */
-      background: transparent !important;
+     
+      /* background: url("./assets/images/background.png") center / cover no-repeat; */
     }
 
     /* ===== BUTTON BASE ===== */
@@ -65,7 +70,6 @@
     .body-svg {
       width: 100px;
       height: 85px;
-      fill: #fbcfe8;
       transition: .35s ease;
     }
 
@@ -90,27 +94,6 @@
     .index-btn:hover .body-svg {
       transform: scale(1.30);
     }
-
-
-    /* ===== TEXT STYLE ONLY ===== */
-    /* .nav-text{
-  width: 100%;      
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:12px;
-  border:2px solid #ff9ac6;
-  font-size:18px;
-  font-weight:400;
-  color:#2f3a4a;
-  transition:all .3s ease;
-  height: 100px;
-  text-align: center;
-  width: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-} */
 
     .nav-text {
       width: 200px;
@@ -148,17 +131,8 @@
       background: #c4b5fd;
     }
 
-    /* Hover text */
-    /* .index-btn:hover .nav-text{
-  transform:translateY(-2px);
-} */
-
     .index-btn:hover {
       transform: translateY(-2px);
-      /* box-shadow:
-        inset 0 3px 6px rgb(223, 221, 221),
-        inset 0 -6px 8px rgba(0, 0, 0, .12),
-        0 16px 16px rgba(0, 0, 0, .15); */
     }
 
     /* Active text style */
@@ -170,16 +144,15 @@
     /* Active SVG zoom effect */
     .index-btn.active .body-svg {
       transform: scale(1.4);
-
       transition: transform .3s ease;
     }
-
 
     /* ===== CONTENT ===== */
     .content {
       flex: 1;
       width: 100%;
-      /* margin-top: -5%; */
+      position: relative;  /* needed for z-index to work */
+  z-index: 0;  
     }
 
     iframe {
@@ -187,8 +160,6 @@
       height: 100%;
       border: none;
       display: block;
-      /* background:white; */
-      /* background: rgba(235, 255, 247, 0.692) !important; */
     }
 
     .left-structure {
@@ -222,28 +193,22 @@
 
     @media (max-width:900px) {
 
-
-      body{
-           background: url('./assets/images/background.png');
-      background-size: 100% 100%;
+      body {
+        background: url("./assets/images/background.png") center / cover no-repeat;
       }
-      /* Keep desktop-style navigation */
+
       .top-index {
         gap: 32px;
-        /* reduce huge gap */
         padding: 12px 10px;
         flex-wrap: nowrap;
-         background: radial-gradient(circle at top, #fff5fb, #ffe6f5) !important;
+        background: url("./assets/images/background.png") center / cover no-repeat;
       }
 
-      /* Make all buttons equal width */
       .index-btn {
         width: 170px;
-        /* uniform width */
         height: 60px;
       }
 
-      /* Make text pill consistent */
       .nav-text {
         width: 170px;
         height: 70px;
@@ -251,25 +216,22 @@
         padding: 8px 10px;
       }
 
-      /* Reduce hover jump */
       .index-btn:hover .nav-text {
         transform: translateY(-1px);
       }
 
-      /* Slightly reduce SVG size if used later */
       .body-svg {
         width: 80px;
         height: 70px;
       }
 
-      /* Content stays full */
       .content {
         width: 100%;
         height: 100%;
+        position: relative;  /* needed for z-index to work */
+  z-index: 0;  
       }
-        .top-index {
-        background: radial-gradient(circle at top, #fff5fb, #ffe6f5) !important;
-        }
+
     }
 
     @media (max-width:1100px) {
@@ -277,13 +239,10 @@
       html,
       body {
         overflow: hidden !important;
-        
       }
 
       body {
-        /* background: linear-gradient(135deg, #fff5fb, #ffe6f5) !important; */
-           background:url("./assets/images/background.png") center/cover no-repeat;
-      background-size: 100% 100%;
+        background: url("./assets/images/background.png") center / cover no-repeat;
       }
 
       /* SHOW TOGGLE BUTTON */
@@ -310,7 +269,7 @@
         right: -100%;
         width: 75%;
         height: 100vh;
-        background: radial-gradient(circle at top, #fff5fb, #ffe6f5) !important;
+        /* background: url("./assets/images/background.png") center / cover no-repeat; */
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -326,13 +285,6 @@
         right: 0;
       }
 
-      /* Hide image + title in panel */
-      /* .structure-title,
-  .left-structure{
-    display:none;
-  } */
-
-      /* Adjust buttons */
       .index-btn {
         width: 100%;
         max-width: 200px;
@@ -355,12 +307,10 @@
         height: 60px;
       }
 
-      /* Content full screen */
       .content {
         height: 100vh;
       }
 
-      /* TITLE STYLE */
       .structure-title {
         font-size: 26px;
         font-weight: 700;
@@ -369,7 +319,6 @@
         text-align: center;
       }
 
-      /* IMAGE STYLE */
       .left-structure {
         margin: 0;
         align-items: center;
@@ -383,67 +332,59 @@
     }
 
     /* ===================================== */
-/* ===== 1280px PURE SIZE UPGRADE ===== */
-/* ===================================== */
+    /* ===== 1280px PURE SIZE UPGRADE ===== */
+    /* ===================================== */
 
-@media (min-width: 1280px) {
+    @media (min-width: 1280px) {
 
-  /* TOP NAV BAR */
-  .top-index {
-    gap: 140px;
-    padding: 20px 0;
-  }
+      .top-index {
+        gap: 140px;
+        padding: 20px 0;
+       
+        /* background: url("./assets/images/background.png") center / cover no-repeat; */
+      }
 
-  /* BUTTON WRAPPER */
-  .index-btn {
-    width: 180px;
-    height: 80px;
-    gap: 25px;
-  }
+      .index-btn {
+        width: 180px;
+        height: 80px;
+        gap: 25px;
+      }
 
-  /* SVG */
-  .body-svg {
-    width: 120px;
-    height: 100px;
-  }
+      .body-svg {
+        width: 120px;
+        height: 100px;
+      }
 
-  /* TEXT BUTTON */
-  .nav-text {
-    width:300px;
-    height: 180px !important;
-    font-size: 30px;
-    border-radius: 24px;
-  }
+      .nav-text {
+        width: 300px;
+        height: 180px !important;
+        font-size: 30px;
+        border-radius: 24px;
+      }
 
-  /* HOVER SCALE (KEEP SAME STYLE JUST SMOOTH) */
-  .index-btn:hover .body-svg {
-    transform: scale(1.35);
-  }
+      .index-btn:hover .body-svg {
+        transform: scale(1.35);
+      }
 
-  /* ACTIVE */
-  .index-btn.active .body-svg {
-    transform: scale(1.45);
-  }
+      .index-btn.active .body-svg {
+        transform: scale(1.45);
+      }
 
- 
+      .structure-title {
+        font-size: 40px;
+      }
 
- 
+      .structure-img {
+        width: 160px;
+      }
 
-  /* STRUCTURE TITLE (if used later) */
-  .structure-title {
-    font-size: 40px;
-  }
-
-  .structure-img {
-    width: 160px;
-  }
-
-}
+    }
   </style>
 </head>
 
 <body>
   <button class="mobile-toggle" id="menuToggle">☰</button>
+  <div class="menu-overlay" id="menuOverlay"></div>
   <div class="top-index">
 
     <!-- <div class="structure-title">Body Quiz</div> -->
@@ -453,42 +394,16 @@
 
     <!-- BUTTONS -->
     <button class="index-btn active" data-file="exercises/mcq.html">
-      <!-- <svg viewBox="0 0 100 200" class="body-svg">
-      <circle cx="50" cy="20" r="15"/>
-      <rect x="35" y="40" width="30" height="70" rx="15"/>
-      <rect x="20" y="50" width="15" height="60" rx="8"/>
-      <rect x="65" y="50" width="15" height="60" rx="8"/>
-      <rect x="40" y="110" width="10" height="70" rx="6"/>
-      <rect x="50" y="110" width="10" height="70" rx="6"/>
-    </svg> -->
       <span class="nav-text">📝Choose Option</span>
     </button>
 
     <button class="index-btn" data-file="exercises/fillblanks.html">
-      <!-- <svg viewBox="0 0 100 200" class="body-svg">
-      <circle cx="50" cy="20" r="15"/>
-      <rect x="35" y="40" width="30" height="70" rx="15"/>
-      <rect x="20" y="50" width="15" height="60" rx="8"/>
-      <rect x="65" y="50" width="15" height="60" rx="8"/>
-      <rect x="40" y="110" width="10" height="70" rx="6"/>
-      <rect x="50" y="110" width="10" height="70" rx="6"/>
-    </svg> -->
       <span class="nav-text"> ✍️ Fill the Blanks</span>
     </button>
 
     <button class="index-btn" data-file="exercises/true_false.html">
-      <!-- <svg viewBox="0 0 100 200" class="body-svg">
-      <circle cx="50" cy="20" r="15"/>
-      <rect x="35" y="40" width="30" height="70" rx="15"/>
-      <rect x="20" y="50" width="15" height="60" rx="8"/>
-      <rect x="65" y="50" width="15" height="60" rx="8"/>
-      <rect x="40" y="110" width="10" height="70" rx="6"/>
-      <rect x="50" y="110" width="10" height="70" rx="6"/>
-    </svg> -->
       <span class="nav-text">⚖️ True / False</span>
     </button>
-
-
 
   </div>
 
@@ -499,6 +414,25 @@
   <script>
     const iframe = document.getElementById("quizFrame");
     const buttons = document.querySelectorAll(".index-btn");
+    const overlay = document.getElementById("menuOverlay");
+    const toggle = document.getElementById("menuToggle");
+    const menu = document.querySelector(".top-index");
+
+toggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+    overlay.classList.toggle("active");
+});
+
+overlay.addEventListener("click", () => {
+    menu.classList.remove("active");
+    overlay.classList.remove("active");
+});
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        menu.classList.remove("active");
+        overlay.classList.remove("active");
+    });
+});
 
     iframe.src = buttons[0].dataset.file;
 
@@ -510,19 +444,19 @@
       });
     });
 
-    const toggle = document.getElementById("menuToggle");
-    const menu = document.querySelector(".top-index");
+    // const toggle = document.getElementById("menuToggle");
+    // const menu = document.querySelector(".top-index");
 
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("active");
-    });
+    // toggle.addEventListener("click", () => {
+    //   menu.classList.toggle("active");
+    // });
 
-    /* Close menu when clicking a button */
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        menu.classList.remove("active");
-      });
-    });
+    // /* Close menu when clicking a button */
+    // buttons.forEach(btn => {
+    //   btn.addEventListener("click", () => {
+    //     menu.classList.remove("active");
+    //   });
+    // });
   </script>
 
 </body>

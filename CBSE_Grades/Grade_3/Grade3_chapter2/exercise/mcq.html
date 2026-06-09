@@ -32,7 +32,7 @@ body{
 
 .quiz-container{
   width:100%;
-  max-width:1200px;
+  max-width:1400px;
    height:clamp(550px, 80vh, 700px);
    
   position:relative;
@@ -68,9 +68,9 @@ body{
 }
 
 .question-image img{
-  width:clamp(180px, 40vw, 400px);
-  height:auto;
-  object-fit:contain;
+  width: 300px;
+  height: 250px;
+  object-fit: contain;
 }
 
 /* ================= OPTIONS ================= */
@@ -80,7 +80,7 @@ body{
   justify-content:center;
   flex-wrap:wrap;
   gap:clamp(10px, 2vw, 20px);
-  margin-top: -30px;
+ margin-top: -60px;
 }
 
 .option{
@@ -90,6 +90,7 @@ body{
   flex-direction:column;
   align-items:center;
   text-align:center;
+   
 }
 
 .circle{
@@ -106,7 +107,7 @@ body{
 }
 
 .circle img{
-  width:80%;   /* 🔥 image inside also bigger */
+  width:70%;   /* 🔥 image inside also bigger */
 }
 .option p{
   padding:clamp(6px, 1vw, 10px) clamp(13px, 2vw, 25px);
@@ -141,7 +142,7 @@ body{
 /* ================= BUTTONS ================= */
 .nav-btn{
  position:absolute;
-  bottom:30px;   /* 🔥 ALWAYS SAME POSITION */
+  bottom:80px;   /* 🔥 ALWAYS SAME POSITION */
 
   padding:clamp(10px, 1vw, 14px) clamp(26px, 3.5vw, 42px);
   font-size:clamp(16px, 1.5vw, 22px);
@@ -313,29 +314,32 @@ body{
 @media screen and (min-width:1025px) and (max-width:1240px){
 
   .quiz-container{
-    max-width:1100px;
+    max-width:1400px;
   }
 
   /* QUESTION */
   .question{
     font-size:40px;
     min-height:90px;
-    margin-top: -20px;
+    margin-top: -10px;
   }
 
   /* IMAGE */
   .question-image img{
     width:400px;
+    margin-bottom: 20px;
+    
   }
 
   /* OPTIONS */
   .options{
     gap:18px;
+    
   }
 
   .circle{
-    width:180px;
-    height:180px;
+    width:150px;
+    height:150px;
   }
 
   .circle img{
@@ -349,9 +353,9 @@ body{
 
   /* BUTTONS */
   .nav-btn{
-    bottom:-50px;
-    font-size:28px;
-    padding:14px 35px;
+    bottom:20px;
+    font-size:24px;
+    padding:12px 33px;
   }
 
 }

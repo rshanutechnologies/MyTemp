@@ -1,32 +1,32 @@
 const quiz = [
   {
-    q: "1. Petals enclose and protect the ______ parts of a flower.",
-    a: "reproductive",
-    options: ["colorful","green","leaf","reproductive"],
+    q: "Q1. Petals enclose and protect the ______ parts of a flower.",
+    a: "Reproductive",
+    options: ["Colorful","Green","Leaf","Reproductive"],
    img:"../assets/images/reproductiveak.png"
   },
   {
-    q: "2. Flowers in which both the male and the female parts are present on the same flower are called ______ flowers.",
-    a: "bisexual",
-    options: ["bisexual","red","small","green"],
+    q: "Q2. Flowers in which both the male and the female parts are present on the same flower are called ______ flowers.",
+    a: "Bisexual",
+    options: ["Bisexual","Red","Small","Green"],
    img:"../assets/images/bisexualf.png"
   },
   {
-    q: "3. The process by which the pollen grains get transferred from the anther to the stigma is called ______.",
-    a: "pollinating",
-    options: ["running","jumping","pollinating","singing"],
+    q: "Q3. The process by which the pollen grains get transferred from the anther to the stigma is called ______.",
+    a: "Pollinating",
+    options: ["Running","Jumping","Pollinating","Singing"],
      img:"../assets/images/pollinating.png"
   },
   {
-    q: "4. When a pollen grain falls on the stigma of a flower, it develops a long tube called the ______.",
-    a: "pollen tube",
-    options: ["pollen tube","flower stem","stick","magic"],
+    q: "Q4. When a pollen grain falls on the stigma of a flower, it develops a long tube called the ______.",
+    a: "Pollen tube",
+    options: ["Pollen tube","Flower stem","Stick","Magic"],
      img:"../assets/images/Pollengrains.png"
   },
   {
-    q: "5. The fertilised female reproductive cell or zygote develops into a ______.",
-    a: "seed",
-    options: ["cake","seed","ball","toy"],
+    q: "Q5. The fertilised female reproductive cell or zygote develops into a ______.",
+    a: "Seed",
+    options: ["Cake","Seed","Ball","Toy"],
      img:"../assets/images/seed.png"
   }
 ];

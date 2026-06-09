@@ -22,7 +22,7 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(to bottom,#cfefff,#fff6cc);
+
 padding:clamp(10px,2vw,30px);
 overflow: hidden;
 }
@@ -30,7 +30,7 @@ overflow: hidden;
 /* CONTAINER */
 .quiz-container{
 width:min(95%,1200px);
-text-align:center;
+text-align:left;
 }
 
 /* QUESTION */
@@ -39,6 +39,12 @@ text-align:center;
 font-weight:500;
 color:#2f4f4f;
 padding:0 clamp(5px,1vw,20px);
+margin-bottom: 30px;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: left;
+
 }
 .question-img{
 display:flex;
@@ -49,7 +55,7 @@ align-items:center;
 /* height:clamp(80px,12vh,140px); */
 
 /* ✅ ADD this */
-margin-top: clamp(10px, 2vh, 25px);
+
 margin-bottom: clamp(10px, 2vh, 25px);
 }
 .question-img img{
@@ -103,15 +109,12 @@ inset 0 -3px 6px rgba(0,0,0,0.05),
 .option:nth-child(4){background:linear-gradient(135deg,#e3e6ff,#c9d0ff);}
 
 /* hover */
-.option:hover{
-transform:translateY(-6px) scale(1.05);
-box-shadow:0 12px 20px rgba(0,0,0,0.2);
-}
+
 
 /* option image */
 .opt-img{
-width:clamp(50px,6vw,100px);
-height:clamp(50px,6vw,100px);
+width:clamp(60px,7vw,100px);
+height:clamp(60px,7vw,100px);
 object-fit:contain;
 }
 
@@ -119,7 +122,7 @@ object-fit:contain;
 .opt-text{
 font-size: clamp(14px, 1.4vw + 0.6vh, 22px);
 font-weight:600;
-color:#1e4b6d;
+color:#2f4f4f;
 
 padding:clamp(4px,0.8vw,6px) clamp(10px,1.5vw,16px);
 
@@ -169,7 +172,20 @@ box-shadow:0 5px 10px rgba(0,0,0,0.2);
 .selected{
 border:3px solid #204a63;
 }
+.nav-buttons button:disabled{
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+    filter: grayscale(40%);
+}
 
+.prev:disabled{
+    background: linear-gradient(135deg,#9eb6be,#8fa1a8);
+}
+
+.next:disabled{
+    background: linear-gradient(135deg,#d8b39a,#c8a089);
+}
 /* POPUP */
 .popup{
 position:fixed;
@@ -331,7 +347,7 @@ color:#ffcc00;
   }
 .question-img img{
 width:300px;
-height:200px;
+height:180px;
 object-fit:contain;
 
 /* ❌ REMOVE this */
@@ -481,7 +497,7 @@ qImg:"../images/aerial.png",
 options:["Terrestrial","Aerial","Arboreal","Aquatic"],
 imgOptions:[
 "../images/lion-img.png",
-"../images/sparrow.png",
+"../images/aerial1.png",
 "../images/monkey.png",
 "../images/aquatic.png"
 ],
@@ -495,7 +511,7 @@ options:["Swallows","Chews","Sucks","Drinks"],
 imgOptions:[
 "../images/swallows.png",
 "../images/chew.png",
-"../images/sucks.png",
+"../images/sucks1.png",
 "../images/drink.png"
 ],
 correct:2
@@ -520,7 +536,7 @@ qImg:"../images/monkey_img.png",
 options:["Aerial","Arboreal","Terrestrial","Aquatic"],
 imgOptions:[
 "../images/aerial.png",
-"../images/monkey.png",
+"../images/monkey1.png",
 "../images/lion-img.png",
 "../images/aquatic.png"
 ],
@@ -589,6 +605,16 @@ btn.classList.add("selected");
 
 });
 
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+
+/* Prev disable on first question */
+prevBtn.disabled = current === 0;
+
+/* Next disable until correct answer selected */
+nextBtn.disabled =
+    userAnswers[current] !== questions[current].correct;
+
 }
 
 function speak(text){
@@ -606,50 +632,57 @@ window.speechSynthesis.speak(speech);
 
 function selectOption(i){
 
-if(answered) return;
+    if(answered) return;
 
-let options=document.querySelectorAll(".option");
+    let options = document.querySelectorAll(".option");
 
-userAnswers[current] = i;
+    userAnswers[current] = i;
 
-options.forEach(btn=>btn.classList.remove("selected"));
-options[i].classList.add("selected");
+    options.forEach(btn => btn.classList.remove("selected"));
+    options[i].classList.add("selected");
 
-if(i===questions[current].correct){
+    if(i === questions[current].correct){
 
-answered = true;
+        answered = true;
 
-options[i].style.background="#7be495";
+        options[i].style.background = "#7be495";
 
-score++;
+        score++;
 
-speak("Correct");
+        // Enable Next button after correct answer
+        document.querySelector(".next").disabled = false;
 
-showPopup("✅ Correct!", current+1);
+        speak("Correct");
 
-confetti({
-particleCount:60,
-spread:80,
-origin:{y:0.6}
-});
+        showPopup("✅ Correct!", current + 1);
 
-if(current === questions.length-1){
-setTimeout(()=>{showFinalScore();},1200);
-}
+        confetti({
+            particleCount: 60,
+            spread: 80,
+            origin: { y: 0.6 }
+        });
 
-}else{
+        if(current === questions.length - 1){
+            setTimeout(() => {
+                showFinalScore();
+            }, 1200);
+        }
 
-options[i].style.background="#ff8a8a";
+    }else{
 
-speak("Wrong");
+        options[i].style.background = "#ff8a8a";
 
-showPopup("❌ Wrong!",0);
+        speak("Wrong");
 
-}
+        showPopup("❌ Wrong!", 0);
 
-setTimeout(()=>{
-document.getElementById("popup").style.display="none";
-},1200);
+        // Keep Next button disabled
+        document.querySelector(".next").disabled = true;
+    }
+
+    setTimeout(() => {
+        document.getElementById("popup").style.display = "none";
+    }, 1200);
 
 }
 

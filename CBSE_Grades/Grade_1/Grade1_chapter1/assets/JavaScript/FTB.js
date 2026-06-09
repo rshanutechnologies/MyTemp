@@ -100,8 +100,11 @@ function bigConfetti() {
 }
 
 submitBtn.onclick = function () {
-  const userAnswer = input.value.trim().toLowerCase();
-  const correctAnswer = questions[currentQuestion].answer.toLowerCase();
+  const normalize = (text) =>
+    text.toLowerCase().trim().replace(/-/g, " ").replace(/\s+/g, " ");
+
+  const userAnswer = normalize(input.value);
+  const correctAnswer = normalize(questions[currentQuestion].answer);
 
   if (userAnswer === correctAnswer) {
     answers[currentQuestion] = userAnswer;

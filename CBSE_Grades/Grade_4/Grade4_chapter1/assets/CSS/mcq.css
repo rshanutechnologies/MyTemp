@@ -38,7 +38,7 @@ body::before{
 /* ✅ CARD — NO fixed height in base */
 .card{
     position: relative;
-    width: 950px;
+      width:min(1300px,95vw);
     height: auto;          /* ✅ FIXED: was 580px fixed, caused all overflow */
     max-height: 98vh;      /* ✅ never exceed viewport */
     display:flex;
@@ -48,6 +48,7 @@ body::before{
     padding: 20px;
     padding-top: 10px;
     overflow: hidden;      /* ✅ prevent any child overflow */
+    background-color: #051b3d;
 }
 
 /* ✅ TITLE */
@@ -153,6 +154,7 @@ body::before{
     display:flex;
     flex-direction:column;
     align-items:center;
+    background-color: #c62828;
 }
 
 .q-emoji-wrap{
@@ -168,13 +170,16 @@ body::before{
 
 .question-text,
 .question-text *{
-    font-size:28px;
+    font-size:30px;
     font-weight:400;
     margin-left:0;          /* ✅ FIXED: was 16px causing misalignment */
     line-height:1.3;
     width:100%;
     color: #2f4f4f;
-    text-align:left;      /* ✅ center by default */
+    text-align:center !important;      /* ✅ center by default */
+}
+.center-question{
+    text-align: left !important;
 }
 
 .question-img{
@@ -199,7 +204,7 @@ body::before{
 }
 
 .option{
-    width:210px;
+    width:180px;
     min-height:180px;       /* ✅ FIXED: was 230px — caused overflow */
     height:auto;
     overflow:hidden;
@@ -241,19 +246,42 @@ body::before{
     pointer-events:none;
 }
 
+/* .option.correct-lock{
+    border: 3px dotted #1c773f;
+    
+} */
+/* .correct-label{
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+} */
+ /* .option.correct-lock .opt-label{
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+} */
 .option.correct-lock{
-    border: 2px dotted white;
-    opacity:1;
+    opacity: 1 !important;
+    pointer-events: none;
+}
+
+.option.correct-lock .opt-label{
+    background-color: #4CAF50;
+    color: #fff;
 }
 
 /* ===================== NAV BUTTONS ===================== */
 
 .controls{
-    margin-top:12px !important;
+    margin-top:16px !important;
     display:flex;
     justify-content:center;
     gap:100px;
     flex-shrink:0;          /* ✅ never let buttons get squeezed away */
+
 }
 
 .nav-btn{
@@ -416,7 +444,7 @@ body::before{
         display:flex;
         justify-content:center;
         align-items:center;
-        background-color: #2e7d32;
+        /* background-color: #2e7d32; */
     }
 
     .app{
@@ -490,7 +518,8 @@ body::before{
     .nav-btn{
         width:130px;
         font-size:16px;
-        padding:10px 18px;
+       padding: 12px 30px;
+       
     }
 
     .popup-box{ width:90%; }
@@ -513,7 +542,7 @@ body::before{
         background:transparent !important;
         margin-top: -7%;
         justify-content: center;
-        background-color: #2e7d32;
+        /* background-color: #2e7d32; */
     }
 
     .app{ width:100%; height:auto; padding:14px; }
@@ -560,19 +589,19 @@ body::before{
         gap:20px;
     }
 
-    .nav-btn{ width:130px; font-size:16px; padding:10px 18px; }
+    .nav-btn{ width:130px; font-size:16px; padding: 12px 30px; }
 }
 
 /* ================================================= */
 /* ============== LAPTOP  769px – 1439px ============ */
 /* ================================================= */
-
-@media (min-width: 769px) and (max-width: 1439px) {
+@media (min-width: 769px) and (max-width: 1199px) {
 
     .card{
         width: min(1050px, 95vw);
         height: auto;
         min-height: auto;
+        background-color: #c62828;
     }
 
     .question-box{
@@ -584,12 +613,12 @@ body::before{
 
     .question-text,
     .question-text *{
-        font-size: 22px;
-        text-align: left;
+        font-size: 28px;
+        text-align: center;
     }
 
     .question-img{
-        max-height: 90px;
+        max-height: 130px;
         margin: 4px auto 0;
     }
 
@@ -597,7 +626,7 @@ body::before{
         width: min(960px, 94vw);
         gap: 14px;
         flex-wrap: nowrap;      /* ✅ single row always */
-        margin-top: 8px;
+        margin-top: -16px;
     }
 
     .option{
@@ -617,13 +646,13 @@ body::before{
     }
 
     .controls{
-        margin-top: 10px !important;
+        margin-top: 2px !important;
         gap: 80px;
     }
 
     .nav-btn{
         font-size: 17px;
-        padding: 10px 22px;
+       padding: 12px 30px;
     }
 }
 
@@ -631,12 +660,13 @@ body::before{
 /* =========== DESKTOP  1440px – 1919px ============ */
 /* ================================================= */
 
-@media (min-width: 1440px) and (max-width: 1919px) {
+@media (min-width: 1200px) and (max-width: 1599px) {
 
     .card{
         width: min(1300px, 92vw);
         height: auto;
         min-height: auto;
+        background-color: #2e7d32;
     }
 
     .question-box{
@@ -644,6 +674,7 @@ body::before{
         min-height: auto;
         margin-top: 10px;
         padding: 14px 20px 10px;
+        background-color: #7be6ff;
     }
 
     .question-text,
@@ -653,7 +684,7 @@ body::before{
     }
 
     .question-img{
-        max-height: 130px;
+        max-height: 160px;
         margin: 8px auto 0;
     }
 
@@ -661,7 +692,7 @@ body::before{
         width: min(1200px, 90vw);
         gap: 24px;
         flex-wrap: nowrap;
-        margin-top: 14px;
+        margin-top: -50px;
     }
 
     .option{
@@ -671,8 +702,8 @@ body::before{
     }
 
     .option img{
-        max-height: 110px;
-        max-width: 110px;
+        max-height: 90px;
+        max-width: 90px;
     }
 
     .opt-label{
@@ -681,13 +712,14 @@ body::before{
     }
 
     .controls{
-        margin-top: 16px !important;
+        margin-top: -16px !important;
         gap: 110px;
+       
     }
 
     .nav-btn{
         font-size: 19px;
-        padding: 11px 26px;
+       padding: 12px 30px;
     }
 }
 
@@ -702,12 +734,14 @@ body::before{
         height: auto;
         min-height: auto;
         padding: 30px;
+        background-color: #7be6ff;
     }
 
     .question-box{
         width: 1400px;
         min-height: auto;
         margin-top: 10px;
+        background-color: #2fbf67;
     }
 
     .question-text,
@@ -750,8 +784,9 @@ body::before{
     }
 
     .nav-btn{
-        padding: 12px 30px;
-        height: 70px;
+       padding: 12px 30px;
+        /* height: 70px; */
         font-size: 26px;
+        margin-top: -20px;
     }
 }

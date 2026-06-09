@@ -76,8 +76,11 @@ margin:auto;
     }
 
     .word-bank {
-      display: flex;
-      flex-wrap: wrap;
+      width: 50%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      
       gap: 12px;
       justify-content: center;
       padding: 8px 0;
@@ -87,8 +90,9 @@ margin:auto;
       padding: 11px 22px;
       font-size: 22px;
       font-weight: 400;
+      width: 200px;
       border: none;
-      border-radius: 999px;
+      border-radius: 9px;
       background: #4fc3f7;
       color: #2f4f4f;
       box-shadow: 0 4px 9px rgba(0,0,0,0.17);
@@ -139,8 +143,8 @@ margin:auto;
     }
 
     .nav button {
-      padding: 10px 26px;
-      font-size: clamp(15px, 4vw, 18px);
+      padding: 14px 28px;
+      font-size: 20px;
       border: none;
       border-radius: 999px;
       color: white;
@@ -453,7 +457,7 @@ max-width:1100px;
 }
 
 .question{
-font-size:48px;
+font-size:30px;
 }
 
 .word-btn{
@@ -462,7 +466,7 @@ padding:10px 20px;
 }
 
 .blank{
-font-size:45px;
+font-size:30px;
 }
 
 .image-container{
@@ -474,10 +478,10 @@ gap:28px;
 margin-top:-30px;
 }
 
-.nav button{
+/* .nav button{
 font-size:20px;
 padding:20px 30px;
-}
+} */
 
 }
 
@@ -495,15 +499,16 @@ font-size:44px;
 
 .word-btn{
 font-size:24px;
-padding:13px 26px;
+padding:20px 28px;
 }
 
 .blank{
-font-size:24px;
+font-size:44px;
 }
 
 .image-container{
 height:180px;
+margin-top: 80px;
 }
 
 .nav{

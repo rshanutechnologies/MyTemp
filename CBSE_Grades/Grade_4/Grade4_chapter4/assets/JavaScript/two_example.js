@@ -1,25 +1,25 @@
 const questions = [
   {
     q: "Q1. Oxygen",
-    a: ["21%", "breathing"],
+    a: ["21%", "All living things need oxygen to breathe and to obtain energy from it"],
     placeholders: ["% of gas", "One use"],
     img: "../assets/images/mcq-1.png",
   },
   {
     q: "Q2. Carbon dioxide",
-    a: ["0.04%", "photosynthesis"],
+    a: ["0.04%", "Plants use carbon dioxide for photosynthesis"],
     placeholders: ["% of gas", "One use"],
     img: "../assets/images/mcq1-1.png",
   },
   {
     q: "Q3. Nitrogen",
-    a: ["78%", "plant growth"],
-    placeholders: ["% of gas", "fertilizers"],
+    a: ["78%", "Used for making fertilizers."],
+    placeholders: ["% of gas", "One use"],
     img: "../assets/images/mcq-2.png",
   },
   {
     q: "Q4. Argon",
-    a: ["0.93%","electric bulbs"],
+    a: ["0.93%","Used in electric bulbs"],
     placeholders: ["% of gas", "One use"],
     img: "../assets/images/FB-5.png",
   }
@@ -147,7 +147,7 @@ if (i === 0) {
 
 function checkAnswer(input, btn, box, i) {
   const value = input.value.trim().toLowerCase();
-  const answers = questions[index].a;
+  const answers = questions[index].a.map(ans => ans.toLowerCase());
   const state = userAnswers[index];
 
   if (answers.includes(value) && !state.used.includes(value)) {

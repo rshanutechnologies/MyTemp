@@ -53,7 +53,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
+  text-align:left;
 }
 
 /* ✅ IMAGE */
@@ -71,7 +71,19 @@ body{
   height: clamp(140px, 18vw, 200px);
   object-fit:contain;
 }
+/* 🚫 DISABLE IMAGE DRAG */
 
+.image-box img{
+
+-webkit-user-drag:none;
+
+-webkit-user-select:none;
+
+user-select:none;
+
+pointer-events:none;
+
+}
 .input-area{
   width:100%;
   height: clamp(70px, 10vh, 80px);
@@ -130,7 +142,7 @@ button{
 }
 
 /* Hover */
-#prevBtn:hover{
+#prevBtn{
   background:linear-gradient(135deg,#607d8b,#455a64);
   
 }
@@ -395,7 +407,7 @@ button:disabled{
   <div class="question" id="questionText"></div>
 
   <div class="image-box">
-    <img id="questionImg">
+    <img id="questionImg" draggable="false">
   </div>
 
   <div class="input-area" id="inputArea"></div>
@@ -472,6 +484,9 @@ const popupMessage = document.getElementById("popupMessage");
 const popupEmoji = document.getElementById("popupEmoji");
 const playAgainBtn = document.getElementById("playAgainBtn");
 document.addEventListener("input", function(){
+
+  if(answeredCorrectly[index]) return;
+
   const inputs = document.querySelectorAll("#inputArea input");
   const btn1 = document.getElementById("checkBtn1");
 
@@ -485,10 +500,10 @@ document.addEventListener("input", function(){
 
   if(allFilled){
     btn1.classList.add("active");
-    btn1.disabled = false;   // ✅ enable
-  } else {
+    btn1.disabled = false;
+  }else{
     btn1.classList.remove("active");
-    btn1.disabled = true;    // ✅ disable
+    btn1.disabled = true;
   }
 });
 // SPEECH
@@ -567,6 +582,9 @@ function loadQuestion() {
 // ✅ CHECK ANSWER
 function checkAnswer(){
 
+  // ✅ Prevent checking again after correct answer
+  if(answeredCorrectly[index]) return;
+
   const current = questions[index];
   let correct = true;
 
@@ -580,11 +598,13 @@ function checkAnswer(){
 
   userAnswers[index] = tempAnswers;
 
-  // ✅ ===== Q3 STEP LOGIC =====
+  // =========================
+  // Q3 STEP LOGIC
+  // =========================
   if(index === 2){
 
-    const validWords = ["hop", "leap"];
-    const inputField = document.getElementById("input" + q3Step);
+    const validWords = ["hop","leap"];
+    const inputField = document.getElementById("input"+q3Step);
     const value = inputField.value.trim().toLowerCase();
 
     if(value === ""){
@@ -600,6 +620,10 @@ function checkAnswer(){
     }
     else{
 
+      inputField.value =
+        value.charAt(0).toUpperCase() +
+        value.slice(1).toLowerCase();
+
       inputField.style.borderColor = "green";
       inputField.disabled = true;
 
@@ -609,41 +633,57 @@ function checkAnswer(){
       fireConfetti();
       speakText("Correct!");
 
+      // ✅ First correct word
+      if(q3Step < 2){
+
+        const btn1 = document.getElementById("checkBtn1");
+        btn1.disabled = true;
+        btn1.classList.remove("active");
+
+        nextBtn.disabled = true;
+        return;
+      }
+
+      // ✅ Both words correct
       if(q3Step === 2){
 
-  answeredCorrectly[index] = true;
-  nextBtn.disabled = false;
+        answeredCorrectly[index] = true;
+        nextBtn.disabled = false;
 
-  // ✅ SHOW POPUP ONLY AFTER BOTH CORRECT
-  popupEmoji.textContent = "🎉";
-  popupTitle.textContent = "Correct!";
-  popupTitle.style.color = "green";
-  popupMessage.textContent = "Great job!";
-  popup.classList.remove("hidden");
+        const btn1 = document.getElementById("checkBtn1");
+        btn1.disabled = true;
+        btn1.classList.remove("active");
 
-  setTimeout(()=>{
-    popup.classList.add("hidden");
+        popupEmoji.textContent = "🎉";
+        popupTitle.textContent = "Correct!";
+        popupTitle.style.color = "green";
+        popupMessage.textContent = "Great job!";
+        popup.classList.remove("hidden");
 
-    if(index === questions.length-1){
-      showFinalPopup();
-    }
+        setTimeout(()=>{
+          popup.classList.add("hidden");
 
-  },1200);
+          if(index === questions.length-1){
+            showFinalPopup();
+          }
+        },1200);
 
-} else {
-  nextBtn.disabled = true;
-}
-
-return;
+        return;
+      }
     }
   }
 
+  // =========================
   // NORMAL QUESTIONS
+  // =========================
   else{
+
     current.answers.forEach((ans,i)=>{
+
       const inputField = document.getElementById("input"+i);
 
       if(tempAnswers[i] !== ans){
+
         correct = false;
         inputField.value = "";
         inputField.style.borderColor = "red";
@@ -651,14 +691,29 @@ return;
     });
   }
 
+  // =========================
   // RESULT
+  // =========================
   if(correct){
+
+    answeredCorrectly[index] = true;
+    nextBtn.disabled = false;
+
+    const btn1 = document.getElementById("checkBtn1");
+    btn1.disabled = true;
+    btn1.classList.remove("active");
 
     fireConfetti();
     speakText("Correct!");
 
-    current.answers.forEach((ans, i)=>{
+    current.answers.forEach((ans,i)=>{
+
       const input = document.getElementById("input"+i);
+
+      input.value =
+        input.value.charAt(0).toUpperCase() +
+        input.value.slice(1).toLowerCase();
+
       input.style.borderColor = "green";
       input.disabled = true;
     });
@@ -669,17 +724,15 @@ return;
     popupMessage.textContent = "Great job!";
     popup.classList.remove("hidden");
 
-    answeredCorrectly[index] = true;
-    nextBtn.disabled = false;
-
     setTimeout(()=>{
       popup.classList.add("hidden");
+
       if(index === questions.length-1){
         showFinalPopup();
       }
     },1200);
 
-  } else {
+  }else{
 
     speakText("Wrong!");
 

@@ -97,6 +97,7 @@ body::before{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: start;
     padding-inline: 15px;
     color: #0A3D62;
 }

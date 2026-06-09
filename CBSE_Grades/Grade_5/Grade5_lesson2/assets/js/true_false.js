@@ -1,31 +1,31 @@
 const quiz=[
 
 {
-q:"1. The embryo is the baby plant that lies between the cotyledons.",
+q:"Q1. The embryo is the baby plant that lies between the cotyledons.",
 answer:true,
 img:"../assets/images/TF_1.png"
 },
 
 {
-q:"2. All the seeds produced by the plants grow into new plants.",
+q:"Q2. All the seeds produced by the plants grow into new plants.",
 answer:false,
 img:"../assets/images/mcq_1.png"
 },
 
 {
-q:"3. Sunlight provides suitable temperature required for germination.",
+q:"Q3. Sunlight provides suitable temperature required for germination.",
 answer:false,
 img:"../assets/images/TF_3.png"
 },
 
 {
-q:"4. The seeds of juicy fruits are often dispersed by animals.",
+q:"Q4. The seeds of juicy fruits are often dispersed by animals.",
 answer:true,
 img:"../assets/images/TF_4.png"
 },
 
 {
-q:"5. The lotus plant has seeds outside the spongy fruit.",
+q:"Q5. The lotus plant has seeds outside the spongy fruit.",
 answer:true,
 img:"../assets/images/TF_5.png"
 }

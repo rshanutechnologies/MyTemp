@@ -20,21 +20,10 @@ body {
     border-radius: 30px;
     padding: clamp(20px, 3vw, 30px);
     position: relative;
+    /* background-color: #e08634; */
 }
 
-/* 🔥 SCALE FOR BIG SCREENS */
-@media (min-width:1200px) {
-    .game {
-        transform: scale(1.15);
-        transform-origin: center;
-    }
-}
 
-@media (min-width:1400px) {
-    .game {
-        transform: scale(1.18);
-    }
-}
 
 .quiz-type {
     position: absolute;
@@ -61,12 +50,12 @@ body {
     font-size: 30px;
     font-weight: 500;
     color: #2f4f4f;
-    min-height: clamp(60px, 10vh, 90px);
+    min-height:60px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: clamp(10px, 2vw, 20px);
-    text-align: center;
+    text-align: left;
 }
 
 /* IMAGE */
@@ -128,7 +117,8 @@ body {
 .nav {
     display: flex;
     justify-content: space-between;
-    margin-top: clamp(25px, 3vh, 40px);
+    position: relative;
+    top: -10px;
 }
 
 .nav button {
@@ -262,7 +252,8 @@ body {
 
     body {
         padding: 10px;
-        overflow-x: hidden;
+        overflow: hidden;
+        /* background-color: #e6fff5; */
     }
 
     .game {
@@ -281,7 +272,7 @@ body {
     }
 
     .question-box {
-        font-size: 22px;
+        font-size: 24px;
         min-height: auto;
         margin-top: 10px;
     }
@@ -321,10 +312,11 @@ body {
 
     .game {
         width: 1100px;
+        /* background-color: #22c55e; */
     }
 
     .question-box {
-        font-size: 32px;
+        font-size: 30px;
     }
 
     .question-image img {
@@ -357,6 +349,7 @@ body {
     .game {
         width: 1400px;
         padding: 40px;
+        /* background-color: #66b6d2; */
     }
 
     .title {

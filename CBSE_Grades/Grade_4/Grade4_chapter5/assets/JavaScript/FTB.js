@@ -1,7 +1,7 @@
 const questions = [
   {
     q: "1. _________ is made up of two or more simple machines.",
-    a: ["compound machine"],
+    a: ["complex machine"],
     img: "../assets/images/FTB_Q11.png",
   },
   {
@@ -114,7 +114,7 @@ function checkAnswer(input, btn, box, i) {
 
   if (answers.includes(value) && !state.used.includes(value)) {
     box.classList.add("correct");
-
+    input.value = input.value.toUpperCase();
     input.disabled = true;
     btn.disabled = true;
 

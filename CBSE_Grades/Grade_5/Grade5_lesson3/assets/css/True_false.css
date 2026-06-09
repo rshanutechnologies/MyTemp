@@ -37,7 +37,10 @@ position:relative;
 font-size:30px;
 font-weight:400;
 color:#2f4f4f;
-text-align:center;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align:start;
 line-height:1.4;
 margin-bottom: -90px;
 
@@ -114,11 +117,9 @@ letter-spacing:1px;
 
 .true{
 
-background:linear-gradient(
-to bottom,
-#63d471,
-#3bb44a
-);
+background-color: #daffd7;
+
+color: #2f4f4f;
 
 }
 
@@ -126,12 +127,9 @@ to bottom,
 
 .false{
 
-background:linear-gradient(
-to bottom,
-#ff7a66,
-#e3482f
-);
 
+background-color: #ffdede;
+color: #2f4f4f;
 }
 
 .tf-btn:hover{
@@ -148,7 +146,7 @@ inset 0 2px 3px rgba(255,255,255,0.4);
 
 .correctAnswer{
 /* outline:5px solid #2ecc71; */
-background: #00ff1e;
+background: #b1ffba;
 border: 5px dotted white;
 }
 

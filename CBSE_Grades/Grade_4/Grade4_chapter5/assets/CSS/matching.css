@@ -35,6 +35,7 @@ body {
     display: flex;
     justify-content: center;
     gap: clamp(40px, 8vw, 100px);
+    /* background-color: #2f9e44; */
 }
 
 /* SVG */
@@ -185,6 +186,7 @@ body {
 
     .game-container {
         gap: 30px;
+        background-color: #e498ff;
     }
 
     .item {
@@ -226,7 +228,8 @@ body {
     }
 }
 /* DESKTOP — above 1366px only */
-@media (min-width: 1367px) {
+/* @media (min-width: 1367px) {
+
 
     .main {
         max-width: 1200px;
@@ -261,5 +264,77 @@ body {
         height: clamp(60px, 7.5vh, 110px);
         object-fit: contain;
         flex-shrink: 0;
+    }
+} */
+ /* ================= LAPTOP ================= */
+@media (min-width: 1200px) and (max-width: 1599px) {
+
+    .main {
+        max-width: 1100px;
+    }
+
+    .game-container {
+        gap: 90px;
+        /* background-color: #dfa529; */
+    }
+
+    .column {
+        gap: 18px;
+    }
+
+    .item {
+        width: 380px;
+        height: 80px;
+        font-size: 26px;
+        gap: 18px;
+        padding: 0 20px;
+    }
+
+    .left .item,
+    .right .item {
+        width: 380px;
+    }
+
+    .left-img {
+        width: 80px;
+        height: 70px;
+        object-fit: contain;
+    }
+}
+
+
+/* ================= DESKTOP ================= */
+@media (min-width: 1600px) {
+
+    .main {
+        max-width: 1400px;
+    }
+
+    .game-container {
+        gap: 130px;
+        /* background-color: #ef4444; */
+    }
+
+    .column {
+        gap: 24px;
+    }
+
+    .item {
+        width: 460px;
+        height: 105px;
+        font-size: 30px;
+        gap: 28px;
+        padding: 0 28px;
+    }
+
+    .left .item,
+    .right .item {
+        width: 460px;
+    }
+
+    .left-img {
+        width: 120px;
+        height: 100px;
+        object-fit: contain;
     }
 }

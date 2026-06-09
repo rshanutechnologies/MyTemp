@@ -108,10 +108,6 @@ body{
   background:linear-gradient(145deg,#ffb74d,#f57c00);
 }
 
-/* HOVER */
-.water-btn:hover{
-  transform:translateY(-6px) scale(1.05);
-}
 
 /* SHINE */
 .water-btn::before{
@@ -131,9 +127,7 @@ body{
   transition:0.7s;
 }
 
-.water-btn:hover::before{
-  left:120%;
-}
+
 
 /* ICON */
 .icon{
@@ -152,7 +146,7 @@ body{
 .nav{
   margin-top: clamp(10px, 2vh, 25px);
   display:flex;
-  justify-content:space-between;
+  justify-content:space-around;
   align-items:center;
 }
 
@@ -300,7 +294,7 @@ body{
   }
 
   .question{
-    font-size:38px;
+    font-size:45px;
   }
 
   .left-img img{
@@ -552,7 +546,7 @@ msg.textContent="You got it right!"
 
 }else{
 
-icon.textContent="😅"
+icon.textContent="😭"
 title.textContent="Oops!"
 msg.textContent="Try again!"
 

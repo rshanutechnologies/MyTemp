@@ -464,25 +464,36 @@ origin:{x:Math.random(),y:Math.random()-0.2}
 }
 
 /* ================= POPUP ================= */
-
 function showPopup(text,type){
 
 const popup=document.getElementById("popup")
-popup.innerHTML=text
-
-const oldStars = popup.querySelector(".popup-stars")
-if(oldStars) oldStars.remove()
 
 if(type==="correct"){
+
+popup.innerHTML=`
+<div style="font-size:60px;">🎉</div>
+<div>Correct! Great Job!</div>
+`
+
 const stars=document.createElement("div")
 stars.className="popup-stars"
 stars.innerText="⭐".repeat(score)
+
 popup.appendChild(stars)
+
 popup.style.color="#2e7d32"
+
 }
 
 if(type==="wrong"){
+
+popup.innerHTML=`
+<div style="font-size:60px;">😭</div>
+<div>Oops! Try Again</div>
+`
+
 popup.style.color="#c62828"
+
 }
 
 popup.classList.add("show")

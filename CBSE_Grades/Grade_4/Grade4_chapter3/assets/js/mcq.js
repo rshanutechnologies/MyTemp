@@ -41,7 +41,7 @@ const quizData = [
     options: [
       "../images/mcq4-1.png| carnivores",
       "../images/mcq4-2.png|omnivores",
-      "../images/mcq4-3.png|herbivore",
+      "../images/mcq4-3.png|herbivores",
       "../images/mcq4-4.png| scavengers",
     ],
     a: 2,

@@ -549,8 +549,8 @@ body{
   }
 
   .tf-buttons button{
-    width: 180px;
-    height: 70px;
+    /* width: 180px; */
+    /* height: 70px; */
     font-size: 26px;
   }
 

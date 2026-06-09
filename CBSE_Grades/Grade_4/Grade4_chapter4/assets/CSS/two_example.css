@@ -39,7 +39,7 @@ body {
 }
 
 .question-area h2 {
-    font-size: 30px;
+    font-size: 30px !important;
     font-weight: 400;
     color: #2f4f4f;
     text-align: center;
@@ -61,6 +61,8 @@ body {
     filter: grayscale(70%) brightness(.8);
     transition: .4s;
     padding: 10px;
+    -webkit-user-drag: none;
+    pointer-events: none;
 }
 
 .image-area img.reveal {
@@ -250,7 +252,7 @@ body {
     .main-container { max-width: 98%; padding: 0 36px; }
 
     .question-area { min-height: 65px; margin-bottom: 12px; }
-    .question-area h2 { font-size: 34px; }
+    .question-area h2 { font-size: 26px; }
 
     .image-area { margin: 12px 0 18px; }
     .image-area img { width: 195px; height: 148px; }
@@ -264,7 +266,7 @@ body {
     .nav { margin-top: 22px; }
     .nav button { width: 122px; height: 50px; font-size: 17px; }
 
-    .kid-card { width: 370px; padding: 30px; border-radius: 34px; }
+    /* .kid-card { width: 370px; padding: 30px; border-radius: 34px; }
     .kid-icon { font-size: 5.2em; }
     .kid-card h3 { font-size: 2.3em; }
     .kid-card p  { font-size: 1.3em; }
@@ -273,7 +275,7 @@ body {
     .final-kid-box h2 { font-size: 1.9em; margin-bottom: 20px; }
     .final-kid-box p  { font-size: 1.2em; }
     #stars { font-size: 1.7em; }
-    .playAgain-btn { font-size: 17px; padding: 13px 34px; }
+    .playAgain-btn { font-size: 17px; padding: 13px 34px; } */
 }
 
 /* ~1050px iframe (browser ~1280px) */
@@ -282,7 +284,7 @@ body {
     .main-container { padding: 0 42px; }
 
     .question-area { min-height: 74px; margin-bottom: 14px; }
-    .question-area h2 { font-size: 36px; }
+    .question-area h2 { font-size: 30px !important; }
 
     .image-area { margin: 14px 0 21px; }
     .image-area img { width: 225px; height: 170px; }
@@ -296,7 +298,7 @@ body {
     .nav { margin-top: 25px; }
     .nav button { width: 134px; height: 54px; font-size: 18px; }
 
-    .kid-card { width: 410px; padding: 34px; border-radius: 38px; }
+    /* .kid-card { width: 410px; padding: 34px; border-radius: 38px; }
     .kid-icon { font-size: 5.8em; }
     .kid-card h3 { font-size: 2.5em; }
     .kid-card p  { font-size: 1.38em; }
@@ -305,11 +307,11 @@ body {
     .final-kid-box h2 { font-size: 2.1em; margin-bottom: 22px; }
     .final-kid-box p  { font-size: 1.28em; }
     #stars { font-size: 1.9em; }
-    .playAgain-btn { font-size: 18px; padding: 14px 38px; }
+    .playAgain-btn { font-size: 18px; padding: 14px 38px; } */
 }
 
-/* ~1150px iframe (browser ~1380–1423px) */
-@media (min-width: 1119px) {
+/* @media (min-width: 1119px) {
+
 
     .main-container { padding: 0 48px; }
 
@@ -340,13 +342,13 @@ body {
     .playAgain-btn { font-size: 19px; padding: 15px 42px; }
 }
 
-/* ~1320px iframe (browser ~1600px) */
+
 @media (min-width: 1399px) {
 
     .main-container { padding: 0 58px; }
 
     .question-area { min-height: 96px; margin-bottom: 18px; }
-    .question-area h2 { font-size: 42px; }
+    .question-area h2 { font-size: 40px; }
 
     .image-area { margin: 18px 0 30px; }
     .image-area img { width: 300px; height: 225px; }
@@ -370,4 +372,91 @@ body {
     .final-kid-box p  { font-size: 1.5em; }
     #stars { font-size: 2.4em; }
     .playAgain-btn { font-size: 21px; padding: 16px 48px; }
+} */
+ @media (min-width: 1024px) and (max-width: 1440px) {
+
+    .main-container { padding: 0 55px; }
+
+    .question-area {
+        min-height: 90px;
+        margin-bottom: 18px;
+    }
+
+    .question-area h2 {
+        font-size: 30px !important;
+    }
+
+    .image-area img {
+        width: 280px;
+        height: 210px;
+    }
+
+    .input-box {
+        height: 80px;
+        border-radius: 24px;
+    }
+
+    .input-box input {
+        font-size: 24px;
+    }
+
+    .nav {
+        margin-top: 30px;
+    }
+
+    .nav button {
+        width: 160px;
+        height: 62px;
+        font-size: 22px;
+    }
+}
+@media (min-width: 1600px) {
+
+    .main-container {
+        padding: 0 70px;
+        max-width: 1700px;
+        margin: 0 auto;
+    }
+
+    .question-area {
+        min-height: 110px;
+        margin-bottom: 25px;
+    }
+
+    .question-area h2 {
+        font-size: 40px;
+        line-height: 1.3;
+    }
+
+    .image-area img {
+        width: 360px;
+        height: 270px;
+    }
+
+    .input-box {
+        height: 90px;
+        border-radius: 28px;
+    }
+
+    .input-box input {
+        font-size: 28px;
+    }
+
+    .nav {
+        margin-top: 40px;
+    }
+
+    .nav button {
+        width: 180px;
+        height: 70px;
+        font-size: 24px;
+    }
+
+    /* .kid-card {
+        width: 520px;
+    }
+
+    .final-kid-box {
+        width: 700px;
+    } */
 }

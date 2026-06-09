@@ -104,6 +104,11 @@ box.innerText=savedAnswers[index][i];
 blanks.appendChild(box);
 
 }
+if(answered[index]){
+  document.querySelectorAll(".letter").forEach(tile=>{
+      tile.style.pointerEvents="none";
+  });
+}
 
 /* shuffle letters */
 
@@ -138,6 +143,7 @@ next.disabled=!answered[index];
 
 /* ADD LETTER */
 function addLetter(tile){
+if(answered[index]) return; 
 
 let boxes=document.querySelectorAll(".blank");
 
@@ -150,10 +156,10 @@ boxes[i].innerText=tile.innerText;
 tile.classList.add("used");
 
 usedTiles.push(tile);
-tile.onclick=function(){
-    addLetter(tile);
-    speak("Selected " + tile.innerText);
-};
+// tile.onclick=function(){
+//     addLetter(tile);
+//     speak("Selected " + tile.innerText);
+// };
 
 /* save answer */
 
@@ -173,6 +179,8 @@ checkWord();
 /* BACKSPACE REMOVE */
 
 document.addEventListener("keydown",function(e){
+    if(answered[index]) return; // 🔒 prevent editing
+
 
 if(e.key==="Backspace"){
 
@@ -245,6 +253,8 @@ setTimeout(()=>{
 document.getElementById("final").style.display="block";
 document.getElementById("score").innerText="Your Score "+score+"/5";
 prev.disabled = true;  
+
+launchConfetti();
 
 },1000);
 

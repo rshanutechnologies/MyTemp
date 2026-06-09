@@ -2,27 +2,27 @@ let popupTimer = null;
 // ================= QUESTIONS =================
 const quizData= [
   {
-    q: "Q.1 The gaseous exchange takes place with the help of _____________ in the leaves",
+    q: "Q1. The gaseous exchange takes place with the help of _____ in the leaves.",
     a: "stomata",
     img: "../assets/images/FIB1.png",
   },
   {
-    q: "Q.2 The leaf stalk carries wa ter from the stem to the leaf through a vein called the __________",
+    q: "Q2. The leaf stalk carries water from the stem to the leaf through a vein called the __________.",
     a: "midrib",
     img: "../assets/images/FIB2.png",
   },
   {
-    q: "Q.3  ________________ venation is found in many plants that have taproot system.",
+    q: "Q3.  ________ venation is found in many plants that have taproot system.",
     a: "reticulate",
     img: "../assets/images/Reticulate.png",
   },
   {
-    q: "Q.4 sunlight is trapped by the _______________ present in the leaves.",
+    q: "Q4. sunlight is trapped by the _____________________ present in the leaves.",
     a: "chlorophyll",
     img: "../assets/images/FIB4.png",
   },
   {
-    q: "Q.5 The parasitic plants that completely depend on their host for nutrition are called ____",
+    q: "Q5. The parasitic plants that completely depend on their host for nutrition are called ____.",
     a: "total parasites",
     img: "../assets/images/FIB5.png",
   },
@@ -47,6 +47,13 @@ const popupText = document.getElementById("popupText");
 input.addEventListener("input", () => {
   submitBtn.disabled = input.value.trim() === "";
 });
+function launchConfetti() {
+  confetti({
+    particleCount: 120,
+    spread: 90,
+    origin: { y: 0.6 }
+  });
+}
 
 // function speak(t){
 //   speechSynthesis.cancel();
@@ -124,11 +131,17 @@ submitBtn.onclick = () => {
   const correctAns = quizData[current].a.toLowerCase();
 
   if(userAns === correctAns){
-    answered[current] = true;
-    userAnswers[current] = userAns;
+    // find this block
+answered[current] = true;
+userAnswers[current] =
+  quizData[current].a.charAt(0).toUpperCase() +
+  quizData[current].a.slice(1);
+
+// add this line right after
+input.value = userAnswers[current];
     score++;
      input.classList.add("correct-answer");
-
+     launchConfetti();
     speak("Correct");
 
     showPopup(`
@@ -142,6 +155,28 @@ submitBtn.onclick = () => {
     nextBtn.disabled = false;
 
     if(current === quizData.length - 1){
+      const duration = 3000;
+const end = Date.now() + duration;
+
+(function frame() {
+  confetti({
+    particleCount: 6,
+    angle: 60,
+    spread: 55,
+    origin: { x: 0 }
+  });
+
+  confetti({
+    particleCount: 6,
+    angle: 120,
+    spread: 55,
+    origin: { x: 1 }
+  });
+
+  if (Date.now() < end) {
+    requestAnimationFrame(frame);
+  }
+})();
       setTimeout(()=>{
         showPopup(`
           <div class="popup-final-content">

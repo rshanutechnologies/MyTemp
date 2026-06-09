@@ -195,7 +195,7 @@ body {
   /* 🔥 allow proper wrapping */
   .column:last-child .item{
     height: auto;
-    min-height: 60px;
+    min-height: 70px;
   }
    
 

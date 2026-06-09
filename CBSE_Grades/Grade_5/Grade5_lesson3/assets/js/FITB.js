@@ -1,31 +1,31 @@
 const quiz=[
 
 {
-q:"1. The process by which living things are able to produce more of their own kind is called ______.",
+q:"Q1. The process by which living things are able to produce more of their own kind is called ______.",
 a:"reproduction",
 img:"../assets/images/reproduction1.png"
 },
 
 {
-q:"2. Dolphins and blue whales are ______ that live in water.",
+q:"Q2. Dolphins and blue whales are ______ that live in water.",
 a:"mammals",
 img:"../assets/images/mammals.png"
 },
 
 {
-q:"3. In the adult stage, the male chickens become ______.",
+q:"Q3. In the adult stage, the male chickens become ______.",
 a:"roosters",
 img:"../assets/images/roosters1.png"
 },
 
 {
-q:"4. The ______ provides nutrition to the growing embryo.",
+q:"Q4. The ______ provides nutrition to the growing embryo.",
 a:"yolk",
 img:"../assets/images/yolk1.png"
 },
 
 {
-q:"5. A pupa is covered by a protective layer called the ______.",
+q:"Q5. A pupa is covered by a protective layer called the ______.",
 a:"cocoon",
 img:"../assets/images/cocoon.png"
 }

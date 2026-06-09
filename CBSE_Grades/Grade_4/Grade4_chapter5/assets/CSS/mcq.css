@@ -57,7 +57,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: left;
 }
 
 .question-image {
@@ -130,7 +130,7 @@ height: clamp(42px, 6vh, 62px);
     box-shadow: 0 6px 0 rgba(0, 0, 0, .12);
 
     transition: .25s;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     margin-top: 0;
 }
 

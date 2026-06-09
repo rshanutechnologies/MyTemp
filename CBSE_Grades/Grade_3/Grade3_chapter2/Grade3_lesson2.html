@@ -310,7 +310,41 @@ box-shadow:
 /* ============================= */
 /* MONITOR / LARGE SCREEN FIX */
 /* ============================= */
+@media(max-width:1024px){
 
+.mobile-toggle{
+display:block;
+}
+
+.sidebar{
+
+position:fixed;
+
+right:-270px;
+top:0;
+
+width:270px;
+height:100vh;
+
+background:#dff4ff;
+
+transition:.3s;
+
+z-index:999;
+
+}
+
+.sidebar.open{
+right:0;
+}
+
+/* Full quiz width */
+
+.main{
+width:100%;
+}
+
+}
 @media (min-width:1400px){
 
 body{
@@ -504,7 +538,7 @@ btn.classList.add("active")
 
 frame.src=btn.dataset.file
 
-if(window.innerWidth<768){
+if(window.innerWidth<1024){
 sidebar.classList.remove("open")
 }
 
