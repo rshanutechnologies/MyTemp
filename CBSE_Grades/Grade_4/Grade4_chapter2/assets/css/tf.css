@@ -13,7 +13,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-/* background-image:url("../assets/images/BG-O.png"); */
+
 background-size:cover;
 
 }
@@ -28,7 +28,12 @@ text-align:center;
 
 font-size:30px;
 color:#2f4f4f;
-
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: start;
+margin: auto;
 margin-bottom:20px;
 
 
@@ -38,8 +43,7 @@ margin-bottom:20px;
 .row{
 
 display:flex;
-/* justify-content:space-around; */
-justify-content: center;
+justify-content:space-around;
 align-items:center;
 
 gap:40px;
@@ -126,6 +130,10 @@ cursor:not-allowed;
 transform:none;
 
 }
+
+.correctAnswer:disabled{
+    opacity:2.5;
+}
 /* NAV */
 
 .nav{
@@ -158,10 +166,8 @@ background:#A2CB8B;
 }
 
 .next{
-
 background:#EA7B7B;
 color:white;
-
 }
 
 button:disabled{
@@ -393,7 +399,7 @@ gap:30px;
 
 .imgbox img{
 max-width:220px;
-height:auto;
+height:220px;
 }
 
 .tf-btn{
@@ -663,11 +669,12 @@ padding:15px 28px;
 @media screen and (min-width:1350px) and (max-width:1920px){
 
 .quiz{
-max-width:1350px;
+max-width:1150px;
 }
 
 .question{
 font-size:44px;
+
 }
 
 .row{
@@ -708,7 +715,7 @@ max-width:1500px;
 }
 
 .question{
-font-size:44px;
+font-size:40px;
 }
 
 .row{

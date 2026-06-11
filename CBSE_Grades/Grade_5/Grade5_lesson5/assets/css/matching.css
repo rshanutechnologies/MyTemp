@@ -204,208 +204,97 @@ h1 {
         opacity: 1;
     }
 }
-@media (max-width: 1050px) {
+/* ========== 320px - 480px ========== */
+@media (min-width: 320px) and (max-width: 480px) {
     body {
-        padding: 14px;
-        overflow: hidden;
-        align-items: center;
-        justify-content: flex-start;
-    }
-
-    .main {
-        max-width: 900px;
-        
-    }
-
-    h1 {
-        font-size: 26px;
-    }
-
-    .subtitle {
-        font-size: 0.9rem;
-    }
-
-    .game-container {
-        gap: 70px;
-        width: 98%;
-    }
-
-    .column {
-        width: 45%;
-        
-        
-    }
-    .left{
-        
-        margin-left: -60px;
-        
-    }
-  
-    .item {
-        height: 70px;
-        font-size: 19px;
-        padding: 14px 30px;
-    }
-
-    .left-img {
-        width: 50px;
-        height: 55px;
-    }
-
-    .answer-box {
-        width: 52px;
-        height: 52px;
-    }
-
-    .answer-box img {
-        width: 44px;
-        height: 44px;
-    }
-    
-#line-canvas {
-    display: none;
-}
-
-}
-@media (max-width: 900px) {
-    body {
-        padding: 14px;
-        overflow-y: auto;
-        align-items: center;
-        justify-content: flex-start;
-    }
-
-    .main {
-        max-width: 900px;
-        margin-top: 80px;
-    }
-
-    h1 {
-        font-size: 26px;
-    }
-
-    .subtitle {
-        font-size: 0.9rem;
-    }
-
-    .game-container {
-        gap: 100px;
-        width: 98%;
-    }
-
-    .column {
-        width: 45%;
-        
-        
-    }
-    .left{
-        
-        margin-right: 20px;
-        
-    }
-  
-    .item {
-        height: 180px;
-        font-size: 19px;
-        padding: 14px 30px;
-    }
-
-    .left-img {
-        width: 50px;
-        height: 55px;
-    }
-
-    .answer-box {
-        width: 52px;
-        height: 52px;
-    }
-
-    .answer-box img {
-        width: 44px;
-        height: 44px;
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        padding: 30px 10px 0px;
-        overflow-y: auto;
+        padding: 20px 30px;
         align-items: flex-start;
     }
 
     .main {
-        max-width: 720px;
+        max-width: 100%;
+        margin-top: 0px;
     }
 
     h1 {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .subtitle {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        margin-bottom: 20px;
     }
 
     .game-container {
-        gap: 30px;
+        gap: 20px;
         width: 100%;
     }
 
     .column {
-        width: 47%;
-        /* slightly wider to use space */
-        gap: 14px;
+        width: 60%;
+        gap: 12px;
+    }
+
+    #line-canvas {
+        display: none;
     }
 
     .item {
         height: 90px;
-        font-size: 17px;
-        padding: 12px 14px;
-        width: 100%;
+        width: 110%;
+        font-size: 12px;
+        padding: 10px 12px;
+        gap:10px
+    }
+
+    .left {
+        width: 33%;
+        margin-left: -4px;
     }
 
     .left-img {
-        width: 45px;
-        height: 48px;
+        width: 35px;
+        height: 35px;
     }
 
     .answer-box {
-        width: 48px;
-        height: 48px;
+        width: 32px;
+        height: 32px;
     }
 
     .answer-box img {
-        width: 40px;
-        height: 40px;
+        width: 28px;
+        height: 28px;
     }
-}
 
-@media (max-width: 768px) {
     .final-kid-box {
-        width: 360px;
-        padding: 25px 28px;
-        border-radius: 28px;
+        width: 90%;
+        max-width: 320px;
+        padding: 22px 20px;
+        border-radius: 24px;
     }
 
     .final-kid-box h2 {
-        font-size: 1.8em;
+        font-size: 1.6em;
     }
 
     .final-kid-box p {
-        font-size: 1.1em;
+        font-size: 1em;
     }
 
     #stars {
-        font-size: 2em;
+        font-size: 1.8em;
     }
 
     .playAgain-btn {
-        padding: 12px 26px;
-        font-size: 1em;
+        width: 100%;
+        padding: 12px;
+        font-size: 0.95em;
     }
 }
 
-@media (max-width: 600px) {
-
+/* ========== 481px - 600px ========== */
+@media (min-width: 481px) and (max-width: 600px) {
     body {
         padding: 20px 10px;
         align-items: flex-start;
@@ -458,93 +347,197 @@ h1 {
     }
 }
 
+/* ========== 601px - 768px ========== */
+@media (min-width: 601px) and (max-width: 768px) {
+    body {
+        padding: 30px 10px 0px;
+        overflow: hidden;
+        align-items: flex-start;
+    }
 
-@media (max-width: 480px) {
     .main {
-        margin-top: 0px;
+        max-width: 720px;
     }
 
     h1 {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .subtitle {
-        font-size: 0.75rem;
-        margin-bottom: 25px;
+        font-size: 0.8rem;
     }
 
     .game-container {
-        gap: 20px;
+        gap: 30px;
+        width: 100%;
     }
 
     .column {
-        width: 60%;
-        gap: 12px;
+        width: 47%;
+        gap: 14px;
     }
-#line-canvas{
-    display: none;
-}
+
     .item {
         height: 90px;
-        width: 110%;
-        font-size: 12px;
-        /* padding: 10px 12px; */
+        font-size: 17px;
+        padding: 12px 14px;
+        width: 100%;
     }
-    .left{
-       width: 33%;
-       margin-left: -4px;
-    }
+
     .left-img {
-        width: 35px;
-        height: 35px;
+        width: 45px;
+        height: 48px;
     }
 
     .answer-box {
-        width: 32px;
-        height: 32px;
+        width: 48px;
+        height: 48px;
     }
-    /* .column{
-     width: 100%;
-    }
-   .right{
-        width: 80%;
-   } */
+
     .answer-box img {
-        width: 34px;
-        height: 34px;
+        width: 40px;
+        height: 40px;
     }
-}
 
-
-
-@media (max-width: 480px) {
     .final-kid-box {
-        width: 90%;
-        max-width: 320px;
-        padding: 22px 20px;
-        border-radius: 24px;
+        width: 360px;
+        padding: 25px 28px;
+        border-radius: 28px;
     }
 
     .final-kid-box h2 {
-        font-size: 1.6em;
-    }
-
-    .final-kid-box p {
-        font-size: 1em;
-    }
-
-    #stars {
         font-size: 1.8em;
     }
 
+    .final-kid-box p {
+        font-size: 1.1em;
+    }
+
+    #stars {
+        font-size: 2em;
+    }
+
     .playAgain-btn {
-        width: 100%;
-        padding: 12px;
-        font-size: 0.95em;
+        padding: 12px 26px;
+        font-size: 1em;
     }
 }
 
+/* ========== 769px - 900px ========== */
+@media (min-width: 769px) and (max-width: 900px) {
+    body {
+        padding: 14px;
+        overflow:hidden;
+        align-items: center;
+        justify-content: flex-start;
+    }
 
+    .main {
+        max-width: 900px;
+        margin-top: 80px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .game-container {
+        gap: 100px;
+        width: 98%;
+    }
+
+    .column {
+        width: 45%;
+    }
+
+    .left {
+        margin-right: 20px;
+    }
+
+    .item {
+        height: 180px;
+        font-size: 19px;
+        padding: 14px 30px;
+    }
+
+    .left-img {
+        width: 50px;
+        height: 55px;
+    }
+
+    .answer-box {
+        width: 52px;
+        height: 52px;
+    }
+
+    .answer-box img {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* ========== 901px - 1100px ========== */
+@media (min-width: 901px) and (max-width: 1100px) {
+    body {
+        padding: 14px;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .main {
+        max-width: 900px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .game-container {
+        gap: 70px;
+        width: 98%;
+    }
+
+    .column {
+        width: 45%;
+    }
+
+    .left {
+        margin-left: -60px;
+    }
+
+    .item {
+        height: 70px;
+        font-size: 19px;
+        padding: 14px 30px;
+    }
+
+    .left-img {
+        width: 50px;
+        height: 55px;
+    }
+
+    .answer-box {
+        width: 52px;
+        height: 52px;
+    }
+
+    .answer-box img {
+        width: 44px;
+        height: 44px;
+    }
+
+    #line-canvas {
+        display: none;
+    }
+}
 
 
 

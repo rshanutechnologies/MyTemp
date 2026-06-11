@@ -423,6 +423,12 @@ box-shadow:0 4px 8px rgba(0,0,0,0.3);
 ========================================= */
 
 @media (max-width:1100px){
+    body{
+        padding: 20px;
+    }
+    .question{
+        margin-bottom: -18px;
+    }
 .blank{
   width:clamp(20px, 6vw, 45px);
   height:clamp(20px, 6vw, 45px);
@@ -502,7 +508,7 @@ body{
 body{
     padding:20px 10px;
     overflow-x:hidden;
-    align-items:flex-start;
+    align-items:center;
 }
 
 /* STACK */
@@ -510,6 +516,9 @@ body{
     flex-direction:column;
     align-items:center;
     gap:25px;
+}
+.word-area{
+    margin-top: 8%;
 }
 
 /* BLANKS */
@@ -784,7 +793,66 @@ body{
 
 }
 
+/* ========== LETTERS CONTAINER WITH BACKSPACE ========== */
+.letters-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
 
+.backspace-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 10px;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.2s;
+    width: auto;
+    min-width: 100px;
+}
+
+.backspace-btn:hover {
+    background: #c0392b;
+    transform: scale(1.02);
+}
+
+.backspace-btn:active {
+    transform: scale(0.98);
+}
+
+/* Responsive for backspace button */
+@media (max-width: 768px) {
+    .backspace-btn {
+        padding: 8px 20px;
+        font-size: 16px;
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 600px) {
+    .backspace-btn {
+        padding: 6px 15px;
+        font-size: 14px;
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .backspace-btn {
+        padding: 5px 12px;
+        font-size: 13px;
+        min-width: 90px;
+    }
+}
 
 
 /* ================= 1025px — 1440px ================= */

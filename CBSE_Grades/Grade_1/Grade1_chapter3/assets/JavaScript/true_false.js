@@ -12,7 +12,7 @@ const questions = [
   {
     q: "Q3. All birds can fly.",
     a: false,
-    img: "../assets/images/tf-3.png",
+    img: "../assets/images/birds.png",
   },
   {
     q: "Q4. All animals are of the same size.",

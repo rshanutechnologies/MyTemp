@@ -16,7 +16,7 @@ answer: "Storm"
 
 {
 title: "Q.2 We cannot live without ________.",
-image: "../assets/images/BoyDrink.png",
+image: "../assets/images/live.png",
 options: [
 { text: "Waste", img: "../assets/images/WeastDustbin.png" },
 { text: "Water", img: "../assets/images/WaterGak.png" },
@@ -52,7 +52,7 @@ answer: "Rain"
 
 {
 title: "Q.5 A ________ helps to produce electricity.",
-image: "../assets/images/WindElectricity.png",
+image: "../assets/images/electricity.png",
 options: [
 { text: "Aeroplane", img: "../assets/images/Aeroplaneak.png" },
 { text: "Helicopter", img: "../assets/images/Helicopterak.png" },

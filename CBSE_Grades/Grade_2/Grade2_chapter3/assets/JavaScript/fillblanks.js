@@ -77,7 +77,7 @@ const questions = [
   },
 
   {
-    q: "Q.5 The lungs are known as the _ _ _ _ _ _ _ ",
+    q: "Q.5 The lungs are known as the _ _ _ _ _ _ _.",
     a: "breathing",
     img: "../assets/images/Lungs.png"
   }

@@ -446,6 +446,251 @@ font-size:36px;
 
 }
 
+/* ================= MOBILE (320px - 600px) ================= */
+
+@media screen and (min-width:320px) and (max-width:600px) {
+
+  html,
+  body {
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .quiz {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .main-content {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .question-area {
+    margin-top: 0;
+    gap: 10px;
+    overflow: visible;
+  }
+
+  .question {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .blank {
+    min-width: 90px;
+    max-width: 100%;
+    min-height: 36px;
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+
+  .word-bank {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .word-btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .checkBtn {
+    padding: 8px 20px;
+    font-size: 14px;
+    margin: 8px auto;
+  }
+
+  .image-container {
+    height: 120px;
+    min-height: 120px;
+  }
+
+  .image-container img {
+    max-width: 95%;
+    max-height: 100%;
+  }
+
+  .nav {
+    gap: 12px;
+    margin-top: 15px;
+    padding: 5px 0;
+  }
+
+  .nav button {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+
+  .popup-content {
+    width: 90%;
+    padding: 16px;
+  }
+
+  .popup-icon {
+    font-size: 3.5em;
+  }
+
+  .popup-content h3 {
+    font-size: 22px;
+  }
+
+  .popup-content p {
+    font-size: 16px;
+  }
+
+  .final {
+    width: 90%;
+    height: auto;
+    padding: 25px;
+  }
+
+  .final h2 {
+    font-size: 26px;
+  }
+
+  .final h3 {
+    font-size: 20px;
+  }
+
+  .star {
+    font-size: 36px;
+  }
+
+  .playBtn {
+    padding: 10px 24px;
+    font-size: 16px;
+  }
+}
+
+/* ================= EXTRA SMALL DEVICES (200px - 320px) ================= */
+
+@media screen and (min-width:200px) and (max-width:320px) {
+
+  html,
+  body {
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .quiz {
+    width: 100%;
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .main-content {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .question-area {
+    margin-top: 0;
+    gap: 8px;
+    overflow: visible;
+  }
+
+  .question {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+  .blank {
+    min-width: 60px;
+    min-height: 28px;
+    padding: 3px 6px;
+    font-size: 13px;
+    border-width: 2px;
+  }
+
+  .word-bank {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+
+  .word-btn {
+    width: 100%;
+    font-size: 11px;
+    padding: 6px 4px;
+    border-radius: 6px;
+  }
+
+  .checkBtn {
+    padding: 6px 14px;
+    font-size: 12px;
+    min-width: 90px;
+    margin: 5px auto;
+  }
+
+  .image-container {
+    height: 80px;
+    min-height: 80px;
+  }
+
+  .image-container img {
+    max-width: 95%;
+    max-height: 95%;
+  }
+
+  .nav {
+    gap: 8px;
+    margin-top: 10px;
+    padding: 3px 0;
+  }
+
+  .nav button {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  .popup-content {
+    width: 95%;
+    padding: 12px;
+  }
+
+  .popup-icon {
+    font-size: 2.5em;
+  }
+
+  .popup-content h3 {
+    font-size: 18px;
+  }
+
+  .popup-content p {
+    font-size: 13px;
+  }
+
+  .final {
+    width: 95%;
+    height: auto;
+    padding: 18px;
+  }
+
+  .final h2 {
+    font-size: 20px;
+  }
+
+  .final h3 {
+    font-size: 16px;
+  }
+
+  .star {
+    font-size: 28px;
+  }
+
+  .playBtn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+
 /* TABLET RESPONSIVE DESIGN */
 
 /* ================= 1400px ================= */

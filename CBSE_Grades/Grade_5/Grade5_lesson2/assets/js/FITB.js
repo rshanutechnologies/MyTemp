@@ -72,103 +72,87 @@ speechSynthesis.speak(msg);
 
 /* LOAD QUESTION */
 
-function load(){
-
-question.innerText=quiz[index].q;
-
-img.src=quiz[index].img;
-
-// speak(quiz[index].q);
-
-blanks.innerHTML="";
-letters.innerHTML="";
-usedTiles=[];
-
-/* create blanks */
-
-for(let i=0;i<quiz[index].answer.length;i++){
-
-let box=document.createElement("div");
-
-box.className="blank";
-
-if(savedAnswers[index][i]){
-box.innerText=savedAnswers[index][i];
+// Add this new function for backspace button
+function removeLastLetter() {
+    if (answered[index]) return;
+    
+    let boxes = document.querySelectorAll(".blank");
+    
+    for (let i = boxes.length - 1; i >= 0; i--) {
+        if (boxes[i].innerText !== "") {
+            boxes[i].innerText = "";
+            
+            let tile = usedTiles.pop();
+            if (tile) tile.classList.remove("used");
+            break;
+        }
+    }
 }
 
-blanks.appendChild(box);
-
+// Update the load function to include backspace button event listener
+function load() {
+    question.innerText = quiz[index].q;
+    img.src = quiz[index].img;
+    
+    blanks.innerHTML = "";
+    letters.innerHTML = "";
+    usedTiles = [];
+    
+    // Create blanks
+    for (let i = 0; i < quiz[index].answer.length; i++) {
+        let box = document.createElement("div");
+        box.className = "blank";
+        if (savedAnswers[index][i]) {
+            box.innerText = savedAnswers[index][i];
+        }
+        blanks.appendChild(box);
+    }
+    
+    // Shuffle letters
+    let shuffled = shuffle([...quiz[index].letters]);
+    
+    shuffled.forEach(l => {
+        let tile = document.createElement("div");
+        tile.className = "letter";
+        tile.innerText = l;
+        
+        if (savedAnswers[index].includes(l)) {
+            tile.classList.add("used");
+        }
+        
+        if (answered[index]) {
+            tile.classList.add("used");
+            tile.style.pointerEvents = "none";
+            tile.style.opacity = "0.5";
+        } else {
+            tile.onclick = function() {
+                addLetter(tile);
+            };
+        }
+        
+        letters.appendChild(tile);
+    });
+    
+    prev.disabled = index === 0;
+    next.disabled = !answered[index];
 }
 
-/* shuffle letters */
-
-let shuffled=shuffle([...quiz[index].letters]);
-
-shuffled.forEach(l=>{
-
-let tile=document.createElement("div");
-
-tile.className="letter";
-
-tile.innerText=l;
-
-/* disable used letters */
-
-if(savedAnswers[index].includes(l)){
-tile.classList.add("used");
-}
-
-if(answered[index]){
-
-  tile.classList.add("used");
-  tile.style.pointerEvents="none";
-  tile.style.opacity="0.5";
-
-}else{
-
-  tile.onclick=function(){
-    addLetter(tile);
-  };
-
-}
-
-letters.appendChild(tile);
-
-});
-
-prev.disabled=index===0;
-next.disabled=!answered[index];
-
-}
-
-/* ADD LETTER */
-function addLetter(tile){
-
-if(answered[index]) return;
-let boxes=document.querySelectorAll(".blank");
-
-for(let i=0;i<boxes.length;i++){
-
-if(boxes[i].innerText===""){
-
-boxes[i].innerText=tile.innerText;
-
-tile.classList.add("used");
-
-usedTiles.push(tile);
-
-/* save answer */
-
-savedAnswers[index]=getWord();
-
-break;
-
-}
-
-}
-
-checkWord();
-
+// Keep your existing addLetter function
+function addLetter(tile) {
+    if (answered[index]) return;
+    let boxes = document.querySelectorAll(".blank");
+    
+    for (let i = 0; i < boxes.length; i++) {
+        if (boxes[i].innerText === "") {
+            boxes[i].innerText = tile.innerText;
+            tile.classList.add("used");
+            usedTiles.push(tile);
+            savedAnswers[index] = getWord();
+            break;
+        }
+    }
+    
+    checkWord();
 }
 
 

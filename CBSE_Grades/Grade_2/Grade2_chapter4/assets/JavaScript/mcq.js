@@ -52,7 +52,7 @@ answer: "Breakfast"
 
 {
 title: "Q.5 __________ helps to remove waste from the body.",
-image:  "../assets/images/BoyWaterWast.png",
+image:  "../assets/images/waste2.png",
 options: [
 { text: "Water", img: "../assets/images/WaterGak.png" },
 { text: "Food", img: "../assets/images/Lunchakk.png" },

@@ -454,17 +454,14 @@ body {
 ========================================= */
 
 @media (max-width: 480px) {
-    /* .quiz{
-        background-color: #2f4f4f;
-    } */
 
     #question {
-        font-size: 20px;
+        font-size: 17px;
     }
 
     .question-image img {
-        width: 200px;
-        height: 120px;
+        width: 180px;
+        height: 100px;
         object-fit: contain;
     }
 
@@ -474,24 +471,29 @@ body {
     }
 
     .option {
-        font-size: 16px;
-        padding: 12px;
-        gap: 10px;
+        min-height: 100px; /* reduced box height */
+        padding: 8px;
+        gap: 6px;
+        font-size: 15px;
         flex-direction: column;
         text-align: center;
     }
 
     .option-img {
-        width: 65px;
-        height: 50px;
+        width: 50px;  /* reduced image size */
+        height: 40px;
     }
 
     .controls {
         margin-top: 20px;
+        gap: 15px; /* gap between buttons */
     }
 
     .controls button {
-        font-size: 18px;
+        width: 110px; /* more width for text in one line */
+        padding: 8px 12px; /* reduced padding */
+        font-size: 15px;
+        white-space: nowrap;
     }
 
     .kid-card {
@@ -499,9 +501,13 @@ body {
         padding: 15px;
     }
 
-    .kid-icon { font-size: 3em; }
+    .kid-icon {
+        font-size: 3em;
+    }
 
-    .kid-card h3 { font-size: 1.5em; }
+    .kid-card h3 {
+        font-size: 1.5em;
+    }
 
     .final-kid-box {
         width: 90%;
@@ -509,15 +515,22 @@ body {
         padding: 20px;
     }
 
-    .final-kid-box h2 { font-size: 1.5em; }
-    .final-kid-box p  { font-size: 1em; }
-    #stars { font-size: 1.6em; }
+    .final-kid-box h2 {
+        font-size: 1.5em;
+    }
+
+    .final-kid-box p {
+        font-size: 1em;
+    }
+
+    #stars {
+        font-size: 1.6em;
+    }
 
     .playAgain-btn {
         padding: 10px 20px;
         font-size: 0.9em;
     }
-
 }
 
 /* =========================================

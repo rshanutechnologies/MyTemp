@@ -247,6 +247,7 @@ font-weight:600;
 
 background:#ffd8cc;
 color:#444;
+display: none;
 }
 
 .right .item{
@@ -656,6 +657,7 @@ height:15px;
 
 .question-text{
 font-size:14px;
+
 line-height:1.2;
 }
 
@@ -677,6 +679,8 @@ font-weight: normal !important;
 width:28px;
 height:28px;
 font-size:14px;
+
+display: none;
 }
 
 /* hide score */

@@ -1,419 +1,378 @@
 /* ================= POPUP SYSTEM ================= */
 
-function showPopup(isCorrect){
+function showPopup(isCorrect) {
+  const popup = document.getElementById("answerPopup");
+  const icon = document.getElementById("popupIcon");
+  const title = document.getElementById("popupTitle");
+  const msg = document.getElementById("popupMsg");
 
-const popup=document.getElementById("answerPopup");
-const icon=document.getElementById("popupIcon");
-const title=document.getElementById("popupTitle");
-const msg=document.getElementById("popupMsg");
+  popup.className = "popup " + (isCorrect ? "correct" : "wrong");
+  popup.style.display = "flex";
 
-popup.className="popup "+(isCorrect?"correct":"wrong");
-popup.style.display="flex";
+  if (isCorrect) {
+    icon.textContent = "🎉";
+    title.textContent = "Correct!";
+    msg.textContent = "Well done!";
+    speak("Correct");
+    fireConfetti();
+  } else {
+    icon.textContent = "😔";
+    title.textContent = "Wrong!";
+    msg.textContent = "Try again!";
+    speak("Wrong");
+  }
 
-if(isCorrect){
-
-icon.textContent="🎉";
-title.textContent="Correct!";
-msg.textContent="Well done!";
-speak("Correct");
- fireConfetti(); 
-
-}else{
-
-icon.textContent="😔";
-title.textContent="Wrong!";
-msg.textContent="Try again!";
-speak("Wrong");
-
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 1200);
 }
-
-setTimeout(()=>{
-popup.style.display="none";
-},1200);
-
-}
-
 
 /* ================= FINAL POPUP ================= */
 
-function showFinal(){
+function showFinal() {
+  const finalPopup = document.getElementById("finalPopup");
 
-const finalPopup=document.getElementById("finalPopup");
+  finalPopup.style.display = "flex";
 
-finalPopup.style.display="flex";
+  document.getElementById("finalScore").textContent =
+    `Score: ${score} / ${quizData.length}`;
 
-document.getElementById("finalScore").textContent=
-`Score: ${score} / ${quizData.length}`;
-
-document.getElementById("stars").textContent=
-"⭐".repeat(score);
- fireConfettif(); 
-
+  document.getElementById("stars").textContent = "⭐".repeat(score);
+  fireConfettif();
 }
-
 
 /* ================= SPEECH ================= */
 
-function speak(text){
+function speak(text) {
+  speechSynthesis.cancel();
 
-speechSynthesis.cancel();
+  const msg = new SpeechSynthesisUtterance(text);
 
-const msg=new SpeechSynthesisUtterance(text);
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-msg.lang="en-UK";
-msg.volume=0.25;
-msg.rate=1;
-msg.pitch=1;
-
-speechSynthesis.speak(msg);
-
+  speechSynthesis.speak(msg);
 }
-
 
 /* ================= QUIZ DATA ================= */
 const quizData = [
+  {
+    q: "Q.1 A bird that can swim",
+    a: "DUCK",
+    img: "../assets/images/BirdSwimInWater.png",
+  },
 
-{
-q:"Q.1 A bird that can swim",
-a:"DUCK",
-img:"../assets/images/BirdSwimInWater.png"
-},
+  {
+    q: "Q.2 A small animal that has six legs",
+    a: "ANT",
+    img: "../assets/images/SixLegAnimal.png",
+  },
 
-{
-q:"Q.2 A small animal that has six legs",
-a:"ANT",
-img:"../assets/images/SixLegAnimal.png"
-},
+  {
+    q: "Q.3 An animal that lives in very cold places",
+    a: "POLARBEAR",
+    img: "../assets/images/bear-img.png",
+  },
 
-{
-q:"Q.3 An animal that lives in very cold places",
-a:"POLARBEAR",
-img:"../assets/images/bear-img.png"
-},
+  {
+    q: "Q.4 An animal that lives in human-made shelters",
+    a: "DOG",
+    img: "../assets/images/Kennel.png",
+  },
 
-{
-q:"Q.4 An animal that lives in human-made shelters",
-a:"DOG",
-img:"../assets/images/Kennel.png"
-},
-
-{
-q:"Q.5 An animal that lives in holes",
-a:"RABBIT",
-img:"../assets/images/RabbittHole.png"
-}
-
+  {
+    q: "Q.5 An animal that lives in holes",
+    a: "RABBIT",
+    img: "../assets/images/RabbittHole.png",
+  },
 ];
-
 
 /* ================= VARIABLES ================= */
 
-let current=0;
-let score=0;
+let current = 0;
+let score = 0;
 
-const answered=Array(quizData.length).fill(false);
-const userAnswers=Array(quizData.length).fill("");
+const answered = Array(quizData.length).fill(false);
+const userAnswers = Array(quizData.length).fill("");
 
-const qEl=document.getElementById("question");
-const imgEl=document.getElementById("questionImg");
-const nextBtn=document.getElementById("next");
-const prevBtn=document.getElementById("prev");
-const submitBtn=document.getElementById("submitBtn");
+const qEl = document.getElementById("question");
+const imgEl = document.getElementById("questionImg");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+const submitBtn = document.getElementById("submitBtn");
 
-const scoreBox=document.getElementById("scoreBox");
-const slotsEl=document.getElementById("answerSlots");
-const jarEl=document.getElementById("letterJar");
+const scoreBox = document.getElementById("scoreBox");
+const slotsEl = document.getElementById("answerSlots");
+const jarEl = document.getElementById("letterJar");
 
-let correctWord="";
-let currentTiles=[];
-
+let correctWord = "";
+let currentTiles = [];
+let slotTiles = [];
 
 /* ================= SCORE ================= */
 
-function updateScore(){
-
-scoreBox.textContent="Score: "+score;
-
+function updateScore() {
+  scoreBox.textContent = "Score: " + score;
 }
-
 
 /* ================= LOAD QUESTION ================= */
-function loadQuestion(){
+function loadQuestion() {
+  const q = quizData[current];
 
-const q = quizData[current];
+  qEl.textContent = q.q;
+  imgEl.src = q.img;
 
-qEl.textContent = q.q;
-imgEl.src = q.img;
+  correctWord = q.a.toUpperCase();
 
-correctWord = q.a.toUpperCase();
+  /* create empty slots first */
+  createSlots(correctWord);
 
-/* create empty slots first */
-createSlots(correctWord);
+  /* check if already answered */
+  if (answered[current]) {
+    const slots = document.querySelectorAll(".slot");
+    const saved = userAnswers[current].split("");
 
-/* check if already answered */
-if(answered[current]){
+    saved.forEach((letter, i) => {
+      slots[i].textContent = letter;
+      slots[i].classList.add("locked");
+    });
 
-const slots = document.querySelectorAll(".slot");
-const saved = userAnswers[current].split("");
+    /* hide bubbles because already solved */
+    jarEl.innerHTML = "";
 
-saved.forEach((letter,i)=>{
-slots[i].textContent = letter;
-slots[i].classList.add("locked");
-});
+    submitBtn.disabled = true;
+    nextBtn.disabled = false;
+  } else {
+    /* normal question state */
+    createJar(correctWord);
+    submitBtn.disabled = true;
+    nextBtn.disabled = true;
+  }
 
-/* hide bubbles because already solved */
-jarEl.innerHTML = "";
-
-submitBtn.disabled = true;
-nextBtn.disabled = false;
-
-}else{
-
-/* normal question state */
-createJar(correctWord);
-submitBtn.disabled = true;
-nextBtn.disabled = true;
-
-}
-
-prevBtn.disabled = current === 0;
-
+  prevBtn.disabled = current === 0;
 }
 
 /* ================= CREATE SLOTS ================= */
 
-function createSlots(word){
+function createSlots(word) {
+  slotsEl.innerHTML = "";
+  slotTiles = [];
 
-slotsEl.innerHTML="";
+  for (let i = 0; i < word.length; i++) {
+    const slot = document.createElement("div");
 
-for(let i=0;i<word.length;i++){
+    slot.className = "slot";
 
-const slot=document.createElement("div");
+    slot.onclick = function () {
+      // already solved -> don't allow editing
+      if (answered[current]) return;
 
-slot.className="slot";
+      if (slot.textContent === "") return;
 
-slotsEl.appendChild(slot);
+      const tile = slotTiles[i];
 
+      if (tile) {
+        tile.classList.remove("used");
+
+        tile.onclick = () => placeLetter(tile, tile.textContent);
+
+        slotTiles[i] = null;
+      }
+
+      slot.textContent = "";
+
+      submitBtn.disabled = true;
+    };
+
+    slotsEl.appendChild(slot);
+  }
 }
-
-}
-
-
 /* ================= CREATE LETTER TILES ================= */
 
-function createJar(answer){
+function createJar(answer) {
+  jarEl.innerHTML = "";
+  currentTiles = [];
 
-jarEl.innerHTML="";
-currentTiles=[];
+  /* remove spaces and convert */
+  const cleanAnswer = answer.replace(/\s/g, "").toUpperCase();
 
-/* remove spaces and convert */
-const cleanAnswer = answer.replace(/\s/g,"").toUpperCase();
+  /* only required letters */
+  let letters = cleanAnswer.split("");
 
-/* only required letters */
-let letters = cleanAnswer.split("");
+  /* shuffle letters but avoid same order */
+  let shuffled = [...letters];
 
-/* shuffle letters but avoid same order */
-let shuffled = [...letters];
+  do {
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+  } while (shuffled.join("") === cleanAnswer);
 
-do{
+  letters = shuffled;
 
-for(let i=shuffled.length-1;i>0;i--){
-let j=Math.floor(Math.random()*(i+1));
-[shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]];
-}
+  /* create bubbles */
+  letters.forEach((letter) => {
+    const tile = document.createElement("div");
 
-}while(shuffled.join("") === cleanAnswer);
+    tile.className = "bubble";
 
-letters = shuffled;
+    tile.textContent = letter;
 
-/* create bubbles */
-letters.forEach(letter=>{
+    tile.onclick = () => placeLetter(tile, letter);
 
-const tile=document.createElement("div");
+    jarEl.appendChild(tile);
 
-tile.className="bubble";
-
-tile.textContent=letter;
-
-tile.onclick=()=>placeLetter(tile,letter);
-
-jarEl.appendChild(tile);
-
-currentTiles.push(tile);
-
-});
-
+    currentTiles.push(tile);
+  });
 }
 /* ================= PLACE LETTER ================= */
 
-function placeLetter(tile,letter){
+function placeLetter(tile, letter) {
+  const slots = document.querySelectorAll(".slot");
 
-const slots=document.querySelectorAll(".slot");
+  const empty = [...slots].find((s) => !s.textContent);
 
-const empty=[...slots].find(s=>!s.textContent);
+  if (!empty) return;
 
-if(!empty)return;
+  const slotIndex = [...slots].indexOf(empty);
 
-empty.textContent=letter;
+  empty.textContent = letter;
 
-tile.classList.add("used");
+  slotTiles[slotIndex] = tile;
 
-tile.onclick=null;
+  tile.classList.add("used");
 
-checkSlotsFilled();
+  tile.onclick = null;
 
+  checkSlotsFilled();
 }
-
 
 /* ================= CHECK IF SLOTS FILLED ================= */
 
-function checkSlotsFilled(){
+function checkSlotsFilled() {
+  const slots = document.querySelectorAll(".slot");
 
-const slots=document.querySelectorAll(".slot");
+  let word = [...slots].map((s) => s.textContent).join("");
 
-let word=[...slots].map(s=>s.textContent).join("");
-
-if(word.length===correctWord.length){
-
-submitBtn.disabled=false;
-
+  if (word.length === correctWord.length) {
+    submitBtn.disabled = false;
+  }
 }
-
-}
-
 
 /* ================= SUBMIT ANSWER ================= */
 
-submitBtn.onclick=()=>{
+submitBtn.onclick = () => {
+  const slots = document.querySelectorAll(".slot");
 
-const slots=document.querySelectorAll(".slot");
+  let guess = [...slots].map((s) => s.textContent).join("");
 
-let guess=[...slots].map(s=>s.textContent).join("");
+  if (guess === correctWord) {
+    score++;
 
-if(guess===correctWord){
+    updateScore();
 
-score++;
+    showPopup(true);
 
-updateScore();
+    answered[current] = true;
 
-showPopup(true);
+    userAnswers[current] = guess;
 
-answered[current]=true;
+    slots.forEach((s) => s.classList.add("locked"));
 
-userAnswers[current]=guess;
+    nextBtn.disabled = false;
+    submitBtn.disabled = true;
 
-slots.forEach(s=>s.classList.add("locked"));
+    if (current === quizData.length - 1) {
+      setTimeout(showFinal, 1200);
+    }
+  } else {
+    showPopup(false);
 
-nextBtn.disabled=false;
+    setTimeout(() => {
+      slots.forEach((s, i) => {
+        s.textContent = "";
+        slotTiles[i] = null;
+      });
 
-if(current===quizData.length-1){
+      currentTiles.forEach((tile) => {
+        tile.classList.remove("used");
 
-setTimeout(showFinal,1200);
+        tile.onclick = () => placeLetter(tile, tile.textContent);
+      });
 
-}
-
-}else{
-
-showPopup(false);
-
-setTimeout(()=>{
-
-slots.forEach(s=>s.textContent="");
-
-currentTiles.forEach(tile=>{
-
-tile.classList.remove("used");
-
-tile.onclick=()=>placeLetter(tile,tile.textContent);
-
-});
-
-submitBtn.disabled=true;
-
-},800);
-
-}
-
+      submitBtn.disabled = true;
+    }, 800);
+  }
 };
 
-
 /* ================= REMOVE LETTER ================= */
-function removeLastLetter(){
+function removeLastLetter() {
+  const slots = document.querySelectorAll(".slot");
 
-const slots=document.querySelectorAll(".slot");
+  const filled = [...slots].filter((s) => s.textContent);
 
-const filled=[...slots].filter(s=>s.textContent);
+  if (filled.length === 0) return;
 
-if(filled.length===0)return;
+  const last = filled[filled.length - 1];
 
-const last=filled[filled.length-1];
+  const letter = last.textContent;
 
-const letter=last.textContent;
+  last.textContent = "";
 
-last.textContent="";
+  /* find the LAST used tile of that letter */
 
-/* find the LAST used tile of that letter */
+  const tile = [...currentTiles]
+    .reverse()
+    .find((t) => t.textContent === letter && t.classList.contains("used"));
 
-const tile=[...currentTiles]
-.reverse()
-.find(t=>t.textContent===letter && t.classList.contains("used"));
+  if (tile) {
+    tile.classList.remove("used");
 
-if(tile){
+    tile.onclick = () => placeLetter(tile, letter);
+  }
 
-tile.classList.remove("used");
-
-tile.onclick=()=>placeLetter(tile,letter);
-
-}
-
-submitBtn.disabled=true;
-
+  submitBtn.disabled = true;
 }
 
 /* ================= BACKSPACE SUPPORT ================= */
 
-document.addEventListener("keydown",(e)=>{
+document.addEventListener("keydown", (e) => {
+  if (answered[current]) return;
 
-if(e.key==="Backspace"||e.key==="Delete"){
-
-removeLastLetter();
-
-}
-
+  if (e.key === "Backspace" || e.key === "Delete") {
+    removeLastLetter();
+  }
 });
-
 
 /* ================= NAVIGATION ================= */
 
-nextBtn.onclick=()=>{
+nextBtn.onclick = () => {
+  current++;
 
-current++;
-
-loadQuestion();
-
+  loadQuestion();
 };
 
-prevBtn.onclick=()=>{
+prevBtn.onclick = () => {
+  current--;
 
-current--;
-
-loadQuestion();
-
+  loadQuestion();
 };
-
 
 function fireConfettif() {
   confetti({
     particleCount: 100,
     spread: 120,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
   });
 }
 function fireConfetti() {
   confetti({
     particleCount: 40,
     spread: 80,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
   });
 }
 

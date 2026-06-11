@@ -44,7 +44,7 @@ body {
     font-size: 30px;
     font-weight: 400;
     color: #2f4f4f;
-    text-align: center;
+    text-align: left;
 }
 
 /* IMAGE */
@@ -296,6 +296,48 @@ background: #e6fffa;
     .quiz-container {
         width: 100%;
     }
+}
+@media (max-width: 480px) {
+
+  .question-area h2 {
+    font-size: 17px;
+    line-height: 1.2;
+  }
+
+  .image-area img {
+    width: 150px;
+    height: 75px;
+  }
+
+  .input-area {
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .input-box {
+    padding: 6px;
+    min-width: 100px;
+  }
+
+  .input-box input {
+    height: 34px;
+    font-size: 14px;
+  }
+
+  .check-btn {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  .nav-buttons {
+    margin-top: 6px;
+  }
+
+  .nav-buttons button {
+    width: 75px;
+    height: 38px;
+    font-size: 12px;
+  }
 }
 @media (min-width: 1600px) and (max-width: 1919px) {
 

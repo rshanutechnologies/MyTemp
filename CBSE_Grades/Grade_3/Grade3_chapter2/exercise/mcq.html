@@ -37,7 +37,7 @@ body{
    
   position:relative;
   padding-bottom:clamp(80px, 10vh, 120px);
-  text-align:center;
+  text-align:left;
   margin-top:-10px;
 }
 
@@ -242,71 +242,93 @@ body{
 }
 
 /* ================= MOBILE PERFECT FIX ================= */
-
-@media (max-width:600px){
+@media screen and (max-width:600px){
 
   body{
-    align-items:flex-start;
-    padding-top:20px;   /* clean spacing instead of margin hack */
-    overflow:auto;
-    margin-top: 50px;
+    overflow:hidden;
+    align-items:center;
+    padding:10px;
   }
 
-  /* QUESTION */
+  .quiz-container{
+    height:auto;
+    min-height:100vh;
+    padding-bottom:90px;
+    margin-top:0;
+  }
+
+  /* Question */
   .question{
     font-size:20px;
-    margin-top:10px;
+    line-height:1.2;
+    justify-content: center;
+    text-align:left;
+    align-items: center;
+    min-height:auto;
+    margin-top: 80px;
   }
 
-  /* IMAGE SMALLER */
+  /* Main Image */
   .question-image{
-    margin-top:10px;
+    margin-top:0;
+    
   }
 
   .question-image img{
-    width:clamp(140px, 45vw, 220px);  /* 🔥 smaller image */
+    width:180px;
+    height:120px;
+    object-fit:contain;
   }
 
-  /* OPTIONS DOWN */
+  /* Options */
   .options{
-    margin-top:20px;   /* 👈 move options down */
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:15px;
+    gap:5px;
+    margin-top:0;
   }
 
-  /* SMALLER CIRCLE */
+  .option{
+    max-width:none;
+  }
+
   .circle{
-    width:70px;
-    height:70px;
+    width:90px;
+    height:90px;
   }
 
   .circle img{
     width:65%;
   }
 
-  /* TEXT SMALL */
   .option p{
-    font-size:12px;
-    padding:4px 10px;
-  }
-
-  /* BUTTONS */
-  .nav-btn{
     font-size:14px;
-    padding:8px 16px;
+    padding:4px 10px;
+    margin-top: -10px;
+  }
+
+  /* Navigation Buttons */
+  .nav-btn{
+    width:90px;
+    height:45px;
+    padding:0;
+
+    font-size:15px;
+
+    position:fixed;
+    bottom:10px;
+    z-index:100;
+  }
+
+  #prevBtn{
+    left:10px;
+  }
+
+  #nextBtn{
+    right:10px;
   }
 
 }
-
-@media (min-width:700px){
-
-  .question{
-    font-size: 30px;
-  }
-
-}
-
 
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
@@ -468,7 +490,7 @@ body{
 </div>
   <div class="options" id="options"></div>
 
-  <button class="nav-btn" id="prevBtn">Previous</button>
+  <button class="nav-btn" id="prevBtn">Prev</button>
   <button class="nav-btn" id="nextBtn" disabled>Next</button>
 
  <!-- Popup -->

@@ -234,8 +234,8 @@ button{
 }
 
 .oval-box img{
-  width:32px;
-  height:32px;
+  width:28px;
+  height:28px;
   object-fit:contain;
 }
 /* RESPONSIVE */
@@ -262,6 +262,10 @@ button{
   width:40px !important;      /* increase width */
   height:40px !important;     /* increase height */
   object-fit:contain;
+}
+.oval-box img{
+  width:35px !important;
+  height:35px !important;
 }
 }
 .right .item{

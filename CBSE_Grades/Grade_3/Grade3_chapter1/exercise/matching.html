@@ -252,7 +252,9 @@ svg{
 /* MOBILE */
 
 @media(max-width:600px){
-
+body{
+  overflow: hidden;
+}
   .game{
     gap:clamp(6px,2vw,10px);
   }
@@ -398,6 +400,33 @@ svg{
     width:50px;
     height:50px;
   }
+
+}
+
+@media(max-width:600px){
+body{
+  overflow: hidden;
+}
+  .right .item{
+    display:grid;
+    grid-template-columns:1fr 60px;
+    align-items:center;
+    gap:8px;
+  }
+
+  .right-text{
+    line-height:1.2;
+  }
+
+  .oval-box{
+    width:60px;
+    height:35px;
+    justify-self:end;
+  }
+  .item{
+    height: 90px;
+  }
+
 
 }
 </style>

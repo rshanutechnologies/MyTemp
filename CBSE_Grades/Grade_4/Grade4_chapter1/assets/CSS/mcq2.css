@@ -46,7 +46,6 @@ body::before {
     padding: 20px;
     padding-top: 10px;
     overflow: hidden;
-    /* background-color: #051b3d; */
 }
 
 /* ===== TITLE ===== */
@@ -149,7 +148,6 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: #c62828; */
 }
 
 .q-emoji-wrap {
@@ -196,12 +194,13 @@ body::before {
     gap: 20px;
     flex-wrap: nowrap;
     margin-top: -20px;
+    align-items: stretch;     /* all children same height */
 }
 
 .option {
-    width: 180px;
-    min-height: 180px;
-    height: auto;
+    flex: 1;                  /* equal width for all */
+    min-width: 0;             /* prevent flex overflow */
+    height: 180px;            /* fixed equal height */
     overflow: hidden;
     border-radius: 20px;
     cursor: pointer;
@@ -458,17 +457,18 @@ body::before {
     }
 
     .options {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-wrap: wrap;
         gap: 12px;
         width: 100%;
-        flex-wrap: unset;
+        margin-top: 0;
+        align-items: stretch;
     }
 
     .option {
-        width: 100%;
-        min-height: 140px;
-        height: auto;
+        flex: 1 1 calc(50% - 6px);  /* 2 per row */
+        min-width: 0;
+        height: 140px;               /* fixed equal height */
     }
 
     .option img {
@@ -513,7 +513,6 @@ body::before {
         width: min(1050px, 95vw);
         height: auto;
         min-height: auto;
-        /* background-color: #c62828; */
     }
 
     .question-box {
@@ -539,12 +538,13 @@ body::before {
         gap: 14px;
         flex-wrap: nowrap;
         margin-top: -24px;
+        align-items: stretch;
     }
 
     .option {
-        width: 200px;
-        min-height: 150px;
-        flex-shrink: 1;
+        flex: 1;
+        min-width: 0;
+        height: 150px;           /* fixed equal height */
     }
 
     .option img {
@@ -570,7 +570,7 @@ body::before {
 
 
 /* ================================================= */
-/* ================ DESKTOP  1200px+ =============== */
+/* ================ DESKTOP  1600px+ =============== */
 /* ================================================= */
 
 @media (min-width: 1600px) {
@@ -579,7 +579,7 @@ body::before {
         width: min(1300px, 92vw);
         height: auto;
         min-height: auto;
-        /* background-color: #2e7d32; */
+        /* background-color: #2fbf67; */
     }
 
     .question-box {
@@ -587,7 +587,6 @@ body::before {
         min-height: auto;
         margin-top: 10px;
         padding: 14px 20px 10px;
-        /* background-color: #7be6ff; */
     }
 
     .question-text,
@@ -598,7 +597,7 @@ body::before {
     }
 
     .question-img {
-        max-height: 160px;
+        max-height: 190px;
         margin-bottom: 20px;
     }
 
@@ -606,19 +605,28 @@ body::before {
         width: min(1200px, 90vw);
         gap: 40px;
         flex-wrap: nowrap;
-        margin-top: -50px;
+        /* margin-top: -50px; */
+        margin-top:0;
+        align-items: stretch;
     }
 
     .option {
-        width: 240px;
-        min-height: 190px;
-        flex-shrink: 1;
+        flex: 1;
+        min-width: 0;
+        height: 190px;           /* fixed equal height */
+        overflow: hidden;
     }
-
+/* 
     .option img {
         max-height: 150px;
         max-width: 150px;
-    }
+    } */
+     .option img{
+        width:150px;
+        height:150px;
+        object-fit: contain;
+        flex-shrink: 0;
+     }
 
     .opt-label {
         font-size: 18px;
@@ -626,7 +634,6 @@ body::before {
     }
 
     .controls {
-        /* margin-top: -16px !important; */
         gap: 110px;
     }
 

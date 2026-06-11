@@ -344,6 +344,64 @@ canvas {
         margin-top: -10px;
     }
 }
+@media (max-width: 480px) {
+
+  .quiz {
+    padding: 12px;
+    margin-top: 30px; /* push content down */
+  }
+
+  /* Question */
+  #question {
+    font-size: 17px;
+    line-height: 1.3;
+    margin-bottom: 2px; /* reduce gap below question */
+  }
+
+  /* Question Image Wrapper */
+  .question-image {
+    margin-top: 0;
+    margin-bottom: 0; /* reduce gap below image */
+  }
+
+  /* Question Image */
+  .question-image img {
+    width: 180px;
+    height: 120px;
+  }
+
+  /* Options */
+  .options {
+    gap: 10px;
+    margin-top: -20px; /* pull options closer to image */
+  }
+
+  /* Option image */
+  .option-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* Option text */
+  .option-text {
+    width: 120px;
+    height: 35px;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 25px;
+  }
+
+  /* Navigation buttons */
+  .controls {
+    margin-top: -6px;
+  }
+
+  .controls button {
+    width: 90px;
+    height: 42px;
+    font-size: 14px;
+  }
+}
 
 /* @media (min-width: 1024px) and (max-width: 1919px) {
 

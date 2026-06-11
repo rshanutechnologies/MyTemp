@@ -12,7 +12,7 @@ const questions = [
   {
     q: "Q.3 Non-vegetarians eat food from both plants and __________.",
     a: ["animals"],
-    img: "../assets/images/PlantAnimal.png",
+    img: "../assets/images/Boyeatt.png",
   },
   {
     q: "Q.4 We should eat fresh, clean and __________ food.",

@@ -60,7 +60,7 @@ img: "../assets/images/WindMillak.png"
 {
 q: "Q.2 We get water in our houses through __________.",
 a: "taps",
-img: "../assets/images/Tapak.png"
+img: "../assets/images/water.png"
 },
 
 {
@@ -78,7 +78,7 @@ img: "../assets/images/harmfulGemesak.png"
 {
 q: "Q.5 We need __________ to put off fire.",
 a: "water",
-img: "../assets/images/waterCylender.png"
+img: "../assets/images/fire.png"
 }
 
 ];

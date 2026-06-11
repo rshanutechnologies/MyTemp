@@ -1,7 +1,7 @@
 const quizData = [
   {
     q: "Q1. Most of the ______ live for many years.",
-    img: "../assets/images/mm-11.png",
+    img: "../assets/images/mcq1.png",
     options: [
       "../assets/images/small-plants.png|Small plants",
       "../assets/images/vegetables.png|Vegetables",

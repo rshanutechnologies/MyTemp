@@ -26,7 +26,7 @@ const questions = [
   {
     question: "Q5. ______ has a trunk.",
     answer: "mango tree",
-    image: "../assets/images/tree.png",
+    image: "../assets/images/trunk.png",
   },
 ];
 

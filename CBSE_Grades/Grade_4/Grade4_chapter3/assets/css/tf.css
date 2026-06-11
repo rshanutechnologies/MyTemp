@@ -299,6 +299,9 @@ background: #e6fffa;
         justify-content: center;
         align-items: center;
     }
+    .question-box{
+        text-align: left;
+    }
 
 }
 

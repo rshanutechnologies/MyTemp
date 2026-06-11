@@ -14,7 +14,7 @@ answer: "Root"
 },
 
 {
-title: "Q.2 The ____________________ transports food and water to all the parts of a plant.",
+title: "Q.2 The _______________ transports food and water to all the parts of a plant.",
 image: "../assets/images/TransportFoot.png",
 options: [
 { text: "Root", img: "../assets/images/RootM.png" },
@@ -38,7 +38,7 @@ answer: "Fibre"
 },
 
 {
-title: "Q.4 Plants that have weak stems and need support to grow are called ____________________.",
+title: "Q.4 Plants that have weak stems and need support to grow are called _____________.",
 image: "../assets/images/Climberakk.png",
 options: [
 { text: "Trees", img: "../assets/images/SoftStem.png" },

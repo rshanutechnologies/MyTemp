@@ -155,7 +155,9 @@ gap:clamp(6px,1vw,12px);
 }
 
 button{
-padding:clamp(8px,1vw,14px) clamp(16px,2vw,28px);
+
+  padding:clamp(10px, 1vw, 14px) clamp(26px, 3.5vw, 42px);
+  font-size:clamp(16px, 1.5vw, 22px);
 border:none;
 border-radius:40px;
 
@@ -244,7 +246,85 @@ font-weight:600;
   }
 
 }
+@media (max-width:600px){
 
+body{
+    padding:10px;
+    overflow:hidden;
+    align-items: center;
+}
+
+.quiz{
+    min-height:90vh;
+    max-width:100%;
+}
+
+.question{
+    font-size:20px;
+    min-height:auto;
+    padding:0 5px;
+    text-align:center;
+    margin-top: 60px;
+}
+
+.image img{
+    width:90px;
+}
+
+.answerBox{
+    gap:5px;
+    margin:10px auto;
+}
+
+.letterBox{
+    width:36px;
+    height:36px;
+    font-size:18px;
+}
+
+.keyboard{
+    gap:6px;
+    padding:10px 5px;
+}
+
+.key{
+    width:42px;
+    height:42px;
+    min-width:42px;
+    min-height:42px;
+    border-radius:50%;
+    flex-shrink:0;
+    font-size:18px;
+}
+
+.buttons{
+    gap:8px;
+}
+
+button{
+    padding:10px 16px;
+    font-size:15px;
+    flex:1;
+}
+
+.popup-content{
+    width:90%;
+    padding:20px 15px;
+}
+
+.popup-content h2{
+    font-size:20px;
+}
+
+.popup-content p{
+    font-size:15px;
+}
+
+.play-again-btn{
+    width:140px;
+    font-size:15px;
+}
+}
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
@@ -399,7 +479,7 @@ font-weight:600;
     <div class="keyboard" id="keyboard"></div>
 
     <div class="buttons">
-    <button class="prev" onclick="prevQ()">Previous</button>
+    <button class="prev" onclick="prevQ()">Prev</button>
     <button class="check" onclick="checkAnswer()">Check</button>
     <button class="next" onclick="nextQ()">Next</button>
     </div>
@@ -455,7 +535,7 @@ let userAnswers=new Array(quizData.length).fill("")
 let user=""
 let usedButtons=[]
 let locked=false
-
+let checkedAnswers = new Array(quizData.length).fill(false);
 const question=document.getElementById("question")
 const answer=document.getElementById("answer")
 const result=document.getElementById("result")
@@ -488,147 +568,160 @@ letters.sort(()=>Math.random()-0.5)
 return letters
 }
 
+
 function loadQ(){
-    playAgainBtn.classList.add("hidden")
-question.innerText="Q"+(current+1)+". "+quizData[current].q
 
-document.getElementById("qImage").src=quizData[current].img
+    playAgainBtn.classList.add("hidden");
 
-user=userAnswers[current]||""
-result.innerText=""
-usedButtons=[]
+    question.innerText = "Q" + (current + 1) + ". " + quizData[current].q;
 
-const checkBtn=document.querySelector(".check")
-checkBtn.disabled=true
-checkBtn.classList.remove("active")
+    document.getElementById("qImage").src = quizData[current].img;
 
-document.querySelector(".prev").disabled = current === 0
+    user = userAnswers[current] || "";
+    result.innerText = "";
+    usedButtons = [];
 
-const nextBtn = document.querySelector(".next")
+    const checkBtn = document.querySelector(".check");
+    checkBtn.disabled = true;
+    checkBtn.classList.remove("active");
 
-// ✅ last question → always disable next
-if(current === quizData.length - 1){
-    nextBtn.disabled = true
-}
-else if(userAnswers[current] === quizData[current].a){
-    nextBtn.disabled = false
-}else{
-    nextBtn.disabled = true
-}
-if(userAnswers[current] === quizData[current].a){
-    nextBtn.disabled = false
-}else{
-    nextBtn.disabled = true
-}
+    document.querySelector(".prev").disabled = current === 0;
 
-/* create answer boxes */
+    const nextBtn = document.querySelector(".next");
 
-answer.innerHTML=""
-let len=quizData[current].a.length
+    if(current === quizData.length - 1){
+        nextBtn.disabled = true;
+    }
+    else if(userAnswers[current] === quizData[current].a){
+        nextBtn.disabled = false;
+    }
+    else{
+        nextBtn.disabled = true;
+    }
 
-for(let i=0;i<len;i++){
+    /* create answer boxes */
+    answer.innerHTML = "";
 
-let box=document.createElement("div")
-box.className="letterBox"
-box.innerText=user[i]||""
+    let len = quizData[current].a.length;
+    const isAnswered =
+    userAnswers[current] === quizData[current].a;
+for(let i = 0; i < len; i++){
 
-answer.appendChild(box)
+    let box = document.createElement("div");
+    box.className = "letterBox";
+    box.innerText = user[i] || "";
 
-}
+    if(isAnswered){
+        box.style.background = "#d4edda";
+        box.style.borderColor = "green";
+    }
 
-/* create keyboard */
-
-const keyboard=document.getElementById("keyboard")
-keyboard.innerHTML=""
-
-let letters=generateLetters(quizData[current].a)
-
-letters.forEach(letter=>{
-
-let btn=document.createElement("div")
-btn.className="key"
-btn.innerText=letter
-
-/* restore disabled letters if user already typed */
-if(user.includes(letter)){
-btn.style.pointerEvents="none"
-btn.classList.add("used")
-usedButtons.push(btn)
+    answer.appendChild(box);
 }
 
-btn.onclick=()=>{
-    if(locked) return
+    /* create keyboard */
+    const keyboard = document.getElementById("keyboard");
+    keyboard.innerHTML = "";
+
+    let letters = generateLetters(quizData[current].a);
+
+    letters.forEach(letter=>{
+
+        let btn = document.createElement("div");
+        btn.className = "key";
+        btn.innerText = letter;
+
+        if(isAnswered){
+    btn.style.pointerEvents = "none";
+    btn.style.opacity = "0.5";
+}
+
+        /* restore disabled letters if already typed */
+        if(user.includes(letter)){
+            btn.style.pointerEvents = "none";
+            btn.style.opacity = "0.5";
+            usedButtons.push(btn);
+        }
+btn.onclick = ()=>{
+
+    if(isAnswered) return;
+
+    if(locked) return;
 
     if(user.length < len){
 
-        user += letter
-        userAnswers[current] = user
+        user += letter;
+        userAnswers[current] = user;
 
-        usedButtons.push(btn)
+        usedButtons.push(btn);
 
-        // ✅ DISABLE CLICKED BUTTON
-        btn.style.pointerEvents = "none"
-        btn.style.opacity = "0.5"
+        btn.style.pointerEvents = "none";
+        btn.style.opacity = "0.5";
 
-        updateBoxes()
+        updateBoxes();
 
-        if(user.length === len){
-    checkBtn.disabled = false
-    checkBtn.classList.add("active")
-} else {
-    checkBtn.disabled = true
-    checkBtn.classList.remove("active")
+        if(user.length >= len){
+    checkBtn.disabled = false;
+    checkBtn.classList.add("active");
+}else{
+    checkBtn.disabled = true;
+    checkBtn.classList.remove("active");
 }
     }
-}
+};
 
-keyboard.appendChild(btn)
+        keyboard.appendChild(btn);
+    });
 
-})
-let back=document.createElement("div")
-back.className="key"
-back.innerText="⌫"
+    if(isAnswered){
 
-back.onclick=()=>{
-
-if(locked) return
-
-if(user.length>0){
-
-user=user.slice(0,-1)
-userAnswers[current]=user
-
-updateBoxes()
-let lastBtn = usedButtons.pop()
-
-if(lastBtn){
-  lastBtn.style.pointerEvents = "auto"
-  lastBtn.style.opacity = "1"
-}
-if(user.length === len){
-  checkBtn.disabled = false
-  checkBtn.classList.add("active")
-} else {
-  checkBtn.disabled = true
-  checkBtn.classList.remove("active")
-}
+    checkBtn.disabled = true;
+    checkBtn.classList.remove("active");
 
 }
 
+}document.addEventListener("keydown",(e)=>{
 
-}
+    if(checkedAnswers[current]) return;
 
-keyboard.appendChild(back)
+    if(e.key === "Backspace"){
 
-}
+        e.preventDefault();
 
+        if(user.length === 0) return;
+
+        user = user.slice(0,-1);
+        userAnswers[current] = user;
+
+        updateBoxes();
+
+        let lastBtn = usedButtons.pop();
+
+        if(lastBtn){
+            lastBtn.style.pointerEvents = "auto";
+            lastBtn.style.opacity = "1";
+        }
+
+        const checkBtn = document.querySelector(".check");
+
+        if(user.length >= quizData[current].a.length){
+            checkBtn.disabled = false;
+            checkBtn.classList.add("active");
+        }else{
+            checkBtn.disabled = true;
+            checkBtn.classList.remove("active");
+        }
+
+    }
+
+});
 function updateBoxes(){
 
-const boxes=document.querySelectorAll(".letterBox")
+    const boxes = document.querySelectorAll(".letterBox");
 
-boxes.forEach((box,i)=>{
-box.innerText=user[i]||""
-})
+    boxes.forEach((box,i)=>{
+        box.innerText = user[i] || "";
+    });
 
 }
 
@@ -660,9 +753,9 @@ function fireConfetti(){
 }
 
 function checkAnswer(){
-
 if(user === quizData[current].a){
 
+    checkedAnswers[current] = true;
     fireConfetti();
 
     popupEmoji.textContent = "🎉";
@@ -763,8 +856,12 @@ function prevQ(){
 if(current>0){
 
 current--
-locked=true
-loadQ()
+const isAnswered = checkedAnswers[current];
+
+// Only lock if answer was already checked correctly
+locked = isAnswered;
+
+loadQ();
 
 }
 

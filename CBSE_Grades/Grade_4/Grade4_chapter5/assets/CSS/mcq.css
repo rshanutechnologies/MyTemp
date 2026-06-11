@@ -395,15 +395,19 @@ height: clamp(42px, 6vh, 62px);
 }
 /* MOBILE — 900px and below (unchanged) */
 @media (max-width: 900px) {
+
     body {
+        display: flex;
+        justify-content: center;
         align-items: center;
-    }
-    .question{
-        font-size: 34px;
+        height: 100vh;
     }
 
     .quiz {
-        height: 100vh;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         padding: clamp(14px, 3vw, 24px);
         gap: clamp(8px, 1.5vw, 16px);
     }
@@ -414,6 +418,12 @@ height: clamp(42px, 6vh, 62px);
     }
 
     .controls {
+        margin-top: 10px;
         gap: clamp(40px, 15vw, 120px);
+        justify-content: center;
+    }
+
+    .question {
+        font-size: 34px;
     }
 }

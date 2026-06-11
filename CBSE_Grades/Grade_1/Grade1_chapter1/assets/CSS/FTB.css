@@ -456,7 +456,8 @@ input:focus {
     }
 
     .answer-section {
-        flex-direction: column;
+      
+        flex-direction: column-reverse;
     }
 
     input {

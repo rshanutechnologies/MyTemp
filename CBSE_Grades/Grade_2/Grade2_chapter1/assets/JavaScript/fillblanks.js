@@ -13,20 +13,19 @@ function showPopup(isCorrect) {
   popup.className = "popup " + (isCorrect ? "correct" : "wrong");
   popup.style.display = "flex";
 
-if (isCorrect) {
-  icon.textContent = "🎉";
-  title.textContent = "Correct!";
-  msg.textContent = "Well done!";
+  if (isCorrect) {
+    icon.textContent = "🎉";
+    title.textContent = "Correct!";
+    msg.textContent = "Well done!";
 
-  speak("Correct ");
+    speak("Correct ");
+  } else {
+    icon.textContent = "😔";
+    title.textContent = "Wrong!";
+    msg.textContent = "Try again!";
 
-} else {
-  icon.textContent = "😔";
-  title.textContent = "Wrong!";
-  msg.textContent = "Try again!";
-
-  speak("Wrong");
-}
+    speak("Wrong");
+  }
 
   setTimeout(() => {
     popup.style.display = "none";
@@ -37,13 +36,11 @@ function showFinal() {
   const finalPopup = document.getElementById("finalPopup");
   finalPopup.style.display = "flex";
 
-  document.getElementById("finalScore").textContent = 
+  document.getElementById("finalScore").textContent =
     `Score: ${score} / ${questions.length}`;
 
-  document.getElementById("stars").textContent = 
-    "⭐".repeat(score);
-     fireConfettif(); 
-  
+  document.getElementById("stars").textContent = "⭐".repeat(score);
+  fireConfettif();
 }
 
 /* ================= TILE / SLOT SYSTEM ================= */
@@ -52,8 +49,10 @@ const slots = document.getElementById("answerSlots");
 const bank = document.getElementById("letterBank");
 
 let currentTiles = []; // to track tiles for re-enabling when backspace used
+let slotTiles = [];
 
 function buildTiles(answer, prefill = false) {
+  slotTiles = [];
   slots.innerHTML = "";
   bank.innerHTML = "";
   currentTiles = [];
@@ -61,10 +60,31 @@ function buildTiles(answer, prefill = false) {
   const correctLetters = answer.toUpperCase().split("");
   const slotCount = correctLetters.length;
 
-  // Create empty slots
   for (let i = 0; i < slotCount; i++) {
     const slot = document.createElement("div");
+
     slot.className = "slot";
+
+    slot.onclick = () => {
+      // already solved → don't allow edits
+      if (answers[index]) return;
+
+      if (!slot.textContent) return;
+
+      const tile = slotTiles[i];
+
+      if (tile) {
+        tile.classList.remove("used");
+
+        tile.onclick = () =>
+          placeLetter(tile, tile.textContent, questions[index].a);
+
+        slotTiles[i] = null;
+      }
+
+      slot.textContent = "";
+    };
+
     slots.appendChild(slot);
   }
 
@@ -79,9 +99,11 @@ function buildTiles(answer, prefill = false) {
 
   // Only 3 extra letters
   const extraLetters = ["A", "E", "S"];
-  const mix = [...correctLetters, ...extraLetters].sort(() => Math.random() - 0.5);
+  const mix = [...correctLetters, ...extraLetters].sort(
+    () => Math.random() - 0.5,
+  );
 
-  mix.forEach(l => {
+  mix.forEach((l) => {
     const tile = document.createElement("div");
     tile.className = "tile";
     tile.textContent = l;
@@ -94,10 +116,14 @@ function buildTiles(answer, prefill = false) {
 }
 
 function placeLetter(tile, letter, answer) {
-  const emptySlot = [...slots.children].find(s => !s.textContent);
+  const emptySlot = [...slots.children].find((s) => !s.textContent);
   if (!emptySlot) return;
 
+  const slotIndex = [...slots.children].indexOf(emptySlot);
+
   emptySlot.textContent = letter;
+
+  slotTiles[slotIndex] = tile;
   tile.classList.add("used");
   tile.onclick = null;
 
@@ -105,7 +131,9 @@ function placeLetter(tile, letter, answer) {
 }
 
 function removeLastLetter() {
-  const filledSlots = [...slots.children].filter(s => s.textContent && !s.classList.contains("locked"));
+  const filledSlots = [...slots.children].filter(
+    (s) => s.textContent && !s.classList.contains("locked"),
+  );
   if (filledSlots.length === 0) return;
 
   // Remove from the last filled slot
@@ -114,33 +142,38 @@ function removeLastLetter() {
   lastFilled.textContent = "";
 
   // Re-enable the corresponding tile in bank
-  const tileToReEnable = currentTiles.find(t => t.textContent === removedLetter && t.classList.contains("used"));
+  const tileToReEnable = currentTiles.find(
+    (t) => t.textContent === removedLetter && t.classList.contains("used"),
+  );
   if (tileToReEnable) {
     tileToReEnable.classList.remove("used");
-    tileToReEnable.onclick = () => placeLetter(tileToReEnable, removedLetter, questions[index].a);
+    tileToReEnable.onclick = () =>
+      placeLetter(tileToReEnable, removedLetter, questions[index].a);
   }
 }
 
 function clearSlotsAndResetTiles() {
-  [...slots.children].forEach(slot => {
+  [...slots.children].forEach((slot, i) => {
     slot.textContent = "";
+    slotTiles[i] = null;
   });
 
-  currentTiles.forEach(tile => {
+  currentTiles.forEach((tile) => {
     tile.classList.remove("used");
-    tile.onclick = () => placeLetter(tile, tile.textContent, questions[index].a);
+    tile.onclick = () =>
+      placeLetter(tile, tile.textContent, questions[index].a);
   });
 }
 
 function lockSlots() {
-  [...slots.children].forEach(slot => {
+  [...slots.children].forEach((slot) => {
     slot.classList.add("locked");
   });
 }
 
 function checkAnswer(correct) {
   const guess = [...slots.children]
-    .map(s => s.textContent)
+    .map((s) => s.textContent)
     .join("")
     .toLowerCase();
 
@@ -152,7 +185,7 @@ function checkAnswer(correct) {
     score++;
     updateScore();
     showPopup(true);
-     fireConfetti(); 
+    fireConfetti();
     answers[index] = correct;
     lockSlots();
     next.disabled = false;
@@ -171,11 +204,31 @@ function checkAnswer(correct) {
 /* ================= QUESTIONS ================= */
 
 const questions = [
-  { q: "Q.1 Potato is a _ _ _ _ _ _ _ _ _ _.", a: "stem",     img: "../assets/images/Apotato.png" },
-  { q: "Q.2 _ _ _ _ _ _ _ _ _ is a medicinal plant.", a: "Neem",   img: "../assets/images/neem-img.png" },
-  { q: "Q.3 _ _ _ _ _ _ prepare food for the plant.", a: "leaves",  img: "../assets/images/LeafFoodMakee.png" },
-  { q: "Q.4 The root of a plant grows _ _ _ _ _ the ground.", a: "under",   img: "../assets/images/RootUnder.png" },
-  { q: "Q.5 Wood of _ _ _ _ tree is used to make furniture.", a: "Oak",    img: "../assets/images/F-5.png" }
+  {
+    q: "Q.1 Potato is a _ _ _ _ _ _ _ _ _ _.",
+    a: "stem",
+    img: "../assets/images/Apotato.png",
+  },
+  {
+    q: "Q.2 _ _ _ _ _ _ _ _ _ is a medicinal plant.",
+    a: "Neem",
+    img: "../assets/images/neem-img.png",
+  },
+  {
+    q: "Q.3 _ _ _ _ _ _ prepare food for the plant.",
+    a: "leaves",
+    img: "../assets/images/LeafFoodMakee.png",
+  },
+  {
+    q: "Q.4 The root of a plant grows _ _ _ _ _ the ground.",
+    a: "under",
+    img: "../assets/images/RootUnder.png",
+  },
+  {
+    q: "Q.5 Wood of _ _ _ _ tree is used to make furniture.",
+    a: "Oak",
+    img: "../assets/images/F-5.png",
+  },
 ];
 
 let index = 0;
@@ -184,10 +237,10 @@ const answers = Array(questions.length).fill(null);
 
 /* ================= ELEMENTS ================= */
 
-const qImgEl   = document.getElementById("qImg");
-const qTextEl  = document.getElementById("qText");
-const prev     = document.getElementById("prevBtn");
-const next     = document.getElementById("nextBtn");
+const qImgEl = document.getElementById("qImg");
+const qTextEl = document.getElementById("qText");
+const prev = document.getElementById("prevBtn");
+const next = document.getElementById("nextBtn");
 const scoreBox = document.getElementById("scoreBox");
 
 /* ================= FUNCTIONS ================= */
@@ -225,7 +278,8 @@ function loadQuestion() {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Backspace" || e.key === "Delete") {
     e.preventDefault();
-    if (!answers[index]) {  // only allow removal if question not yet solved
+    if (!answers[index]) {
+      // only allow removal if question not yet solved
       removeLastLetter();
     }
   }
@@ -249,7 +303,7 @@ function fireConfetti() {
   confetti({
     particleCount: 40,
     spread: 80,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
   });
 }
 
@@ -257,7 +311,7 @@ function fireConfettif() {
   confetti({
     particleCount: 100,
     spread: 120,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
   });
 }
 /* ================= START ================= */

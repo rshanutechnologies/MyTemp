@@ -391,8 +391,8 @@ button:disabled {
 /* score circle */
 
 .score-circle{
-    width:110px;
-    height:110px;
+    width:120px;
+    height:120px;
     border-radius:50%;
     background:white;
     color:#333;
@@ -400,7 +400,7 @@ button:disabled {
     align-items:center;
     justify-content:center;
     font-size:30px;
-    font-weight:700;
+    font-weight:400;
     margin:0 auto 20px auto;
     box-shadow:0 10px 25px rgba(0,0,0,0.25);
     
@@ -901,326 +901,798 @@ button:disabled {
 /* ===============================
    📱 MOBILE RESPONSIVE FIX
 ================================ */
+/* ========== 320px - 350px (Small Phones) ========== */
+@media (min-width: 320px) and (max-width: 350px) {
+    body {
+        overflow: auto;
+        margin-top: 15%;
+    }
 
-@media (max-width:768px){
+    .main {
+        width: 95%;
+        height: auto;
+        padding: 10px;
+    }
 
-body{
-    overflow:scroll;
-    margin-top:6%;
+    .question {
+        font-size: 18px;
+        height: auto;
+        min-height: 80px;
+    }
+
+    .left img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .input-box {
+        width: 95% !important;
+        height: 50px;
+    }
+
+    .input-box input {
+        font-size: 14px;
+    }
+
+    .input-box button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .prev, .next {
+        width: 55px;
+        height: 55px;
+        font-size: 12px;
+        margin-top: 30px;
+    }
+
+    .popup-content {
+        padding: 15px;
+        width: 95%;
+    }
+
+    .popup-icon {
+        font-size: 40px;
+    }
+
+    .popup-title {
+        font-size: 18px;
+    }
+
+    .final-box {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .score-circle {
+        width: 70px;
+        height: 70px;
+        font-size: 18px;
+    }
 }
 
-/* main container */
-.main{
-    width:95%;
-    height:auto;
-    padding:15px;
+/* ========== 351px - 430px (Phones) ========== */
+@media (min-width: 351px) and (max-width: 430px) {
+    body {
+        overflow: auto;
+        margin-top: 10%;
+    }
+
+    .main {
+        width: 95%;
+        height: auto;
+        padding: 12px;
+    }
+
+    .question {
+        font-size: 20px;
+        height: auto;
+    }
+
+    .left img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .input-box {
+        width: 95% !important;
+        height: 50px;
+    }
+
+    .input-box input {
+        font-size: 16px;
+    }
+
+    .prev, .next {
+        width: 60px;
+        height: 60px;
+        font-size: 14px;
+        margin-top: 35px;
+    }
+     .score-circle {
+        width: 80px;
+        height: 80px;
+        padding: 5px;
+        font-size: 22px;
+    }
 }
 
-/* top section */
-.top{
-    flex-direction:column;
-    gap:8px;
-}
+/* ========== 431px - 600px (Large Phones) ========== */
+@media (min-width: 431px) and (max-width: 600px) {
+    body {
+        overflow: auto;
+        margin-top: 8%;
+    }
 
-/* badge + question counter */
-.badge{
-    font-size:16px;
-    padding:8px 18px;
-}
+    .main {
+        width: 92%;
+        height: auto;
+        padding: 15px;
+    }
 
-.qcount{
-    font-size:18px;
-}
+    .question {
+        font-size: 22px;
+        height: auto;
+    }
 
-/* content */
-.content{
-    flex-direction:column;
-    padding:15px;
-}
+    .left img {
+        width: 140px;
+        height: 140px;
+    }
 
-/* image section */
-.left{
-    width:100%;
-    margin:0;
-}
+    .input-box {
+        width: 90% !important;
+        height: 55px;
+    }
 
-.left img{
-    width:150px;
-    height:150px;
-}
+    .input-box input {
+        font-size: 18px;
+    }
 
-/* question text */
-.question{
-    font-size:22px;
-    height:auto;
-    margin-top:2%;
-    min-height:100px;
-}
+    .prev, .next {
+        width: 70px;
+        height: 70px;
+        font-size: 16px;
+        margin-top: 40px;
+    }
+    
 
-/* input box */
-.input-box{
-    width:90%;
-    height:55px;
-}
-
-.input-box input{
-font-size:18px;
-}
-
-.input-box input::placeholder{
-font-size:20px;
-}
-
-/* submit button */
-.submit{
-    width:100px;
-    height:45px;
-    font-size:18px;
-}
-
-/* navigation buttons */
-.prev,
-.next{
-    width:80px;
-    height:80px;
-    font-size:16px;
-    border-radius: 50%;
-    margin-top: 50px;
-}
-
-/* progress dots */
-.dot{
-    width:22px;
-    height:22px;
-}
-
-/* quiz header */
-.quiz-title{
-    font-size:22px;
-}
-
-.quiz-subtitle{
-    font-size:14px;
-}
-
-/* score box */
-.score-box{
-    font-size:14px;
-    padding:6px 12px;
-   display:none;
-}
-
-/* quiz navigation */
-.quiz-nav{
-    gap:50%;
-}
-
-/* tiles */
-.tile{
-    width:45px;
-    height:45px;
-    font-size:20px;
-}
-
-/* slots */
-.slot{
-    width:45px;
-    height:45px;
-    font-size:20px;
-}
-
-/* popup */
-.popup-content{
-    width:90%;
-    padding:25px;
-}
-
-.popup-title{
-    font-size:22px;
-}
-
-.popup-msg{
-    font-size:16px;
-}
-
-/* final popup */
-.finalpopup-box{
-    width:90%;
-    padding:20px;
-}
-/* .score-box{
-    display:none;
-} */
-#finalPopup{
-  padding:10px;
-}
-
-.final-box{
-  width:90%;
-  padding:20px 15px;
-  border-radius:20px;
-}
-
-/* trophy */
-.trophy{
-  font-size:55px;
-}
-
-/* title */
-.final-title{
-  font-size:22px;
-}
-
-/* score circle */
-.score-circle{
-  width:80px;
-  height:80px;
-  font-size:22px;
-}
-
-/* stars */
-.star-row{
-  font-size:28px;
-  margin-bottom:12px;
-}
-
-/* play again button */
-.playAgain-btn{
-  font-size:14px;
-  padding:10px 20px;
-}
-
+    .score-circle {
+        width: 80px;
+        height: 80px;
+        padding: 5px;
+        font-size: 22px;
+    }
 
 }
 
+/* ========== 601px - 768px (Tablets) ========== */
+@media (min-width: 601px) and (max-width: 768px) {
+    body {
+        overflow: auto;
+        margin-top: 6%;
+    }
 
+    .main {
+        width: 90%;
+        height: auto;
+        padding: 15px;
+    }
 
-/* ================= 1025px — 1440px ================= */
-@media screen and (min-width:1650px) and (max-width:1920px){
+    .top {
+        flex-direction: column;
+        gap: 8px;
+    }
 
-.main{
-width:min(1350px,98vw);
-height:600px;
+    .badge {
+        font-size: 16px;
+        padding: 8px 18px;
+    }
+
+    .qcount {
+        font-size: 18px;
+    }
+
+    .content {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .left {
+        width: 100%;
+        margin: 0;
+    }
+
+    .left img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .question {
+        font-size: 22px;
+        height: auto;
+        margin-top: 2%;
+        min-height: 100px;
+    }
+
+    .input-box {
+        width: 90%;
+        height: 55px;
+    }
+
+    .input-box input {
+        font-size: 18px;
+    }
+
+    .input-box input::placeholder {
+        font-size: 20px;
+    }
+
+    .submit {
+        width: 100px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .prev, .next {
+        width: 80px;
+        height: 80px;
+        font-size: 16px;
+        border-radius: 50%;
+        margin-top: 50px;
+    }
+
+    .dot {
+        width: 22px;
+        height: 22px;
+    }
+
+    .quiz-title {
+        font-size: 22px;
+    }
+
+    .quiz-subtitle {
+        font-size: 14px;
+    }
+
+    .score-box {
+        display: none;
+    }
+
+    .quiz-nav {
+        gap: 50%;
+    }
+
+    .popup-content {
+        width: 90%;
+        padding: 25px;
+    }
+
+    .popup-title {
+        font-size: 22px;
+    }
+
+    .popup-msg {
+        font-size: 16px;
+    }
+
+    .final-box {
+        width: 90%;
+        padding: 20px 15px;
+        border-radius: 20px;
+    }
+
+    .trophy {
+        font-size: 55px;
+    }
+
+    .final-title {
+        font-size: 22px;
+    }
+
+    .score-circle {
+        width: 80px;
+        height: 80px;
+        font-size: 22px;
+    }
+
+    .star-row {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+
+    .playAgain-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
 }
 
-.question{
-font-size:40px;
+/* ========== 769px - 900px (Small Tablets Landscape) ========== */
+@media (min-width: 769px) and (max-width: 900px) {
+    body {
+        overflow: auto;
+        margin-top: 5%;
+    }
+
+    .main {
+        width: 88%;
+        height: auto;
+        padding: 18px;
+    }
+
+    .content {
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    .left {
+        width: 100%;
+        margin: 0;
+        margin-top: -10px;
+    }
+
+    .left img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .question {
+        font-size: 24px;
+        height: auto;
+    }
+
+    .input-box {
+        width: 80% !important;
+        height: 58px;
+    }
+
+    .input-box input {
+        font-size: 19px;
+    }
+
+    .prev, .next {
+        width: 75px;
+        height: 75px;
+        font-size: 16px;
+    }
 }
 
-.left img{
-width:180px;
-height:180px;
+/* ========== 901px - 1100px (Laptops) ========== */
+@media (min-width: 901px) and (max-width: 1100px) {
+    body {
+        margin-top: -20px;
+    }
+
+    .main {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+        margin-top: 0;
+    }
+
+    .top {
+        flex-direction: row;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .badge {
+        font-size: 18px;
+        padding: 8px 20px;
+    }
+
+    .qcount {
+        font-size: 20px;
+    }
+
+    .content {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .left {
+        width: 100%;
+        margin: 0;
+        margin-top: -20px;
+    }
+
+    .left img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .question {
+        font-size: 26px;
+        height: auto;
+        margin-top: 20px;
+        min-height: 80px;
+        padding-inline: 10px;
+    }
+
+    .input-box {
+        width: 60% !important;
+        height: 60px;
+        margin-top: 30px !important;
+    }
+
+    .input-box input {
+        font-size: 20px;
+    }
+
+    .input-box input::placeholder {
+        font-size: 18px;
+    }
+
+    .submit {
+        width: 100px;
+        height: 48px;
+        font-size: 18px;
+    }
+
+    .quiz-nav {
+        gap: 60%;
+        margin-bottom: 3%;
+    }
+
+    .prev, .next {
+        width: 70px;
+        height: 70px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .dots {
+        gap: 15px;
+    }
+
+    .dot {
+        width: 25px;
+        height: 25px;
+    }
+
+    .quiz-title {
+        font-size: 26px;
+    }
+
+    .quiz-subtitle {
+        font-size: 16px;
+    }
+
+    .score-box {
+        font-size: 16px;
+        padding: 6px 15px;
+        position: relative;
+        margin-top: 10px;
+    }
+
+    .popup-content {
+        width: 85%;
+        max-width: 380px;
+        padding: 30px;
+    }
+
+    .popup-title {
+        font-size: 24px;
+    }
+
+    .popup-msg {
+        font-size: 17px;
+    }
+
+    .popup-icon {
+        font-size: 60px;
+    }
+
+    .finalpopup-box {
+        width: 85%;
+        max-width: 400px;
+        padding: 25px;
+    }
+
+    .final-box {
+        width: 85%;
+        padding: 25px 20px;
+    }
+
+    .trophy {
+        font-size: 65px;
+    }
+
+    .final-title {
+        font-size: 26px;
+    }
+
+    .score-circle {
+        width: 90px;
+        height: 90px;
+        font-size: 26px;
+    }
+
+    .star-row {
+        font-size: 32px;
+    }
+
+    .playAgain-btn {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
 }
 
-.input-box{
-width:60%;
-height:58px;
+/* ========== 1101px - 1325px (Medium Desktops) ========== */
+@media (min-width: 1101px) and (max-width: 1325px) {
+    .main {
+        width: 95%;
+        max-width: 1000px;
+        height: auto;
+    }
+
+    .question {
+        font-size: 32px;
+    }
+
+    .left img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .input-box {
+        width: 65%;
+        height: 60px;
+    }
+
+    .prev, .next {
+        width: 80px;
+        height: 80px;
+    }
 }
 
-.input-box input{
-font-size:30px;
+/* ========== 1325px - 1440px (Large Desktops) ========== */
+@media screen and (min-width: 1325px) and (max-width: 1440px) {
+    .quiz {
+        max-width: 1200px;
+        margin-left: 6%;
+    }
+
+    .question {
+        font-size: 44px;
+    }
+
+    .row {
+        gap: 30px;
+    }
+
+    .option {
+        font-size: 24px;
+        padding: 12px;
+    }
+
+    .opt-img {
+        width: 46px;
+        height: 46px;
+    }
+
+    .imgbox {
+        height: 260px;
+    }
+
+    .imgbox img {
+        width: 280px;
+        height: 280px;
+    }
+
+    .nav {
+        left: 64%;
+        gap: 30px;
+    }
+
+    .nav button {
+        font-size: 20px;
+        padding: 20px 30px;
+    }
 }
 
-.submit{
-    width:100px;
-    height:55px;
-    font-size:22px;
+/* ========== 1441px - 1540px (Extra Large Desktops) ========== */
+@media (min-width: 1441px) and (max-width: 1540px) {
+    .main {
+        width: 1100px;
+        height: 650px;
+    }
+
+    .question {
+        font-size: 44px;
+    }
+
+    .left img {
+        width: 280px;
+        height: 280px;
+    }
+
+    .input-box {
+        width: 65%;
+        height: 80px;
+    }
+
+    .input-box input {
+        font-size: 28px;
+    }
+
+    .submit {
+        width: 100px;
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .quiz-nav {
+        gap: 75%;
+    }
+
+    .prev, .next {
+        width: 100px;
+        height: 100px;
+        font-size: 22px;
+    }
 }
 
-.quiz-nav{
-gap:65%;
+/* ========== 1541px - 1650px ========== */
+@media screen and (min-width: 1541px) and (max-width: 1650px) {
+    .quiz {
+        max-width: 1350px;
+        margin-left: 5%;
+        height: 75vh;
+    }
+
+    .question {
+        font-size: 44px;
+        width: 1200px;
+    }
+
+    .row {
+        gap: 40px;
+    }
+
+    .options {
+        margin-top: 40px;
+    }
+
+    .option {
+        font-size: 22px;
+        padding: 14px;
+    }
+
+    .opt-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .imgbox {
+        height: 300px;
+    }
+
+    .imgbox img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .nav {
+        left: 63%;
+        gap: 76px !important;
+    }
+
+    .nav button {
+        font-size: 20px;
+        padding: 14px 28px;
+    }
 }
 
-.prev,.next{
-width:100px;
-height:100px;
-font-size: 22px;
+/* ========== 1650px - 1920px (Ultra Wide) ========== */
+@media screen and (min-width: 1650px) and (max-width: 1920px) {
+    .main {
+        width: min(1350px, 98vw);
+        height: 600px;
+    
+    }
+
+    .question {
+        font-size: 40px;
+    }
+
+    .left img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .input-box {
+        width: 40%;
+        height: 58px;
+    }
+
+    .input-box input {
+        font-size: 25px;
+    }
+
+    .submit {
+        width: 100px;
+        height: 55px;
+        font-size: 22px;
+    }
+
+    .quiz-nav {
+        gap: 65%;
+    }
+
+    .prev, .next {
+        width: 100px;
+        height: 100px;
+        font-size: 22px;
+    }
 }
 
+/* ========== 1921px and above (4K) ========== */
+@media screen and (min-width: 1921px) {
+    .main {
+        width: 1250px;
+        height: 720px;
+    }
+
+    .question {
+        font-size: 40px;
+    }
+
+    .left img {
+        width: 320px;
+        height: 320px;
+    }
+
+    .input-box {
+        width: 70%;
+        height: 72px;
+    }
+
+    .input-box input {
+        font-size: 26px;
+    }
+
+    .submit {
+        width: 100px;
+        height: 65px;
+        font-size: 28px;
+    }
+
+    .quiz-nav {
+        gap: 80%;
+    }
+
+    .prev, .next {
+        width: 110px;
+        height: 110px;
+        font-size: 24px;
+    }
 }
 
+/* ========== Mobile Responsive Fix for Input ========== */
+@media screen and (min-width: 220px) and (max-width: 700px) {
+    .main {
+        padding: 0px !important;
+    }
 
-/* ================= 1441px — 1920px ================= */
-@media screen and (min-width:1441px) and (max-width:1920px){
+    .input-box {
+        width: 100% !important;
+    }
 
-.main{
-width:1100px;
-height:650px;
-}
+    .input-box input::placeholder {
+        font-size: 14px !important;
+    }
 
-.question{
-font-size:44px;
-}
+    .input-box input:not(:placeholder-shown) {
+        color: #0A3D62;
+        font-weight: 400 !important;
+        font-size: 18px;
+    }
 
-.left img{
-width:300px;
-height:300px;
-}
-
-.input-box{
-width:65%;
-height:85px;
-}
-
-.input-box input{
-font-size:30px;
-}
-.submit{
-    width:100px;
-    height:60px;
-    font-size:24px;
-}
-.quiz-nav{
-gap:75%;
-}
-
-.prev,.next{
-width:100px;
-height:100px;
-font-size: 22px;
-}
-
-}
-
-
-/* ================= 1921px+ ================= */
-@media screen and (min-width:1921px){
-
-.main{
-width:1250px;
-height:720px;
-}
-
-.question{
-font-size:40px;
-}
-
-.left img{
-width:320px;
-height:320px;
-}
-
-.input-box{
-width:70%;
-height:72px;
-}
-
-.input-box input{
-font-size:26px;
-}
-.submit{
-    width:100px;
-    height:65px;
-    font-size:28px;
-}
-.quiz-nav{
-gap:80%;
-}
-
-.prev,.next{
-width:110px;
-height:110px;
-font-size: 24px;
-}
-
+    .submit {
+        width: 90px !important;
+        height: 45px !important;
+        font-size: 13px !important;
+    }
 }

@@ -8,7 +8,6 @@
 body {
     height: 100vh;
     overflow: hidden;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +18,6 @@ body {
     width: 100%;
     max-width: 1200px;
     height: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,11 +27,9 @@ body {
 .game-container {
     position: relative;
     width: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     gap: clamp(20px, 6vw, 80px);
 }
 
@@ -47,41 +43,35 @@ body {
     z-index: 1;
 }
 
-/* COLUMNS (EQUAL WIDTH) */
+/* COLUMNS — both same width */
 .column {
     flex: 1;
-    max-width: 400px;
-
+    max-width: 340px;           /* same for left and right */
     display: flex;
     flex-direction: column;
     gap: clamp(10px, 2vw, 15px);
     z-index: 2;
 }
 
-/* ITEMS */
+/* ITEMS — fixed equal size, not driven by content */
 .item {
-      width: clamp(260px, 30vw, 340px);
-    
-     /* height: clamp(70px, 12vh, 90px); */
-      /* height: clamp(80px, 14vh, 110px); */
-      height:auto;
+    width: 100%;                /* fills column, both sides equal */
+    height: 80px;               /* fixed height, not auto */
+    min-height: 80px;
+    max-height: 80px;
     background: #f7e4cf;
     border-radius: 60px;
-     min-height: clamp(70px, 10vh, 90px); 
     display: flex;
     align-items: center;
-    gap: clamp(10px, 2vw, 22px);
+    gap: clamp(8px, 1.5vw, 18px);
     padding: 0 clamp(10px, 2vw, 18px);
-
     cursor: pointer;
-    font-size: clamp(15px, 1.8vw, 22px);
-    /* font-size: clamp(14px, 1.6vw, 2px); */
+    font-size: clamp(13px, 1.5vw, 20px);
     color: #2f4f4f;
-
+    overflow: hidden;           /* content never pushes box bigger */
     box-shadow:
         inset 0 2px 5px rgba(255, 255, 255, .6),
         0 5px 12px rgba(0, 0, 0, .08);
-
     border: 2px solid rgba(0, 0, 0, .05);
     transition: .25s;
 }
@@ -114,24 +104,13 @@ body {
     background: #ffe7e7;
 }
 
-/* IMAGE */
-/* .left-img {
- 
-    width: clamp(40px, 6vw, 100px);
-    height: clamp(45px, 8vh, 110px);
+/* IMAGE — fixed size, never stretches box */
+.left-img {
+    width: 52px;
+    height: 52px;
     object-fit: contain;
-     flex-shrink: 0;
-} */
- .left-img {
-  width: clamp(50px, 7vw, 130px);
-  height: clamp(50px, 9vh, 130px);
-  object-fit: contain;
-  flex-shrink: 0;
+    flex-shrink: 0;             /* never squishes */
 }
-/* .left .item,
-.right .item {
-    width: clamp(260px, 30vw, 340px);
-} */
 
 /* FINAL POPUP */
 #finalPopup {
@@ -141,13 +120,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 5000;
-    /* pointer-events: none; */
 }
-
-/* #finalPopup.show {
-    display: flex;
-    pointer-events: auto;
-} */
 
 .final-kid-box {
     background: linear-gradient(135deg, #fff7d6, #e6fff5);
@@ -180,18 +153,26 @@ body {
     padding: clamp(10px, 2vw, 14px) clamp(20px, 3vw, 34px);
     border-radius: 30px;
     font-size: clamp(0.9em, 2vw, 1.1em);
-    cursor: pointer; 
+    cursor: pointer;
 }
 
-/* 🔥 SINGLE BREAKPOINT */
-@media (max-width:900px) {
+
+/* ================================================= */
+/* =============== MOBILE  ≤ 900px ================= */
+/* ================================================= */
+
+@media (max-width: 900px) {
 
     body {
         height: 100vh;
         overflow: hidden;
     }
 
-       .game-container {
+    #line-canvas {
+        display: none;
+    }
+
+    .game-container {
         gap: clamp(10px, 3vw, 20px);
         justify-content: center;
     }
@@ -201,47 +182,102 @@ body {
         max-width: 50%;
     }
 
-    /* 🔥 KEY FIX */
     .item {
-        width: 100%;        /* take column width */
-        max-width: 100%;    /* remove fixed limit */
-        min-width: 0;       /* prevent overflow */
+        width: 100%;
+        height: 70px;
+        min-height: 70px;
+        max-height: 70px;
+        font-size: clamp(12px, 2vw, 16px);
+        padding: 0 10px;
+        gap: 8px;
     }
 
+    .left-img {
+        width: 40px;
+        height: 40px;
+    }
 }
-/* ==================================================
-   ✅ DESKTOP ONLY (>=1400px) — MATCHING RESPONSIVE
-================================================== */
+
+
+/* ================================================= */
+/* =============== SMALL  ≤ 600px ================== */
+/* ================================================= */
+
+@media (max-width: 600px) {
+
+    .game-container {
+        gap: 10px;
+    }
+
+    .item {
+        height: 58px;
+        min-height: 58px;
+        max-height: 58px;
+        font-size: 11px;
+        padding: 0 8px;
+        gap: 6px;
+        border-radius: 40px;
+    }
+
+    .left-img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+/* ================================================= */
+/* =============== XSMALL  ≤ 400px ================= */
+/* ================================================= */
+
+@media (max-width: 400px) {
+
+    .item {
+        height: 50px;
+        min-height: 50px;
+        max-height: 50px;
+        font-size: 10px;
+        padding: 0 6px;
+        gap: 5px;
+        border-radius: 30px;
+    }
+
+    .left-img {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+
+/* ================================================= */
+/* =============== DESKTOP  ≥ 1400px =============== */
+/* ================================================= */
+
 @media (min-width: 1400px) {
 
-  /* MAIN WIDTH */
-  .main {
-    max-width: 1300px;
-  }
+    .main {
+        max-width: 1300px;
+    }
 
-  /* CENTER GAP */
-  .game-container {
-    gap: 300px;
-  }
+    .game-container {
+        gap: 300px;
+    }
 
-  /* COLUMN WIDTH (slightly bigger) */
-  .column {
-    max-width: 400px;
-  }
+    .column {
+        max-width: 400px;
+    }
 
-  /* ITEMS (VERY IMPORTANT — SCALE PROPERLY) */
-  .column .item {
-    width: 380px;
-    min-height: 90px;
-    padding: 0 16px;
-    gap: 16px;
-    font-size: 24px;
-  }
+    .item {
+        height: 95px;
+        min-height: 95px;
+        max-height: 95px;
+        font-size: 24px;
+        padding: 0 20px;
+        gap: 16px;
+    }
 
-  /* IMAGE (CONTROLLED — WON’T BREAK LAYOUT) */
-  .left-img {
-    width: 95px;
-    height: 95px;
-  }
-
+    .left-img {
+        width: 65px;
+        height: 65px;
+    }
 }

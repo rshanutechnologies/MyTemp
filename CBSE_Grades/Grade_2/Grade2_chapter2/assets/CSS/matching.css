@@ -569,7 +569,7 @@ body{
 /* right side answers */
 .right .item{
   /* padding:15px 10px; */
-  min-height:70px;
+  height:70px !important;
   font-size:15px !important;
   color:#2f4f4f;
 }
@@ -696,7 +696,7 @@ gap:28px;
 }
 
 .item{
-min-height:85px;
+height:75px !important;
 padding:10px;
 border-radius:16px;
 }
@@ -716,7 +716,8 @@ height:26px;
 }
 
 .right .item{
-font-size:15px;
+/* font-size:15px; */
+height: 75px !important;
 }
 
 .match-letter{
@@ -759,7 +760,7 @@ gap:40px;
 /* small cards */
 .item{
 padding:2px 2px !important;
-min-height:60px;
+height:60px !important;
 border-radius:12px;
 /* gap:5px; */
 }
@@ -785,9 +786,9 @@ line-height:1.1;
 
 /* right side answer box */
 .right .item{
-font-size:13px !important;
-padding:6px 8px;
-min-height:60px;
+/* font-size:13px !important;
+padding:6px 8px; */
+height:60px !important;
 }
 
 /* matching letter small */
@@ -1025,7 +1026,7 @@ body{
   /* ITEM CARD */
   .item{
     padding:4px !important;
-    min-height:55px;
+    height:55px !important;
     border-radius:10px;
   }
 
@@ -1054,7 +1055,7 @@ body{
   /* RIGHT SIDE */
   .right .item{
     font-size:12px !important;
-    min-height:55px;
+    height:55px !important;
     padding:5px;
   }
 

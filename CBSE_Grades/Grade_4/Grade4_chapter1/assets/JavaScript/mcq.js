@@ -30,7 +30,7 @@ const quizData = [
     { text: "Lamina", img: "../assets/images/mcq3-1.png" },
     { text: "Apex", img: "../assets/images/plants.png" },
     { text: "Vein", img: "../assets/images/mcq3-3.png" },
-    { text: "Chlorophyll", img: "../assets/images/chlorophyll.png" }
+    { text: "Chlorophyll", img: "../assets/images/Chlorophyll.png" }
   ],
   correctIndex: 0
 },
@@ -47,7 +47,7 @@ const quizData = [
 },
 {
   q: "Q5. Which of the following has stored food in its stem?",
-  qImg: "../assets/images/MCQ-5.png",
+  qImg: "../assets/images/ginger.png",
   options: [
     { text: "cauliflower", img: "../assets/images/cauliflower.png" },
     { text: "potato", img: "../assets/images/potatoo.png" },

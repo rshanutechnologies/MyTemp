@@ -3,7 +3,7 @@ const quiz = [
     q: "Q1. In which of the following cases will the seeds germinate?",
     options: [
       { text: "Roasted seeds", img: "../assets/images/mcq1.png" },
-      { text: "Seeds in moist soil", img: "../assets/images/mcq32.png" },
+      { text: "Seeds in moist soil", img: "../assets/images/mcq33.png" },
       { text: "Seeds submerged in water", img: "../assets/images/mcq3.png" },
       { text: "Seeds kept in refrigerator", img: "../assets/images/mcq4.png" },
     ],

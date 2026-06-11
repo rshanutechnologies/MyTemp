@@ -1,423 +1,380 @@
 /* ================= POPUP SYSTEM ================= */
 
-function showPopup(isCorrect){
+function showPopup(isCorrect) {
+  const popup = document.getElementById("answerPopup");
+  const icon = document.getElementById("popupIcon");
+  const title = document.getElementById("popupTitle");
+  const msg = document.getElementById("popupMsg");
 
-const popup=document.getElementById("answerPopup");
-const icon=document.getElementById("popupIcon");
-const title=document.getElementById("popupTitle");
-const msg=document.getElementById("popupMsg");
+  popup.className = "popup " + (isCorrect ? "correct" : "wrong");
+  popup.style.display = "flex";
 
-popup.className="popup "+(isCorrect?"correct":"wrong");
-popup.style.display="flex";
+  if (isCorrect) {
+    icon.textContent = "🎉";
+    title.textContent = "Correct!";
+    msg.textContent = "Well done!";
+    speak("Correct");
+    fireConfetti();
+  } else {
+    icon.textContent = "😔";
+    title.textContent = "Wrong!";
+    msg.textContent = "Try again!";
+    speak("Wrong");
+  }
 
-if(isCorrect){
-
-icon.textContent="🎉";
-title.textContent="Correct!";
-msg.textContent="Well done!";
-speak("Correct");
- fireConfetti(); 
-
-}else{
-
-icon.textContent="😔";
-title.textContent="Wrong!";
-msg.textContent="Try again!";
-speak("Wrong");
-
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 1200);
 }
-
-setTimeout(()=>{
-popup.style.display="none";
-},1200);
-
-}
-
 
 /* ================= FINAL POPUP ================= */
 
-function showFinal(){
+function showFinal() {
+  const finalPopup = document.getElementById("finalPopup");
 
-const finalPopup=document.getElementById("finalPopup");
+  finalPopup.style.display = "flex";
 
-finalPopup.style.display="flex";
+  document.getElementById("finalScore").textContent =
+    `Score: ${score} / ${quizData.length}`;
 
-document.getElementById("finalScore").textContent=
-`Score: ${score} / ${quizData.length}`;
-
-document.getElementById("stars").textContent=
-"⭐".repeat(score);
- fireConfettif(); 
-
+  document.getElementById("stars").textContent = "⭐".repeat(score);
+  fireConfettif();
 }
-
 
 /* ================= SPEECH ================= */
 
-function speak(text){
+function speak(text) {
+  speechSynthesis.cancel();
 
-speechSynthesis.cancel();
+  const msg = new SpeechSynthesisUtterance(text);
 
-const msg=new SpeechSynthesisUtterance(text);
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-msg.lang="en-UK";
-msg.volume=0.25;
-msg.rate=1;
-msg.pitch=1;
-
-speechSynthesis.speak(msg);
-
+  speechSynthesis.speak(msg);
 }
-
 
 /* ================= QUIZ DATA ================= */
 
-const quizData=[
+const quizData = [
+  {
+    q: "Q.1 Small and bushy plants",
+    a: "SHRUBS",
+    img: "../assets/images/S1.png",
+  },
 
-{
-q:"Q.1 Small and bushy plants",
-a:"SHRUBS",
-img:"../assets/images/S1.png"
-},
+  {
+    q: "Q.2 Small plants with soft stems",
+    a: "HERBS",
+    img: "../assets/images/SmallPlantsak.png",
+  },
 
-{
-q:"Q.2 Small plants with soft stems",
-a:"HERBS",
-img:"../assets/images/SmallPlantsak.png"
-},
+  {
+    q: "Q.3 Seeds such as red gram and green gram",
+    a: "PULSES",
+    img: "../assets/images/RedGreenGram.png",
+  },
 
-{
-q:"Q.3 Seeds such as red gram and green gram",
-a:"PULSES",
-img:"../assets/images/RedGreenGram.png"
-},
+  {
+    q: "Q.4 Grains such as wheat and rice",
+    a: "CEREALS",
+    img: "../assets/images/WheatRice.png",
+  },
 
-{
-q:"Q.4 Grains such as wheat and rice",
-a:"CEREALS",
-img:"../assets/images/WheatRice.png"
-},
-
-{
-q:"Q.5 Cotton and jute",
-a:"FIBRE",
-img:"../assets/images/CottonJute.png"
-}
-
+  {
+    q: "Q.5 Cotton and jute",
+    a: "FIBRE",
+    img: "../assets/images/CottonJute.png",
+  },
 ];
-
 
 /* ================= VARIABLES ================= */
 
-let current=0;
-let score=0;
+let current = 0;
+let score = 0;
 
-const answered=Array(quizData.length).fill(false);
-const userAnswers=Array(quizData.length).fill("");
+const answered = Array(quizData.length).fill(false);
+const userAnswers = Array(quizData.length).fill("");
 
-const qEl=document.getElementById("question");
-const imgEl=document.getElementById("questionImg");
-const nextBtn=document.getElementById("next");
-const prevBtn=document.getElementById("prev");
-const submitBtn=document.getElementById("submitBtn");
+const qEl = document.getElementById("question");
+const imgEl = document.getElementById("questionImg");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+const submitBtn = document.getElementById("submitBtn");
 
-const scoreBox=document.getElementById("scoreBox");
-const slotsEl=document.getElementById("answerSlots");
-const jarEl=document.getElementById("letterJar");
+const scoreBox = document.getElementById("scoreBox");
+const slotsEl = document.getElementById("answerSlots");
+const jarEl = document.getElementById("letterJar");
 
-let correctWord="";
-let currentTiles=[];
-
+let correctWord = "";
+let currentTiles = [];
+let slotTiles = [];
 
 /* ================= SCORE ================= */
 
-function updateScore(){
-
-scoreBox.textContent="Score: "+score;
-
+function updateScore() {
+  scoreBox.textContent = "Score: " + score;
 }
-
 
 /* ================= LOAD QUESTION ================= */
 
-function loadQuestion(){
+function loadQuestion() {
+  slotTiles = [];
 
-const q=quizData[current];
+  const q = quizData[current];
 
-qEl.textContent=q.q;
+  qEl.textContent = q.q;
 
-imgEl.src=q.img;
+  imgEl.src = q.img;
 
-correctWord=q.a.toUpperCase();
+  correctWord = q.a.toUpperCase();
 
-createSlots(correctWord);
+  createSlots(correctWord);
 
-/* restore previous answer if already solved */
-if(answered[current]){
+  /* restore previous answer if already solved */
+  if (answered[current]) {
+    const slots = document.querySelectorAll(".slot");
+    const saved = userAnswers[current].split("");
 
-const slots=document.querySelectorAll(".slot");
-const saved=userAnswers[current].split("");
+    saved.forEach((letter, i) => {
+      slots[i].textContent = letter;
+      slots[i].classList.add("locked");
+    });
 
-saved.forEach((letter,i)=>{
-slots[i].textContent=letter;
-slots[i].classList.add("locked");
-});
+    /* hide letter bubbles since question already solved */
+    jarEl.innerHTML = "";
 
-/* hide letter bubbles since question already solved */
-jarEl.innerHTML="";
+    submitBtn.disabled = true;
+    nextBtn.disabled = false;
+  } else {
+    createJar(correctWord);
+    submitBtn.disabled = true;
+    nextBtn.disabled = true;
+  }
 
-submitBtn.disabled=true;
-nextBtn.disabled=false;
-
-}else{
-
-createJar(correctWord);
-submitBtn.disabled=true;
-nextBtn.disabled=true;
-
+  prevBtn.disabled = current === 0;
 }
-
-prevBtn.disabled=current===0;
-
-}
-
 
 /* ================= CREATE SLOTS ================= */
 
-function createSlots(word){
+function createSlots(word) {
+  slotsEl.innerHTML = "";
 
-slotsEl.innerHTML="";
+  for (let i = 0; i < word.length; i++) {
+    const slot = document.createElement("div");
 
-for(let i=0;i<word.length;i++){
+    slot.className = "slot";
 
-const slot=document.createElement("div");
+    slot.onclick = function () {
+      // Don't allow editing after correct answer
+      if (answered[current]) return;
 
-slot.className="slot";
+      // Empty slot → nothing to remove
+      if (slot.textContent === "") return;
 
-slotsEl.appendChild(slot);
+      const tile = slotTiles[i];
 
+      if (tile) {
+        tile.classList.remove("used");
+
+        tile.onclick = () => placeLetter(tile, tile.textContent);
+
+        slotTiles[i] = null;
+      }
+
+      slot.textContent = "";
+
+      submitBtn.disabled = true;
+    };
+
+    slotsEl.appendChild(slot);
+  }
 }
-
-}
-
 
 /* ================= CREATE LETTER TILES ================= */
 
-function createJar(answer){
+function createJar(answer) {
+  jarEl.innerHTML = "";
+  currentTiles = [];
 
-jarEl.innerHTML="";
-currentTiles=[];
+  /* keep answer letters */
 
-/* keep answer letters */
+  let letters = answer.toUpperCase().split("");
 
-let letters=answer.toUpperCase().split("");
+  /* add only X and Z */
 
-/* add only X and Z */
+  letters.push("X");
+  // letters.push("Z");
 
-letters.push("X");
-// letters.push("Z");
+  /* shuffle */
 
-/* shuffle */
+  for (let i = letters.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
 
-for(let i=letters.length-1;i>0;i--){
+    [letters[i], letters[j]] = [letters[j], letters[i]];
+  }
 
-let j=Math.floor(Math.random()*(i+1));
+  /* create bubbles */
 
-[letters[i],letters[j]]=[letters[j],letters[i]];
+  letters.forEach((letter) => {
+    const tile = document.createElement("div");
 
+    tile.className = "bubble";
+
+    tile.textContent = letter;
+
+    tile.onclick = () => placeLetter(tile, letter);
+
+    jarEl.appendChild(tile);
+
+    currentTiles.push(tile);
+  });
 }
-
-/* create bubbles */
-
-letters.forEach(letter=>{
-
-const tile=document.createElement("div");
-
-tile.className="bubble";
-
-tile.textContent=letter;
-
-tile.onclick=()=>placeLetter(tile,letter);
-
-jarEl.appendChild(tile);
-
-currentTiles.push(tile);
-
-});
-
-}
-
 
 /* ================= PLACE LETTER ================= */
-function placeLetter(tile,letter){
-
+function placeLetter(tile, letter) {
   // Don't allow editing after correct answer
-  if(answered[current]) return;
+  if (answered[current]) return;
 
-  const slots=document.querySelectorAll(".slot");
+  const slots = document.querySelectorAll(".slot");
 
-  const empty=[...slots].find(s=>!s.textContent);
+  const empty = [...slots].find((s) => !s.textContent);
 
-  if(!empty) return;
+  if (!empty) return;
 
-  empty.textContent=letter;
+  const slotIndex = [...slots].indexOf(empty);
+
+  empty.textContent = letter;
+
+  slotTiles[slotIndex] = tile;
 
   tile.classList.add("used");
 
-  tile.onclick=null;
+  tile.onclick = null;
 
   checkSlotsFilled();
-
 }
-
 
 /* ================= CHECK IF SLOTS FILLED ================= */
 
-function checkSlotsFilled(){
+function checkSlotsFilled() {
+  const slots = document.querySelectorAll(".slot");
 
-const slots=document.querySelectorAll(".slot");
+  let word = [...slots].map((s) => s.textContent).join("");
 
-let word=[...slots].map(s=>s.textContent).join("");
-
-if(word.length===correctWord.length){
-
-submitBtn.disabled=false;
-
+  if (word.length === correctWord.length) {
+    submitBtn.disabled = false;
+  }
 }
-
-}
-
 
 /* ================= SUBMIT ANSWER ================= */
 
-submitBtn.onclick=()=>{
+submitBtn.onclick = () => {
+  const slots = document.querySelectorAll(".slot");
 
-const slots=document.querySelectorAll(".slot");
+  let guess = [...slots].map((s) => s.textContent).join("");
 
-let guess=[...slots].map(s=>s.textContent).join("");
+  if (guess === correctWord) {
+    score++;
 
-if(guess===correctWord){
+    updateScore();
 
-score++;
+    showPopup(true);
 
-updateScore();
+    answered[current] = true;
 
-showPopup(true);
+    userAnswers[current] = guess;
 
-answered[current]=true;
+    slots.forEach((s) => s.classList.add("locked"));
 
-userAnswers[current]=guess;
+    nextBtn.disabled = false;
+    submitBtn.disabled = true;
 
-slots.forEach(s=>s.classList.add("locked"));
+    if (current === quizData.length - 1) {
+      setTimeout(showFinal, 1200);
+    }
+  } else {
+    showPopup(false);
 
-nextBtn.disabled=false;
+    setTimeout(() => {
+      slots.forEach((s, i) => {
+        s.textContent = "";
+        slotTiles[i] = null;
+      });
 
-if(current===quizData.length-1){
+      currentTiles.forEach((tile) => {
+        tile.classList.remove("used");
 
-setTimeout(showFinal,1200);
+        tile.onclick = () => placeLetter(tile, tile.textContent);
+      });
 
-}
-
-}else{
-
-showPopup(false);
-
-setTimeout(()=>{
-
-slots.forEach(s=>s.textContent="");
-
-currentTiles.forEach(tile=>{
-
-tile.classList.remove("used");
-
-tile.onclick=()=>placeLetter(tile,tile.textContent);
-
-});
-
-submitBtn.disabled=true;
-
-},800);
-
-}
-
+      submitBtn.disabled = true;
+    }, 800);
+  }
 };
-
 
 /* ================= REMOVE LETTER ================= */
 
-function removeLastLetter(){
-
+function removeLastLetter() {
   // Don't allow editing after correct answer
-  if(answered[current]) return;
+  if (answered[current]) return;
 
-  const slots=document.querySelectorAll(".slot");
+  const slots = document.querySelectorAll(".slot");
 
-  const filled=[...slots].filter(s=>s.textContent);
+  const filled = [...slots].filter((s) => s.textContent);
 
-  if(filled.length===0) return;
+  if (filled.length === 0) return;
 
-  const last=filled[filled.length-1];
+  const last = filled[filled.length - 1];
 
-  const letter=last.textContent;
+  const letter = last.textContent;
 
-  last.textContent="";
+  last.textContent = "";
 
-  const tile=currentTiles.find(
-    t => t.textContent===letter && t.classList.contains("used")
+  const tile = currentTiles.find(
+    (t) => t.textContent === letter && t.classList.contains("used"),
   );
 
-  if(tile){
-
+  if (tile) {
     tile.classList.remove("used");
 
-    tile.onclick=()=>placeLetter(tile,letter);
-
+    tile.onclick = () => placeLetter(tile, letter);
   }
 
-  submitBtn.disabled=true;
-
+  submitBtn.disabled = true;
 }
-
 
 /* ================= BACKSPACE SUPPORT ================= */
 
-document.addEventListener("keydown",(e)=>{
+document.addEventListener("keydown", (e) => {
+  if (answered[current]) return;
 
-  if(answered[current]) return;
-
-  if(e.key==="Backspace" || e.key==="Delete"){
-
+  if (e.key === "Backspace" || e.key === "Delete") {
     removeLastLetter();
-
   }
-
 });
-
 
 /* ================= NAVIGATION ================= */
 
-nextBtn.onclick=()=>{
+nextBtn.onclick = () => {
+  current++;
 
-current++;
-
-loadQuestion();
-
+  loadQuestion();
 };
 
-prevBtn.onclick=()=>{
+prevBtn.onclick = () => {
+  current--;
 
-current--;
-
-loadQuestion();
-
+  loadQuestion();
 };
-
 
 function fireConfetti() {
   confetti({
     particleCount: 40,
     spread: 80,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
   });
 }
 
@@ -425,7 +382,7 @@ function fireConfettif() {
   confetti({
     particleCount: 100,
     spread: 120,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
   });
 }
 /* ================= START ================= */

@@ -12,7 +12,7 @@ const questions = [
   {
     q: "Q3. We have five sense organs.",
     a: true,
-    img: "../assets/images/sense-organs.png",
+    img: "../assets/images/head.png",
   },
   {
     q: "Q4. Each foot has four toes.",

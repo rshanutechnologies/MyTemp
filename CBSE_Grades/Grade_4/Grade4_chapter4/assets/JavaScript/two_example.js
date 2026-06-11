@@ -2,25 +2,25 @@ const questions = [
   {
     q: "Q1. Oxygen",
     a: ["21%", "All living things need oxygen to breathe and to obtain energy from it"],
-    placeholders: ["% of gas", "One use"],
+    placeholders: ["% of gas", "Write one use"],
     img: "../assets/images/mcq-1.png",
   },
   {
     q: "Q2. Carbon dioxide",
     a: ["0.04%", "Plants use carbon dioxide for photosynthesis"],
-    placeholders: ["% of gas", "One use"],
+    placeholders: ["% of gas", "Write one use"],
     img: "../assets/images/mcq1-1.png",
   },
   {
     q: "Q3. Nitrogen",
     a: ["78%", "Used for making fertilizers."],
-    placeholders: ["% of gas", "One use"],
+    placeholders: ["% of gas", "Write one use"],
     img: "../assets/images/mcq-2.png",
   },
   {
     q: "Q4. Argon",
     a: ["0.93%","Used in electric bulbs"],
-    placeholders: ["% of gas", "One use"],
+    placeholders: ["% of gas", "Write one use"],
     img: "../assets/images/FB-5.png",
   }
  
@@ -93,18 +93,17 @@ input.placeholder = q.placeholders[i];
 // }
 if (i === 0) {
   input.addEventListener("input", () => {
-    let value = input.value;
+    let value = input.value.replace("%", "");
 
-    // allow only numbers
+    // allow only numbers and decimal
     value = value.replace(/[^0-9.]/g, "");
 
-      // ✅ allow 4 digits before decimal
     let [intPart, decPart] = value.split(".");
+
     if (intPart.length > 4) {
       intPart = intPart.slice(0, 4);
     }
 
-    // limit decimal to 2 digits
     if (decPart !== undefined) {
       decPart = decPart.slice(0, 2);
       value = intPart + "." + decPart;
@@ -112,14 +111,13 @@ if (i === 0) {
       value = intPart;
     }
 
-   
-
-    // auto add %
-    if (value !== "") {
-      value = value + "%";
-    }
-
     input.value = value;
+  });
+
+  input.addEventListener("blur", () => {
+    if (input.value.trim() !== "" && !input.value.endsWith("%")) {
+      input.value += "%";
+    }
   });
 }
 

@@ -244,6 +244,18 @@ body {
 @media (max-width: 760px) {
     body { padding: 15px 0; }
     .main-container { width: 100%; }
+   
+    .question-area h2{
+    font-size: 17px !important;
+    line-height: 1.2;
+}
+    #answerInput {
+    width: 90%;
+    max-width: 320px;
+    height: 46px;
+    font-size: 16px;
+    padding: 0 12px;
+}
 }
 
 

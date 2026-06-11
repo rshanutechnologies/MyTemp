@@ -489,6 +489,24 @@ document.addEventListener("input", function(){
 
   const inputs = document.querySelectorAll("#inputArea input");
   const btn1 = document.getElementById("checkBtn1");
+if(index === 2){
+
+  const currentInput =
+    document.getElementById("input" + q3Step);
+
+  if(currentInput &&
+     currentInput.value.trim() !== ""){
+
+      btn1.classList.add("active");
+      btn1.disabled = false;
+
+  }else{
+
+      btn1.classList.remove("active");
+      btn1.disabled = true;
+  }
+
+}else{
 
   let allFilled = true;
 
@@ -498,13 +516,9 @@ document.addEventListener("input", function(){
     }
   });
 
-  if(allFilled){
-    btn1.classList.add("active");
-    btn1.disabled = false;
-  }else{
-    btn1.classList.remove("active");
-    btn1.disabled = true;
-  }
+  btn1.disabled = !allFilled;
+  btn1.classList.toggle("active", allFilled);
+}
 });
 // SPEECH
 function speakText(text){

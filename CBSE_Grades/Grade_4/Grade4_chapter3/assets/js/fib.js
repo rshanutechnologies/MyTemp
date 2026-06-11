@@ -16,7 +16,7 @@ const questions = [
   },
   {
     q: "4. _______ animals have wings to fly in air.",
-    a: ["Arboreal"],
+    a: ["arboreal"],
     img: "../images/FIB-4.png",
   },
   {

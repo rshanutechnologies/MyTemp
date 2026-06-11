@@ -63,8 +63,10 @@ targets.forEach(target => {
             const imgSrc =
             selectedItem.querySelector("img").src;
 
-            slot.innerHTML =
-            `<img src="${imgSrc}" width="60">`;
+const cloneImg = selectedItem.querySelector("img").cloneNode(true);
+
+slot.innerHTML = "";
+slot.appendChild(cloneImg);
 
             slot.classList.add('pair-ok');
 
