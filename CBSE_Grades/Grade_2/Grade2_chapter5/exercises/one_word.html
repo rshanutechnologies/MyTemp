@@ -7,100 +7,935 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-<link rel="stylesheet" href="../assets/CSS/one_word.css">
+
+<style>
+/* ================= GLOBAL SIZE INCREASE ================= */
+html {
+  font-size: 125%;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Livvic';
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: -2%;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* ================= QUIZ CARD ================= */
+.quiz {
+  width: 900px;
+  height: 580px;
+  padding: 5px;
+  text-align: center;
+  position: relative;
+  border-radius: 22px;
+  padding: 20px;
+}
+
+/* ================= QUESTION ================= */
+.question {
+  margin: 22px 0;
+  font-size: 30px;
+  font-weight: 500;
+  color: #2f4f4f;
+  max-height: 80px;
+  margin-top: 5%;
+  font-weight: 400;
+}
+
+.answer-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ================= OPTIONS ================= */
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.option {
+  padding: 0px;
+  border-radius: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: .2s;
+  height: 180px;
+}
+
+.option.correct {
+  border-color: #22c55e;
+  background: #dcfce7;
+  pointer-events: none;
+}
+
+.option.temp-selected {
+  border: 3px solid #22c55e;
+}
+
+.option.disabled {
+  opacity: .45;
+  pointer-events: none;
+}
+
+.nav {
+  margin-top: -3%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+}
+
+.prev,
+.next {
+  width: 120px;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  border: 2px solid white;
+}
+
+.prev {
+  background: #5c6cff;
+}
+
+.next {
+  background: #ff9f43;
+}
+
+.prev:disabled,
+.next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.prev i,
+.next i {
+  font-size: 28px;
+}
+
+/* ================= POPUP ================= */
+.popup {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-box {
+  background: white;
+  padding: 36px;
+  border-radius: 22px;
+  width: 320px;
+  border: 2px solid #d7ee0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.popup-correct {
+  color: #2e7d32;
+  font-size: 1.3rem;
+}
+
+.popup-correct .happy {
+  font-size: 3.5rem;
+}
+
+.popup-wrong {
+  color: #c62828;
+  font-size: 1.3rem;
+}
+
+.popup-wrong .sad {
+  font-size: 3.5rem;
+}
+
+.popup-final-content {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #2e7d32;
+}
+
+.popup-final-content .emoji {
+  font-size: 60px;
+  display: block;
+  margin: 10px 0;
+}
+
+.popup-final-content .stars {
+  font-size: 30px;
+  color: #ffca28;
+  margin: 12px 0;
+}
+
+.final-score {
+  margin-top: 14px;
+}
+
+.popup-box.popup-final {
+  width: min(460px, 92vw);
+}
+
+.final-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.restart,
+.home {
+  padding: 12px 26px;
+  border: none;
+  border-radius: 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.restart {
+  background: #ff9f3f;
+}
+
+.home {
+  background: #3b82f6;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.option img {
+  width: 220px !important;
+  height: 220px !important;
+  object-fit: contain;
+}
+
+/* ===== QUIZ HEADER ===== */
+.quiz-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: -20px;
+  margin-top: 2%;
+  display: none;
+}
+
+.quiz-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  color: #3c5e3c;
+}
+
+.quiz-subtitle {
+  font-size: 18px;
+  margin-top: 4px;
+  color: #5c7a5c;
+}
+
+.score-box {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #e98a9d;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.quiz-nav {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px 0;
+  margin-bottom: 5%;
+}
+
+/* =============================== NEW ANSWER POPUP STYLE ================================ */
+.popup {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.popup-content {
+  background: #ffffff;
+  padding: 35px 40px;
+  border-radius: 25px;
+  text-align: center;
+  width: min(420px, 90%);
+  animation: popIn 0.35s ease;
+}
+
+.popup-icon {
+  font-size: 70px;
+  margin-bottom: 15px;
+}
+
+.popup-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.popup-msg {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.popup.correct .popup-msg {
+  color: #2e7d32;
+}
+
+.popup.wrong .popup-msg {
+  color: #922b21;
+}
+
+#finalPopup button:hover {
+  background: #ff8c1a;
+}
+
+.popup.correct .popup-icon {
+  animation: emojiBounce 0.8s ease, emojiSpin 0.8s ease;
+}
+
+.popup.wrong .popup-icon {
+  animation: emojiShake 0.6s ease;
+}
+
+#finalPopup h2 {
+  animation: emojiPulse 1s ease infinite;
+}
+
+/* =============================== EMOJI KEYFRAME ANIMATIONS ================================ */
+@keyframes emojiBounce {
+  0% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-25px) scale(1.2); }
+  50% { transform: translateY(-10px) scale(1.1); }
+  75% { transform: translateY(-20px) scale(1.15); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes emojiSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes emojiShake {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+/*final score POPUPS */
+#finalPopup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .0);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.finalpopup-box {
+  background: #fff;
+  padding: 25px 35px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.final-heading {
+  display: block;
+  font-size: 1.3em;
+  margin: 20px;
+  font-weight: bold;
+}
+
+#stars {
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.playAgain-btn {
+  background: #1fb36b;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-block: 10px;
+  cursor: pointer;
+}
+
+.answer-line {
+  font-size: 25px;
+  letter-spacing: 10px;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #2f4f4f;
+}
+
+#answerInput {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 22px;
+  border-radius: 10px;
+  border: 2px solid #8fb1e8;
+  outline: none;
+  width: 300px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Disabled input styling - prevents changes after submission */
+#answerInput:disabled {
+  background-color: #ffffff !important;
+  color: #2f4f4f;
+  cursor: not-allowed;
+  border-color: #179e24;
+  opacity: 1;
+}
+
+.disabled-btn {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  background: #cccccc !important;
+  color: #666666 !important;
+  box-shadow: none !important;
+}
+
+#submitBtn {
+  margin-top: 4%;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width:768px) {
+  html {
+    font-size: 100%;
+  }
+  body {
+    overflow: hidden;
+    padding: 10px;
+    margin-top: 5%;
+  }
+  .quiz {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+  .quiz-title {
+    font-size: 24px;
+  }
+  .quiz-subtitle {
+    font-size: 14px;
+  }
+  .score-box {
+    font-size: 14px;
+    padding: 6px 12px;
+    display: none;
+  }
+  .question {
+    font-size: 22px;
+    margin: 15px 0;
+    margin-top: 12%;
+    min-height: 50px;
+  }
+  #questionImg {
+    height: 130px !important;
+    width: 120px !important;
+  }
+  .options {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .option {
+    height: auto;
+    padding: 10px;
+  }
+  .option img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  .nav {
+    margin-top: 5px;
+    gap: 10px;
+  }
+  .prev,
+  .next {
+    position: static;
+    width: 80px;
+    height: 80px;
+    font-size: 16px;
+    border-radius: 50%;
+  }
+  .popup-content {
+    width: 90%;
+    padding: 25px;
+  }
+  #answerInput {
+    width: 80%;
+    font-size: 18px;
+    margin: 10px auto;
+    display: block;
+  }
+  .popup-box.popup-final {
+    width: 90% !important;
+    max-width: 300px;
+    padding: 18px;
+  }
+  .popup-final-content {
+    font-size: 18px;
+  }
+  .popup-final-content .emoji {
+    font-size: 42px;
+  }
+  .stars {
+    font-size: 26px;
+    margin: 8px 0;
+  }
+  .final-actions {
+    gap: 10px;
+  }
+  .restart,
+  .home {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .quiz {
+    width: 1300px;
+    height: 780px;
+    padding: 40px;
+  }
+  .question {
+    font-size: 44px;
+    min-height: 140px;
+    margin-top: 10px;
+  }
+  .options {
+    gap: 40px;
+  }
+  .option {
+    height: 220px;
+  }
+  #questionImg {
+    width: 280px !important;
+    height: 280px !important;
+  }
+  #answerInput {
+    width: 400px;
+    font-size: 26px;
+  }
+  .submitBtnn {
+    width: 180px;
+    height: 70px;
+    border-radius: 20px;
+    font-size: 24px;
+    border: 3px solid white;
+  }
+  .prev,
+  .next {
+    width: 180px;
+    height: 70px;
+    border-radius: 20px;
+    font-size: 24px;
+    border: 3px solid white;
+  }
+  .nav {
+    padding: 30px 80px;
+    margin-top: -5px;
+  }
+  .popup-content {
+    width: 520px;
+    padding: 50px;
+    border-radius: 30px;
+  }
+  .popup-icon {
+    font-size: 100px;
+  }
+  .popup-title {
+    font-size: 34px !important;
+  }
+  .popup-msg {
+    font-size: 24px !important;
+  }
+  .popup-box.popup-final {
+    width: 600px;
+  }
+  .popup-final-content {
+    font-size: 28px;
+  }
+  #stars {
+    font-size: 50px;
+  }
+  .restart,
+  .home {
+    font-size: 22px;
+    padding: 14px 28px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <div class="quiz">
- <!-- HEADER -->
-    <div class="quiz-header">
-        <div class="quiz-title">
-            🌱 Plant World Quiz
-            <div class="quiz-subtitle">
-                Let's explore the world of plants!
-            </div>
-        </div>
-
-        <div class="score-box" id="scoreBox">
-            Score: 0
-        </div>
+  <!-- HEADER -->
+  <div class="quiz-header">
+    <div class="quiz-title">
+      🌱 Plant World Quiz
+      <div class="quiz-subtitle">
+        Let's explore the world of plants!
+      </div>
     </div>
+    <div class="score-box" id="scoreBox">
+      Score: 0
+    </div>
+  </div>
 
   <!-- QUESTION -->
   <div class="question" id="question"></div>
-   <img
-    id="questionImg"
-    src=""
-    alt="Question image"
-    style="
-      width:300px;
-      height:200px;
-      object-fit:contain;
-      margin:2px auto;
-      display:block;
-      /* background-color: yellow; */
-    padding: 0 !important;
-    "
-  />
- 
-<div id="answerLine" class="answer-boxes"></div>
-<input type="text" id="answerInput" autocomplete="off">
-<button
-id="submitBtn"
-style="
-  padding:14px 40px;
-  font-size:22px;
-  border-radius:999px;
-  border:none;
-  background:#22c55e;
-  color:white;
-  cursor:pointer;
-   
-  "
-  class="submitBtnn"
->
-Submit
-</button>
+  <img id="questionImg" src="" alt="Question image" style="width:300px; height:200px; object-fit:contain; margin:2px auto; display:block; padding: 0 !important;">
 
-
-   
-
+  <!-- INPUT FIELD - REPLACES ANSWER BOXES -->
+  <input type="text" id="answerInput" autocomplete="off" placeholder="Type your answer here...">
+  
+  <button id="submitBtn" style="padding:14px 40px; font-size:22px; border-radius:999px; border:none; background:#22c55e; color:white; cursor:pointer;" class="submitBtnn">
+    Submit
+  </button>
 
   <!-- NAV -->
-   <nav class="nav">
-
-<button class="prev" id="prev">
-❮ Prev
-
-</button>
-
-<button class="next" id="next">
- Next ❯
-</button>
-
-</nav>
-
+  <nav class="nav">
+    <button class="prev" id="prev">❮ Prev</button>
+    <button class="next" id="next">Next ❯</button>
+  </nav>
 </div>
+
 <!-- CORRECT / WRONG POPUP -->
-    <div id="answerPopup" class="popup">
-        <div class="popup-content">
-            <div class="popup-icon" id="popupIcon"></div>
-            <h3 id="popupTitle"></h3>
-            <p id="popupMsg"></p>
-        </div>
-    </div>
- 
-    <!-- FINAL POPUP -->
-    <div id="finalPopup"> <div class=" finalpopup-box">
-        <h2 class="final-heading">🎉 Congratulations!</h2>
-        <p id="finalScore"></p>
-        <div id="stars"></div><br> <button onclick="location.reload()" class="playAgain-btn"> Play Again </button>
-    </div>
-    </div>
- 
+<div id="answerPopup" class="popup">
+  <div class="popup-content">
+    <div class="popup-icon" id="popupIcon"></div>
+    <h3 id="popupTitle"></h3>
+    <p id="popupMsg"></p>
+  </div>
+</div>
+
+<!-- FINAL POPUP -->
+<div id="finalPopup">
+  <div class="finalpopup-box">
+    <h2 class="final-heading">🎉 Congratulations!</h2>
+    <p id="finalScore"></p>
+    <div id="stars"></div>
+    <br>
+    <button onclick="location.reload()" class="playAgain-btn">Play Again</button>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-<script src="../assets/JavaScript/one_word.js"></script>
+<script>
+/* ================= POPUP SYSTEM ================= */
+function showPopup(isCorrect) {
+  const popup = document.getElementById("answerPopup");
+  const icon = document.getElementById("popupIcon");
+  const title = document.getElementById("popupTitle");
+  const msg = document.getElementById("popupMsg");
+
+  popup.className = "popup " + (isCorrect ? "correct" : "wrong");
+  popup.style.display = "flex";
+
+  if (isCorrect) {
+    icon.textContent = "🎉";
+    title.textContent = "Correct!";
+    msg.textContent = "Well done!";
+    speak("Correct");
+    fireConfetti();
+  } else {
+    icon.textContent = "😔";
+    title.textContent = "Wrong!";
+    msg.textContent = "Try again!";
+    speak("Wrong");
+  }
+
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 1200);
+}
+
+/* ================= FINAL POPUP ================= */
+function showFinal() {
+  const finalPopup = document.getElementById("finalPopup");
+  finalPopup.style.display = "flex";
+  document.getElementById("finalScore").textContent = `Score: ${score} / ${quizData.length}`;
+  document.getElementById("stars").textContent = "⭐".repeat(score);
+  fireConfettif();
+}
+
+/* ================= SPEECH ================= */
+function speak(text) {
+  speechSynthesis.cancel();
+  const msg = new SpeechSynthesisUtterance(text);
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
+  speechSynthesis.speak(msg);
+}
+
+/* ================= QUIZ DATA ================= */
+const quizData = [
+  { q: "Q.1 Water that is safe for drinking", a: "Potable", img: "../assets/images/PortableWak.png" },
+  { q: "Q.2 This makes the air around us fresh and clean", a: "Plants", img: "../assets/images/Treeak.png" },
+  { q: "Q.3 The rainwater that goes down into the soil", a: "Groundwater", img: "../assets/images/RainWaterGoSoil.png" },
+  { q: "Q.4 People use this in villages to draw out ground water", a: "Handpump", img: "../assets/images/VillageHandpump.png" },
+];
+
+/* ================= VARIABLES ================= */
+let current = 0;
+let score = 0;
+const qEl = document.getElementById("question");
+const imgEl = document.getElementById("questionImg");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+const submitBtn = document.getElementById("submitBtn");
+const scoreBox = document.getElementById("scoreBox");
+const answerInput = document.getElementById("answerInput");
+
+let savedAnswers = new Array(quizData.length).fill(null);
+let locked = new Array(quizData.length).fill(false);
+
+/* ================= SCORE ================= */
+function updateScore() {
+  scoreBox.textContent = "Score: " + score;
+}
+
+/* ================= CAPITALIZE FIRST LETTER ONLY ================= */
+function capitalizeFirstLetter(str) {
+  if (!str) return "";
+  str = str.toLowerCase();
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+/* ================= FORMAT DISPLAY ANSWER ================= */
+function formatDisplayAnswer(str) {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+/* ================= LOAD QUESTION ================= */
+function loadQuestion() {
+  const q = quizData[current];
+  qEl.textContent = q.q;
+  imgEl.src = q.img;
+
+  // Restore saved answer (display with proper format)
+  if (savedAnswers[current]) {
+    answerInput.value = formatDisplayAnswer(savedAnswers[current]);
+    if (locked[current]) {
+      answerInput.disabled = true;
+      answerInput.style.backgroundColor = "#f0f0f0";
+      answerInput.style.cursor = "not-allowed";
+    } else {
+      answerInput.disabled = false;
+      answerInput.style.backgroundColor = "white";
+      answerInput.style.cursor = "text";
+    }
+  } else {
+    answerInput.value = "";
+    answerInput.disabled = false;
+    answerInput.style.backgroundColor = "white";
+    answerInput.style.cursor = "text";
+  }
+
+  // Lock behavior
+  if (locked[current]) {
+    nextBtn.disabled = false;
+    submitBtn.disabled = true;
+    submitBtn.classList.add("disabled-btn");
+    answerInput.disabled = true;
+    answerInput.style.backgroundColor = "#f0f0f0";
+    answerInput.style.cursor = "not-allowed";
+  } else {
+    nextBtn.disabled = true;
+    submitBtn.disabled = false;
+    submitBtn.classList.remove("disabled-btn");
+  }
+
+  prevBtn.disabled = current === 0;
+  
+  // Focus input only if not locked
+  setTimeout(() => {
+    if (!locked[current]) {
+      answerInput.focus();
+    }
+  }, 100);
+}
+
+/* ================= SUBMIT ================= */
+submitBtn.onclick = () => {
+  // Don't allow submit if already locked
+  if (locked[current]) return;
+  
+  let rawInput = answerInput.value.trim();
+  
+  if (rawInput === "") {
+    return;
+  }
+  
+  // Capitalize first letter only for comparison and storage
+  let formattedInput = capitalizeFirstLetter(rawInput);
+  let correctAnswer = quizData[current].a;
+  
+  // Compare case-insensitively but store with first letter capital
+  let isCorrect = formattedInput.toLowerCase() === correctAnswer.toLowerCase();
+  
+  if (isCorrect) {
+    // Store the correctly formatted answer
+    savedAnswers[current] = formattedInput;
+    score++;
+    updateScore();
+    showPopup(true);
+    locked[current] = true;
+    nextBtn.disabled = false;
+    submitBtn.disabled = true;
+    submitBtn.classList.add("disabled-btn");
+    
+    // Disable input field to prevent changes
+    answerInput.disabled = true;
+    answerInput.style.backgroundColor = "#f0f0f0";
+    answerInput.style.cursor = "not-allowed";
+    
+    if (current === quizData.length - 1) {
+      setTimeout(showFinal, 1200);
+    }
+  } else {
+    showPopup(false);
+    // Don't clear the input, just show error and let user try again
+    answerInput.focus();
+    answerInput.select();
+  }
+};
+
+/* ================= NAVIGATION ================= */
+nextBtn.onclick = () => {
+  if (current < quizData.length - 1) {
+    current++;
+    loadQuestion();
+  }
+};
+
+prevBtn.onclick = () => {
+  if (current > 0) {
+    current--;
+    loadQuestion();
+  }
+};
+
+/* ================= ENTER KEY SUPPORT ================= */
+answerInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter" && !locked[current] && answerInput.value.trim() !== "") {
+    e.preventDefault();
+    submitBtn.click();
+  }
+});
+
+/* ================= AUTO-CAPITALIZE FIRST LETTER AS USER TYPES ================= */
+answerInput.addEventListener("input", function(e) {
+  // Don't allow changes if locked
+  if (locked[current]) {
+    answerInput.value = savedAnswers[current] || "";
+    return;
+  }
+  
+  // Auto-capitalize first letter
+  let val = answerInput.value;
+  if (val.length === 1) {
+    answerInput.value = val.toUpperCase();
+  }
+});
+
+/* ================= PREVENT PASTE/DRAG CHANGES WHEN LOCKED ================= */
+answerInput.addEventListener("beforeinput", function(e) {
+  if (locked[current]) {
+    e.preventDefault();
+    return false;
+  }
+});
+
+/* ================= CONFETTI ================= */
+function fireConfetti() {
+  confetti({
+    particleCount: 40,
+    spread: 80,
+    origin: { y: 0.6 },
+  });
+}
+
+function fireConfettif() {
+  confetti({
+    particleCount: 100,
+    spread: 120,
+    origin: { y: 0.6 },
+  });
+}
+
+/* ================= START ================= */
+updateScore();
+loadQuestion();
+</script>
+
 </body>
 </html>
