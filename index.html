@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -942,82 +941,83 @@
 
     /* === Arrow: keep it visible in the same up-side place === */
     /* === Additive: Collapsible Sidebar (thin rail with "›" arrow) === */
-/* === Arrow: keep it visible in the same up-side place === */
-.sb-float-toggle {
-  position: fixed;
-  left: 20px;
-  top: 100px;
-  width: 45px;
-  height: 50px;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: #ffffff;
-  color: #0f172a;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-  cursor: pointer;
-  z-index: 1200;
-  display: grid;
-  place-items: center;
- 
-  font-weight: 800;
-  font-size: 28px;
-  transition: all 0.2s ease;
-}
+    /* === Arrow: keep it visible in the same up-side place === */
+    .sb-float-toggle {
+      position: fixed;
+      left: 20px;
+      top: 100px;
+      width: 45px;
+      height: 50px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      cursor: pointer;
+      z-index: 1200;
+      display: grid;
+      place-items: center;
 
-.sb-float-toggle:hover {
-  background: #f0f0f0;
-  transform: scale(1.05);
-}
+      font-weight: 800;
+      font-size: 28px;
+      transition: all 0.2s ease;
+    }
 
-/* Show button in lesson mode ONLY - not on home page */
-body.in-lesson .sb-float-toggle {
-  display: grid;
-}
+    .sb-float-toggle:hover {
+      background: #f0f0f0;
+      transform: scale(1.05);
+    }
 
-/* Arrow direction - FIXED: sb-show toggles sidebar */
-body.sb-show .sb-float-toggle::before {
+    /* Show button in lesson mode ONLY - not on home page */
+    body.in-lesson .sb-float-toggle {
+      display: grid;
+    }
 
-    content: '≡';
-}
+    /* Arrow direction - FIXED: sb-show toggles sidebar */
+    body.sb-show .sb-float-toggle::before {
 
-body:not(.sb-show).in-lesson .sb-float-toggle::before {
-  content: '≡';
- 
-}
+      content: '>';
+    }
 
-/* Hide on home page */
-body:not(.in-lesson) .sb-float-toggle {
-  display: grid;
-}
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .sb-float-toggle {
-    left: 8px;
-    top: 75px;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-  }
-}
+    body:not(.sb-show).in-lesson .sb-float-toggle::before {
+      content: '<';
 
-@media (max-width: 576px) {
-  .sb-float-toggle {
-    left: 6px;
-    top: 12px;
-    width: 32px;
-    height: 32px;
-    font-size: 18px;
-    z-index: 1200;
-  }
-}
+    }
+
+    /* Hide on home page */
+    body:not(.in-lesson) .sb-float-toggle {
+      display: grid;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .sb-float-toggle {
+        left: 8px;
+        top: 75px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .sb-float-toggle {
+        left: 6px;
+        top: 12px;
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+        z-index: 1200;
+      }
+    }
 
     /* Keep the hidden sidebar fully off-canvas so the iframe can use full width */
-        /* Sidebar toggle - works on ALL screens */
+    /* Sidebar toggle - works on ALL screens */
     .sidebar {
       transition: transform 0.3s ease;
       z-index: 1100;
     }
-    
+
     /* DESKTOP - Sidebar always visible, toggle to hide */
     @media (min-width: 769px) {
       .sidebar {
@@ -1025,7 +1025,7 @@ body:not(.in-lesson) .sb-float-toggle {
         width: 260px !important;
         transform: translateX(0) !important;
       }
-      
+
       /* When sb-show class is added, hide sidebar on desktop */
       body.sb-show .sidebar {
         transform: translateX(-100%) !important;
@@ -1035,16 +1035,16 @@ body:not(.in-lesson) .sb-float-toggle {
         bottom: 0;
         height: 100vh;
       }
-      
+
       /* Main content takes full width when sidebar hidden */
       body.sb-show .main {
         width: 100% !important;
         margin-left: 0 !important;
       }
 
-    
+
     }
-    
+
     /* MOBILE - Sidebar hidden by default, toggle to show */
     @media (max-width: 768px) {
       .sidebar {
@@ -1055,11 +1055,11 @@ body:not(.in-lesson) .sb-float-toggle {
         width: 280px !important;
         transform: translateX(-100%);
       }
-      
+
       body.sb-show .sidebar {
         transform: translateX(0);
       }
-      
+
       body.sb-show {
         overflow: hidden;
       }
@@ -2087,18 +2087,18 @@ body:not(.in-lesson) .sb-float-toggle {
     #lessonContent .top-header1,
     #lessonContent .top-header1 h1,
     #lessonContent .top-header1 p {
-         background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    color: #000000 !important;
-    padding: 0 !important;
-    /* margin: 0 !important; */
-    margin: auto !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      color: #000000 !important;
+      padding: 0 !important;
+      /* margin: 0 !important; */
+      margin: auto !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
     /* Make only the Select Grade heading black */
@@ -2177,175 +2177,177 @@ body:not(.in-lesson) .sb-float-toggle {
       max-width: 100%;
       overflow-x: hidden;
     }
-/* ===== SIDEBAR TOGGLE FOR ALL SCREENS (LAPTOP, MONITOR, MOBILE) ===== */
 
-/* Backdrop for clicking outside - appears on all screens when sidebar is toggled */
-.sb-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(2px);
-    z-index: 1040;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    pointer-events: none;
-}
+    /* ===== SIDEBAR TOGGLE FOR ALL SCREENS (LAPTOP, MONITOR, MOBILE) ===== */
 
-/* Show backdrop when sidebar is open (works on all screen sizes) */
-body.sb-show .sb-backdrop {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
+    /* Backdrop for clicking outside - appears on all screens when sidebar is toggled */
+    .sb-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(2px);
+      z-index: 1040;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      pointer-events: none;
+    }
 
-/* Sidebar - Default state (visible on desktop, hidden on mobile) */
-.sidebar {
-    transition: transform 0.3s ease;
-    z-index: 1100;
-}
+    /* Show backdrop when sidebar is open (works on all screen sizes) */
+    body.sb-show .sb-backdrop {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
 
-/* DESKTOP & LAPTOP (≥769px) - Sidebar always visible, toggle works to hide it */
-@media (min-width: 769px) {
+    /* Sidebar - Default state (visible on desktop, hidden on mobile) */
     .sidebar {
+      transition: transform 0.3s ease;
+      z-index: 1100;
+    }
+
+    /* DESKTOP & LAPTOP (≥769px) - Sidebar always visible, toggle works to hide it */
+    @media (min-width: 769px) {
+      .sidebar {
         position: relative !important;
         width: 260px !important;
         transform: translateX(0) !important;
-    }
-    
-    /* When sb-show class is added, hide sidebar on desktop */
-    body.sb-show .sidebar {
+      }
+
+      /* When sb-show class is added, hide sidebar on desktop */
+      body.sb-show .sidebar {
         transform: translateX(-100%) !important;
         position: fixed !important;
         top: 0;
         left: 0;
         bottom: 0;
         height: 100vh;
-    }
-    
-    /* When sidebar is hidden, main content takes full width */
-    body.sb-show .main {
+      }
+
+      /* When sidebar is hidden, main content takes full width */
+      body.sb-show .main {
         width: 100% !important;
         margin-left: 0 !important;
-    }
-    
-    /* Show backdrop on desktop when sidebar is toggled */
-    body.sb-show .sb-backdrop {
-        display: block;
-    }
-}
+      }
 
-/* MOBILE (≤768px) - Sidebar hidden by default, toggle to show */
-@media (max-width: 768px) {
-    .sidebar {
+      /* Show backdrop on desktop when sidebar is toggled */
+      body.sb-show .sb-backdrop {
+        display: block;
+      }
+    }
+
+    /* MOBILE (≤768px) - Sidebar hidden by default, toggle to show */
+    @media (max-width: 768px) {
+      .sidebar {
         position: fixed !important;
         left: 0;
         top: 0;
         bottom: 0;
         width: 280px !important;
         transform: translateX(-100%);
-    }
-    
-    body.sb-show .sidebar {
+      }
+
+      body.sb-show .sidebar {
         transform: translateX(0);
-    }
-    
-    body.sb-show {
+      }
+
+      body.sb-show {
         overflow: hidden;
+      }
     }
-}
 
-/* Floating toggle button - Works on ALL screens */
-.sb-float-toggle {
-    position: fixed;
-    left: 20px;
-    top: 100px;
-    width: 45px;
-    height: 50px;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    background: #ffffff;
-    color: #0f172a;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-    cursor: pointer;
-    z-index: 1200;
-    display: grid;
-    place-items: center;
-    font-weight: 800;
-    font-size: 28px;
-    transition: all 0.2s ease;
-}
-
-.sb-float-toggle:hover {
-    background: #f0f0f0;
-    transform: scale(1.05);
-}
-
-/* Arrow direction based on sidebar state */
-body.sb-show .sb-float-toggle::before {
-  margin-top: -6px;
-    content: '≡';
-}
-
-body:not(.sb-show) .sb-float-toggle::before {
-  margin-top: -6px;
-    content: '≡';
-}
-
-/* Hide toggle button on Home page, show on lesson pages */
-body:not(.in-lesson) .sb-float-toggle {
-    display: grid !important;
-}
-
-/* Laptop/Desktop toggle button position */
-@media (min-width: 769px) and (max-width: 1600px) {
+    /* Floating toggle button - Works on ALL screens */
     .sb-float-toggle {
+      position: fixed;
+      left: 20px;
+      top: 100px;
+      width: 45px;
+      height: 50px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      cursor: pointer;
+      z-index: 1200;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 28px;
+      transition: all 0.2s ease;
+    }
+
+    .sb-float-toggle:hover {
+      background: #f0f0f0;
+      transform: scale(1.05);
+    }
+
+    /* Arrow direction based on sidebar state */
+    body.sb-show .sb-float-toggle::before {
+      margin-top: -6px;
+      content: '≡';
+    }
+
+    body:not(.sb-show) .sb-float-toggle::before {
+      margin-top: -6px;
+      content: '≡';
+    }
+
+    /* Hide toggle button on Home page, show on lesson pages */
+    body:not(.in-lesson) .sb-float-toggle {
+      display: grid !important;
+    }
+
+    /* Laptop/Desktop toggle button position */
+    @media (min-width: 769px) and (max-width: 1600px) {
+      .sb-float-toggle {
         left: 21px;
         top: 70px !important;
         width: 48px;
         height: 48px;
         font-size: 32px;
+      }
     }
-}
-/* Large Monitors (1600px+) */
-@media (min-width: 1600px) {
-    .sb-float-toggle {
+
+    /* Large Monitors (1600px+) */
+    @media (min-width: 1600px) {
+      .sb-float-toggle {
         left: 40px;
         top: 85px;
         width: 55px;
         height: 55px;
         font-size: 36px;
+      }
     }
-}
 
-/* Mobile toggle button position */
-@media (max-width: 768px) {
-    .sb-float-toggle {
+    /* Mobile toggle button position */
+    @media (max-width: 768px) {
+      .sb-float-toggle {
         left: 5px;
         top: 60px;
         width: 40px;
         height: 40px;
         font-size: 24px;
+      }
     }
-}
 
-@media (max-width: 576px) {
-    .sb-float-toggle {
+    @media (max-width: 576px) {
+      .sb-float-toggle {
         left: 8px;
         top: 50px;
         width: 36px !important;
         height: 36px !important;
         font-size: 22px;
+      }
     }
-}
 
-/* Hide inline hamburger on desktop, show on mobile only */
-.inline-hamburger {
-    display: none;
-}
-
-@media (max-width: 768px) {
+    /* Hide inline hamburger on desktop, show on mobile only */
     .inline-hamburger {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .inline-hamburger {
         display: inline-grid !important;
         place-items: center;
         width: 38px;
@@ -2359,20 +2361,21 @@ body:not(.in-lesson) .sb-float-toggle {
         font-size: 18px;
         z-index: 1401;
         position: relative;
+      }
     }
-}
 
-/* Main content adjustment when sidebar is hidden on desktop */
-@media (min-width: 769px) {
-    .main {
+    /* Main content adjustment when sidebar is hidden on desktop */
+    @media (min-width: 769px) {
+      .main {
         transition: width 0.3s ease, margin-left 0.3s ease;
-    }
-    
-    body.sb-show .main {
+      }
+
+      body.sb-show .main {
         width: 100% !important;
         margin-left: 0 !important;
+      }
     }
-}
+
     /* =========================================
    Breakpoint: ≤1200px (large tablets / small laptops)
    ========================================= */
@@ -2434,13 +2437,13 @@ body:not(.in-lesson) .sb-float-toggle {
       .sb-float-toggle {
         left: 22px;
         top: 68px;
-        width: 44px ;
-        height: 44px ;
+        width: 44px;
+        height: 44px;
 
         font-size: 26px !important;
       }
     }
-    
+
 
     /* =========================================
    Breakpoint: ≤768px (small tablets / big phones)
@@ -3518,125 +3521,125 @@ body:not(.in-lesson) .sb-float-toggle {
 
 
 
-@media (min-width: 1710px) {
- 
-  /* SIDEBAR */
-  .sidebar {
-    width: 360px;
-    padding: 40px;
-  }
- 
-  .logo {
-    font-size: 32px;
-  }
- 
-  .logo p {
-    font-size: 20px;
-  }
- 
-  .menu-title {
-    font-size: 22px;
-    padding: 18px;
+    @media (min-width: 1710px) {
 
-  }
- 
-  .submenu li {
-    font-size: 20px;
-    padding: 14px;
-  }
- 
-  /* MAIN */
-  /* .main {
+      /* SIDEBAR */
+      .sidebar {
+        width: 360px;
+        padding: 40px;
+      }
+
+      .logo {
+        font-size: 32px;
+      }
+
+      .logo p {
+        font-size: 20px;
+      }
+
+      .menu-title {
+        font-size: 22px;
+        padding: 18px;
+
+      }
+
+      .submenu li {
+        font-size: 20px;
+        padding: 14px;
+      }
+
+      /* MAIN */
+      /* .main {
     padding: 80px;
   } */
- 
-  .header-logo {
-    font-size: 52px;
-    margin-top: 5% !important;
-  }
- 
-  .section-title {
-    font-size: 40px;
-  }
- 
-  /* CARDS */
-  .curr-card {
-    padding: 55px;
-    border-radius: 30px;
-    gap: 35px;
-  }
- 
-  .curr-card .i {
-    width: 120px;
-    height: 120px;
-  }
- 
-  .card-content h2 {
-    font-size: 44px;
-  }
- 
-  .card-content p {
-    font-size: 26px;
-  }
- 
-  .card-boxes {
-    gap: 30px;
-    margin-top: 30px;
-  }
- 
-  .box {
-    padding: 30px;
-    border-radius: 20px;
-  }
- 
-  .box h3 {
-    font-size: 40px;
-  }
- 
-  .box p {
-    font-size: 22px;
-  }
- 
-  .explore-arrow {
-    font-size: 48px;
-  }
- 
-  /* SUBJECT CARDS */
-  
-}
 
-/* ===== BACKDROP STYLES - FIXED ===== */
-.sb-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(2px);
-    z-index: 1040;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    pointer-events: none;
-}
+      .header-logo {
+        font-size: 52px;
+        margin-top: 5% !important;
+      }
 
-body.sb-show .sb-backdrop {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
+      .section-title {
+        font-size: 40px;
+      }
 
-/* Hide backdrop on desktop when not needed */
-@media (min-width: 769px) {
-    body.sb-show .sb-backdrop {
-        display: block;
+      /* CARDS */
+      .curr-card {
+        padding: 55px;
+        border-radius: 30px;
+        gap: 35px;
+      }
+
+      .curr-card .i {
+        width: 120px;
+        height: 120px;
+      }
+
+      .card-content h2 {
+        font-size: 44px;
+      }
+
+      .card-content p {
+        font-size: 26px;
+      }
+
+      .card-boxes {
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .box {
+        padding: 30px;
+        border-radius: 20px;
+      }
+
+      .box h3 {
+        font-size: 40px;
+      }
+
+      .box p {
+        font-size: 22px;
+      }
+
+      .explore-arrow {
+        font-size: 48px;
+      }
+
+      /* SUBJECT CARDS */
+
     }
-}
 
-/* Main content transition */
-.main {
-    transition: width 0.3s ease, margin-left 0.3s ease;
-}
-    
-    
+    /* ===== BACKDROP STYLES - FIXED ===== */
+    .sb-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(2px);
+      z-index: 1040;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      pointer-events: none;
+    }
+
+    body.sb-show .sb-backdrop {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    /* Hide backdrop on desktop when not needed */
+    @media (min-width: 769px) {
+      body.sb-show .sb-backdrop {
+        display: block;
+      }
+    }
+
+    /* Main content transition */
+    .main {
+      transition: width 0.3s ease, margin-left 0.3s ease;
+    }
+
+
     /* (Optional) tweak sizes of icon/text if you want a bit larger */
   </style>
 </head>
@@ -3792,123 +3795,123 @@ body.sb-show .sb-backdrop {
 <script>
   /* === Add a hamburger beside 🏠 Home and toggle the sidebar (open/close) === */
   /* === Hamburger menu for mobile (also works on desktop if needed) === */
-/* === Hamburger menu for mobile - FIXED VERSION === */
-(function addHomeHamburger() {
+  /* === Hamburger menu for mobile - FIXED VERSION === */
+  (function addHomeHamburger() {
     function ensureBackdrop() {
-        if (!document.querySelector('.sb-backdrop')) {
-            const backdrop = document.createElement('div');
-            backdrop.className = 'sb-backdrop';
-            backdrop.addEventListener('click', () => {
-                document.body.classList.remove('sb-show', 'no-scroll');
-            });
-            document.body.appendChild(backdrop);
-        }
+      if (!document.querySelector('.sb-backdrop')) {
+        const backdrop = document.createElement('div');
+        backdrop.className = 'sb-backdrop';
+        backdrop.addEventListener('click', () => {
+          document.body.classList.remove('sb-show', 'no-scroll');
+        });
+        document.body.appendChild(backdrop);
+      }
     }
 
     function injectButton() {
-        const headerLogo = document.querySelector('#homeContent .top-header .header-logo');
-        if (!headerLogo || headerLogo.querySelector('.inline-hamburger')) return;
+      const headerLogo = document.querySelector('#homeContent .top-header .header-logo');
+      if (!headerLogo || headerLogo.querySelector('.inline-hamburger')) return;
 
-        const btn = document.createElement('button');
-        btn.className = 'inline-hamburger';
-        btn.type = 'button';
-        btn.setAttribute('aria-label', 'Toggle menu');
-        btn.textContent = '☰';
+      const btn = document.createElement('button');
+      btn.className = 'inline-hamburger';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Toggle menu');
+      btn.textContent = '☰';
 
-        headerLogo.insertBefore(btn, headerLogo.firstChild);
+      headerLogo.insertBefore(btn, headerLogo.firstChild);
 
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            document.body.classList.toggle('sb-show');
-            document.body.classList.toggle('no-scroll');
-        });
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        document.body.classList.toggle('sb-show');
+        document.body.classList.toggle('no-scroll');
+      });
     }
 
     function bind() {
-        ensureBackdrop();
-        injectButton();
+      ensureBackdrop();
+      injectButton();
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', bind);
+      document.addEventListener('DOMContentLoaded', bind);
     } else {
-        bind();
+      bind();
     }
 
     // On resize, ensure proper state
     window.addEventListener('resize', () => {
-        if (window.innerWidth >= 769) {
-            // On desktop, don't force close - keep user preference
-        } else {
-            // On mobile, close sidebar when resizing
-            document.body.classList.remove('sb-show', 'no-scroll');
-        }
+      if (window.innerWidth >= 769) {
+        // On desktop, don't force close - keep user preference
+      } else {
+        // On mobile, close sidebar when resizing
+        document.body.classList.remove('sb-show', 'no-scroll');
+      }
     });
 
     ['showHome'].forEach(fn => {
-        const orig = window[fn];
-        if (typeof orig === 'function' && !orig.__hhWrapped) {
-            window[fn] = function () {
-                const r = orig.apply(this, arguments);
-                setTimeout(bind, 0);
-                return r;
-            };
-            window[fn].__hhWrapped = true;
-        }
+      const orig = window[fn];
+      if (typeof orig === 'function' && !orig.__hhWrapped) {
+        window[fn] = function () {
+          const r = orig.apply(this, arguments);
+          setTimeout(bind, 0);
+          return r;
+        };
+        window[fn].__hhWrapped = true;
+      }
     });
-})();</script>
+  })();</script>
 <script>
   /* === Inline Home-header hamburger toggles the sidebar only === */
   /* === Inline Home-header hamburger - FIXED === */
-(function wireInlineHamburger() {
+  (function wireInlineHamburger() {
     function ensureBackdrop() {
-        if (!document.querySelector('.sb-backdrop')) {
-            const backdrop = document.createElement('div');
-            backdrop.className = 'sb-backdrop';
-            backdrop.addEventListener('click', () => {
-                document.body.classList.remove('sb-show', 'no-scroll');
-            });
-            document.body.appendChild(backdrop);
-        }
+      if (!document.querySelector('.sb-backdrop')) {
+        const backdrop = document.createElement('div');
+        backdrop.className = 'sb-backdrop';
+        backdrop.addEventListener('click', () => {
+          document.body.classList.remove('sb-show', 'no-scroll');
+        });
+        document.body.appendChild(backdrop);
+      }
     }
 
     function bind() {
-        const btn = document.querySelector('#homeContent .inline-hamburger');
-        if (!btn || btn.__bound) return;
-        btn.__bound = true;
-        ensureBackdrop();
+      const btn = document.querySelector('#homeContent .inline-hamburger');
+      if (!btn || btn.__bound) return;
+      btn.__bound = true;
+      ensureBackdrop();
 
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            document.body.classList.toggle('sb-show');
-            document.body.classList.toggle('no-scroll');
-        });
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        document.body.classList.toggle('sb-show');
+        document.body.classList.toggle('no-scroll');
+      });
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', bind);
+      document.addEventListener('DOMContentLoaded', bind);
     } else {
-        bind();
+      bind();
     }
 
     const _showHome = window.showHome;
     if (typeof _showHome === 'function' && !_showHome.__inlineHamb) {
-        window.showHome = function () {
-            const r = _showHome.apply(this, arguments);
-            setTimeout(bind, 0);
-            return r;
-        };
-        window.showHome.__inlineHamb = true;
+      window.showHome = function () {
+        const r = _showHome.apply(this, arguments);
+        setTimeout(bind, 0);
+        return r;
+      };
+      window.showHome.__inlineHamb = true;
     }
 
     window.addEventListener('resize', () => {
-        if (window.matchMedia('(min-width: 577px)').matches) {
-            document.body.classList.remove('sb-show', 'no-scroll');
-        }
+      if (window.matchMedia('(min-width: 577px)').matches) {
+        document.body.classList.remove('sb-show', 'no-scroll');
+      }
     });
-})();
+  })();
 </script>
 <script>
   /* =========================================
@@ -4037,139 +4040,139 @@ body.sb-show .sb-backdrop {
 
   /* === Late-binding wrapper: runs after all functions are defined === */
   /* === Late-binding wrapper: runs after all functions are defined === */
-/* === LATE-BINDING WRAPPER: SIDEBAR TOGGLE FOR ALL SCREENS === */
-window.addEventListener('load', function () {
-  
-  // Create backdrop element for clicking outside (works on all screens)
-  function createBackdrop() {
-    if (!document.querySelector('.sb-backdrop')) {
-      const backdrop = document.createElement('div');
-      backdrop.className = 'sb-backdrop';
-      backdrop.addEventListener('click', function() {
-        // Close sidebar when clicking outside
-        document.body.classList.remove('sb-show');
-        document.body.classList.remove('no-scroll');
-        // Also save preference
-        localStorage.setItem('sidebarHidden', 'false');
-      });
-      document.body.appendChild(backdrop);
-    }
-  }
-  
-  createBackdrop();
-  
-  // Ensure floating toggle button exists
-  function ensureFloatToggle() {
-    if (!document.querySelector('.sb-float-toggle')) {
-      const btn = document.createElement('button');
-      btn.className = 'sb-float-toggle';
-      btn.type = 'button';
-      btn.setAttribute('aria-label', 'Toggle sidebar');
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        // Toggle sidebar open/close
-        const isHidden = document.body.classList.toggle('sb-show');
-        document.body.classList.toggle('no-scroll');
-        // Save preference (optional)
-        localStorage.setItem('sidebarHidden', isHidden ? 'true' : 'false');
-      });
-      document.body.appendChild(btn);
-    }
-  }
-  
-  ensureFloatToggle();
-  if (localStorage.getItem('in-lesson') === 'true') {
-    document.body.classList.add('in-lesson');
-}
-  // Restore sidebar state from localStorage (optional)
-  function restoreSidebarState() {
-    const savedState = localStorage.getItem('sidebarHidden');
-    if (savedState === 'true' && window.innerWidth >= 769) {
-      document.body.classList.add('sb-show');
-    }
-  }
-  restoreSidebarState();
-  
-  // Handle resize - reset sidebar state on window resize
-  function handleResize() {
-    if (window.innerWidth >= 769) {
-      // On desktop/laptop, sidebar toggle works
-      const isHidden = document.body.classList.contains('sb-show');
-      if (isHidden) {
-        // Keep the state, don't auto-reset
-      }
-    } else {
-      // On mobile, reset to closed when rotating
-      document.body.classList.remove('sb-show', 'no-scroll');
-    }
-  }
-  
-  window.addEventListener('resize', handleResize);
-  
-  // When lesson opens, show toggle button
-  const __orig_loadSubject = window.loadSubject;
-  if (typeof __orig_loadSubject === 'function') {
-    window.loadSubject = function (curriculum, grade, lesson, subject) {
-      const r = __orig_loadSubject.apply(this, arguments);
-      setTimeout(() => {
-        document.body.classList.add('in-lesson');
-          localStorage.setItem('in-lesson', 'true');
-        ensureFloatToggle();
-        // Close sidebar when entering lesson on mobile
-        if (window.innerWidth <= 768) {
-          document.body.classList.remove('sb-show', 'no-scroll');
-        }
-      }, 0);
-      return r;
-    };
-  }
+  /* === LATE-BINDING WRAPPER: SIDEBAR TOGGLE FOR ALL SCREENS === */
+  window.addEventListener('load', function () {
 
-  // When exitLesson, cleanup
-  const __orig_exitLesson = window.exitLesson;
-  if (typeof __orig_exitLesson === 'function') {
-   window.exitLesson = function () {
-  document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
-  localStorage.removeItem('in-lesson');
-  return __orig_exitLesson.apply(this, arguments);
-};
-  }
-  
-  // When showHome, cleanup
-  const __orig_showHome = window.showHome;
-  if (typeof __orig_showHome === 'function') {
-    window.showHome = function () {
-  document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
-  localStorage.removeItem('in-lesson');
-  return __orig_showHome.apply(this, arguments);
-};
-  }
-  
-  // Also handle navigation functions
-  const __orig_loadCurriculum = window.loadCurriculum;
-  if (typeof __orig_loadCurriculum === 'function') {
-    window.loadCurriculum = function() {
-      document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
-      return __orig_loadCurriculum.apply(this, arguments);
-    };
-  }
-  
-  const __orig_loadGrade = window.loadGrade;
-  if (typeof __orig_loadGrade === 'function') {
-    window.loadGrade = function() {
-      document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
-      return __orig_loadGrade.apply(this, arguments);
-    };
-  }
-  
-  const __orig_loadSubjectList = window.loadSubjectList;
-  if (typeof __orig_loadSubjectList === 'function') {
-    window.loadSubjectList = function() {
-      document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
-      return __orig_loadSubjectList.apply(this, arguments);
-    };
-  }
-});
+    // Create backdrop element for clicking outside (works on all screens)
+    function createBackdrop() {
+      if (!document.querySelector('.sb-backdrop')) {
+        const backdrop = document.createElement('div');
+        backdrop.className = 'sb-backdrop';
+        backdrop.addEventListener('click', function () {
+          // Close sidebar when clicking outside
+          document.body.classList.remove('sb-show');
+          document.body.classList.remove('no-scroll');
+          // Also save preference
+          localStorage.setItem('sidebarHidden', 'false');
+        });
+        document.body.appendChild(backdrop);
+      }
+    }
+
+    createBackdrop();
+
+    // Ensure floating toggle button exists
+    function ensureFloatToggle() {
+      if (!document.querySelector('.sb-float-toggle')) {
+        const btn = document.createElement('button');
+        btn.className = 'sb-float-toggle';
+        btn.type = 'button';
+        btn.setAttribute('aria-label', 'Toggle sidebar');
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          // Toggle sidebar open/close
+          const isHidden = document.body.classList.toggle('sb-show');
+          document.body.classList.toggle('no-scroll');
+          // Save preference (optional)
+          localStorage.setItem('sidebarHidden', isHidden ? 'true' : 'false');
+        });
+        document.body.appendChild(btn);
+      }
+    }
+
+    ensureFloatToggle();
+    if (localStorage.getItem('in-lesson') === 'true') {
+      document.body.classList.add('in-lesson');
+    }
+    // Restore sidebar state from localStorage (optional)
+    function restoreSidebarState() {
+      const savedState = localStorage.getItem('sidebarHidden');
+      if (savedState === 'true' && window.innerWidth >= 769) {
+        document.body.classList.add('sb-show');
+      }
+    }
+    restoreSidebarState();
+
+    // Handle resize - reset sidebar state on window resize
+    function handleResize() {
+      if (window.innerWidth >= 769) {
+        // On desktop/laptop, sidebar toggle works
+        const isHidden = document.body.classList.contains('sb-show');
+        if (isHidden) {
+          // Keep the state, don't auto-reset
+        }
+      } else {
+        // On mobile, reset to closed when rotating
+        document.body.classList.remove('sb-show', 'no-scroll');
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    // When lesson opens, show toggle button
+    const __orig_loadSubject = window.loadSubject;
+    if (typeof __orig_loadSubject === 'function') {
+      window.loadSubject = function (curriculum, grade, lesson, subject) {
+        const r = __orig_loadSubject.apply(this, arguments);
+        setTimeout(() => {
+          document.body.classList.add('in-lesson');
+          localStorage.setItem('in-lesson', 'true');
+          ensureFloatToggle();
+          // Close sidebar when entering lesson on mobile
+          if (window.innerWidth <= 768) {
+            document.body.classList.remove('sb-show', 'no-scroll');
+          }
+        }, 0);
+        return r;
+      };
+    }
+
+    // When exitLesson, cleanup
+    const __orig_exitLesson = window.exitLesson;
+    if (typeof __orig_exitLesson === 'function') {
+      window.exitLesson = function () {
+        document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
+        localStorage.removeItem('in-lesson');
+        return __orig_exitLesson.apply(this, arguments);
+      };
+    }
+
+    // When showHome, cleanup
+    const __orig_showHome = window.showHome;
+    if (typeof __orig_showHome === 'function') {
+      window.showHome = function () {
+        document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
+        localStorage.removeItem('in-lesson');
+        return __orig_showHome.apply(this, arguments);
+      };
+    }
+
+    // Also handle navigation functions
+    const __orig_loadCurriculum = window.loadCurriculum;
+    if (typeof __orig_loadCurriculum === 'function') {
+      window.loadCurriculum = function () {
+        document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
+        return __orig_loadCurriculum.apply(this, arguments);
+      };
+    }
+
+    const __orig_loadGrade = window.loadGrade;
+    if (typeof __orig_loadGrade === 'function') {
+      window.loadGrade = function () {
+        document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
+        return __orig_loadGrade.apply(this, arguments);
+      };
+    }
+
+    const __orig_loadSubjectList = window.loadSubjectList;
+    if (typeof __orig_loadSubjectList === 'function') {
+      window.loadSubjectList = function () {
+        document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
+        return __orig_loadSubjectList.apply(this, arguments);
+      };
+    }
+  });
   /////////////////////////////////////////////////////////////////////////////////////////////
   /* JS-only: Make Home cards navigate to "Select Grade" without changing existing HTML */
   /* JS-only: Make Home cards navigate to "Select Grade" (supports SSC + CBSE) */

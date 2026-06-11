@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Grade4_Lesson5</title>
 
@@ -144,7 +144,7 @@
             }
         }
 
-        /* ── MOBILE ── ≤900px */
+        /* ── MOBILE ── ≤900px (NO OVERLAY, NO SCROLL ON SIDEBAR) */
         @media (max-width: 900px) {
 
             .topbar {
@@ -166,19 +166,22 @@
                 z-index: 5000;
             }
 
+            /* Offcanvas container - NO background overlay, transparent */
             .offcanvas {
                 position: fixed;
                 inset: 0;
-                background: url("./assets/images/BGGG.png");
+                background: transparent;
                 display: none;
                 z-index: 4000;
-                margin-top: 5%;
+                pointer-events: none;
             }
 
             .offcanvas.show {
                 display: block;
+                pointer-events: auto;
             }
 
+            /* Sidebar panel - NO SCROLLBAR */
             .offcanvas-panel {
                 position: absolute;
                 right: 0;
@@ -186,30 +189,35 @@
                 width: 260px;
                 height: 100%;
                 background: url("./assets/images/BGGG.png");
+                background-size: cover;
                 padding: 24px;
                 padding-top: 70px;
                 display: flex;
                 flex-direction: column;
                 gap: 30px;
                 transform: translateX(100%);
-                transition: .35s;
-                overflow-y: auto;
+                transition: transform .35s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+                /* NO SCROLL - removed overflow-y */
+                overflow-y: visible;
+                overflow-x: visible;
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
             }
 
             .offcanvas.show .offcanvas-panel {
                 transform: translateX(0);
-                display: flex;
-                justify-content: flex-start;
                 align-items: center;
+                justify-content: flex-start;
             }
 
             .offcanvas-panel .island-btn {
                 flex: none;
                 width: 100%;
-                justify-content: flex-start;
+                justify-content: center;
                 padding: 16px 18px;
                 border-radius: 40px;
                 font-size: 14px;
+                background: rgba(244, 244, 244, 0.95);
+                backdrop-filter: none;
             }
 
             .offcanvas-panel .island-btn:nth-child(1).active { background: #FFE3C8; }
@@ -263,7 +271,7 @@
 
     </div>
 
-    <div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
+    <div class="offcanvas" id="offcanvas" onclick="closeMenuIfClickedOutside(event)">
 
         <div class="offcanvas-panel" onclick="event.stopPropagation()">
 
@@ -309,6 +317,7 @@
         ];
 
         function moveSlider(el) {
+            if (!slider) return;
             slider.style.width = el.offsetWidth + "px";
             slider.style.transform = `translateX(${el.offsetLeft}px)`;
         }
@@ -320,7 +329,9 @@
             mobileButtons.forEach(btn => btn.classList.remove("active"));
             mobileButtons[index].classList.add("active");
 
-            moveSlider(sidebarButtons[index]);
+            if (window.innerWidth > 900 && sidebarButtons[index]) {
+                moveSlider(sidebarButtons[index]);
+            }
             frame.src = pages[index];
         }
 
@@ -329,14 +340,38 @@
             document.getElementById("offcanvas").classList.toggle("show");
         }
 
+        function closeMenuIfClickedOutside(event) {
+            if (window.innerWidth > 900) return;
+            const offcanvas = document.getElementById("offcanvas");
+            if (event.target === offcanvas) {
+                offcanvas.classList.remove("show");
+            }
+        }
+
         function mobileOpen(i) {
             openIsland(i);
-            toggleMenu();
+            const offcanvas = document.getElementById("offcanvas");
+            offcanvas.classList.remove("show");
         }
 
         window.onload = () => {
-            moveSlider(sidebarButtons[0]);
+            if (window.innerWidth > 900 && sidebarButtons[0]) {
+                moveSlider(sidebarButtons[0]);
+            }
         };
+
+        window.addEventListener("resize", function() {
+            const offcanvas = document.getElementById("offcanvas");
+            if (window.innerWidth > 900) {
+                if (offcanvas.classList.contains("show")) {
+                    offcanvas.classList.remove("show");
+                }
+                const activeBtn = document.querySelector(".topbar .island-btn.active");
+                if (activeBtn && slider) {
+                    moveSlider(activeBtn);
+                }
+            }
+        });
 
     </script>
 

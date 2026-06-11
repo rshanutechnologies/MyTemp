@@ -974,7 +974,7 @@ button:disabled {
 /* ========== 351px - 430px (Phones) ========== */
 @media (min-width: 351px) and (max-width: 430px) {
     body {
-        overflow: auto;
+        overflow: hidden;
         margin-top: 10%;
     }
 
@@ -1020,7 +1020,7 @@ button:disabled {
 /* ========== 431px - 600px (Large Phones) ========== */
 @media (min-width: 431px) and (max-width: 600px) {
     body {
-        overflow: auto;
+        overflow: hidden;
         margin-top: 8%;
     }
 

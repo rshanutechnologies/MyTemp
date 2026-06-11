@@ -4,7 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>Grade4_Lesson3</title>
 
@@ -22,8 +22,6 @@
 body {
     min-height: 100vh;
     overflow: hidden;
-    /* background: url("./assets/images/bg-img-blurred.png"); */
-    background-size: cover;
     background: linear-gradient(
     180deg,
     #D9F1EF 0%,
@@ -45,8 +43,7 @@ body {
     justify-content: center;
     align-items: center;
     height: clamp(55px, 7vh, 70px);
-    /* margin: 0 clamp(10px, 3vw, 20px); */
-    margin-top:clamp(10px, 2vh, 25px);
+    margin-top: clamp(10px, 2vh, 25px);
 }
 
 /* NAV */
@@ -134,7 +131,7 @@ iframe {
     display: none;
 }
 
-/* 🔥 SINGLE BREAKPOINT */
+/* 🔥 MOBILE BREAKPOINT - Content stays visible, NO SCROLL on sidebar panel */
 @media (max-width: 900px) {
 
     .topbar {
@@ -146,7 +143,6 @@ iframe {
         position: fixed;
         top: clamp(10px, 2vw, 15px);
         right: clamp(10px, 2vw, 15px);
-        /* font-size: clamp(15px, 3vw, 18px); */
         background: #f59e0b;
         color: white;
         border: none;
@@ -154,72 +150,107 @@ iframe {
         padding: clamp(5px, 1.5vw, 8px) clamp(10px, 2vw, 12px);
         cursor: pointer;
         z-index: 5000;
+        font-size: 20px;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
+    /* Offcanvas container - no background overlay, content remains fully visible */
     .offcanvas {
         position: fixed;
         inset: 0;
-        background: url("./assets/images/bg-img-blurred.png");
+        background: transparent;
         display: none;
         z-index: 4000;
-        margin-top: 5%;
+        pointer-events: none;
     }
-
+    
     .offcanvas.show {
         display: block;
+        pointer-events: auto;
     }
 
+    /* Sidebar panel - slides from right, NO SCROLLBAR */
     .offcanvas-panel {
         position: absolute;
         right: 0;
         top: 0;
-        width: clamp(240px, 70%, 320px);
+        width: clamp(260px, 70%, 340px);
         height: 100%;
-        background: url("./assets/images/bg-img-blurred.png");
+        background: linear-gradient(
+    180deg,
+    #D9F1EF 0%,
+    #F9F8F2 45%,
+    #E9F3C5 100%
+);
         padding: clamp(20px, 4vw, 30px);
-        padding-top: clamp(60px, 10vh, 80px);
+        padding-top: clamp(70px, 12vh, 90px);
         display: flex;
         flex-direction: column;
-        gap: clamp(20px, 4vw, 40px);
+        gap: clamp(20px, 4vw, 32px);
         transform: translateX(100%);
-        transition: .35s;
-        overflow-y: auto;
+        transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        /* NO SCROLL - removed overflow-y */
+        overflow-y: visible;
+        overflow-x: visible;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+        border-left: 1px solid rgba(0,0,0,0.05);
     }
 
     .offcanvas.show .offcanvas-panel {
         transform: translateX(0);
-        align-items: center;
     }
 
-    /* REDUCE NAV TAB HEIGHT */
-.offcanvas-panel .island-btn {
-    width: 100%;
+    /* Sidebar buttons styling */
+    .offcanvas-panel .island-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(10px, 2vw, 15px);
+        padding: clamp(12px, 2.5vw, 16px);
+        border-radius: 60px;
+        font-size: clamp(16px, 3.5vw, 19px);
+        font-weight: 600;
+        background: #f8f9fc;
+        border: 2px solid transparent;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        transition: all 0.2s ease;
+        color: #2c3e2f;
+        cursor: pointer;
+        opacity: 0.85;
+        filter: none;
+        white-space: nowrap;
+    }
     
-    display: flex;
-    align-items: center;
-    justify-content: center; /* 🔥 center icon + text */
+    .offcanvas-panel .island-btn i {
+        font-size: 1.2em;
+    }
     
-    gap: clamp(8px, 2vw, 12px); /* 🔥 space between icon & text */
+    .offcanvas-panel .island-btn.active {
+        background: #ffeaa7;
+        border: 2px solid white;
+        transform: scale(1.01);
+        opacity: 1;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    }
     
-    padding: clamp(10px, 2vw, 14px); /* 🔥 reduced height */
-    
-    border-radius: 40px;
-    font-size: clamp(15px, 3vw, 18px);
+    .offcanvas-panel .island-btn:active {
+        transform: scale(0.98);
+    }
 }
-}
-@media (min-width: 1600px) {
 
+/* Larger screens */
+@media (min-width: 1600px) {
   .nav-group {
     max-width: 1700px;
     gap: 30px;
   }
-
   .island-btn {
     min-height: 75px;
     font-size: 24px;
     padding: 16px 24px;
   }
-
   .island-btn i {
     font-size: 26px;
   }
@@ -236,63 +267,52 @@ iframe {
     <!-- DESKTOP NAV -->
     <div class="topbar">
         <div class="nav-group">
-
             <div class="nav-slider" id="navSlider"></div>
-
             <div class="island-btn active" onclick="openIsland(0)">
                 <i class="fa-solid fa-list-check"></i>
                 Correct Options
             </div>
-
             <div class="island-btn" onclick="openIsland(1)">
                 <i class="fa-solid fa-pencil"></i>
                 Fill The Blanks
             </div>
-
             <div class="island-btn" onclick="openIsland(2)">
                 <i class="fa-solid fa-scale-balanced"></i>
                 True / False
             </div>
-
             <div class="island-btn" onclick="openIsland(3)">
                 <i class="fa-solid fa-link"></i>
                 Matching
             </div>
-
         </div>
     </div>
 
-    <!-- CONTENT -->
+    <!-- CONTENT AREA: iframe shows exercise content -->
     <div class="main">
         <iframe id="contentFrame" src="./assets/exercises/mcq.html"></iframe>
     </div>
 
 </div>
 
-<!-- MOBILE MENU -->
-<div class="offcanvas" id="offcanvas" onclick="toggleMenu()">
+<!-- MOBILE SIDEBAR: NO SCROLL, content stays fully visible -->
+<div class="offcanvas" id="offcanvas" onclick="closeMenuIfClickedOutside(event)">
     <div class="offcanvas-panel" onclick="event.stopPropagation()">
-
         <div class="island-btn active" onclick="mobileOpen(0)">
             <i class="fa-solid fa-list-check"></i>
             Correct Options
         </div>
-
         <div class="island-btn" onclick="mobileOpen(1)">
             <i class="fa-solid fa-pencil"></i>
             Fill The Blanks
         </div>
-
         <div class="island-btn" onclick="mobileOpen(2)">
             <i class="fa-solid fa-scale-balanced"></i>
             True / False
         </div>
-
         <div class="island-btn" onclick="mobileOpen(3)">
-            <i class="fa-solid fa-arrows-left-right"></i>
+            <i class="fa-solid fa-link"></i>
             Matching
         </div>
-
     </div>
 </div>
 
@@ -310,34 +330,82 @@ const pages = [
 ];
 
 function moveSlider(el) {
+    if (!slider) return;
     slider.style.width = el.offsetWidth + "px";
     slider.style.transform = `translateX(${el.offsetLeft}px)`;
 }
 
 function openIsland(index) {
+    // Update desktop buttons active state
     sidebarButtons.forEach(btn => btn.classList.remove("active"));
     sidebarButtons[index].classList.add("active");
-
+    
+    // Update mobile sidebar buttons active state
     mobileButtons.forEach(btn => btn.classList.remove("active"));
     mobileButtons[index].classList.add("active");
-
-    moveSlider(sidebarButtons[index]);
+    
+    // Move slider if on desktop
+    if (sidebarButtons[index] && window.innerWidth > 900) {
+        moveSlider(sidebarButtons[index]);
+    }
+    
+    // Load the corresponding exercise
     frame.src = pages[index];
 }
 
 function toggleMenu() {
     if (window.innerWidth > 900) return;
-    document.getElementById("offcanvas").classList.toggle("show");
+    const offcanvas = document.getElementById("offcanvas");
+    offcanvas.classList.toggle("show");
+}
+
+// Function to close sidebar when clicking outside panel (on transparent area)
+function closeMenuIfClickedOutside(event) {
+    if (window.innerWidth > 900) return;
+    const offcanvas = document.getElementById("offcanvas");
+    // If click is directly on offcanvas background (transparent area), close sidebar
+    if (event.target === offcanvas) {
+        offcanvas.classList.remove("show");
+    }
 }
 
 function mobileOpen(i) {
     openIsland(i);
-    toggleMenu();
+    // Close the mobile menu after selection
+    const offcanvas = document.getElementById("offcanvas");
+    offcanvas.classList.remove("show");
 }
 
+// Initialize slider on load for desktop
 window.onload = () => {
-    moveSlider(sidebarButtons[0]);
+    if (window.innerWidth > 900 && sidebarButtons[0]) {
+        moveSlider(sidebarButtons[0]);
+    }
+    // Set initial active states consistent
+    const activeDesktop = document.querySelector(".topbar .island-btn.active");
+    if (!activeDesktop && sidebarButtons[0]) {
+        sidebarButtons[0].classList.add("active");
+        mobileButtons[0].classList.add("active");
+    }
 };
+
+// Handle resize: re-align slider if needed, and reset offcanvas state
+window.addEventListener("resize", function() {
+    const offcanvas = document.getElementById("offcanvas");
+    if (window.innerWidth > 900) {
+        if (offcanvas.classList.contains("show")) {
+            offcanvas.classList.remove("show");
+        }
+        // Recalculate slider for active desktop button
+        const activeBtn = document.querySelector(".topbar .island-btn.active");
+        if (activeBtn && slider) {
+            moveSlider(activeBtn);
+        }
+    } else {
+        // On mobile, ensure slider doesn't cause issues
+        if (slider) slider.style.width = "";
+    }
+});
 </script>
 
 </body>

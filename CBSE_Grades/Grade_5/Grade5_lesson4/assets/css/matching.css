@@ -460,7 +460,7 @@ animation:shake .3s;
         width: 100%;
         height: auto;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: hidden;
     }
 
     body {
@@ -534,7 +534,7 @@ animation:shake .3s;
         width: 100%;
         height: auto;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y:hidden;
     }
 
     body {
@@ -632,7 +632,7 @@ animation:shake .3s;
         width: 100%;
         height: auto;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: hidden;
     }
 
     body {
@@ -735,7 +735,7 @@ animation:shake .3s;
         width: 100%;
         height: auto;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: hidden;
     }
 
     body {
