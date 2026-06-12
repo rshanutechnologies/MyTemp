@@ -944,71 +944,173 @@
     /* === Arrow: keep it visible in the same up-side place === */
     .sb-float-toggle {
       position: fixed;
-      left: 20px;
-      top: 100px;
-      width: 45px;
-      height: 50px;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      background: #ffffff;
-      color: #0f172a;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-      cursor: pointer;
+      top: 10px !important;
+      left: 270px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0f766e 0%, #147d72 100%);
       z-index: 1200;
-      display: grid;
-      place-items: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      user-select: none;
+      overflow: visible;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(15, 118, 110, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
 
-      font-weight: 800;
-      font-size: 28px;
-      transition: all 0.2s ease;
+    body:not(.sb-show) .sb-float-toggle {
+      top: 10px !important;
+      left: 270px;
+      /* stays at sidebar edge when visible */
+      right: auto;
+    }
+
+    body.sb-show .sb-float-toggle {
+      top: 10px !important;
+      left: 10px;
+      /* moves to left when sidebar hidden */
+      right: auto;
+      box-shadow: 0 6px 20px rgba(15, 118, 110, 0.35);
     }
 
     .sb-float-toggle:hover {
-      background: #f0f0f0;
-      transform: scale(1.05);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(15, 118, 110, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+      background: linear-gradient(135deg, #0d6560 0%, #116a66 100%);
     }
 
-    /* Show button in lesson mode ONLY - not on home page */
-    body.in-lesson .sb-float-toggle {
-      display: grid;
+    .sb-float-toggle:active {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(15, 118, 110, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15);
     }
 
-    /* Arrow direction - FIXED: sb-show toggles sidebar */
+    /* Arrow direction: open sidebar shows collapse arrow, closed sidebar shows expand arrow */
+    .sb-float-toggle::before {
+      content: '<';
+      display: inline-block;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      line-height: 1;
+    }
+
     body.sb-show .sb-float-toggle::before {
-
-      content: '≡';
+      content: '>';
     }
 
     body:not(.sb-show).in-lesson .sb-float-toggle::before {
-      content: '≡';
-
+      content: '<';
     }
 
-    /* Hide on home page */
-    body:not(.in-lesson) .sb-float-toggle {
-      display: grid;
+    @media (min-width: 769px) {
+      .sb-float-toggle::before {
+        content: '<';
+      }
+
+      body.sb-show .sb-float-toggle::before {
+        content: '>';
+      }
     }
 
-    /* Mobile adjustments */
+    .sb-float-toggle:hover::before {
+      transform: scale(1.2);
+    }
+
+    /* Mobile adjustments - button on sidebar edge when visible, left when hidden */
     @media (max-width: 768px) {
       .sb-float-toggle {
-        left: 8px;
-        top: 75px;
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
+        left: 10px;
+        top: 150px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        font-size: 18px;
+        box-shadow: 0 6px 18px rgba(15, 118, 110, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+      }
+
+      /* Mobile: default (sidebar hidden) -> show expand arrow '>' */
+      body:not(.sb-show) .sb-float-toggle {
+        left: 10px;
+        right: auto;
+      }
+
+      /* Mobile: when sb-show present the sidebar is visible -> show collapse arrow '<' */
+      body.sb-show .sb-float-toggle {
+        left: 270px;
+        right: auto;
+      }
+
+      body:not(.sb-show) .sb-float-toggle::before {
+        content: '>';
+      }
+
+      body.sb-show .sb-float-toggle::before {
+        content: '<';
       }
     }
 
     @media (max-width: 576px) {
       .sb-float-toggle {
-        left: 6px;
-        top: 12px;
+        left: 10px;
+        top: 135px;
         width: 32px;
         height: 32px;
-        font-size: 18px;
-        z-index: 1200;
+        border-radius: 50%;
+        font-size: 16px;
       }
+
+      .sb-float-toggle::before {
+        font-size: 16px;
+      }
+
+      body:not(.sb-show) .sb-float-toggle {
+        left: 10px;
+        right: auto;
+      }
+
+      body.sb-show .sb-float-toggle {
+        left: 260px;
+        right: auto;
+      }
+
+      body:not(.sb-show) .sb-float-toggle::before {
+        content: '>';
+      }
+
+      body.sb-show .sb-float-toggle::before {
+        content: '<';
+      }
+    }
+
+    /* Authoritative mapping removed to preserve breakpoint-specific semantics */
+
+    /* Final authoritative mapping (placed after media rules) */
+    body:not(.sb-show) .sb-float-toggle::before {
+      content: '<';
+    }
+
+    body.sb-show .sb-float-toggle::before {
+      content: '>';
+    }
+
+    /* Data-attribute driven override: JS will set `data-visible` on the button so the icon
+       always matches actual visibility across breakpoints. These rules take precedence. */
+    .sb-float-toggle[data-visible="true"]::before {
+      content: '<' !important;
+    }
+
+    .sb-float-toggle[data-visible="false"]::before {
+      content: '>' !important;
     }
 
     /* Keep the hidden sidebar fully off-canvas so the iframe can use full width */
@@ -2036,11 +2138,12 @@
     #lessonContent .header-card .chips {
       display: flex;
       align-items: center;
+      justify-content: center;
       /* vertical centering */
       gap: 12px;
       /* space between chips */
       flex-wrap: wrap;
-      margin-left: 10px;
+      /* margin-left: 10px; */
       /* wraps nicely on small screens */
     }
 
@@ -2106,17 +2209,7 @@
       color: #000000 !important;
     }
 
-    /* Make sidebar floating arrow button bigger */
-    .sb-float-toggle {
-      width: 40px !important;
-      /* increase button width */
-      height: 45px !important;
-      /* increase button height */
-      border-radius: 7px !important;
-      /* keep rounded look */
-      font-size: 28px !important;
-      /* increase arrow size */
-    }
+    /* Make sidebar floating arrow button - styling handled at top of CSS */
 
     #lessonContent .cbse-assess-notice {
       color: #ff0000;
@@ -2256,91 +2349,6 @@
       }
     }
 
-    /* Floating toggle button - Works on ALL screens */
-    .sb-float-toggle {
-      position: fixed;
-      left: 20px;
-      top: 100px;
-      width: 45px;
-      height: 50px;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      background: #ffffff;
-      color: #0f172a;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-      cursor: pointer;
-      z-index: 1200;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 28px;
-      transition: all 0.2s ease;
-    }
-
-    .sb-float-toggle:hover {
-      background: #f0f0f0;
-      transform: scale(1.05);
-    }
-
-    /* Arrow direction based on sidebar state */
-    body.sb-show .sb-float-toggle::before {
-      margin-top: -6px;
-      content: '≡';
-    }
-
-    body:not(.sb-show) .sb-float-toggle::before {
-      margin-top: -6px;
-      content: '≡';
-    }
-
-    /* Hide toggle button on Home page, show on lesson pages */
-    body:not(.in-lesson) .sb-float-toggle {
-      display: grid !important;
-    }
-
-    /* Laptop/Desktop toggle button position */
-    @media (min-width: 769px) and (max-width: 1600px) {
-      .sb-float-toggle {
-        left: 21px;
-        top: 70px !important;
-        width: 48px;
-        height: 48px;
-        font-size: 32px;
-      }
-    }
-
-    /* Large Monitors (1600px+) */
-    @media (min-width: 1600px) {
-      .sb-float-toggle {
-        left: 40px;
-        top: 85px;
-        width: 55px;
-        height: 55px;
-        font-size: 36px;
-      }
-    }
-
-    /* Mobile toggle button position */
-    @media (max-width: 768px) {
-      .sb-float-toggle {
-        left: 5px;
-        top: 60px;
-        width: 40px;
-        height: 40px;
-        font-size: 24px;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .sb-float-toggle {
-        left: 8px;
-        top: 50px;
-        width: 36px !important;
-        height: 36px !important;
-        font-size: 22px;
-      }
-    }
-
     /* Hide inline hamburger on desktop, show on mobile only */
     .inline-hamburger {
       display: none;
@@ -2432,16 +2440,6 @@
         grid-template-columns: 72px 1fr 24px !important;
         gap: 10px !important;
       }
-
-      /* Make the floating sidebar button easier to hit */
-      .sb-float-toggle {
-        left: 22px;
-        top: 68px;
-        width: 44px;
-        height: 44px;
-
-        font-size: 26px !important;
-      }
     }
 
 
@@ -2530,7 +2528,7 @@
       /* Lesson rows become 2-line compact */
       .subject-card.lesson-row {
         grid-template-columns: 52px 1fr auto !important;
-        gap: 8px !important;
+        gap: 20px !important;
       }
 
       /* Make huge numbers more compact */
@@ -2685,7 +2683,7 @@
 
       /* “Choose Your Curriculum” bigger and centered like model */
       #homeContent .section-title {
-        font-size: 28px !important;
+        font-size: 22px !important;
         font-weight: 800 !important;
         text-align: center !important;
         margin: 20px 0 18px !important;
@@ -2783,7 +2781,22 @@
     body.no-scroll {
       overflow: hidden;
     }
+   .chip{
+    display: flex;
+    justify-content: flex-start;
+   }
 
+     @media (max-width: 490px) {
+         .chip{
+     font-size: 13px;
+     font-weight: 500 !important;
+   }
+    } 
+     @media (max-width: 330px) {
+         .chip{
+     font-size: 8px;
+   }
+    } 
     /* Ensure your off-canvas sidebar animation still works on mobile widths */
     @media (max-width: 576px) {
       .sidebar {
@@ -3525,8 +3538,23 @@
 
       /* SIDEBAR */
       .sidebar {
-        width: 360px;
+        width: 300px !important;
         padding: 40px;
+      }
+
+
+
+      body:not(.sb-show) .sb-float-toggle {
+        top: 10px;
+        left: 310px;
+        /* sidebar width + offset */
+        right: auto;
+      }
+
+      body.sb-show .sb-float-toggle {
+        top: 10px;
+        left: 10px;
+        right: auto;
       }
 
       .logo {
@@ -4076,12 +4104,29 @@
           document.body.classList.toggle('no-scroll');
           // Save preference (optional)
           localStorage.setItem('sidebarHidden', isHidden ? 'true' : 'false');
+          // Update icon to reflect new visibility
+          updateToggleIcon();
         });
         document.body.appendChild(btn);
       }
     }
 
     ensureFloatToggle();
+
+    // Update the toggle icon based on actual sidebar visibility across breakpoints
+    function updateToggleIcon() {
+      const btn = document.querySelector('.sb-float-toggle');
+      const sidebar = document.querySelector('.sidebar');
+      if (!btn || !sidebar) return;
+      const isSbShow = document.body.classList.contains('sb-show');
+      // On desktop (>=769) sb-show hides the sidebar; on mobile sb-show shows it
+      const isDesktop = window.innerWidth >= 769;
+      const visible = isDesktop ? !isSbShow : isSbShow;
+      btn.setAttribute('data-visible', visible ? 'true' : 'false');
+    }
+
+    // Call once to sync initial state
+    updateToggleIcon();
     if (localStorage.getItem('in-lesson') === 'true') {
       document.body.classList.add('in-lesson');
     }
@@ -4109,6 +4154,8 @@
     }
 
     window.addEventListener('resize', handleResize);
+    // Update icon on resize (ensures breakpoint logic handled)
+    window.addEventListener('resize', updateToggleIcon);
 
     // When lesson opens, show toggle button
     const __orig_loadSubject = window.loadSubject;
@@ -4123,6 +4170,8 @@
           if (window.innerWidth <= 768) {
             document.body.classList.remove('sb-show', 'no-scroll');
           }
+          // Sync icon after entering lesson
+          updateToggleIcon();
         }, 0);
         return r;
       };
@@ -4134,6 +4183,8 @@
       window.exitLesson = function () {
         document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
         localStorage.removeItem('in-lesson');
+        // Sync toggle icon
+        updateToggleIcon();
         return __orig_exitLesson.apply(this, arguments);
       };
     }
@@ -4144,6 +4195,8 @@
       window.showHome = function () {
         document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
         localStorage.removeItem('in-lesson');
+        // Sync toggle icon
+        updateToggleIcon();
         return __orig_showHome.apply(this, arguments);
       };
     }
@@ -4153,6 +4206,8 @@
     if (typeof __orig_loadCurriculum === 'function') {
       window.loadCurriculum = function () {
         document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
+        // Sync toggle icon
+        updateToggleIcon();
         return __orig_loadCurriculum.apply(this, arguments);
       };
     }
@@ -4161,6 +4216,8 @@
     if (typeof __orig_loadGrade === 'function') {
       window.loadGrade = function () {
         document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
+        // Sync toggle icon
+        updateToggleIcon();
         return __orig_loadGrade.apply(this, arguments);
       };
     }
@@ -4169,6 +4226,8 @@
     if (typeof __orig_loadSubjectList === 'function') {
       window.loadSubjectList = function () {
         document.body.classList.remove('in-lesson', 'sb-show', 'no-scroll');
+        // Sync toggle icon
+        updateToggleIcon();
         return __orig_loadSubjectList.apply(this, arguments);
       };
     }
@@ -4854,7 +4913,7 @@
           <div class="brand-title">
             <sapn style="color:#25eb74">Wise</sapn><span style="color: white;">Wings</span> EduLearn
           </div>
-          <div class="brand-subtitle">Interactive Learning Assesment Platform</div>
+          <div class="brand-subtitle">Interactive Learning Assessment Platform</div>
         </div>
       </div>
       <ul class="menu">
@@ -4889,7 +4948,7 @@
 
         <div class="welcome" style="margin-top: 30px;">
           <h1>Welcome to <sapn style="color:#25eb74">Wise</sapn><span>Wings</span> EduLearn</h1>
-          <p>Your complete educational assesment platform </p>
+          <p>Your complete educational assessment platform </p>
         </div>
 
         <div class="section-title"><span style="color:  #0F6A5A;">Choose Your Curriculum</span></div>
@@ -5877,7 +5936,7 @@
           <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/>
           <path d="M9 13h6M9 17h6M9 9h2"/>
         </svg>
-        <span>Interactive assesments</span>
+        <span>Interactive assessments</span>
       </span>
     </p>
     <div class="lesson-meta"></div>

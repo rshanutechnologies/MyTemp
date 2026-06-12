@@ -47,8 +47,8 @@ z-index:-1;
 .mobile-toggle{
 display:none;
 position:fixed;
-top:1px;
-right:0px;
+top:5px;
+right:10px;
 font-size:22px;
 background:#ffffff;
 padding:6px 12px;
@@ -147,7 +147,6 @@ font-weight:600;
 display:flex;
 align-items:center;
 justify-content:flex-start;
-
 gap:12px;
 
 cursor:pointer;
@@ -310,7 +309,7 @@ box-shadow:
 /* ============================= */
 /* MONITOR / LARGE SCREEN FIX */
 /* ============================= */
-@media(max-width:1024px){
+@media(max-width:1100px){
 
 .mobile-toggle{
 display:block;
@@ -322,7 +321,6 @@ position:fixed;
 
 right:-270px;
 top:0;
-
 width:270px;
 height:100vh;
 
@@ -475,6 +473,20 @@ flex-shrink:0;
   }
 
 }
+.overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.25);
+  display:none;
+  z-index:998;
+}
+
+.overlay.show{
+  display:block;
+}
 </style>
 </head>
 
@@ -521,34 +533,50 @@ flex-shrink:0;
 
 
 </div>
-
+<div class="overlay" id="overlay"></div>
 <script>
+const buttons = document.querySelectorAll(".menu button");
+const frame = document.getElementById("quizFrame");
+const sidebar = document.getElementById("sidebar");
+const toggle = document.getElementById("mobileToggle");
+const overlay = document.getElementById("overlay");
 
-const buttons=document.querySelectorAll(".menu button")
-const frame=document.getElementById("quizFrame")
-const sidebar=document.getElementById("sidebar")
-const toggle=document.getElementById("mobileToggle")
-
+/* Menu Buttons */
 buttons.forEach(btn=>{
 
-btn.addEventListener("click",()=>{
+  btn.addEventListener("click",()=>{
 
-buttons.forEach(b=>b.classList.remove("active"))
-btn.classList.add("active")
+    buttons.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
 
-frame.src=btn.dataset.file
+    frame.src = btn.dataset.file;
 
-if(window.innerWidth<1024){
-sidebar.classList.remove("open")
-}
+    if(window.innerWidth < 1100){
 
-})
+      sidebar.classList.remove("open");
+      overlay.classList.remove("show");
 
-})
+    }
 
-toggle.onclick=()=>{
-sidebar.classList.toggle("open")
-}
+  });
+
+});
+
+/* Toggle Sidebar */
+toggle.addEventListener("click",()=>{
+
+  sidebar.classList.toggle("open");
+  overlay.classList.toggle("show");
+
+});
+
+/* Click Outside Sidebar */
+overlay.addEventListener("click",()=>{
+
+  sidebar.classList.remove("open");
+  overlay.classList.remove("show");
+
+});
 
 </script>
 

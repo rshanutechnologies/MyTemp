@@ -165,7 +165,8 @@ body{
 }
 
 button{
-  padding:clamp(10px, 1vw, 14px) clamp(26px, 3.5vw, 42px);
+  width:110px;
+    height:45px;
 
   font-size: clamp(16px, 1.5vw, 22px);
   border:none;
@@ -234,7 +235,8 @@ font-size:clamp(14px,1.5vw,20px);
 
 .play-again-btn{
 margin-top:20px;
-padding:clamp(10px, 1vw, 14px) clamp(26px, 3.5vw, 42px);
+width:180px;
+  height:45px;
 
   font-size: clamp(16px, 1.5vw, 22px);
 border:none;
@@ -266,7 +268,7 @@ font-weight:600;
     margin-bottom:20px;   /* 🔥 prevent overlap */
   }
   .question{
-    margin-top: 60px;
+   
     font-size: 20px;
   }
 
@@ -283,7 +285,7 @@ font-weight:600;
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
-@media screen and (min-width:1025px) and (max-width:1440px){
+@media screen and (min-width:1100px) and (max-width:1440px){
 
   .quiz-container{
     max-width:1100px;
@@ -316,8 +318,9 @@ font-weight:600;
 
   /* BUTTONS */
   button{
-   font-size:28px;
-    padding:14px 35px;
+   width:160px;
+    height:65px;
+    font-size: 28px;
   }
 
 }
@@ -362,8 +365,9 @@ font-weight:600;
 
   /* BUTTONS */
   button{
-    font-size:22px;
-    padding:14px 36px;
+    font-size:20px;
+    width:160px;
+    height:65px;
   }
 
 }
@@ -438,7 +442,7 @@ font-weight:600;
     </div>
   </div>
 <div class="buttons">
-  <button class="prev" id="prevBtn">Prev</button>
+  <button class="prev" id="prevBtn">Previous</button>
   <button class="next" id="nextBtn" disabled>Next</button>
 </div>
 

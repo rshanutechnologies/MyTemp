@@ -246,7 +246,7 @@ transform:translateY(-3px);
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
-@media screen and (min-width:1025px) and (max-width:1440px){
+@media screen and (min-width:1100px) and (max-width:1440px){
 
   .container{
     width:1100px;
@@ -383,6 +383,11 @@ display:none;
 
 }
 }
+
+.matched{
+    opacity:1 !important;
+    font-weight:500;
+}
 </style>
 </head>
 
@@ -511,6 +516,7 @@ speechSynthesis.cancel()
 
 const utter=new SpeechSynthesisUtterance(text)
 utter.lang="en-GB"
+utter.volume = 0.25;
 
 speechSynthesis.speak(utter)
 
@@ -540,18 +546,29 @@ if(!selected || r.classList.contains("matched")) return
 
 if(selected.dataset.match===r.dataset.match){
 
-drawLine(selected,r)
+    drawLine(selected,r)
 
-selected.classList.add("matched")
-r.classList.add("matched")
+    selected.classList.add("matched")
+    r.classList.add("matched")
 
-confetti({particleCount:40,spread:70,origin:{y:0.6}})
+    /* Mobile friendly colour mapping */
+    const leftColor = getComputedStyle(selected).backgroundColor;
 
-speak("Correct")
+    selected.style.border = "3px solid #22c55e";
+    r.style.border = "3px solid #22c55e";
 
-score++
-matched++
+    r.style.background = leftColor;
 
+    confetti({
+      particleCount:40,
+      spread:70,
+      origin:{y:0.6}
+    });
+
+    speak("Correct");
+
+    score++;
+    matched++;
 }else{
 
 speak("Wrong")

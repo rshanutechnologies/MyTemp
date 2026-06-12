@@ -70,7 +70,8 @@ body {
     align-items: center;
     gap: clamp(10px, 2vw, 22px);
     padding: 1px clamp(14px, 3vw, 24px);
-
+    justify-content: center;
+text-align: center;
     cursor: pointer;
     font-size: clamp(16px, 2vw, 30px);
     color: #2f4f4f;

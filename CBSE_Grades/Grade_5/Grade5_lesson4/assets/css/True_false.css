@@ -448,7 +448,7 @@ box-shadow:none !important;
 
 body{
   height:auto;
-  overflow:scroll;
+  overflow:hidden;
   padding:10px;
   margin-top:5%;
 }
@@ -469,7 +469,7 @@ body{
 
 /* question */
 .question{
-  font-size:22px;
+  font-size:20px;
   padding:10px;
   text-align:center;
   min-height:100px;
@@ -596,8 +596,11 @@ body{
 
 }
 
-
-
+/* @media (max-width:1000px){
+  .question{
+    font-size: 3px;
+  }
+} */
 
 /* ================= 1025px — 1440px ================= */
 @media screen and (min-width:1425px) and (max-width:1640px){

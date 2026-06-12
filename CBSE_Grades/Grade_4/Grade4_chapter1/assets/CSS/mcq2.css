@@ -46,6 +46,7 @@ body::before {
     padding: 20px;
     padding-top: 10px;
     overflow: hidden;
+    /* background-color: #e7b0b4; */
 }
 
 /* ===== TITLE ===== */
@@ -434,6 +435,7 @@ body::before {
         padding: 18px;
         align-items: center;
         justify-content: center;
+        /* background-color: #c62828; */
     }
 
     .quiz-title {
@@ -501,6 +503,88 @@ body::before {
     .popup-final-content .emoji { font-size: 50px; }
     .stars { font-size: 24px; }
 }
+@media (max-width: 480px) {
+
+    body{
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .app{
+        height: 100vh;
+        padding: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card{
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .question-box{
+        width: 100%;
+        padding: 8px;
+        margin-top: 0;
+    }
+
+    .question-text,
+    .question-text *{
+        font-size: 22px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .question-img{
+        max-height: 75px;
+        margin: 2px auto;
+    }
+
+    .options{
+        width: 100%;
+        gap: 6px;
+        margin-top: 0;
+    }
+
+    .option{
+        height: 105px;
+    }
+
+    .option img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .opt-label{
+        font-size: 11px;
+        padding: 4px 6px;
+    }
+
+    .controls{
+        gap: 10px;
+        margin-top: 8px !important;
+        margin-bottom: 0;
+    }
+
+    .nav-btn{
+        width: 100px;
+        padding: 8px 0;
+        font-size: 14px;
+    }
+
+    .quiz-title{
+        font-size: 22px;
+        margin-bottom: 4px;
+        padding: 6px;
+    }
+}
 
 
 /* ================================================= */
@@ -513,6 +597,7 @@ body::before {
         width: min(1050px, 95vw);
         height: auto;
         min-height: auto;
+        /* background-color: #4fb8ff; */
     }
 
     .question-box {
@@ -573,13 +658,13 @@ body::before {
 /* ================ DESKTOP  1600px+ =============== */
 /* ================================================= */
 
-@media (min-width: 1600px) {
+@media (min-width: 1400px) {
 
     .card {
         width: min(1300px, 92vw);
         height: auto;
         min-height: auto;
-        /* background-color: #2fbf67; */
+      
     }
 
     .question-box {

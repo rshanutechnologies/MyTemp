@@ -104,7 +104,8 @@ body {
 .option {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  padding-left:170px ;
   gap: 12px;
 }
 
@@ -390,12 +391,13 @@ display:none;
 
 
 /* Laptop screens */
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
+@media screen and (min-width: 1225px) and (max-width: 1440px) {
 
   .template {
     width: min(1250px, 98vw);
     height: min(720px, 98vh);
   }
+  
 
 }
 
@@ -879,8 +881,11 @@ display:none;
 
   .option {
     font-size: 14px;
-    padding: 10px;
-    justify-content: center;
+    padding-left: 50px;
+    width: 200px;
+    margin: auto;
+    
+    justify-content: start;
   }
 }
 
@@ -958,6 +963,7 @@ display:none;
   .option {
     font-size: 22px;
     padding: 14px;
+    padding-left: 230px;
 
   }
 

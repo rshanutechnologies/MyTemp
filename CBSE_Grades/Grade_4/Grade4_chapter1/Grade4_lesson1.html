@@ -281,6 +281,17 @@
         overflow: hidden !important;
         
       }
+      #overlay{
+  position: fixed;
+  inset: 0;
+  background: transparent; /* no black shade */
+  display: none;
+  z-index: 998;
+}
+
+#overlay.active{
+  display: block;
+}
 
       body {
         /* background: linear-gradient(135deg, #fff5fb, #ffe6f5) !important; */
@@ -292,7 +303,7 @@
       .mobile-toggle {
         display: block;
         position: fixed;
-        top: 15px;
+        top: 7px;
         right: 15px;
         z-index: 1000;
         background: #00cfff;
@@ -310,7 +321,7 @@
         position: fixed;
         top: 0;
         right: -100%;
-        width: 45%;
+        width: 65%;
         height: 100vh;
         background: radial-gradient(circle at top, #f9f7ef, #eef3df) !important;
         flex-direction: column;
@@ -443,7 +454,7 @@
 }
   </style>
 </head>
-
+<div id="overlay"></div>
 <body>
   <button class="mobile-toggle" id="menuToggle">☰</button>
   <div class="top-index">
@@ -513,18 +524,25 @@
     });
 
     const toggle = document.getElementById("menuToggle");
-    const menu = document.querySelector(".top-index");
+const menu = document.querySelector(".top-index");
+const overlay = document.getElementById("overlay");
 
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("active");
-    });
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  overlay.classList.toggle("active");
+});
 
-    /* Close menu when clicking a button */
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        menu.classList.remove("active");
-      });
-    });
+overlay.addEventListener("click", () => {
+  menu.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    menu.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+});
   </script>
 
 </body>

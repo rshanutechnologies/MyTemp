@@ -2,33 +2,33 @@ const quiz = [
   {
     q: "Q1. Petals enclose and protect the ______ parts of a flower.",
     a: "Reproductive",
-    options: ["Colorful","Green","Leaf","Reproductive"],
-   img:"../assets/images/reproductiveak.png"
+    options: ["Colorful", "Green", "Leaf", "Reproductive"],
+    img: "../assets/images/reproductiveak.png",
   },
   {
     q: "Q2. Flowers in which both the male and the female parts are present on the same flower are called ______ flowers.",
     a: "Bisexual",
-    options: ["Bisexual","Red","Small","Green"],
-   img:"../assets/images/bisexualf.png"
+    options: ["Bisexual", "Red", "Small", "Green"],
+    img: "../assets/images/bisexualf.png",
   },
   {
     q: "Q3. The process by which the pollen grains get transferred from the anther to the stigma is called ______.",
     a: "Pollinating",
-    options: ["Running","Jumping","Pollinating","Singing"],
-     img:"../assets/images/pollinating.png"
+    options: ["Running", "Jumping", "Pollinating", "Singing"],
+    img: "../assets/images/pollinating.png",
   },
   {
     q: "Q4. When a pollen grain falls on the stigma of a flower, it develops a long tube called the ______.",
     a: "Pollen tube",
-    options: ["Pollen tube","Flower stem","Stick","Magic"],
-     img:"../assets/images/Pollengrains.png"
+    options: ["Pollen tube", "Flower stem", "Stick", "Magic"],
+    img: "../assets/images/Pollengrains.png",
   },
   {
     q: "Q5. The fertilised female reproductive cell or zygote develops into a ______.",
     a: "Seed",
-    options: ["Cake","Seed","Ball","Toy"],
-     img:"../assets/images/seed.png"
-  }
+    options: ["Cake", "Seed", "Ball", "Toy"],
+    img: "../assets/images/seed.png",
+  },
 ];
 
 let index = 0;
@@ -36,35 +36,36 @@ let score = 0;
 let answered = Array(quiz.length).fill(false);
 let userAnswers = Array(quiz.length).fill("");
 
-const questionEl   = document.getElementById("question");
-const wordBank     = document.getElementById("wordBank");
-const checkBtn     = document.getElementById("checkBtn");
-const prevBtn      = document.getElementById("prev");
-const nextBtn      = document.getElementById("next");
-const questionImg  = document.getElementById("questionImage");
+const questionEl = document.getElementById("question");
+const wordBank = document.getElementById("wordBank");
+const checkBtn = document.getElementById("checkBtn");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
+const questionImg = document.getElementById("questionImage");
 
 function speak(t) {
   speechSynthesis.cancel();
- 
-  const msg = new SpeechSynthesisUtterance(t);  
- 
-  msg.lang = "en-UK";  
-  msg.volume = 0.25;    
+
+  const msg = new SpeechSynthesisUtterance(t);
+
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
   msg.rate = 1;
   msg.pitch = 1;
- 
-  speechSynthesis.speak(msg);  
+
+  speechSynthesis.speak(msg);
 }
 
 function load() {
   const current = quiz[index];
 
-  questionEl.innerHTML = current.q.replace("______", 
-    `<span class="blank">${userAnswers[index] || "______"}</span>`
+  questionEl.innerHTML = current.q.replace(
+    "______",
+    `<span class="blank">${userAnswers[index] || "______"}</span>`,
   );
 
   wordBank.innerHTML = "";
-  current.options.forEach(word => {
+  current.options.forEach((word) => {
     const btn = document.createElement("button");
     btn.className = "word-btn";
     btn.textContent = word;
@@ -91,83 +92,68 @@ function selectWord(word) {
   checkBtn.disabled = false;
 }
 
-function launchConfetti(){
-
-confetti({
-particleCount:120,
-spread:70,
-origin:{ y:0.6 }
-});
-
+function launchConfetti() {
+  confetti({
+    particleCount: 120,
+    spread: 70,
+    origin: { y: 0.6 },
+  });
 }
 
-function popup(type){
+function popup(type) {
+  const popup = document.getElementById("popup");
+  const icon = document.getElementById("popupIcon");
+  const title = document.getElementById("popupTitle");
+  const msg = document.getElementById("popupMsg");
 
-const popup=document.getElementById("popup");
-const icon=document.getElementById("popupIcon");
-const title=document.getElementById("popupTitle");
-const msg=document.getElementById("popupMsg");
+  popup.className = "popup " + type;
+  popup.style.display = "flex";
 
-popup.className="popup "+type;
-popup.style.display="flex";
+  if (type === "correct") {
+    launchConfetti();
+    icon.textContent = "🥳";
+    title.textContent = "Correct!";
+    msg.textContent = "Great job!";
+  } else {
+    icon.textContent = "😒";
+    title.textContent = "Wrong!";
+    msg.textContent = "Try again!";
+  }
 
-if(type==="correct"){
-  launchConfetti();
-icon.textContent="🎉";
-title.textContent="Correct!";
-msg.textContent="Great job!";
-}else{
-icon.textContent="😔";
-title.textContent="Wrong!";
-msg.textContent="Try again!";
-}
-
-setTimeout(()=>{
-popup.style.display="none";
-},1200);
-
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 1200);
 }
 
 function check() {
+  const value = userAnswers[index].toLowerCase().trim();
+  const correct = quiz[index].a.toLowerCase().trim();
 
-const value = userAnswers[index].toLowerCase().trim();
-const correct = quiz[index].a.toLowerCase().trim();
+  if (value === correct) {
+    popup("correct");
+    speak("Correct");
 
-if (value === correct) {
+    answered[index] = true;
+    score++;
 
-popup("correct");
-speak("Correct");
+    checkBtn.disabled = true;
 
-answered[index] = true;
-score++;
-
-checkBtn.disabled = true;
-
-if (index === quiz.length - 1) {
-
-setTimeout(() => {
-
-document.getElementById("final").style.display = "block";
-document.getElementById("score").textContent = `Your Score: ${score}/5`;
-launchConfetti(); 
-// speak("Congratulations. Your score is " + score + " out of five");
-prev.disabled = true;
-next.disabled = true;
-}, 1000);
-
-} else {
-
-nextBtn.disabled = false;
-
-}
-
-} else {
-
-popup("wrong");
-speak("wrong");
-
-}
-
+    if (index === quiz.length - 1) {
+      setTimeout(() => {
+        document.getElementById("final").style.display = "block";
+        document.getElementById("score").textContent = `Your Score: ${score}/5`;
+        launchConfetti();
+        // speak("Congratulations. Your score is " + score + " out of five");
+        prev.disabled = true;
+        next.disabled = true;
+      }, 1000);
+    } else {
+      nextBtn.disabled = false;
+    }
+  } else {
+    popup("wrong");
+    speak("wrong");
+  }
 }
 
 nextBtn.onclick = () => {

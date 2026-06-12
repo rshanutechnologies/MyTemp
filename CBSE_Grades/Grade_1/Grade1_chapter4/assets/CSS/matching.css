@@ -317,8 +317,8 @@ h1 {
         height: auto;
         min-height: 100vh;
         overflow-y: auto;
-        padding: 60px 12px 0px;
-        align-items: flex-start;
+        padding: 0px 12px 0px;
+        align-items: center;
     }
 
     .main {

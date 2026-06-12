@@ -278,7 +278,7 @@ msg.textContent="Well done!";
 
 }else{
 
-icon.textContent="😔";
+icon.textContent="😒";
 title.textContent="Wrong!";
 msg.textContent="Try again!";
 

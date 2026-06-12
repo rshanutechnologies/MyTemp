@@ -595,9 +595,9 @@ body{
 
 /* STACK LAYOUT */
 .row{
-    flex-direction:column;
+    flex-direction:column-reverse;
     align-items:center;
-    gap:20px;
+    /* gap:20px; */
 }
 
 /* BLANKS */
@@ -630,6 +630,7 @@ body{
 .imgbox{
     width:160px;
     height:160px;
+    margin-top: 15px;
 }
 
 .imgbox img{
@@ -713,9 +714,9 @@ body{
 
 /* STACK */
 .row{
-    flex-direction:column;
+    flex-direction:column-reverse;
     align-items:center;
-    gap:20px;
+    /* gap:20px; */
 }
 
 /* BLANKS FIX */
@@ -723,6 +724,7 @@ body{
     flex-wrap:wrap;
     justify-content:center;
     gap:6px;
+    margin-top: -20px;
 }
 
 .blank{
@@ -736,6 +738,7 @@ body{
     flex-wrap:wrap;
     justify-content:center;
     gap:6px;
+    margin-top: -20px;
 }
 
 .letter{
@@ -748,6 +751,7 @@ body{
 .imgbox{
     width:150px;
     height:150px;
+    margin-top: 15px;
 }
 
 .imgbox img{
@@ -764,6 +768,7 @@ body{
     justify-content:center;
     align-items: center;
     gap:40px;
+    margin-top: 5px;
 }
 
 .nav button{

@@ -130,11 +130,11 @@ popup.className="popup "+(isCorrect?"correct":"wrong");
 popup.style.display="flex";
 
 if(isCorrect){
-icon.textContent="🎉";
+icon.textContent="🥳";
 title.textContent="Correct!";
 msg.textContent="Well done!";
 }else{
-icon.textContent="😔";
+icon.textContent="😒";
 title.textContent="Wrong!";
 msg.textContent="Try again!";
 }

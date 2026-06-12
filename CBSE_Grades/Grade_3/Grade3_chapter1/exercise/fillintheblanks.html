@@ -139,6 +139,7 @@ button{
   font-size: clamp(16px, 1.5vw, 22px);
   font-weight:500;
   transition:0.3s;
+  color:white;
 }
 
 /* Hover */
@@ -219,7 +220,9 @@ button:disabled{
   color:white;
 }
 @media (max-width:600px){
-   
+   body{
+    align-items: center;
+   }
   .question{
     margin-top: 40px;
     font-size:clamp(20px,3vw,22px);
@@ -230,7 +233,8 @@ button:disabled{
   }
 
   .buttons{
-    margin-top: 10px;      /* space above buttons */
+    margin-top: 10px; 
+         /* space above buttons */
   }
  
     
@@ -624,14 +628,26 @@ function checkAnswer(){
     if(value === ""){
       correct = false;
     }
-    else if(!validWords.includes(value)){
-      correct = false;
-      inputField.style.borderColor = "red";
-    }
-    else if(q3UsedWords.includes(value)){
-      correct = false;
-      inputField.style.borderColor = "red";
-    }
+    if(!validWords.includes(value)){
+    correct = false;
+
+    inputField.style.borderColor = "red";
+
+    setTimeout(()=>{
+        inputField.value = "";
+        inputField.style.borderColor = "#ccc";
+    },800);
+}
+else if(q3UsedWords.includes(value)){
+    correct = false;
+
+    inputField.style.borderColor = "red";
+
+    setTimeout(()=>{
+        inputField.value = "";
+        inputField.style.borderColor = "#ccc";
+    },800);
+}
     else{
 
       inputField.value =

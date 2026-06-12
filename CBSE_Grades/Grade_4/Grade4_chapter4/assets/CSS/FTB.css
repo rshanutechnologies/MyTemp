@@ -246,7 +246,7 @@ body {
     .main-container { width: 100%; }
    
     .question-area h2{
-    font-size: 17px !important;
+    font-size: 30px !important;
     line-height: 1.2;
 }
     #answerInput {
@@ -257,7 +257,45 @@ body {
     padding: 0 12px;
 }
 }
+@media (max-width: 480px) {
 
+    .question-area h2{
+        font-size: 22px !important;
+        line-height: 1.2;
+    }
+
+    .image-area{
+        margin: 5px 0 8px;
+    }
+
+    .image-area img{
+        width: 110px;
+        height: 85px;
+    }
+
+    #answerInput{
+        width: 85%;
+        max-width: 260px;
+        height: 40px;
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    #submitBtn{
+        font-size: 14px;
+        padding: 8px 24px;
+    }
+
+    .nav-buttons button{
+        width: 90px;
+        height: 36px;
+        font-size: 13px;
+    }
+
+    .nav-buttons{
+        margin-top: 10px;
+    }
+}
 
 /* ==============================
    FIXED DESKTOP BREAKPOINTS ✅
@@ -273,7 +311,7 @@ body {
     .main-container { max-width: 98%; padding: 0 32px; }
 
     .question-area { min-height: 65px; margin-bottom: 12px; }
-    .question-area h2 { font-size: 24px; }
+    .question-area h2 { font-size: 30px; }
 
     .image-area { margin: 12px 0 18px; }
     .image-area img { width: 200px; height: 185px; }

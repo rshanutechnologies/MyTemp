@@ -1975,18 +1975,19 @@
       /* wraps nicely on small screens */
     }
 
-    @media (max-width:500px){
-  #lessonContent .header-card .chips{
-    font-size: 12px;
-  }
-  
-}
-   @media (max-width:570px){
-  .sb-float-toggle{
-    display: none !important;
-  }
-  
-}
+    @media (max-width:500px) {
+      #lessonContent .header-card .chips {
+        font-size: 12px;
+      }
+
+    }
+
+    @media (max-width:570px) {
+      .sb-float-toggle {
+        display: none !important;
+      }
+
+    }
 
 
     /* Each chip: center icon/number + text perfectly */
@@ -2043,13 +2044,15 @@
       padding: 0 !important;
       /* flatten spacing */
       /* margin: 0 !important; */
-      margin:auto !important;
+      margin: auto !important;
       /* keep clean alignment */
-       display: flex;
-  flex-direction: column;
-  align-items: center;   /* horizontal center */
-  justify-content: center; /* vertical center (if height exists) */
-  text-align: center
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* horizontal center */
+      justify-content: center;
+      /* vertical center (if height exists) */
+      text-align: center
     }
 
     /* Make only the Select Grade heading black */
@@ -2059,7 +2062,7 @@
 
     /* Make sidebar floating arrow button bigger */
     .sb-float-toggle {
-      
+
       width: 40px !important;
       /* increase button width */
       height: 45px !important;
@@ -2195,7 +2198,7 @@
         height: 64px !important;
         font-size: 26px !important;
       }
-    
+
     }
 
     /* =========================================
@@ -3272,96 +3275,96 @@
 
 
 
-@media (min-width: 1710px) {
- 
-  /* SIDEBAR */
-  .sidebar {
-    width: 360px;
-    padding: 40px;
-  }
- 
-  .logo {
-    font-size: 32px;
-  }
- 
-  .logo p {
-    font-size: 20px;
-  }
- 
-  .menu-title {
-    font-size: 22px;
-    padding: 18px;
+    @media (min-width: 1710px) {
 
-  }
- 
-  .submenu li {
-    font-size: 20px;
-    padding: 14px;
-  }
- 
-  /* MAIN */
-  /* .main {
+      /* SIDEBAR */
+      .sidebar {
+        width: 360px;
+        padding: 40px;
+      }
+
+      .logo {
+        font-size: 32px;
+      }
+
+      .logo p {
+        font-size: 20px;
+      }
+
+      .menu-title {
+        font-size: 22px;
+        padding: 18px;
+
+      }
+
+      .submenu li {
+        font-size: 20px;
+        padding: 14px;
+      }
+
+      /* MAIN */
+      /* .main {
     padding: 80px;
   } */
- 
-  .header-logo {
-    font-size: 52px;
-    margin-top: 5% !important;
-  }
- 
-  .section-title {
-    font-size: 40px;
-  }
- 
-  /* CARDS */
-  .curr-card {
-    padding: 55px;
-    border-radius: 30px;
-    gap: 35px;
-  }
- 
-  .curr-card .i {
-    width: 120px;
-    height: 120px;
-  }
- 
-  .card-content h2 {
-    font-size: 44px;
-  }
- 
-  .card-content p {
-    font-size: 26px;
-  }
- 
-  .card-boxes {
-    gap: 30px;
-    margin-top: 30px;
-  }
- 
-  .box {
-    padding: 30px;
-    border-radius: 20px;
-  }
- 
-  .box h3 {
-    font-size: 40px;
-  }
- 
-  .box p {
-    font-size: 22px;
-  }
- 
-  .explore-arrow {
-    font-size: 48px;
-  }
- 
-  /* SUBJECT CARDS */
-  
-}
+
+      .header-logo {
+        font-size: 52px;
+        margin-top: 5% !important;
+      }
+
+      .section-title {
+        font-size: 40px;
+      }
+
+      /* CARDS */
+      .curr-card {
+        padding: 55px;
+        border-radius: 30px;
+        gap: 35px;
+      }
+
+      .curr-card .i {
+        width: 120px;
+        height: 120px;
+      }
+
+      .card-content h2 {
+        font-size: 44px;
+      }
+
+      .card-content p {
+        font-size: 26px;
+      }
+
+      .card-boxes {
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .box {
+        padding: 30px;
+        border-radius: 20px;
+      }
+
+      .box h3 {
+        font-size: 40px;
+      }
+
+      .box p {
+        font-size: 22px;
+      }
+
+      .explore-arrow {
+        font-size: 48px;
+      }
+
+      /* SUBJECT CARDS */
+
+    }
 
 
-    
-    
+
+
     /* (Optional) tweak sizes of icon/text if you want a bit larger */
   </style>
 </head>
@@ -3871,7 +3874,7 @@
   //   }
   // })();
 
-//==------------------------------------------------------------------------------------------------------------------------------------------------------
+  //==------------------------------------------------------------------------------------------------------------------------------------------------------
   /* Fixed: CBSE Card + Sidebar Click → Coming Soon Popup */
   (function bindHomeCardsNavigation() {
     function wireHomeCardsOnce() {
@@ -3885,22 +3888,22 @@
 
         if (title === 'SSC' || title.includes('STATE')) {
           card.addEventListener('click', () => loadCurriculum('SSC'));
-        // } else if (title === 'CBSE') {
-        //   card.addEventListener('click', showCBSEComingSoonPopup);
-        // }
+          // } else if (title === 'CBSE') {
+          //   card.addEventListener('click', showCBSEComingSoonPopup);
+          // }
 
-//         } else if (title === 'CBSE') {
-//   card.addEventListener('click', showCBSEComingSoonUI);
-// }
+          //         } else if (title === 'CBSE') {
+          //   card.addEventListener('click', showCBSEComingSoonUI);
+          // }
 
 
-} else if (title === 'CBSE') {
-  card.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    handleCBSEClick(e);
-  });
-}
+        } else if (title === 'CBSE') {
+          card.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            handleCBSEClick(e);
+          });
+        }
         card.style.cursor = 'pointer';
         card.__wwBound = true;
       });
@@ -3985,7 +3988,7 @@
   // window.closeCBSEPopupAndGoHome = function() {
   //   // Close all popups
   //   document.querySelectorAll('div[style*="position: fixed"]').forEach(p => p.remove());
-    
+
   //   // Go to Home
   //   if (typeof window.showHome === 'function') {
   //     window.showHome();
@@ -3995,10 +3998,10 @@
   //   }
   // };
 
-  
+
   /* Prevent CBSE from opening grades in sidebar */
   (function blockCBSEFromSidebar() {
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
       const menuTitle = e.target.closest('.sidebar .menu-title');
       if (!menuTitle) return;
 
@@ -4632,7 +4635,7 @@
     });
   })();
 
-  
+
 </script>
 
 <body class=" home-theme ">
@@ -4670,12 +4673,12 @@
         </li> -->
 
         <li id="cbseRootItem">
-  <div class="menu-title" id="cbseMenuTitle" onclick="handleCBSEClick(event)">
-    <img src="./assets/images/image (9).png" alt="img" class="i" />CBSE 
-    <span class="arrow" style="opacity:0.6;">🔒</span>
-  </div>
-  <ul class="submenu" id="cbseSubmenu" style="max-height:0; overflow:hidden; pointer-events:none;"></ul>
-</li>
+          <div class="menu-title" id="cbseMenuTitle" onclick="handleCBSEClick(event)">
+            <img src="./assets/images/image (9).png" alt="img" class="i" />CBSE
+            <span class="arrow" style="opacity:0.6;">🔒</span>
+          </div>
+          <ul class="submenu" id="cbseSubmenu" style="max-height:0; overflow:hidden; pointer-events:none;"></ul>
+        </li>
       </ul>
     </aside>
 
@@ -4820,7 +4823,7 @@
     // }
 
 
-   ///----------------------------------------------------------------------------------------------------------------------------------------
+    ///----------------------------------------------------------------------------------------------------------------------------------------
     // const grades = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'];
 
     // /* ===== Sidebar population - CBSE now blocked ===== */
@@ -4871,15 +4874,15 @@
 
 
     const grades = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'];
-  const SUBJECT_NAMES = ['Mathematics', 'Science', 'English', 'Social Studies', 'Regional Language'];
+    const SUBJECT_NAMES = ['Mathematics', 'Science', 'English', 'Social Studies', 'Regional Language'];
 
-  const stateSyllabusSubmenu = document.getElementById('stateSyllabusSubmenu');
-  const cbseSubmenu = document.getElementById('cbseSubmenu');
+    const stateSyllabusSubmenu = document.getElementById('stateSyllabusSubmenu');
+    const cbseSubmenu = document.getElementById('cbseSubmenu');
 
-  /* ==================== SSC - Normal Behavior ==================== */
-  grades.forEach(grade => {
-    const li = document.createElement('li');
-    li.innerHTML = `
+    /* ==================== SSC - Normal Behavior ==================== */
+    grades.forEach(grade => {
+      const li = document.createElement('li');
+      li.innerHTML = `
       <div class="menu-title" onclick="toggleMenu(this)">
         <i class="fa-solid fa-graduation-cap"></i> ${grade} <span class="arrow">▶</span>
       </div>
@@ -4888,67 +4891,67 @@
           <li><a onclick="loadSubjectList('SSC','${grade}','${name}')">${name}</a></li>
         `).join('')}
       </ul>`;
-    stateSyllabusSubmenu.appendChild(li);
-  });
+      stateSyllabusSubmenu.appendChild(li);
+    });
 
-  /* ==================== CBSE - No Grades, Direct Warning UI ==================== */
-  grades.forEach(grade => {
-    const li = document.createElement('li');
-    li.innerHTML = `
+    /* ==================== CBSE - No Grades, Direct Warning UI ==================== */
+    grades.forEach(grade => {
+      const li = document.createElement('li');
+      li.innerHTML = `
       <div class="menu-title" onclick="showCBSEComingSoonUI()">
         <i class="fa-solid fa-graduation-cap"></i> ${grade} <span class="arrow">▶</span>
       </div>
       <ul class="submenu" style="display:none !important; max-height:0 !important;"></ul>`;
-    cbseSubmenu.appendChild(li);
-  });
+      cbseSubmenu.appendChild(li);
+    });
 
-  /* Toggle only works for SSC - CBSE is blocked */
-  // function toggleMenu(el) {
-  //   if (el.textContent.trim().includes('CBSE')) return;   // Prevent opening under CBSE
+    /* Toggle only works for SSC - CBSE is blocked */
+    // function toggleMenu(el) {
+    //   if (el.textContent.trim().includes('CBSE')) return;   // Prevent opening under CBSE
 
-  //   const submenu = el.nextElementSibling;
-  //   const arrow = el.querySelector(".arrow");
-  //   if (submenu) {
-  //     submenu.classList.toggle("open");
-  //     arrow.textContent = submenu.classList.contains("open") ? "▼" : "▶";
-  //   }
-  // }
+    //   const submenu = el.nextElementSibling;
+    //   const arrow = el.querySelector(".arrow");
+    //   if (submenu) {
+    //     submenu.classList.toggle("open");
+    //     arrow.textContent = submenu.classList.contains("open") ? "▼" : "▶";
+    //   }
+    // }
 
-  function toggleMenu(el) {
-  // Block CBSE from opening dropdown
-  if (el.closest('#cbseRootItem') || (el.textContent || '').includes('CBSE')) {
-    return;
-  }
-  
-  const submenu = el.nextElementSibling;
-  const arrow = el.querySelector(".arrow");
-  if (submenu) { 
-    submenu.classList.toggle("open"); 
-    arrow.textContent = submenu.classList.contains("open") ? "▼" : "▶"; 
-  }
-}
+    function toggleMenu(el) {
+      // Block CBSE from opening dropdown
+      if (el.closest('#cbseRootItem') || (el.textContent || '').includes('CBSE')) {
+        return;
+      }
 
-  function showHome() {
-    document.getElementById('homeContent').style.display = 'block';
-    document.getElementById('lessonContent').style.display = 'none';
-  }
+      const submenu = el.nextElementSibling;
+      const arrow = el.querySelector(".arrow");
+      if (submenu) {
+        submenu.classList.toggle("open");
+        arrow.textContent = submenu.classList.contains("open") ? "▼" : "▶";
+      }
+    }
 
-
+    function showHome() {
+      document.getElementById('homeContent').style.display = 'block';
+      document.getElementById('lessonContent').style.display = 'none';
+    }
 
 
 
 
-  // Add this function - handles CBSE clicks (card + sidebar) without opening dropdown
-function handleCBSEClick(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  
-  // Show Coming Soon UI
-  document.getElementById('homeContent').style.display = 'none';
-  const lessonDiv = document.getElementById('lessonContent');
-  lessonDiv.style.display = 'block';
-  
-  lessonDiv.innerHTML = `
+
+
+    // Add this function - handles CBSE clicks (card + sidebar) without opening dropdown
+    function handleCBSEClick(event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      // Show Coming Soon UI
+      document.getElementById('homeContent').style.display = 'none';
+      const lessonDiv = document.getElementById('lessonContent');
+      lessonDiv.style.display = 'block';
+
+      lessonDiv.innerHTML = `
     <div class="crumbs">
       <span onclick="showHome()">Home</span><span class="sep">›</span>
       <span>CBSE</span>
@@ -4960,8 +4963,8 @@ function handleCBSEClick(event) {
       <button onclick="showHome()" style="background:#0F6A5A; color:white; border:none; padding:14px 32px; border-radius:40px; font-weight:600; margin-top:20px; cursor:pointer;">← Back to Home</button>
     </div>
   `;
-}
-//-------------------------------------------------------------------------------------------------------------------------------
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------
     /* =========================
        Your original lesson list builder (kept)
        ========================= */
@@ -5641,7 +5644,7 @@ function handleCBSEClick(event) {
 
 
     // FIXED: CBSE Subject Click → Show "Coming Soon" message (Minimal Change)
-   
+
     // Keep your existing exitLesson
     function exitLesson() {
       document.querySelector('.main').classList.remove("lesson-fullscreen");
@@ -5842,7 +5845,7 @@ function handleCBSEClick(event) {
     }
 
 
-    
+
   </script>
 
   <!-- =========================
@@ -5908,7 +5911,7 @@ function handleCBSEClick(event) {
 
 
 
-    
+
   </script>
 
   <!-- =========================
@@ -6213,7 +6216,7 @@ function handleCBSEClick(event) {
 
 
 
-    
+
   </script>
 
 </body>

@@ -2,7 +2,7 @@
 const quizData = [
 {
   title: "Q.1 A cereal",
-  image: "../assets/images/Cerealak.png",
+  image: "../assets/images/ow1.png",
   options:[
     { text:"Maize", img:"../assets/images/Wheatak.png"},
     { text:"Pumpkin", img:"../assets/images/PumpkinPlantY.png"},
@@ -13,7 +13,7 @@ const quizData = [
 
 {
   title: "Q.2 A pulse",
-  image: "../assets/images/Pulsesak.png",
+  image: "../assets/images/ow2.png",
   options:[
     // { text:"Green gram", img:"../assets/images/GreenGram.png"},
      { text:"Vegitables", img:"../assets/images/Vegitableakp.png"},

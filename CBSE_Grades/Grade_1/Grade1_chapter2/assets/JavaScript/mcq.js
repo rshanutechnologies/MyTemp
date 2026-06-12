@@ -54,7 +54,7 @@ const quizData = [
       "../assets/images/mango.png|Mango",
       "../assets/images/mint.png|Mint",
       "../assets/images/rose.png|Rose",
-      "../assets/images/pumpkin.png|Pumpkin",
+      "../assets/images/pumpkin1.png|Pumpkin",
     ],
     a: 2,
   },

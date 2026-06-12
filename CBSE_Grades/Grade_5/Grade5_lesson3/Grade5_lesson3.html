@@ -208,7 +208,21 @@ flex:1;
 }
 
 }
-        
+   .overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    display: none;
+    z-index: 998;
+}
+
+.side-nav{
+    z-index: 999;
+}
+
+.menu-btn{
+    z-index: 1000;
+}     
     </style>
 </head>
 <body>
@@ -237,7 +251,7 @@ flex:1;
             📦 One Word
         </button> -->
     </div>
-
+<div class="overlay" id="overlay"></div>
     <!-- RIGHT CONTENT -->
     <div class="content">
         <iframe id="viewer" src="./exercises/MCQ.html"></iframe>
@@ -255,12 +269,29 @@ flex:1;
             btn.classList.add("active");
 
             // Close sidebar on mobile
-            document.getElementById("navbar").classList.remove("show");
+           navbar.classList.remove("show");
+overlay.style.display = "none";
         }
 
-        function toggleMenu() {
-            document.getElementById("navbar").classList.toggle("show");
-        }
+        const navbar = document.getElementById("navbar");
+const overlay = document.getElementById("overlay");
+
+function toggleMenu() {
+
+    navbar.classList.toggle("show");
+
+    if(navbar.classList.contains("show")){
+        overlay.style.display = "block";
+    }else{
+        overlay.style.display = "none";
+    }
+}
+overlay.addEventListener("click", function(){
+
+    navbar.classList.remove("show");
+    overlay.style.display = "none";
+
+});
     </script>
 
 </body>

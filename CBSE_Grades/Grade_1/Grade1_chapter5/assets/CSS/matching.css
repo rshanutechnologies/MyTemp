@@ -295,7 +295,7 @@ RESPONSIVE (Same behavior as second CSS)
     height: 90px;
     font-size: 18px;
     padding: 14px 16px;
-    width: 105%;
+    width: 100%;
   }
 
   .item::after {
@@ -352,6 +352,7 @@ RESPONSIVE (Same behavior as second CSS)
     font-size: 14px;
     padding: 8px 8px;
     width: 100%;
+    gap: 10px;
   }
 
   .question-text {

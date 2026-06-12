@@ -216,6 +216,17 @@
       .top-nav.show {
         display: flex;
       }
+        #overlay{
+    position: fixed;
+    inset: 0;
+    display: none;
+    background: transparent;
+    z-index: 998;
+  }
+
+  #overlay.show{
+    display: block;
+  }
 
       .nav-btn {
         width: 220px;
@@ -399,7 +410,7 @@
     }
   </style>
 </head>
-
+<div id="overlay"></div>
 <body>
 
   <div class="frame">
@@ -456,20 +467,28 @@
 
       /* CLOSE MOBILE MENU */
 
-      document.getElementById("navbar").classList.remove("show");
+    document.getElementById("navbar").classList.remove("show");
+document.getElementById("overlay").classList.remove("show");
 
     }
 
     /* TOGGLE MENU */
 
-    function toggleMenu() {
+function toggleMenu() {
 
-      const menu = document.getElementById("navbar");
+  const menu = document.getElementById("navbar");
+  const overlay = document.getElementById("overlay");
 
-      menu.classList.toggle("show");
+  menu.classList.toggle("show");
+  overlay.classList.toggle("show");
 
-    }
+}
+document.getElementById("overlay").addEventListener("click", () => {
 
+  document.getElementById("navbar").classList.remove("show");
+  document.getElementById("overlay").classList.remove("show");
+
+});
   </script>
 
 </body>

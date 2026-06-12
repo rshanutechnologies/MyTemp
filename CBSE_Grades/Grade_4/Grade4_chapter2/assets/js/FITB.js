@@ -1,6 +1,6 @@
 const quiz = [
   {
-    q: "The natural home of a living organism is called its ______.",
+    q: "The natural home of a living organism is called its ___.",
     answer: "HABITAT",
     letters: ["H", "A", "B", "I", "T", "A", "T", "O", "L", "M"],
     img: "../assets/images/FIB-1.png",

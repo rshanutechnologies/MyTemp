@@ -127,7 +127,7 @@ body {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    box-shadow: 0 4px 0 #d38c98;
+    box-shadow: 0 2px 0 #d38c98;
     display: flex;
     align-items: center;
     justify-content: center

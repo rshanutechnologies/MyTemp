@@ -904,7 +904,7 @@ button:disabled {
 /* ========== 320px - 350px (Small Phones) ========== */
 @media (min-width: 320px) and (max-width: 350px) {
     body {
-        overflow: auto;
+        overflow: hidden;
         margin-top: 15%;
     }
 
@@ -915,7 +915,7 @@ button:disabled {
     }
 
     .question {
-        font-size: 18px;
+        font-size: 20px;
         height: auto;
         min-height: 80px;
     }
@@ -996,7 +996,7 @@ button:disabled {
 
     .input-box {
         width: 95% !important;
-        height: 50px;
+        height: 55px;
     }
 
     .input-box input {
@@ -1042,13 +1042,14 @@ button:disabled {
 
     .input-box {
         width: 90% !important;
-        height: 55px;
+        height: 60px;
     }
 
     .input-box input {
         font-size: 18px;
     }
-
+ 
+    
     .prev, .next {
         width: 70px;
         height: 70px;

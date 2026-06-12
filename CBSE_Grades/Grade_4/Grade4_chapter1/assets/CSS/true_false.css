@@ -572,7 +572,7 @@ button:disabled {
   }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1400px) {
   /* .quiz-card{
     background-color: #8fb1e8;
   } */
@@ -580,11 +580,12 @@ button:disabled {
   .question {
     font-size: 40px !important;
     margin-bottom: 20px;
+    text-align: center;
   }
 
   .question-img {
-    width: 450px;
-    height: 320px;
+    width: 250px;
+    height: 250px;
     margin-bottom: 35px;
 
   }
@@ -598,6 +599,16 @@ button:disabled {
     height: 90px;
     font-size: 26px;
   }
+  .question-3 #question {
+  text-align: left;
+  color: #e91e63;
+}
+
+/* Q5 only */
+.question-5 #question {
+  text-align: left;
+  /* color:#2196f3; */
+}
 
   .nav {
     bottom: -10%;

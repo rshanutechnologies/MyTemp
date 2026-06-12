@@ -428,10 +428,11 @@ body{
 }
 .quiz{
 width:95%;
+margin-top: 4%;
 }
 
 .question{
-font-size:24px;
+font-size:20px;
 }
 
 .blank{
@@ -441,14 +442,16 @@ font-size:22px;
 }
 
 .row{
-flex-direction:column;
-gap:25px;
+flex-direction:column-reverse;
+
 }
 
 .letters{
 width:240px;
 padding:30px;
 gap:10px;
+margin-top: -6%;
+margin-bottom: 4%;
 }
 
 .letter{
@@ -459,6 +462,7 @@ font-size:20px;
 
 .imgbox{
 width:200px;
+margin-top: -3%;
 }
 
 .imgbox img{

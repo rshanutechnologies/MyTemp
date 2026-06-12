@@ -395,6 +395,22 @@ font-size:16px;
 }
 
 }
+
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.2);
+    display:none;
+    z-index:998;
+}
+
+.top-nav{
+    z-index:999;
+}
+
+.menu-btn{
+    z-index:1000;
+}
 </style>
 </head>
 
@@ -430,6 +446,8 @@ font-size:16px;
 
 </div>
 
+
+<div class="menu-overlay" id="menuOverlay"></div>
 <!-- CONTENT -->
 
 <div class="content">
@@ -456,19 +474,33 @@ btn.classList.add("active");
 
 /* CLOSE MOBILE MENU */
 
-document.getElementById("navbar").classList.remove("show");
+navbar.classList.remove("show");
+overlay.style.display = "none";
 
 }
 
 /* TOGGLE MENU */
 
+const navbar = document.getElementById("navbar");
+const overlay = document.getElementById("menuOverlay");
+
 function toggleMenu(){
 
-const menu=document.getElementById("navbar");
+    navbar.classList.toggle("show");
 
-menu.classList.toggle("show");
-
+    if(navbar.classList.contains("show")){
+        overlay.style.display = "block";
+    }else{
+        overlay.style.display = "none";
+    }
 }
+
+overlay.addEventListener("click", function(){
+
+    navbar.classList.remove("show");
+    overlay.style.display = "none";
+
+});
 
 </script>
 

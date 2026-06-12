@@ -34,8 +34,7 @@ body::before {
   justify-content: center;
   align-items: center;
   padding: 24px;
-  margin-top: 5%;
-  margin-left: -4%;
+  /* margin-top: 5%; */
 }
 
 /* ✅ TEMPLATE CONTAINER */
@@ -128,7 +127,7 @@ body::before {
   /* margin: auto; */
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   /* 4 options in one row */
   gap: 0px;
   flex-wrap: nowrap;
@@ -141,7 +140,7 @@ body::before {
   background: #f5eadb;
   border: 3px solid #d9c3a5;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   cursor: pointer;
   transition: 0.2s;
@@ -471,14 +470,14 @@ body::before {
 /* ================= OPTIONS GRID ================= */
 .options {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
   margin-top: 15px;
 }
 
 /* ================= OPTION CARD ================= */
 .option {
-  width: 180px;
+  width: 100%;
   background: #fff;
   border-radius: 100PX !important;
   padding: 10px;
@@ -491,7 +490,7 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .option:hover {
@@ -826,11 +825,13 @@ body::before {
   .options {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+    justify-items: center;
+    align-items: center;
   }
 
   /* option buttons */
   .option {
-    width: 150px;
+    /* width: 150px; */
     height: 60px;
     padding: 30px 15px !important;
   }
@@ -889,8 +890,8 @@ body::before {
 }
 
 .option-img {
-  width: 60px;
-  height: 60px;
+  width: 52px;
+  height: 46px;
   /* background:#fff; */
   border-radius: 50%;
   padding: 1px;
@@ -898,7 +899,7 @@ body::before {
 }
 
 .option {
-  width: 160px;
+  /* width: 160px; */
   background: #fff;
   border-radius: 100px !important;
   padding: 10px 15px;
@@ -911,7 +912,7 @@ body::before {
   flex-direction: row;
   /* ⭐ important */
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 5px;
   /* space between image and text */
   text-transform: capitalize;
@@ -984,7 +985,7 @@ body::before {
 
   /* OPTION CARD BIG */
   .option {
-    width: 180px;
+    /* width: 180px; */
     height: 100px;
     padding: 18px;
     border-radius: 120px !important;
@@ -1053,7 +1054,7 @@ body::before {
   }
 
   .option {
-    width: 210px;
+    /* width: 210px; */
     height: 100px;
     padding: 18px 20xp;
     border-radius: 120px !important;
@@ -1064,7 +1065,7 @@ body::before {
 /* Extra large screens */
 @media (min-width: 1920px) {
   .option {
-    width: 250px;
+    /* width: 250px; */
     height: 100px;
     padding: 18px;
     border-radius: 120px !important;

@@ -343,7 +343,9 @@
     }
 
     @media (max-width:600px) {
-
+body{
+  overflow: hidden;
+}
       .options {
         grid-template-columns: repeat(2, 1fr);
         /* ✅ 2x2 grid */
@@ -352,7 +354,8 @@
       /* MOBILE OPTION IMAGE SMALLER */
 
       .circle {
-        height: 110px;
+        height: 80px;
+        width: 140px;
       }
 
       .circle img {
@@ -377,13 +380,11 @@
         font-size: clamp(20px, 3vw, 22px);
       }
 
-      .nav-container {
-        justify-content: center;
-        /* 🔥 center both buttons */
-        gap: 12px;
-        /* 🔥 control gap */
-        padding: 0 10px;
-      }
+      .question-img img {
+    width:100px;
+    height: 100px;      /* fixed height */
+    object-fit: contain; /* keeps full image visible */
+}
 
       .nav-btn {
         flex: 0 0 auto;
@@ -393,7 +394,7 @@
         min-width: 100px;
         /* 🔥 small but readable */
         height: 40px;
-        font-size: 14px;
+        font-size: 15px;
         padding: 0 12px;
       }
 
@@ -410,6 +411,9 @@
       .question {
         font-size: 30px;
       }
+      body{
+  overflow: hidden;
+}
     }
 
 

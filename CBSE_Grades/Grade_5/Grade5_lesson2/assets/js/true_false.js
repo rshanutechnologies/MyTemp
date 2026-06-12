@@ -131,7 +131,7 @@ speak("Correct");
 
 }else{
 
-icon.textContent="😔";
+icon.textContent="😒";
 title.textContent="Wrong!";
 msg.textContent="Try again!";
 

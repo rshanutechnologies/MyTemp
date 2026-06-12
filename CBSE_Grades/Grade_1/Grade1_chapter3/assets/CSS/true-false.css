@@ -360,12 +360,12 @@ body {
 
 @media(max-width:480px) {
     body {
-        align-items: flex-start;
-        padding-top: 45px;
+        align-items: center;
+        padding-top: 0px;
     }
 
     .quiz-container {
-        padding: 20px;
+        padding: 0px 20px;
     }
 
     .question-box {

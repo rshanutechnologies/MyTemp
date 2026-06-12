@@ -42,7 +42,7 @@ const quizData = [
       "../assets/images/Flag-Pole.png|flag pole",
       "../assets/images/Bicycle.png|bicycle",
       "../assets/images/Bolt&Nut.png|bolt and nut",
-      "../assets/images/Knifee.png|knife",
+      "../assets/images/chaku.png|knife",
     ],
     a: 1, // bicycle
   },

@@ -313,10 +313,10 @@ body::before{
 @media (min-width: 200px) and (max-width: 400px){
     body{
         width:100%;
-        height:auto;
+        height: 100vh;
         overflow-y:auto;
-        align-items:flex-start;
-        margin-top:20%;
+        align-items:center;
+        /* margin-top: 20%; */
     }
 
     .app{
@@ -402,10 +402,10 @@ body::before{
 @media (min-width: 401px) and (max-width: 480px){
     body{
         width:100%;
-        height:auto;
+        height:100vh;
         overflow-y:auto;
-        align-items:flex-start;
-        margin-top:15%;
+        align-items:center;
+        /* margin-top:20%; */
     }
 
     .app{

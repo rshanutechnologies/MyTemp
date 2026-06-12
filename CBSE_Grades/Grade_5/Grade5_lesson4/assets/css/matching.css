@@ -465,7 +465,7 @@ animation:shake .3s;
 
     body {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
         min-height: 100vh;
         height: auto;
@@ -482,6 +482,7 @@ animation:shake .3s;
     .main-container {
         width: 100%;
         padding: 10px;
+        margin-top: 100px;
     }
 
     .instruction {
@@ -539,7 +540,7 @@ animation:shake .3s;
 
     body {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
         min-height: 100vh;
         height: auto;
@@ -556,6 +557,7 @@ animation:shake .3s;
     .main-container {
         width: 100%;
         padding: 12px;
+                margin-top: 100px;
     }
 
     .instruction {
@@ -637,7 +639,7 @@ animation:shake .3s;
 
     body {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
         min-height: 100vh;
         height: auto;
@@ -654,6 +656,7 @@ animation:shake .3s;
     .main-container {
         width: 100%;
         padding: 15px;
+                margin-top: 100px;
     }
 
     .instruction {
@@ -740,7 +743,7 @@ animation:shake .3s;
 
     body {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
         min-height: 100vh;
         height: auto;
@@ -759,6 +762,8 @@ animation:shake .3s;
         max-width: 520px;
         padding: 18px;
         margin: 0 auto;
+                margin-top: 80px;
+     
     }
 
     .instruction {
@@ -816,8 +821,8 @@ animation:shake .3s;
     html, body {
         width: 100%;
         height: auto;
-        overflow-x: hidden;
-        overflow-y: auto;
+        overflow: hidden;
+        /* overflow-y: auto; */
     }
 
     body {
@@ -841,6 +846,7 @@ animation:shake .3s;
         max-width: 650px;
         padding: 20px;
         margin: 0 auto;
+        margin-top: 40px;
     }
 
     .instruction {

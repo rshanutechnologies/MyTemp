@@ -262,6 +262,22 @@ height:36px;
 }
 
 }
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.2);
+  display:none;
+  z-index:999;
+}
+
+.top-index{
+  z-index:1000;
+}
+
+.menu-toggle{
+  z-index:1100;
+}
   </style>
 </head>
 
@@ -301,6 +317,8 @@ height:36px;
     </button> -->
   </div>
 
+
+<div class="menu-overlay" id="menuOverlay"></div>
   <!-- ================= CONTENT ================= -->
   <div class="content">
     <iframe id="quizFrame"></iframe>
@@ -325,9 +343,10 @@ height:36px;
     iframe.src = btn.dataset.file;
 
     /* CLOSE MENU AFTER CLICK */
-    if(window.innerWidth <= 1100){
-      menuBar.classList.remove("show");
-    }
+   if(window.innerWidth <= 1100){
+  menuBar.classList.remove("show");
+  menuOverlay.style.display = "none";
+}
 
   });
 });
@@ -345,11 +364,26 @@ height:36px;
     /* INIT */
     updateIndex();
 
-    const menuToggle = document.getElementById("menuToggle");
+ const menuToggle = document.getElementById("menuToggle");
 const menuBar = document.getElementById("menuBar");
+const menuOverlay = document.getElementById("menuOverlay");
 
 menuToggle.addEventListener("click", () => {
+
   menuBar.classList.toggle("show");
+
+  if(menuBar.classList.contains("show")){
+    menuOverlay.style.display = "block";
+  }else{
+    menuOverlay.style.display = "none";
+  }
+
+});
+
+/* Close when clicking outside */
+menuOverlay.addEventListener("click", () => {
+  menuBar.classList.remove("show");
+  menuOverlay.style.display = "none";
 });
   </script>
 

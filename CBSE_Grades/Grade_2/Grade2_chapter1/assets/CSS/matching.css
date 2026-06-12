@@ -33,8 +33,9 @@ body::before {
   border-radius: 22px;
   /* border: 10px double rgb(235, 199, 0); */
   padding: 13px;
-  margin-left: -2%;
+  /* margin-left: -2%; */
   /* box-shadow: 0 20px 50px rgba(0, 0, 0, .2) */
+  margin-inline: auto;
 }
 
 
@@ -264,7 +265,7 @@ body::before {
   align-items: center;
   gap: 12px;
   font-size: 22px !important;
-  width: 350px !important;
+  width: 100%;
 }
 
 /* LEFT MATCHING CARD */
@@ -591,15 +592,15 @@ body::before {
 @media (max-width:768px) {
 
   .quiz {
-    width: 95%;
+    width: 100%;
     padding: 10px;
     height: auto;
+    margin-inline: auto;
   }
 
   body {
     background: url("../images/T1_bg_final.png") center/cover no-repeat;
     margin-top: -10%;
-    margin-left: -4%;
     overflow-x: auto;
   }
 
@@ -650,11 +651,11 @@ body::before {
 
   /* right side answers */
   .right .item {
-    padding: 15px 8px;
+    padding: 15px 10px;
     height: 120px;
     font-size: 15px !important;
     color: #2f4f4f;
-    width: 150px !important;
+    width: 100%;
   }
 
   /* letter circle */

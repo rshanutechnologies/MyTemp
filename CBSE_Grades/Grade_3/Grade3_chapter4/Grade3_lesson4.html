@@ -159,7 +159,7 @@ display:none;
 position:absolute;
 top:15px;
 left:15px;
-font-size:28px;
+font-size:25px;
 background:white;
 border:none;
 border-radius:8px;
@@ -327,16 +327,28 @@ display:none;
   }
 }
 
+.overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.25);
+  display:none;
+  z-index:998;
+}
 
+.overlay.show{
+  display:block;
+}
 </style>
 </head>
 
 <body>
 
 <!-- Mobile Menu Button -->
-
 <button class="menu-toggle" id="menuToggle">☰</button>
-
+<div class="overlay" id="overlay"></div>
 <div class="wrapper">
 
 <div class="laptop">
@@ -370,33 +382,49 @@ display:none;
 </div>
 
 <script>
+const buttons = document.querySelectorAll(".quiz-btn");
+const frame = document.getElementById("frame");
+const menu = document.getElementById("menu");
+const toggle = document.getElementById("menuToggle");
+const overlay = document.getElementById("overlay");
 
-const buttons=document.querySelectorAll(".quiz-btn");
-const frame=document.getElementById("frame");
-const menu=document.getElementById("menu");
-const toggle=document.getElementById("menuToggle");
-
+/* Menu buttons */
 buttons.forEach(btn=>{
-btn.addEventListener("click",()=>{
 
-buttons.forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
+  btn.addEventListener("click",()=>{
 
-frame.src=btn.dataset.file;
+    buttons.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
 
-/* close menu on mobile */
+    frame.src = btn.dataset.file;
 
-menu.classList.remove("open");
+    /* Close menu on mobile */
+    if(window.innerWidth <= 1100){
+
+      menu.classList.remove("open");
+      overlay.classList.remove("show");
+
+    }
+
+  });
 
 });
+
+/* Toggle menu */
+toggle.addEventListener("click",()=>{
+
+  menu.classList.toggle("open");
+  overlay.classList.toggle("show");
+
 });
 
-/* toggle menu */
+/* Click outside menu */
+overlay.addEventListener("click",()=>{
 
-toggle.onclick=()=>{
-menu.classList.toggle("open");
-};
+  menu.classList.remove("open");
+  overlay.classList.remove("show");
 
+});
 </script>
 
 </body>

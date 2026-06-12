@@ -119,13 +119,13 @@ popup.className="popup "+type;
 popup.style.display="flex";
 
 if(type==="correct"){
-icon.textContent="🎉";
+icon.textContent="🥳";
 title.textContent="Correct!";
 msg.textContent="Well done!";
 speak("Correct");
 }
 else{
-icon.textContent="😔";
+icon.textContent="😒";
 title.textContent="Wrong!";
 msg.textContent="Try again!";
 speak("Wrong answer");

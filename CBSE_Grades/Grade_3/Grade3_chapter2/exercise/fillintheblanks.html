@@ -156,7 +156,9 @@ gap:clamp(6px,1vw,12px);
 
 button{
 
-  padding:clamp(10px, 1vw, 14px) clamp(26px, 3.5vw, 42px);
+  width:110px;
+    height:45px;
+
   font-size:clamp(16px, 1.5vw, 22px);
 border:none;
 border-radius:40px;
@@ -225,15 +227,16 @@ font-size:clamp(14px,1.5vw,20px);
 
 .play-again-btn{
 margin-top:20px;
-padding:clamp(10px, 1vw, 14px) clamp(26px, 3.5vw, 42px);
-
-  font-size: clamp(16px, 1.5vw, 22px);
-border:none;
-border-radius:30px;
-cursor:pointer;
-background:linear-gradient(135deg,#4caf50,#2e7d32);
-color:white;
-font-weight:600;
+  width:180px;
+  height:45px;
+  font-size:clamp(14px, 1.2vw, 16px);
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#4caf50,#2e7d32);
+  color:white;
+  font-weight:600;
+  transition:0.3s;
 }
 .key.disabled{
   pointer-events:none;
@@ -264,7 +267,7 @@ body{
     min-height:auto;
     padding:0 5px;
     text-align:center;
-    margin-top: 60px;
+    margin-top: 20px;
 }
 
 .image img{
@@ -285,6 +288,7 @@ body{
 .keyboard{
     gap:6px;
     padding:10px 5px;
+    margin-top: -10px;
 }
 
 .key{
@@ -305,30 +309,14 @@ button{
     padding:10px 16px;
     font-size:15px;
     flex:1;
+    margin-bottom: 90px;
 }
 
-.popup-content{
-    width:90%;
-    padding:20px 15px;
-}
-
-.popup-content h2{
-    font-size:20px;
-}
-
-.popup-content p{
-    font-size:15px;
-}
-
-.play-again-btn{
-    width:140px;
-    font-size:15px;
-}
 }
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
-@media screen and (min-width:1025px) and (max-width:1440px){
+@media screen and (min-width:1100px) and (max-width:1440px){
 
   .quiz{
     max-width:1300px;
@@ -361,8 +349,9 @@ button{
 
   /* BUTTONS */
   button{
-  font-size:28px;
-    padding:14px 35px;
+  width:160px;
+    height:65px;
+    font-size: 28px;
   }
 
 }
@@ -408,8 +397,9 @@ button{
 
   /* BUTTONS */
   button{
-    font-size:24px;
-    padding:16px 32px;
+   font-size:20px;
+    width:160px;
+    height:65px;
   }
 
 }
@@ -460,7 +450,12 @@ button{
   }
 
 }
-
+.backspace-key{
+    background:linear-gradient(135deg,#667780,#6d818b);
+    color:#fff;
+    font-size:18px;
+    font-weight:bold;
+}
     </style>
     </head>
 
@@ -479,7 +474,7 @@ button{
     <div class="keyboard" id="keyboard"></div>
 
     <div class="buttons">
-    <button class="prev" onclick="prevQ()">Prev</button>
+    <button class="prev" onclick="prevQ()">Previous</button>
     <button class="check" onclick="checkAnswer()">Check</button>
     <button class="next" onclick="nextQ()">Next</button>
     </div>
@@ -567,8 +562,6 @@ letters.sort(()=>Math.random()-0.5)
 
 return letters
 }
-
-
 function loadQ(){
 
     playAgainBtn.classList.add("hidden");
@@ -599,27 +592,29 @@ function loadQ(){
         nextBtn.disabled = true;
     }
 
-    /* create answer boxes */
+    /* Answer Boxes */
     answer.innerHTML = "";
 
     let len = quizData[current].a.length;
+
     const isAnswered =
-    userAnswers[current] === quizData[current].a;
-for(let i = 0; i < len; i++){
+        userAnswers[current] === quizData[current].a;
 
-    let box = document.createElement("div");
-    box.className = "letterBox";
-    box.innerText = user[i] || "";
+    for(let i = 0; i < len; i++){
 
-    if(isAnswered){
-        box.style.background = "#d4edda";
-        box.style.borderColor = "green";
+        let box = document.createElement("div");
+        box.className = "letterBox";
+        box.innerText = user[i] || "";
+
+        if(isAnswered){
+            box.style.background = "#d4edda";
+            box.style.borderColor = "green";
+        }
+
+        answer.appendChild(box);
     }
 
-    answer.appendChild(box);
-}
-
-    /* create keyboard */
+    /* Keyboard */
     const keyboard = document.getElementById("keyboard");
     keyboard.innerHTML = "";
 
@@ -632,89 +627,89 @@ for(let i = 0; i < len; i++){
         btn.innerText = letter;
 
         if(isAnswered){
-    btn.style.pointerEvents = "none";
-    btn.style.opacity = "0.5";
-}
+            btn.style.pointerEvents = "none";
+            btn.style.opacity = "0.5";
+        }
 
-        /* restore disabled letters if already typed */
         if(user.includes(letter)){
             btn.style.pointerEvents = "none";
             btn.style.opacity = "0.5";
             usedButtons.push(btn);
         }
-btn.onclick = ()=>{
 
-    if(isAnswered) return;
+        btn.onclick = ()=>{
 
-    if(locked) return;
+            if(isAnswered) return;
+            if(locked) return;
 
-    if(user.length < len){
+            if(user.length < len){
 
-        user += letter;
-        userAnswers[current] = user;
+                user += letter;
+                userAnswers[current] = user;
 
-        usedButtons.push(btn);
+                usedButtons.push(btn);
 
-        btn.style.pointerEvents = "none";
-        btn.style.opacity = "0.5";
+                btn.style.pointerEvents = "none";
+                btn.style.opacity = "0.5";
 
-        updateBoxes();
+                updateBoxes();
 
-        if(user.length >= len){
-    checkBtn.disabled = false;
-    checkBtn.classList.add("active");
-}else{
-    checkBtn.disabled = true;
-    checkBtn.classList.remove("active");
-}
-    }
-};
+                if(user.length >= len){
+                    checkBtn.disabled = false;
+                    checkBtn.classList.add("active");
+                }else{
+                    checkBtn.disabled = true;
+                    checkBtn.classList.remove("active");
+                }
+            }
+        };
 
         keyboard.appendChild(btn);
     });
 
-    if(isAnswered){
+    /* Mobile Backspace Button - LAST */
+    if(window.innerWidth <= 600 && !isAnswered){
 
-    checkBtn.disabled = true;
-    checkBtn.classList.remove("active");
+        let backBtn = document.createElement("div");
 
-}
+        backBtn.className = "key backspace-key";
+        backBtn.innerHTML = "⌫";
 
-}document.addEventListener("keydown",(e)=>{
+        backBtn.onclick = ()=>{
 
-    if(checkedAnswers[current]) return;
+            if(user.length === 0) return;
 
-    if(e.key === "Backspace"){
+            user = user.slice(0,-1);
+            userAnswers[current] = user;
 
-        e.preventDefault();
+            updateBoxes();
 
-        if(user.length === 0) return;
+            let lastBtn = usedButtons.pop();
 
-        user = user.slice(0,-1);
-        userAnswers[current] = user;
+            if(lastBtn){
+                lastBtn.style.pointerEvents = "auto";
+                lastBtn.style.opacity = "1";
+            }
 
-        updateBoxes();
+            if(user.length >= len){
+                checkBtn.disabled = false;
+                checkBtn.classList.add("active");
+            }else{
+                checkBtn.disabled = true;
+                checkBtn.classList.remove("active");
+            }
+        };
 
-        let lastBtn = usedButtons.pop();
-
-        if(lastBtn){
-            lastBtn.style.pointerEvents = "auto";
-            lastBtn.style.opacity = "1";
-        }
-
-        const checkBtn = document.querySelector(".check");
-
-        if(user.length >= quizData[current].a.length){
-            checkBtn.disabled = false;
-            checkBtn.classList.add("active");
-        }else{
-            checkBtn.disabled = true;
-            checkBtn.classList.remove("active");
-        }
-
+        keyboard.appendChild(backBtn);
     }
 
-});
+    if(isAnswered){
+
+        checkBtn.disabled = true;
+        checkBtn.classList.remove("active");
+
+    }
+}
 function updateBoxes(){
 
     const boxes = document.querySelectorAll(".letterBox");
@@ -766,7 +761,7 @@ if(user === quizData[current].a){
     // ✅ If LAST QUESTION → show final popup automatically
     if(current === quizData.length - 1){
 
-        speakText("");
+        speakText("Correct!");
 
         popup.classList.remove("hidden");
 

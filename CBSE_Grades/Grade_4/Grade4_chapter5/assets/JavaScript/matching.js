@@ -21,7 +21,7 @@ const leftData = [
     id: "4",
     text: " Knife",
     match: "b",
-    img: "../assets/images/Knifee.png",
+    img: "../assets/images/chaku.png",
   },
   {
     id: "5",

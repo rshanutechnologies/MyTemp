@@ -160,11 +160,30 @@ iframe{
     
   }
 }
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:transparent;
+  z-index:998;
+  display:none;
+}
+
+.nav-bar{
+  z-index:999;
+}
+
+.menu-toggle{
+  z-index:1000;
+}
+
+.nav-bar.show ~ .menu-overlay{
+  display:block;
+}
 </style>
 </head>
 
 <body>
-
+<div class="menu-overlay" id="menuOverlay"></div>
 <!-- ================= NAVIGATION ================= -->
 <div class="nav-wrapper">
 
@@ -190,6 +209,24 @@ iframe{
 </div>
 
 <script>
+function toggleMenu() {
+  const navBar = document.getElementById("navBar");
+  const overlay = document.getElementById("menuOverlay");
+
+  navBar.classList.toggle("show");
+
+  if(navBar.classList.contains("show")){
+    overlay.style.display = "block";
+  }else{
+    overlay.style.display = "none";
+  }
+}
+
+document.getElementById("menuOverlay").addEventListener("click", function () {
+  document.getElementById("navBar").classList.remove("show");
+  this.style.display = "none";
+});
+
 function loadQuiz(link, element){
 
   document.getElementById("quizFrame").src = link;
@@ -200,12 +237,8 @@ function loadQuiz(link, element){
 
   element.classList.add("active");
 
-  // auto close mobile menu
   document.getElementById("navBar").classList.remove("show");
-}
-
-function toggleMenu(){
-  document.getElementById("navBar").classList.toggle("show");
+  document.getElementById("menuOverlay").style.display = "none";
 }
 </script>
 
