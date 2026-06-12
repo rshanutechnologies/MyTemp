@@ -439,6 +439,7 @@ font-size:20px;
 width:70%;
 height:50px;
 font-size:22px;
+margin-left: 20px;
 }
 
 .row{
@@ -480,10 +481,10 @@ font-size:18px;
 }
 
 .backspace{
-top:-60px !important;
-left:45%;
+top:-63px !important;
+left:38%;
 font-size:15px;
-padding:8px 14px;
+padding:10px 18px;
 }
 
 }

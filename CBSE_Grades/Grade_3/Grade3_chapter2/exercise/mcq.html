@@ -274,12 +274,7 @@ body{
     margin-top: 40px;
   }
 
-  /* Main Image */
-  .question-image{
-    margin-top:-20px;
-    
-  }
-
+  
   .question-image img{
     width:180px;
     height:120px;
@@ -290,7 +285,7 @@ body{
   .options{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:5px;
+    gap:20px;
     margin-top:0;
   }
 
@@ -322,7 +317,7 @@ body{
     
 
     position:fixed;
-    bottom:60px;
+    bottom:250px;
     z-index:100;
   }
 
@@ -336,7 +331,57 @@ body{
 
 }
 
+@media (max-width:375px){
 
+  .question{
+    font-size:20px;
+    line-height:1.25;
+    margin-top:40px;
+  }
+
+  .question-image img{
+    width:170px;
+    height:170px;
+  }
+
+  .options{
+    gap:12px;
+    margin-top:-10px;
+  }
+
+  .circle{
+    width:80px;
+    height:80px;
+  }
+
+  .circle img{
+    width:60%;
+  }
+
+  .option p{
+    font-size:12px;
+    padding:4px 8px;
+  }
+
+  .nav-btn{
+    width:95px;
+    height:40px;
+    font-size:14px;
+    bottom:60px;
+  }
+
+  #prevBtn{
+    left:8px;
+  }
+
+  #nextBtn{
+    right:8px;
+  }
+
+  .quiz-container{
+    padding-bottom:70px;
+  }
+}
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
@@ -485,6 +530,11 @@ body{
   }
 
 }
+
+/* ========================= */
+/* Small Mobile (320px-375px) */
+/* ========================= */
+
 
 </style>
 </head>
