@@ -61,7 +61,7 @@
     .question-img{
   display:block;
   margin:0 auto 20px;
-  min-width:320px;
+  width:320px;
   height:200px;
   /* width: 200px; */
   /* border: 5px solid skyblue; */
@@ -430,7 +430,7 @@ body{
 
 /* question image */
 .question-img{
-  width:100px;
+  width:170px;
   height:100%;
  
 
@@ -463,8 +463,8 @@ body{
 
 .prev,
 .next{
-  width:120px;
-  height:50px;
+  width:90px;
+  height:40px;
   font-size:18px;
 }
 
