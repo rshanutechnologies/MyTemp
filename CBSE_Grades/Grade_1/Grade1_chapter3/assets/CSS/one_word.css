@@ -69,7 +69,7 @@ body {
 }
 
 .answer-gap {
-  width: 15px;
+    width: 15px;
 }
 
 .letter-container {
@@ -335,7 +335,7 @@ body {
     }
 
     .question-title {
-        font-size: 26px;
+        font-size: 24px;
         height: auto;
         padding: 10px;
         text-align: center;
@@ -393,7 +393,7 @@ body {
     }
 
     .question-title {
-        font-size: 22px;
+        font-size: 24px;
     }
 
     #questionImage {
@@ -435,12 +435,12 @@ body {
         align-items: flex-start;
     }
 
-    .quiz-container{
+    .quiz-container {
         padding: 20px 5px;
     }
 
     .question-title {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     #questionImage {
@@ -448,7 +448,7 @@ body {
         height: 100px;
     }
 
-    .answer-gap{
+    .answer-gap {
         width: 10px;
     }
 
@@ -473,7 +473,7 @@ body {
         font-size: 17px;
     }
 
-    #submitButton{
+    #submitButton {
         padding: 8px 25px;
     }
 
@@ -521,14 +521,24 @@ body {
 /* ========================================
    💻 Desktop / Monitor (1025px – 1440px)
 ======================================== */
-@media screen and (min-width: 1325px) and (max-width: 1440px) {
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+    .question-title {
+        font-size: 34px;
+    }
+
+}
+
+/* ========================================
+   💻 Desktop / Monitor (1025px – 1440px)
+======================================== */
+@media screen and (min-width: 1441px) and (max-width: 1540px) {
 
     .quiz-container {
         width: 1000px;
     }
 
     .question-title {
-        font-size: 32px;
+        font-size: 40px;
     }
 
     #questionImage {
@@ -571,7 +581,7 @@ body {
     }
 
     .question-title {
-        font-size: 36px;
+        font-size: 40px;
     }
 
     #questionImage {

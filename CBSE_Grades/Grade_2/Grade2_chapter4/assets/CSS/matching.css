@@ -322,7 +322,7 @@ body::before {
 /* TEXT */
 .question-text {
   font-size: 22px;
-  color: #5a5147;
+ 
 }
 
 
@@ -552,6 +552,7 @@ body::before {
   /* box-shadow:0 6px 14px rgba(0,0,0,.08); */
   cursor: pointer;
   transition: .2s;
+ 
 }
 
 .item {
@@ -772,7 +773,7 @@ body::before {
   /* question text */
 
   .question-text {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.2;
     /* background-color: blue !important; */
   }
@@ -782,7 +783,7 @@ body::before {
   .right .item {
     padding: 5px;
     min-height: 100px;
-    font-size: 14px;
+    font-size: 15px;
     margin-top: 10%;
     /* background-color: red !important; */
 

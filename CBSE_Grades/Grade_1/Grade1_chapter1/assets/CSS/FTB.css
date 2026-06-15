@@ -451,12 +451,12 @@ input:focus {
     }
 
     .question h2 {
-        font-size: 22px;
+        font-size: 24px;
         text-align: left;
     }
 
     .answer-section {
-      
+
         flex-direction: column-reverse;
     }
 
@@ -545,7 +545,7 @@ input:focus {
     }
 
     .question h2 {
-        font-size: 20px;
+        font-size: 22px;
         margin-inline: 20px;
     }
 
@@ -661,7 +661,7 @@ input:focus {
     }
 
     .question h2 {
-        font-size: 38px;
+        font-size: 40px;
     }
 
     input {
@@ -699,7 +699,7 @@ input:focus {
     }
 
     .question h2 {
-        font-size: 42px;
+        font-size: 40px;
     }
 
     input {

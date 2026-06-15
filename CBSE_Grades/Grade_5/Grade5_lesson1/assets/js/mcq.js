@@ -38,7 +38,7 @@ const quiz = [
   {
     q: "Q4. The green-coloured outermost leaf-like structures of a flower are called the _____.",
     options: [
-      { text: "Carpels", img: "../assets/images/petals.png" },
+      { text: "Carpels", img: "../assets/images/carpelak.png" },
       { text: "Sepals", img: "../assets/images/sepalsak.png" },
       { text: "Petals", img: "../assets/images/petalsak.png" },
       { text: "Ovules", img: "../assets/images/ovulesak.png" },

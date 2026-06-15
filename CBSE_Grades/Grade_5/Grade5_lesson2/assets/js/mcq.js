@@ -8,7 +8,7 @@ const quiz = [
       { text: "Seeds kept in refrigerator", img: "../assets/images/mcq4.png" },
     ],
     answer: 1,
-    img: "../assets/images/mcq_1.png",
+    img: "../assets/images/seedGrow.png",
   },
 
   {

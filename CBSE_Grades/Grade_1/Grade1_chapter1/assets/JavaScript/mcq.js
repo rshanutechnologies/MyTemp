@@ -1,44 +1,151 @@
-//
-
 const quizData = [
   {
     q: "Q1. Living things need water to ________.",
+
     img: "../assets/images/mcq-1.png",
-    options: ["🥤 Drink", "🚶 Move", "🦋 Fly", "🏃 Run"],
+
+    options: [
+      {
+        text: "Drink",
+        img: "../assets/images/drink.png",
+      },
+
+      {
+        text: "Move",
+        img: "../assets/images/move.png",
+      },
+
+      {
+        text: "Fly",
+        img: "../assets/images/butterfly.png",
+      },
+
+      {
+        text: "Run",
+        img: "../assets/images/run.png",
+      },
+    ],
+
     a: 0,
   },
+
   {
     q: "Q2. Non-living things ________.",
+
     img: "../assets/images/mcq-2.png",
-    options: ["🫁 Breathe", "🚫 Don't breathe", "🍽 Eat", "⚰️ Die"],
+
+    options: [
+      {
+        text: "Breathe",
+        img: "../assets/images/breathe.png",
+      },
+
+      {
+        text: "Don't breathe",
+        img: "../assets/images/no-breathe.png",
+      },
+
+      {
+        text: "Eat",
+        img: "../assets/images/eat.png",
+      },
+
+      {
+        text: "Die",
+        img: "../assets/images/die.png",
+      },
+    ],
+
     a: 1,
   },
+
   {
     q: "Q3. A book is a ________ thing.",
+
     img: "../assets/images/mcq-3.png",
+
     options: [
-      "🏭 Human-made",
-      "🌿 Natural",
-      "🐶 Living",
-      "🪨 Natural non-living",
+      {
+        text: "Human-made",
+        img: "../assets/images/human-made.png",
+      },
+
+      {
+        text: "Natural",
+        img: "../assets/images/natural.png",
+      },
+
+      {
+        text: "Living",
+        img: "../assets/images/living.png",
+      },
+
+      {
+        text: "Natural non-living",
+        img: "../assets/images/non-living.png",
+      },
     ],
+
     a: 0,
   },
+
   {
     q: "Q4. Living things ________.",
+
     img: "../assets/images/mcq-4.png",
-    options: ["❌ Don't die", "🚫 Don't grow", "⚰️ Die", "❤️ Can't feel"],
+
+    options: [
+      {
+        text: "Don't die",
+        img: "../assets/images/no-die.png",
+      },
+
+      {
+        text: "Don't grow",
+        img: "../assets/images/no-grow.png",
+      },
+
+      {
+        text: "Die",
+        img: "../assets/images/die.png",
+      },
+
+      {
+        text: "Can't feel",
+        img: "../assets/images/no-feel1.png",
+      },
+    ],
+
     a: 2,
   },
+
   {
     q: "Q5. Pencils and erasers are ________ things.",
+
     img: "../assets/images/mcq-5.png",
+
     options: [
-      "🪨 Natural non-living",
-      "🏭 Human-made",
-      "🐾 Living",
-      "🔄 Both living and non-living",
+      {
+        text: "Natural non-living",
+        img: "../assets/images/non-living.png",
+      },
+
+      {
+        text: "Human-made",
+        img: "../assets/images/human-made.png",
+      },
+
+      {
+        text: "Living",
+        img: "../assets/images/living.png",
+      },
+
+      {
+        text: "Both living and non-living",
+        img: "../assets/images/both.png",
+      },
     ],
+
     a: 1,
   },
 ];
@@ -83,7 +190,15 @@ function loadQuestion() {
   q.options.forEach((t, i) => {
     const d = document.createElement("div");
     d.className = "option o" + ((i % 4) + 1);
-    d.innerHTML = `<span>${t.split(" ")[0]}</span>${t.slice(2)}`;
+    d.innerHTML = `
+        <div class="option-image">
+        <img src="${t.img}" alt="">
+        </div>
+
+        <div class="option-text">
+          ${t.text}
+        </div>
+      `;
 
     /* RESTORE STATE */
     if (answered[current] !== null) {

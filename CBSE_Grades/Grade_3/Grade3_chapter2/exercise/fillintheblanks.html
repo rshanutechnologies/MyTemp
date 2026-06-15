@@ -14,7 +14,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Livvic',sans-serif;
+font-family:'Livvic';
 }
 
 body{
@@ -43,7 +43,7 @@ margin:auto;
 /* ================= QUESTION ================= */
 
 .question{
-font-size:clamp(20px,2vw + 1vh,30px);
+font-size:30px;
 color:#2f4f4f;
 text-align:left;
 width:100%;
@@ -56,6 +56,7 @@ justify-content:center;
 
 line-height:1.3;
 padding:0 clamp(10px,2vw,20px);
+margin-top: -50px;
 }
 
 /* ================= IMAGE ================= */
@@ -263,7 +264,7 @@ body{
 }
 
 .question{
-    font-size:20px;
+    font-size:22px;
     min-height:auto;
     padding:0 5px;
     text-align:center;
@@ -309,7 +310,7 @@ button{
     padding:10px 16px;
     font-size:15px;
     flex:1;
-    margin-bottom: 90px;
+    margin-bottom: 130px;
 }
 
 }
@@ -455,6 +456,13 @@ button{
     color:#fff;
     font-size:18px;
     font-weight:bold;
+}
+
+
+@media screen and (max-width:768px){
+  .question{
+    font-size: 22px;
+  }
 }
     </style>
     </head>

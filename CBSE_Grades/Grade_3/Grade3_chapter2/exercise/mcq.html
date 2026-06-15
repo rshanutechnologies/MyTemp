@@ -247,6 +247,22 @@ body{
   transform:translateY(-3px);
 }
 
+
+@media screen and (max-width:808px){
+  .question{
+    font-size: 22px;
+
+  }
+  
+  .quiz-container{
+    height:auto;
+    min-height:100vh;
+    padding-bottom:90px;
+    margin-top:40px;
+  }
+
+
+}
 /* ================= MOBILE PERFECT FIX ================= */
 @media screen and (max-width:600px){
 
@@ -265,7 +281,7 @@ body{
 
   /* Question */
   .question{
-    font-size:20px;
+    font-size:22px;
     line-height:1.2;
     justify-content: center;
     text-align:left;
@@ -276,9 +292,10 @@ body{
 
   
   .question-image img{
-    width:180px;
-    height:120px;
+    width:200px;
+    height:160px;
     object-fit:contain;
+    margin-top: 30px;
   }
 
   /* Options */
@@ -317,7 +334,7 @@ body{
     
 
     position:fixed;
-    bottom:250px;
+    bottom:220px;
     z-index:100;
   }
 
@@ -367,7 +384,7 @@ body{
     width:95px;
     height:40px;
     font-size:14px;
-    bottom:60px;
+    bottom:20px;
   }
 
   #prevBtn{

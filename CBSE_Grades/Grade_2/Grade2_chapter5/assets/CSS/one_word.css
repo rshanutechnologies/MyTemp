@@ -62,7 +62,7 @@ body::before {
   max-height: 80px;
   margin-top: 5%;
   font-weight: 400;
-
+  text-align: start;
 }
 
 
@@ -676,6 +676,10 @@ background:#e8f5e9;
     margin: 15px 0;
     margin-top: 12%;
     min-height: 50px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     text-align: start;
   }
 
   #questionImg {

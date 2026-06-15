@@ -563,7 +563,7 @@ animation:shake .3s;
     .instruction {
         font-size: 16px;
         text-align: center;
-        margin-bottom: 15px;
+        margin-bottom: 35px;
     }
 
     .match-grid {
@@ -579,9 +579,9 @@ animation:shake .3s;
 
     .item, .target {
         width: 100%;
-        min-height: 70px;
+        height: 100px;
         padding: 10px 2px;
-        font-size: 13px;
+        font-size: 15px;
         gap: 8px;
     }
 
@@ -678,7 +678,7 @@ animation:shake .3s;
 
     .item, .target {
         width: 100%;
-        min-height: 80px;
+        height: 100px;
         padding: 12px 0px;
         font-size: 13px;
         gap: 10px;

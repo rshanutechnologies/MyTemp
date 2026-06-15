@@ -339,7 +339,8 @@ background: #e6fffa;
     font-size: 12px;
   }
 }
-@media (min-width: 1600px) and (max-width: 1919px) {
+
+@media (min-width: 1600px)  {
 
   .main-container {
     max-width: 1200px;
@@ -347,8 +348,9 @@ background: #e6fffa;
   }
 
   .question-area h2 {
-    font-size: 40px;
+    font-size: 40px !important;
     line-height: 1.4;
+    /* background-color: #8e5260; */
   }
 
   .image-area {

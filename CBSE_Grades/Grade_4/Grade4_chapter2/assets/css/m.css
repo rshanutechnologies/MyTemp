@@ -213,37 +213,65 @@ margin-left:auto;
     .left{
         flex:0 0 calc(50% - 10px);
         width:calc(50% - 10px);
-        gap:10px;
+        gap:30px;
     }
     .right{
         flex:0 0 calc(50% - 10px);
         width:calc(50% - 10px);
-        gap:10px;
+        gap:30px;
         padding:0;
     }
 
-    .left .box,
-    .right .box,
-    .box{
-        font-size:13px;
-        padding:8px;
-        min-height:55px !important;
-        height:55px !important;
-        width:100%;
-        display:flex;
-        align-items:center;
-    }
+.left .box,
+.right .box,
+.box{
+    font-size:13px;
+    min-height:55px !important;
+    height:55px !important;
+    width:100%;
+    display:flex;
+    align-items:center;
+}
+
+.left .box{
+    padding:8px 32px 8px 4px; /* reserve space on right for number */
+    gap:1px;                  /* reduce image-text gap */
+}
+
+.right .box{
+    padding:8px;
+}
 
     .left .dot{ right:8px; }
     .right .dot{ left:8px; }
 
-    .left img{ width:35px; height:35px; object-fit:contain; margin-right:8px; }
+    .left img{ width:35px; height:35px; object-fit:contain; margin-right:2px; }
 
     .dot{ width:8px; height:8px; }
 
     svg{ display:block; }
+      .left .match-number{
+        position:absolute;
+        right:20px;
+        top:50%;
+        transform:translateY(-50%);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
 
-    .match-number{ display:none; }
+    .match-number{  display:flex;
+    align-items:center;
+    justify-content:center; }
+    .left .match-number{
+    position:absolute;
+    right:18px; /* start here */
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
     .final{ width:90%; padding:20px; }
     .final h2{ font-size:24px; }
@@ -259,17 +287,17 @@ margin-left:auto;
 
     .container{ height:100vh; padding:10px; }
 
-    .matching{ gap:15px; align-items:flex-start; justify-content:center; }
+    .matching{ gap:14px; align-items:flex-start; justify-content:center; }
 
     .left{
         flex:0 0 calc(50% - 8px);
         width:calc(50% - 8px);
-        gap:8px;
+        gap:24px;
     }
     .right{
         flex:0 0 calc(50% - 8px);
         width:calc(50% - 8px);
-        gap:8px;
+        gap:24px;
         margin-left:0;
         padding:0;
     }
@@ -287,9 +315,12 @@ margin-left:auto;
         line-height:1.2;
     }
 
-    .left img{ width:28px; height:28px; margin-right:6px; }
+    .left img{ width:28px; height:28px; margin-right:2px; }
 
     .dot{ width:7px; height:7px; }
+    .left .match-number{
+        right:16px;
+    }
 
     .left .dot{ right:6px; }
     .right .dot{ left:6px; }
@@ -316,12 +347,12 @@ margin-left:auto;
     .left{
         flex:0 0 calc(50% - 5px);
         width:calc(50% - 5px);
-        gap:6px;
+        gap:30px;
     }
     .right{
         flex:0 0 calc(50% - 5px);
         width:calc(50% - 5px);
-        gap:6px;
+        gap:30px;
         margin-left:0;
         padding:0;
     }
@@ -339,18 +370,22 @@ margin-left:auto;
         line-height:1.1;
     }
 
-    .left img{ width:24px; height:24px; margin-right:5px; }
+    .left img{ width:24px; height:24px; margin-right:1px; }
 
     .dot{ width:6px; height:6px; }
 
     .left .dot{ right:5px; }
     .right .dot{ left:5px; }
+     .left .match-number{
+        right:14px;
+    }
+
 
     .match-number{
         width:12px;
         height:12px;
         font-size:7px;
-        display:none !important;
+        display:flex !important;
         align-items:center;
         justify-content:center;
         margin-left:auto;

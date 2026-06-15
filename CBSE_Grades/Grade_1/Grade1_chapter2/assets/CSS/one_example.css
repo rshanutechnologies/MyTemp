@@ -54,12 +54,26 @@ body {
     border: 4px solid white
 }
 
+.image-box {
+    width: 260px;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+    cursor: pointer;
+    transition: .25s;
+    border: 4px solid white;
+}
+
+.image-box:hover {
+    transform: translateY(-4px);
+}
+
 .image-box.correct {
-    opacity: 1
+    border-color: #64a866;
 }
 
 .image-box.wrong {
-    opacity: .5
+    opacity: .45;
 }
 
 .image-box img {
@@ -76,61 +90,6 @@ body {
     font-size: 20px;
     font-weight: 500;
     color: #444
-}
-
-.input-container {
-    margin-top: 10px;
-    width: 420px;
-    height: 70px;
-    background: white;
-    border-radius: 40px;
-    border: 3px solid #f1c1c1;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, .1);
-    margin-left: auto;
-    margin-right: auto
-}
-
-.input-container.correct {
-    background: #e8f5e9;
-    border: 3px solid #4CAF50
-}
-
-.input-container.correct input {
-    text-transform: capitalize;
-    font-weight: 500
-}
-
-.input-container button:disabled {
-    opacity: .5;
-    cursor: not-allowed
-}
-
-.input-container input {
-    flex: 1;
-    height: 100%;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    padding-left: 15px;
-    background: transparent
-}
-
-.input-container button {
-    height: 42px;
-    width: 110px;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(#ffbcbc, #ff8f8f);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 2px 0 #d38c98;
-    display: flex;
-    align-items: center;
-    justify-content: center
 }
 
 .controls {
@@ -342,7 +301,7 @@ body {
     }
 
     .question h2 {
-        font-size: 26px;
+        font-size: 24px;
         height: auto;
         padding: 10px;
     }
@@ -361,21 +320,6 @@ body {
 
     .image-bottom {
         font-size: 18px;
-    }
-
-    .input-container {
-        width: 340px;
-        height: 60px;
-    }
-
-    .input-container input {
-        font-size: 18px;
-    }
-
-    .input-container button {
-        width: 90px;
-        height: 38px;
-        font-size: 15px;
     }
 
     .controls {
@@ -419,7 +363,7 @@ body {
     }
 
     .question h2 {
-        font-size: 22px;
+        font-size: 24px;
     }
 
     .image-container {
@@ -438,21 +382,6 @@ body {
         font-size: 16px;
     }
 
-    .input-container {
-        width: 300px;
-        height: 55px;
-    }
-
-    .input-container input {
-        font-size: 17px;
-    }
-
-    .input-container button {
-        width: 85px;
-        height: 36px;
-        font-size: 14px;
-    }
-
     .controls button {
         padding: 6px 20px;
         font-size: 18px;
@@ -467,7 +396,7 @@ body {
     }
 
     .question h2 {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .image-container {
@@ -487,21 +416,6 @@ body {
 
     .image-bottom {
         font-size: 15px;
-    }
-
-    .input-container {
-        width: 280px;
-        height: 50px;
-    }
-
-    .input-container input {
-        font-size: 16px;
-    }
-
-    .input-container button {
-        width: 75px;
-        height: 32px;
-        font-size: 13px;
     }
 
     .controls {
@@ -599,7 +513,7 @@ body {
     }
 
     #question {
-        font-size: 38px;
+        font-size: 40px;
     }
 
     .question-image img {
@@ -639,7 +553,7 @@ body {
     }
 
     #question {
-        font-size: 42px;
+        font-size: 40px;
     }
 
     .question-image img {

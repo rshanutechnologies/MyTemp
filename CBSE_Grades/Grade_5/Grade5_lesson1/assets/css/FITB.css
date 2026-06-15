@@ -480,7 +480,7 @@ font-size:36px;
   }
 
   .question {
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1.4;
   }
 
@@ -821,7 +821,8 @@ font-size:44px;
 }
 
 .image-container{
-height:180px;
+height:250px;
+width: 250px;
 margin-top: 80px;
 }
 

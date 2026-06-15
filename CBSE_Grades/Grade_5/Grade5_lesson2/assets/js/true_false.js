@@ -27,7 +27,7 @@ img:"../assets/images/TF_4.png"
 {
 q:"Q5. The lotus plant has seeds outside the spongy fruit.",
 answer:true,
-img:"../assets/images/TF_5.png"
+img:"../assets/images/TF_51.png"
 }
 
 ];

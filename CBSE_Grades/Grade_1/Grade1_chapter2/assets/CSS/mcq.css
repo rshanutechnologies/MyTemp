@@ -370,7 +370,7 @@
         }
 
         #question {
-            font-size: 26px;
+            font-size: 24px;
             height: auto;
             padding: 10px;
             text-align: center;
@@ -433,7 +433,7 @@
         }
 
         #question {
-            font-size: 22px;
+            font-size: 24px;
         }
 
         .options {
@@ -466,7 +466,7 @@
     @media (max-width:480px) {
 
         #question {
-            font-size: 20px;
+            font-size: 22px;
         }
 
         .question-image img {
@@ -588,7 +588,7 @@
         }
 
         #question {
-            font-size: 38px;
+            font-size: 40px;
         }
 
         .question-image img {
@@ -628,7 +628,7 @@
         }
 
         #question {
-            font-size: 42px;
+            font-size: 40px;
         }
 
         .question-image img {

@@ -47,7 +47,7 @@ body{
 .question{
   width:100%;
   height: clamp(90px, 12vh, 110px);
-  font-size: clamp(24px, 2vw + 1vh, 30px); /* 🔥 max 30px */
+  font-size:30px;
   color:#2f4f4f;
 
   display:flex;
@@ -242,6 +242,11 @@ button:disabled{
  }
 
 
+    @media (max-width:600px) {
+      .question{
+        font-size: 22px;
+      }
+    }
 /* From 700px and above = Desktop */
 @media (min-width: 700px) {
   .question {

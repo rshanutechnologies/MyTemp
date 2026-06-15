@@ -4,7 +4,7 @@ const quiz=[
 {
 q:"Q1. A potato plant reproduces through its stem.",
 a:true,
-img:"../assets/images/TFQQQ1.png"
+img:"../assets/images/Apotato.png"
 },
 
 {
@@ -28,7 +28,7 @@ img:"../assets/images/pistilak1.png"
 {
 q:"Q5. All flowers have both the male and the female parts.",
 a:false,
-img:"../assets/images/bisexualf.png"
+img:"../assets/images/FTB5.png"
 }
 
 ];

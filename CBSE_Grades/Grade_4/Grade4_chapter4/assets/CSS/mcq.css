@@ -468,6 +468,7 @@ body {
     .options {
         grid-template-columns: 1fr 1fr;
         gap: 12px;
+        margin-bottom: 10px;
     }
 
     .option {
@@ -485,7 +486,7 @@ body {
     }
 
     .controls {
-        margin-top: 20px;
+        margin-top: -30px;
         gap: 15px; /* gap between buttons */
     }
 

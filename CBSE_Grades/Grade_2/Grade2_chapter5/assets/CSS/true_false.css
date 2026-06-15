@@ -442,7 +442,7 @@ body{
 .question{
   font-size:22px;
   padding:10px;
-  text-align:center;
+  text-align:start;
   min-height:100px;
   margin-top:8%;
 }

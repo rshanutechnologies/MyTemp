@@ -16,7 +16,7 @@ img:"../assets/images/MCQ_1.png"
 q:"Q2. The sequential development of an animal from the embryo to the adult stage is called its ________.",
 options:[
 {text:"Life span",img:"../assets/images/lifespan1.png"},
-{text:"Life cycle",img:"../assets/images/lifecycle.png"},
+{text:"Life cycle",img:"../assets/images/lifecycle1.png"},
 {text:"Reproduction",img:"../assets/images/reproduction.png"},
 {text:"Cocoon",img:"../assets/images/cocoon.png"}
 ],

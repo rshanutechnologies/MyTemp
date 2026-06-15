@@ -50,7 +50,7 @@
       padding:30px 40px;
       color: #2f4f4f;
       font-weight: 400;
-
+      text-align: start;
     }
     .question-img{
   display:block;
@@ -431,7 +431,7 @@ body{
 .question{
   font-size:22px;
   padding:10px;
-  text-align:center;
+  text-align:start;
   min-height:100px;
   margin-top:8%;
 }

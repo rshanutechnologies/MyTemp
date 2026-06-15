@@ -71,12 +71,12 @@ body::before {
 }
 
 .left {
-    width: 45%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: -5%;
-    margin-left: 30%;
+   
 }
 
 .left img {
@@ -93,7 +93,7 @@ body::before {
 .question {
     height: 120px;
     font-size: 30px;
-    text-align: center;
+    text-align: start;
     margin-bottom: 15px;
     display: flex;
     justify-content: center;

@@ -622,58 +622,16 @@ font-size:36px;
 }
 
 
-
-/* ================= 1025px — 1440px ================= */
-/* @media screen and (min-width:1225px) and (max-width:1640px){
-
-.quiz{
-max-width:1200px;
-}
-
-.question{
-font-size:40px;
-}
-
-.row{
-gap:30px;
-}
-
-.imgbox{
-margin-left:10%;
-}
-
-.imgbox img{
-max-width:400px;
-height:400px;
-object-fit: contain;
-}
-
-.tf-btn{
-font-size:40px;
-padding:18px 50px;
-}
-
-.nav{
-gap:60px;
-}
-
-.nav button{
-font-size:30px;
-padding:15px 28px;
-}
-
-} */
-
-
 /* ================= 1441px — 1920px ================= */
-@media screen and (min-width:1350px) and (max-width:1920px){
+@media screen and (min-width:1400px) {
 
 .quiz{
 max-width:1150px;
 }
 
 .question{
-font-size:44px;
+font-size:40px !important;
+
 
 }
 
@@ -716,6 +674,7 @@ max-width:1500px;
 
 .question{
 font-size:40px;
+
 }
 
 .row{

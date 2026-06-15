@@ -3,7 +3,7 @@
 const quizData = [
 
 {
-title: "Q.1 Our tongue helps us to taste the food that we eat and to ____________________.",
+title: "Q.1 Our tongue helps us to taste the food that we eat and to ________.",
 image: "../assets/images/Tounge.png",
 options: [
 { text: "Hear", img: "../assets/images/BoyHear.png" },

@@ -110,14 +110,14 @@ body {
 }
 
 .answer {
-    width: clamp(80px, 10vw, 95px);
-    height: clamp(80px, 10vw, 95px);
+    width: 120px;
+    height: 120px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    font-size: clamp(24px, 4vw, 38px);
+    font-size: 44px;
     font-weight: 700;
 
     border-radius: 25px;
@@ -302,7 +302,19 @@ background: #e6fffa;
     .question-box{
         text-align: left;
     }
+      .answer {
+      width: 90px;
+      height: 90px;
+      font-size: 32px;
+   }
 
+}
+@media (max-width:480px) {
+   .answer {
+      width: 70px;
+      height: 70px;
+      font-size: 24px;
+   }
 }
 
 @media (min-width: 1600px) and (max-width: 1919px) {

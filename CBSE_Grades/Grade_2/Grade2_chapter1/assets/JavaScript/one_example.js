@@ -2,7 +2,7 @@
 const quizData = [
 {
   title: "Q.1 A cereal",
-  image: "../assets/images/ow1.png",
+  image: "../assets/images/Cerealak.png",
   options:[
     { text:"Maize", img:"../assets/images/Wheatak.png"},
     { text:"Pumpkin", img:"../assets/images/PumpkinPlantY.png"},
@@ -18,7 +18,7 @@ const quizData = [
     // { text:"Green gram", img:"../assets/images/GreenGram.png"},
      { text:"Vegitables", img:"../assets/images/Vegitableakp.png"},
     { text:"Rice", img:"../assets/images/Ricee.png"},
-    { text:"Red gram", img:"../assets/images/RedGramsak.png"}
+    { text:"Red gram", img:"../assets/images/RedGramsak1.png"}
   ],
   answer: "Red gram"
 },

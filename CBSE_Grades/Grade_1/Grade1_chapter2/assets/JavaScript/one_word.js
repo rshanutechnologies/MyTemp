@@ -22,7 +22,7 @@ const quizData = [
   {
     q: "Q5. A part of a plant",
     a: "LEAF",
-    img: "../assets/images/ow-15.png",
+    img: "../assets/images/small-plants.png",
   },
 ];
 

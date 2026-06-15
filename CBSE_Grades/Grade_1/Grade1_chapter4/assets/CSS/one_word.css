@@ -324,7 +324,7 @@ body {
     }
 
     .question-title {
-        font-size: 26px;
+        font-size: 24px;
         height: 70px;
         display: flex;
         justify-content: center;
@@ -391,7 +391,7 @@ body {
     }
 
     .question-title {
-        font-size: 22px;
+        font-size: 24px;
     }
 
     #questionImage {
@@ -435,7 +435,7 @@ body {
     }
 
     .question-title {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     #questionImage {
@@ -527,7 +527,7 @@ body {
     }
 
     .question-title {
-        font-size: 32px;
+        font-size: 34px;
     }
 
     #questionImage {
@@ -566,7 +566,7 @@ body {
     }
 
     .question-title {
-        font-size: 36px;
+        font-size: 40px;
     }
 
     #questionImage {

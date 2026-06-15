@@ -40,7 +40,7 @@ const quizData = [
     img: "../assets/images/mm-4.png",
     options: [
       "../assets/images/weak-plants.png|Weak plants",
-      "../assets/images/trees.png|Trees",
+      "../assets/images/evergreen-plant.png|Trees",
       "../assets/images/small-plants.png|Small plants",
       "../assets/images/grass.png|Grass",
     ],
@@ -49,7 +49,7 @@ const quizData = [
 
   {
     q: "Q5. ______ has thin and brown stem.",
-    img: "../assets/images/mm-5.png",
+    img: "../assets/images/ow-14 (1).png",
     options: [
       "../assets/images/mango.png|Mango",
       "../assets/images/mint.png|Mint",

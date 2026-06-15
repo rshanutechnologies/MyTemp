@@ -50,7 +50,7 @@ body {
 
 #question {
     margin-top: 5px;
-    font-size: clamp(20px, 2.5vw, 34px);
+    font-size: 30px;
     font-weight: 400;
     color: #2f4f4f;
     line-height: 1.3;
@@ -334,7 +334,7 @@ height: clamp(42px, 6vh, 62px);
 /* No changes needed here — laptop already looks good */
 
 /* DESKTOP — above 1366px only */
-@media (min-width: 1367px) {
+@media (min-width: 1400px) {
 
     body {
         align-items: center;
@@ -356,7 +356,7 @@ height: clamp(42px, 6vh, 62px);
     }
 
     #question {
-        font-size: 40px;
+        font-size: 40px !important;
     }
 
     .question-image img {
@@ -393,6 +393,28 @@ height: clamp(42px, 6vh, 62px);
         font-size: 20px;
     }
 }
+@media (min-width: 481px) and (max-width: 900px) {
+
+    #question {
+        font-size: 26px;
+    }
+
+    .question-image img {
+        width: 220px;
+        height: 170px;
+    }
+
+    .option-img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .option-text {
+        width: 150px;
+        height: 48px;
+        font-size: 14px;
+    }
+}
 /* MOBILE — 900px and below (unchanged) */
 @media (max-width: 900px) {
 
@@ -410,6 +432,7 @@ height: clamp(42px, 6vh, 62px);
         justify-content: center;
         padding: clamp(14px, 3vw, 24px);
         gap: clamp(8px, 1.5vw, 16px);
+        /* background-color: #1b5e20; */
     }
 
     .quiz-layout {
@@ -423,7 +446,27 @@ height: clamp(42px, 6vh, 62px);
         justify-content: center;
     }
 
-    .question {
-        font-size: 34px;
+   
+}
+@media (max-width: 480px) {
+
+    #question {
+        font-size: 20px;
+    }
+
+    .question-image img {
+        width: 140px;
+        height: 110px;
+    }
+
+    .option-img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .option-text {
+        width: 120px;
+        height: 40px;
+        font-size: 12px;
     }
 }

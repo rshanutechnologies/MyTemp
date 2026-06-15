@@ -438,10 +438,12 @@ gap:8px;
 margin-left:0;
 padding:5px;
 }
-
+.left{
+    gap:9px
+}
 /* BOX STYLE */
 .box{
-font-size:12px;
+font-size:14px;
 padding:6px;
 min-height:40px;
 line-height:1.2;
@@ -449,8 +451,8 @@ line-height:1.2;
 
 /* IMAGE SIZE */
 .left img{
-width:28px;
-height:28px;
+width:40px;
+height:40px;
 margin-right:6px;
 }
 
@@ -515,7 +517,9 @@ gap:10px;
 flex:1;
 gap:6px;
 }
-
+.left{
+    gap: 7px;
+}
 /* RIGHT FIX */
 .right{
 margin-left:0;
@@ -524,7 +528,7 @@ padding:4px;
 
 /* BOX */
 .box{
-font-size:11px;
+font-size:16px;
 padding:5px;
 min-height:35px;
 line-height:1.1;

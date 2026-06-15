@@ -19,7 +19,7 @@ body {
   width: 950px;
   height: 580px;
   padding: 20px;
-  
+
   overflow: hidden;
 }
 
@@ -300,6 +300,13 @@ button:disabled {
   }
 }
 
+@media (max-width:900px) {
+  .question {
+    font-size: 24px;
+  }
+}
+
+
 @media (max-width:768px) {
   .quiz-card {
     width: 100%;
@@ -313,7 +320,7 @@ button:disabled {
   }
 
   .question {
-    font-size: 22px;
+    font-size: 24px;
     line-height: 1.4;
     height: auto;
     min-height: auto;
@@ -387,7 +394,7 @@ button:disabled {
   }
 
   .question {
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1.4;
   }
 
@@ -458,7 +465,7 @@ button:disabled {
   }
 
   .question {
-    font-size: 32px;
+    font-size: 34px;
   }
 
   #questionImg {
@@ -497,7 +504,7 @@ button:disabled {
   }
 
   .question {
-    font-size: 36px;
+    font-size: 40px;
   }
 
   #questionImg {

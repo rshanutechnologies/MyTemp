@@ -1,9 +1,9 @@
 const leftData = [
-  { id: "1", text: "1. A terrestrial animal", match: "b" },
-  { id: "2", text: "2. An aquatic animal", match: "c" },
-  { id: "3", text: "3. An amphibian", match: "e" },
-  { id: "4", text: "4. An aerial animal", match: "a" },
-  { id: "5", text: "5. An arboreal animal", match: "d" },
+  { id: "1", text: "A terrestrial animal", match: "b" },
+  { id: "2", text: "An aquatic animal", match: "c" },
+  { id: "3", text: "An amphibian", match: "e" },
+  { id: "4", text: "An aerial animal", match: "a" },
+  { id: "5", text: "An arboreal animal", match: "d" },
 ];
 
 const rightData = [
@@ -32,10 +32,11 @@ function init() {
   leftCol.innerHTML = "";
   rightCol.innerHTML = "";
 
-  leftData.forEach((item) => {
+leftData.forEach((item, index) => {
     const div = document.createElement("div");
     div.className = "item";
     div.dataset.match = item.match;
+    div.dataset.num = index + 1;   // ⬅ ADD THIS LINE
     div.innerHTML = `<span>${item.text}</span>`;
 
     div.onclick = () => {
@@ -48,10 +49,11 @@ function init() {
     leftCol.appendChild(div);
   });
 
-  rightData.forEach((item) => {
+rightData.forEach((item) => {
     const div = document.createElement("div");
     div.className = "item";
     div.dataset.id = item.match;
+    div.dataset.num = leftData.findIndex(l => l.match === item.match) + 1;  // ⬅ ADD THIS LINE
     div.innerHTML = `
       <img src="${item.img}" class="left-img">
       <span>${item.text}</span>

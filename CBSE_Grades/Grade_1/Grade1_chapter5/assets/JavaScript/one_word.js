@@ -18,17 +18,12 @@ const quizData = [
 
 let current = 0;
 let score = 0;
-let activeIndex = -1;
-let isFocused = false;
 
 const qEl = document.getElementById("question");
 const imgEl = document.getElementById("questionImg");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
 const submitBtn = document.getElementById("submitBtn");
-
-let correctWord = "";
-let typedLetters = [];
 
 let savedAnswers = new Array(quizData.length).fill(null);
 let locked = new Array(quizData.length).fill(false);
@@ -47,135 +42,83 @@ function loadQuestion() {
   const q = quizData[current];
 
   qEl.textContent = q.q;
+
   imgEl.src = q.img;
 
-  correctWord = q.a.toUpperCase();
+  input.value = savedAnswers[current] || "";
 
-  if (savedAnswers[current]) {
-    typedLetters = [...savedAnswers[current]];
-  } else {
-    typedLetters = new Array(correctWord.length).fill("");
-  }
+  input.disabled = locked[current];
 
-  activeIndex = -1;
-  isFocused = false;
+  input.classList.remove("input-correct", "input-wrong");
 
-  nextBtn.disabled = !locked[current];
-  submitBtn.disabled = typedLetters.includes("") || locked[current];
+  submitBtn.disabled = locked[current] || !input.value.trim();
+
   prevBtn.disabled = current === 0;
 
-  renderBoxes();
+  nextBtn.disabled = !locked[current];
+
+  if (locked[current]) {
+    input.classList.add("input-correct");
+  }
 }
 
-const boxContainer = document.getElementById("letterBoxes");
+const input = document.getElementById("answerInput");
 
-function renderBoxes() {
-  boxContainer.innerHTML = "";
-
-  for (let i = 0; i < correctWord.length; i++) {
-    const box = document.createElement("div");
-    box.classList.add("letter-box");
-
-    if (typedLetters[i]) {
-      box.textContent = typedLetters[i];
-      box.classList.add("filled");
-    }
-
-    if (i === activeIndex && isFocused && !locked[current]) {
-      box.classList.add("active");
-    }
-
-    if (locked[current]) {
-      box.classList.add("correct");
-    }
-
-    box.addEventListener("click", (e) => {
-      e.stopPropagation(); // 🔥 prevent outside click trigger
-
-      if (locked[current]) return;
-
-      if (i === 0 || typedLetters[i - 1] !== "") {
-        activeIndex = i;
-        isFocused = true;
-        renderBoxes();
-      }
-    });
-
-    boxContainer.appendChild(box);
-  }
-
-  submitBtn.disabled = typedLetters.includes("") || locked[current];
-}
-
-// 🔥 CLICK OUTSIDE TO UNFOCUS
-document.addEventListener("click", (e) => {
-  if (!boxContainer.contains(e.target)) {
-    isFocused = false;
-    activeIndex = -1;
-    renderBoxes();
-  }
-});
-
-document.addEventListener("keydown", (e) => {
-  if (locked[current] || !isFocused || activeIndex === -1) return;
-
-  if (e.key === "Backspace") {
-    if (typedLetters[activeIndex] === "" && activeIndex > 0) {
-      activeIndex--;
-    }
-    typedLetters[activeIndex] = "";
-    renderBoxes();
-    return;
-  }
-
-  if (/^[a-zA-Z]$/.test(e.key)) {
-    if (activeIndex === 0 || typedLetters[activeIndex - 1] !== "") {
-      typedLetters[activeIndex] = e.key.toUpperCase();
-
-      if (activeIndex < correctWord.length - 1) {
-        activeIndex++;
-      }
-
-      renderBoxes();
-    }
+input.addEventListener("input", () => {
+  if (!locked[current]) {
+    submitBtn.disabled = !input.value.trim();
   }
 });
 
 submitBtn.onclick = () => {
-  if (typedLetters.includes("")) return;
+  const typedAnswer = input.value.trim();
 
-  let guess = typedLetters.join("");
-  savedAnswers[current] = [...typedLetters];
+  const userAnswer = typedAnswer.toUpperCase();
 
-  if (guess === correctWord) {
-    score++;
-    showPopup(true);
-    speak("Correct");
-    fireConfetti();
+  const correctAnswer = quizData[current].a.toUpperCase();
+
+  if (userAnswer === correctAnswer) {
+    savedAnswers[current] =
+      typedAnswer.charAt(0).toUpperCase() + typedAnswer.slice(1).toLowerCase();
+      input.value = savedAnswers[current];
 
     locked[current] = true;
+
+    score++;
+
+    input.classList.remove("input-wrong");
+
+    input.classList.add("input-correct");
+
+    showPopup(true);
+
+    speak("Correct");
+
+    fireConfetti();
+
     nextBtn.disabled = false;
+
     submitBtn.disabled = true;
 
-    renderBoxes();
+    input.disabled = true;
 
     if (current === quizData.length - 1) {
       setTimeout(showFinal, 1600);
     }
   } else {
     showPopup(false);
+
     speak("Wrong");
 
-    const boxes = document.querySelectorAll(".letter-box");
-    boxes.forEach((box) => box.classList.add("wrong"));
+    input.classList.add("input-wrong");
 
     setTimeout(() => {
-      typedLetters = new Array(correctWord.length).fill("");
-      savedAnswers[current] = null;
-      activeIndex = -1;
-      isFocused = false;
-      renderBoxes();
-    }, 500);
+      input.classList.remove("input-wrong");
+    }, 600);
+
+    input.value = "";
+
+    submitBtn.disabled = true;
   }
 };
 

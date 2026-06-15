@@ -14,7 +14,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Livvic',sans-serif;
+font-family:'Livvic',;
 }
 
 body{
@@ -23,8 +23,6 @@ display:flex;
 overflow:hidden;
 position:relative;
 }
-
-/* Background layer */
 body::before{
 content:"";
 position:absolute;
@@ -38,7 +36,8 @@ background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
 
-filter: blur(2px) brightness(0.95) saturate(1.2);
+filter: blur(4px) brightness(0.95) saturate(1.2);
+
 z-index:-1;
 }
 
@@ -143,7 +142,7 @@ border:none;
 
 font-size:18px;
 font-weight:600;
-
+color: #2f4f4f;
 display:flex;
 align-items:center;
 justify-content:flex-start;
@@ -161,8 +160,8 @@ transition:.25s;
 .menu button:after{
 content:"";
 position:absolute;
-top:4px;
-left:10px;
+top:0px;
+left:4px;
 right:10px;
 height:45%;
 background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,0));
@@ -518,7 +517,7 @@ flex-shrink:0;
 </button>
 
 <button class="fill" data-file="./exercise/fillintheblanks.html">
-<span class="icon icon-fill">✏️</span> Fill in the Blanks
+<span class="icon icon-fill">✏️</span> Fill the Blanks
 </button>
 
 <button class="tf" data-file="./exercise/truefalse.html">

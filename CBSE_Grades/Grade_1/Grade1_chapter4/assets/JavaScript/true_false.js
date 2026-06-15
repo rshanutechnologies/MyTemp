@@ -7,7 +7,7 @@ const questions = [
   {
     q: "Q2. Each hand has ten fingers.",
     a: false,
-    img: "../assets/images/hands.png",
+    img: "../assets/images/handss.png",
   },
   {
     q: "Q3. We have five sense organs.",

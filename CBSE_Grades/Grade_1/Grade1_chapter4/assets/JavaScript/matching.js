@@ -39,6 +39,7 @@ let selectedLeft = null;
 let matchesFound = 0;
 let score = 0;
 let connections = [];
+let matchNumber = 1;
 
 const leftCol = document.getElementById("leftColumn");
 const rightCol = document.getElementById("rightColumn");
@@ -115,6 +116,14 @@ function bigConfetti() {
   confetti({ particleCount: 60, spread: 90, origin: { y: 0.7 } });
 }
 
+function addMatchBadge(element, number) {
+  if (element.querySelector(".match-badge")) return;
+  const badge = document.createElement("div");
+  badge.className = "match-badge";
+  badge.textContent = number;
+  element.appendChild(badge);
+}
+
 function handleMatch(leftEl, rightEl) {
   score++;
 
@@ -127,7 +136,18 @@ function handleMatch(leftEl, rightEl) {
 
   drawCurve(leftEl, rightEl);
 
-  connections.push({ from: leftEl, to: rightEl });
+  connections.push({
+    from: leftEl,
+    to: rightEl,
+  });
+
+  if (window.innerWidth <= 600) {
+    addMatchBadge(leftEl, matchNumber);
+
+    addMatchBadge(rightEl, matchNumber);
+
+    matchNumber++;
+  }
 
   selectedLeft = null;
   matchesFound++;

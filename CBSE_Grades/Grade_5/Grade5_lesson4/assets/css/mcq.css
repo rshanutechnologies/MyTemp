@@ -162,7 +162,7 @@ body::before {
 
 .correct-lock {
     border: 3px solid #2ecc71;
-    background: #11e71b;
+    background: #aef9b2;
 }
 
 /* ================= WRONG ================= */
@@ -668,7 +668,7 @@ body::before {
 
     /* title */
     .title {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     /* image */

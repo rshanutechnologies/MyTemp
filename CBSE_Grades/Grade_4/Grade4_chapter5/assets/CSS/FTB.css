@@ -291,8 +291,55 @@ body {
         box-shadow: none;
     }
 }
+@media (min-width: 901px) and (max-width: 1399px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    .main-container {
+        width: min(900px, 90vw);
+        height: 100vh;
+    }
+
+    .quiz-container {
+        height: 100vh;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .question-area h2 {
+        font-size: 30px;
+    }
+
+    .image-area img {
+        width: 340px;
+        height: 220px;
+    }
+
+    .input-area {
+        width: 90%;
+        gap: 12px;
+    }
+
+    .input-box {
+        min-width: 220px;
+        min-height: 60px;
+    }
+
+    .input-box input {
+        height: 48px;
+        font-size: 18px;
+    }
+
+    .nav-buttons button {
+        width: 130px;
+        height: 50px;
+        font-size: 18px;
+    }
+}
 /* DESKTOP — above 1366px only */
-@media (min-width: 1367px) {
+@media (min-width: 1400px) {
 
     .main-container {
         width: min(1000px, 90vw);
@@ -306,7 +353,7 @@ body {
     }
 
     .question-area h2 {
-        font-size: 45px;
+        font-size: 40px;
         min-height: 65px;
     }
 

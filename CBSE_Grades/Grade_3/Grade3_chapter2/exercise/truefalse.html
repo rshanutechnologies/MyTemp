@@ -11,7 +11,7 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:'Livvic',sans-serif;
+  font-family:'Livvic';
 }
 
 body{
@@ -39,16 +39,17 @@ body{
 /* ================= QUESTION ================= */
 
 .question{
-  font-size:clamp(20px,2vw + 1vh,30px);
+  font-size:30px;
   min-height:clamp(60px,10vh,90px);
 
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
+  text-align:left;
 
   color:#2f4f4f;
   padding:0 clamp(10px,2vw,20px);
+  margin-top: -50px;
 }
 
 /* ================= MIDDLE ================= */
@@ -94,7 +95,7 @@ body{
 }
 
 .option-box{
-  width:clamp(70px,9vw,110px);
+   width:clamp(120px,12vw,180px);
   height:clamp(70px,9vw,110px);
 
   display:flex;
@@ -102,7 +103,7 @@ body{
   align-items:center;
 
   font-size:clamp(26px,3vw,42px);
-  font-weight:700;
+  font-weight:600;
 
   border-radius:25px;
   cursor:pointer;
@@ -269,7 +270,7 @@ font-weight:600;
   }
   .question{
    
-    font-size: 20px;
+    font-size: 22px;
   }
 
 }
@@ -280,6 +281,12 @@ font-weight:600;
     font-size: 30px;
   }
 
+}
+
+@media screen and (max-width:768px){
+  .question{
+    font-size: 22px;
+  }
 }
 
 /* ============================= */
@@ -434,8 +441,8 @@ font-weight:600;
 
     <div class="right">
       <div class="options">
-        <div class="option-box true-box" onclick="selectAnswer('T')">T</div>
-        <div class="option-box false-box" onclick="selectAnswer('F')">F</div>
+       <div class="option-box true-box" onclick="selectAnswer('T')">True</div>
+<div class="option-box false-box" onclick="selectAnswer('F')">False</div>
       </div>
 
       <div class="answer-box" id="answerBox"></div>
@@ -535,7 +542,15 @@ function loadQuestion(){
   questionEl.textContent = q.q;
   imgEl.src = q.img;
 
-  answerBox.textContent = selectedAnswers[current] || "";
+ if(selectedAnswers[current] === "T"){
+  answerBox.textContent = "True";
+}
+else if(selectedAnswers[current] === "F"){
+  answerBox.textContent = "False";
+}
+else{
+  answerBox.textContent = "";
+}
 
   // ✅ FIXED LINE
   nextBtn.disabled = selectedAnswers[current] === null;
@@ -554,12 +569,12 @@ function selectAnswer(choice){
   setTimeout(()=>fireConfetti(),100);
 
   selectedAnswers[current] = choice;
-  answerBox.textContent = choice;
+ answerBox.textContent = choice === "T" ? "True" : "False";
   nextBtn.disabled = false;
 fireConfetti();
 
     selectedAnswers[current] = choice;
-    answerBox.textContent = choice;
+  answerBox.textContent = choice === "T" ? "True" : "False";
     nextBtn.disabled = false;
 
     popupEmoji.textContent = "🎉";

@@ -54,10 +54,6 @@ const t2 = document.getElementById("text2");
 const box1 = document.getElementById("box1");
 const box2 = document.getElementById("box2");
 
-const inputContainer = document.querySelector(".input-container");
-const input = document.getElementById("answerInput");
-const submit = document.getElementById("submitBtn");
-
 const prev = document.getElementById("prevBtn");
 const next = document.getElementById("nextBtn");
 
@@ -83,25 +79,18 @@ function load() {
   const q = quiz[current];
 
   qEl.textContent = q.q;
+
   img1.src = q.img1;
   img2.src = q.img2;
+
   t1.textContent = q.t1;
   t2.textContent = q.t2;
-
-  inputContainer.classList.remove("correct");
-  input.value = answers[current] || "";
-  input.disabled = answers[current] !== null;
-
-  submit.disabled = !input.value.trim() || answers[current] !== null;
 
   box1.classList.remove("correct", "wrong");
   box2.classList.remove("correct", "wrong");
 
   if (answers[current] !== null) {
-    inputContainer.classList.add("correct");
-    const correct = q.a;
-
-    if (correct === q.t1.toLowerCase()) {
+    if (q.a === q.t1.toLowerCase()) {
       box1.classList.add("correct");
       box2.classList.add("wrong");
     } else {
@@ -111,59 +100,9 @@ function load() {
   }
 
   prev.disabled = current === 0;
+
   next.disabled = answers[current] === null;
 }
-
-input.addEventListener("input", () => {
-  submit.disabled = !input.value.trim();
-});
-
-input.addEventListener("dragover", (e) => {
-  e.preventDefault();
-});
-
-input.addEventListener("drop", (e) => {
-  e.preventDefault();
-});
-document.addEventListener("dragover", (e) => e.preventDefault());
-document.addEventListener("drop", (e) => e.preventDefault());
-
-submit.onclick = function () {
-  const user = input.value.trim().toLowerCase();
-  const q = quiz[current];
-  const correct = q.a;
-
-  if (user === correct) {
-    answers[current] = user;
-    score++;
-
-    inputContainer.classList.add("correct");
-    input.disabled = true;
-    submit.disabled = true;
-
-    if (correct === q.t1.toLowerCase()) {
-      box1.classList.add("correct");
-      box2.classList.add("wrong");
-    } else {
-      box2.classList.add("correct");
-      box1.classList.add("wrong");
-    }
-
-    speak("Correct");
-    smallConfetti();
-    showPopup(true);
-
-    next.disabled = false;
-
-    if (answers.every((a) => a !== null)) setTimeout(showFinal, 1600);
-  } else {
-    speak("Wrong");
-    showPopup(false);
-
-    input.value = "";
-    submit.disabled = true;
-  }
-};
 
 prev.onclick = () => {
   current--;
@@ -172,6 +111,60 @@ prev.onclick = () => {
 next.onclick = () => {
   current++;
   load();
+};
+
+function checkAnswer(selected) {
+  const q = quiz[current];
+
+  if (answers[current] !== null) return;
+
+  if (selected === q.a) {
+    answers[current] = selected;
+
+    score++;
+
+    if (selected === q.t1.toLowerCase()) {
+      box1.classList.add("correct");
+
+      box2.classList.add("wrong");
+    } else {
+      box2.classList.add("correct");
+
+      box1.classList.add("wrong");
+    }
+
+    speak("Correct");
+
+    smallConfetti();
+
+    showPopup(true);
+
+    next.disabled = false;
+
+    if (answers.every((a) => a !== null)) {
+      setTimeout(showFinal, 1600);
+    }
+  } else {
+    speak("Wrong");
+
+    showPopup(false);
+  }
+}
+
+box1.onclick=()=>{
+
+   checkAnswer(
+      quiz[current].t1.toLowerCase()
+   );
+
+};
+
+box2.onclick=()=>{
+
+   checkAnswer(
+      quiz[current].t2.toLowerCase()
+   );
+
 };
 
 function showPopup(isCorrect) {

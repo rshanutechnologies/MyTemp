@@ -54,7 +54,7 @@ const questions = [
 {
 q: "Q.1 Air helps to move the blades of a __________.",
 a: "windmill",
-img: "../assets/images/WindMillak.png"
+img: "../assets/images/windmill1.png"
 },
 
 {

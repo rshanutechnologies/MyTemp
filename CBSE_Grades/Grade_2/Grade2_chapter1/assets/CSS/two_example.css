@@ -17,6 +17,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  
   overflow: hidden;
   margin-top: -2%;
 
@@ -60,6 +61,7 @@ body::before {
   max-height: 80px;
   margin-top: 5%;
   font-weight: 400;
+  text-align: start;
 
 }
 

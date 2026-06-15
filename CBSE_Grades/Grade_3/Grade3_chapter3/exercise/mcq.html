@@ -35,7 +35,7 @@ text-align:left;
 
 /* QUESTION */
 .question{
- font-size: clamp(20px, 2vw + 1.5vh, 34px);
+ font-size: 30px;
 font-weight:500;
 color:#2f4f4f;
 padding:0 clamp(5px,1vw,20px);
@@ -273,6 +273,9 @@ color:#ffcc00;
   .opt-text{
     font-size: 13px;    /* 🔽 slightly smaller text */
   }
+  .question{
+    font-size: 22px;
+  }
 }
 
 
@@ -423,7 +426,11 @@ object-fit:contain;
   }
 
 }
-
+@media (max-width:768px){
+  .question{
+    font-size: 22px;
+  }
+}
 </style>
 </head>
 

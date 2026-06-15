@@ -29,6 +29,7 @@ overflow:hidden;
 width:900px;
 padding:clamp(20px, 3vw, 40px);
 border-radius:24px;
+ margin-top: 10px;
 }
 
 /* ================= TITLE ================= */
@@ -333,60 +334,120 @@ transform:translateY(-3px);
   }
 
 }
-
-/* ========================= */
-/* MOBILE RESPONSIVE */
-/* ========================= */
-@media screen and (max-width:768px){
+@media screen and (max-width:600px){
 
 .game{
-
-gap:12px;
-
+    gap:50px;
+    align-items:flex-start;
 }
 
 .column{
-
-width:48%;
-
+    width:42%;
+    gap:8px;
 }
 
 .item{
-
-height:95px;
-
-font-size:12px;
-
-padding:8px;
-
+    height:96px;           /* fixed height */
+    padding:8px;
+    display:flex;
+    align-items:center;    /* center vertically */
 }
 
 .left img{
-
-width:28px;
-
-height:28px;
-
+    width:32px;
+    height:32px;
+    flex-shrink:0;
 }
 
 .text{
+    font-size:13px;
+    line-height:1.15;
+    display:flex;
+    align-items:center;
+    height:100%;
+}
 
-font-size:12px;
-
-line-height:1.15;
-
+.right .item{
+    justify-content:flex-start;
 }
 
 svg{
-
-display:none;
-
-}
+    display:block;
 }
 
-.matched{
-    opacity:1 !important;
-    font-weight:500;
+}
+
+@media screen and (max-width:480px){
+
+.game{
+    gap:50px;
+}
+
+.column{
+    width:40%;
+}
+
+.item{
+    height:100px;
+    padding:3px;
+}
+
+.text{
+    font-size:14px;
+}
+
+}
+/* ========================= */
+/* TABLET RESPONSIVE */
+/* ========================= */
+@media screen and (min-width:601px) and (max-width:800px){
+
+  .container{
+    width:100%;
+    padding:20px;
+   
+  }
+
+  .game{
+    gap:80px;      /* enough space for lines */
+    justify-content:center;
+  }
+
+  .column{
+    width:42%;
+    gap:12px;
+  }
+
+  .item{
+    height:88px;
+    padding:10px;
+    font-size:18px;
+  }
+
+  .left img{
+    width:42px;
+    height:42px;
+  }
+
+  .text{
+    font-size:16px;
+    line-height:1.2;
+  }
+
+  .dot{
+    width:12px;
+    height:12px;
+  }
+
+  .anchor{
+    width:12px;
+    height:12px;
+  }
+
+  svg{
+    display:block;
+  }
+
 }
 </style>
 </head>
@@ -449,7 +510,7 @@ display:none;
 <div class="item" data-match="a">
 <div class="dot pink"></div>
 <div class="text">They absorb water and minerals
-from the soil.</div>
+from the soil</div>
 <div class="anchor"></div>
 </div>
 
@@ -597,8 +658,10 @@ const y1=r1.top+r1.height/2-svgRect.top
 
 const x2=r2.left+r2.width/2-svgRect.left
 const y2=r2.top+r2.height/2-svgRect.top
-
-const curve=120
+const curve =
+  window.innerWidth <= 480 ? 35 :
+  window.innerWidth <= 1024 ? 60 :
+  120;
 
 const path=document.createElementNS("http://www.w3.org/2000/svg","path")
 
