@@ -2,7 +2,7 @@ const quizData = [
   {
     q: "Q1. Living things need water to ________.",
 
-    img: "../assets/images/mcq-1.png",
+    img: "../assets/images/water.png",
 
     options: [
       {

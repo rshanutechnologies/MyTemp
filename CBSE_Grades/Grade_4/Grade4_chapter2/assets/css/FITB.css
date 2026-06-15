@@ -476,7 +476,7 @@ padding:25px 20px;
 @media screen and (min-width:1225px) and (max-width:1440px){
 
 .quiz{max-width:1200px;}
-.question{font-size:40px !important;}
+.question{font-size:40px !important; ;}
 .blank{width:70px;height:70px;font-size:26px;}
 .letter{width:75px;height:75px;font-size:24px;}
 .imgbox img{max-width:280px;height:260px;}
@@ -487,10 +487,10 @@ padding:25px 20px;
 
 /* ================= 1441px — 1920px ================= */
 
-@media screen and (min-width:1441px) and (max-width:1920px){
+@media screen and (min-width:1600px) and (max-width:1920px){
 
 .quiz{max-width:1350px;}
-.question{font-size:40px !important;}
+.question{font-size:40px !important; }
 .blank{width:70px;height:70px;font-size:30px;}
 .letter{width:80px;height:90px;font-size:28px;}
 .imgbox img{max-width:400px;height:400px;}
