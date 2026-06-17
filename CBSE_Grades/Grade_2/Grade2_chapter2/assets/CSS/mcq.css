@@ -753,14 +753,14 @@ body{
 
 /* navigation buttons */
 .quiz-nav{
-    gap:12px;
+    gap:30px;
     margin-top: -5%;
 }
 
 .prev,
 .next{
-    width:130px;
-    height:48px;
+    width:120px;
+    height:45px;
     font-size:18px;
     margin-top: -2%;
 }

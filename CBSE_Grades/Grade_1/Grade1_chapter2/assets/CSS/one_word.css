@@ -33,6 +33,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    text-align: start;
 }
 
 #questionImage {
@@ -338,7 +339,7 @@ body {
         font-size: 24px;
         height: auto;
         padding: 10px;
-        text-align: center;
+        text-align: start;
     }
 
     #questionImage {
@@ -434,6 +435,10 @@ body {
 }
 
 @media (max-width:480px) {
+    body {
+        padding: 50px 0 10px;
+        align-items: flex-start;
+    }
 
     .question-title {
         font-size: 22px;
@@ -479,6 +484,7 @@ body {
 
     .quiz-navigation button {
         font-size: 18px;
+        padding: 6px 20px;
     }
 
     .kid-card {
@@ -565,7 +571,7 @@ body {
     }
 
     .quiz-navigation button {
-        padding: 8px 16px;
+        padding: 6px 20px;
         font-size: 16px;
     }
 }

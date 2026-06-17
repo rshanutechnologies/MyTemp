@@ -599,11 +599,17 @@ max-width:110px;
 .options{
     margin-left: 0%;
 }
+.nav{
+    margin-top: 10%;
+    gap:30px;
+    /* width: 100%; */
+   
+}
 .nav button{
 
-font-size:16px;
+font-size: 16px;
 
-padding:8px 18px;
+        padding: 12px 28px;
 
 }
 
@@ -620,7 +626,6 @@ font-size:36px;
 }
 
 }
-
 
 
 /* ================= 1025px — 1440px ================= */

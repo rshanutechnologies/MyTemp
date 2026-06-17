@@ -52,31 +52,31 @@ function showFinal() {
 const questions = [
 
 {
-q: "Q.1 The upper arm is made of a long bone called the __________.",
+q: "Q1. The upper arm is made of a long bone called the __________.",
 a: ["humerus"],
 img: "../assets/images/humerus1.png"
 },
 
 {
-q: "Q.2 The lower leg has two bones namely __________ and __________.",
+q: "Q2. The lower leg has two bones namely __________ and __________.",
 a: ["tibia","fibula"],
 img: "../assets/images/legbones.png"
 },
 
 {
-q: "Q.3 Bones are held together at joints by __________.",
+q: "Q3. Bones are held together at joints by __________.",
 a: ["ligaments"],
 img: "../assets/images/ligaments1.png"
 },
 
 {
-q: "Q.4 The __________ protects the vital internal organs of our body.",
+q: "Q4. The __________ protects the vital internal organs of our body.",
 a: ["rib cage"],
 img: "../assets/images/ribcage.png"
 },
 
 {
-q: "Q.5 The __________ acts as a cushion and reduces friction between the bones.",
+q: "Q5. The __________ acts as a cushion and reduces friction between the bones.",
 a: ["cartilage"],
 img: "../assets/images/Cartilage1.png"
 }

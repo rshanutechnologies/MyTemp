@@ -35,7 +35,7 @@ justify-content:flex-start;
 padding-top:40px;
 gap:10px;
 
-height:100vh;     /* ADD THIS */
+height:98vh;     /* ADD THIS */
 }
 /* REALISTIC WOOD STICK */
 
@@ -240,6 +240,40 @@ box-shadow:
 border:4px dashed #ffe066;
 animation:activeGlow 1.5s infinite;
 }
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media screen and (max-width:600px){
+
+  body{
+    overflow:hidden;
+  }
+
+  /* Quiz area */
+  .content{
+    padding:10px;
+    width:100%;
+    height:100vh;
+  }
+
+  .screen{
+    width:100%;
+    max-width:100%;
+    height:100vh;
+    border-radius:12px;
+  }
+
+  iframe{
+    width:100%;
+    height:100%;
+  }
+
+
+
+
+}
+
 @media(max-width:1000px){
 .sidebar{
 position:fixed;

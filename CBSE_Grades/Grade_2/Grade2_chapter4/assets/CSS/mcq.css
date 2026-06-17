@@ -375,9 +375,9 @@ body::before{
     }
 
     .prev, .next{
-        width:50px;
-        height:50px;
-        font-size:12px;
+        width:70px;
+        height:70px;
+        font-size:14px;
     }
 
     .popup-content{
@@ -464,9 +464,9 @@ body::before{
     }
 
     .prev, .next{
-        width:55px;
-        height:55px;
-        font-size:13px;
+        width:70px;
+        height:70px;
+        font-size:14px;
     }
 
     .popup-content{
@@ -553,8 +553,8 @@ body::before{
     }
 
     .prev, .next{
-        width:60px;
-        height:60px;
+        width:70px;
+        height:70px;
         font-size:14px;
     }
 
@@ -730,7 +730,7 @@ body::before{
 @media (min-width: 901px) and (max-width: 1100px){
     .app{
         padding:20px;
-        margin-top:-3%;
+        margin-top:-12%;
 
     }
 
@@ -768,7 +768,7 @@ body::before{
 
     .quiz-nav{
         gap:70%;
-        margin-top:-9%;
+        margin-top:-20%;
     }
 
     .prev, .next{
@@ -782,6 +782,7 @@ body::before{
 @media (min-width: 1101px) and (max-width: 1180px){
     .app{
         margin-top:-4%;
+       
     }
 
     .title{
@@ -820,6 +821,7 @@ body::before{
 @media (min-width: 1181px) and (max-width: 1325px){
     body{
         margin-top:2% !important;
+       
     }
 
     .app{
@@ -847,7 +849,7 @@ body::before{
 
     .quiz-nav{
         gap:78%;
-        margin-top: -20%;
+        margin-top: -10%;
     }
 }
 
@@ -908,7 +910,7 @@ body::before{
     }
 
     .app{
-        margin-top:-4%;
+        margin-top:4%;
         padding:24px;
     }
 
@@ -957,7 +959,7 @@ body::before{
         width:100%;
         height:100%;
         padding:40px;
-        margin-top:-3%;
+        margin-top:1%;
     }
 
     .template{

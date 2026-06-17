@@ -34,7 +34,7 @@ body {
     font-size: 30px;
     font-weight: 400;
     color: #2f4f4f;
-    text-align: center;
+    text-align: start;
     margin-bottom: 20px;
 }
 
@@ -522,6 +522,7 @@ body {
     }
 
     .question-box {
+        width: 100%;
         font-size: 22px;
         margin: 0px 0px 5px;
     }
@@ -556,7 +557,8 @@ body {
     }
 
     .controls button {
-        padding: 7px 24px;
+        font-size: 18px;
+        padding: 8px 20px;
         border-radius: 25px;
     }
 

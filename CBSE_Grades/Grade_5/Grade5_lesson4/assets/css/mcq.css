@@ -561,7 +561,7 @@ body::before {
         overflow: auto;
         align-items: flex-start;
         margin-top: 10%;
-        overflow: scroll;
+        overflow: hidden;
     }
 
     /* main container */
@@ -704,17 +704,17 @@ body::before {
 
     /* navigation */
     .quiz-nav {
-        gap: 20px;
-        margin-top: 140px;
+        gap: 70px;
+        margin-top: 170px;
 
     }
 
     /* buttons */
     .prev,
     .next {
-        width: 60px;
-        height: 60px;
-        font-size: 12px;
+        width: 70px;
+        height: 70px;
+        font-size: 15px;
     }
 
     #finalPopup {
@@ -769,6 +769,9 @@ width:min(1200px,98vw);
 height:min(700px,98vh);
 } */
 
+body{
+    margin-top: 5%;
+}
 .title{
 font-size:44px;
 width: 100%;

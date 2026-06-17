@@ -418,12 +418,12 @@ body {
     }
 
     .quiz {
-        padding: 20px;
+         padding: 10px 15px;
         /* background-color: #e08634; */
     }
 
     #question {
-        font-size: 30px;
+        font-size: 28px;
         height: auto;
     }
 
@@ -433,13 +433,14 @@ body {
     }
 
     .option {
-        font-size: 16px;
-        padding: 10px;
+        font-size: 14px;
+        padding: 14px 12px;
+
     }
 
     .option-img {
-        width: 75px;
-        height: 60px;
+        width: 60px;
+        height: 50px;
     }
 
     .controls button {
@@ -454,6 +455,7 @@ body {
 ========================================= */
 
 @media (max-width: 480px) {
+   
 
     #question {
         font-size: 22px;
@@ -472,10 +474,10 @@ body {
     }
 
     .option {
-        min-height: 100px; /* reduced box height */
-        padding: 8px;
-        gap: 6px;
-        font-size: 15px;
+        min-height: 70px; /* reduced box height */
+        padding: 10px;
+        gap: 10px;
+        font-size: 12px;
         flex-direction: column;
         text-align: center;
     }
@@ -486,7 +488,7 @@ body {
     }
 
     .controls {
-        margin-top: -30px;
+        margin-top: -4px;
         gap: 15px; /* gap between buttons */
     }
 
@@ -546,7 +548,7 @@ body {
     }
 
     #question {
-        font-size: 30px !important;
+        font-size: 40px !important;
          min-height: 90px;
     }
 

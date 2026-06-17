@@ -50,31 +50,31 @@ function showFinal() {
 
 const quizData = [
   {
-    q:"Q.1  Roots transport food and water to all the parts Reasoning Skills of a plant.",
+    q:"Q1.  Roots transport food and water to all the parts Reasoning Skills of a plant.",
     a:false,
     img:"../assets/images/RootTrasport.png",
     answered:false
   },
   {
-    q:"Q.2 Trees have a soft stem.   ",
+    q:"Q2. Trees have a soft stem.   ",
     a:false,
     img:"../assets/images/SoftStem.png",
     answered:false
   },
   {
-    q:"Q.3  A pumpkin plant is an example of a creeper.  ",
+    q:"Q3.  A pumpkin plant is an example of a creeper.  ",
     a:true,
     img:"../assets/images/Pumpkin1.png",
     answered:false
   },
   {
-    q:"Q.4  We get perfume from jasmine flower.  ",
+    q:"Q4.  We get perfume from jasmine flower.  ",
     a:true,
     img:"../assets/images/JasminPerfume.png",
     answered:false
   },
   {
-    q:"Q.5 Seeds grow into new plants. ",
+    q:"Q5. Seeds grow into new plants. ",
     a:true,
     img:"../assets/images/SeedGrow.png",
     answered:false

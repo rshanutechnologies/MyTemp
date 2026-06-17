@@ -486,13 +486,15 @@ body {
     }
 
     .controls {
-        margin-top: 20px;
+        margin-top: 40px;
     }
 
     .controls button {
-        width: 85px;
-        height: 40px;
-        font-size: 20px;
+   width: 100px;
+                height: 46px;
+                font-size: 24px;
+                padding: 5px;
+       
     }
 
     .final-kid-box {
@@ -523,7 +525,7 @@ body {
 
 
 
-@media (max-width:380px) {
+@media (max-width:400px) {
  body{
     margin-top: -50px;
  }
@@ -562,9 +564,10 @@ body {
     }
 
     .controls button {
-        width: 85px;
-        height: 40px;
-        font-size: 20px;
+          width: 100px;
+                height: 46px;
+                font-size: 24px;
+        
     }
 
     .final-kid-box {

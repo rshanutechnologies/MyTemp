@@ -1049,13 +1049,13 @@ body::before {
 
   /* buttons */
   .quiz-nav {
-    gap: 20px;
+    gap: 50px;
   }
 
   .prev,
   .next {
-    width: 120px;
-    height: 45px;
+    width: 130px;
+    height: 50px;
     font-size: 18px;
   }
 

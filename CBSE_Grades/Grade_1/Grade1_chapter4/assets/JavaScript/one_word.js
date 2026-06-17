@@ -8,7 +8,7 @@ const quizData = [
   {
     q: "Q2. We have to avoid this food to have healthy teeth",
     a: "JUNK FOOD",
-    img: "../assets/images/junk-food.png",
+    img: "../assets/images/no-junkFood.png",
   },
 
   {

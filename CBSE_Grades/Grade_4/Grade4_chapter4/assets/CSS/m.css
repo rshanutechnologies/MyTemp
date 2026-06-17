@@ -429,6 +429,10 @@ body {
         height: 28px;
         flex-shrink: 0;
     }
+    #line-canvas line,
+#line-canvas path {
+    stroke-width: 1px !important;
+}
 }
 
 

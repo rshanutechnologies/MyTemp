@@ -1,7 +1,7 @@
 const leftData=[
  {text:"1. Egg-laying mammals", match:"b", img:"../assets/images/platypus.png"},
  {text:"2. Frogs and fishes", match:"e", img:"../assets/images/frog.png"},
- {text:"3. Yolk", match:"d", img:"../assets/images/yolk.png"},
+ {text:"3. Yolk", match:"d", img:"../assets/images/yolk1.png"},
  {text:"4. Broody hen", match:"a", img:"../assets/images/hen.png"},
  {text:"5. Bats", match:"c", img:"../assets/images/bat.png"}
 ];

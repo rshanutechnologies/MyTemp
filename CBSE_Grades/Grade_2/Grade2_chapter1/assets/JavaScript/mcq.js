@@ -2,7 +2,7 @@
 const quizData = [
 
 {
-title: "Q.1 Carrot is a _________.",
+title: "Q1. Carrot is a _________.",
 image: "../assets/images/Carrotakc.png",
 options: [
 { text: "Stem", img: "../assets/images/stemM.png" },
@@ -14,7 +14,7 @@ answer: "Root"
 },
 
 {
-title: "Q.2 The _______________ transports food and water to all the parts of a plant.",
+title: "Q2. The _______________ transports food and water to all the parts of a plant.",
 image: "../assets/images/TransportFoot.png",
 options: [
 { text: "Root", img: "../assets/images/RootM.png" },
@@ -26,7 +26,7 @@ answer: "Stem"
 },
 
 {
-title: "Q.3 We need _______ to make our clothes.",
+title: "Q3. We need _______ to make our clothes.",
 image: "../assets/images/Clothesak.png",
 options: [
 { text: "Fibre", img: "../assets/images/fiberimg.png" },
@@ -38,7 +38,7 @@ answer: "Fibre"
 },
 
 {
-title: "Q.4 Plants that have weak stems and need support to grow are called _____________.",
+title: "Q4. Plants that have weak stems and need support to grow are called _____________.",
 image: "../assets/images/Climberakk.png",
 options: [
 { text: "Trees", img: "../assets/images/SoftStem.png" },
@@ -50,7 +50,7 @@ answer: "Climbers"
 },
 
 {
-title: "Q.5 Mint plant is an example of a _____.",
+title: "Q5. Mint plant is an example of a _____.",
 image: "../assets/images/MintPlant.png",
 options: [
 { text: "Climber", img: "../assets/images/ClimbPlant.png" },
@@ -82,8 +82,6 @@ const optionsBox = document.getElementById("optionsBox");
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
-const scoreBox = document.getElementById("scoreBox");
-
 
 /* ================= TTS ================= */
 
@@ -167,7 +165,6 @@ function checkAnswer(optionDiv, selected) {
   if (selected === correct) {
     state.answered = true;
     score++;
-    scoreBox.textContent = "Score: " + score;
 
     document.querySelectorAll(".option").forEach((o) => {
       o.classList.add("disabled");

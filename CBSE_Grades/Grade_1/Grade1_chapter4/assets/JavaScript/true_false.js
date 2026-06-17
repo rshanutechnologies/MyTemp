@@ -17,7 +17,7 @@ const questions = [
   {
     q: "Q4. Each foot has four toes.",
     a: false,
-    img: "../assets/images/foot.png",
+    img: "../assets/images/boy-leg.png",
   },
   {
     q: "Q5. Our skin helps us to feel.",

@@ -73,7 +73,7 @@ body {
 
 /* ANSWERS */
 .answers {
-    width: 70%; /* 🔥 more spread */
+    width: 60% !important; /* 🔥 more spread */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(18px, 2vw, 35px);
@@ -82,9 +82,9 @@ body {
 }
 
 .answer {
-    height: clamp(80px, 12vh, 110px); /* 🔥 bigger */
-    border-radius: 30px;
-    font-size: clamp(17px, 2vw, 20px);
+    height: clamp(60px, 10vh, 90px); /* 🔥 bigger */
+    border-radius: 50px;
+    font-size: 24px !important;
     font-weight: 600;
     border: none;
     cursor: pointer;
@@ -93,11 +93,11 @@ body {
 }
 
 .answer.true {
-    background: linear-gradient(180deg, #34d399, #10b981);
+    background: linear-gradient(180deg, #34f3ad, #37a883);
 }
 
 .answer.false {
-    background: linear-gradient(180deg, #fb7185, #ef4444);
+    background: linear-gradient(180deg, #e78896, #d34747);
 }
 
 .answer:hover:not(:disabled) {
@@ -106,6 +106,24 @@ body {
 
 .answer.correct {
     opacity: 1;
+    animation: correctBounce 1s ease-in-out infinite;
+}
+@keyframes correctBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(-10px) scale(1.08);
+    }
+
+    50% {
+        transform: translateY(0) scale(1);
+    }
+
+    75% {
+        transform: translateY(-5px) scale(1.04);
+    }
 }
 
 .answer:disabled {
@@ -299,7 +317,7 @@ body {
     .nav button {
         width: 110px;
         height: 50px;
-        font-size: 16px;
+        font-size: 14px !important;
     }
 }
 @media (max-width: 480px) {
@@ -321,15 +339,15 @@ body {
     }
 
     .answers{
-        width: 100%;
+        width: 100% !important;
         gap: 8px;
         margin-top: 12px;
     }
 
     .answer{
-        height: 55px;
-        font-size: 14px;
-        border-radius: 20px;
+        height: 60px !important;
+        font-size: 14px !important;
+        border-radius: 50px;
     }
 
     .nav{
@@ -339,7 +357,7 @@ body {
     .nav button{
         width: 90px;
         height: 40px;
-        font-size: 13px;
+        font-size: 13px !important;
     }
 }
 
@@ -356,7 +374,7 @@ body {
     }
 
     .question-box {
-        font-size: 30px;
+        font-size: 40px;
     }
 
     .question-image img {

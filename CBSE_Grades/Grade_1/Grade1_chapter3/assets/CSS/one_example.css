@@ -29,7 +29,7 @@ body {
     font-size: 30px;
     font-weight: 400;
     color: #2f4f4f;
-    text-align: center;
+    text-align: start;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -401,8 +401,8 @@ body {
 @media (max-width:480px) {
 
     body {
-        padding: 0px 0 10px;
-        align-items: center;
+        padding: 50px 0px;
+        align-items: flex-start;
     }
 
 

@@ -97,20 +97,21 @@
     .island-btn.active {
       transform: perspective(700px) translateZ(2px) scale(1);
       font-weight: 600 !important;
-      box-shadow:
+      /* box-shadow:
         0 18px 28px rgba(0, 0, 0, .25),
         0 0 0 3px rgba(255, 255, 255, .9),
         0 0 24px rgba(255, 200, 0, .6),
+        inset 0 3px 0 rgba(255, 255, 255, .85); */
+
+        box-shadow:
+        0 18px 28px rgba(0, 0, 0, 0.13),
+        0 0 0 3px rgba(255, 255, 255, .9),
+        0 0 24px rgba(255, 226, 122, 0.6),
         inset 0 3px 0 rgba(255, 255, 255, .85);
-      /* box-shadow:
-        0 10px 18px rgba(0, 0, 0, .18),
-        0 6px 12px rgba(0, 0, 0, .12),
-        0 0 14px rgba(255, 180, 0, .45),
-        inset 0 2px 0 rgba(255, 255, 255, .7); */
     }
 
     /* light sheen */
-    .island-btn::after {
+    /* .island-btn::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -120,7 +121,7 @@
           transparent 70%);
       transform: translateX(-120%);
       pointer-events: none;
-    }
+    } */
 
     .island-btn.active::after {
       animation: shine 2.8s ease-in-out infinite;
@@ -129,7 +130,7 @@
     /* ===== DEFAULT DIMMED STATE ===== */
     .island-btn {
       opacity: .55;
-      filter: saturate(.6);
+      filter: saturate(.4) grayscale(50%);
     }
 
     /* ===== ACTIVE RESTORES COLOR ===== */
@@ -174,19 +175,19 @@
 
     /* ===== PASTEL COLORS ===== */
     .o1 {
-      background: #ffe3c3;
+      background: #ffdcb4;
     }
 
     .o2 {
-      background: #c5e6fc;
+      background: #ffe79a;
     }
 
     .o3 {
-      background: #ffe58f;
+      background: #c5e6fc;
     }
 
     .o4 {
-      background: #cafffb;
+      background: #9bff87;
     }
 
     .o5 {
@@ -440,7 +441,7 @@
         <div class="sparkles">
           <span></span><span></span><span></span>
         </div>
-        <img src="./assets/images/bear-img.png">
+        <img src="./assets/images/mcq-icon.png">
         Correct Options
       </div>
 
@@ -448,7 +449,7 @@
         <div class="sparkles">
           <span></span><span></span><span></span>
         </div>
-        <img src="./assets/images/pencil.png">
+        <img src="./assets/images/ftb-icon.png">
         Fill Blanks
       </div>
 
@@ -456,7 +457,7 @@
         <div class="sparkles">
           <span></span><span></span><span></span>
         </div>
-        <img src="./assets/images/forest-img.png">
+        <img src="./assets/images/tf-icon.png">
         True / False
       </div>
 
@@ -464,7 +465,7 @@
         <div class="sparkles">
           <span></span><span></span><span></span>
         </div>
-        <img src="./assets/images/a-3.png">
+        <img src="./assets/images/match-icon.png">
         Matching
       </div>
 
@@ -472,7 +473,7 @@
         <div class="sparkles">
           <span></span><span></span><span></span>
         </div>
-        <img src="./assets/images/tiger-img.png">
+        <img src="./assets/images/oe-icon2.png">
         One Examples
       </div>
 
@@ -489,27 +490,27 @@
     <div class="offcanvas-panel" onclick="event.stopPropagation()">
 
       <div class="island-btn o1 active" onclick="mobileOpen(0)">
-        <img src="./assets/images/bear-img.png">
+        <img src="./assets/images/mcq-icon.png">
         Correct Options
       </div>
 
       <div class="island-btn o2" onclick="mobileOpen(1)">
-        <img src="./assets/images/pencil.png">
+        <img src="./assets/images/ftb-icon.png">
         Fill Blanks
       </div>
 
       <div class="island-btn o3" onclick="mobileOpen(2)">
-        <img src="./assets/images/forest-img.png">
+        <img src="./assets/images/tf-icon.png">
         True / False
       </div>
 
       <div class="island-btn o4" onclick="mobileOpen(3)">
-        <img src="./assets/images/a-3.png">
+        <img src="./assets/images/match-icon.png">
         Matching
       </div>
 
       <div class="island-btn o5" onclick="mobileOpen(4)">
-        <img src="./assets/images/tiger-img.png">
+        <img src="./assets/images/oe-icon2.png">
         One Examples
       </div>
 

@@ -46,35 +46,35 @@ function showFinal() {
 const quizData = [
 
 {
-q:"Q.1 Cartilage is harder than bone.",
+q:"Q1. Cartilage is harder than bone.",
 a:false,
 img:"../assets/images/Cartilage1.png",
 answered:false
 },
 
 {
-q:"Q.2 Bone marrow helps in the formation of new blood cells.",
+q:"Q2. Bone marrow helps in the formation of new blood cells.",
 a:true,
 img:"../assets/images/boneMarrow1.png",
 answered:false
 },
 
 {
-q:"Q.3 The skeleton of an adult has 201 bones.",
+q:"Q3. The skeleton of an adult has 201 bones.",
 a:false,
 img:"../assets/images/skeleton1.png",
 answered:false
 },
 
 {
-q:"Q.4 Minerals like calcium and phosphorus make the bones strong.",
+q:"Q4. Minerals like calcium and phosphorus make the bones strong.",
 a:true,
 img:"../assets/images/boneMinerals.png",
 answered:false
 },
 
 {
-q:"Q.5 A newborn baby has 206 bones.",
+q:"Q5. A newborn baby has 206 bones.",
 a:false,
 img:"../assets/images/babyBones.png",
 answered:false

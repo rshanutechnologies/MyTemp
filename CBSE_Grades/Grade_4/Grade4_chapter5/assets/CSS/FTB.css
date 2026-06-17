@@ -41,11 +41,12 @@ body {
     width: 100%;
     min-height: clamp(40px, 7vh, 60px);
     display: flex;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
 }
 
 .question-area h2 {
+     /* width: 100%; */
     font-size: clamp(20px, 2.5vw, 30px);
     font-weight: 400;
     color: #2f4f4f;
@@ -342,7 +343,7 @@ body {
 @media (min-width: 1400px) {
 
     .main-container {
-        width: min(1000px, 90vw);
+        width: min(1200px, 95vw);
         justify-content: center;
         align-items: center;
     }

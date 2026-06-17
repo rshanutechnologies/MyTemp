@@ -266,6 +266,10 @@ body{
   svg{
     display:none;
   }
+  .item{
+    font-size: 15px;
+  }
+
 }
 
 /* ============================= */
@@ -406,6 +410,7 @@ body{
 @media(max-width:600px){
 body{
   overflow: hidden;
+  margin-top: -30px;
 }
   .right .item{
     display:grid;
@@ -427,6 +432,11 @@ body{
     height: 90px;
   }
 
+.left-img{
+  width:50px;
+  height:50px;
+  object-fit:contain;
+}
 
 }
 </style>
@@ -461,11 +471,11 @@ body{
 </div>
 <script>
 const leftData=[
- {text:"1. Frog", match:"d", img:"../images/frog-img.png"},
- {text:"2. Butterfly", match:"c", img:"../images/butterfly.png"},
- {text:"3. Fish", match:"e", img:"../images/fish.png"},
- {text:"4. Cow", match:"b", img:"../images/cow-img.png"},
- {text:"5. Aquatic bird", match:"a", img:"../images/aquatic.png"},
+ {text:"Frog", match:"d", img:"../images/frog-img.png"},
+ {text:"Butterfly", match:"c", img:"../images/butterfly.png"},
+ {text:"Fish", match:"e", img:"../images/fish.png"},
+ {text:"Cow", match:"b", img:"../images/cow-img.png"},
+ {text:"Aquatic bird", match:"a", img:"../images/aquatic.png"},
 ];
 const rightData=[
  {text:"a) It swims with its webbed feet.", match:"a"},

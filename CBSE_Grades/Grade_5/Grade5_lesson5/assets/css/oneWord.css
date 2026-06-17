@@ -451,9 +451,10 @@
             }
 
             .quiz-navigation button {
-                width: 85px;
-                height: 40px;
-                font-size: 20px;
+               width: 100px;
+                height: 46px;
+                font-size: 24px;
+                padding: 5px;
             }
 
             .final-kid-box {
@@ -521,9 +522,10 @@
             }
 
             .quiz-navigation button {
-                width: 85px;
-                height: 40px;
-                font-size: 20px;
+              width: 100px;
+                height: 46px;
+                font-size: 24px;
+                padding: 5px;
             }
 
             .final-kid-box {

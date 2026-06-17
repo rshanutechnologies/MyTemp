@@ -940,8 +940,8 @@ button:disabled {
     }
 
     .prev, .next {
-        width: 55px;
-        height: 55px;
+        width: 60px;
+        height: 60px;
         font-size: 12px;
         margin-top: 30px;
     }
@@ -1002,10 +1002,14 @@ button:disabled {
     .input-box input {
         font-size: 16px;
     }
+.quiz-nav {
 
+    gap: 42%;
+
+    }
     .prev, .next {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         font-size: 14px;
         margin-top: 35px;
     }
@@ -1049,7 +1053,11 @@ button:disabled {
         font-size: 18px;
     }
  
-    
+    .quiz-nav {
+
+    gap: 42%;
+
+    }
     .prev, .next {
         width: 70px;
         height: 70px;
@@ -1452,10 +1460,12 @@ button:disabled {
 @media screen and (min-width: 1325px) and (max-width: 1440px) {
     .quiz {
         max-width: 1200px;
-        margin-left: 6%;
+        /* margin-left: 6%; */
     }
 
     .question {
+        width: 80%;
+        margin: auto;
         font-size: 44px;
     }
 
@@ -1501,6 +1511,8 @@ button:disabled {
     }
 
     .question {
+         width: 80%;
+        margin: auto;
         font-size: 44px;
     }
 
@@ -1545,7 +1557,7 @@ button:disabled {
 
     .question {
         font-size: 44px;
-        width: 1200px;
+        
     }
 
     .row {
@@ -1566,13 +1578,18 @@ button:disabled {
         height: 60px;
     }
 
+    .left img{
+        margin-top: 35px;
+    }
     .imgbox {
         height: 300px;
+      
     }
 
     .imgbox img {
         width: 300px;
         height: 300px;
+        margin-top: 30px;
     }
 
     .nav {
@@ -1595,17 +1612,21 @@ button:disabled {
     }
 
     .question {
-        font-size: 40px;
+        width: 80%;
+        margin: auto;
+        font-size: 44px;
     }
 
     .left img {
         width: 180px;
         height: 180px;
+        margin-top: 60px;
     }
 
     .input-box {
         width: 40%;
         height: 58px;
+
     }
 
     .input-box input {

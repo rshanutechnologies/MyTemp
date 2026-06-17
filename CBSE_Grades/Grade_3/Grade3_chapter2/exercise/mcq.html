@@ -63,7 +63,7 @@ body{
   justify-content:center;
   align-items:center;
   height:auto;
-  margin-top: -30px;
+  margin-top: -40px;
   
 }
 
@@ -138,11 +138,20 @@ body{
   border-color:#f44336;
   background:#ffebee;
 }
+.nav-container{
+  display:flex;
+  justify-content:space-between;
+  margin-top:30px;
+  width:100%;
+}
 
+.nav-btn{
+  position:static;
+}
 /* ================= BUTTONS ================= */
 .nav-btn{
- position: absolute;
-  bottom:80px;   /* 🔥 ALWAYS SAME POSITION */
+ 
+  
 
   font-size:clamp(16px, 1.5vw, 22px);
 
@@ -326,16 +335,13 @@ body{
     margin-top: -10px;
   }
 
-  /* Navigation Buttons */
+  .nav-container{
+    margin-top:25px;
+  }
+
   .nav-btn{
-    
-    padding:0;
-
-    
-
-    position:fixed;
-    bottom:220px;
-    z-index:100;
+    width:100px;
+    height:42px;
   }
 
   #prevBtn{
@@ -348,57 +354,7 @@ body{
 
 }
 
-@media (max-width:375px){
 
-  .question{
-    font-size:20px;
-    line-height:1.25;
-    margin-top:40px;
-  }
-
-  .question-image img{
-    width:170px;
-    height:170px;
-  }
-
-  .options{
-    gap:12px;
-    margin-top:-10px;
-  }
-
-  .circle{
-    width:80px;
-    height:80px;
-  }
-
-  .circle img{
-    width:60%;
-  }
-
-  .option p{
-    font-size:12px;
-    padding:4px 8px;
-  }
-
-  .nav-btn{
-    width:95px;
-    height:40px;
-    font-size:14px;
-    bottom:20px;
-  }
-
-  #prevBtn{
-    left:8px;
-  }
-
-  #nextBtn{
-    right:8px;
-  }
-
-  .quiz-container{
-    padding-bottom:70px;
-  }
-}
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
@@ -418,7 +374,7 @@ body{
   /* IMAGE */
   .question-image img{
     width:400px;
-    margin-bottom: 20px;
+    margin-top: 30px;
     
   }
 
@@ -566,10 +522,10 @@ body{
   <img id="questionImg" src="">
 </div>
   <div class="options" id="options"></div>
-
+<div class="nav-container">
   <button class="nav-btn" id="prevBtn">Previous</button>
   <button class="nav-btn" id="nextBtn" disabled>Next</button>
-
+</div>
  <!-- Popup -->
 <div id="popup" class="popup hidden">
  <div class="popup-content">

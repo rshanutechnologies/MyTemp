@@ -627,6 +627,8 @@ body::before {
     padding: 14px 28px;
   }
 }
+
+
 </style>
 </head>
 
@@ -866,6 +868,8 @@ submitBtn.onclick = () => {
     // Don't clear the input, just show error and let user try again
     answerInput.focus();
     answerInput.select();
+    answerInput.value="";
+    
   }
 };
 

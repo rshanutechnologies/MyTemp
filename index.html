@@ -17,6 +17,38 @@
       box-sizing: border-box;
     }
 
+    .btn-back-white {
+      background: white;
+      color: #2c2c31;
+      padding: 14px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .btn-back-white:hover {
+      background: #f8fafc;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-back-white i {
+      position: relative;
+      font-size: 15px;
+      -webkit-text-stroke: 1px #334155;
+      top: 1px;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: #f4f6f9;
@@ -315,6 +347,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .B::before {
       content: '';
       position: absolute;
@@ -322,17 +355,20 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
       transition: left 0.5s ease;
     }
+
     .B:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 30px rgba(15, 106, 90, 0.4);
       background: linear-gradient(135deg, #0d5e4f, #12a07f);
     }
+
     .B:hover::before {
       left: 100%;
     }
+
     .B:active {
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(15, 106, 90, 0.3);
@@ -385,8 +421,9 @@
       justify-content: center;
       gap: 6px;
       border: none;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
+
     .grade-card::before {
       content: '';
       position: absolute;
@@ -394,18 +431,21 @@
       right: -50%;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
       pointer-events: none;
       transition: all 0.5s ease;
     }
+
     .grade-card:hover {
       transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     }
+
     .grade-card:hover::before {
       top: -10%;
       right: -10%;
     }
+
     .grade-card:active {
       transform: translateY(-2px) scale(0.98);
     }
@@ -414,31 +454,35 @@
       font-size: 44px;
       line-height: 1;
       margin-bottom: 2px;
-      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
     }
+
     .grade-card h3 {
       font-size: 20px;
       font-weight: 800;
       color: white;
       margin: 0;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
+
     .grade-card p {
       font-size: 13px;
       font-weight: 600;
-      color: rgba(255,255,255,0.92);
+      color: rgba(255, 255, 255, 0.92);
       margin: 0;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
+
     .grade-card .click-arrow {
       position: absolute;
       bottom: 10px;
       right: 14px;
       font-size: 18px;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255, 255, 255, 0.7);
       transition: transform 0.3s ease;
       font-weight: 700;
     }
+
     .grade-card:hover .click-arrow {
       transform: translateX(4px);
       color: white;
@@ -449,28 +493,46 @@
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 12px;
       }
+
       .grade-card {
         min-height: 150px;
         padding: 16px 10px 14px;
         border-radius: 16px;
       }
+
       .grade-card .grade-emoji {
         font-size: 36px;
       }
+
       .grade-card h3 {
         font-size: 17px;
       }
+
       .grade-card p {
         font-size: 12px;
       }
     }
 
     /* Grade colors */
-    .grade-1 { background: linear-gradient(145deg, #FF8C32, #F06500); }
-    .grade-2 { background: linear-gradient(145deg, #4A90D9, #2563EB); }
-    .grade-3 { background: linear-gradient(145deg, #48BB78, #2F855A); }
-    .grade-4 { background: linear-gradient(145deg, #F6C042, #E5A000); }
-    .grade-5 { background: linear-gradient(145deg, #9B6ED7, #7C3AED); }
+    .grade-1 {
+      background: linear-gradient(145deg, #FF8C32, #F06500);
+    }
+
+    .grade-2 {
+      background: linear-gradient(145deg, #4A90D9, #2563EB);
+    }
+
+    .grade-3 {
+      background: linear-gradient(145deg, #48BB78, #2F855A);
+    }
+
+    .grade-4 {
+      background: linear-gradient(145deg, #F6C042, #E5A000);
+    }
+
+    .grade-5 {
+      background: linear-gradient(145deg, #9B6ED7, #7C3AED);
+    }
 
     .i {
       height: 80px;
@@ -625,6 +687,7 @@
       -ms-overflow-style: none;
       white-space: nowrap;
     }
+
     .crumbs::-webkit-scrollbar {
       display: none;
     }
@@ -636,24 +699,18 @@
       border-radius: 20px;
       font-size: 14px;
       font-weight: 500;
-      background: #f0f4f8;
       transition: all 0.3s ease;
       border: 1px solid transparent;
     }
 
     .crumbs span:hover {
-      background: #0F6A5A;
-      color: white;
+      color: #0F6A5A;
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(15, 106, 90, 0.25);
-      border-color: #0F6A5A;
     }
 
     .crumbs .crumb-active {
-      background: #0F6A5A;
-      color: white;
+      color: #0F6A5A;
       font-weight: 600;
-      box-shadow: 0 4px 12px rgba(15, 106, 90, 0.2);
     }
 
     .sep {
@@ -1015,6 +1072,7 @@
     .sb-expand-float:hover {
       background: #0d9488;
     }
+
     .sidebar .sidebar-close {
       display: none;
       width: 42px;
@@ -1031,6 +1089,7 @@
       box-shadow: 0 4px 14px rgba(15, 118, 110, 0.4);
       transition: background 0.2s;
     }
+
     .sidebar .sidebar-close:hover {
       background: #0d9488;
     }
@@ -2105,11 +2164,14 @@
     #lessonContent .crumbs span {
       color: var(--ww-dark-green);
     }
+
     #lessonContent .crumbs span:hover {
-      color: white !important;
+      color: var(--ww-dark-green) !important;
     }
+
     #lessonContent .crumbs .crumb-active {
-      color: white !important;
+      color: var(--ww-dark-green) !important;
+      font-weight: 600;
     }
 
     #lessonContent .sep {
@@ -2649,6 +2711,10 @@
 
     body {
       overflow-x: hidden;
+      overflow-y: auto;
+    }
+    html {
+      overflow-y: auto;
     }
 
     /* =========================================
@@ -2790,9 +2856,13 @@
       }
 
       /* Prevent horizontal scroll on phones */
-      html,
+      html {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
       body {
         overflow-x: hidden;
+        overflow-y: auto;
       }
     }
 
@@ -3094,12 +3164,10 @@
       overflow: hidden;
     }
 
-    /* Hover affordance (teal pill) */
+    /* Hover affordance */
     .crumbs span:hover {
-      background: #0F6A5A;
-      color: white;
+      color: #0F6A5A;
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(15, 106, 90, 0.25);
     }
 
     /* On very narrow phones, still keep it single row with horizontal scroll */
@@ -3202,7 +3270,7 @@
 
     /* Subtle hover */
     .crumbs span:hover {
-      background: #eef2f7;
+      color: #0F6A5A;
     }
 
     /* Slightly tighter on narrow phones */
@@ -3333,15 +3401,12 @@
 
     /* Active/selected crumb highlight */
     .crumbs .crumb-active {
-      background: #DDF3E7;
-      /* soft mint */
       color: #0F6A5A;
-      box-shadow: inset 0 0 0 1px #cfe8d2;
     }
 
     /* Optional hover */
     .crumbs span:hover {
-      background: #eef2f7;
+      color: #0F6A5A;
     }
 
     /* Mobile fine-tuning */
@@ -3442,31 +3507,14 @@
 
     /* Active crumb highlight (solid pill) */
     .crumbs .crumb-active {
-      background: #0F6A5A;
-      color: white;
+      color: #0F6A5A;
       font-weight: 600;
-      box-shadow: 0 4px 12px rgba(15, 106, 90, 0.2);
-      position: relative;
     }
 
-    .crumbs .crumb-active::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -10px;
-      height: 4px;
-      width: 20px;
-      border-radius: 2px;
-      background: #0F6A5A;
-    }
-
-    /* Hover (teal pill) */
+    /* Hover */
     .crumbs span:hover {
-      background: #0F6A5A;
-      color: white;
+      color: #0F6A5A;
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(15, 106, 90, 0.25);
     }
 
     /* Mobile fine-tuning */
@@ -3512,6 +3560,7 @@
         -ms-overflow-style: none;
         white-space: nowrap;
       }
+
       .crumbs::-webkit-scrollbar {
         display: none;
       }
@@ -3590,12 +3639,15 @@
         bottom: auto !important;
         z-index: 1200 !important;
       }
+
       .crumbs {
         padding-right: 48px !important;
       }
+
       body.sb-show .sb-expand-float {
         display: none !important;
       }
+
       .sidebar .sidebar-close {
         display: flex;
         position: fixed;
@@ -3603,22 +3655,26 @@
         left: 4px;
         z-index: 1201;
       }
+
       /* Push back & back-to-home buttons to the right on mobile */
       .B {
         display: flex !important;
         margin-left: auto !important;
         width: fit-content !important;
       }
+
       body:not(.home-theme) .sidebar .sidebar-close {
         top: 12px;
         right: 12px;
         bottom: auto;
         left: auto;
       }
+
       body.sb-show .mobile-topbar .hamburger {
         opacity: 0;
         pointer-events: none;
       }
+
       #homeContent .top-header .inline-hamburger {
         position: static;
         transform: none;
@@ -4098,7 +4154,7 @@
       // Click hamburger => open sidebar
       const btn = topbar.querySelector('.hamburger');
       btn.addEventListener('click', () => {
-        document.body.classList.add('sb-show');
+        document.body.classList.add('sb-show', 'no-scroll');
       });
 
       // Close button inside sidebar
@@ -4153,7 +4209,7 @@
             const r = orig.apply(this, arguments);
             setTimeout(syncTopbarTitle, 0);
             // Close sidebar after navigating (common mobile UX)
-            document.body.classList.remove('sb-show');
+            document.body.classList.remove('sb-show', 'no-scroll');
             return r;
           };
           window[fn].__mtbWrapped = true;
@@ -4161,11 +4217,11 @@
       });
 
     // Close sidebar on orientation change / resize (safe)
-    window.addEventListener('orientationchange', () => document.body.classList.remove('sb-show'));
+    window.addEventListener('orientationchange', () => document.body.classList.remove('sb-show', 'no-scroll'));
     window.addEventListener('resize', () => {
       // If screen grows beyond mobile, ensure sidebar is not forced open via sb-show
       if (window.matchMedia('(min-width: 577px)').matches) {
-        document.body.classList.remove('sb-show');
+        document.body.classList.remove('sb-show', 'no-scroll');
       }
     });
   })();
@@ -5258,8 +5314,7 @@
     <br>
     <h2 style="margin-top:40px;">Mathematics Lessons</h2>
     <div class="subject-container">${mathLessons}</div>
-    <br><br>
-  <button onclick="showHome()" class="B"><i class="fa-solid fa-arrow-left"></i> Back</button>
+    <button onclick="showHome()" class="btn-back-white"><i class="fa-solid fa-arrow-left-long"></i> Back</button>
     
   `;
       attachProgress();
@@ -5767,8 +5822,7 @@
       ${cards}
     </div>
 
-    <br><br>
-    <button onclick="loadGrade('${curriculum}','${grade}')" class="B"><i class="fa-solid fa-arrow-left"></i> Back</button>
+    <button onclick="loadGrade('${curriculum}','${grade}')" class="btn-back-white"><i class="fa-solid fa-arrow-left-long"></i> Back</button>
   `;
 
       attachProgress();
@@ -5938,37 +5992,27 @@
       document.getElementById('homeContent').style.display = 'none';
       lessonDiv.style.display = 'block';
 
-      const gradeData = [
-        { num: 'Grade 1', emoji: '🐶', cls: 'grade-1', subtitle: 'Start Your Adventure!' },
-        { num: 'Grade 2', emoji: '🚀', cls: 'grade-2', subtitle: 'Reach for the Stars!' },
-        { num: 'Grade 3', emoji: '🧭', cls: 'grade-3', subtitle: 'Discover New Things!' },
-        { num: 'Grade 4', emoji: '🧪', cls: 'grade-4', subtitle: 'Become a Wiz!' },
-        { num: 'Grade 5', emoji: '📚', cls: 'grade-5', subtitle: 'Learn and Grow!' },
-      ];
-
       lessonDiv.innerHTML = `
     <div class="crumbs">
       <span onclick="showHome()">Home</span><span class="sep">›</span>
       <span>${curriculum}</span>
     </div>
-    <h2 style="margin-top:20px; color:black; font-size:28px;">Select Grade</h2>
-    <p style="color:#64748b; margin-top:4px; font-size:16px;">Choose your grade to begin learning!</p>
-    <div class="grade-grid">
-      ${gradeData.map(g => `
-        <div class="grade-card ${g.cls}" onclick="loadGrade('${curriculum}','${g.num}')">
-          <div class="grade-emoji">${g.emoji}</div>
-          <h3>${g.num}</h3>
-          <p>${g.subtitle}</p>
-          <span class="click-arrow">›</span>
+    <h2 style="margin-top:20px; margin-bottom: 20px;">Select Grade</h2>
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      ${grades.map(g => `
+        <div onclick="loadGrade('${curriculum}','${g}')" style="display:flex; justify-content:space-between; align-items:center; padding: 20px 25px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.3s;">
+          <h3 style="color: #0F6A5A; margin: 0; font-size: 18px; font-weight: bold;">${g}</h3>
+          <i class="fa-solid fa-chevron-right" style="color: #0F6A5A; font-size: 18px;"></i>
         </div>
       `).join('')}
     </div>
-    <br><br>
-    <button onclick="showHome()" class="B"><i class="fa-solid fa-house"></i> Back To Home</button>
+    <button onclick="showHome()" class="btn-back-white" style="margin-top: 15px;"><i class="fa-solid fa-arrow-left-long"></i> Back To Home</button>
   `;
 
       /* 👇 NEW: normalize the left sidebar so SSC/CBSE shows ONLY grades */
-      __sidebarGradesOnly(curriculum);
+      if (typeof __sidebarGradesOnly === 'function') {
+        __sidebarGradesOnly(curriculum);
+      }
       window.scrollTo(0, 0);
     }
 
@@ -6023,8 +6067,7 @@
       ${cards}
     </div>
 
-    <br><br>
-    <button class="B" onclick="loadCurriculum('${curriculum}')"><i class="fa-solid fa-arrow-left"></i> Back</button>
+    <button onclick="loadCurriculum('${curriculum}')" class="btn-back-white"><i class="fa-solid fa-arrow-left-long"></i> Back</button>
   `;
       window.scrollTo(0, 0);
     }
@@ -6453,6 +6496,58 @@
 
       showHome();
     }
+  </script>
+
+  <!-- ============================================
+       Curriculum restriction via ?curriculum=ssc|cbse
+       ============================================ -->
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var curr = params.get('curriculum');
+      if (!curr) return;
+
+      var allowed = curr.toLowerCase() === 'ssc' ? 'SSC' : 'CBSE';
+      var blocked = allowed === 'CBSE' ? 'SSC' : 'CBSE';
+
+      // 1. Hide the blocked curriculum card on the home page
+      document.querySelectorAll('.curr-card').forEach(function(card) {
+        var onclick = card.getAttribute('onclick');
+        if (onclick && onclick.indexOf(blocked) !== -1) {
+          card.style.display = 'none';
+        }
+      });
+
+      // 2. Hide the blocked sidebar root menu item (li)
+      document.querySelectorAll('.sidebar .menu > li > .menu-title').forEach(function(title) {
+        var text = title.textContent.trim();
+        if (text.indexOf(blocked) === 0) {
+          title.closest('li').style.display = 'none';
+        }
+      });
+
+      // 3. Wrap all navigation functions to silently block the other curriculum
+      ['loadCurriculum', 'loadGrade', 'loadSubjectList', 'loadLesson', 'loadSubject'].forEach(function(fnName) {
+        if (typeof window[fnName] !== 'function') return;
+        var orig = window[fnName];
+        window[fnName] = function() {
+          if (arguments.length > 0 && arguments[0] && arguments[0].toString().toUpperCase() === blocked) return;
+          return orig.apply(this, arguments);
+        };
+      });
+
+      // 4. Auto-navigate to the allowed curriculum
+      function doNav() {
+        if (typeof window.loadCurriculum === 'function') {
+          window.loadCurriculum(allowed);
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', doNav);
+      } else {
+        doNav();
+      }
+    })();
   </script>
 
 </body>

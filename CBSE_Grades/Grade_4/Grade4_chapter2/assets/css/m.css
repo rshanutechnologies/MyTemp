@@ -21,6 +21,7 @@ height:90vh;
 display:flex;
 align-items:center;
 justify-content:center;
+/* background-color: chocolate; */
 }
 
 .matching{
@@ -57,10 +58,10 @@ gap:14px;
 
 .left .box{
 position:relative;
-padding:10px 40px 10px 10px;
+padding:10px 40px 20px 10px;
 line-height:2;
 min-height:70px;
-height:70px;
+height:80px;
 width:100%;
 }
 
@@ -90,9 +91,9 @@ gap:12px;
 
 .right .box{
 position:relative;
-padding:10px;
+padding:10px 40px 20px 10px;
 min-height:70px;
-height:70px;
+height:80px;
 width:100%;
 }
 
@@ -285,9 +286,9 @@ margin-left:auto;
 
     body{ height:100vh; overflow:hidden; }
 
-    .container{ height:100vh; padding:10px; }
+    .container{ height:100vh; padding:10px; align-items: flex-start;  }
 
-    .matching{ gap:14px; align-items:flex-start; justify-content:center; }
+    .matching{ gap:14px; align-items:flex-start; justify-content:center; margin-top: 60px; }
 
     .left{
         flex:0 0 calc(50% - 8px);
@@ -342,7 +343,7 @@ margin-left:auto;
 
     .container{ padding:5px; }
 
-    .matching{ gap:10px; justify-content:center; }
+    .matching{ gap:10px; justify-content:center; margin-top: 80px !important; }
 
     .left{
         flex:0 0 calc(50% - 5px);
@@ -402,7 +403,7 @@ margin-left:auto;
 ══════════════════════════════════════ */
 @media screen and (min-width:1400px) and (max-width:1620px){
 
-    .container{ max-width:1200px; }
+    .container{ max-width:1200px;  }
 
     .matching{ gap:220px; }
 

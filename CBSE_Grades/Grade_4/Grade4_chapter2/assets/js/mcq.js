@@ -89,33 +89,40 @@ function speak(t) {
 
 function load(){
 
-question.innerText=quiz[index].q;
+question.innerText = quiz[index].q;
 document.getElementById("questionImage").src = quiz[index].img;
-options.innerHTML="";
+options.innerHTML = "";
+
+/* Center only first question */
+if(index === 0){
+    question.classList.add("center-question");
+}else{
+    question.classList.remove("center-question");
+}
 
 quiz[index].options.forEach((o,i)=>{
 
-let btn=document.createElement("button");
+    let btn = document.createElement("button");
 
-btn.className="option "+["blue","yellow","green","orange"][i];
+    btn.className = "option " + ["blue","yellow","green","orange"][i];
 
-btn.innerHTML = `
-<img src="${o.img}" class="opt-img">
-<span>${o.text}</span>
-`;
+    btn.innerHTML = `
+        <img src="${o.img}" class="opt-img">
+        <span>${o.text}</span>
+    `;
 
-btn.onclick=()=>check(i);
+    btn.onclick = () => check(i);
 
-if(answered[index] && i===quiz[index].answer){
-btn.classList.add("correctAnswer");
-}
+    if(answered[index] && i === quiz[index].answer){
+        btn.classList.add("correctAnswer");
+    }
 
-options.appendChild(btn);
+    options.appendChild(btn);
 
 });
 
-prev.disabled=index===0;
-next.disabled=!answered[index];
+prev.disabled = index === 0;
+next.disabled = !answered[index];
 
 }
 

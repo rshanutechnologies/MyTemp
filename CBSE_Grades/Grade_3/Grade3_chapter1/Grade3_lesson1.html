@@ -40,16 +40,14 @@ background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
 
-/* ✨ BLUR EFFECT */
+/* Blur Effect */
+filter: blur(8px);
 
-transform:none;
-
-/* ✨ SOFT PASTEL LOOK */
-
+/* Prevent white edges after blur */
+transform: scale(1.05);
 
 z-index:-2;
 }
-
 /* ✨ LIGHT OVERLAY FOR READABILITY */
 body::after{
 content:"";
@@ -70,15 +68,15 @@ flex-shrink:0;
 
 /* PUZZLE BUTTON */
 .menu button{
+    --puzzle:#BFE7FF; /* Pastel Blue */
 all:unset;
 cursor:pointer;
-position:absolute;
-width:150px;
-height:70px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
+ position:relative;
+    width:180px;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 font-size:18px;
 font-weight:600;
 color:#333;
@@ -126,37 +124,15 @@ background:#a375f1;
 
 }
 /* POSITIONS */
-.menu button:nth-child(1){
-top:20px;
-left:30px;
---puzzle:#ff7aa2;   /* Deep Pink */
+
+.menu{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:40px;
+    gap:40px;
 }
-
-.menu button:nth-child(2){
-top:140px;
-right:20px;
---puzzle:#4ecbe0;   /* Deep Sky Blue */
-}
-
-.menu button:nth-child(3){
-top:260px;
-left:30px;
---puzzle:#7ddf6c;   /* Deep Green */
-}
-
-.menu button:nth-child(4){
-top:380px;
-right:20px;
---puzzle:#ffd84d;   /* Deep Yellow */
-}
-
-.menu button:nth-child(5){
-top:430px;
-left:30px;
---puzzle:#b48cff;   /* Deep Purple */
-}
-
-
 /* HOVER */
 .menu button:hover{
 transform:scale(1.08);
@@ -164,7 +140,25 @@ transform:scale(1.08);
 
 /* ACTIVE */
 
+.menu button.active{
+    background:#CDB4FF; /* Pastel Purple */
+}
 
+.menu button.active::before{
+    background:#CDB4FF;
+}
+
+.menu button.active::after{
+    background:#9B5DE5;
+}
+.menu button:not(.active){
+    opacity:0.8;
+}
+
+.menu button.active{
+    opacity:1;
+    transform:scale(1.05);
+}
 /* MAIN */
 .main{
 flex:1;
@@ -173,6 +167,7 @@ flex:1;
 .menu{
 position:relative;
 height:100%;
+
 }
 
 iframe{
@@ -330,14 +325,11 @@ left:30px;
     width:150px;
     height:75px;
     font-size:20px;
+    
   }
 
   /* Adjust spacing (balanced like laptop) */
-  .menu button:nth-child(1){ top:60px; }
-  .menu button:nth-child(2){ top:200px; }
-  .menu button:nth-child(3){ top:340px; }
-  .menu button:nth-child(4){ top:480px; }
-
+ 
 }
 
 /* ============================= */
@@ -350,15 +342,15 @@ left:30px;
   }
 
   .menu button{
-    width:230px;
-    height:120px;
+    width:250px;
+    height:130px;
     font-size:26px;
   }
 
   /* circle knobs also scale */
   .menu button::before{
-    width:65px;
-    height:65px;
+    width:70px;
+    height:70px;
     top:-22px;
   }
 .sidebar{
@@ -370,11 +362,10 @@ left:30px;
     bottom:-22px;
   }
   /* Better spacing */
-  .menu button:nth-child(1){ top:80px; left:40px; }
-  .menu button:nth-child(2){ top:250px; right:30px; }
-  .menu button:nth-child(3){ top:420px; left:40px; }
-  .menu button:nth-child(4){ top:590px; right:30px; }
-
+  
+  .menu{
+    gap:100px;
+  }
 }
 
 /* ============================= */
@@ -407,12 +398,9 @@ left:30px;
     bottom:-25px;
   }
 
-  /* Spacing for big screens */
-  .menu button:nth-child(1){ top:50px; left:50px; }
-  .menu button:nth-child(2){ top:220px; right:40px; }
-  .menu button:nth-child(3){ top:400px; left:50px; }
-  .menu button:nth-child(4){ top:580px; right:40px; }
-
+  .menu{
+    gap:100px;
+  }
 }
 .overlay{
   position:fixed;

@@ -637,24 +637,18 @@
       border-radius: 20px;
       font-size: 14px;
       font-weight: 500;
-      background: #f0f4f8;
       transition: all 0.3s ease;
       border: 1px solid transparent;
     }
 
     .crumbs span:hover {
-      background: #0F6A5A;
-      color: white;
+      color: #0F6A5A;
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(15, 106, 90, 0.25);
-      border-color: #0F6A5A;
     }
 
     .crumbs .crumb-active {
-      background: #0F6A5A;
-      color: white;
+      color: #0F6A5A;
       font-weight: 600;
-      box-shadow: 0 4px 12px rgba(15, 106, 90, 0.2);
     }
 
     .sep {
@@ -1176,6 +1170,10 @@
       z-index: 1000;
     }
 
+    body.sb-hidden .main {
+      min-height: 100dvh;
+    }
+
     /* DESKTOP (≥577px) - sidebar fixed; main content offset */
     @media (min-width: 577px) {
       .main {
@@ -1186,18 +1184,8 @@
         margin-left: 0 !important;
         width: 100% !important;
       }
-      /* Ensure page scrolling works when sidebar is closed on desktop */
       body.sb-hidden {
         overflow-y: auto !important;
-      }
-      /* Let the container grow with content instead of forcing min-height */
-      body.sb-hidden .container {
-        min-height: 0 !important;
-        height: auto !important;
-      }
-      body.sb-hidden .main {
-        min-height: 0 !important;
-        height: auto !important;
       }
     }
 
@@ -2084,10 +2072,11 @@
       color: var(--ww-dark-green);
     }
     #lessonContent .crumbs span:hover {
-      color: white !important;
+      color: var(--ww-dark-green) !important;
     }
     #lessonContent .crumbs .crumb-active {
-      color: white !important;
+      color: var(--ww-dark-green) !important;
+      font-weight: 600;
     }
 
     #lessonContent .sep {
@@ -2517,6 +2506,10 @@
 
     body {
       overflow-x: hidden;
+      overflow-y: auto;
+    }
+    html {
+      overflow-y: auto;
     }
 
     /* =========================================
@@ -2658,9 +2651,13 @@
       }
 
       /* Prevent horizontal scroll on phones */
-      html,
+      html {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
       body {
         overflow-x: hidden;
+        overflow-y: auto;
       }
     }
 
@@ -2944,7 +2941,7 @@
 
     /* Hover affordance (subtle) */
     .crumbs span:hover {
-      background: #eef2f7;
+      color: #0F6A5A;
     }
 
     /* On very narrow phones, still keep it single row with horizontal scroll */
@@ -3047,7 +3044,7 @@
 
     /* Subtle hover */
     .crumbs span:hover {
-      background: #eef2f7;
+      color: #0F6A5A;
     }
 
     /* Slightly tighter on narrow phones */
@@ -3178,15 +3175,12 @@
 
     /* Active/selected crumb highlight */
     .crumbs .crumb-active {
-      background: #DDF3E7;
-      /* soft mint */
       color: #0F6A5A;
-      box-shadow: inset 0 0 0 1px #cfe8d2;
     }
 
     /* Optional hover */
     .crumbs span:hover {
-      background: #eef2f7;
+      color: #0F6A5A;
     }
 
     /* Mobile fine-tuning */
@@ -3287,31 +3281,14 @@
 
     /* Active crumb highlight (solid pill) */
     .crumbs .crumb-active {
-      background: #0F6A5A;
-      color: white;
+      color: #0F6A5A;
       font-weight: 600;
-      box-shadow: 0 4px 12px rgba(15, 106, 90, 0.2);
-      position: relative;
     }
 
-    .crumbs .crumb-active::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -10px;
-      height: 4px;
-      width: 20px;
-      border-radius: 2px;
-      background: #0F6A5A;
-    }
-
-    /* Hover (teal pill) */
+    /* Hover */
     .crumbs span:hover {
-      background: #0F6A5A;
-      color: white;
+      color: #0F6A5A;
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(15, 106, 90, 0.25);
     }
 
     /* Mobile fine-tuning: single row with horizontal scroll */
@@ -3926,7 +3903,7 @@
       // Click hamburger => open sidebar
       const btn = topbar.querySelector('.hamburger');
       btn.addEventListener('click', () => {
-        document.body.classList.add('sb-show');
+        document.body.classList.add('sb-show', 'no-scroll');
       });
 
       // Close button inside sidebar
@@ -3981,7 +3958,7 @@
             const r = orig.apply(this, arguments);
             setTimeout(syncTopbarTitle, 0);
             // Close sidebar after navigating (common mobile UX)
-            document.body.classList.remove('sb-show');
+            document.body.classList.remove('sb-show', 'no-scroll');
             return r;
           };
           window[fn].__mtbWrapped = true;
@@ -3989,7 +3966,7 @@
       });
 
     // Close sidebar on orientation change / resize (safe)
-    window.addEventListener('orientationchange', () => document.body.classList.remove('sb-show'));
+    window.addEventListener('orientationchange', () => document.body.classList.remove('sb-show', 'no-scroll'));
     window.addEventListener('resize', () => {
       // If screen grows beyond mobile, ensure sidebar is not forced open via sb-show
       if (window.matchMedia('(min-width: 577px)').matches) {

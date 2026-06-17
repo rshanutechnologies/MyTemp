@@ -4,7 +4,7 @@
 const quizData = [
 
 {
-title: "Q.1 The skull is made up of __________ bones.",
+title: "Q1. The skull is made up of __________ bones.",
 image: "../assets/images/skull.png",
 options: [
 { text: "10", img: "../assets/images/10.png" },
@@ -16,7 +16,7 @@ answer: "22"
 },
 
 {
-title: "Q.2 Which is the only movable joint in the skull?",
+title: "Q2. Which is the only movable joint in the skull?",
 image: "../assets/images/skull1.png",
 options: [
 { text: "Lower jaw", img: "../assets/images/lowerjaw.png" },
@@ -28,7 +28,7 @@ answer: "Lower jaw"
 },
 
 {
-title: "Q.3 The first bone of the spine is the __________.",
+title: "Q3. The first bone of the spine is the __________.",
 image: "../assets/images/spine.png",
 options: [
 { text: "rib cage", img: "../assets/images/ribcage.png" },
@@ -40,7 +40,7 @@ answer: "atlas"
 },
 
 {
-title: "Q.4 The floating ribs are found in the __________.",
+title: "Q4. The floating ribs are found in the __________.",
 image: "../assets/images/ribs.png",
 options: [
 { text: "spine", img: "../assets/images/spine.png" },
@@ -52,7 +52,7 @@ answer: "rib cage"
 },
 
 {
-title: "Q.5 How many pairs of ribs are attached to the vertebral column?",
+title: "Q5. How many pairs of ribs are attached to the vertebral column?",
 image: "../assets/images/ribs1.png",
 options: [
 { text: "12", img: "../assets/images/12.png" },

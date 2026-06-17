@@ -529,15 +529,19 @@ padding:4px;
 /* BOX */
 .box{
 font-size:16px;
-padding:5px;
+padding-left: 10px;
 min-height:35px;
 line-height:1.1;
 }
 
+.left .box{
+    padding: 2px ;
+}
+
 /* IMAGE */
 .left img{
-width:24px;
-height:24px;
+width:40px;
+height:40px;
 margin-right:5px;
 }
 
@@ -545,6 +549,7 @@ margin-right:5px;
 .dot{
 width:6px;
 height:6px;
+display: none;
 }
 
 /* DOT POSITION */
@@ -557,12 +562,12 @@ right:5px;
     background: #000;
     color: #fff;
     border-radius: 50%;
-    width: 12px;
-    height: 12px;
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 7px;
+    font-size: 12px;
     margin-left: auto;
 }
 

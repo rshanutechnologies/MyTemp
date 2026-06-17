@@ -202,7 +202,7 @@ submitBtn.onclick = () => {
     score++;
     updateScore();
     showPopup(true);
-
+    
     locked[current] = true;
 
     nextBtn.disabled = false;
@@ -213,7 +213,7 @@ submitBtn.onclick = () => {
     }
   } else {
     showPopup(false);
-
+    input.value="";
     typedLetters = [];
     savedAnswers[current] = null;
 

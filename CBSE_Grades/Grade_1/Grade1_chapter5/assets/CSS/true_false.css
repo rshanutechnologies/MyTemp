@@ -31,7 +31,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   width: 100%;
 }
 
@@ -325,7 +325,7 @@ button:disabled {
     height: auto;
     min-height: auto;
     padding: 10px;
-    text-align: center;
+    text-align: left;
   }
 
   .question-img {

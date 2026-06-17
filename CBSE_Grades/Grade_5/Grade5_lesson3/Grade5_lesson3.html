@@ -64,7 +64,7 @@
             position: relative;
         }
 
-        .nav-btn.active::before {
+        /* .nav-btn.active::before {
             content: "";
             width: 12px;
             height: 12px;
@@ -74,7 +74,7 @@
             left: 18px;
             top: 50%;
             transform: translateY(-50%);
-        }
+        } */
 
         /* Button Colors */
         /* .mcq  { background: linear-gradient(#ffd2a2, #ffb778); }
@@ -232,23 +232,23 @@ flex:1;
     <!-- LEFT NAVBAR -->
     <div class="side-nav" id="navbar">
         <button class="nav-btn mcq active" onclick="openPage('./exercises/MCQ.html', this)">
-            🥕 Choose Correct
+             Choose Correct
         </button>
 
         <button class="nav-btn fill" onclick="openPage('./exercises/FITB.html', this)">
-            🥬 Fill in Blanks
+             Fill in Blanks
         </button>
 
         <button class="nav-btn true" onclick="openPage('./exercises/True_false.html', this)">
-            🐱 True / False
+             True / False
         </button>
 
         <button class="nav-btn match" onclick="openPage('./exercises/matching.html', this)">
-            ☁ Matching
+             Matching
         </button>
 
         <!-- <button class="nav-btn one" onclick="openPage('./exercises/oneExample.html', this)">
-            📦 One Word
+             One Word
         </button> -->
     </div>
 <div class="overlay" id="overlay"></div>

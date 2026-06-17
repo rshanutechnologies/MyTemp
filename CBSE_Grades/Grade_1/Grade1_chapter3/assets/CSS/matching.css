@@ -347,7 +347,7 @@ h1 {
 @media (max-width: 480px) {
 
     body {
-        padding: 30px 10px 0px;
+        padding: 50px 10px 0px;
         overflow-y: auto;
         align-items: flex-start;
     }

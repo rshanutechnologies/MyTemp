@@ -51,6 +51,9 @@
       color: #2f4f4f;
       font-weight: 400;
       text-align: start;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .question-img{
   display:block;

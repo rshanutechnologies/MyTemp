@@ -45,6 +45,7 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 /* ✅ NEW UNIQUE PROGRESS (TOP ABOVE QUESTION) */
@@ -865,7 +866,7 @@ body::before {
   .prev,
   .next {
     width: 130px;
-    height: 48px;
+    height: 50px;
     font-size: 18px;
   }
 
@@ -901,7 +902,6 @@ body::before {
 .option {
   /* width: 160px; */
   background: #fff;
-  border-radius: 100px !important;
   padding: 10px 15px;
   cursor: pointer;
   border: 3px solid transparent;
@@ -988,7 +988,6 @@ body::before {
     /* width: 180px; */
     height: 100px;
     padding: 18px;
-    border-radius: 120px !important;
     gap: 18px;
   }
 

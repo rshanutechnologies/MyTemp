@@ -60,37 +60,34 @@ function speak(t) {
 
 function load(){
 
-question.innerText=quiz[index].q;
-
+question.innerText = quiz[index].q;
 document.getElementById("questionImage").src = quiz[index].img;
-/* remove previous highlights */
+
+// Enable both buttons initially
+trueBtn.disabled = false;
+falseBtn.disabled = false;
 
 trueBtn.classList.remove("correctAnswer");
 falseBtn.classList.remove("correctAnswer");
 
-// trueBtn.querySelector(".icon").classList.remove("iconCorrect");
-// falseBtn.querySelector(".icon").classList.remove("iconCorrect");
-
-/* restore highlight when user goes back */
-
 if(answered[index]){
 
-if(quiz[index].a){
+    if(quiz[index].a){
 
-trueBtn.classList.add("correctAnswer");
-// trueBtn.querySelector(".icon").classList.add("iconCorrect");
+        trueBtn.classList.add("correctAnswer");
+        falseBtn.disabled = true;
 
-}else{
+    }else{
 
-falseBtn.classList.add("correctAnswer");
-// falseBtn.querySelector(".icon").classList.add("iconCorrect");
+        falseBtn.classList.add("correctAnswer");
+        trueBtn.disabled = true;
+
+    }
 
 }
 
-}
-
-prev.disabled=index===0;
-next.disabled=!answered[index];
+prev.disabled = index===0;
+next.disabled = !answered[index];
 
 }
 
@@ -145,12 +142,19 @@ answered[index] = true;
 score++;
 
 if(value){
-trueBtn.classList.add("correctAnswer");
+    trueBtn.classList.add("correctAnswer");
+
+    // disable wrong option
+    falseBtn.disabled = true;
+
 }else{
-falseBtn.classList.add("correctAnswer");
+    falseBtn.classList.add("correctAnswer");
+
+    // disable wrong option
+    trueBtn.disabled = true;
 }
 
-next.disabled = false;   // ⭐ enable next button
+next.disabled = false;
 
 if(index === quiz.length-1){
 
@@ -158,8 +162,9 @@ setTimeout(()=>{
 
 document.getElementById("final").style.display="block";
 document.getElementById("score").innerText="Your Score "+score+"/5";
-launchConfetti(); 
+launchConfetti();
 prev.disabled = true;
+
 },1000);
 
 }
@@ -170,8 +175,6 @@ popup("wrong");
 speak("Wrong");
 
 }
-
-
 
 }
 

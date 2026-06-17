@@ -129,22 +129,27 @@ border-left:28px solid;
 
 
 /* Colors */
+.quiz-btn{
+background:#f3e0ea;      /* Pastel Blue */
+color:#4a5568;
 
-.btn1{background:#ff4b5c;}
-.btn1::before{border-left-color:#ff4b5c;}
+box-shadow:
+0 6px 0 rgba(0,0,0,.12),
+0 14px 20px rgba(0,0,0,.08);
+}
 
-.btn2{background:#3b82f6;}
-.btn2::before{border-left-color:#3b82f6;}
-
-.btn3{background:#10b981;}
-.btn3::before{border-left-color:#10b981;}
-
-.btn5{background:#8b5cf6;}
-.btn5::before{border-left-color:#8b5cf6;}
+.quiz-btn::before{
+border-left-color:#f3e0ea;
+}
 
 .quiz-btn.active{
+background:#DDF7D8;      /* Pastel Lavender */
+outline:4px solid white;
 transform:scale(1.08);
-outline:5px solid white;
+}
+
+.quiz-btn.active::before{
+border-left-color:#DDF7D8;
 }
 
 /* ================= */

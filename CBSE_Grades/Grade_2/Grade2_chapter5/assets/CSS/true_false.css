@@ -52,6 +52,9 @@
       padding:30px 40px;
       color: #2f4f4f;
       font-weight: 400;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
     }
     .question-img{

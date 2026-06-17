@@ -34,7 +34,7 @@ body {
     height: 40px;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: start;
 }
 
 /* QUESTION IMAGE */
@@ -464,7 +464,7 @@ MOBILE
 
     .controls button {
         font-size: 18px;
-        padding: 10px 22px;
+        padding: 8px 20px;
     }
 
 }

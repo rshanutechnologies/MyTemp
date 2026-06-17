@@ -263,9 +263,9 @@ RESPONSIVE (Same behavior as second CSS)
 @media (max-width: 768px) {
 
   body {
-    padding: 10px;
+    padding: 25px 10px;
     overflow-y: auto;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .main {

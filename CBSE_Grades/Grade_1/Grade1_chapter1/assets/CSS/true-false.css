@@ -34,7 +34,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: start;
     font-size: 30px;
     color: #2f4f4f;
     font-weight: 500;
@@ -408,7 +408,7 @@ body {
 
     body {
         align-items: flex-start;
-        padding-top: 55px;
+        padding-top: 65px;
     }
 
     .question-box {
@@ -427,6 +427,11 @@ body {
 
     .answer {
         font-size: 20px;
+    }
+
+    .nav button{
+        font-size: 18px;
+        padding: 8px 20px;
     }
 
     .kid-card {

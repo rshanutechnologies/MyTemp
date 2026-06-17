@@ -434,7 +434,10 @@ body {
     }
 
     .nav-buttons button {
-        width: 100%;
+       width: 100px;
+                height: 46px;
+                font-size: 24px;
+                padding: 5px;
     }
 
 }

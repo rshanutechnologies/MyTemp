@@ -128,7 +128,7 @@ height:45px;
 border-radius:50%;
 border:none;
 font-size:28px;
-font-weight:700;
+font-weight:600;
 color:white;
 cursor:pointer;
 box-shadow:0 6px 12px rgba(0,0,0,0.2);
@@ -382,6 +382,7 @@ margin-top: -10px;
 width:30px;
 height:30px;
 font-size:20px;
+
 }
 
 .imgbox{
@@ -428,7 +429,7 @@ body{
 }
 .quiz{
 width:95%;
-margin-top: 4%;
+margin-top: -6%;
 }
 
 .question{
@@ -494,7 +495,7 @@ padding:10px 18px;
 /* MOBILE (430px) */
 /* ===================== */
 
-@media (max-width:320px){
+@media (max-width:400px){
 body{
     margin-top: 0px;
   overflow: hidden !important;
@@ -549,7 +550,8 @@ gap:20px;
 }
 
 .nav button{
-padding:8px 22px;
+      width: 120px;
+padding:10px 18px;
 font-size:16px;
 }
 

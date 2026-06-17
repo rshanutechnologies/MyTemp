@@ -45,7 +45,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  text-align: center;
+  text-align: start;
 }
 
 .animal-img {
@@ -442,7 +442,7 @@ body {
 @media (max-width:600px) {
   body {
     align-items: flex-start;
-    padding-top: 60px;
+    padding-top: 70px;
   }
 
   .title {

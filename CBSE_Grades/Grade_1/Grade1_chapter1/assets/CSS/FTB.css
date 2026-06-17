@@ -550,7 +550,7 @@ input:focus {
     }
 
     input {
-        width: 100%;
+        width: 70%;
         height: 45px;
     }
 
@@ -567,7 +567,8 @@ input:focus {
 
     #prevBtn,
     #nextBtn {
-        width: 100%;
+        padding: 8px 20px;
+        font-size: 18px;
     }
 
     .kid-card {

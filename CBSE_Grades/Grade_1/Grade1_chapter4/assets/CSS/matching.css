@@ -331,8 +331,8 @@ h1 {
         height: auto;
         min-height: 100vh;
         overflow-y: auto;
-        padding: 0px 12px 0px;
-        align-items: center;
+        padding: 70px 12px 0px;
+        align-items: flex-start;
     }
 
     .main {

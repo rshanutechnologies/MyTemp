@@ -66,7 +66,7 @@ body {
   cursor: pointer;
   border: none;
 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   transition: 0.2s;
 }
 
@@ -81,23 +81,21 @@ body {
   pointer-events: none;
 }
 
-/* COLORS */
-
 .blue {
-  background: #6da8d8b8;
+  background: #c5e2f7;
   color: #132a3d;
 }
 
 .yellow {
-  background: #f3c74db0;
+  background: #ffe8a3;
 }
 
 .green {
-  background: #86c651b7;
+  background: #cfe9bd;
 }
 
 .orange {
-  background: #f39a2da7;
+  background: #ffd6b3;
 }
 
 

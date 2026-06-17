@@ -1,7 +1,7 @@
 /* ================= QUIZ DATA ================= */
 const quizData = [
 {
-  title: "Q.1 A cereal",
+  title: "Q1. A cereal",
   image: "../assets/images/Cerealak.png",
   options:[
     { text:"Maize", img:"../assets/images/Wheatak.png"},
@@ -12,7 +12,7 @@ const quizData = [
 },
 
 {
-  title: "Q.2 A pulse",
+  title: "Q2. A pulse",
   image: "../assets/images/ow2.png",
   options:[
     // { text:"Green gram", img:"../assets/images/GreenGram.png"},
@@ -24,7 +24,7 @@ const quizData = [
 },
 
 {
-  title: "Q.3 A leaf that we eat",
+  title: "Q3. A leaf that we eat",
   image: "../assets/images/leafakk.png",
   options:[
     // { text:"Cabbage", img:"../assets/images/Cabbageak.png"},
@@ -37,7 +37,7 @@ const quizData = [
 },
 
 {
-  title: "Q.4 A root that we eat",
+  title: "Q4. A root that we eat",
   image: "../assets/images/RootM.png",
   options:[
     { text:"Carrot", img:"../assets/images/Carrotakc.png"},
@@ -50,7 +50,7 @@ const quizData = [
 },
 
 {
-  title: "Q.5 A part of a plant",
+  title: "Q5. A part of a plant",
   image: "../assets/images/Planttak.png",
   options:[
     { text:"Roots", img:"../assets/images/RootM.png"},

@@ -509,11 +509,11 @@ padding:20px;
 
 }
 
-@media (min-width: 1580px) {
+@media (min-width: 1480px) {
  
   /* ✅ MAIN CARD */
   .quiz-card{
-    width: 1300px;
+    width: 1000px;
     height: 780px;
     padding: 40px;
     margin-top: 7px !important;
@@ -528,7 +528,7 @@ padding:20px;
 
   /* ✅ QUESTION (IMPORTANT SYSTEM + FIX ALIGNMENT) */
   .question{
-    font-size: 44px;
+    font-size: 35px;
     min-height: 140px;
     padding: 40px;
     margin-left: 0;
@@ -571,7 +571,7 @@ padding:20px;
     height: 100px;
     border-radius: 50%;
     font-size: 20px;
-    margin-top: -32%;
+    margin-top: -42%;
   }
 
   /* ✅ POPUP */
@@ -638,6 +638,7 @@ padding:20px;
     /* justify-content:center;
     text-align:center; */
     height: 200px;
+    font-size: 44px;
 }
 
 /* center image */

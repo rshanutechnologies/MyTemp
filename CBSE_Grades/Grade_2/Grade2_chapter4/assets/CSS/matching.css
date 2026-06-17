@@ -896,12 +896,12 @@ body::before {
 }
 
 
-@media (min-width: 1580px) {
+@media (min-width: 1480px) {
 
 
   body {
     margin-top: 1% !important;
-    margin-left: -5% !important;
+    margin-left: 5% !important;
     /* background-color: yellow !important; */
   }
 

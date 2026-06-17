@@ -101,8 +101,8 @@ margin:auto;
       touch-action: manipulation;
     }
 
-    .word-btn:hover:not(:disabled) { transform: scale(1.05); background: #29b6f6; }
-    .word-btn:active:not(:disabled) { transform: scale(0.96); }
+    .word-btn:hover:not(:disabled) { transform: scale(1); background: #29b6f6; }
+    /* .word-btn:active:not(:disabled) { transform: scale(0.96); } */
     .word-btn.used { opacity: 0.52; cursor: not-allowed; }
 
     .checkBtn {

@@ -60,31 +60,31 @@ function speak(text) {
 
 const quizData = [
   {
-    q: "Q.1 Small and bushy plants",
+    q: "Q1. Small and bushy plants",
     a: "SHRUBS",
     img: "../assets/images/S1.png",
   },
 
   {
-    q: "Q.2 Small plants with soft stems",
+    q: "Q2. Small plants with soft stems",
     a: "HERBS",
     img: "../assets/images/SmallPlantsak.png",
   },
 
   {
-    q: "Q.3 Seeds such as red gram and green gram",
+    q: "Q3. Seeds such as red gram and green gram",
     a: "PULSES",
     img: "../assets/images/RedGreenGram.png",
   },
 
   {
-    q: "Q.4 Grains such as wheat and rice",
+    q: "Q4. Grains such as wheat and rice",
     a: "CEREALS",
     img: "../assets/images/WheatRice.png",
   },
 
   {
-    q: "Q.5 Cotton and jute",
+    q: "Q5. Cotton and jute",
     a: "FIBRE",
     img: "../assets/images/CottonJute.png",
   },

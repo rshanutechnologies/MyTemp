@@ -29,7 +29,7 @@ body {
     font-size: 30px;
     font-weight: 400;
     color: #2f4f4f;
-    text-align: center;
+    text-align: start;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -51,7 +51,7 @@ body {
     padding: 20px 10px 25px;
     border-radius: 25px;
     /* background: linear-gradient(180deg, #fff5f5, #f1f6ff); */
-    background: linear-gradient(180deg, #dbfbff, #f1f6ff);
+    background: #fff;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(228, 228, 228, 0.2) 0px -3px 0px inset;
     transition: all .25s ease;
     border: 4px solid transparent;
@@ -457,7 +457,7 @@ body {
     }
 
     .main {
-        padding-inline: 0;
+        padding: 55px 0px;
     }
 
     .question h2 {

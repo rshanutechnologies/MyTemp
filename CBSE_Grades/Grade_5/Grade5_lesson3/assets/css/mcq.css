@@ -574,8 +574,9 @@ display:none;
     }
 
     .nav button {
+        width: 120px;
         font-size: 16px;
-        padding: 10px 20px;
+        padding: 10px 18px;
     }
 
     .options {
@@ -619,7 +620,7 @@ display:none;
 @media (min-width: 320px) and (max-width: 350px) {
     body {
         margin-top: 20%;
-        overflow-y: auto;
+        overflow: hidden;
         align-items: flex-start;
         padding: 10px 0;
     }
@@ -671,8 +672,9 @@ display:none;
     }
 
     .nav button {
-        font-size: 14px;
-        padding: 8px 16px;
+        width: 120px;
+        font-size: 16px;
+        padding: 10px 18px;
     }
 
     .scoreBox {
@@ -741,7 +743,7 @@ display:none;
 
     .options {
         grid-template-columns: 1fr 1fr;
-        gap: 8px;
+        gap: 15px;
         width: 100%;
         margin: 0;
     }
@@ -820,6 +822,8 @@ display:none;
         grid-template-columns: 1fr 1fr;
         gap: 10px;
         width: 100%;
+        margin-left: 15%;
+        margin-top: 0px;
     }
 
     .option {
@@ -834,7 +838,7 @@ display:none;
 
     .imgbox {
         height: auto;
-        margin-top: 0;
+        margin-top: 80px;
     }
 
     .imgbox img {
@@ -899,6 +903,8 @@ display:none;
         grid-template-columns: 1fr 1fr;
         gap: 12px;
         width: 85%;
+        margin-top: 0px;
+        margin-left: 14%;
     }
 
     .option {
@@ -914,6 +920,7 @@ display:none;
     .imgbox img {
         width: 180px;
         height: 180px;
+        margin-top: 30px;
     }
 
     .nav {
@@ -954,6 +961,7 @@ display:none;
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
         width: 80%;
+        margin-top: 10px;
     }
 
     .option {
@@ -970,6 +978,7 @@ display:none;
     .imgbox img {
         width: 200px;
         height: 200px;
+        margin-top: 15px;
     }
 
     .nav {

@@ -46,20 +46,37 @@ function render() {
 
   trueBtn.disabled = false;
   falseBtn.disabled = false;
+
   trueBtn.classList.remove("correct");
   falseBtn.classList.remove("correct");
 
   if (answers[index] !== null) {
+
     if (answers[index] === true) {
+
+      // restart animation every time question is rendered
+      trueBtn.classList.remove("correct");
+      void trueBtn.offsetWidth;
       trueBtn.classList.add("correct");
+
       falseBtn.disabled = true;
+
     } else {
+
+      // restart animation every time question is rendered
+      falseBtn.classList.remove("correct");
+      void falseBtn.offsetWidth;
       falseBtn.classList.add("correct");
+
       trueBtn.disabled = true;
     }
+
     nextBtn.disabled = false;
+
   } else {
+
     nextBtn.disabled = true;
+
   }
 
   prevBtn.disabled = index === 0;

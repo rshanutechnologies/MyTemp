@@ -35,6 +35,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: left;
     }
 
     .question-image {
@@ -373,7 +374,7 @@
             font-size: 24px;
             height: auto;
             padding: 10px;
-            text-align: center;
+            text-align: start;
         }
 
         .options {
@@ -464,6 +465,10 @@
 ========================================= */
 
     @media (max-width:480px) {
+         body {
+            padding: 50px 0px 10px;
+            align-items: flex-start;
+        }
 
         #question {
             font-size: 22px;

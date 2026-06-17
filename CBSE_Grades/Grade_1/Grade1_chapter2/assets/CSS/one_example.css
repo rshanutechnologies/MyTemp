@@ -33,7 +33,7 @@ body {
     font-size: 30px;
     font-weight: 400;
     color: #2f4f4f;
-    text-align: center
+    text-align: start;
 }
 
 .image-container {
@@ -391,6 +391,11 @@ body {
 
 
 @media (max-width:480px) {
+    body {
+        padding: 50px 0 10px;
+        align-items: flex-start;
+    }
+
     .main {
         padding-inline: 10px;
     }

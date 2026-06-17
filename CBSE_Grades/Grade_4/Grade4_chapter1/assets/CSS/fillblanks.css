@@ -157,12 +157,10 @@ body::before {
 }
 
 
- .next { background: #8fb1e8; color: white; }
+ .next { background: #476ca8; color: white; }
 
 
-.next:hover {
-  background: linear-gradient(180deg, #5fc9b8, #3aae9a);
-}
+
 
 button:disabled {
   opacity: 0.45;
@@ -316,7 +314,7 @@ button:disabled {
 
   body {
     padding: 0;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .quiz {
@@ -325,6 +323,7 @@ button:disabled {
     min-height: 85vh;
     padding: 15px;
     margin: 0 auto;
+    /* background-color: #22c55e; */
     
   }
 
@@ -337,32 +336,33 @@ button:disabled {
 
   .question {
     font-size: 26px;
-    margin: 10px 0;
+     margin-top: -40px;
+    
     text-align: left;
   }
 
   #questionImg {
-    width: 140px;
-    height: 140px;
+    width: 190px !important;
+    height: 190px !important;
     margin: 5px auto;
   }
 
   #answerInput {
     width: 85%;
-    height: 48px;
+    height: 55px;
     font-size: 12px;
     
   }
 
   #submitBtn,
   .nav button {
-    padding: 10px 24px;
+    padding: 14px 26px;
     font-size: 18px;
   }
 
   .nav {
     gap: 20px;
-    margin-top: 15px;
+    margin-top: 20px;
   }
 
   .popup-box {
