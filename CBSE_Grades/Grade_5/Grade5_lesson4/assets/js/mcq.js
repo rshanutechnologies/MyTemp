@@ -7,10 +7,10 @@ const quizData = [
 title: "Q1. The skull is made up of __________ bones.",
 image: "../assets/images/skull.png",
 options: [
-{ text: "10", img: "../assets/images/10.png" },
-{ text: "12", img: "../assets/images/12.png" },
-{ text: "18", img: "../assets/images/18.png" },
-{ text: "22", img: "../assets/images/22.png" }
+{ text: "Ten", img: "../assets/images/10.png" },
+{ text: "Twelve", img: "../assets/images/12.png" },
+{ text: "Eighteen", img: "../assets/images/18.png" },
+{ text: "Twenty two", img: "../assets/images/22.png" }
 ],
 answer: "22"
 },
