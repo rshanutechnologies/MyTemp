@@ -735,21 +735,28 @@ setTimeout(showResult,800)
 
 function drawLine(l,r){
 
-const r1=l.querySelector(".anchor").getBoundingClientRect()
-const r2=r.querySelector(".dot").getBoundingClientRect()   // ⭐ changed here
-const svgRect=svg.getBoundingClientRect()
+const svgRect = svg.getBoundingClientRect();
 
-const x1=r1.left-svgRect.left
-const y1=r1.top+r1.height/2-svgRect.top
+const leftRect = l.getBoundingClientRect();
+const rightRect = r.getBoundingClientRect();
 
-const x2=r2.left+r2.width/2-svgRect.left
-const y2=r2.top+r2.height/2-svgRect.top
+/* Start from right center of left card */
+const x1 = leftRect.right - svgRect.left - 10;
+const y1 = leftRect.top + leftRect.height/2 - svgRect.top;
+
+/* End at left center of right card */
+const x2 = rightRect.left - svgRect.left + 10;
+const y2 = rightRect.top + rightRect.height/2 - svgRect.top;
+
 const curve =
-  window.innerWidth <= 480 ? 35 :
-  window.innerWidth <= 1024 ? 60 :
-  120;
+window.innerWidth <= 480 ? 25 :
+window.innerWidth <= 768 ? 40 :
+120;
 
-const path=document.createElementNS("http://www.w3.org/2000/svg","path")
+const path = document.createElementNS(
+"http://www.w3.org/2000/svg",
+"path"
+);
 
 path.setAttribute(
 "d",
@@ -757,16 +764,16 @@ path.setAttribute(
 C ${x1+curve} ${y1},
 ${x2-curve} ${y2},
 ${x2} ${y2}`
-)
+);
 
-path.setAttribute("stroke","#22c55e")
-path.setAttribute("stroke-width","5")
-path.setAttribute("fill","none")
-path.setAttribute("stroke-linecap","round")
+path.setAttribute("stroke","#22c55e");
+path.setAttribute("stroke-width","5");
+path.setAttribute("fill","none");
+path.setAttribute("stroke-linecap","round");
 
-svg.appendChild(path)
-
+svg.appendChild(path);
 }
+
 function fireFinalConfetti(){
 
   const duration = 2500;

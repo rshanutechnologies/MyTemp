@@ -71,7 +71,7 @@ body {
 
 /* BUTTONS */
 .island-btn {
-    flex: 1;
+    /* flex: 1; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,6 +89,7 @@ body {
     opacity: .6;
     filter: grayscale(1);
     border: 4px solid transparent;
+
 }
 
 .island-btn:hover {
@@ -193,15 +194,15 @@ iframe {
 
     .offcanvas-panel .island-btn {
         width: 100%;
-        height: clamp(44px, 7vh, 58px);   /* controlled height */
+        height: clamp(30px, 4vh, 40px) !important;  /* controlled height */
         flex-shrink: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        padding: 0 14px;
+        gap: 7px;
+        padding: 0 10px;
         border-radius: 60px;
-        font-size: clamp(13px, 2.8vw, 16px);
+font-size: clamp(11px, 2.4vw, 14px);
         font-weight: 600;
         background: #f8f9fc;
         border: 2px solid transparent;
@@ -212,6 +213,7 @@ iframe {
         opacity: 0.85;
         filter: none;
         white-space: nowrap;
+        padding: 40px 0;
     }
 
     .offcanvas-panel .island-btn i {

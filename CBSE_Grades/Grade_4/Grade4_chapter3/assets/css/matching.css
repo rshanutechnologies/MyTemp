@@ -301,8 +301,9 @@ body {
         width: 14px;
         height: 14px;
         font-size: 8px;
-        top: 2px;
-        right: 4px;
+        top: 5px;
+        right: 8px;
+        z-index: 1000 !important;
     }
 
     .left-img {
