@@ -364,7 +364,7 @@ button:disabled {
     padding: 20px 10px;
     justify-content: center;
     align-items: flex-start;
-    background: red !important;
+    /* background: red !important; */
   }
 
   .quiz-card {
@@ -458,7 +458,7 @@ button:disabled {
     /* background-color: #15803d; */
     justify-content: center;
     align-items: center;
-    background-color: ;
+    /* background-color: #15803d; */
   }
 
   .question{
@@ -520,7 +520,7 @@ button:disabled {
     height: 493px;
     padding: 17px;
     border-radius: 19px;
-    background-color: burlywood;
+    /* background-color: burlywood; */
 
   }
 
@@ -566,7 +566,7 @@ button:disabled {
     min-height: 570px;
     height: auto;
     padding: 20px;
-    background-color: #b91c1c;
+    /* background-color: #b91c1c; */
   }
 
   .quiz-title {

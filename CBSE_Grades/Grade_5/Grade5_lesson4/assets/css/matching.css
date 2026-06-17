@@ -557,7 +557,7 @@ animation:shake .3s;
     .main-container {
         width: 100%;
         padding: 12px;
-                margin-top: 70px;
+                margin-top: 30px;
     }
 
     .instruction {
@@ -586,8 +586,8 @@ animation:shake .3s;
     }
 
     .item img, .label img {
-        width: 32px;
-        height: 32px;
+        width: 52px;
+        height: 52px;
     }
 
     .icons {

@@ -75,9 +75,10 @@ box-shadow:0 5px 14px rgba(0,0,0,.08); */
 .item {
     width: 340px;
     height: 120px;
-    background: #f9e5e200;
-    background: #f9e5e285;
-    box-shadow: 0 5px 14px rgba(0, 0, 0, .08);
+    /* background: #f9e5e200;
+    background: #f9e5e285; */
+    background: #ffffff;
+    /* box-shadow: 0 5px 14px rgba(0, 0, 0, .08); */
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -86,7 +87,8 @@ box-shadow:0 5px 14px rgba(0,0,0,.08); */
     cursor: pointer;
     transition: .25s;
     border: 2px solid transparent;
-    border-bottom: 2px solid rgb(214, 209, 209);
+    /* border-bottom: 2px solid rgb(214, 209, 209); */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     position: relative;
     font-size: 22px;
     color: #2f4f4f;

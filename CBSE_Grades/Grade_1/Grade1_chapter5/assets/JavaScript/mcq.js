@@ -81,35 +81,35 @@ function speak(text) {
   speechSynthesis.speak(msg);
 }
 
-function preloadImages(callback) {
-  const loader = document.getElementById("imgLoader");
-  loader.textContent = "Loading images...";
+// function preloadImages(callback) {
+//   const loader = document.getElementById("imgLoader");
+//   loader.textContent = "Loading images...";
 
-  let images = [];
+//   let images = [];
 
-  quizData.forEach((q) => {
-    images.push(q.image);
-    q.options.forEach((opt) => {
-      images.push(opt.img);
-    });
-  });
+//   quizData.forEach((q) => {
+//     images.push(q.image);
+//     q.options.forEach((opt) => {
+//       images.push(opt.img);
+//     });
+//   });
 
-  let loaded = 0;
+//   let loaded = 0;
 
-  images.forEach((src) => {
-    const img = new Image();
-    img.src = src;
+//   images.forEach((src) => {
+//     const img = new Image();
+//     img.src = src;
 
-    img.onload = img.onerror = () => {
-      loaded++;
+//     img.onload = img.onerror = () => {
+//       loaded++;
 
-      if (loaded === images.length) {
-        loader.textContent = "";
-        callback();
-      }
-    };
-  });
-}
+//       if (loaded === images.length) {
+//         loader.textContent = "";
+//         callback();
+//       }
+//     };
+//   });
+// }
 
 function loadQuestion() {
   const q = quizData[current];
@@ -268,4 +268,5 @@ function fireConfetti() {
   });
 }
 
-preloadImages(loadQuestion);
+// preloadImages(loadQuestion);
+loadQuestion();

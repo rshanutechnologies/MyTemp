@@ -228,6 +228,65 @@ text-align: center;
         flex-shrink: 0;
     }
 }
+@media (max-width: 480px) {
+    .main{
+        align-items: flex-start;
+    }
+
+
+    .game-container {
+        gap: 65px;
+        padding: 6px 4px;
+        /* align-items: stretch; */
+        margin-top: 30px;
+    }
+
+    .column {
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .left .item,
+    .right .item {
+        width: 105px;
+        height: 80px;
+        min-height: 80px;
+        /* border-radius: 12px; */
+    }
+
+    .item {
+        font-size: 10px;
+        padding: 4px 6px;
+        gap: 3px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-direction: row;
+        text-align: center;
+    }
+
+    .item span {
+        flex: 1;
+        min-width: 0;
+        font-size: 10px;
+        line-height: 1.1;
+        word-break: break-word;
+    }
+
+    .left-img {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        object-fit: contain;
+    }
+
+    #line-canvas line,
+    #line-canvas path {
+        stroke-width: 1px !important;
+    }
+}
 /* DESKTOP — above 1366px only */
 /* @media (min-width: 1367px) {
 

@@ -384,9 +384,12 @@
         }
 
         @media(max-width:480px) {
-
+          body{
+            margin-top: -70px;
+          }
             .quiz-container {
                 padding: 20px;
+              
             }
 
             .question-box {
@@ -438,6 +441,7 @@
             }
         }
 
+       
 
 
 

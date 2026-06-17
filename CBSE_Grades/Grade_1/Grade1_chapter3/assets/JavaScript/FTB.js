@@ -17,7 +17,7 @@ const questions = [
   {
     q: "Q4. Insects have ______ legs.",
     a: ["six"],
-    img: "../assets/images/insect.png",
+    img: "../assets/images/butterfly.png",
   },
   {
     q: "Q5. Hens are kept in a ______.",

@@ -476,7 +476,7 @@ button:disabled {
 
 
 /* Large Desktop */
-@media (min-width: 1400px) {
+@media (min-width: 1600px) {
 
   .quiz {
     width: 1300px;

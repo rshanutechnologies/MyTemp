@@ -94,7 +94,7 @@ body::before {
     width: 100%;
     min-height: 100px;
     font-size: 30px;
-    text-align: center;
+    text-align: start;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
@@ -442,7 +442,7 @@ button:disabled {
     }
     .main {
         width: 100%;
-        max-width: 360px;
+        width: 360px;
         height: auto;
         padding: 15px;
         margin-top: 0;
@@ -461,13 +461,14 @@ button:disabled {
         font-size: 12px;
     }
     .question {
-        font-size: 18px;
+        font-size: 22px;
         min-height: 50px;
         padding: 5px 10px;
     }
     .left img {
-        width: 100px;
-        height: 70px;
+        width: 150px;
+        height: 110px;
+        margin-block: 20px;
     }
     .content {
         padding: 5px;
@@ -561,7 +562,7 @@ button:disabled {
         font-size: 14px;
     }
     .question {
-        font-size: 20px;
+        font-size: 22px;
         min-height: 60px;
         padding: 5px 15px;
     }

@@ -278,6 +278,22 @@ body {
     0% { transform: scale(.3); opacity: 0; }
     60% { transform: scale(1.15); }
     100% { transform: scale(1); opacity: 1; }
+    
+}
+@media (max-width: 480px) {
+
+    body{
+        align-items: flex-start;
+    }
+ 
+   
+
+    .main-container{
+        margin-top: -140px;
+    }
+
+   
+
 }
 /* ✅ ONLY ONE MEDIA QUERY */
 @media (max-width:900px) {

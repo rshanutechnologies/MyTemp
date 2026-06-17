@@ -352,11 +352,14 @@ canvas {
     }
 }
 @media (max-width: 480px) {
+  body{
+    align-items: flex-start;
+  }
+  #question{
+    font-size: 18px;
+  }
   
- .quiz-layout{
-  background-color: #3e362b;
-  align-items: fle;
- }
+ 
 
   .quiz {
     padding: 12px;
@@ -367,7 +370,7 @@ canvas {
 
   /* Question */
   #question {
-    font-size: 22px !important;
+    font-size: 18px !important;
   
     line-height: 1.3;
     margin-bottom: 2px; /* reduce gap below question */

@@ -259,9 +259,13 @@ button{
   
 }
 .left-img{
-  width:40px !important;      /* increase width */
-  height:40px !important;     /* increase height */
+  width:53px !important;      /* increase width */
+  height:53px !important;     /* increase height */
   object-fit:contain;
+}
+
+.left-content{
+  gap:0px;
 }
 .oval-box img{
   width:35px !important;

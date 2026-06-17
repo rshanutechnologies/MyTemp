@@ -241,6 +241,8 @@ transform:translateY(-3px);
     font-size:clamp(12px, 3vw, 22px);
     padding:clamp(8px, 2vw, 12px);
   }
+  
+
 
 }
 
@@ -353,9 +355,12 @@ transform:translateY(-3px);
     align-items:center;    /* center vertically */
 }
 
+  .item{
+    gap:0px;
+  }
 .left img{
-    width:32px;
-    height:32px;
+    width:70px;
+    height:70px;
     flex-shrink:0;
 }
 
@@ -374,7 +379,13 @@ transform:translateY(-3px);
 svg{
     display:block;
 }
+.dot{
+  visibility:hidden;
+}
 
+.anchor{
+  visibility:hidden;
+}
 }
 
 @media screen and (max-width:480px){
@@ -384,7 +395,7 @@ svg{
 }
 
 .column{
-    width:40%;
+    width:50%;
 }
 
 .item{
@@ -392,11 +403,21 @@ svg{
     padding:3px;
 }
 
+  .item{
+    gap:0px;
+  }
 .text{
     font-size:14px;
 }
-
+.dot{
+  visibility:hidden;
 }
+
+.anchor{
+  visibility:hidden;
+}
+}
+
 /* ========================= */
 /* TABLET RESPONSIVE */
 /* ========================= */

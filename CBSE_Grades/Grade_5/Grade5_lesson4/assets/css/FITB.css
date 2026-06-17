@@ -935,7 +935,7 @@ button:disabled {
     }
 
     .input-box button {
-        font-size: 12px;
+        font-size: 10px;
         padding: 6px 12px;
     }
 
@@ -1001,6 +1001,11 @@ button:disabled {
 
     .input-box input {
         font-size: 16px;
+    }
+
+    .input-box button {
+        font-size: 15px;
+        padding: 12px 12px;
     }
 .quiz-nav {
 

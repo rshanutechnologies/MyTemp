@@ -515,10 +515,10 @@ gap:10px;
 .left,
 .right{
 flex:1;
-gap:6px;
+/* gap:6px; */
 }
 .left{
-    gap: 7px;
+    /* gap: 7px; */
 }
 /* RIGHT FIX */
 .right{
@@ -535,14 +535,16 @@ line-height:1.1;
 }
 
 .left .box{
-    padding: 2px ;
+    /* padding: 2px ; */
+    padding-right: 10px;
 }
 
 /* IMAGE */
 .left img{
 width:40px;
 height:40px;
-margin-right:5px;
+margin-right:0px;
+padding: 4px;
 }
 
 /* DOT */

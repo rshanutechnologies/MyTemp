@@ -381,6 +381,7 @@ body {
         gap: 60px; /* middle gap */
         padding: 8px 6px;
         align-items: stretch;
+          margin-top: -60px;
         /* background-color: #ffa4a4; */
     }
      #leftColumn .item {

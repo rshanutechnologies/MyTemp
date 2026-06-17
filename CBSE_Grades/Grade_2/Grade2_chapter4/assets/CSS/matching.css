@@ -290,6 +290,7 @@ body::before {
 .left .item {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 18px;
   padding: 14px 20px;
   border-radius: 22px;
@@ -540,6 +541,7 @@ body::before {
 .right .item {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 18px;
   padding: 14px 20px;
 
@@ -795,6 +797,7 @@ body::before {
     width: 28px;
     height: 28px;
     font-size: 14px;
+    margin-left: 6px;
     /* background-color: yellow !important; */
   }
 

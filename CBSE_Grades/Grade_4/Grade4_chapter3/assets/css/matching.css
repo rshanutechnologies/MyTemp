@@ -232,9 +232,13 @@ body {
 /* ================================================= */
 
 @media (max-width: 600px) {
+    .main{
+        margin-top: -180px !important;
+    }
 
     .game-container {
         gap: 10px;
+      
     }
 
     .item {
@@ -267,6 +271,9 @@ body {
 /* ================================================= */
 
 @media (max-width: 400px) {
+    .main{
+        margin-top: -90px;
+    }
 
     .item {
         height: 50px;

@@ -218,14 +218,6 @@ button:disabled {
     color: #c92a2a;
 }
 
-.img-loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 22px;
-}
-
 #finalPopup {
     position: fixed;
     inset: 0;

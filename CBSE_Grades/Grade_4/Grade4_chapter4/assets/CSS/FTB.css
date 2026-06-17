@@ -311,9 +311,13 @@ body {
   }
 }
 @media (max-width: 480px) {
+    body{
+        align-items: flex-start;
+    }
+   
 
     .question-area h2{
-        font-size: 22px !important;
+        font-size: 18px !important;
         line-height: 1.2;
     }
 

@@ -53,26 +53,6 @@ function speak(text) {
   speechSynthesis.speak(msg);
 }
 
-function preloadImages(callback) {
-  const loader = document.getElementById("imgLoader");
-
-  let loaded = 0;
-
-  questions.forEach((q) => {
-    const img = new Image();
-    img.src = q.img;
-
-    img.onload = img.onerror = () => {
-      loaded++;
-
-      if (loaded === questions.length) {
-        loader.style.display = "none";
-        callback();
-      }
-    };
-  });
-}
-
 function loadQuestion() {
   const q = questions[index];
   const state = answers[index];
@@ -235,4 +215,4 @@ function fireConfetti() {
   });
 }
 
-preloadImages(loadQuestion);
+loadQuestion();
