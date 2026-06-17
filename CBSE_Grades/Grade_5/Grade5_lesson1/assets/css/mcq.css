@@ -799,7 +799,7 @@ display:none;
   }
 
   .row {
-    gap: 20px;
+    gap: 5px;
   }
 
   .imgbox img {
@@ -824,8 +824,8 @@ display:none;
   }
 
   .opt-img {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
   }
 
   .nav {

@@ -274,9 +274,7 @@ font-weight:600;
 /* ================= MOBILE FIX ================= */
 
 @media (max-width:600px){
-body{
-  margin-top: -20px;
-}
+
   .row{
     flex-direction:column;   /* 🔥 stack vertically */
     gap:clamp(20px,4vh,40px);
@@ -288,19 +286,24 @@ body{
 
   .options{
     gap:clamp(15px,4vw,30px);
+    margin-top: -150px;
   }
 
   .answer-box{
     margin-bottom:20px;   /* 🔥 prevent overlap */
   }
+  .buttons{
+    margin-top: -80px;
+  }
   .question{
    
-    font-size: 22px;
+    font-size: 20px;
   }
   
 .image img{
-  width:180px;
+  width:130px;
   height:auto;
+  margin-top: -40px;
 }
 
 }
@@ -315,7 +318,7 @@ body{
 
 @media screen and (max-width:768px){
   .question{
-    font-size: 22px;
+    font-size: 20px;
   }
 }
 

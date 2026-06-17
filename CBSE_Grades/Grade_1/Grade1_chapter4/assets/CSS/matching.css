@@ -353,6 +353,10 @@ h1 {
         gap: 12px;
     }
 
+    .item {
+        gap: 15px;
+    }
+
     /* 🔥 KEY FIX: use % instead of fixed px */
     .left .item,
     .right .item {
@@ -365,8 +369,8 @@ h1 {
     }
 
     .left-img {
-        width: 30px;
-        height: 32px;
+        width: 50px;
+        height: 50px;
     }
 
     #line-canvas {

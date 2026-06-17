@@ -543,7 +543,7 @@ body::before {
 
     .question-text,
     .question-text *{
-        font-size: 18px;
+        font-size: 22px;
         line-height: 1.2;
         text-align: center;
         margin-top: -10px;

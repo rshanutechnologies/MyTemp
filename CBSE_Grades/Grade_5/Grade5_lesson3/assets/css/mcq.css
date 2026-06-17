@@ -740,6 +740,9 @@ display:none;
         margin-bottom: 20px;
         text-align: start;
     }
+    .row{
+     gap:10px
+    }
 
     .options {
         grid-template-columns: 1fr 1fr;
@@ -752,16 +755,17 @@ display:none;
         width: 100%;
         padding: 8px;
         font-size: 14px;
+         gap:0px;
     }
 
     .opt-img {
         width: 80px;
-        height: 80px;
+        height: 60px;
     }
 
     .imgbox img {
-        width: 130px;
-        height: 130px;
+        width: 100px;
+        height: 100px;
         margin-top: -10%;
     }
 
@@ -828,7 +832,7 @@ display:none;
 
     .option {
         font-size: 16px;
-        padding: 8px;
+        padding: 0px;
     }
 
     .opt-img {
