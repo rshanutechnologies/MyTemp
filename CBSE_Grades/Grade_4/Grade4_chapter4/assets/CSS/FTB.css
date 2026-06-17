@@ -295,7 +295,7 @@ body {
    MOBILE
 ============================== */
 @media (max-width: 760px) {
-    body { padding: 15px 0; }
+    body { padding: 60px 0; }
     .main-container { width: 100%; }
    
     .question-area h2{
