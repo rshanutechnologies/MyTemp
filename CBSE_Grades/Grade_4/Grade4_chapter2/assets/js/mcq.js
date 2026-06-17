@@ -25,7 +25,7 @@ img:"../assets/images/mcq-2.png"
 },
 
 {
-q:"The roots of _____________ grow above the soil.",
+q:"The roots of ________________ grow above the soil.",
 options:[
 {text:"Coconut",img:"../assets/images/option3-1.png"},
 {text:"Cactus",img:"../assets/images/option3-2.png"},

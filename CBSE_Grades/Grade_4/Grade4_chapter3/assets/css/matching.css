@@ -279,7 +279,7 @@ body {
         height: 50px;
         min-height: 50px;
         max-height: 50px;
-        font-size: 10px;
+        font-size: 12px !important;
         padding: 0 6px;
         gap: 5px;
         border-radius: 30px;

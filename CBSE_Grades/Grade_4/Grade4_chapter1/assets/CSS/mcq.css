@@ -435,7 +435,7 @@ body::before {
         padding: 18px;
         align-items: center;
         justify-content: center;
-        background-color: #7be6ff;
+        /* background-color: #7be6ff; */
     }
 
     .quiz-title {
@@ -543,10 +543,10 @@ body::before {
 
     .question-text,
     .question-text *{
-        font-size: 22px;
+        font-size: 18px;
         line-height: 1.2;
         text-align: center;
-        margin-top: -22px;
+        margin-top: -10px;
     }
 
     .question-img{
@@ -574,7 +574,7 @@ body::before {
     }
 
     .controls{
-        gap: 10px;
+        gap: 40px;
         margin-top: 14px !important;
         margin-bottom: 0;
     }
@@ -615,7 +615,7 @@ body::before {
         overflow: hidden;
         padding: 12px 16px;
         margin-top: 0;
-        background-color: #2e7d32;
+        /* background-color: #2e7d32; */
     }
 
     .question-box {
@@ -627,7 +627,7 @@ body::before {
 
     .question-text,
     .question-text * {
-        font-size: 26px;
+        font-size: 30px;
         text-align: left;
     }
 

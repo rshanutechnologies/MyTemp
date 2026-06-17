@@ -253,11 +253,14 @@ text-align: center;
         min-height: 80px;
         /* border-radius: 12px; */
     }
+     .left .item {
+        gap: 2px !important;
+    }
 
     .item {
-        font-size: 10px;
+        font-size: 14px;
         padding: 4px 6px;
-        gap: 3px;
+        /* gap: 3px; */
 
         display: flex;
         align-items: center;
@@ -276,8 +279,8 @@ text-align: center;
     }
 
     .left-img {
-        width: 24px;
-        height: 24px;
+        width: 30px;
+        height: 30px;
         flex-shrink: 0;
         object-fit: contain;
     }

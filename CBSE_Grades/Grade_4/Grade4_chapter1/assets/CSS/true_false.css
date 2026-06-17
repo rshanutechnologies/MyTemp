@@ -666,7 +666,11 @@ button:disabled {
     font-size: 19px;
   }
 } */
- @media (min-width: 1400px) {
+ @media (min-width: 1600px) {
+   .quiz-card {
+        width: 1100px;
+        height: 650px;
+    }
 
   .question {
     font-size: 40px !important;

@@ -323,7 +323,7 @@ canvas {
 
     .quiz-layout {
         grid-template-columns: 1fr;
-        background-color: #1b5e20;
+        /* background-color: #1b5e20; */
     }
     #question{
       font-size: 30px !important;

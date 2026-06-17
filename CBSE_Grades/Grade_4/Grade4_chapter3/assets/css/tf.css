@@ -315,7 +315,7 @@ background: #e6fffa;
     }
     .question-box{
         margin-top: -120px;
-        font-size: 18px;
+        font-size: 18px !important;
     }
     .question-image{
         width:150px;

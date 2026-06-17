@@ -687,6 +687,7 @@ padding:10px 25px;
 
 .quiz{
 max-width:1300px;
+
 }
 
 .row{
@@ -740,7 +741,7 @@ padding:10px 25px;
 @media screen and (min-width:1921px){
 
 .quiz{
-max-width:1500px;
+max-width:1300px;
 }
 
 .row{
@@ -778,4 +779,4 @@ font-size:24px;
 padding:14px 38px;
 }
 
-}
+} 

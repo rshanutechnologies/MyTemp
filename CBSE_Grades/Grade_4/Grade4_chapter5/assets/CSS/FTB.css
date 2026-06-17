@@ -291,6 +291,9 @@ body {
     .main-container{
         margin-top: -140px;
     }
+    .question-area{
+        font-size: 18px !important;
+    }
 
    
 

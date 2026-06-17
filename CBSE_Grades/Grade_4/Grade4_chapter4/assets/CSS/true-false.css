@@ -330,7 +330,7 @@ body {
     }
    
     .question-box{
-        font-size: 18px;
+        font-size: 18px !important;
         line-height: 1.2;
         padding: 8px;
         min-height: auto;
