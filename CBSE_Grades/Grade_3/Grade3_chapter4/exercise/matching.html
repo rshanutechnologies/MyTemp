@@ -110,7 +110,7 @@ margin-top:clamp(-20px,-2vh,-40px);
 display:flex;
 align-items:center;
 gap:clamp(8px,1.5vw,18px);
-background:#e6e8e5;
+background:#e7e8e5;
 padding:clamp(12px,2vh,18px) clamp(16px,2vw,24px);
 border-radius:60px;
 border: 2px solid rgb(219, 216, 216);
@@ -551,16 +551,15 @@ const r1=a.getBoundingClientRect()
 const r2=b.getBoundingClientRect()
 const rc=container.getBoundingClientRect()
 
-/* exact middle of left pill */
+/* start from left box right side */
 const x1=r1.right-rc.left
 const y1=(r1.top+r1.bottom)/2-rc.top
-const circle=b.querySelector(".circle")
-const rcircle=circle.getBoundingClientRect()
 
-const x2=rcircle.left-rc.left+rcircle.width/2
-const y2=rcircle.top-rc.top+rcircle.height/2
+/* end at right box left side */
+const x2=r2.left-rc.left
+const y2=(r2.top+r2.bottom)/2-rc.top
 
-const curve=Math.abs(x2-x1)*0.45
+const curve=Math.abs(x2-x1)*0.35
 
 const path=document.createElementNS(
 "http://www.w3.org/2000/svg",
@@ -581,7 +580,6 @@ path.setAttribute("stroke-width","5")
 path.setAttribute("stroke-linecap","round")
 
 svg.appendChild(path)
-
 }
 function correctConfetti(){
 

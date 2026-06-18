@@ -184,15 +184,9 @@
     /* SHOW MENU BUTTON FOR MOBILE + TABLET */
     @media (max-width:1100px) {
 
-      /* .menu-btn {
+      .menu-btn {
         display: block;
-      } */
-       .menu-btn{
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 1001;
-}
+      }
 
       /* MOBILE/TABLET MENU */
       .top-nav {
@@ -244,55 +238,47 @@
 
     /* ---------------- MOBILE ---------------- */
 
-    @media (max-width:768px) {
+   @media (max-width:768px){
 
-      .menu-btn {
-        display: block;
-      }
-
-      /* MOBILE MENU */
-
-      .top-nav {
-
-        display: none;
-
-        flex-direction: column;
-
-        position: absolute;
-
-        top: 50px;
-        right: 10px;
-        /* RIGHT SIDE MENU */
-
-        background: white;
-
-        padding: 15px;
-
-        border-radius: 12px;
-
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-
-        gap: 12px;
-
-        z-index: 999;
-
-      }
-
-      .top-nav.show {
-        display: flex;
-      }
-
-      .nav-btn {
-
-        width: 200px;
-
-        font-size: 15px;
-
-        padding: 10px 20px;
-
-      }
-
+    .menu-btn{
+        display:block;
+        position:fixed;
+        top:15px;
+        right:15px;
+        z-index:1001;
     }
+
+    .top-nav{
+        display:flex;
+        flex-direction:column;
+
+        position:fixed;
+        top:0;
+        right:-230px;
+
+        width:230px;      /* sidebar width */
+        height:100vh;     /* full height only */
+
+        padding:70px 15px 20px;
+
+        background:#fff;
+
+        box-shadow:-5px 0 20px rgba(0,0,0,0.25);
+
+        transition:right .3s ease;
+
+        z-index:1000;
+    }
+
+    .top-nav.show{
+        right:0;
+    }
+
+    .nav-btn{
+        width:100%;
+        justify-content:flex-start;
+    }
+}
 
     /* ICON STYLE */
 

@@ -227,7 +227,7 @@ body::before {
 }
 
 .opt-label {
-    font-size: px;
+    font-size: 22px;
     font-weight: 400;
     color: black;
     text-transform: capitalize;

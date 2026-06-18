@@ -100,15 +100,28 @@ function drawLine(a, b) {
 
   const svgRect = svg.getBoundingClientRect();
 
-  const x1 = rectA.left - svgRect.left;
-  const y1 = rectA.top - svgRect.top + 7;
+  // const x1 = rectA.left - svgRect.left;
+  // const y1 = rectA.top - svgRect.top + 7;
 
-  const x2 = rectB.left - svgRect.left;
-  const y2 = rectB.top - svgRect.top + 7;
+  // const x2 = rectB.left - svgRect.left;
+  // const y2 = rectB.top - svgRect.top + 7;
+  const x1 = rectA.left - svgRect.left + rectA.width / 2;
+const y1 = rectA.top - svgRect.top + rectA.height / 2;
+
+const x2 = rectB.left - svgRect.left + rectB.width / 2;
+const y2 = rectB.top - svgRect.top + rectB.height / 2;
 
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-  const curve = `M${x1},${y1} C${x1 + 150},${y1} ${x2 - 150},${y2} ${x2},${y2}`;
+  // const curve = `M${x1},${y1} C${x1 + 150},${y1} ${x2 - 150},${y2} ${x2},${y2}`;
+  const offset = Math.abs(x2 - x1) * 0.4;
+
+const curve = `
+M${x1},${y1}
+C${x1 + offset},${y1}
+ ${x2 - offset},${y2}
+ ${x2},${y2}
+`;
 
   path.setAttribute("d", curve);
   path.setAttribute("stroke", "#fff4f4");

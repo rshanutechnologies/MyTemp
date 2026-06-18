@@ -5250,6 +5250,7 @@
       document.getElementById('homeContent').style.display = 'block';
       document.getElementById('lessonContent').style.display = 'none';
       window.scrollTo(0, 0);
+      if (typeof applyRestriction === 'function') applyRestriction();
     }
 
     /* =========================
@@ -5992,6 +5993,13 @@
       document.getElementById('homeContent').style.display = 'none';
       lessonDiv.style.display = 'block';
 
+      var currPath = curriculum === 'SSC' ? 'ssc' : 'cbse';
+      var lastSeg = window.location.pathname.replace(/\/+$/, '').split('/').pop().toLowerCase();
+      if (lastSeg !== currPath) {
+        var base = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+        history.pushState(null, '', base + currPath);
+      }
+
       lessonDiv.innerHTML = `
     <div class="crumbs">
       <span onclick="showHome()">Home</span><span class="sep">›</span>
@@ -6499,55 +6507,86 @@
   </script>
 
   <!-- ============================================
-       Curriculum restriction via ?curriculum=ssc|cbse
+       Dynamic curriculum restriction via /ssc or /cbse path
        ============================================ -->
   <script>
-    (function() {
-      var params = new URLSearchParams(window.location.search);
-      var curr = params.get('curriculum');
-      if (!curr) return;
+    window.__blockedCurriculum = null;
 
-      var allowed = curr.toLowerCase() === 'ssc' ? 'SSC' : 'CBSE';
-      var blocked = allowed === 'CBSE' ? 'SSC' : 'CBSE';
-
-      // 1. Hide the blocked curriculum card on the home page
-      document.querySelectorAll('.curr-card').forEach(function(card) {
-        var onclick = card.getAttribute('onclick');
-        if (onclick && onclick.indexOf(blocked) !== -1) {
-          card.style.display = 'none';
-        }
-      });
-
-      // 2. Hide the blocked sidebar root menu item (li)
-      document.querySelectorAll('.sidebar .menu > li > .menu-title').forEach(function(title) {
-        var text = title.textContent.trim();
-        if (text.indexOf(blocked) === 0) {
-          title.closest('li').style.display = 'none';
-        }
-      });
-
-      // 3. Wrap all navigation functions to silently block the other curriculum
+    // Wrap navigation once to respect the global blocked curriculum
+    (function wrapNavOnce() {
       ['loadCurriculum', 'loadGrade', 'loadSubjectList', 'loadLesson', 'loadSubject'].forEach(function(fnName) {
-        if (typeof window[fnName] !== 'function') return;
+        if (typeof window[fnName] !== 'function' || window[fnName].__rWrap) return;
         var orig = window[fnName];
         window[fnName] = function() {
-          if (arguments.length > 0 && arguments[0] && arguments[0].toString().toUpperCase() === blocked) return;
+          if (window.__blockedCurriculum && arguments.length > 0 && arguments[0] && arguments[0].toString().toUpperCase() === window.__blockedCurriculum) return;
           return orig.apply(this, arguments);
         };
+        window[fnName].__rWrap = true;
+      });
+    })();
+
+    function applyRestriction() {
+      var segments = window.location.pathname.replace(/\/+$/, '').split('/');
+      var last = segments[segments.length - 1].toLowerCase();
+      var curr = (last === 'ssc' || last === 'cbse') ? last : null;
+
+      // Show everything first
+      document.querySelectorAll('.curr-card').forEach(function(card) { card.style.display = ''; });
+      document.querySelectorAll('.sidebar .menu > li').forEach(function(li) { li.style.display = ''; });
+      window.__blockedCurriculum = null;
+
+      if (!curr) return;
+
+      var allowed = curr === 'ssc' ? 'SSC' : 'CBSE';
+      var blocked = allowed === 'CBSE' ? 'SSC' : 'CBSE';
+      window.__blockedCurriculum = blocked;
+
+      // Hide blocked curriculum cards
+      document.querySelectorAll('.curr-card').forEach(function(card) {
+        var onclick = card.getAttribute('onclick');
+        if (onclick && onclick.indexOf(blocked) !== -1) card.style.display = 'none';
       });
 
-      // 4. Auto-navigate to the allowed curriculum
+      // Hide blocked sidebar root
+      document.querySelectorAll('.sidebar .menu > li > .menu-title').forEach(function(title) {
+        var text = title.textContent.trim();
+        if (text.indexOf(blocked) === 0) title.closest('li').style.display = 'none';
+      });
+    }
+
+    // Initial load
+    (function init() {
+      var segments = window.location.pathname.replace(/\/+$/, '').split('/');
+      var last = segments[segments.length - 1].toLowerCase();
+      var curr = (last === 'ssc' || last === 'cbse') ? last : null;
+      if (curr) {
+        var allowed = curr.toLowerCase() === 'ssc' ? 'SSC' : 'CBSE';
+        applyRestriction();
       function doNav() {
-        if (typeof window.loadCurriculum === 'function') {
-          window.loadCurriculum(allowed);
-        }
+          if (typeof window.loadCurriculum === 'function') window.loadCurriculum(allowed);
       }
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', doNav);
       } else {
         doNav();
+        }
       }
     })();
+
+    // Popstate – back/forward navigation
+    window.addEventListener('popstate', function() {
+      applyRestriction();
+      var segments = window.location.pathname.replace(/\/+$/, '').split('/');
+      var last = segments[segments.length - 1].toLowerCase();
+      if (last === 'ssc' || last === 'cbse') {
+        var curr = last === 'ssc' ? 'SSC' : 'CBSE';
+        if (typeof window.loadCurriculum === 'function') window.loadCurriculum(curr);
+      } else {
+        if (typeof window.showHome === 'function' && document.getElementById('homeContent').style.display !== 'block') {
+          window.showHome();
+        }
+      }
+    });
   </script>
 
 </body>
