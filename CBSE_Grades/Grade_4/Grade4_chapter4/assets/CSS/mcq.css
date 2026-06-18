@@ -433,7 +433,7 @@ body {
     }
 
     .option {
-        font-size: 14px;
+        font-size: 22px;
         padding: 14px 12px;
 
     }
@@ -479,7 +479,7 @@ body {
         min-height: 70px; /* reduced box height */
         padding: 10px;
         gap: 10px;
-        font-size: 12px;
+        font-size: 16px;
         flex-direction: column;
         text-align: center;
     }
@@ -571,7 +571,7 @@ body {
          height: 90px;  
     } */
      .option {
-    font-size: 24px !important;
+    font-size: 26px !important;
      padding: 22px 26px;
     height: 90px;
 }

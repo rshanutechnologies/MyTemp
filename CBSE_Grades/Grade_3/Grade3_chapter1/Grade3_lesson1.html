@@ -242,7 +242,7 @@ left:30px;
 
 }
 /* Mobile Only */
-@media (max-width:768px){
+@media (max-width:1100px){
 
   body{
     overflow-x:hidden;
@@ -290,6 +290,7 @@ left:30px;
 
   /* Stack buttons vertically inside */
   .menu{
+    margin-top: -30px;
     position:relative;
     display:flex;
     flex-direction:column;
@@ -490,7 +491,7 @@ buttons.forEach(btn=>{
 
   btn.addEventListener("click",()=>{
 
-    if(window.innerWidth <= 768){
+    if(window.innerWidth <= 1100){
 
       sidebar.classList.remove("active");
       overlay.classList.remove("active");

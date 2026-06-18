@@ -653,8 +653,16 @@ body::before {
   <img id="questionImg" src="" alt="Question image" style="width:300px; height:200px; object-fit:contain; margin:2px auto; display:block; padding: 0 !important;">
 
   <!-- INPUT FIELD - REPLACES ANSWER BOXES -->
-  <input type="text" id="answerInput" autocomplete="off" placeholder="Type your answer here...">
-  
+<input
+  type="text"
+  id="answerInput"
+  autocomplete="off"
+  spellcheck="false"
+  ondrop="return false"
+  onpaste="return false"
+  ondragover="return false"
+  placeholder="Type your answer here..."
+>  
   <button id="submitBtn" style="padding:14px 40px; font-size:22px; border-radius:999px; border:none; background:#22c55e; color:white; cursor:pointer;" class="submitBtnn">
     Submit
   </button>
@@ -755,7 +763,32 @@ const prevBtn = document.getElementById("prev");
 const submitBtn = document.getElementById("submitBtn");
 const scoreBox = document.getElementById("scoreBox");
 const answerInput = document.getElementById("answerInput");
+// Disable drag & drop completely
+["dragenter", "dragover", "dragleave", "drop"].forEach(event => {
+  answerInput.addEventListener(event, function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  });
+});
 
+// Disable paste
+answerInput.addEventListener("paste", function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// Disable cut
+answerInput.addEventListener("cut", function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// Disable context menu
+answerInput.addEventListener("contextmenu", function(e) {
+  e.preventDefault();
+  return false;
+});
 let savedAnswers = new Array(quizData.length).fill(null);
 let locked = new Array(quizData.length).fill(false);
 

@@ -99,6 +99,25 @@ const submitBtn = document.getElementById("submitBtn");
 const scoreBox = document.getElementById("scoreBox");
 const answerLine = document.getElementById("answerLine");
 
+const input = document.getElementById("answerInput");
+
+/* Make input readonly */
+input.setAttribute("readonly", true);
+
+/* Block everything */
+["paste", "drop", "dragover", "dragenter", "cut"].forEach(event => {
+  input.addEventListener(event, e => {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  });
+});
+
+/* Keep focus on input */
+document.addEventListener("click", () => {
+  input.focus();
+});
+
 let correctWord = "";
 let typedLetters = [];
 
@@ -173,6 +192,8 @@ function renderLine() {
 /* ================= KEYBOARD INPUT ================= */
 
 document.addEventListener("keydown", (e) => {
+  e.preventDefault(); // blocks typing in any input
+
   if (locked[current]) return;
 
   if (e.key === "Backspace") {

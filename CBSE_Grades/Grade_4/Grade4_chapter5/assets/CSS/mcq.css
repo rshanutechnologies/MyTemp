@@ -71,8 +71,8 @@ body {
 }
 
 .question-image img {
-    width: clamp(160px, 22vw, 300px);
-height: clamp(120px, 18vh, 240px);
+    width: 160px !important;
+height: 160px !important;
     object-fit: contain;
     padding: 5px;
     border-radius: 28px;
@@ -354,7 +354,7 @@ height: clamp(42px, 6vh, 62px);
     .option-text {
         width: 120px;
         height: 40px;
-        font-size: 12px;
+        font-size: 16px;
     }
 }
 @media (min-width: 481px) and (max-width: 900px) {
@@ -376,7 +376,7 @@ height: clamp(42px, 6vh, 62px);
     .option-text {
         width: 150px;
         height: 48px;
-        font-size: 14px;
+        font-size: 20px;
     }
 }
 /* MOBILE — 900px and below (unchanged) */
@@ -443,8 +443,8 @@ height: clamp(42px, 6vh, 62px);
     }
 
     .question-image img {
-        width: 240px;
-        height: 240px;
+        width: 289px !important;
+        height: 270px !important;
     }
 
     .option-img {
@@ -455,7 +455,7 @@ height: clamp(42px, 6vh, 62px);
     .option-text {
         width: clamp(180px, 18vw, 260px);
         height: clamp(52px, 8vh, 72px);
-        font-size: 22px;
+        font-size: 26px;
         padding: 12px 20px;
     }
 
