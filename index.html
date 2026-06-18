@@ -5995,7 +5995,7 @@
 
       var currPath = curriculum === 'SSC' ? 'ssc' : 'cbse';
       var lastSeg = window.location.pathname.replace(/\/+$/, '').split('/').pop().toLowerCase();
-      if (lastSeg !== currPath) {
+      if ((lastSeg === 'ssc' || lastSeg === 'cbse') && lastSeg !== currPath) {
         var base = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
         history.pushState(null, '', base + currPath);
       }
