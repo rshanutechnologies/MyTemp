@@ -778,16 +778,6 @@ body::before {
 }
 
 
-/* ===============================
-   📱 MOBILE RESPONSIVE FIX
-================================ */
-
-@media (max-width:480px) {
-  .title {
-    font-size: 22px;
-  }
-}
-
 @media (max-width:768px) {
 
   body {
@@ -812,7 +802,7 @@ body::before {
   .title {
     width: 100%;
     padding: 0px 20px;
-    font-size: 30px;
+    font-size: 24px;
     text-align: left;
     min-height: 70px;
     display: flex;
@@ -848,7 +838,7 @@ body::before {
 
   /* header */
   .quiz-title {
-    font-size: 24px;
+    font-size: 30px;
   }
 
   .quiz-subtitle {
@@ -922,6 +912,17 @@ body::before {
   text-transform: capitalize;
 }
 
+
+
+/* ===============================
+   📱 MOBILE RESPONSIVE FIX
+================================ */
+
+@media (max-width:480px) {
+  .title {
+    font-size: 22px;
+  }
+}
 
 
 

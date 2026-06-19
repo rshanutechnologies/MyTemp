@@ -682,15 +682,6 @@ body::before{
   text-align:center;
 }
 
-/* ===============================
-   📱 MOBILE RESPONSIVE FIX
-================================ */
-
-@media (max-width:480px){
-.title{
-    font-size:22px;
-}
-}
 
 @media (max-width:768px){
 
@@ -816,6 +807,15 @@ body{
 }
 
 
+/* ===============================
+   📱 MOBILE RESPONSIVE FIX
+================================ */
+
+@media (max-width:480px){
+.title{
+    font-size:22px;
+}
+}
 
 
 

@@ -976,13 +976,7 @@ body::before {
   object-fit: contain;
 }
 
-/* ================= MOBILE RESPONSIVE ================= */
 
-@media (max-width:480px) {
-  .title {
-    font-size: 22px;
-  }
-}
 
 @media (max-width:768px) {
 
@@ -1077,6 +1071,14 @@ body::before {
 
   .title {
     margin-top: -5%;
+  }
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width:480px) {
+  .title {
+    font-size: 22px;
   }
 }
 

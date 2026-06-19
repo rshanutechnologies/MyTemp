@@ -447,15 +447,6 @@ button:disabled {
 
 
 
-/* ===============================
-   📱 MOBILE RESPONSIVE FIX
-================================ */
-
-@media (max-width:480px) {
-  .question {
-    font-size: 22px;
-  }
-}
 
 @media (max-width:768px) {
 
@@ -563,6 +554,18 @@ button:disabled {
     padding: 20px;
   }
 
+}
+
+
+
+/* ===============================
+   📱 MOBILE RESPONSIVE FIX
+================================ */
+
+@media (max-width:480px) {
+  .question {
+    font-size: 22px;
+  }
 }
 
 

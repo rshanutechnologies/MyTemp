@@ -400,13 +400,6 @@ body::before {
   cursor: pointer;
 }
 
-/* ================= MOBILE ================= */
-
-@media (max-width:480px) {
-  .title {
-    font-size: 22px;
-  }
-}
 
 @media (max-width:768px) {
 
@@ -516,6 +509,13 @@ body::before {
 }
 
 
+/* ================= MOBILE ================= */
+
+@media (max-width:480px) {
+  .title {
+    font-size: 22px;
+  }
+}
 
 /* Small desktops / laptops */
 @media (min-width: 1024px) {

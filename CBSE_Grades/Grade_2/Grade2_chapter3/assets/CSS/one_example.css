@@ -472,13 +472,7 @@ body::before{
     }
 }
 
-/* ================= MOBILE ================= */
-/* ================= MOBILE ================= */
-@media (max-width:480px){
-.title{
-font-size:22px;
-}
-}
+
 
 @media (max-width:768px){
 
@@ -586,7 +580,13 @@ font-size:50px;
 
 }
 
-
+/* ================= MOBILE ================= */
+/* ================= MOBILE ================= */
+@media (max-width:480px){
+.title{
+font-size:22px;
+}
+}
 
 
 /* Small desktops / laptops */
