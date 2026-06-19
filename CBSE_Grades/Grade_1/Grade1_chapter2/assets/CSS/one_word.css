@@ -22,7 +22,7 @@ body {
 }
 
 .question-section {
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
 .question-title {
@@ -37,8 +37,8 @@ body {
 }
 
 #questionImage {
-    width: 230px;
-    height: 180px;
+    width: 220px;
+    height: 170px;
     object-fit: contain;
 }
 
@@ -134,14 +134,15 @@ body {
 }
 
 .quiz-navigation {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
 }
 
 .quiz-navigation button {
     padding: 13px 32px;
-
+    width: 150px;
+    padding-inline: 0px !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -335,13 +336,6 @@ body {
         padding: 25px;
     }
 
-    .question-title {
-        font-size: 24px;
-        height: auto;
-        padding: 10px;
-        text-align: start;
-    }
-
     #questionImage {
         width: 200px;
         height: 145px;
@@ -398,10 +392,6 @@ body {
         padding: 20px;
     }
 
-    .question-title {
-        font-size: 24px;
-    }
-
     #questionImage {
         width: 180px;
         height: 140px;
@@ -428,7 +418,7 @@ body {
     }
 
     .quiz-navigation button {
-        padding: 6px 20px;
+        padding: 8px 20px;
         font-size: 18px;
     }
 
@@ -484,7 +474,8 @@ body {
 
     .quiz-navigation button {
         font-size: 18px;
-        padding: 6px 20px;
+        padding: 8px 20px;
+        width: 120px;
     }
 
     .kid-card {
@@ -534,11 +525,6 @@ body {
         padding: 12px;
     }
 
-    .question-title {
-        font-size: 22px;
-        line-height: 1.3;
-    }
-
     #questionImage {
         width: 130px;
         height: 100px;
@@ -571,8 +557,8 @@ body {
     }
 
     .quiz-navigation button {
-        padding: 6px 20px;
-        font-size: 16px;
+        padding: 8px 20px;
+        font-size: 18px;
     }
 }
 
@@ -583,10 +569,6 @@ body {
 
     .quiz-container {
         width: 1000px;
-    }
-
-    .question-title {
-        font-size: 34px;
     }
 
     #questionImage {
@@ -612,7 +594,7 @@ body {
     }
 
     .quiz-navigation button {
-        font-size: 22px;
+        font-size: 20px;
         padding: 14px 36px;
     }
 
@@ -655,8 +637,8 @@ body {
     }
 
     .quiz-navigation button {
-        font-size: 24px;
-        padding: 16px 40px;
+        font-size: 22px;
+        /* padding: 16px 40px; */
     }
 
 }
@@ -698,8 +680,8 @@ body {
     }
 
     .quiz-navigation button {
-        font-size: 26px;
-        padding: 18px 44px;
+        font-size: 24px;
+        /* padding: 18px 44px; */
     }
 
 }

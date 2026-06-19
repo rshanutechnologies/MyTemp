@@ -636,6 +636,12 @@ background:#e8f5e9;
 
 /* ================= MOBILE RESPONSIVE ================= */
 
+@media (max-width:480px) {
+  .question {
+    font-size: 22px;
+  }
+}
+
 @media (max-width:768px) {
 
   html {
@@ -672,7 +678,6 @@ background:#e8f5e9;
 
   /* question text */
   .question {
-    font-size: 22px;
     margin: 15px 0;
     margin-top: 12%;
     min-height: 50px;
@@ -946,7 +951,6 @@ background:#e8f5e9;
 
   /* ✅ QUESTION (IMPORTANT SYSTEM) */
   .question {
-    font-size: 44px;
     min-height: 140px;
     margin-top: 10px;
   }
@@ -1068,4 +1072,16 @@ background:#e8f5e9;
     padding: 14px 28px;
   }
 
+}
+
+@media (min-width: 1400px) {
+  .question {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 1921px) {
+  .question {
+    font-size: 40px;
+  }
 }

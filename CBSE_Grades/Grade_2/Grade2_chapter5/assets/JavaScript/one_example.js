@@ -2,7 +2,7 @@
 const quizData = [
 
 {
-  title: "Q.1 A form of air",
+  title: "Q1. A form of air",
   options:[
     { text:"Breeze", img:"../assets/images/Breeeze.png"},
     { text:"Stone", img:"../assets/images/Stoneeak.png"},
@@ -11,7 +11,7 @@ const quizData = [
 },
 
 {
-  title: "Q.2 A natural source of water",
+  title: "Q2. A natural source of water",
   options:[
     { text:"Fridge", img:"../assets/images/Fridgeak.png"},
     { text:"River", img:"../assets/images/Riverakk.png"},
@@ -20,7 +20,7 @@ const quizData = [
 },
 
 {
-  title: "Q.3 A source of ground water",
+  title: "Q3. A source of ground water",
   options:[
     { text:"Cloud", img:"../assets/images/Cloudak.png"},
     { text:"Well", img:"../assets/images/Wellak.png"},
@@ -29,7 +29,7 @@ const quizData = [
 },
 
 {
-  title: "Q.4 A use of water",
+  title: "Q4. A use of water",
   options:[
     { text:"Sleeping", img:"../assets/images/BoySleep.png"},
     { text:"Drinking", img:"../assets/images/BoyDrink.png"},
@@ -38,7 +38,7 @@ const quizData = [
 },
 
 {
-  title: "Q.5 A use of air",
+  title: "Q5. A use of air",
   options:[
     { text:"Breathing", img:"../assets/images/BoyBreathing.png"},
     { text:"Running", img:"../assets/images/BoyRun.png"},

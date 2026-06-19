@@ -408,17 +408,19 @@ background: #e6fffa;
   }
 }
 
+@media (min-width: 1400px) {
+.question-area h2 {
+    font-size: 40px !important;
+    line-height: 1.4;
+  }
+
+}
+
 @media (min-width: 1600px)  {
 
   .main-container {
     max-width: 1200px;
     padding: 20px;
-  }
-
-  .question-area h2 {
-    font-size: 40px !important;
-    line-height: 1.4;
-    /* background-color: #8e5260; */
   }
 
   .image-area {

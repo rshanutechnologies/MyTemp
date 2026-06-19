@@ -53,31 +53,31 @@ function showFinal() {
 const questions = [
 
   {
-    q: "Q.1 The size of the _ _ _ _ _ is one's own fist.",
+    q: "Q1. The size of the _ _ _ _ _ is one's own fist.",
     a: "heart",
     img: "../assets/images/f1111.png"
   },
 
   {
-    q: "Q.2 The skin is an _ _ _ _ _ part of our body.",
+    q: "Q2. The skin is an _ _ _ _ _ part of our body.",
     a: "External",
     img: "../assets/images/Skin.png"
   },
 
   {
-    q: "Q.3 Our _ _ _ _ _ help us write.",
+    q: "Q3. Our _ _ _ _ _ help us write.",
     a: "hands",
     img: "../assets/images/BoyWrite.png"
   },
 
   {
-    q: "Q.4 The _ _ _ _ _ helps us remember.",
+    q: "Q4. The _ _ _ _ _ helps us remember.",
     a: "brain",
     img: "../assets/images/Rememberingbrain.png"
   },
 
   {
-    q: "Q.5 The lungs are known as the _ _ _ _ _ _ _.",
+    q: "Q5. The lungs are known as the _ _ _ _ _ _ _.",
     a: "breathing",
     img: "../assets/images/Lungs.png"
   }

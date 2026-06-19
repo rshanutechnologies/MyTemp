@@ -145,12 +145,14 @@ body {
 .controls button {
     font-weight: 400;
     font-size: 18px;
+    width: 150px;
     border: none;
     padding: 12px 32px;
     border-radius: 25px;
     color: white;
     cursor: pointer;
     border: 3px solid #fff;
+    padding-inline: 0px !important;
 }
 
 .prev {
@@ -356,11 +358,6 @@ TABLET
         gap: 20px;
     }
 
-    .question-box {
-        font-size: 24px;
-        height: auto;
-    }
-
     .question-image {
         height: 140px;
     }
@@ -408,7 +405,7 @@ TABLET
 MOBILE
 ================================ */
 
-@media (max-width: 500px) {
+@media (max-width:480px) {
 
     body {
         overflow-y: auto;
@@ -465,6 +462,7 @@ MOBILE
     .controls button {
         font-size: 18px;
         padding: 8px 20px;
+        width: 120px;
     }
 
 }
@@ -541,10 +539,6 @@ FINAL POPUP RESPONSIVE ONLY
         height: 650px;
     }
 
-    .question-box {
-        font-size: 34px;
-    }
-
     .question-image img {
         height: 170px;
     }
@@ -566,6 +560,11 @@ FINAL POPUP RESPONSIVE ONLY
 
     .option:nth-child(2) {
         transform: translateX(200px);
+    }
+
+    .controls button {
+        font-size: 20px;
+        padding: 14px 36px;
     }
 
 }
@@ -609,6 +608,11 @@ FINAL POPUP RESPONSIVE ONLY
         transform: translateX(230px);
     }
 
+    .controls button {
+        font-size: 22px;
+        padding: 14px 0px;
+    }
+
 }
 
 
@@ -648,6 +652,11 @@ FINAL POPUP RESPONSIVE ONLY
 
     .option:nth-child(2) {
         transform: translateX(260px);
+    }
+
+    .controls button {
+        font-size: 24px;
+        padding: 14px 0px;
     }
 
 }

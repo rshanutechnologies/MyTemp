@@ -1,30 +1,30 @@
 const quizData = [
   {
-    q: "Q.1 We should eat food at proper time.",
+    q: "Q1. We should eat food at proper time.",
     a: true,
     img: "../assets/images/Boyeatt.png",
     answered: false,
   },
   {
-    q: "Q.2 We should not chew our food.",
+    q: "Q2. We should not chew our food.",
     a: false,
     img: "../assets/images/BoyChewak.png",
     answered: false,
   },
   {
-    q: "Q.3 We should drink at least 7 to 8 glasses of water daily.",
+    q: "Q3. We should drink at least 7 to 8 glasses of water daily.",
     a: true,
     img: "../assets/images/BoyDrink.png",
     answered: false,
   },
   {
-    q: "Q.4 We should exercise regularly.",
+    q: "Q4. We should exercise regularly.",
     a: true,
     img: "../assets/images/BoyExercise.png",
     answered: false,
   },
   {
-    q: "Q.5 We should not play outdoor games.",
+    q: "Q5. We should not play outdoor games.",
     a: false,
     img: "../assets/images/BoyPlay.png",
     answered: false,

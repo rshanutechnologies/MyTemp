@@ -407,6 +407,12 @@ box-shadow:none !important;
    📱 MOBILE RESPONSIVE FIX
 ================================ */
 
+@media (max-width:480px){
+.question{
+  font-size:22px;
+}
+}
+
 @media (max-width:768px){
 
 body{
@@ -432,7 +438,7 @@ body{
 
 /* question */
 .question{
-  font-size:22px;
+  font-size:30px;
   padding:10px;
   text-align:start;
   min-height:100px;
@@ -553,7 +559,7 @@ body{
 
   /* ✅ QUESTION (IMPORTANT SYSTEM) */
   .question{
-    font-size: 44px;
+    font-size: 30px;
     min-height: 140px;
     padding: 40px;
     text-align: center;
@@ -640,6 +646,13 @@ body{
 
 }
 
+/* Big desktops / monitors */
+@media (min-width: 1400px) {
+.question{
+    font-size:40px;
+}
+}
+
 /* Large desktops */
 @media (min-width: 1440px) {
    body{
@@ -658,6 +671,9 @@ body{
   }
     .nav{
     margin-top:11%;
-  
+   
+}
+.question{
+    font-size:40px;
 }
 }

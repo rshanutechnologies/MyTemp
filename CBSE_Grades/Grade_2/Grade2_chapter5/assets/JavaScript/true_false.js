@@ -47,35 +47,35 @@ function showFinal() {
 const quizData = [
 
 {
-q:"Q.1 We can see air, but we cannot feel it.",
+q:"Q1. We can see air, but we cannot feel it.",
 a:false,
 img:"../assets/images/FeelAir.png",
 answered:false
 },
 
 {
-q:"Q.2 We should drink water from wherever it is available.",
+q:"Q2. We should drink water from wherever it is available.",
 a:false,
 img:"../assets/images/DirtyWaterDrink.png",
 answered:false
 },
 
 {
-q:"Q.3 Dams are built on seas.",
+q:"Q3. Dams are built on seas.",
 a:false,
 img:"../assets/images/NewDam.png",
 answered:false
 },
 
 {
-q:"Q.4 Air helps to carry the seeds of plants.",
+q:"Q4. Air helps to carry the seeds of plants.",
 a:true,
 img:"../assets/images/AirSeedss.png",
 answered:false
 },
 
 {
-q:"Q.5 Gentle wind is called breeze.",
+q:"Q5. Gentle wind is called breeze.",
 a:true,
 img:"../assets/images/Breeeze.png",
 answered:false

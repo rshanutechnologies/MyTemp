@@ -871,6 +871,12 @@ button:disabled {
    📱 MOBILE RESPONSIVE FIX
 ================================ */
 
+@media (max-width:480px){
+.question{
+    font-size:22px;
+}
+}
+
 @media (max-width:768px){
 
 body{
@@ -920,7 +926,7 @@ body{
 
 /* question text */
 .question{
-    font-size:22px;
+    font-size:30px;
     height:auto;
     margin-top:2%;
     min-height:100px;
@@ -1075,7 +1081,7 @@ font-size:14px;
 
   /* ✅ QUESTION (IMPORTANT SYSTEM) */
   .question{
-    font-size: 44px;
+    font-size: 30px;
     min-height: 140px;
     padding-inline: 40px;
   }
@@ -1167,6 +1173,13 @@ font-size:14px;
 
 }
 
+/* Big desktops / monitors */
+@media (min-width: 1400px) {
+.question{
+    font-size:40px;
+}
+}
+
 /* Large desktops */
 @media (min-width: 1440px) {
    body{
@@ -1185,6 +1198,9 @@ font-size:14px;
   }
     .quiz-nav{
     margin-top:1%;
-  
+   
+}
+.question{
+    font-size:40px;
 }
 }

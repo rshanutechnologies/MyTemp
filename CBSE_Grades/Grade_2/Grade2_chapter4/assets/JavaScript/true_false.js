@@ -47,35 +47,35 @@ function showFinal() {
 const quizData = [
 
 {
-q:"Q.1 We eat different kinds of food.",
+q:"Q1. We eat different kinds of food.",
 a:true,
 img:"../assets/images/DifferentFood.png",
 answered:false
 },
 
 {
-q:"Q.2 All foods give us energy.",
+q:"Q2. All foods give us energy.",
 a:false,
 img:"../assets/images/EatingEnergy.png",
 answered:false
 },
 
 {
-q:"Q.3 We should drink atleast two to three glasses of water daily.",
+q:"Q3. We should drink atleast two to three glasses of water daily.",
 a:false,
 img:"../assets/images/BoyDrink.png",
 answered:false
 },
 
 {
-q:"Q.4 Vegetarians do not eat cheese, butter and ghee.",
+q:"Q4. Vegetarians do not eat cheese, butter and ghee.",
 a:false,
 img:"../assets/images/VegeterianBoy.png",
 answered:false
 },
 
 {
-q:"Q.5 We must not eat uncovered food.",
+q:"Q5. We must not eat uncovered food.",
 a:true,
 img:"../assets/images/UncoverdFood2.png",
 answered:false

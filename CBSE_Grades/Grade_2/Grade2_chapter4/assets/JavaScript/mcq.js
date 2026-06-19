@@ -3,7 +3,7 @@
 const quizData = [
 
 {
-title: "Q.1 Which of the following food gives us energy?",
+title: "Q1. Which of the following food gives us energy?",
 image:  "../assets/images/EatingEnergy.png",
 options: [
 { text: "Eggs", img: "../assets/images/Eggak.png" },
@@ -15,7 +15,7 @@ answer: "Rice"
 },
 
 {
-title: "Q.2 __________ protect us from falling sick.",
+title: "Q2. __________ protect us from falling sick.",
 image:  "../assets/images/BoySickk.png",
 options: [
 { text: "Vitamins", img: "../assets/images/Vitaminsak.png" },
@@ -27,7 +27,7 @@ answer: "Vitamins"
 },
 
 {
-title: "Q.3 We get cereals, pulses and fruits from __________.",
+title: "Q3. We get cereals, pulses and fruits from __________.",
 image:  "../assets/images/BoyHandCPF.png",
 options: [
 { text: "Fruits", img: "../assets/images/Fruitakk.png"  },
@@ -39,7 +39,7 @@ answer: "Plants"
 },
 
 {
-title: "Q.4 __________ is the first meal of the day.",
+title: "Q4. __________ is the first meal of the day.",
 image:  "../assets/images/BoyFirstMeal.png",
 options: [
 { text: "Snacks", img: "../assets/images/Snacksak.png" },
@@ -51,7 +51,7 @@ answer: "Breakfast"
 },
 
 {
-title: "Q.5 __________ helps to remove waste from the body.",
+title: "Q5. __________ helps to remove waste from the body.",
 image:  "../assets/images/waste2.png",
 options: [
 { text: "Water", img: "../assets/images/WaterGak.png" },

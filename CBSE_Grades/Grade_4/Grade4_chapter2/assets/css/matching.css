@@ -28,7 +28,7 @@ justify-content:center;
 display:flex;
 justify-content:center;
 align-items:flex-start;
-gap:220px;
+gap:100px;
 width:100%;
 }
 
@@ -49,19 +49,19 @@ gap:12px;
 
 /* ── LEFT column ── */
 .left{
-flex:0 0 380px;
-width:380px;
+flex:0 0 360px;
+width:360px;
 display:flex;
 flex-direction:column;
-gap:14px;
+gap:12px;
 }
 
 .left .box{
 position:relative;
 padding:10px 40px 20px 10px;
 line-height:2;
-min-height:70px;
-height:80px;
+min-height:68px;
+height:72px;
 width:100%;
 }
 
@@ -82,8 +82,8 @@ flex-shrink:0;
 
 /* ── RIGHT column ── */
 .right{
-flex:0 0 380px;
-width:380px;
+flex:0 0 360px;
+width:360px;
 display:flex;
 flex-direction:column;
 gap:12px;
@@ -92,8 +92,8 @@ gap:12px;
 .right .box{
 position:relative;
 padding:10px 40px 20px 10px;
-min-height:70px;
-height:80px;
+min-height:68px;
+height:72px;
 width:100%;
 }
 
@@ -325,7 +325,7 @@ margin-left:auto;
 /* ══════════════════════════════════════
    MOBILE  ≤ 400px
 ══════════════════════════════════════ */
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
 
     body { height: 100vh; overflow: hidden; }
 
@@ -382,7 +382,7 @@ margin-left:auto;
     .final h2 { font-size: 20px; }
     .final h3 { font-size: 14px; }
     .star { font-size: 26px; }
-}
+} */
 
 
 
@@ -395,7 +395,7 @@ margin-left:auto;
 
     body { height: 100vh; overflow: hidden; }
 
-    .container { padding: 5px; }
+    .container { padding: 5px;  }
 
     .matching { gap: 10px; justify-content: center; margin-top: 80px !important; }
 

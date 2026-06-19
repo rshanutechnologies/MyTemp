@@ -17,8 +17,8 @@ const quizData = [
     options: [
       "../images/mcq2-1.png|Terrestrial",
       "../images/FIB-3.png|Aquatic",
-      "../images/MCQ-1.png|Desert",
-      "../images/mcq2-4.png|Arboreal",
+      "../images/mcq1-2.png|Desert",
+      "../images/mcq1-4.png|Arboreal",
     ],
     a: 1,
   },

@@ -140,7 +140,7 @@ body {
 
 .quiz-navigation button {
     padding: 13px 32px;
-
+    width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -335,13 +335,6 @@ body {
         padding: 25px;
     }
 
-    .question-title {
-        font-size: 24px;
-        height: auto;
-        padding: 10px;
-        text-align: start;
-    }
-
     #questionImage {
         width: 200px;
         height: 150px;
@@ -393,10 +386,6 @@ body {
         padding: 20px;
     }
 
-    .question-title {
-        font-size: 24px;
-    }
-
     #questionImage {
         width: 180px;
         height: 140px;
@@ -423,7 +412,7 @@ body {
     }
 
     .quiz-navigation button {
-        padding: 6px 20px;
+        padding: 8px 20px;
         font-size: 18px;
     }
 
@@ -482,6 +471,12 @@ body {
         margin-top: 10px;
     }
 
+    .quiz-navigation button {
+        padding: 8px 20px;
+        font-size: 18px;
+        width: 120px;
+    }
+
     .kid-card {
         width: 260px;
         padding: 15px;
@@ -523,8 +518,9 @@ body {
    💻 Desktop / Monitor (1025px – 1440px)
 ======================================== */
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
-    .question-title {
-        font-size: 34px;
+    .quiz-navigation button {
+        font-size: 20px;
+        padding: 14px 36px;
     }
 
 }
@@ -609,7 +605,7 @@ body {
 
     .quiz-navigation button {
         font-size: 22px;
-        padding: 15px 40px;
+        /* padding: 14px 40px; */
     }
 
 }
@@ -652,7 +648,7 @@ body {
 
     .quiz-navigation button {
         font-size: 24px;
-        padding: 16px 44px;
+        /* padding: 16px 44px; */
     }
 
 }

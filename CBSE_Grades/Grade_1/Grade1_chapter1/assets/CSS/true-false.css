@@ -149,6 +149,7 @@ body {
 .nav button {
     font-weight: 400;
     font-size: 18px;
+    width: 150px;
     border: none;
     padding: 12px 32px;
     border-radius: 25px;
@@ -355,10 +356,6 @@ body {
         overflow: auto;
     }
 
-    .question-box {
-        font-size: 24px;
-    }
-
     .answers {
         grid-template-columns: 1fr;
     }
@@ -432,6 +429,7 @@ body {
     .nav button{
         font-size: 18px;
         padding: 8px 20px;
+        width: 120px;
     }
 
     .kid-card {
@@ -481,10 +479,6 @@ body {
 
     .quiz-container {
         max-width: 1000px;
-    }
-
-    .question-box {
-        font-size: 34px;
     }
 
     .question-image img {
@@ -550,7 +544,7 @@ body {
 
     .nav button {
         font-size: 22px;
-        padding: 16px 40px;
+        /* padding: 16px 40px; */
     }
 
 }
@@ -591,7 +585,7 @@ body {
 
     .nav button {
         font-size: 24px;
-        padding: 18px 44px;
+        /* padding: 18px 44px; */
     }
 
 }

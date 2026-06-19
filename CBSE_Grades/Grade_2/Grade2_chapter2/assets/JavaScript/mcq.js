@@ -2,7 +2,7 @@
 const quizData = [
 
 {
-title: "Q.1 Animals that live in our houses are called ________.",
+title: "Q1. Animals that live in our houses are called ________.",
 options: [
 { text: "Domestic animals", img: "../assets/images/Cow.png" },
 { text: "Pet animals", img: "../assets/images/Dogg.png" },
@@ -13,7 +13,7 @@ answer: "Pet animals"
 },
 
 {
-title: "Q.2 _________ is a flesh-eating animal.",
+title: "Q2. _________ is a flesh-eating animal.",
 options: [
 { text: "Deer", img: "../assets/images/Deeraknew.png" },
 { text: "Zebra", img: "../assets/images/Zebraaknew.png" },
@@ -24,7 +24,7 @@ answer: "Lion"
 },
 
 {
-title: "Q.3 A __________ carries load for us.",
+title: "Q3. A __________ carries load for us.",
 options: [
 { text: "Cat", img: "../assets/images/Catak.png" },
 { text: "Deer", img: "../assets/images/Deeraknew.png" },
@@ -35,7 +35,7 @@ answer: "Donkey"
 },
 
 {
-title: "Q.4 The skin of an animal is used to make _______.",
+title: "Q4. The skin of an animal is used to make _______.",
 options: [
 { text: "Leather", img: "../assets/images/Leatherak.png" },
 { text: "Paper", img: "../assets/images/paperimg.png" },
@@ -46,7 +46,7 @@ answer: "Leather"
 },
 
 {
-title: "Q.5 Birds have ________ on their bodies.",
+title: "Q5. Birds have ________ on their bodies.",
 options: [
 { text: "Hair", img: "../assets/images/BirdHair.png" },
 { text: "Fur", img: "../assets/images/BirdFur.png" },

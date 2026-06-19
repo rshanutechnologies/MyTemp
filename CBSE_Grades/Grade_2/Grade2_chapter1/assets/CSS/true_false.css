@@ -451,6 +451,12 @@ button:disabled {
    📱 MOBILE RESPONSIVE FIX
 ================================ */
 
+@media (max-width:480px) {
+  .question {
+    font-size: 22px;
+  }
+}
+
 @media (max-width:768px) {
 
   body {
@@ -476,7 +482,7 @@ button:disabled {
 
   /* question */
   .question {
-    font-size: 22px;
+    font-size: 30px;
     padding: 10px;
     text-align: start;
     min-height: 100px;
@@ -587,7 +593,7 @@ button:disabled {
 
   /* QUESTION (MAIN RULE) */
   .question {
-    font-size: 44px;
+    font-size: 30px;
     padding: 40px;
     min-height: 160px;
     /* text-align: center; */
@@ -640,6 +646,13 @@ button:disabled {
 
 }
 
+/* Big desktops / monitors */
+@media (min-width: 1400px) {
+.question{
+    font-size:40px;
+}
+}
+
 /* Large desktops */
 @media (min-width: 1440px) {
   body {
@@ -662,4 +675,8 @@ button:disabled {
     margin-top: 4%;
 
   }
+
+.question{
+    font-size:40px;
+}
 }

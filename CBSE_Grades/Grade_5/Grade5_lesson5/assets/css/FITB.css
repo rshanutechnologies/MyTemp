@@ -31,7 +31,7 @@ body {
 }
 
 .question-area h2 {
-    font-size: 29px;
+    font-size: 30px;
     font-weight: 400;
     color: #2f4f4f;
     text-align: start;
@@ -140,7 +140,7 @@ body {
     border-radius: 35px;
     border: 3px solid #ffffff;
     font-size: 24px;
-    font-weight: 900;
+    font-weight: 500;
     color: #ffffff;
     cursor: pointer;
     background-size: 200% 200%;
@@ -284,11 +284,6 @@ body {
         max-width: 700px;
     }
 
-    .question-area h2 {
-        font-size: 24px;
-        height: auto;
-    }
-
     .image-area img {
         width: 280px;
         height: 180px;
@@ -321,11 +316,6 @@ body {
 
     .quiz-container {
         margin-top: 40px;
-    }
-
-    .question-area h2 {
-        font-size: 20px;
-       
     }
 
     .image-area img {
@@ -449,21 +439,22 @@ body {
 
 
 /* ================= 1025px — 1440px ================= */
-/* @media screen and (min-width:1225px) and (max-width:1640px){
+@media screen and (min-width:1400px) and (max-width:1640px){
 
-.main-container{
+/* .main-container{
 width:900px;
-}
+} */
 
 .question-area h2{
 font-size:40px;
 }
 
-.image-area img{
+ .image-area img{
 width:300px;
 height:300px;
+margin-top: 5%;
 }
-
+/*
 .input-box{
 height:65px;
 }
@@ -482,20 +473,20 @@ padding:10px 26px;
 width:120px;
 height:50px;
 font-size:22px;
-}
+} */
 
 }
- */
+
 
 /* ================= 1441px — 1920px ================= */
-@media screen and (min-width:1650px) and (max-width:1920px){
+@media screen and (min-width:1400px) and (max-width:1920px){
 
 .main-container{
 width:1150px;
 }
 
 .question-area h2{
-font-size:44px;
+font-size:40px;
 }
 
 .image-area img{
@@ -534,7 +525,7 @@ width:1200px;
 }
 
 .question-area h2{
-font-size:36px;
+font-size:40px;
 }
 
 .image-area img{

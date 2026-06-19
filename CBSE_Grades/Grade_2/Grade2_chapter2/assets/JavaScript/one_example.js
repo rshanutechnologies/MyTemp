@@ -59,31 +59,31 @@ function speak(text) {
 /* ================= QUIZ DATA ================= */
 const quizData = [
   {
-    q: "Q.1 A bird that can swim",
+    q: "Q1. A bird that can swim",
     a: "DUCK",
     img: "../assets/images/BirdSwimInWater.png",
   },
 
   {
-    q: "Q.2 A small animal that has six legs",
+    q: "Q2. A small animal that has six legs",
     a: "ANT",
     img: "../assets/images/SixLegAnimal.png",
   },
 
   {
-    q: "Q.3 An animal that lives in very cold places",
+    q: "Q3. An animal that lives in very cold places",
     a: "POLARBEAR",
     img: "../assets/images/bear-img.png",
   },
 
   {
-    q: "Q.4 An animal that lives in human-made shelters",
+    q: "Q4. An animal that lives in human-made shelters",
     a: "DOG",
     img: "../assets/images/Kennel.png",
   },
 
   {
-    q: "Q.5 An animal that lives in holes",
+    q: "Q5. An animal that lives in holes",
     a: "RABBIT",
     img: "../assets/images/RabbittHole.png",
   },

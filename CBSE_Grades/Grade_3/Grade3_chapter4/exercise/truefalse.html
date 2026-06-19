@@ -39,11 +39,11 @@ text-align:center;
 /* ============================= */
 .question{
  
-font-size:clamp(20px,2.5vw + 1.2vh,36px);
+font-size:30px;
 color:#2f4f4f;
 
 min-height:clamp(60px,10vh,90px);
-
+line-height:1.2;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -168,14 +168,21 @@ font-size:clamp(20px,2vw,28px);
 
   z-index:1000;
 }
-
 button{
-border:none;
-padding:clamp(12px,2vh,18px) clamp(28px,4vw,50px);
-  font-size:clamp(16px,1.3vw + 0.6vh,22px);
-border-radius:40px;
-cursor:pointer;
-color:white;
+  width:150px;
+  height:48px;
+
+  border:none;
+  border-radius:40px;
+
+  cursor:pointer;
+  color:white;
+
+  
+   font-size:18px;
+  font-weight:600;
+
+  transition:.3s;
 }
 
 .prev{
@@ -191,12 +198,11 @@ color:white;
 .next{
 background:linear-gradient(45deg,#7f5ae0,#b388ff);
 }
-
 button:disabled{
-opacity:0.5;
-cursor:not-allowed;
+ background:#e0e0e0 !important;
+  color:#9e9e9e;
+  cursor:not-allowed;
 }
-
 /* ============================= */
 /* POPUP */
 /* ============================= */
@@ -326,12 +332,29 @@ white-space:nowrap;
     margin-right:6px;
   }
 .nav{
-  bottom: 70px;
+  bottom: 45px;
 }
   
 
+  button{
+    width:120px;
+    height:40px;
+    font-size:15px;
+  }
+
 }
 
+@media (max-width:480px){
+  .question{
+    font-size:22px;
+  }
+}
+
+@media (min-width:1400px){
+  .question{
+    font-size:40px;
+  }
+}
 </style>
 </head>
 
@@ -391,7 +414,7 @@ a:false
 
 {
 q:"Q3. Mass is measured in kilograms.",
-img:"../images/tf3.png",
+img:"../images/tf33.png",
 a:true
 },
 
@@ -416,21 +439,17 @@ let userAnswers = new Array(quiz.length).fill(null)
 
 /* ================= SPEECH ================= */
 
-function speakText(text){
-if(!('speechSynthesis' in window)) return
-window.speechSynthesis.cancel()
+function speakText(t) {
+  speechSynthesis.cancel();
 
-const utter = new SpeechSynthesisUtterance(text)
-utter.lang="en-GB"
-utter.volume=0.25
-utter.rate=1
-utter.pitch=1
+  const msg = new SpeechSynthesisUtterance(t);
 
-const voices=speechSynthesis.getVoices()
-const ukVoice=voices.find(v=>v.lang==="en-GB")
-if(ukVoice) utter.voice=ukVoice
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-speechSynthesis.speak(utter)
+  speechSynthesis.speak(msg);
 }
 
 /* ================= CONFETTI ================= */

@@ -94,7 +94,7 @@
 }
 
         .item {
-            cursor: grab;
+            cursor: pointer;
         }
 
         .label {
@@ -486,7 +486,7 @@ animation:shake .3s;
     }
 
     .instruction {
-        font-size: 14px;
+        font-size: 20px;
         text-align: center;
         margin-bottom: 12px;
     }
@@ -561,7 +561,7 @@ animation:shake .3s;
     }
 
     .instruction {
-        font-size: 16px;
+        font-size: 22px;
         text-align: center;
         margin-bottom: 35px;
     }

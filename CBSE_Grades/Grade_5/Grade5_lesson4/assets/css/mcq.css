@@ -516,7 +516,6 @@ body::before {
     /* question */
     .title {
         width: 100%;
-        font-size: 30px;
         padding: 0 15px;
     }
 
@@ -772,9 +771,10 @@ height:min(700px,98vh);
 
 body{
     margin-top: 5%;
+  
 }
-.title{
-font-size:44px;
+    .title{
+font-size:40px;
 width: 100%;
 }
 
@@ -819,7 +819,7 @@ font-size: 20px;
     }
 
     .title {
-        font-size: 44px;
+        font-size: 40px;
         width: 820px;
     }
 

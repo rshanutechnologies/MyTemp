@@ -593,6 +593,11 @@ body {
     .option-card span {
         font-size: 15px;
     }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 }
 
 @media (max-width: 360px) {

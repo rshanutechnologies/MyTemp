@@ -37,7 +37,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    font-size: clamp(20px, 2.5vw, 30px);
+    font-size: 30px;
     color: #2f4f4f;
     font-weight: 400;
     line-height: 1.3;
@@ -230,7 +230,7 @@ body {
 
 .nav button {
     width: clamp(120px, 12vw, 150px);
-    height: clamp(46px, 6vh, 56px);
+    height: clamp(44px, 6vh, 55px);
 
     display: flex;
     justify-content: center;
@@ -425,7 +425,7 @@ body {
     .nav button {
         width: 100px;
         height: 42px;
-        font-size: 14px !important;
+        font-size: 14px;
        
     }
 
@@ -441,8 +441,8 @@ body {
     }
 
     .question-image img {
-        width: 260px;
-        height: 190px;
+        width: 240px;
+        height: 170px;
     }
 
     .drop-box {
@@ -454,7 +454,8 @@ body {
     .answer {
         width: 140px;
         height: 55px;
-        font-size: 30px;
+        font-size: 24px;
+        font-weight: 500;
     }
 
     .nav button {

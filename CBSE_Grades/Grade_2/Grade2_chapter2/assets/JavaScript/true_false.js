@@ -49,31 +49,31 @@ function showFinal() {
 
 const quizData = [
   {
-    q:"Q.1 Earthworms live in water.",
+    q:"Q1. Earthworms live in water.",
     a:false,
     img:"../assets/images/Earthwormss.png",
     answered:false
   },
   {
-    q:"Q.2 Ostriches cannot fly.",
+    q:"Q2. Ostriches cannot fly.",
     a:true,
     img:"../assets/images/Ostrichak.png",
     answered:false
   },
   {
-    q:"Q.3 Aquatic animals live on land.",
+    q:"Q3. Aquatic animals live on land.",
     a:false,
     img:"../assets/images/AquaticAnimall.png",
     answered:false
   },
   {
-    q:"Q.4 A snow leopard lives on mountains.",
+    q:"Q4. A snow leopard lives on mountains.",
     a:true,
     img:"../assets/images/Snowleopard.png",
     answered:false
   },
   {
-    q:"Q.5 Some animals eat both plants and the flesh of other animals.",
+    q:"Q5. Some animals eat both plants and the flesh of other animals.",
     a:true,
     img:"../assets/images/Omnivoresss.png",
     answered:false

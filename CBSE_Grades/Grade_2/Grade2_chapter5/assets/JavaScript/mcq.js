@@ -3,7 +3,7 @@
 const quizData = [
 
 {
-title: "Q.1 When the wind is fast and strong, it is called ________.",
+title: "Q1. When the wind is fast and strong, it is called ________.",
 image: "../assets/images/StormQIak.png",
 options: [
 { text: "Air", img: "../assets/images/Airakk.png" },
@@ -15,7 +15,7 @@ answer: "Storm"
 },
 
 {
-title: "Q.2 We cannot live without ________.",
+title: "Q2. We cannot live without ________.",
 image: "../assets/images/live.png",
 options: [
 { text: "Waste", img: "../assets/images/WeastDustbin.png" },
@@ -27,7 +27,7 @@ answer: "Water"
 },
 
 {
-title: "Q.3 Air is made up of ________.",
+title: "Q3. Air is made up of ________.",
 image: "../assets/images/Breeeze.png",
 options: [
 { text: "Gases", img: "../assets/images/Gasesak.png" },
@@ -39,7 +39,7 @@ answer: "Gases"
 },
 
 {
-title: "Q.4 ________ is the main source of water.",
+title: "Q4. ________ is the main source of water.",
 image: "../assets/images/RainMainSW.png",
 options: [
 { text: "River", img: "../assets/images/Riverakk.png" },
@@ -51,7 +51,7 @@ answer: "Rain"
 },
 
 {
-title: "Q.5 A ________ helps to produce electricity.",
+title: "Q5. A ________ helps to produce electricity.",
 image: "../assets/images/electricity.png",
 options: [
 { text: "Aeroplane", img: "../assets/images/Aeroplaneak.png" },

@@ -70,7 +70,7 @@ body {
     align-items: center;
     gap: clamp(10px, 2vw, 22px);
     padding: 1px clamp(14px, 3vw, 24px);
-    justify-content: center;
+    justify-content: flex-start;
 text-align: center;
     cursor: pointer;
     font-size: clamp(16px, 2vw, 30px);
@@ -125,7 +125,7 @@ text-align: center;
     width: clamp(60px, 7vw, 120px);   /* 🔼 increased properly */
     height: clamp(50px, 6.5vh, 100px);
     object-fit: contain;
-
+     text-align: start;
     flex-shrink: 0;   /* 🔥 prevents shrinking */
 }
 

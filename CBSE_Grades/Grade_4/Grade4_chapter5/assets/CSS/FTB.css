@@ -46,8 +46,7 @@ body {
 }
 
 .question-area h2 {
-     /* width: 100%; */
-    font-size: clamp(20px, 2.5vw, 30px);
+    font-size: 30px;
     font-weight: 400;
     color: #2f4f4f;
     text-align: left;
@@ -132,8 +131,8 @@ body {
 }
 
 .nav-buttons button {
-    width: clamp(100px, 12vw, 130px);
-    height: clamp(42px, 6vh, 55px);
+    width: clamp(120px, 12vw, 150px);
+    height: clamp(44px, 6vh, 55px);
 
     display: flex;
     justify-content: center;
@@ -285,17 +284,21 @@ body {
     body{
         align-items: flex-start;
     }
- 
+  
    
 
     .main-container{
         margin-top: -140px;
     }
-    .question-area{
-        font-size: 22px !important;
+    .question-area h2 {
+        font-size: 22px;
     }
 
-   
+    .nav-buttons button {
+        width: 100px;
+        height: 42px;
+        font-size: 14px;
+    }
 
 }
 /* ✅ ONLY ONE MEDIA QUERY */
@@ -335,7 +338,7 @@ body {
 
     .image-area img {
         width: 340px;
-        height: 220px;
+        height: 200px;
     }
 
     .input-area {

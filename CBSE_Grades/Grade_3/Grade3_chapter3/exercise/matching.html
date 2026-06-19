@@ -71,7 +71,7 @@ padding:16px;
 border-radius:30px;
 
 /* ✅ UPDATED */
-font-size: clamp(15px, 1.4vw + 0.6vh, 22px);
+font-size: 20px;
 
 cursor:pointer;
 transition:.25s;
@@ -95,7 +95,7 @@ padding:16px;
 border-radius:30px;
 
 /* ✅ UPDATED */
-font-size: clamp(15px, 1.4vw + 0.6vh, 22px);
+font-size: 20px;
 
 cursor:pointer;
 transition:.25s;
@@ -357,7 +357,7 @@ cursor:pointer;
 
   .slot img{
     width:40px;
-    height:35px;
+    height:30px;
   }
 
 }
@@ -658,16 +658,17 @@ origin:{y:0.6}
 
 /* SPEECH */
 
-function speak(text){
+function speak(t) {
+  speechSynthesis.cancel();
 
-let speech=new SpeechSynthesisUtterance(text);
+  const msg = new SpeechSynthesisUtterance(t);
 
-speech.lang="en-GB";
-speech.volume=0.25;
-speech.rate=1;
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-window.speechSynthesis.speak(speech);
-
+  speechSynthesis.speak(msg);
 }
 
 function restartQuiz(){

@@ -38,24 +38,24 @@ body {
 }
 
 /* TOPBAR */
-.topbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: clamp(55px, 7vh, 70px);
-    margin-top: clamp(10px, 2vh, 25px);
+.topbar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:78px;
+    margin-top:18px;
 }
 
 /* NAV */
-.nav-group {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: clamp(10px, 2vw, 18px);
-    width: 100%;
-    max-width: 1150px;
-    padding: clamp(6px, 1vw, 10px);
+.nav-group{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;          /* reduced gap */
+    width:100%;
+    max-width:1280px; /* more room */
+    padding:8px;
 }
 
 /* SLIDER */
@@ -71,13 +71,13 @@ body {
 
 /* BUTTONS */
 .island-btn {
-    /* flex: 1; */
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(5px, 1vw, 8px);
-    padding: clamp(8px, 1.2vw, 14px) clamp(12px , 2vw, 18px);
-    font-size: clamp(15px, 2.8vw, 18px);
+    gap: 8px;
+     padding:12px 22px;
+    font-size:20px;
     font-weight: 600;
     cursor: pointer;
     border-radius: 50% ;
@@ -115,6 +115,9 @@ body {
     flex: 1;
     padding: clamp(5px, 1vw, 10px) 0 0;
 }
+.island-btn i{
+    font-size:22px;
+}
 
 /* IFRAME */
 iframe {
@@ -151,7 +154,7 @@ iframe {
         padding: clamp(5px, 1.5vw, 8px) clamp(10px, 2vw, 12px);
         cursor: pointer;
         z-index: 5000;
-        font-size: 20px;
+        font-size: 22px;
         font-weight: bold;
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
@@ -163,6 +166,10 @@ iframe {
         display: none;
         z-index: 4000;
         pointer-events: none;
+    }
+     .offcanvas-panel .island-btn{
+        flex:none !important;
+        /* width:100%; */
     }
 
     .offcanvas.show {
@@ -236,11 +243,13 @@ font-size: clamp(11px, 2.4vw, 14px);
 
 /* Larger screens */
 @media (min-width: 1600px) {
+
   .nav-group {
     max-width: 1700px;
     gap: 30px;
   }
   .island-btn {
+    /* flex:1; */
     min-height: 75px;
     font-size: 24px;
     padding: 16px 24px;

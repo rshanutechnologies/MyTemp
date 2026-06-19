@@ -132,6 +132,7 @@ body {
     font-size: 20px;
     font-weight: 400;
     color: #ffffff;
+    width: 150px;
     cursor: pointer;
     background-size: 200% 200%;
     transition: .15s ease;
@@ -322,12 +323,6 @@ body {
         padding: 25px
     }
 
-    .question h2 {
-        font-size: 24px;
-        height: auto;
-        padding: 10px
-    }
-
     .image-container {
         gap: 25px
     }
@@ -372,10 +367,6 @@ body {
         padding: 20px
     }
 
-    .question h2 {
-        font-size: 24px
-    }
-
     .image-container {
         gap: 25px
     }
@@ -393,7 +384,7 @@ body {
     }
 
     .controls button {
-        padding: 6px 20px;
+        padding: 8px 20px;
         font-size: 18px;
     }
 }
@@ -432,6 +423,12 @@ body {
 
     .controls {
         margin-top: 40px
+    }
+
+    .controls button {
+        padding: 8px 20px;
+        font-size: 18px;
+        width: 120px;
     }
 
     .kid-card {
@@ -478,10 +475,6 @@ body {
 
   .main {
     max-width: 1050px;
-  }
-
-  .question h2 {
-    font-size: 34px;
   }
 
   .image-container {
@@ -543,7 +536,7 @@ body {
 
   .controls button {
     font-size: 22px;
-    padding: 15px 40px;
+    /* padding: 14px 40px; */
   }
 
 }
@@ -582,7 +575,7 @@ body {
 
   .controls button {
     font-size: 24px;
-    padding: 16px 44px;
+    /* padding: 16px 44px; */
   }
 
 }

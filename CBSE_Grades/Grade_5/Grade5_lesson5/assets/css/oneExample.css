@@ -337,12 +337,6 @@ body {
         padding: 25px
     }
 
-    .question h2 {
-        font-size: 26px;
-        height: auto;
-        padding: 10px
-    }
-
     .image-container {
         gap: 25px
     }
@@ -396,10 +390,6 @@ body {
 
     .main {
         padding: 20px
-    }
-
-    .question h2 {
-        font-size: 22px
     }
 
     .image-container {
@@ -530,7 +520,7 @@ font-size:22px;
 
 
 /* ================= 1441px — 1920px ================= */
-@media screen and (min-width:1350px) and (max-width:1920px){
+@media screen and (min-width:1400px) and (max-width:1920px){
 
 .main{
 max-width:1200px;
@@ -578,7 +568,7 @@ max-width:1350px;
 }
 
 .question h2{
-font-size:46px;
+font-size:40px;
 }
 
 .image-container{

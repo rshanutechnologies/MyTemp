@@ -1,767 +1,841 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Match the Following</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match the Following</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-<style>
-:root{
-  --green:#ff6fb5;
-  --light-green:#ffe4f1;
+  <style>
+    :root {
+      --green: #ff6fb5;
+      --light-green: #ffe4f1;
 
-  --blue:#4dd0e1;
-  --light-blue:#e0fbff;
+      --blue: #4dd0e1;
+      --light-blue: #e0fbff;
 
-  /* 🔥 FLUID FONT SYSTEM */
-  --fs-lg: clamp(20px, 2vw + 1vh, 26px);
-  --fs-md: clamp(12px, 1.5vw + 0.6vh, 26px);
+      /* 🔥 FLUID FONT SYSTEM */
+      --fs-lg: clamp(20px, 2vw + 1vh, 26px);
+      --fs-md: clamp(12px, 1.5vw + 0.6vh, 26px);
 
-  /* 🔥 SIZE SYSTEM */
- --item-h: clamp(70px, 10vh, 110px);
-  --gap-lg: clamp(20px, 8vw, 150px);
-  --gap-md: clamp(10px, 3vw, 15px);
-}
+      /* 🔥 SIZE SYSTEM */
+      --item-h: clamp(70px, 10vh, 110px);
+      --gap-lg: clamp(20px, 8vw, 150px);
+      --gap-md: clamp(10px, 3vw, 15px);
+    }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:'Livvic';
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Livvic';
+    }
 
-body{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:clamp(10px,2vw,20px);
-}
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(10px, 2vw, 20px);
+    }
 
-/* CONTAINER */
+    /* CONTAINER */
 
-.container{
-  width:100%;
-  max-width:clamp(600px, 90vw, 900px);
-  margin-top: clamp(-5px, -1vh, -10px);
-}
+    .container {
+      width: 100%;
+      max-width: clamp(600px, 90vw, 900px);
+      margin-top: clamp(-5px, -1vh, -10px);
+    }
 
-/* GAME LAYOUT */
+    /* GAME LAYOUT */
 
-.game{
-  position:relative;
-  display:flex;
-  justify-content:center;
-  gap:200px;
-  align-items:flex-start;
-}
+    .game {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 200px;
+      align-items: flex-start;
+    }
 
-/* COLUMN */
+    /* COLUMN */
 
-.column{
-  width:clamp(200px, 35vw, 350px);
-  display:flex;
-  flex-direction:column;
-  gap:var(--gap-md);
-  z-index:2;
-}
+    .column {
+      width: clamp(200px, 35vw, 350px);
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-md);
+      z-index: 2;
+    }
 
-/* ITEM */
+    /* ITEM */
 
-.item{
-  background:white;
-  padding:clamp(10px,2vh,18px);
-  border-radius:clamp(10px,2vw,16px);
-  cursor:pointer;
-  position:relative;
-  border:2px solid transparent;
-  transition:.3s;
-  box-shadow:0 4px 8px rgba(0,0,0,0.08);
-  font-size:18px;
-  color:#2f4f4f;
+    .item {
+      background: white;
+      padding: clamp(10px, 2vh, 18px);
+      border-radius: clamp(10px, 2vw, 16px);
+      cursor: pointer;
+      position: relative;
+      border: 2px solid transparent;
+      transition: .3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      font-size: 20px;
+      color: #2f4f4f;
 
-  height: var(--item-h);
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-}
+      height: var(--item-h);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
 
-/* LEFT / RIGHT COLORS */
+    /* LEFT / RIGHT COLORS */
 
-.left .item{
-  background:var(--light-green);
-  border-left:clamp(4px,0.5vw,6px) solid var(--green);
-  
-}
+    .left .item {
+      background: var(--light-green);
+      border-left: clamp(4px, 0.5vw, 6px) solid var(--green);
 
-.right .item{
-  background:var(--light-blue);
-  border-right:clamp(4px,0.5vw,6px) solid var(--blue);
-}
+    }
 
-/* HOVER */
+    .right .item {
+      background: var(--light-blue);
+      border-right: clamp(4px, 0.5vw, 6px) solid var(--blue);
+    }
 
-.item:hover:not(.matched){
-  transform:translateY(-3px);
-}
+    /* HOVER */
 
-/* ACTIVE */
+    .item:hover:not(.matched) {
+      transform: translateY(-3px);
+    }
 
-.item.active{
-  border-color:var(--green);
-  background:white;
-}
+    /* ACTIVE */
 
-/* MATCHED */
+    .item.active {
+      border-color: var(--green);
+      background: white;
+    }
 
-.item.matched{
-  opacity:.6;
-  cursor:default;
-}
+    /* MATCHED */
+    .right .item.matched {
+      opacity: 1;
+      cursor: default;
+      pointer-events: none;
+    }
 
-/* ANCHOR */
+    .left .item.matched {
+      opacity: 1;
+      cursor: default;
+    }
 
-.anchor{
-  width:clamp(6px,1vw,10px);
-  height:clamp(6px,1vw,10px);
-  background:#cbd5e1;
-  border-radius:50%;
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-}
+    /* ANCHOR */
 
-.left .anchor{ right:clamp(-10px,-1vw,-15px); }
-.right .anchor{ left:clamp(-10px,-1vw,-15px); }
+    .anchor {
+      width: clamp(6px, 1vw, 10px);
+      height: clamp(6px, 1vw, 10px);
+      background: #cbd5e1;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
 
-/* SVG */
+    .left .anchor {
+      right: clamp(-10px, -1vw, -15px);
+    }
 
-svg{
-  position:absolute;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  z-index:1;
-}
+    .right .anchor {
+      left: clamp(-10px, -1vw, -15px);
+    }
 
-/* LEFT CONTENT */
+    /* SVG */
 
-.left-content{
-  display:flex;
-  align-items:center;
-  gap:clamp(6px,1vw,12px);
-}
+    svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
 
-.left-img{
-  width:50px;
-  height:50px;
-  object-fit:contain;
-}
+    /* LEFT CONTENT */
 
-/* RIGHT SIDE */
+    .left-content {
+      display: flex;
+      align-items: center;
+      gap: clamp(6px, 1vw, 12px);
+    }
 
-.right .item{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:clamp(6px,1vw,10px);
-}
+    .left-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+    }
 
-.right-text{
-  font-size:18px;
-  line-height:1.2;
-}
+    /* RIGHT SIDE */
 
-/* OVAL BOX */
+    .right .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(6px, 1vw, 10px);
+    }
 
-.oval-box{
-  width:clamp(50px,6vw,80px);
-  height:clamp(25px,4vh,40px);
-  border:2px dashed #94a3b8;
-  border-radius:40px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#f8fafc;
-  flex-shrink:0;
-  width:90px;
-  height:50px;
-}
+    .right-text {
+      font-size: 20px;
+      line-height: 1.1;
+    }
 
-.oval-box img{
-  width:clamp(20px,3vw,32px);
-  height:clamp(20px,3vw,32px);
-  object-fit:contain;
-}
+    /* OVAL BOX */
 
-/* POPUP */
+    .oval-box {
+      width: clamp(50px, 6vw, 80px);
+      height: clamp(25px, 4vh, 40px);
+      border: 2px dashed #94a3b8;
+      border-radius: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f8fafc;
+      flex-shrink: 0;
+      width: 90px;
+      height: 50px;
+    }
 
-.popup{
-  position:fixed;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:1000;
-}
+    .oval-box img {
+      width: clamp(20px, 3vw, 32px);
+      height: clamp(20px, 3vw, 32px);
+      object-fit: contain;
+    }
 
-.hidden{
-  display:none;
-}
+    /* POPUP */
 
-.popup-content{
-  background:#ffffff;
+    .popup {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
 
-  padding:40px 70px;
+    .hidden {
+      display: none;
+    }
 
-  border-radius:40px;
+    .popup-content {
+      background: #ffffff;
 
-  border:4px solid #BDE7FF;
+      padding: 40px 70px;
 
-  box-shadow:
-    0 0 0 8px #EAF6FF,
-    0 12px 30px rgba(0,0,0,0.12);
+      border-radius: 40px;
 
-  text-align:center;
+      border: 4px solid #BDE7FF;
 
-  min-width:320px;
-  max-width:500px;
-}
+      box-shadow:
+        0 0 0 8px #EAF6FF,
+        0 12px 30px rgba(0, 0, 0, 0.12);
 
-.popup-emoji{
-  font-size:clamp(40px,6vw,60px);
-  margin-bottom:15px;
-}
+      text-align: center;
 
-.popup-content h2{
-  font-size:clamp(20px,2vw,28px);
-}
+      min-width: 320px;
+      max-width: 500px;
+    }
 
-.popup-content p{
-  font-size:clamp(16px,1.5vw,20px);
-}
+    .popup-emoji {
+      font-size: clamp(40px, 6vw, 60px);
+      margin-bottom: 15px;
+    }
 
-.popup-content h2{
-  font-size:clamp(18px,3vw,28px);
-}
-.play-again-btn{
-  margin-top:20px;
-  padding:10px 25px;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-  background:linear-gradient(135deg,#4caf50,#2e7d32);
-  color:white;
-}
+    .popup-content h2 {
+      font-size: clamp(20px, 2vw, 28px);
+    }
 
-/* MOBILE */
+    .popup-content p {
+      font-size: clamp(16px, 1.5vw, 20px);
+    }
 
-@media(max-width:600px){
-body{
-  overflow: hidden;
-}
-  .game{
-    gap:clamp(6px,2vw,10px);
+    .popup-content h2 {
+      font-size: clamp(18px, 3vw, 28px);
+    }
+
+    .play-again-btn {
+      margin-top: 20px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #4caf50, #2e7d32);
+      color: white;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:600px) {
+      body {
+        overflow: hidden;
+      }
+
+      .game {
+        gap: clamp(6px, 2vw, 10px);
+      }
+
+      .column {
+        width: 50%;
+      }
+
+      svg {
+        display: none;
+      }
+
+      .item {
+        font-size: 18px;
+      }
+
+    }
+
+    /* ============================= */
+    /* Desktop / Monitor (1025px–1440px) */
+    /* ============================= */
+    @media screen and (min-width:1025px) and (max-width:1440px) {
+
+      .container {
+        max-width: 1200px;
+      }
+
+      .game {
+        gap: 160px;
+        /* 🔥 bigger spacing */
+      }
+
+      .column {
+        width: 380px;
+      }
+
+      .item {
+        font-size: 25px;
+        /* 🔥 bigger text */
+        height: 80px;
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .left-img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .right-text {
+        font-size: 25px;
+      }
+
+      .oval-box {
+        width: 80px;
+        height: 40px;
+      }
+
+      .oval-box img {
+        width: 35px;
+        height: 35px;
+      }
+
+    }
+
+    /* ============================= */
+    /* Large Monitors (1441px–1920px) */
+    /* ============================= */
+    @media screen and (min-width:1441px) and (max-width:1920px) {
+
+      .container {
+        max-width: 1500px;
+      }
+
+      .game {
+        gap: 180px;
+        /* 🔥 bigger spacing */
+      }
+
+      .column {
+        width: 420px;
+      }
+
+      .item {
+        font-size: 25px;
+        /* 🔥 bigger text */
+        height: 120px;
+        padding: 25px;
+        border-radius: 25px;
+      }
+
+      .left-img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .right-text {
+        font-size: 25px;
+      }
+
+      .oval-box {
+        width: 100px;
+        height: 50px;
+      }
+
+      .oval-box img {
+        width: 50px;
+        height: 50px;
+      }
+
+    }
+
+    /* ============================= */
+    /* Extra Large Screens / 4K (1921px+) */
+    /* ============================= */
+    @media screen and (min-width:1921px) {
+
+      .container {
+        max-width: 1400px;
+      }
+
+      .game {
+        gap: 220px;
+      }
+
+      .column {
+        width: 450px;
+      }
+
+      .item {
+        font-size: 32px;
+        height: 130px;
+        padding: 22px;
+        border-radius: 20px;
+      }
+
+      .left-img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .right-text {
+        font-size: 32px;
+      }
+
+      .oval-box {
+        width: 110px;
+        height: 55px;
+      }
+
+      .oval-box img {
+        width: 50px;
+        height: 50px;
+      }
+
+    }
+
+    @media(max-width:600px) {
+      body {
+        overflow: hidden;
+        margin-top: -30px;
+      }
+
+      .right .item {
+        display: grid;
+        grid-template-columns: 1fr 60px;
+        align-items: center;
+        gap: 8px;
+
+      }
+
+      .right-text {
+        line-height: 1.1;
+        font-size: 15px;
+      }
+
+      .oval-box {
+        width: 60px;
+        height: 35px;
+        justify-self: end;
+      }
+
+      .item {
+        height: 100px;
+
+      }
+
+      .left-img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+      }
+
+    }
+
+    @media (max-width:600px) {
+
+      .popup-content {
+        width: 70%;
+        min-width: auto;
+        max-width: 280px;
+
+        padding: 18px 20px;
+
+        border-radius: 28px;
+
+        border: 3px solid #BDE7FF;
+
+        box-shadow:
+          0 0 0 5px #EAF6FF,
+          0 8px 20px rgba(0, 0, 0, 0.10);
+      }
+
+      .popup-emoji {
+        font-size: 36px;
+        margin-bottom: 6px;
+      }
+
+      .popup-content h2 {
+        font-size: 20px;
+        margin-bottom: 4px;
+      }
+
+      .popup-content p {
+        font-size: 14px;
+      }
+
+      .play-again-btn {
+        margin-top: 12px;
+        padding: 8px 18px;
+        font-size: 14px;
+      }
+
+    }
+
+    /* ========================= */
+/* Tablet 768px */
+/* ========================= */
+@media screen and (min-width:601px) and (max-width:768px){
+
+  body{
+    overflow:hidden;
   }
-
-  .column{
-    width:50%;
-  }
-
-  svg{
-    display:none;
-  }
-  .item{
-    font-size: 18px;
-  }
-
-}
-
-/* ============================= */
-/* Desktop / Monitor (1025px–1440px) */
-/* ============================= */
-@media screen and (min-width:1025px) and (max-width:1440px){
 
   .container{
-    max-width:1200px;
+    max-width:100%;
+    margin-top:0;
   }
 
   .game{
-    gap:160px;   /* 🔥 bigger spacing */
+    gap:80px;
   }
 
   .column{
-    width:380px;
+    width:280px;
   }
 
   .item{
-    font-size:25px;     /* 🔥 bigger text */
-    height:80px;
-    padding:18px;
-    border-radius:18px;
-  }
-
-  .left-img{
-    width:60px;
-    height:60px;
-  }
-
-  .right-text{
-    font-size:25px;
-  }
-
-  .oval-box{
-    width:80px;
-    height:40px;
-  }
-
-  .oval-box img{
-    width:35px;
-    height:35px;
-  }
-
-}
-
-/* ============================= */
-/* Large Monitors (1441px–1920px) */
-/* ============================= */
-@media screen and (min-width:1441px) and (max-width:1920px){
-
-  .container{
-    max-width:1500px;
-  }
-
-  .game{
-    gap:180px;   /* 🔥 bigger spacing */
-  }
-
-  .column{
-    width:420px;
-  }
-
-  .item{
-    font-size:25px;     /* 🔥 bigger text */
-    height:120px;
-    padding:25px;
-    border-radius:25px;
-  }
-
-  .left-img{
-    width:60px;
-    height:60px;
-  }
-
-  .right-text{
-    font-size:25px;
-  }
-
-  .oval-box{
-    width:100px;
-    height:50px;
-  }
-
-  .oval-box img{
-    width:50px;
-    height:50px;
-  }
-
-}
-
-/* ============================= */
-/* Extra Large Screens / 4K (1921px+) */
-/* ============================= */
-@media screen and (min-width:1921px){
-
-  .container{
-    max-width:1400px;
-  }
-
-  .game{
-    gap:220px;
-  }
-
-  .column{
-    width:450px;
-  }
-
-  .item{
-    font-size:32px;
-    height:130px;
-    padding:22px;
-    border-radius:20px;
-  }
-
-  .left-img{
-    width:70px;
     height:70px;
+    font-size:18px;
+    padding:12px;
+  }
+
+  .left-img{
+    width:45px;
+    height:45px;
   }
 
   .right-text{
-    font-size:32px;
+    font-size:18px;
+    line-height:1.1;
   }
 
   .oval-box{
-    width:110px;
-    height:55px;
+    width:70px;
+    height:38px;
   }
 
   .oval-box img{
-    width:50px;
-    height:50px;
+    width:28px;
+    height:28px;
   }
-
-}
-
-@media(max-width:600px){
-body{
-  overflow: hidden;
-  margin-top: -30px;
-}
-  .right .item{
-    display:grid;
-    grid-template-columns:1fr 60px;
-    align-items:center;
-    gap:8px;
-   
-  }
-
-  .right-text{
-    line-height:1.1;
-    font-size: 15px;
-  }
-
-  .oval-box{
-    width:60px;
-    height:35px;
-    justify-self:end;
-  }
-  .item{
-    height: 100px;
-    
-  }
-
-.left-img{
-  width:50px;
-  height:50px;
-  object-fit:contain;
-}
-
-}
-
-@media (max-width:600px){
 
   .popup-content{
-    width:70%;
-    min-width:auto;
-    max-width:280px;
-
-    padding:18px 20px;
-
-    border-radius:28px;
-
-    border:3px solid #BDE7FF;
-
-    box-shadow:
-      0 0 0 5px #EAF6FF,
-      0 8px 20px rgba(0,0,0,0.10);
-  }
-
-  .popup-emoji{
-    font-size:36px;
-    margin-bottom:6px;
+    max-width:320px;
+    padding:25px 35px;
   }
 
   .popup-content h2{
-    font-size:20px;
-    margin-bottom:4px;
+    font-size:22px;
   }
 
   .popup-content p{
-    font-size:14px;
+    font-size:16px;
   }
-
-  .play-again-btn{
-    margin-top:12px;
-    padding:8px 18px;
-    font-size:14px;
-  }
-
 }
-</style>
+  </style>
 </head>
 
 <body>
 
-<div class="container">
-<header>
- 
-</header>
+  <div class="container">
+    <header>
 
-<div class="game" id="gameArea">
-  <svg id="lines"></svg>
+    </header>
 
-  <div class="column left" id="leftCol"></div>
-  <div class="column right" id="rightCol"></div>
-</div>
-</div>
+    <div class="game" id="gameArea">
+      <svg id="lines"></svg>
 
-<!-- Popup -->
-<div id="popup" class="popup hidden">
- <div class="popup-content">
-  <div id="popupEmoji" class="popup-emoji"></div>
-  <h2 id="popupTitle"></h2>
-  <p id="popupMessage"></p>
+      <div class="column left" id="leftCol"></div>
+      <div class="column right" id="rightCol"></div>
+    </div>
+  </div>
 
-  <button id="playAgainBtn" class="play-again-btn hidden">
-    🔄 Play Again
-  </button>
-</div>
-</div>
-<script>
-const leftData=[
- {text:"Frog", match:"d", img:"../images/frog-img.png"},
- {text:"Butterfly", match:"c", img:"../images/butterfly.png"},
- {text:"Fish", match:"e", img:"../images/fish.png"},
- {text:"Cow", match:"b", img:"../images/cow-img.png"},
- {text:"Aquatic bird", match:"a", img:"../images/aquatic.png"},
-];
-const rightData=[
- {text:"a) It swims with its webbed feet.", match:"a"},
- {text:"b) It breathes through its lungs.", match:"b"},
- {text:"c) It has six legs.", match:"c"},
- {text:"d) It breathes through its skin when in water.", match:"d"},
- {text:"e) It breathes through its gills.", match:"e"},
-];
+  <!-- Popup -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <div id="popupEmoji" class="popup-emoji"></div>
+      <h2 id="popupTitle"></h2>
+      <p id="popupMessage"></p>
 
-let selected=null;
-let score=0;
-let matched=0;
+      <button id="playAgainBtn" class="play-again-btn hidden">
+        🔄 Play Again
+      </button>
+    </div>
+  </div>
+  <script>
+    const leftData = [
+      { text: "Frog", match: "d", img: "../images/frog-img.png" },
+      { text: "Butterfly", match: "c", img: "../images/butterfly.png" },
+      { text: "Fish", match: "e", img: "../images/fish.png" },
+      { text: "Cow", match: "b", img: "../images/cow-img.png" },
+      { text: "Aquatic bird", match: "a", img: "../images/aquatic.png" },
+    ];
+    const rightData = [
+      { text: "a) It swims with its webbed feet.", match: "a" },
+      { text: "b) It breathes through its lungs.", match: "b" },
+      { text: "c) It has six legs.", match: "c" },
+      { text: "d) It breathes through its skin when in water.", match: "d" },
+      { text: "e) It breathes through its gills.", match: "e" },
+    ];
 
-const leftCol=document.getElementById("leftCol");
-const rightCol=document.getElementById("rightCol");
-const svg=document.getElementById("lines");
+    let selected = null;
+    let score = 0;
+    let matched = 0;
+
+    const leftCol = document.getElementById("leftCol");
+    const rightCol = document.getElementById("rightCol");
+    const svg = document.getElementById("lines");
 
 
-const popup = document.getElementById("popup");
-const popupTitle = document.getElementById("popupTitle");
-const popupMessage = document.getElementById("popupMessage");
-const popupEmoji = document.getElementById("popupEmoji");
-const playAgainBtn = document.getElementById("playAgainBtn");
-function shuffle(arr){
- return arr.sort(()=>Math.random()-0.5);
-}
-/* ===== TEXT TO SPEECH (UK) ===== */
-function speakText(text){
-  if(!('speechSynthesis' in window)) return;
+    const popup = document.getElementById("popup");
+    const popupTitle = document.getElementById("popupTitle");
+    const popupMessage = document.getElementById("popupMessage");
+    const popupEmoji = document.getElementById("popupEmoji");
+    const playAgainBtn = document.getElementById("playAgainBtn");
+    function shuffle(arr) {
+      return arr.sort(() => Math.random() - 0.5);
+    }
+    /* ===== TEXT TO SPEECH (UK) ===== */
+    function speak(t) {
+      speechSynthesis.cancel();
 
-  window.speechSynthesis.cancel();
+      const msg = new SpeechSynthesisUtterance(t);
 
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = "en-GB";   // 🇬🇧 UK English
-  utter.volume = 0.25;     // soft volume
-  utter.rate = 1;
-  utter.pitch = 1;
+      msg.lang = "en-UK";
+      msg.volume = 0.25;
+      msg.rate = 1;
+      msg.pitch = 1;
 
-  const voices = speechSynthesis.getVoices();
-  const ukVoice = voices.find(v => v.lang === "en-GB");
-  if(ukVoice){
-    utter.voice = ukVoice;
-  }
+      speechSynthesis.speak(msg);
+    } window.speechSynthesis.onvoiceschanged = () => { };
+    function fireConfetti() {
 
-  window.speechSynthesis.speak(utter);
-}
+      confetti({
+        particleCount: 40,
+        spread: 70,
+        origin: { y: 0.6 },
+        scalar: 0.7
+      });
 
-window.speechSynthesis.onvoiceschanged = () => {};
-function fireConfetti(){
-
-  confetti({
-    particleCount: 40,
-    spread: 70,
-    origin: { y: 0.6 },
-    scalar: 0.7
-  });
-
-}
-function init(){
- leftData.forEach(item=>{
-   const div=document.createElement("div");
-   div.className="item";
-   div.dataset.match=item.match;
-  div.innerHTML=`
+    }
+    function init() {
+      leftData.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.dataset.match = item.match;
+        div.innerHTML = `
   <div class="left-content">
     <img src="${item.img}" class="left-img">
     <span>${item.text}</span>
   </div>
   <div class="anchor"></div>
 `;
-   div.onclick=()=>{
-     if(div.classList.contains("matched")) return;
-     document.querySelectorAll(".left .item").forEach(i=>i.classList.remove("active"));
-     div.classList.add("active");
-     selected=div;
-   };
-   leftCol.appendChild(div);
- });
+        div.onclick = () => {
+          if (div.classList.contains("matched")) return;
+          document.querySelectorAll(".left .item").forEach(i => i.classList.remove("active"));
+          div.classList.add("active");
+          selected = div;
+        };
+        leftCol.appendChild(div);
+      });
 
- rightData.forEach(item=>{
-   const div=document.createElement("div");
-   div.className="item";
-   div.dataset.match=item.match;
-   div.innerHTML=`
+      rightData.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.dataset.match = item.match;
+        div.innerHTML = `
 <div class="anchor"></div>
 <span class="right-text">${item.text}</span>
 <div class="oval-box"></div>
 `;
-   div.onclick=()=>{
- if(!selected || div.classList.contains("matched")) return;
+        div.onclick = () => {
+          if (!selected || div.classList.contains("matched")) return;
 
- if(selected.dataset.match===div.dataset.match){
+          if (selected.dataset.match === div.dataset.match) {
 
-    fireConfetti();
-    speakText("Correct");
-    match(selected,div);
+            fireConfetti();
+            speak("Correct");
+            match(selected, div);
 
- } else {
+          } else {
 
-    speakText("Wrong");
+            speak("Wrong");
 
- }
-};
-   rightCol.appendChild(div);
- });
-}
+          }
+        };
+        rightCol.appendChild(div);
+      });
+    }
 
-function match(left,right){
+    function match(left, right) {
 
-  // Get left image src
-  const imgSrc = left.querySelector(".left-img").src;
+      // Get left image src
+      const imgSrc = left.querySelector(".left-img").src;
 
-  // Create new image for right box
-  const newImg = document.createElement("img");
-  newImg.src = imgSrc;
- newImg.style.width = "55px";
-newImg.style.height = "35px";
-newImg.style.objectFit = "contain";
+      // Create new image for right box
+      const newImg = document.createElement("img");
+      newImg.src = imgSrc;
+      newImg.style.width = "55px";
+      newImg.style.height = "35px";
+      newImg.style.objectFit = "contain";
 
-  // Insert image inside right item (before text)
- const box = right.querySelector(".oval-box");
-box.innerHTML = "";
-box.appendChild(newImg);
+      // Insert image inside right item (before text)
+      const box = right.querySelector(".oval-box");
+      box.innerHTML = "";
+      box.appendChild(newImg);
 
-  left.classList.add("matched");
-  right.classList.add("matched");
-  left.classList.remove("active");
+      left.classList.add("matched");
+      right.classList.add("matched");
+      left.classList.remove("active");
 
-  drawLine(left,right);
+      drawLine(left, right);
 
-  selected=null;
-  score++;
-  matched++;
+      selected = null;
+      score++;
+      matched++;
 
- if(matched===leftData.length){
-    setTimeout(()=>{
-        popup.classList.add("hidden"); // hide correct popup first
-        showResult();                 // then show final popup
-    },1200);
-}
-}
+      if (matched === leftData.length) {
+        setTimeout(() => {
+          popup.classList.add("hidden"); // hide correct popup first
+          showResult();                 // then show final popup
+        }, 1200);
+      }
+    }
 
-function drawLine(l,r){
- const r1=l.querySelector(".anchor").getBoundingClientRect();
- const r2=r.querySelector(".anchor").getBoundingClientRect();
- const svgRect=svg.getBoundingClientRect();
+    function drawLine(l, r) {
+      const r1 = l.querySelector(".anchor").getBoundingClientRect();
+      const r2 = r.querySelector(".anchor").getBoundingClientRect();
+      const svgRect = svg.getBoundingClientRect();
 
- const x1=r1.left-svgRect.left;
- const y1=r1.top-svgRect.top;
- const x2=r2.left-svgRect.left;
- const y2=r2.top-svgRect.top;
- const cx=(x1+x2)/2;
+      const x1 = r1.left - svgRect.left;
+      const y1 = r1.top - svgRect.top;
+      const x2 = r2.left - svgRect.left;
+      const y2 = r2.top - svgRect.top;
+      const cx = (x1 + x2) / 2;
 
- const path=document.createElementNS("http://www.w3.org/2000/svg","path");
- path.setAttribute("d",`M${x1},${y1} C${cx},${y1} ${cx},${y2} ${x2},${y2}`);
- path.setAttribute("stroke","#22c55e");
- path.setAttribute("stroke-width","4");
- path.setAttribute("stroke-dasharray","8,6");  // ⭐ dashed line
- path.setAttribute("fill","none");
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", `M${x1},${y1} C${cx},${y1} ${cx},${y2} ${x2},${y2}`);
+      path.setAttribute("stroke", "#22c55e");
+      path.setAttribute("stroke-width", "4");
+      path.setAttribute("stroke-dasharray", "8,6");  // ⭐ dashed line
+      path.setAttribute("fill", "none");
 
- svg.appendChild(path);
-}
+      svg.appendChild(path);
+    }
 
-function showCorrectPopup(){
+    function showCorrectPopup() {
 
-  popupEmoji.textContent = "🎉";
-  popupTitle.textContent = "Correct!";
-  popupTitle.style.color = "green";
-  popupMessage.textContent = "Great job!";
+      popupEmoji.textContent = "🎉";
+      popupTitle.textContent = "Correct!";
+      popupTitle.style.color = "green";
+      popupMessage.textContent = "Great job!";
 
-  speakText("Correct!");   // 🔊 Added
+      speak("Correct!");   // 🔊 Added
 
-  popup.classList.remove("hidden");
+      popup.classList.remove("hidden");
 
-  setTimeout(()=>{
-    popup.classList.add("hidden");
-  },1200);
-}
-function showWrongPopup(){
+      setTimeout(() => {
+        popup.classList.add("hidden");
+      }, 1200);
+    }
+    function showWrongPopup() {
 
-  popupEmoji.textContent = "❌";
-  popupTitle.textContent = "Wrong!";
-  popupTitle.style.color = "red";
-  popupMessage.textContent = "Try again!";
+      popupEmoji.textContent = "❌";
+      popupTitle.textContent = "Wrong!";
+      popupTitle.style.color = "red";
+      popupMessage.textContent = "Try again!";
 
-  speakText("Wrong!");   // 🔊 Added
+      speak("Wrong!");   // 🔊 Added
 
-  popup.classList.remove("hidden");
+      popup.classList.remove("hidden");
 
-  setTimeout(()=>{
-    popup.classList.add("hidden");
-  },1200);
-}
-function showResult(){
+      setTimeout(() => {
+        popup.classList.add("hidden");
+      }, 1200);
+    }
+    function showResult() {
 
-  popupEmoji.textContent = "🏆";
-  popupTitle.textContent = "Quiz Completed!";
+      popupEmoji.textContent = "🏆";
+      popupTitle.textContent = "Quiz Completed!";
 
-  if(score === leftData.length){
-    popupTitle.style.color = "#2e7d32";
-    popupMessage.style.color = "#2e7d32";
-    popupMessage.textContent = `Score: ${score}/${leftData.length}`;
-  }
-  else if(score > 3){
-    popupTitle.style.color = "#1565c0";
-    popupMessage.style.color = "#1565c0";
-    popupMessage.textContent = `Score: ${score}/${leftData.length} - Very Good 👏`;
-  }
-  else if(score < 3){
-    popupTitle.style.color = "#c62828";
-    popupMessage.style.color = "#c62828";
-    popupMessage.textContent = `Score: ${score}/${leftData.length} - Keep Practicing 💪`;
-  }
-  else{
-    popupTitle.style.color = "#ef6c00";
-    popupMessage.style.color = "#ef6c00";
-    popupMessage.textContent = `Score: ${score}/${leftData.length} - Good 👍`;
-  }
+      if (score === leftData.length) {
+        popupTitle.style.color = "#2e7d32";
+        popupMessage.style.color = "#2e7d32";
+        popupMessage.textContent = `Score: ${score}/${leftData.length}`;
+      }
+      else if (score > 3) {
+        popupTitle.style.color = "#1565c0";
+        popupMessage.style.color = "#1565c0";
+        popupMessage.textContent = `Score: ${score}/${leftData.length} - Very Good 👏`;
+      }
+      else if (score < 3) {
+        popupTitle.style.color = "#c62828";
+        popupMessage.style.color = "#c62828";
+        popupMessage.textContent = `Score: ${score}/${leftData.length} - Keep Practicing 💪`;
+      }
+      else {
+        popupTitle.style.color = "#ef6c00";
+        popupMessage.style.color = "#ef6c00";
+        popupMessage.textContent = `Score: ${score}/${leftData.length} - Good 👍`;
+      }
 
-  playAgainBtn.classList.remove("hidden");
-  popup.classList.remove("hidden");
-  confetti({
-  particleCount:150,
-  spread:120,
-  origin:{ y:0.6 }
-});
+      playAgainBtn.classList.remove("hidden");
+      popup.classList.remove("hidden");
+      confetti({
+        particleCount: 150,
+        spread: 120,
+        origin: { y: 0.6 }
+      });
 
-}
-window.addEventListener("resize",()=>svg.innerHTML="");
+    }
+    window.addEventListener("resize", () => svg.innerHTML = "");
 
-init();
-playAgainBtn.addEventListener("click",()=>{
-  location.reload();
-});
-</script>
+    init();
+    playAgainBtn.addEventListener("click", () => {
+      location.reload();
+    });
+  </script>
 
 </body>
+
 </html>

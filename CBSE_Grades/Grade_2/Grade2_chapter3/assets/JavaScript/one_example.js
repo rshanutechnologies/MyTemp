@@ -3,7 +3,7 @@
 const quizData = [
 
 {
-  title: "Q.1 An internal part of our body",
+  title: "Q1. An internal part of our body",
   options:[
     { text:"Heart", img:"../assets/images/heartt.png"},
     { text:"Arms", img:"../assets/images/Arms.png"},
@@ -12,7 +12,7 @@ const quizData = [
 },
 
 {
-  title: "Q.2 An external part of our body",
+  title: "Q2. An external part of our body",
   options:[
     { text:"Brain", img:"../assets/images/brain.png"},
      { text:"Ears", img:"../assets/images/ears.png"},
@@ -21,7 +21,7 @@ const quizData = [
 },
 
 {
-  title: "Q.3 An action that we do with our nose",
+  title: "Q3. An action that we do with our nose",
   options:[
     { text:"Hear", img:"../assets/images/BoyHear.png"},
     { text:"Smelling", img:"../assets/images/BoySmell.png"},
@@ -30,7 +30,7 @@ const quizData = [
 },
 
 {
-  title: "Q.4 A part that is located inside our chest",
+  title: "Q4. A part that is located inside our chest",
   options:[
     { text:"Lungs", img:"../assets/images/Lungs.png"},
     { text:"Ears", img:"../assets/images/ears.png"},
@@ -39,7 +39,7 @@ const quizData = [
 },
 
 {
-  title: "Q.5 A part that gives shape to our body",
+  title: "Q5. A part that gives shape to our body",
   options:[
     { text:"Hair", img:"../assets/images/Hairrr.png"},
     { text:"Bones", img:"../assets/images/2Boness.png"},

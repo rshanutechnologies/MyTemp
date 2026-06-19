@@ -23,7 +23,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    /* background-color: #8e5260; */
     gap: 6px;
     
 }
@@ -37,7 +37,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    font-size: clamp(20px, 3vw, 30px);
+    font-size: 30px;
     color: #2f4f4f;
     font-weight: 400;
     line-height: 1.3;
@@ -79,7 +79,7 @@ body {
 } */
  .drop-box {
     width: 230px;
-    height: 58px;
+    height: 50px;
     min-height: 58px;
     flex-shrink: 0;        /* add this */
     border: 3px dashed #9ca3af;
@@ -87,7 +87,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
     color: #64748b;
     margin-top: 6px;
@@ -111,14 +111,14 @@ body {
 
 .answer {
     width: 120px;
-    height: 120px;
+    height: 55px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    font-size: 44px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
 
     border-radius: 25px;
     cursor: pointer;
@@ -148,6 +148,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-top: clamp(10px, 2vw, 20px);
 }
 
 .nav button {
@@ -292,6 +293,10 @@ background: #e6fffa;
 
 /* 🔥 SINGLE BREAKPOINT */
 @media (max-width:900px) {
+    /* .quiz-container{
+        background-color: #a5e6a2
+    }; */
+    
 
     body {
         height: 100vh;
@@ -310,6 +315,9 @@ background: #e6fffa;
 
 }
 @media (max-width:480px) {
+    /* .quiz-container{
+        background-color: #3e362b;
+    } */
     body{
         align-items: flex-start !important;
     }
@@ -327,18 +335,30 @@ background: #e6fffa;
       height: 70px;
       font-size: 24px;
    }
+   .nav {
+      margin-top: 10px;
+   }
+
+   .nav button {
+      width: 80px;
+      height: 38px;
+      font-size: 13px;
+   }
 }
-
-@media (min-width: 1600px) and (max-width: 1919px) {
-
-  .quiz-container {
-    width: min(1450px, 95vw);
-    gap: 12px;
+@media (min-width: 1400px) {
+.question-box {
+    font-size: 40px !important;
+    line-height: 1.4;
   }
 
-  .question-box {
-    font-size: 40px;
-    line-height: 1.4;
+}
+@media (min-width: 1600px) {
+
+  .quiz-container {
+    /* width: min(1450px, 95vw); */
+     width: min(1200px, 95vw);
+    gap: 12px;
+    /* background-color: #64748b; */
   }
 
   .question-image img {
@@ -360,18 +380,18 @@ background: #e6fffa;
   }
 
   .answer {
-    width: 120px;
-    height: 120px;
-    font-size: 44px;
+    width: 100px;
+    height: 100px;
+    font-size: 34px;
   }
 
   .nav {
     margin-top: 25px;
   }
 
-  .nav button {
-    width: 170px;
-    height: 70px;
-    font-size: 24px;
+    .nav button {
+    width: 150px;
+    height: 60px;
+    font-size: 22px;
   }
 }

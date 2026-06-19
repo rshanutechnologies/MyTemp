@@ -135,7 +135,7 @@ body{
 
   padding: clamp(6px, 1vw, 10px) clamp(10px, 2vw, 16px);
 
-  font-size: clamp(12px, 1vw, 14px);
+  font-size: 15px;
 
   border-radius:14px;
   border:none;
@@ -167,14 +167,15 @@ body{
 /* BUTTON (MCQ STYLE) */
 .nav button{
   border:none;
-  padding: clamp(10px, 1.2vw, 14px) clamp(20px, 3vw, 28px);
- font-size: clamp(15px, 1.4vw + 0.6vh, 20px);
+  width:150px;
+  height:48px;
+  font-size:18px;
   font-weight:600;
   border-radius:50px;
   cursor:pointer;
   transition:all .3s ease;
   box-shadow:0 6px 15px rgba(0,0,0,0.2);
- min-width: clamp(100px, 14vw, 150px);
+
 }
 
 /* PREV */
@@ -311,12 +312,6 @@ body{
     max-width:1400px;
   }
 
-  .question-area h2{
-    font-size:45px;
-    
- 
-  }
-
   .image-area img{
     width:450px;
     height:300px;
@@ -327,6 +322,9 @@ body{
     max-width:700px;
     gap:20px;
   }
+  .question-area h2{
+  font-size: 40px;
+}
 
   .input-box input{
     font-size:28px;
@@ -338,12 +336,12 @@ body{
   }
 
   .nav{
-    bottom:50px;
+    bottom:30px;
   }
   .nav button{
-    font-size:22px;
-    padding:14px 35px;
-    
+     width:160px;
+    height:65px;
+    font-size: 28px;
   }
 
 }
@@ -356,11 +354,6 @@ body{
 
   .main-container{
     max-width:1600px;
-  }
-
-  .question-area h2{
-    font-size:42px;
-       
   }
 
   .image-area img{
@@ -391,8 +384,9 @@ body{
   }
 
   .nav button{
-    font-size:22px;
-    padding:16px 45px;
+     width:160px;
+    height:65px;
+    font-size: 28px;
   }
 
 }
@@ -408,7 +402,7 @@ body{
   }
 
   .question-area h2{
-    font-size:50px;
+    font-size:40px;
   }
 
   .image-area img{
@@ -482,7 +476,6 @@ pointer-events:none;
   }
 
   .question-area h2{
-    font-size:22px;
     text-align:center;
     line-height:1.2;
     padding:0 10px;
@@ -518,20 +511,26 @@ pointer-events:none;
   }
 
   .nav{
-    bottom:170px;
+    bottom:160px;
   }
 
   .nav button{
-    min-width:90px;
-    font-size:16px;
-    padding:10px 16px;
+    width:120px;
+    height:40px;
+    font-size:15px;
     
   }
 }
 
-@media screen and (max-width:768px){
+@media (max-width:480px){
   .question-area h2{
-    font-size: 20px;
+    font-size:22px;
+  }
+}
+
+@media (min-width:1400px){
+  .question-area h2{
+    font-size:40px;
   }
 }
 </style>
@@ -583,7 +582,7 @@ const questions=[
 {
 q:"Q1. A penguin builds its nest on the ground using ______ and ______.",
 a:["stones","pebbles"],
-img:"../images/ftb1.png"
+img:"../images/ftb11.png"
 },
 
 {
@@ -595,7 +594,7 @@ img:"../images/ftb2.png"
 {
 q:"Q3. Birds like ______ and ______ have only two toes.",
 a:["ostrich","emu"],
-img:"../images/ftb3.png"
+img:"../images/ftb33.png"
 },
 
 {
@@ -628,17 +627,17 @@ boxes:q.a.map(()=>({value:"",correct:false}))
 
 /* TEXT SPEECH SAME AS MCQ */
 
-function speakText(text){
+function speakText(t) {
+  speechSynthesis.cancel();
 
-const speech = new SpeechSynthesisUtterance(text)
+  const msg = new SpeechSynthesisUtterance(t);
 
-speech.lang="en-GB"
-speech.volume=0.25
-speech.rate=1
-speech.pitch=1
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-speechSynthesis.speak(speech)
-
+  speechSynthesis.speak(msg);
 }
 
 /* CONFETTI SAME AS MCQ */

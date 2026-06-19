@@ -76,7 +76,7 @@ border-radius:22px;
 
 background:#f8fafc;
 
-font-size:clamp(14px, 2vw, 28px);
+font-size:20px;
 
 
 cursor:pointer;
@@ -535,6 +535,71 @@ svg{
   }
 
 }
+
+/* ========================= */
+/* TABLET RESPONSIVE */
+/* ========================= */
+@media screen and (min-width:601px) and (max-width:800px){
+
+  .container{
+    width:100%;
+    max-width:950px;
+    padding:20px;
+  }
+
+  .game{
+    gap:90px;
+    justify-content:center;
+  }
+
+  .column{
+    width:42%;
+    gap:12px;
+  }
+
+  .item{
+    height:70px;
+    padding:12px;
+    font-size:18px;
+  }
+
+  .left img{
+    width:45px;
+    height:45px;
+  }
+
+  .text{
+    font-size:16px;
+    line-height:1.2;
+  }
+
+  .dot{
+    width:10px;
+    height:10px;
+  }
+
+  .anchor{
+    width:10px;
+    height:10px;
+  }
+
+  svg{
+    display:block;
+  }
+
+  .popup-content{
+    max-width:340px;
+    padding:25px 35px;
+  }
+
+  .popup-content h2{
+    font-size:24px;
+  }
+
+  .popup-content p{
+    font-size:18px;
+  }
+}
 </style>
 </head>
 
@@ -655,18 +720,17 @@ const popup=document.getElementById("popup")
 const popupTitle=document.getElementById("popupTitle")
 const popupMessage=document.getElementById("popupMessage")
 const playAgainBtn=document.getElementById("playAgainBtn")
-function speak(text){
+function speak(t) {
+  speechSynthesis.cancel();
 
-if(!('speechSynthesis' in window)) return
+  const msg = new SpeechSynthesisUtterance(t);
 
-speechSynthesis.cancel()
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-const utter=new SpeechSynthesisUtterance(text)
-utter.lang="en-GB"
-utter.volume = 0.25;
-
-speechSynthesis.speak(utter)
-
+  speechSynthesis.speak(msg);
 }
 
 left.forEach(l=>{

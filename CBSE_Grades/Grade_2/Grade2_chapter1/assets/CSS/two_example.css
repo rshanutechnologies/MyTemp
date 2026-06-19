@@ -553,6 +553,12 @@ button:disabled {
 
 /* ================= MOBILE RESPONSIVE ================= */
 
+@media (max-width:480px) {
+  .question {
+    font-size: 22px;
+  }
+}
+
 @media (max-width:768px) {
 
   html {
@@ -589,7 +595,7 @@ button:disabled {
 
   /* question text */
   .question {
-    font-size: 22px;
+    font-size: 30px;
     margin: 15px 0;
     margin-top: 12%;
     min-height: 50px;
@@ -845,7 +851,7 @@ button:disabled {
 
   /* QUESTION (MAIN RULE) */
   .question {
-    font-size: 44px;
+    font-size: 30px;
     min-height: 140px;
     line-height: 1.4;
   }
@@ -902,6 +908,13 @@ button:disabled {
 
 }
 
+/* Big desktops / monitors */
+@media (min-width: 1400px) {
+.question{
+    font-size:40px;
+}
+}
+
 /* Large desktops */
 @media (min-width: 1440px) {
   body {
@@ -924,4 +937,8 @@ button:disabled {
     margin-top: -4%;
 
   }
+
+.question{
+    font-size:40px;
+}
 }

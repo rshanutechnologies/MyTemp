@@ -1,26 +1,26 @@
 const questions = [
   {
-    q: "Q.1 Food gives us __________ to work and play.",
+    q: "Q1. Food gives us __________ to work and play.",
     a: ["energy"],
     img: "../assets/images/WorkEnergy.png",
   },
   {
-    q: "Q.2 We get milk from __________ and __________.",
+    q: "Q2. We get milk from __________ and __________.",
     a: ["cows", "buffaloes"],
     img: "../assets/images/milk.png",
   },
   {
-    q: "Q.3 Non-vegetarians eat food from both plants and __________.",
+    q: "Q3. Non-vegetarians eat food from both plants and __________.",
     a: ["animals"],
     img: "../assets/images/meat-eat.png",
   },
   {
-    q: "Q.4 We should eat fresh, clean and __________ food.",
+    q: "Q4. We should eat fresh, clean and __________ food.",
     a: ["healthy"],
     img: "../assets/images/NutritiousFoodak.png",
   },
   {
-    q: "Q.5 We should never __________ food.",
+    q: "Q5. We should never __________ food.",
     a: ["waste"],
     img: "../assets/images/Dustbin.png",
   },

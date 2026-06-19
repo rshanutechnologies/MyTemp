@@ -1,6 +1,6 @@
 const quizData = [
   {
-    title: "Q.1 Food makes us ________ and healthy.",
+    title: "Q1. Food makes us ________ and healthy.",
     image: "../assets/images/BoyFoodExited.png",
     options: [
       { text: "Strong", img: "../assets/images/StrongMan.png" },
@@ -11,7 +11,7 @@ const quizData = [
     answer: "Strong",
   },
   {
-    title: "Q.2 We get pulses from ________.",
+    title: "Q2. We get pulses from ________.",
     image: "../assets/images/Pulsesak.png",
     options: [
       { text: "Animals", img: "../assets/images/Sheepak.png" },
@@ -22,7 +22,7 @@ const quizData = [
     answer: "Plants",
   },
   {
-    title: "Q.3 We have ________ in the morning.",
+    title: "Q3. We have ________ in the morning.",
     image: "../assets/images/ChildMorning.png",
     options: [
       { text: "Dinner", img: "../assets/images/Dinnerak (1).png" },
@@ -33,7 +33,7 @@ const quizData = [
     answer: "Breakfast",
   },
   {
-    title: "Q.4 Vegetarians eat ________ products.",
+    title: "Q4. Vegetarians eat ________ products.",
     image: "../assets/images/VegGirl.png",
     options: [
       { text: "Plant and animal", img: "../assets/images/PlantAnimal.png" },
@@ -44,7 +44,7 @@ const quizData = [
     answer: "Plant",
   },
   {
-    title: "Q.5 We eat ________ meals in a day.",
+    title: "Q5. We eat ________ meals in a day.",
     image: "../assets/images/BoyFirstMeal.png",
     options: [
       { text: "Three", img: "../assets/images/BoyF3.png" },

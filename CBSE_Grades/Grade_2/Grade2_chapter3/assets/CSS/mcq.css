@@ -178,7 +178,7 @@ body::before {
 /* ================= NAVIGATION ================= */
 
 .quiz-nav {
-  margin-top: auto;
+  margin-top: 11%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -402,6 +402,12 @@ body::before {
 
 /* ================= MOBILE ================= */
 
+@media (max-width:480px) {
+  .title {
+    font-size: 22px;
+  }
+}
+
 @media (max-width:768px) {
 
   body {
@@ -429,7 +435,7 @@ body::before {
 
   .title {
     width: 100%;
-    font-size: 22px;
+    font-size: 30px;
     line-height: 1.2;
     padding: 0 10px;
     margin-top: 35px;
@@ -470,7 +476,8 @@ body::before {
   /* option label */
 
   .option .label {
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 16px;
     padding: 6px 16px;
     bottom: -12px;
   }
@@ -536,7 +543,7 @@ body::before {
 
   /* ✅ QUESTION (IMPORTANT SYSTEM) */
   .title {
-    font-size: 44px;
+    font-size: 30px;
     min-height: 160px;
     width: 1000px;
     line-height: 1.4;
@@ -620,6 +627,13 @@ body::before {
 
 }
 
+/* Big desktops / monitors */
+@media (min-width: 1400px) {
+.title{
+    font-size:40px;
+}
+}
+
 /* Large desktops */
 @media (min-width: 1440px) {
   body {
@@ -642,4 +656,8 @@ body::before {
     margin-top: 11%;
 
   }
+
+.title{
+    font-size:40px;
+}
 }

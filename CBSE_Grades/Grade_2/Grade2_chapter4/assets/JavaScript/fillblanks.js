@@ -52,33 +52,33 @@ function showFinal() {
 const questions = [
 
 {
-q: "Q.1 __________ food keeps us fit and healthy.",
+q: "Q1. __________ food keeps us fit and healthy.",
 a: "Nutritious",
 img: "../assets/images/NutritiousFooood.png" ,
 },
 
 {
-q: "Q.2 __________ is required to work and play.",
+q: "Q2. __________ is required to work and play.",
 a: "Energy",
 img: "../assets/images/WorkEnergy.png",
 },
 
 {
-q: "Q.3 __________ helps in the digestion of food.",
+q: "Q3. __________ helps in the digestion of food.",
 a: "Roughage",
 img: "../assets/images/Roughag.png",
 },
 
 {
-q: "Q.4 We must eat at __________ timings.",
+q: "Q4. We must eat at __________ timings.",
 a: "Regular",
 img: "../assets/images/BoyFirstMeal.png",
 },
 
 {
-q: "Q.5 Body-building food makes our bones and __________ strong.",
+q: "Q5. Body-building food makes our bones and __________ strong.",
 a: "Muscles",
-img: "../assets/images/Arms.png",
+img: "../assets/images/bodybuilding.png",
 }
 
 ];

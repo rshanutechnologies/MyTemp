@@ -212,13 +212,13 @@ body::before{
     transition:0.2s;
 }
 .prev{
-  background-color: #ffeab1;
+  background-color: #f8d167;
   color:#8a6d4b;
   /* border:2px solid #e7c87f; */
 }
 
 .next{
-  background: linear-gradient(145deg, #9be3d6, #6ccfd0);
+  background: linear-gradient(145deg,  #6ccfd0);
   color:#ffffff;
 }
 .next:disabled{
@@ -686,6 +686,12 @@ body::before{
    📱 MOBILE RESPONSIVE FIX
 ================================ */
 
+@media (max-width:480px){
+.title{
+    font-size:22px;
+}
+}
+
 @media (max-width:768px){
 
 body{
@@ -712,7 +718,7 @@ body{
 /* question title */
 .title{
     width:100%;
-    font-size:22px;
+    font-size:30px;
     text-align:center;
     min-height:30px;
     margin-bottom: -2%;
@@ -831,12 +837,12 @@ body{
   /* ✅ MAIN CONTAINER FULL SCALE */
   .template{
     width: 1280px;
-    height: 800px;
+    /* height: 800px; */
   }
 
   /* ✅ QUESTION (your system) */
   .title{
-    font-size: 44px;
+    font-size: 30px;
     /* font-weight: 500; */
     width: 900px;
     min-height: 140px;
@@ -845,7 +851,7 @@ body{
   /* ✅ OPTIONS GRID BIGGER SPACING */
   .options{
     gap: 40px;
-    margin-top: 25% !important;
+    margin-top: 20% !important;
     justify-items: center;
   }
 
@@ -900,6 +906,13 @@ body{
   }
 }
 
+/* Big desktops / monitors */
+@media (min-width: 1400px) {
+.title{
+    font-size:40px;
+}
+}
+
 /* Large desktops */
 @media (min-width: 1440px) {
    body{
@@ -918,7 +931,10 @@ body{
   }
     .quiz-nav{
     margin-top:1%;
-  
+   
+}
+.title{
+    font-size:40px;
 }
 }
 

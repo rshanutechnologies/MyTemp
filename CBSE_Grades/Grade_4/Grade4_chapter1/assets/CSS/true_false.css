@@ -170,6 +170,8 @@ body::before {
   color: white;
   cursor: pointer;
   pointer-events: auto;
+    width: clamp(120px, 14vw, 160px);
+    height: clamp(44px, 6vh, 54px);
 }
 
 .prev {
@@ -194,6 +196,7 @@ body::before {
   color: white;
   cursor: pointer;
   /* box-shadow:0px 6px 0px rgba(0,0,0,0.08); */
+  height: clamp(44px, 6vh, 54px);
 }
 
 .prev {
@@ -385,7 +388,7 @@ button:disabled {
   }
 
   .question {
-    font-size: 24px;
+    font-size: 30px;
     padding: 0px;
     text-align: left !important;
     min-height: 80px;
@@ -432,12 +435,13 @@ button:disabled {
     height: auto;
     
   }
-
+   
   .nav button {
     width: 130px;
-    font-size: 20px;
-    padding: 10px 15px;
-    
+    height: 42px;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 12px 30px;
   }
 
   .prev,
@@ -496,7 +500,7 @@ button:disabled {
   .nav button{
     width: 100px;
     font-size: 14px;
-    padding: 8px 10px;
+    padding: 8px 0;
   }
 }
 /* ======================================= */
@@ -513,7 +517,7 @@ button:disabled {
 }  */
 
 /* ADD these two blocks instead */
-@media (min-width: 769px) and (max-width: 1279px) {
+@media (min-width: 769px) and (max-width: 1399px) {
 
   .quiz-card {
     width: 808px;
@@ -551,10 +555,14 @@ button:disabled {
     padding: 17px 51px;
     height: 68px;
   }
+  .question-3 #question,
+.question-5 #question {
+  text-align: left !important;
+}
 
   .nav button {
     font-size: 17px;
-    padding: 10px 26px;
+    padding: 10px 28px;
     margin-top: -20px !important;
   }
 }
@@ -581,6 +589,10 @@ button:disabled {
     text-align: left;
     margin-top: 30px;
   }
+  .question-3 #question,
+.question-5 #question {
+  text-align: left !important;
+}
 
   .question-img {
     width: 280px;
@@ -619,7 +631,7 @@ button:disabled {
   }
 }
 
-/* @media (min-width: 1400px) {
+ @media (min-width: 1400px) {
 
   
 
@@ -628,7 +640,8 @@ button:disabled {
     margin-bottom: 20px;
     text-align: center;
   }
-
+}
+/*
   .question-img {
     width: 250px;
     height: 250px;
@@ -661,10 +674,6 @@ button:disabled {
     bottom:10px;
   }
 
-  .nav button {
-    padding: 12px 30px;
-    font-size: 19px;
-  }
 } */
  @media (min-width: 1600px) {
    .quiz-card {

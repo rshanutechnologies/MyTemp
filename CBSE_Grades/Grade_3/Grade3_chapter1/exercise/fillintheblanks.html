@@ -1,735 +1,879 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fill in the Blanks</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fill in the Blanks</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<style>
-:root{
-  --main:#166534;
-  --bg:#ecfdf5;
-  --correct:#16a34a;
-  --wrong:#dc2626;
-}
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --main: #166534;
+      --bg: #ecfdf5;
+      --correct: #16a34a;
+      --wrong: #dc2626;
+    }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:"Livvic";
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Livvic";
+    }
 
-body{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-}
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-/* ✅ CONTAINER */
-.container{
-  width: clamp(320px, 80vw, 650px);
-  height: clamp(520px, 85vh, 640px);
-  border-radius: clamp(20px, 2vw, 30px);
-  padding: clamp(20px, 4vw, 40px);
+    /* ✅ CONTAINER */
+    .container {
+      width: clamp(320px, 80vw, 650px);
+      height: clamp(520px, 85vh, 640px);
+      border-radius: clamp(20px, 2vw, 30px);
+      padding: clamp(20px, 4vw, 40px);
 
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  margin:0 auto;
-}
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
 
-/* ✅ QUESTION */
-.question{
-  width:100%;
-  height: clamp(90px, 12vh, 110px);
-  font-size:30px;
-  color:#2f4f4f;
+    /* ✅ QUESTION */
+    .question {
+      width: 100%;
+      height: clamp(90px, 12vh, 110px);
+      font-size:30px;
+      color: #2f4f4f;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:left;
-}
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+    }
 
-/* ✅ IMAGE */
-.image-box{
-  width:100%;
-  height: clamp(180px, 28vh, 250px);
+    /* ✅ IMAGE */
+    .image-box {
+      width: 100%;
+      height: clamp(180px, 28vh, 250px);
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.image-box img{
-  width: clamp(140px, 18vw, 200px);
-  height: clamp(140px, 18vw, 200px);
-  object-fit:contain;
-}
-/* 🚫 DISABLE IMAGE DRAG */
+    .image-box img {
+      width: clamp(140px, 18vw, 200px);
+      height: clamp(140px, 18vw, 200px);
+      object-fit: contain;
+    }
 
-.image-box img{
+    /* 🚫 DISABLE IMAGE DRAG */
 
--webkit-user-drag:none;
+    .image-box img {
 
--webkit-user-select:none;
+      -webkit-user-drag: none;
 
-user-select:none;
+      -webkit-user-select: none;
 
-pointer-events:none;
+      user-select: none;
 
-}
-.input-area{
-  width:100%;
-  height: clamp(70px, 10vh, 80px);
+      pointer-events: none;
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap: clamp(10px, 2vw, 15px);
+    }
 
-  flex-wrap: wrap;   /* 🔥 KEY FIX */
-}
-input{
-  width: clamp(140px, 40vw, 220px);  /* 🔥 reduced */
+    .input-area {
+      width: 100%;
+      height: clamp(70px, 10vh, 80px);
 
-  height: clamp(42px, 6vh, 50px);
-  padding:10px;
-  border-radius:10px;
-  border:2px solid #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(10px, 2vw, 15px);
 
-  font-size: clamp(18px, 2vw, 26px);
-  text-align:center; 
-}
+      flex-wrap: wrap;
+      /* 🔥 KEY FIX */
+    }
 
-/* ✅ BUTTON AREA */
-.buttons{
-  width:100%;
-  height: clamp(80px, 12vh, 90px);
+    input {
+      width: clamp(140px, 40vw, 220px);
+      /* 🔥 reduced */
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap: clamp(10px, 2vw, 20px);
-}
+      height: clamp(42px, 6vh, 50px);
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #ccc;
 
-/* ✅ BUTTON SIZE */
-#prevBtn,
-#nextBtn{
-  width: clamp(120px, 20vw, 150px);
-  height: clamp(42px, 6vh, 50px);
-}
+      font-size: clamp(18px, 2vw, 26px);
+      text-align: center;
+    }
 
-#checkBtn1,
-#checkBtn2{
-  width: clamp(140px, 22vw, 170px);
-  height: clamp(42px, 6vh, 50px);
-}
 
-/* ✅ BUTTON TEXT */
-button{
-  border:none;
-  cursor:pointer;
-  border-radius:30px;
-  font-size: clamp(16px, 1.5vw, 22px);
-  font-weight:500;
-  transition:0.3s;
-  color:white;
-}
+    /* ✅ BUTTON SIZE */
+    #prevBtn,
+    #nextBtn {
+     width:150px;
+  height:48px;
+    }
 
-/* Hover */
-#prevBtn{
-  background:linear-gradient(135deg,#607d8b,#455a64);
-  
-}
+    #checkBtn1,
+    #checkBtn2 {
+       width:150px;
+  height:48px;
+    }
 
-/* Next */
-#nextBtn{
-  background:linear-gradient(135deg,#ff9800,#f57c00);
- 
-}
+    /* ✅ BUTTON TEXT */
+    button {
+      border: none;
+      cursor: pointer;
+      border-radius: 30px;
+      padding: clamp(10px, 1.2vw, 14px) clamp(20px, 3vw, 32px);
+      font-size: 20px;
+      font-weight: 600;
+      transition: 0.3s;
+      color: white;
+    }
 
-button:disabled{
- background:#e0e0e0 !important;
-  color:#9e9e9e;
-  cursor:not-allowed;
-}
+    /* Hover */
+    #prevBtn {
+      background: linear-gradient(135deg, #607d8b, #455a64);
 
-/* Check */
-#checkBtn1,
-#checkBtn2{
-  background:#bbf7d0;
-  color:#166534;
-}
+    }
 
-#checkBtn1.active,
-#checkBtn2.active{
-  background:#16a34a;
-  color:white;
-  box-shadow:0 6px 18px rgba(22,163,74,0.4);
-}
+    /* Next */
+    #nextBtn {
+      background: linear-gradient(135deg, #ff9800, #f57c00);
 
-/* POPUP */
-.popup{
-  position:fixed;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:1000;
-}
+    }
 
-.hidden{
-  display:none;
-}
+    /* Check */
+    #checkBtn1,
+    #checkBtn2 {
+      background: #bbf7d0;
+      color: #166534;
+    }
 
-.popup-content{
-  background:#ffffff;
+    #checkBtn1.active,
+    #checkBtn2.active {
+      background: #16a34a;
+      color: white;
+      box-shadow: 0 6px 18px rgba(22, 163, 74, 0.4);
+    }
 
-  padding:40px 70px;
+    .buttons {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding: 0 clamp(10px, 5vw, 120px);
+    }
 
-  border-radius:40px;
+    /* Previous & Next */
+    #prevBtn,
+    #nextBtn {
+      width:150px;
+  height:48px;
 
-  border:4px solid #BDE7FF;
 
-  box-shadow:
-    0 0 0 8px #EAF6FF,
-    0 12px 30px rgba(0,0,0,0.12);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
 
-  text-align:center;
+      font-size: 18px;
+      font-weight: 600;
 
-  min-width:320px;
-  max-width:500px;
-}
+      color: white;
+      transition: .3s;
+    }
 
-.popup-emoji{
-  font-size:clamp(30px,6vw,60px);
-  margin-bottom:15px;
-}
+    /* Previous */
+    #prevBtn {
+      background: linear-gradient(135deg, #607d8b, #455a64);
+    }
 
-.popup-content h2{
-  font-size:clamp(18px,3vw,28px);
-}
+    /* Next */
+    #nextBtn {
+      background: linear-gradient(135deg, #ff9800, #f57c00);
+    }
 
-.popup-content p{
-  font-size:clamp(14px,2vw,20px);
-}
-.play-again-btn{
-  margin-top:20px;
-  padding:10px 25px;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-  background:linear-gradient(135deg,#4caf50,#2e7d32);
-  color:white;
-}
-@media (max-width:600px){
-   body{
-    align-items: center;
-   }
-  .question{
-    margin-top: 40px;
-    font-size:clamp(20px,3vw,22px);
-  }
-  
-.input-area{
-    margin-bottom: 10px;   /* space below inputs */
-  }
+    /* Hover */
+    #prevBtn:hover,
+    #nextBtn:hover {
+      transform: scale(1.05);
+    }
 
-  .buttons{
-    margin-top: 10px; 
-         /* space above buttons */
-  }
- 
-    
-    
- }
+    /* Disabled */
+    #prevBtn:disabled,
+    #nextBtn:disabled {
+      background: #dcdcdc !important;
+      color: #888;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    /* POPUP */
+    .popup {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .popup-content {
+      background: #ffffff;
+
+      padding: 40px 70px;
+
+      border-radius: 40px;
+
+      border: 4px solid #BDE7FF;
+
+      box-shadow:
+        0 0 0 8px #EAF6FF,
+        0 12px 30px rgba(0, 0, 0, 0.12);
+
+      text-align: center;
+
+      min-width: 320px;
+      max-width: 500px;
+    }
+
+    .popup-emoji {
+      font-size: clamp(30px, 6vw, 60px);
+      margin-bottom: 15px;
+    }
+
+    .popup-content h2 {
+      font-size: clamp(18px, 3vw, 28px);
+    }
+
+    .popup-content p {
+      font-size: clamp(14px, 2vw, 20px);
+    }
+
+    .play-again-btn {
+      margin-top: 20px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #4caf50, #2e7d32);
+      color: white;
+    }
+
+    @media (max-width:600px) {
+      body {
+        align-items: flex-start;
+      }
+
+      .question {
+        margin-top: 40px;
+        font-size: clamp(20px, 3vw, 22px);
+      }
+
+      .input-area {
+        margin-bottom: 10px;
+        /* space below inputs */
+      }
+
+      .buttons {
+        margin-top: 10px;
+
+        /* space above buttons */
+      }
+
+
+    }
 
 
     @media (max-width:600px) {
-      .question{
+      .question {
         font-size: 20px;
       }
     }
-/* From 700px and above = Desktop */
-@media (min-width: 700px) {
-  .question {
-    font-size: 30px;
-  }
-}
-/* ============================= */
-/* Desktop / Monitor (1025px–1440px) */
-/* ============================= */
-@media screen and (min-width:1025px) and (max-width:1440px){
 
-  .container{
-    width:900px;
-    height:600px;
-    padding:30px;
-  }
-
-  /* QUESTION */
-  .question{
-    font-size:40px;
-  }
-
-  /* IMAGE */
-  .image-box{
-    height:300px;
-  }
-
-  .image-box img{
-    width:220px;
-    height:220px;
-  }
-
-  /* INPUT */
-  input{
-    width:250px;
-    height:55px;
-    font-size:22px;
-  }
-
-  /* BUTTONS */
-  #prevBtn, #nextBtn{
-   width:180px;
-    height:60px;
-    font-size:22px;
-  }
-
-  #checkBtn1, #checkBtn2{
-    width:180px;
-    height:60px;
-    font-size:22px;
-  }
-
-}
-/* ============================= */
-/* Large Monitors (1441px–1920px) */
-/* ============================= */
-@media screen and (min-width:1441px) and (max-width:1920px){
-
-  .container{
-    width:1100px;
-    height:680px;
-    padding:40px;
-  }
-
-  /* QUESTION */
-  .question{
-    font-size:42px;   /* 🔥 bigger */
-  }
-
-  /* IMAGE */
-  .image-box{
-    height:260px;
-  }
-
-  .image-box img{
-    width:220px;
-    height:220px;
-  }
-
-  /* INPUT */
-  input{
-    width:260px;
-    height:60px;
-    font-size:26px;
-  }
-
-  .input-area{
-    gap:20px;
-  }
-
-  /* BUTTONS */
-  .buttons{
-    gap:30px;
-  }
-
-  #prevBtn, #nextBtn{
-    width:180px;
-    height:60px;
-    font-size:22px;
-  }
-
-  #checkBtn1, #checkBtn2{
-    width:200px;
-    height:60px;
-    font-size:22px;
-  }
-
-}
-/* ============================= */
-/* Extra Large Screens / 4K (1921px+) */
-/* ============================= */
-@media screen and (min-width:1921px){
-
-  .container{
-    width:1300px;
-    height:760px;
-    padding:50px;
-  }
-
-  /* QUESTION */
-  .question{
-    font-size:52px;
-  }
-
-  /* IMAGE */
-  .image-box{
-    height:300px;
-  }
-
-  .image-box img{
-    width:260px;
-    height:260px;
-  }
-
-  /* INPUT */
-  input{
-    width:300px;
-    height:70px;
-    font-size:30px;
-  }
-
-  /* BUTTONS */
-  .buttons{
-    gap:40px;
-  }
-
-  #prevBtn, #nextBtn{
-    width:200px;
-    height:70px;
-    font-size:26px;
-  }
-
-  #checkBtn1, #checkBtn2{
-    width:230px;
-    height:70px;
-    font-size:26px;
-  }
-
-}
-
-@media (max-width:600px){
-
-  .popup-content{
-    width:70%;
-    min-width:auto;
-    max-width:280px;
-
-    padding:18px 20px;
-
-    border-radius:28px;
-
-    border:3px solid #BDE7FF;
-
-    box-shadow:
-      0 0 0 5px #EAF6FF,
-      0 8px 20px rgba(0,0,0,0.10);
-  }
-
-  .popup-emoji{
-    font-size:36px;
-    margin-bottom:6px;
-  }
-
-  .popup-content h2{
-    font-size:20px;
-    margin-bottom:4px;
-  }
-
-  .popup-content p{
-    font-size:14px;
-  }
-
-  .play-again-btn{
-    margin-top:12px;
-    padding:8px 18px;
-    font-size:14px;
-  }
-
-}
-</style>
-</head>
-<body>
-
-<div class="container">
-
- 
-  <div class="question" id="questionText"></div>
-
-  <div class="image-box">
-    <img id="questionImg" draggable="false">
-  </div>
-
-  <div class="input-area" id="inputArea"></div>
-
-  <div class="buttons">
- <button id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
-
- <button id="checkBtn1" onclick="checkAnswer()" disabled>Check</button>
-
-  <button id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
-</div>
-  <p id="result"></p>
-
-</div>
-<!-- Popup -->
-<div id="popup" class="popup hidden">
-  <div class="popup-content">
-    <div id="popupEmoji" class="popup-emoji"></div>
-    <h2 id="popupTitle"></h2>
-    <p id="popupMessage"></p>
-
-    <button id="playAgainBtn" class="play-again-btn hidden">
-      🔄 Play Again
-    </button>
-  </div>
-</div>
-<script>
-const questions = [
-  {
-    q: "Q1.Human beings have a pair of ________ to breathe.",
-    answers: ["lungs"],
-    img: "../images/human.png"
-  },
-  {
-    q: "Q2.Living things have ________ in them.",
-    answers: ["life"],
-    img: "../images/Mango.png"
-  },
-  {
-    q: "Q3.Rabbits ________ or ________ using their limbs.",
-    answers: ["hop","leap"],
-    img: "../images/rabbit.png"
-  },
-  {
-    q: "Q4.Earthworms use their ________ to slide or crawl.",
-    answers: ["muscles"],
-    img: "../images/earthwarm-img.png"
-  },
-  {
-    q: "Q5.Fishes use their ________ to swim.",
-    answers: ["tails"],
-    img: "../images/fish.png"
-  }
-];
-
-let index = 0;
-let userAnswers = Array(questions.length).fill(null);
-let answeredCorrectly = Array(questions.length).fill(false);
-
-// ✅ NEW (for step checking)
-let q3Step = 0;
-let q3UsedWords = [];
-
-const qText = document.getElementById("questionText");
-const qImg = document.getElementById("questionImg");
-const inputArea = document.getElementById("inputArea");
-const result = document.getElementById("result");
-
-const nextBtn = document.getElementById("nextBtn");
-
-const popup = document.getElementById("popup");
-const popupTitle = document.getElementById("popupTitle");
-const popupMessage = document.getElementById("popupMessage");
-const popupEmoji = document.getElementById("popupEmoji");
-const playAgainBtn = document.getElementById("playAgainBtn");
-document.addEventListener("input", function(){
-
-  if(answeredCorrectly[index]) return;
-
-  const inputs = document.querySelectorAll("#inputArea input");
-  const btn1 = document.getElementById("checkBtn1");
-if(index === 2){
-
-  const currentInput =
-    document.getElementById("input" + q3Step);
-
-  if(currentInput &&
-     currentInput.value.trim() !== ""){
-
-      btn1.classList.add("active");
-      btn1.disabled = false;
-
-  }else{
-
-      btn1.classList.remove("active");
-      btn1.disabled = true;
-  }
-
-}else{
-
-  let allFilled = true;
-
-  inputs.forEach((input)=>{
-    if(input.value.trim() === ""){
-      allFilled = false;
-    }
-  });
-
-  btn1.disabled = !allFilled;
-  btn1.classList.toggle("active", allFilled);
-}
-});
-// SPEECH
-function speakText(text){
-  if(!('speechSynthesis' in window)) return;
-  window.speechSynthesis.cancel();
-
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = "en-GB";
-  utter.volume = 0.25;
-
-  window.speechSynthesis.speak(utter);
-}
-
-// CONFETTI
-function fireConfetti(){
-  confetti({
-    particleCount: 40,
-    spread: 70,
-    origin: { y: 0.6 },
-    scalar: 0.7
-  });
-}
-
-function loadQuestion() {
-
-  const current = questions[index];
-
-  qText.innerText = current.q;
-  qImg.src = current.img;
-  result.innerText = "";
-
-  nextBtn.disabled = !answeredCorrectly[index];
-  document.getElementById("prevBtn").disabled = index === 0;
-
-  inputArea.innerHTML = "";
-
-  // ✅ RESET Q3 STEP
-  if(index === 2){
-    q3Step = 0;
-    q3UsedWords = [];
-  }
-
-  current.answers.forEach((ans, i) => {
-
-    const input = document.createElement("input");
-    input.type = "text";
-    input.id = "input" + i;
-    input.placeholder = "Enter answer";
-
-    if (userAnswers[index] && userAnswers[index][i]) {
-      input.value = userAnswers[index][i];
+    /* From 700px and above = Desktop */
+    @media (min-width: 700px) {
+      .question {
+        font-size: 30px;
+      }
     }
 
-    if (answeredCorrectly[index] && userAnswers[index] && userAnswers[index][i]) {
-      input.style.borderColor = "green";
-      input.disabled = true;
-    }
+    @media (max-width:600px) {
 
-    inputArea.appendChild(input);
-  });
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
 
-  // ✅ CHECK BUTTON RESET (IMPORTANT)
-  const btn1 = document.getElementById("checkBtn1");
-
-  btn1.classList.remove("active");
-
-  // 👉 ALWAYS disable initially
-  btn1.disabled = true;
-
-  // 👉 If already answered correctly, keep disabled
-  if(answeredCorrectly[index]){
-    btn1.disabled = true;
-  }
-}
-// ✅ CHECK ANSWER
-function checkAnswer(){
-
-  // ✅ Prevent checking again after correct answer
-  if(answeredCorrectly[index]) return;
-
-  const current = questions[index];
-  let correct = true;
-
-  let tempAnswers = [];
-
-  current.answers.forEach((ans,i)=>{
-    const inputField = document.getElementById("input"+i);
-    const userAns = inputField.value.trim().toLowerCase();
-    tempAnswers.push(userAns);
-  });
-
-  userAnswers[index] = tempAnswers;
-
-  // =========================
-  // Q3 STEP LOGIC
-  // =========================
-  if(index === 2){
-
-    const validWords = ["hop","leap"];
-    const inputField = document.getElementById("input"+q3Step);
-    const value = inputField.value.trim().toLowerCase();
-
-    if(value === ""){
-      correct = false;
-    }
-    if(!validWords.includes(value)){
-    correct = false;
-
-    inputField.style.borderColor = "red";
-
-    setTimeout(()=>{
-        inputField.value = "";
-        inputField.style.borderColor = "#ccc";
-    },800);
-}
-else if(q3UsedWords.includes(value)){
-    correct = false;
-
-    inputField.style.borderColor = "red";
-
-    setTimeout(()=>{
-        inputField.value = "";
-        inputField.style.borderColor = "#ccc";
-    },800);
-}
-    else{
-
-      inputField.value =
-        value.charAt(0).toUpperCase() +
-        value.slice(1).toLowerCase();
-
-      inputField.style.borderColor = "green";
-      inputField.disabled = true;
-
-      q3UsedWords.push(value);
-      q3Step++;
-
-      fireConfetti();
-      speakText("Correct!");
-
-      // ✅ First correct word
-      if(q3Step < 2){
-
-        const btn1 = document.getElementById("checkBtn1");
-        btn1.disabled = true;
-        btn1.classList.remove("active");
-
-        nextBtn.disabled = true;
-        return;
+        margin-top: 10px;
+        padding: 0;
       }
 
-      // ✅ Both words correct
-      if(q3Step === 2){
+      #prevBtn,
+      #checkBtn1,
+      #nextBtn {
+        width: 120px;
+        height: 40px;
+
+        font-size: 15px;
+        margin: 0;
+      }
+
+    }
+
+
+
+    /* ============================= */
+    /* Desktop / Monitor (1025px–1440px) */
+    /* ============================= */
+    @media screen and (min-width:1150px) and (max-width:1440px) {
+
+      .container {
+        width: 900px;
+        height: 600px;
+        padding: 30px;
+      }
+
+      /* QUESTION */
+      .question {
+        font-size: 40px;
+      }
+
+      /* IMAGE */
+      .image-box {
+        height: 300px;
+      }
+
+      .image-box img {
+        width: 220px;
+        height: 220px;
+      }
+
+      /* INPUT */
+      input {
+        width: 250px;
+        height: 55px;
+        font-size: 22px;
+      }
+
+      /* BUTTONS */
+      #prevBtn,
+      #nextBtn {
+        width: 160px;
+        height: 65px;
+        font-size: 28px;
+      }
+
+      #checkBtn1,
+      #checkBtn2 {
+        width: 160px;
+        height: 65px;
+        font-size: 28px;
+      }
+
+      .nav-btn {
+        bottom: 20px;
+        width: 160px;
+        height: 65px;
+        font-size: 28px;
+      }
+
+    }
+
+    /* ============================= */
+    /* Large Monitors (1441px–1920px) */
+    /* ============================= */
+    @media screen and (min-width:1441px) and (max-width:1920px) {
+
+      .container {
+        width: 1100px;
+        height: 680px;
+        padding: 40px;
+      }
+
+      /* QUESTION */
+      .question {
+        font-size: 42px;
+        /* 🔥 bigger */
+      }
+
+      /* IMAGE */
+      .image-box {
+        height: 260px;
+      }
+
+      .image-box img {
+        width: 220px;
+        height: 220px;
+      }
+
+      /* INPUT */
+      input {
+        width: 260px;
+        height: 60px;
+        font-size: 26px;
+      }
+
+      .input-area {
+        gap: 20px;
+      }
+
+      /* BUTTONS */
+      .buttons {
+        gap: 30px;
+      }
+
+      #prevBtn,
+      #nextBtn {
+        width: 180px;
+        height: 60px;
+        font-size: 22px;
+      }
+
+      #checkBtn1,
+      #checkBtn2 {
+        width: 200px;
+        height: 60px;
+        font-size: 22px;
+      }
+
+    }
+
+    /* ============================= */
+    /* Extra Large Screens / 4K (1921px+) */
+    /* ============================= */
+    @media screen and (min-width:1921px) {
+
+      .container {
+        width: 1300px;
+        height: 760px;
+        padding: 50px;
+      }
+
+      /* QUESTION */
+      .question {
+        font-size: 52px;
+      }
+
+      /* IMAGE */
+      .image-box {
+        height: 300px;
+      }
+
+      .image-box img {
+        width: 260px;
+        height: 260px;
+      }
+
+      /* INPUT */
+      input {
+        width: 300px;
+        height: 70px;
+        font-size: 30px;
+      }
+
+      /* BUTTONS */
+      .buttons {
+        gap: 40px;
+      }
+
+      #prevBtn,
+      #nextBtn {
+        width: 200px;
+        height: 70px;
+        font-size: 26px;
+      }
+
+      #checkBtn1,
+      #checkBtn2 {
+        width: 230px;
+        height: 70px;
+        font-size: 26px;
+      }
+
+    }
+
+    @media (max-width:600px) {
+
+      .popup-content {
+        width: 70%;
+        min-width: auto;
+        max-width: 280px;
+
+        padding: 18px 20px;
+
+        border-radius: 28px;
+
+        border: 3px solid #BDE7FF;
+
+        box-shadow:
+          0 0 0 5px #EAF6FF,
+          0 8px 20px rgba(0, 0, 0, 0.10);
+      }
+
+      .popup-emoji {
+        font-size: 36px;
+        margin-bottom: 6px;
+      }
+
+      .popup-content h2 {
+        font-size: 20px;
+        margin-bottom: 4px;
+      }
+
+      .popup-content p {
+        font-size: 14px;
+      }
+
+      .play-again-btn {
+        margin-top: 12px;
+        padding: 8px 18px;
+        font-size: 14px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+
+    <div class="question" id="questionText"></div>
+
+    <div class="image-box">
+      <img id="questionImg" draggable="false">
+    </div>
+
+    <div class="input-area" id="inputArea"></div>
+
+    <div class="buttons">
+      <button id="prevBtn" onclick="prevQuestion()" disabled>← Prev</button>
+
+      <button id="checkBtn1" onclick="checkAnswer()" disabled>Check</button>
+
+      <button id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
+    </div>
+    <p id="result"></p>
+
+  </div>
+  <!-- Popup -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <div id="popupEmoji" class="popup-emoji"></div>
+      <h2 id="popupTitle"></h2>
+      <p id="popupMessage"></p>
+
+      <button id="playAgainBtn" class="play-again-btn hidden">
+        🔄 Play Again
+      </button>
+    </div>
+  </div>
+  <script>
+    const questions = [
+      {
+        q: "Q1.Human beings have a pair of ________ to breathe.",
+        answers: ["lungs"],
+        img: "../images/human1.png"
+      },
+      {
+        q: "Q2.Living things have ________ in them.",
+        answers: ["life"],
+        img: "../images/Mango.png"
+      },
+      {
+        q: "Q3.Rabbits ________ or ________ using their limbs.",
+        answers: ["hop", "leap"],
+        img: "../images/rabbit.png"
+      },
+      {
+        q: "Q4.Earthworms use their ________ to slide or crawl.",
+        answers: ["muscles"],
+        img: "../images/earthwarm-img.png"
+      },
+      {
+        q: "Q5.Fishes use their ________ to swim.",
+        answers: ["tails"],
+        img: "../images/fish.png"
+      }
+    ];
+
+    let index = 0;
+    let userAnswers = Array(questions.length).fill(null);
+    let answeredCorrectly = Array(questions.length).fill(false);
+
+    // ✅ NEW (for step checking)
+    let q3Step = 0;
+    let q3UsedWords = [];
+
+    const qText = document.getElementById("questionText");
+    const qImg = document.getElementById("questionImg");
+    const inputArea = document.getElementById("inputArea");
+    const result = document.getElementById("result");
+
+    const nextBtn = document.getElementById("nextBtn");
+
+    const popup = document.getElementById("popup");
+    const popupTitle = document.getElementById("popupTitle");
+    const popupMessage = document.getElementById("popupMessage");
+    const popupEmoji = document.getElementById("popupEmoji");
+    const playAgainBtn = document.getElementById("playAgainBtn");
+    document.addEventListener("input", function () {
+
+      if (answeredCorrectly[index]) return;
+
+      const inputs = document.querySelectorAll("#inputArea input");
+      const btn1 = document.getElementById("checkBtn1");
+      if (index === 2) {
+
+        const currentInput =
+          document.getElementById("input" + q3Step);
+
+        if (currentInput &&
+          currentInput.value.trim() !== "") {
+
+          btn1.classList.add("active");
+          btn1.disabled = false;
+
+        } else {
+
+          btn1.classList.remove("active");
+          btn1.disabled = true;
+        }
+
+      } else {
+
+        let allFilled = true;
+
+        inputs.forEach((input) => {
+          if (input.value.trim() === "") {
+            allFilled = false;
+          }
+        });
+
+        btn1.disabled = !allFilled;
+        btn1.classList.toggle("active", allFilled);
+      }
+    });
+    function speak(t) {
+      speechSynthesis.cancel();
+
+      const msg = new SpeechSynthesisUtterance(t);
+
+      msg.lang = "en-UK";
+      msg.volume = 0.25;
+      msg.rate = 1;
+      msg.pitch = 1;
+
+      speechSynthesis.speak(msg);
+    }
+
+    // CONFETTI
+    function fireConfetti() {
+      confetti({
+        particleCount: 40,
+        spread: 70,
+        origin: { y: 0.6 },
+        scalar: 0.7
+      });
+    }
+
+    function loadQuestion() {
+
+      const current = questions[index];
+
+      qText.innerText = current.q;
+      qImg.src = current.img;
+      result.innerText = "";
+
+      nextBtn.disabled = !answeredCorrectly[index];
+      document.getElementById("prevBtn").disabled = index === 0;
+
+      inputArea.innerHTML = "";
+
+      // ✅ RESET Q3 STEP
+      if (index === 2) {
+        q3Step = 0;
+        q3UsedWords = [];
+      }
+
+      current.answers.forEach((ans, i) => {
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.id = "input" + i;
+        input.placeholder = "Enter answer";
+
+        if (userAnswers[index] && userAnswers[index][i]) {
+          input.value = userAnswers[index][i];
+        }
+
+        if (answeredCorrectly[index] && userAnswers[index] && userAnswers[index][i]) {
+          input.style.borderColor = "green";
+          input.disabled = true;
+        }
+
+        inputArea.appendChild(input);
+      });
+
+      // ✅ CHECK BUTTON RESET (IMPORTANT)
+      const btn1 = document.getElementById("checkBtn1");
+
+      btn1.classList.remove("active");
+
+      // 👉 ALWAYS disable initially
+      btn1.disabled = true;
+
+      // 👉 If already answered correctly, keep disabled
+      if (answeredCorrectly[index]) {
+        btn1.disabled = true;
+      }
+    }
+    // ✅ CHECK ANSWER
+    function checkAnswer() {
+
+      // ✅ Prevent checking again after correct answer
+      if (answeredCorrectly[index]) return;
+
+      const current = questions[index];
+      let correct = true;
+
+      let tempAnswers = [];
+
+      current.answers.forEach((ans, i) => {
+        const inputField = document.getElementById("input" + i);
+        const userAns = inputField.value.trim().toLowerCase();
+        tempAnswers.push(userAns);
+      });
+
+      userAnswers[index] = tempAnswers;
+
+      // =========================
+      // Q3 STEP LOGIC
+      // =========================
+      if (index === 2) {
+
+        const validWords = ["hop", "leap"];
+        const inputField = document.getElementById("input" + q3Step);
+        const value = inputField.value.trim().toLowerCase();
+
+        if (value === "") {
+          correct = false;
+        }
+        if (!validWords.includes(value)) {
+          correct = false;
+
+          inputField.style.borderColor = "red";
+
+          setTimeout(() => {
+            inputField.value = "";
+            inputField.style.borderColor = "#ccc";
+          }, 800);
+        }
+        else if (q3UsedWords.includes(value)) {
+          correct = false;
+
+          inputField.style.borderColor = "red";
+
+          setTimeout(() => {
+            inputField.value = "";
+            inputField.style.borderColor = "#ccc";
+          }, 800);
+        }
+        else {
+
+          inputField.value =
+            value.charAt(0).toUpperCase() +
+            value.slice(1).toLowerCase();
+
+          inputField.style.borderColor = "green";
+          inputField.disabled = true;
+
+          q3UsedWords.push(value);
+          q3Step++;
+
+          fireConfetti();
+          speak("Correct!");
+
+          // ✅ First correct word
+          if (q3Step < 2) {
+
+            const btn1 = document.getElementById("checkBtn1");
+            btn1.disabled = true;
+            btn1.classList.remove("active");
+
+            nextBtn.disabled = true;
+            return;
+          }
+
+          // ✅ Both words correct
+          if (q3Step === 2) {
+
+            answeredCorrectly[index] = true;
+            nextBtn.disabled = false;
+
+            const btn1 = document.getElementById("checkBtn1");
+            btn1.disabled = true;
+            btn1.classList.remove("active");
+
+            popupEmoji.textContent = "🎉";
+            popupTitle.textContent = "Correct!";
+            popupTitle.style.color = "green";
+            popupMessage.textContent = "Great job!";
+            popup.classList.remove("hidden");
+
+            setTimeout(() => {
+              popup.classList.add("hidden");
+
+              if (index === questions.length - 1) {
+                showFinalPopup();
+              }
+            }, 1200);
+
+            return;
+          }
+        }
+      }
+
+      // =========================
+      // NORMAL QUESTIONS
+      // =========================
+      else {
+
+        current.answers.forEach((ans, i) => {
+
+          const inputField = document.getElementById("input" + i);
+
+          if (tempAnswers[i] !== ans) {
+
+            correct = false;
+            inputField.value = "";
+            inputField.style.borderColor = "red";
+          }
+        });
+      }
+
+      // =========================
+      // RESULT
+      // =========================
+      if (correct) {
 
         answeredCorrectly[index] = true;
         nextBtn.disabled = false;
@@ -738,165 +882,117 @@ else if(q3UsedWords.includes(value)){
         btn1.disabled = true;
         btn1.classList.remove("active");
 
+        fireConfetti();
+        speak("Correct!");
+
+        current.answers.forEach((ans, i) => {
+
+          const input = document.getElementById("input" + i);
+
+          input.value =
+            input.value.charAt(0).toUpperCase() +
+            input.value.slice(1).toLowerCase();
+
+          input.style.borderColor = "green";
+          input.disabled = true;
+        });
+
         popupEmoji.textContent = "🎉";
         popupTitle.textContent = "Correct!";
         popupTitle.style.color = "green";
         popupMessage.textContent = "Great job!";
         popup.classList.remove("hidden");
 
-        setTimeout(()=>{
+        setTimeout(() => {
           popup.classList.add("hidden");
 
-          if(index === questions.length-1){
+          if (index === questions.length - 1) {
             showFinalPopup();
           }
-        },1200);
+        }, 1200);
 
-        return;
+      } else {
+
+        speak("Wrong!");
+
+        popupEmoji.textContent = "❌";
+        popupTitle.textContent = "Wrong!";
+        popupTitle.style.color = "red";
+        popupMessage.textContent = "Try again!";
+        popup.classList.remove("hidden");
+
+        setTimeout(() => {
+          popup.classList.add("hidden");
+        }, 1200);
       }
     }
-  }
 
-  // =========================
-  // NORMAL QUESTIONS
-  // =========================
-  else{
+    // باقي same (no change)
+    function saveCurrentInputs() {
+      const inputs = document.querySelectorAll("#inputArea input");
+      userAnswers[index] = [];
 
-    current.answers.forEach((ans,i)=>{
+      inputs.forEach(input => {
+        userAnswers[index].push(input.value.trim());
+      });
+    }
 
-      const inputField = document.getElementById("input"+i);
+    function nextQuestion() {
+      saveCurrentInputs();
 
-      if(tempAnswers[i] !== ans){
-
-        correct = false;
-        inputField.value = "";
-        inputField.style.borderColor = "red";
+      if (index < questions.length - 1) {
+        index++;
+        loadQuestion();
+      } else {
+        qText.innerText = "🎉 Quiz Completed!";
+        qImg.style.display = "none";
+        inputArea.style.display = "none";
+        document.querySelector(".buttons").style.display = "none";
+        result.innerText = "";
       }
-    });
-  }
+    }
 
-  // =========================
-  // RESULT
-  // =========================
-  if(correct){
+    function prevQuestion() {
+      saveCurrentInputs();
 
-    answeredCorrectly[index] = true;
-    nextBtn.disabled = false;
-
-    const btn1 = document.getElementById("checkBtn1");
-    btn1.disabled = true;
-    btn1.classList.remove("active");
-
-    fireConfetti();
-    speakText("Correct!");
-
-    current.answers.forEach((ans,i)=>{
-
-      const input = document.getElementById("input"+i);
-
-      input.value =
-        input.value.charAt(0).toUpperCase() +
-        input.value.slice(1).toLowerCase();
-
-      input.style.borderColor = "green";
-      input.disabled = true;
-    });
-
-    popupEmoji.textContent = "🎉";
-    popupTitle.textContent = "Correct!";
-    popupTitle.style.color = "green";
-    popupMessage.textContent = "Great job!";
-    popup.classList.remove("hidden");
-
-    setTimeout(()=>{
-      popup.classList.add("hidden");
-
-      if(index === questions.length-1){
-        showFinalPopup();
+      if (index > 0) {
+        index--;
+        loadQuestion();
       }
-    },1200);
+    }
 
-  }else{
+    function showFinalPopup() {
+      let score = 0;
 
-    speakText("Wrong!");
+      questions.forEach((q, i) => {
+        if (answeredCorrectly[i]) score++;
+      });
 
-    popupEmoji.textContent = "❌";
-    popupTitle.textContent = "Wrong!";
-    popupTitle.style.color = "red";
-    popupMessage.textContent = "Try again!";
-    popup.classList.remove("hidden");
+      popupEmoji.textContent = "🏆";
+      popupTitle.textContent = "Quiz Completed!";
 
-    setTimeout(()=>{
+      popupMessage.textContent = `Score: ${score}/${questions.length}`;
+
+      playAgainBtn.classList.remove("hidden");
+      popup.classList.remove("hidden");
+    }
+
+    playAgainBtn.addEventListener("click", () => {
+      index = 0;
+      userAnswers = Array(questions.length).fill(null);
+      answeredCorrectly = Array(questions.length).fill(false);
+
       popup.classList.add("hidden");
-    },1200);
-  }
-}
+      playAgainBtn.classList.add("hidden");
 
-// باقي same (no change)
-function saveCurrentInputs(){
-  const inputs = document.querySelectorAll("#inputArea input");
-  userAnswers[index] = [];
+      nextBtn.disabled = true;
+      loadQuestion();
+    });
 
-  inputs.forEach(input=>{
-    userAnswers[index].push(input.value.trim());
-  });
-}
-
-function nextQuestion(){
-  saveCurrentInputs();
-
-  if(index < questions.length-1){
-    index++;
     loadQuestion();
-  }else{
-    qText.innerText = "🎉 Quiz Completed!";
-    qImg.style.display = "none";
-    inputArea.style.display = "none";
-    document.querySelector(".buttons").style.display = "none";
-    result.innerText = "";
-  }
-}
 
-function prevQuestion(){
-  saveCurrentInputs();
-
-  if(index > 0){
-    index--;
-    loadQuestion();
-  }
-}
-
-function showFinalPopup(){
-  let score = 0;
-
-  questions.forEach((q,i)=>{
-    if(answeredCorrectly[i]) score++;
-  });
-
-  popupEmoji.textContent = "🏆";
-  popupTitle.textContent = "Quiz Completed!";
-
-  popupMessage.textContent = `Score: ${score}/${questions.length}`;
-
-  playAgainBtn.classList.remove("hidden");
-  popup.classList.remove("hidden");
-}
-
-playAgainBtn.addEventListener("click",()=>{
-  index = 0;
-  userAnswers = Array(questions.length).fill(null);
-  answeredCorrectly = Array(questions.length).fill(false);
-
-  popup.classList.add("hidden");
-  playAgainBtn.classList.add("hidden");
-
-  nextBtn.disabled = true;
-  loadQuestion();
-});
-
-loadQuestion();
-
-</script>
+  </script>
 
 </body>
+
 </html>

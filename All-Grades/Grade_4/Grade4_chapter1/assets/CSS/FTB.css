@@ -469,6 +469,16 @@ button:disabled {
 }
 
 /* ================================
+   📱 VERY SMALL MOBILES (≤ 480px)
+   ================================ */
+@media (max-width: 480px) {
+    .nav button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* ================================
    📱 VERY SMALL MOBILES (≤ 360px)
    ================================ */
 @media (max-width: 360px) {

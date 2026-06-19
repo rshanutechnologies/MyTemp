@@ -2,7 +2,7 @@
 
 const quizData = [
 {
-  title: "Q.1 Animals that live around our houses or in the farms",
+  title: "Q1. Animals that live around our houses or in the farms",
   options:[
     { text:"Wild animals", img:"../assets/images/WildAnimals.png"},
     { text:"Domestic animals", img:"../assets/images/Domesticak.png"},
@@ -11,7 +11,7 @@ const quizData = [
 },
 
 {
-  title: "Q.2 Birds that cannot fly",
+  title: "Q2. Birds that cannot fly",
   options:[
     { text:"Flightless", img:"../assets/images/FlighlessBird.png"},
     { text:"Flying", img:"../assets/images/FlyBirds.png"},
@@ -20,7 +20,7 @@ const quizData = [
 },
 
 {
-  title: "Q.3 Animals that live in forests",
+  title: "Q3. Animals that live in forests",
   options:[
     { text:"Pet animals", img:"../assets/images/PetAnimals.png"},
     { text:"Wild animals", img:"../assets/images/WildAnimals.png"},

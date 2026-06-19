@@ -228,15 +228,15 @@ body::before {
     box-shadow: none;
 }
 
-.prev {
-    background-color: #ffeab1 !important;
-    color: #8a6d4b;
-
+.prev{
+  background-color: #f8d167;
+  color:#8a6d4b;
+  /* border:2px solid #e7c87f; */
 }
 
-.next {
-    background: linear-gradient(145deg, #9be3d6, #6ccfd0);
-    color: #ffffff;
+.next{
+  background: linear-gradient(145deg,  #6ccfd0);
+  color:#ffffff;
 }
 
 .prev,
@@ -1081,6 +1081,12 @@ button:disabled {
    📱 MOBILE RESPONSIVE FIX
 ================================ */
 
+@media (max-width:480px) {
+    .question {
+        font-size: 22px;
+    }
+}
+
 @media (max-width:768px) {
 
     body {
@@ -1132,7 +1138,7 @@ button:disabled {
 
     /* question text */
     .question {
-        font-size: 22px;
+        font-size: 30px;
         height: auto;
         margin-top: 2%;
         min-height: 100px;
@@ -1293,7 +1299,7 @@ button:disabled {
 
         /* ✅ QUESTION (IMPORTANT SYSTEM) */
         .question {
-            font-size: 44px;
+            font-size: 30px;
             /* font-weight: 500; */
             min-height: 140px;
             padding-inline: 40px;
@@ -1391,6 +1397,13 @@ button:disabled {
 
     }
 
+    /* Big desktops / monitors */
+    @media (min-width: 1400px) {
+        .question {
+            font-size: 40px;
+        }
+    }
+
     /* Large desktops */
     @media (min-width: 1440px) {
         body {
@@ -1412,5 +1425,9 @@ button:disabled {
         .quiz-nav {
             margin-top: 1%;
 
+        }
+
+        .question {
+            font-size: 40px;
         }
     }

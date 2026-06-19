@@ -10,8 +10,8 @@ const quiz = [
 
   {
     q: "Q2. Give one example of a fruit",
-    img1: "../assets/images/bread.png",
-    t1: "Bread",
+    img1: "../assets/images/carrot.png",
+    t1: "Carrot",
     img2: "../assets/images/apple.png",
     t2: "Apple",
     a: "apple",

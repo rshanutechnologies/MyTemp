@@ -46,35 +46,35 @@ function showFinal() {
 const quizData = [
 
 {
-q:"Q.1 Each part of our body has a special job to do.",
+q:"Q1. Each part of our body has a special job to do.",
 a:true,
 img:"../assets/images/BodyPartssWorkk.png",
 answered:false
 },
 
 {
-q:"Q.2 We smell with our tongue.",
+q:"Q2. We smell with our tongue.",
 a:false,
 img:"../assets/images/BoySmell.png",
 answered:false
 },
 
 {
-q:"Q.3 The heart is an external part of our body.",
+q:"Q3. The heart is an external part of our body.",
 a:false,
 img:"../assets/images/heartt.png",
 answered:false
 },
 
 {
-q:"Q.4 The food goes to the stomach through the food pipe.",
+q:"Q4. The food goes to the stomach through the food pipe.",
 a:true,
 img:"../assets/images/FooodPipe.png",
 answered:false
 },
 
 {
-q:"Q.5 Bones are covered with muscles.",
+q:"Q5. Bones are covered with muscles.",
 a:true,
 img:"../assets/images/BonesCoveredMuscles.png",
 answered:false

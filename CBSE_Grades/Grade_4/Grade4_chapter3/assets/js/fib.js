@@ -22,7 +22,7 @@ const questions = [
   {
     q: "5. The _____ of animals like porcupine and hedgehog protect them.",
     a: ["spines"],
-    img: "../images/FIB-5.png",
+    img: "../images/spines.png",
   },
 ];
 

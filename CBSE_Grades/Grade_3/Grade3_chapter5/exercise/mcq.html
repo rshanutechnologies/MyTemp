@@ -108,9 +108,9 @@ margin-top: -50px;
 
 /* OPTION TEXT */
 .option p{
-  font-size: clamp(14px, 1.2vw + 0.5vh, 20px);
-  font-weight:600;
-  color:#1a3c50;
+  font-size: 20px;
+  font-weight: 400;
+  color:#2f4f4f;
 }
 
 /* CORRECT */
@@ -128,14 +128,15 @@ margin-top: -50px;
 /* REMOVE flex:1 */
 button{
   border:none;
-  padding: clamp(10px, 1.2vw, 14px) clamp(20px, 3vw, 32px);
-  font-size: clamp(15px, 1.4vw + 0.6vh, 20px);
+ width:150px;
+  height:48px;
+   font-size:18px;
   font-weight:600;
   border-radius:50px;
   cursor:pointer;
   transition:all .3s ease;
   box-shadow:0 6px 15px rgba(0,0,0,0.2);
-   min-width: clamp(100px, 14vw, 150px);
+   
 }
 
 /* keep spacing like old */
@@ -270,7 +271,6 @@ button:disabled{
   70%{transform:translate(-50%,-50%) scale(1.1)}
   100%{transform:translate(-50%,-50%) scale(1)}
 }
-
 /* ========================= */
 /* Desktop / Monitor */
 /* ========================= */
@@ -281,15 +281,13 @@ button:disabled{
     height:65%;
   }
 
-  .question{
-    font-size:45px;
-  }
-
   .question-img{
     width:260px;
     height:180px;
   }
-
+.question{
+  font-size: 40px;
+}
   .option{
     width:230px;
     height:230px;
@@ -305,9 +303,9 @@ button:disabled{
   }
 
   button{
-    padding:14px 35px;
-    font-size:22px;
-    margin-top: 20px;
+    width:160px;
+    height:65px;
+    font-size: 28px;
   }
 
 }
@@ -321,10 +319,6 @@ button:disabled{
   .quiz-box{
     max-width:1700px;
     height:70%;
-  }
-
-  .question{
-    font-size:40px;
   }
 
   .question-img{
@@ -369,7 +363,7 @@ button:disabled{
   }
 
   .question{
-    font-size:50px;
+    font-size:40px;
   }
 
   .question-img{
@@ -437,11 +431,9 @@ height:auto;
 
 min-height:70px;
 
-font-size:20px;
-
 line-height:1.2;
 
-text-align:center;
+text-align:left;
 
 padding:5px 10px;
 
@@ -522,12 +514,9 @@ margin-bottom:10px;
 /* BUTTONS */
 
 button{
-
-min-width:100px;
-
-padding:10px 15px;
-
-font-size:15px;
+width:120px;
+    height:40px;
+    font-size:15px;
 
 }
 
@@ -549,6 +538,19 @@ padding:20px;
 
 }
 
+}
+
+
+@media (max-width:480px){
+  .question{
+    font-size:22px;
+  }
+}
+
+@media (min-width:1400px){
+  .question{
+    font-size:40px;
+  }
 }
 </style>
 </head>
@@ -595,7 +597,7 @@ const quiz=[
 
 {
 q:"Q1. Birds can also breathe directly through their open ______.",
-img:"../images/mcq1.png",
+img:"../images/tf11.png",
 options:[
 {img:"../images/mcq11.png",text:"Nose"},
 {img:"../images/mcq22.png",text:"Eyes"},
@@ -619,7 +621,7 @@ correct:1
 
 {
 q:"Q3. A ______ pokes holes in the hard wood of tree trunks.",
-img:"../images/mcq3.png",
+img:"../images/wood.png",
 options:[
 {img:"../images/pegion.png",text:"Pigeon"},
 {img:"../images/Eagle.png",text:"Eagle"},
@@ -643,7 +645,7 @@ correct:2
 
 {
 q:"Q5. Sharp and hooked claws are called ______.",
-img:"../images/mcq5.png",
+img:"../images/eagleimage.png",
 options:[
 {img:"../images/talons1.png",text:"Talons"},
 {img:"../images/nail.png",text:"Nails"},
@@ -668,17 +670,17 @@ origin:{y:0.6}
 })
 }
 
-function speakText(text){
+function speakText(t) {
+  speechSynthesis.cancel();
 
-const speech = new SpeechSynthesisUtterance(text);
+  const msg = new SpeechSynthesisUtterance(t);
 
-speech.lang = "en-GB";   // UK English
-speech.volume = 0.25;
-speech.rate = 1;
-speech.pitch = 1;
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-speechSynthesis.speak(speech);
-
+  speechSynthesis.speak(msg);
 }
 
 function showPopup(isCorrect){

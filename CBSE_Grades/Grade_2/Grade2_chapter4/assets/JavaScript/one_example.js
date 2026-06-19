@@ -3,7 +3,7 @@
 const quizData = [
 
 {
-  title: "Q.1 A protective food",
+  title: "Q1. A protective food",
   options:[
     { text:"Fruits", img:"../assets/images/Fruitak.png"},
     { text:"Bread", img:"../assets/images/BreadakWB.png"}
@@ -12,7 +12,7 @@ const quizData = [
 },
 
 {
-  title: "Q.2 An energy-giving food",
+  title: "Q2. An energy-giving food",
   options:[
     { text:"Chips", img:"../assets/images/chipsWB.png"},
     { text:"Rice", img:"../assets/images/Rice.png"},
@@ -21,7 +21,7 @@ const quizData = [
 },
 
 {
-  title: "Q.3 A body-building food",
+  title: "Q3. A body-building food",
   options:[
     { text:"Chips", img:"../assets/images/chipsWB.png"},
     { text:"Egg", img:"../assets/images/eGGGG.png"},
@@ -30,7 +30,7 @@ const quizData = [
 },
 
 {
-  title: "Q.4 A food rich in vitamins",
+  title: "Q4. A food rich in vitamins",
   options:[
     { text:"Orange", img:"../assets/images/OrangeF2.png"},
     { text:"Bread", img:"../assets/images/BreadakWB.png"}
@@ -39,7 +39,7 @@ const quizData = [
 },
 
 {
-  title: "Q.5 A meal of the day",
+  title: "Q5. A meal of the day",
   options:[
     { text:"Dinner", img:"../assets/images/DinnerWB.png"},
     { text:"Breakfast", img:"../assets/images/BreakfastWB.png"},

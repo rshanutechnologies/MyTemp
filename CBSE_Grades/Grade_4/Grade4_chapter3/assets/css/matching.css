@@ -21,6 +21,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-color: #2f4f4f; */
 }
 
 /* GAME */
@@ -56,9 +57,9 @@ body {
 /* ITEMS — fixed equal size, not driven by content */
 .item {
     width: 100%;                /* fills column, both sides equal */
-    height: 80px;               /* fixed height, not auto */
-    min-height: 80px;
-    max-height: 80px;
+    height: 60px;               /* fixed height, not auto */
+    min-height: 65px;
+    max-height: 70px;
     background: #f7e4cf;
     border-radius: 60px;
     display: flex;
@@ -66,8 +67,8 @@ body {
      justify-content: center;   /* add this */
 
     text-align: center;        /* add this */
-    gap: clamp(8px, 1.5vw, 18px);
-    padding: 0 clamp(10px, 2vw, 18px);
+    gap: 17px;
+    padding: 14px;
     cursor: pointer;
     font-size: 22px;
     color: #2f4f4f;
@@ -77,6 +78,7 @@ body {
         0 5px 12px rgba(0, 0, 0, .08);
     border: 2px solid rgba(0, 0, 0, .05);
     transition: .25s;
+    /* margin-bottom:2px; */
 }
 
 .item:hover:not(.matched) {
@@ -190,9 +192,9 @@ body {
 
     .item {
         width: 100%;
-        height: 82px;
-        min-height: 82px;
-        max-height: 82px;
+        height: 75px;
+        min-height: 75px;
+        max-height: 75px;
         font-size: 16px !important;
         padding: 0 10px;
         gap: 10px;
@@ -239,6 +241,7 @@ body {
         justify-content: center;
         align-items: center;
         height: 100vh;
+        /* background-color: #e6fff5; */
     }
 
     .game-container {
@@ -322,6 +325,7 @@ body {
 
     .main {
         max-width: 1300px;
+        /* background-color: #ffd43b; */
     }
 
     .game-container {
@@ -333,9 +337,9 @@ body {
     }
 
     .item {
-        height: 95px;
-        min-height: 95px;
-        max-height: 95px;
+        height: 85px;
+        min-height: 85px;
+        max-height: 85px;
         font-size: 24px !important;
         padding: 0 20px;
         gap: 16px;

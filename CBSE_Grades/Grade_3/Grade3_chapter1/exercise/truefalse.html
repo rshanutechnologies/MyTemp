@@ -147,50 +147,51 @@ box-shadow:
 }
 
 /* ===== NAV BUTTON ===== */
+/* ===== SAME NAV BUTTON STYLE ===== */
 
 .nav-btn{
-position:absolute;
+  width:150px;
+  height:48px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
 
-width:clamp(120px,20vw,150px);
-height:clamp(42px,6vh,50px);
+   font-size:18px;
+  font-weight:600;
 
-bottom:clamp(20px,4vh,35px);
+  color:white;
+  transition:.3s;
 
-padding:clamp(10px,2vh,12px) clamp(25px,4vw,35px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-font-size:clamp(16px,1.5vw,22px);
-font-weight:500;
-
-border:none;
-border-radius:40px;
-cursor:pointer;
-color:white;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-transition:0.3s;
+  position:absolute;
+  bottom:25px;
 }
 
-/* LEFT / RIGHT */
-
+/* Previous */
 #prevBtn{
-left:clamp(15px,3vw,30px);
-background:linear-gradient(135deg,#607d8b,#455a64);
+  left:30px;
+  background:linear-gradient(135deg,#607d8b,#455a64);
 }
 
+/* Next */
 #nextBtn{
-right:clamp(15px,3vw,30px);
-background:linear-gradient(135deg,#ff9800,#f57c00);
+  right:30px;
+  background:linear-gradient(135deg,#ff9800,#f57c00);
 }
 
-/* DISABLED */
+/* Hover */
+.nav-btn:hover:not(:disabled){
+  transform:scale(1.05);
+}
 
 .nav-btn:disabled{
-background: #e0e0e0 !important;
-color:#777;
-cursor:not-allowed;
+  background:#dcdcdc !important;
+  color:#888;
+  box-shadow:none;
+  cursor:not-allowed;
 }
 
 /* ===== POPUP ===== */
@@ -263,12 +264,6 @@ margin-top:20px;
 
 /* ===== MOBILE ===== */
 
-@media(max-width:768px){
-
-.question{
-font-size:30px;
-}
-
 .image img{
 max-width:clamp(140px,40vw,180px);
 }
@@ -282,8 +277,8 @@ font-size:clamp(18px,2vw,22px);
 padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
 }
 
-}
-@media (max-width:600px){
+
+@media (max-width:480px){
 
   body{
     overflow:hidden;
@@ -296,23 +291,19 @@ padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
     padding:10px 10px 90px;
   }
 
-  /* Question */
   .question{
-    font-size:20px;
+    font-size:22px;
     line-height:1.4;
     margin-top:0;
     margin-bottom:10px;
   }
 
-  /* Image Section */
   .image{
     display:flex;
     justify-content:center;
     align-items:center;
-
     height:auto;
     min-height:150px;
-
     margin-top:5px;
     margin-bottom:10px;
   }
@@ -324,7 +315,6 @@ padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
     object-fit:contain;
   }
 
-  /* True False Buttons */
   .options{
     margin-top:5px;
     gap:55px;
@@ -336,14 +326,12 @@ padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
     padding:12px 24px;
   }
 
-  /* Navigation Buttons */
   .nav-btn{
-    width:100px;
-    height:45px;
-    height: 40px;
-        font-size: 15px;
-        padding: 0 12px;
-       margin-bottom: -40px;
+    width:120px;
+    height:40px;
+    font-size: 15px;
+    padding: 0 12px;
+    margin-bottom: -40px;
   }
 
   #prevBtn{
@@ -354,19 +342,14 @@ padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
     right:10px;
   }
 
-  /* Popup */
   .popup-content{
     width:90%;
     padding:25px 20px;
   }
 
 }
-/* From 700px and above = Desktop */
-@media (min-width: 700px) {
-  .question {
-    font-size: 30px;
-  }
-}
+
+
 /* ✅ Desktop only bigger image */
 @media (min-width: 900px){
   .image img{
@@ -374,10 +357,11 @@ padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
   }
 }
 
+
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
-@media screen and (min-width:1025px) and (max-width:1440px){
+@media screen and (min-width:1125px) and (max-width:1440px){
 
   .quiz-container{
     max-width:1000px;
@@ -385,7 +369,7 @@ padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
 
   /* QUESTION */
   .question{
-    font-size:38px;
+    font-size:40px;
   }
 
   
@@ -413,9 +397,9 @@ padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
 
   /* NAV BUTTON */
   .nav-btn{
-     width:180px;
-    height:60px;
-    font-size:22px;
+    width:160px;
+    height:65px;
+    font-size: 28px;
   }
 
 }
@@ -475,7 +459,7 @@ padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
 
   /* QUESTION */
   .question{
-    font-size:52px;
+    font-size:40px;
   }
 
   /* IMAGE */
@@ -506,13 +490,6 @@ padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
   }
 
 }
-
-
-    @media (max-width:600px) {
-      .question{
-        font-size: 20px;
-      }
-    }
 
 
     @media (max-width:600px){
@@ -552,8 +529,11 @@ padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
     padding:8px 18px;
     font-size:14px;
   }
+  
 
 }
+
+
 </style>
 </head>
 
@@ -574,8 +554,8 @@ padding:clamp(12px,2vh,15px) clamp(20px,4vw,35px);
 <div class="option-btn false-btn" onclick="selectAnswer('F')">✖ FALSE</div>
 </div>
 
-<button class="nav-btn" id="prevBtn">Previous</button>
-<button class="nav-btn" id="nextBtn" disabled>Next</button>
+<button class="nav-btn" id="prevBtn">← Prev</button>
+  <button class="nav-btn" id="nextBtn" disabled>Next →</button>
 
 </div>
 
@@ -646,20 +626,17 @@ const trueBtn = document.querySelector(".true-btn");
 const falseBtn = document.querySelector(".false-btn");
 
 
-/* TEXT TO SPEECH */
+function speak(t) {
+  speechSynthesis.cancel();
 
-function speak(text){
+  const msg = new SpeechSynthesisUtterance(t);
 
-const msg = new SpeechSynthesisUtterance();
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-msg.text = text;
-
-msg.lang = "en-GB";
-
-msg.volume = 0.25;
-
-speechSynthesis.speak(msg);
-
+  speechSynthesis.speak(msg);
 }
 
 function fireConfetti(){

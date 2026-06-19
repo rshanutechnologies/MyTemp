@@ -365,7 +365,6 @@ body {
     }
 
     .question h2 {
-        font-size: 24px;
         height: auto;
         padding: 10px
     }
@@ -420,10 +419,6 @@ body {
 @media (max-width: 768px) {
     .main {
         padding: 20px
-    }
-
-    .question h2 {
-        font-size: 24px
     }
 
     .image-container {
@@ -487,7 +482,7 @@ body {
     .controls {
         margin-top: 0px;
         gap: 20px;
-        justify-content: center;
+        justify-content: space-between;
     }
 
     .controls button {
@@ -543,10 +538,6 @@ body {
         max-width: 1050px;
     }
 
-    .question h2 {
-        font-size: 34px;
-    }
-
     .image-container {
         gap: 50px;
     }
@@ -569,16 +560,16 @@ body {
     .controls button {
         width: 140px;
         height: 60px;
-        font-size: 22px;
+        font-size: 20px;
     }
 
 }
 
 
 /* ========================================
-   🖥️ Large Monitors (1441px – 1920px)
+   🖥️ Large Monitors / Desktop (1400px – 1920px)
 ======================================== */
-@media screen and (min-width: 1441px) and (max-width: 1920px) {
+@media screen and (min-width: 1400px) and (max-width: 1920px) {
 
     .main {
         max-width: 1150px;
@@ -608,9 +599,9 @@ body {
     }
 
     .controls button {
-        width: 150px;
-        height: 65px;
-        font-size: 24px;
+        width: 170px;
+        height: 60px;
+        font-size: 22px;
     }
 
 }
@@ -649,9 +640,9 @@ body {
     }
 
     .controls button {
-        width: 160px;
-        height: 70px;
-        font-size: 26px;
+        width: 170px;
+        height: 60px;
+        font-size: 24px;
     }
 
 }

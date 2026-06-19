@@ -150,8 +150,9 @@ body{
 /* BUTTON */
 .nav button{
   border:none;
-  padding: clamp(10px, 1.2vw, 14px) clamp(20px, 3vw, 32px);
-  font-size: clamp(15px, 1.4vw + 0.6vh, 20px);
+   width:150px;
+  height:48px;
+   font-size:18px;
   font-weight:600;
   border-radius:50px;
   cursor:pointer;
@@ -279,11 +280,6 @@ body{
   70%{transform:translate(-50%,-50%) scale(1.1)}
   100%{transform:translate(-50%,-50%) scale(1)}
 }
-@media screen and (max-width:600px){
-  .question{
-    font-size: 20px;
-  }
-}
 /* ========================= */
 /* Desktop / Monitor */
 /* ========================= */
@@ -292,10 +288,6 @@ body{
   .quiz-box{
     max-width:1400px;
     height:65%;
-  }
-
-  .question{
-    font-size:45px;
   }
 
   .left-img img{
@@ -308,16 +300,18 @@ body{
     height:90px;
     font-size:30px;
   }
-
+.question{
+  font-size:40px;
+}
   .icon{
     font-size:30px;
   }
 
-  .nav button{
-    font-size:22px;
-    padding:14px 35px;
+ .nav button{
+     width:160px;
+    height:65px;
+    font-size: 28px;
   }
-
 }
 
 
@@ -329,10 +323,6 @@ body{
   .quiz-box{
     max-width:1600px;
     height:70%;
-  }
-
-  .question{
-    font-size:42px;
   }
 
   .left-img img{
@@ -373,7 +363,7 @@ body{
   }
 
   .question{
-    font-size:50px;
+    font-size:40px;
   }
 
   .left-img img{
@@ -411,9 +401,29 @@ body{
 
 }
 
-@media screen and (max-width:768px){
+@media (max-width:480px){
   .question{
-    font-size: 20px;
+    font-size:22px;
+  }
+
+}
+
+@media (max-width:600px){
+  .question{
+    font-size:22px;
+  }
+  
+  
+  .nav button{
+    width:120px;
+    height:40px;
+    font-size:15px;
+  }
+}
+
+@media (min-width:1400px){
+  .question{
+    font-size:40px;
   }
 }
 </style>
@@ -520,17 +530,17 @@ origin:{y:0.6}
 
 /* SPEECH */
 
-function speakText(text){
+function speakText(t) {
+  speechSynthesis.cancel();
 
-const speech=new SpeechSynthesisUtterance(text)
+  const msg = new SpeechSynthesisUtterance(t);
 
-speech.lang="en-GB"
-speech.volume=0.25
-speech.rate=1
-speech.pitch=1
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-speechSynthesis.speak(speech)
-
+  speechSynthesis.speak(msg);
 }
 
 /* POPUP */

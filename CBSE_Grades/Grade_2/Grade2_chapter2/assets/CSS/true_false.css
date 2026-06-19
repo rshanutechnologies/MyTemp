@@ -157,8 +157,8 @@ body::before {
   border-radius: 999px;
   font-size: 20px;
   font-weight: 400;
-  background-color: #ffeab1;
-  color: #8a6d4b;
+ 
+  
 }
 
 .next {
@@ -173,10 +173,20 @@ body::before {
   border-radius: 999px;
   font-size: 20px;
   font-weight: 400;
-  background: linear-gradient(145deg, #9be3d6, #6ccfd0);
-  color: #ffffff;
+ 
+  
 }
 
+.prev{
+  background-color: #f8d167;
+  color:#8a6d4b;
+  /* border:2px solid #e7c87f; */
+}
+
+.next{
+  background: linear-gradient(145deg,  #6ccfd0);
+  color:#ffffff;
+}
 
 
 button:disabled {
@@ -452,6 +462,12 @@ button:disabled {
    📱 MOBILE RESPONSIVE FIX
 ================================ */
 
+@media (max-width:480px) {
+  .question {
+    font-size: 22px;
+  }
+}
+
 @media (max-width:768px) {
 
   body {
@@ -479,7 +495,7 @@ button:disabled {
 
   /* question */
   .question {
-    font-size: 22px;
+    font-size: 30px;
     padding: 10px;
     text-align: start !important;
     min-height: 100px !important;
@@ -591,7 +607,7 @@ button:disabled {
 
   /* ✅ QUESTION (IMPORTANT SYSTEM) */
   .question {
-    font-size: 44px;
+    font-size: 30px;
     /* font-weight: 500; */
     max-width: 900px;
     min-height: 140px;
@@ -667,6 +683,13 @@ button:disabled {
 
 }
 
+/* Big desktops / monitors */
+@media (min-width: 1400px) {
+.question{
+    font-size:40px;
+}
+}
+
 /* Large desktops */
 @media (min-width: 1440px) {
   body {
@@ -689,4 +712,8 @@ button:disabled {
     margin-top: 6%;
 
   }
+
+.question{
+    font-size:40px;
+}
 }

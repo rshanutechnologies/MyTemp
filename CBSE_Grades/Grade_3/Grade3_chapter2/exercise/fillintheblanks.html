@@ -30,7 +30,7 @@ overflow: hidden;
 
 .quiz{
 width:100%;
-max-width:1000px;
+max-width:1400px;
 min-height:clamp(420px,70vh,600px);
 
 display:flex;
@@ -145,42 +145,58 @@ transform:scale(0.9);
 }
 
 /* ================= BUTTONS ================= */
-
 .buttons{
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-top:auto;
-gap:clamp(6px,1vw,12px);
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:auto;
 }
 
 button{
+  width:150px;
+  height:48px;
 
-  width:110px;
-    height:45px;
 
-  font-size:clamp(16px, 1.5vw, 22px);
-border:none;
-border-radius:40px;
+  border:none;
+  border-radius:40px;
+  font-size:18px;
+  font-weight:600;
 
-font-size:clamp(16px,1.5vw,22px);
-font-weight:600;
+  cursor:pointer;
+  color:white;
 
-cursor:pointer;
-color:white;
+  transition:.3s;
 }
 
-/* colors */
-.prev{background:linear-gradient(135deg,#607d8b,#455a64);}
-.check.active{background:linear-gradient(135deg,#4caf50,#2e7d32);}
-.next{background:linear-gradient(135deg,#ff9800,#f57c00);}
+/* Previous */
+.prev{
+  background:linear-gradient(135deg,#607d8b,#455a64);
+}
+
+/* Check */
+.check{
+  background:#cccccc;
+}
+
+.check.active{
+  background:linear-gradient(135deg,#4caf50,#2e7d32);
+}
+
+/* Next */
+.next{
+  background:linear-gradient(135deg,#ff9800,#f57c00);
+}
+
+button:hover:not(:disabled){
+  transform:translateY(-3px);
+}
 
 button:disabled{
-background:#cccccc !important;
-cursor:not-allowed;
+  background:#e0e0e0 !important;
+  color:#9e9e9e;
+  cursor:not-allowed;
 }
-
 /* ================= POPUP ================= */
 
 .popup{
@@ -241,12 +257,12 @@ margin-bottom:15px;
 }
 
 .popup-content h2{
-font-size:clamp(18px,2vw,28px);
-margin-bottom:10px;
+  font-size:30px;
+  margin-bottom:10px;
 }
 
 .popup-content p{
-font-size:clamp(14px,1.5vw,20px);
+  font-size:clamp(18px, 2vw, 28px);
 }
 
 .play-again-btn{
@@ -266,14 +282,16 @@ margin-top:20px;
   pointer-events:none;
   opacity:0.5;
 }
-@media (min-width:700px){
 
-  .question{
-    font-size: 30px;
-  }
-
+.backspace-key{
+    width:70px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#667780,#6d818b);
+    color:#fff;
+    font-size:22px;
+    font-weight:bold;
 }
-@media (max-width:600px){
+@media (max-width:480px){
 
 body{
     padding:10px;
@@ -287,7 +305,7 @@ body{
 }
 
 .question{
-    font-size:20px;
+    font-size:22px;
     min-height:auto;
     padding:0 5px;
     text-align:left;
@@ -327,16 +345,20 @@ body{
 }
 
 .buttons{
-    gap:8px;
+    gap:5px;
 }
-
 button{
-    padding:10px 16px;
-    font-size:15px;
-    flex:1;
-    margin-bottom: 130px;
+  width:100px;
+  height:40px;
+  font-size:15px;
+  flex:none;
+  margin-bottom:0;
 }
-
+  .backspace-key{
+      width:55px;
+      height:42px;
+      font-size:18px;
+  }
 }
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
@@ -392,7 +414,7 @@ button{
 
   /* QUESTION */
   .question{
-    font-size:44px;   /* 🔥 bigger */
+    font-size:40px;
     min-height:120px;
   }
 
@@ -440,7 +462,7 @@ button{
 
   /* QUESTION */
   .question{
-    font-size:52px;
+    font-size:40px;
     min-height:140px;
   }
 
@@ -483,11 +505,7 @@ button{
 }
 
 
-@media screen and (max-width:768px){
-  .question{
-    font-size: 20px;
-  }
-}
+
 
 @media (max-width:600px){
 
@@ -530,6 +548,8 @@ button{
   }
 
 }
+
+
     </style>
     </head>
 
@@ -548,9 +568,9 @@ button{
     <div class="keyboard" id="keyboard"></div>
 
     <div class="buttons">
-    <button class="prev" onclick="prevQ()">Previous</button>
+    <button class="prev" onclick="prevQ()">← Prev</button>
     <button class="check" onclick="checkAnswer()">Check</button>
-    <button class="next" onclick="nextQ()">Next</button>
+    <button class="next" onclick="nextQ()">Next →</button>
     </div>
 
     <div class="result" id="result"></div>
@@ -742,40 +762,41 @@ function loadQ(){
     });
 
     /* Mobile Backspace Button - LAST */
-    if(window.innerWidth <= 600 && !isAnswered){
+   /* Backspace Button - ALL DEVICES */
+if(!isAnswered){
 
-        let backBtn = document.createElement("div");
+    let backBtn = document.createElement("div");
 
-        backBtn.className = "key backspace-key";
-        backBtn.innerHTML = "⌫";
+    backBtn.className = "key backspace-key";
+    backBtn.innerHTML = "⌫";
 
-        backBtn.onclick = ()=>{
+    backBtn.onclick = ()=>{
 
-            if(user.length === 0) return;
+        if(user.length === 0) return;
 
-            user = user.slice(0,-1);
-            userAnswers[current] = user;
+        user = user.slice(0,-1);
+        userAnswers[current] = user;
 
-            updateBoxes();
+        updateBoxes();
 
-            let lastBtn = usedButtons.pop();
+        let lastBtn = usedButtons.pop();
 
-            if(lastBtn){
-                lastBtn.style.pointerEvents = "auto";
-                lastBtn.style.opacity = "1";
-            }
+        if(lastBtn){
+            lastBtn.style.pointerEvents = "auto";
+            lastBtn.style.opacity = "1";
+        }
 
-            if(user.length >= len){
-                checkBtn.disabled = false;
-                checkBtn.classList.add("active");
-            }else{
-                checkBtn.disabled = true;
-                checkBtn.classList.remove("active");
-            }
-        };
+        if(user.length >= len){
+            checkBtn.disabled = false;
+            checkBtn.classList.add("active");
+        }else{
+            checkBtn.disabled = true;
+            checkBtn.classList.remove("active");
+        }
+    };
 
-        keyboard.appendChild(backBtn);
-    }
+    keyboard.appendChild(backBtn);
+}
 
     if(isAnswered){
 
@@ -784,6 +805,42 @@ function loadQ(){
 
     }
 }
+
+document.addEventListener("keydown",(e)=>{
+
+  if(e.key !== "Backspace") return;
+
+  // Stop backspace after correct answer
+  if(userAnswers[current] === quizData[current].a) return;
+
+  if(user.length === 0) return;
+
+  e.preventDefault();
+
+  user = user.slice(0,-1);
+  userAnswers[current] = user;
+
+  updateBoxes();
+
+  let lastBtn = usedButtons.pop();
+
+  if(lastBtn){
+    lastBtn.style.pointerEvents = "auto";
+    lastBtn.style.opacity = "1";
+  }
+
+  const checkBtn = document.querySelector(".check");
+
+  if(user.length >= quizData[current].a.length){
+    checkBtn.disabled = false;
+    checkBtn.classList.add("active");
+  }else{
+    checkBtn.disabled = true;
+    checkBtn.classList.remove("active");
+  }
+
+});
+
 function updateBoxes(){
 
     const boxes = document.querySelectorAll(".letterBox");
@@ -796,19 +853,17 @@ function updateBoxes(){
 
 loadQ()
 
-function speakText(text){
+function speakText(t) {
+  speechSynthesis.cancel();
 
-if(!('speechSynthesis' in window)) return
+  const msg = new SpeechSynthesisUtterance(t);
 
-window.speechSynthesis.cancel()
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-const utter=new SpeechSynthesisUtterance(text)
-
-utter.lang="en-GB"
-utter.volume=0.25
-
-speechSynthesis.speak(utter)
-
+  speechSynthesis.speak(msg);
 }
 function fireConfetti(){
 

@@ -53,6 +53,7 @@ body{
   width:100%;
   color:#2f4f4f;
   margin:0 auto;
+  margin-top: 20px;
   
 }
 
@@ -63,7 +64,7 @@ body{
   justify-content:center;
   align-items:center;
   height:auto;
-  margin-top: -40px;
+  margin-top: -30px;
   
 }
 
@@ -112,8 +113,8 @@ body{
 .option p{
   padding:clamp(6px, 1vw, 10px) clamp(13px, 2vw, 25px);
 
-  font-size:clamp(18px, 1.3vw, 24px);  /* increased */
-
+  font-size:20px;  /* increased */
+font-weight: 400;
   color:#2f4f4f;
   background:#d9e6ec;
   border:2px solid #b7cbd6;
@@ -141,7 +142,7 @@ body{
 .nav-container{
   display:flex;
   justify-content:space-between;
-  margin-top:30px;
+  margin-top:20px;
   width:100%;
 }
 
@@ -149,49 +150,49 @@ body{
   position:static;
 }
 /* ================= BUTTONS ================= */
-.nav-btn{
- 
-  
+/* ===== SAME NAV BUTTON STYLE ===== */
 
-  font-size:clamp(16px, 1.5vw, 22px);
+.nav-btn{
+   width:150px;
+  height:48px;
 
   border:none;
   border-radius:40px;
   cursor:pointer;
   color:white;
+
+  font-size:18px;
   font-weight:600;
 
-  box-shadow:0 6px 15px rgba(0,0,0,0.2);
-  width:110px;
-    height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    
-
-    z-index:100;
-
-    
+  transition:0.3s;
 }
 
+/* Previous */
 #prevBtn{
-  left:0;
   background:linear-gradient(135deg,#607d8b,#455a64);
 }
 
+/* Next */
 #nextBtn{
-  right:0;
   background:linear-gradient(135deg,#ff9800,#f57c00);
 }
 
-.nav-btn:hover{
+/* Hover */
+.nav-btn:hover:not(:disabled){
   transform:translateY(-3px);
 }
 
+/* Disabled */
 .nav-btn:disabled{
-  background:#cccccc !important;
+  background:#e0e0e0 !important;
+  color:#9e9e9e;
   cursor:not-allowed;
   box-shadow:none;
 }
-
 /* ================= POPUP ================= */
 
 .popup{
@@ -252,12 +253,12 @@ body{
 }
 
 .popup-content h2{
-  font-size:clamp(18px, 2vw, 28px);
+  font-size:30px;
   margin-bottom:10px;
 }
 
 .popup-content p{
-  font-size:clamp(14px, 1.5vw, 20px);
+  font-size:clamp(18px, 2vw, 28px);
 }
 
 /* ================= PLAY AGAIN ================= */
@@ -280,23 +281,8 @@ body{
 }
 
 
-@media screen and (max-width:808px){
-  .question{
-    font-size: 22px;
-
-  }
-  
-  .quiz-container{
-    height:auto;
-    min-height:100vh;
-    padding-bottom:90px;
-    margin-top:40px;
-  }
-
-
-}
 /* ================= MOBILE PERFECT FIX ================= */
-@media screen and (max-width:600px){
+@media screen and (max-width:480px){
 
   body{
     overflow:hidden;
@@ -311,9 +297,8 @@ body{
     margin-top:0;
   }
 
-  /* Question */
   .question{
-    font-size:20px;
+    font-size:22px;
     line-height:1.2;
     justify-content: center;
     text-align:left;
@@ -363,8 +348,9 @@ body{
   }
 
   .nav-btn{
-    width:100px;
-    height:42px;
+     width:120px;
+    height:40px;
+    font-size: 15px;
   }
 
   #prevBtn{
@@ -381,7 +367,7 @@ body{
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
-@media screen and (min-width:1125px) and (max-width:1240px){
+@media screen and (min-width:1100px) and (max-width:1440px){
 
   .quiz-container{
     max-width:1400px;
@@ -491,7 +477,7 @@ body{
 
   /* QUESTION */
   .question{
-    font-size:52px;
+    font-size:40px;
     min-height:130px;
   }
 
@@ -571,6 +557,11 @@ body{
   }
 
 }
+/* ========================= */
+/* TABLET (768px - 1024px) */
+/* ========================= */
+
+
 
 </style>
 </head>
@@ -586,8 +577,8 @@ body{
 </div>
   <div class="options" id="options"></div>
 <div class="nav-container">
-  <button class="nav-btn" id="prevBtn">Previous</button>
-  <button class="nav-btn" id="nextBtn" disabled>Next</button>
+  <button class="nav-btn" id="prevBtn">← Prev</button>
+  <button class="nav-btn" id="nextBtn" disabled>Next →</button>
 </div>
  <!-- Popup -->
 <div id="popup" class="popup hidden">
@@ -620,7 +611,7 @@ const questions = [
   },
   {
     question: "Q2. The ______ bears the leaves.",
-    image: "../images/mcq2.png",
+    image: "../images/mcq22.png",
 
     options: [
       { text: "Root", img: "../images/roots.png" },
@@ -643,7 +634,7 @@ const questions = [
   },
   {
     question: "Q4. The ______ is the most beautiful part of a plant.",
-    image: "../images/mcq3.png",
+    image: "../images/mcq44.png",
     options: [
       { text: "Stem", img: "../images/stems.png" },
       { text: "Leaf", img: "../images/leaf.png" },
@@ -681,25 +672,17 @@ const playAgainBtn = document.getElementById("playAgainBtn");
 const questionImg = document.getElementById("questionImg");
 
 /* ===== TEXT TO SPEECH (UK) ===== */
-function speakText(text){
-  if(!('speechSynthesis' in window)) return;
+function speakText(t) {
+  speechSynthesis.cancel();
 
-  window.speechSynthesis.cancel();
+  const msg = new SpeechSynthesisUtterance(t);
 
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = "en-GB";     // UK English
-  utter.volume = 0.25;      // Low volume
-  utter.rate = 1;
-  utter.pitch = 1;
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-  // Try to select UK voice if available
-  const voices = speechSynthesis.getVoices();
-  const ukVoice = voices.find(voice => voice.lang === "en-GB");
-  if(ukVoice){
-    utter.voice = ukVoice;
-  }
-
-  window.speechSynthesis.speak(utter);
+  speechSynthesis.speak(msg);
 }
 window.speechSynthesis.onvoiceschanged = () => {};
 

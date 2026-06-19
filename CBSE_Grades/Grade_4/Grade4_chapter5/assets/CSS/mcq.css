@@ -173,8 +173,8 @@ height: clamp(42px, 6vh, 62px);
 }
 
 .controls button {
-    width: clamp(100px, 12vw, 130px);
-    height: clamp(40px, 5.5vh, 55px);
+    width: clamp(120px, 12vw, 150px);
+    height: clamp(44px, 6vh, 55px);
 
     display: flex;
     justify-content: center;
@@ -184,7 +184,7 @@ height: clamp(42px, 6vh, 62px);
     border-radius: 35px;
     border: 3px solid #ffffff;
 
-    font-size: clamp(14px, 1.8vw, 20px);
+    font-size: clamp(16px, 2vw, 20px);
     font-weight: 400;
     color: #ffffff;
     cursor: pointer;
@@ -356,12 +356,17 @@ height: clamp(42px, 6vh, 62px);
         height: 40px;
         font-size: 16px;
     }
+
+    .controls button {
+        width: 100px;
+        height: 42px;
+        font-size: 14px;
+    }
 }
 @media (min-width: 481px) and (max-width: 900px) {
-
-    #question {
-        font-size: 26px;
-    }
+    /* .quiz{
+        background-color: #d1a72c;
+    } */
 
     .question-image img {
         width: 220px;
@@ -416,6 +421,17 @@ height: clamp(42px, 6vh, 62px);
 /* LAPTOP — 1366px and below (your current base, keep as is) */
 /* No changes needed here — laptop already looks good */
 
+/* TABLET/TABLET — 901-1399px */
+@media (min-width: 901px) and (max-width: 1399px) {
+
+    .controls button {
+        width: 130px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+}
+
 /* DESKTOP — above 1366px only */
 @media (min-width: 1400px) {
 
@@ -431,6 +447,7 @@ height: clamp(42px, 6vh, 62px);
         gap: 28px;
         justify-content: center;
         align-items: center;
+        /* background-color: #7a1f1f; */
     }
 
     .quiz-layout {
@@ -472,7 +489,7 @@ height: clamp(42px, 6vh, 62px);
 
     .controls button {
         width: 150px;
-        height: 56px;
+        height: 54px;
         font-size: 20px;
     }
 }

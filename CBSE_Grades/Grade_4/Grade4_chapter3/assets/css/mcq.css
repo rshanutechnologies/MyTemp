@@ -23,7 +23,8 @@ body {
     padding: clamp(20px, 3vw, 30px);
     display: flex;
     flex-direction: column;
-    margin-top: -40px;
+    margin-top: -70px;
+    /* background-color: #1b5e20; */
 }
 
 /* GRID */
@@ -156,7 +157,7 @@ body {
     display: flex;
     justify-content: space-between;
     /* gap: clamp(40px, 30vw, 320px); */
-    margin-top: 10px; /* reduced gap */
+    margin-top: clamp(10px, 2vw, 20px); /* reduced gap */
 }
 
 .controls button {
@@ -314,6 +315,9 @@ canvas {
 
 /* 🔥 SINGLE BREAKPOINT */
 @media (max-width:900px) {
+    /* .quiz-layout{
+        background-color: #8e5260;
+    } */
 
     body {
         height: 100vh;
@@ -325,33 +329,17 @@ canvas {
         grid-template-columns: 1fr;
         /* background-color: #1b5e20; */
     }
-    #question{
-      font-size: 30px !important;
-      /* background-color: #2dcc50; */
-    }
-    
-
     /* .controls {
         gap: clamp(20px, 10vw, 120px);
     } */
-      .controls {
-        gap: clamp(15px, 8vw, 80px);
-        margin-top: 8px;
-    }
-
-    .controls button {
-        width: clamp(80px, 22vw, 110px);
-        height: clamp(40px, 6vh, 50px);
-        font-size: clamp(14px, 3vw, 18px);
-        gap: 6px;
-        margin-top:10px;
-    }
-
     .quiz {
         margin-top: -10px;
     }
 }
 @media (max-width: 480px) {
+    /* .quiz-layout{
+        background-color: #ffac30;
+    } */
   body{
     align-items: flex-start;
   }
@@ -402,7 +390,7 @@ canvas {
   .option-text {
     width: 120px;
     height: 35px;
-    font-size: 13px;
+    font-size: 14px;
     padding: 6px 10px;
     border-radius: 25px;
   }
@@ -413,30 +401,33 @@ canvas {
   }
 
   .controls button {
-    width: 90px;
-    height: 42px;
-    font-size: 14px;
+    width: 80px;
+    height: 38px;
+    font-size: 13px;
   }
 }
 
+@media (min-width: 1400px) {
+ #question {
+    font-size: 40px !important;
+    line-height: 1.4;
+  }
 
-@media (min-width: 1600px) and (max-width: 1900px) {
+}
+
+@media (min-width: 1600px) {
 
   .quiz {
     width: 1450px;
     max-width: 95vw;
     padding: 35px;
    
+    /* background-color: #F9F3DF; */
+   
   }
 
   .quiz-layout {
     gap: 35px;
-  }
-
-  #question {
-    font-size: 40px !important;
-    line-height: 1.4;
-  
   }
 
   .question-image img {
@@ -457,12 +448,12 @@ canvas {
   }
 
   .controls {
-    margin-top: 35px;
+    margin-top: 25px;
   }
 
   .controls button {
     width: 150px;
-    height: 62px;
+    height: 60px;
     font-size: 22px;
     gap: 10px;
   }

@@ -901,6 +901,13 @@ button:disabled {
 /* ===============================
    📱 MOBILE RESPONSIVE FIX
 ================================ */
+/* Mobile (≤480px) */
+@media (max-width: 480px) {
+    .question {
+        font-size: 22px;
+    }
+}
+
 /* ========== 320px - 350px (Small Phones) ========== */
 @media (min-width: 320px) and (max-width: 350px) {
     body {
@@ -915,7 +922,6 @@ button:disabled {
     }
 
     .question {
-        font-size: 20px;
         height: auto;
         min-height: 80px;
     }
@@ -985,7 +991,6 @@ button:disabled {
     }
 
     .question {
-        font-size: 22px;
         height: auto;
     }
 
@@ -1040,7 +1045,6 @@ button:disabled {
     }
 
     .question {
-        font-size: 22px;
         height: auto;
     }
 
@@ -1123,7 +1127,6 @@ button:disabled {
     }
 
     .question {
-        font-size: 22px;
         height: auto;
         margin-top: 2%;
         min-height: 100px;
@@ -1251,7 +1254,6 @@ button:disabled {
     }
 
     .question {
-        font-size: 24px;
         height: auto;
     }
 
@@ -1265,8 +1267,8 @@ button:disabled {
     }
 
     .prev, .next {
-        width: 75px;
-        height: 75px;
+        width: 80px;
+        height: 80px;
         font-size: 16px;
     }
 }
@@ -1317,7 +1319,6 @@ button:disabled {
     }
 
     .question {
-        font-size: 26px;
         height: auto;
         margin-top: 20px;
         min-height: 80px;
@@ -1350,8 +1351,8 @@ button:disabled {
     }
 
     .prev, .next {
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
         font-size: 16px;
         margin-top: 20px;
     }
@@ -1442,7 +1443,6 @@ button:disabled {
     }
 
     .question {
-        font-size: 32px;
     }
 
     .left img {
@@ -1458,6 +1458,7 @@ button:disabled {
     .prev, .next {
         width: 80px;
         height: 80px;
+        
     }
 }
 
@@ -1466,12 +1467,13 @@ button:disabled {
     .quiz {
         max-width: 1200px;
         /* margin-left: 6%; */
+        
     }
 
     .question {
         width: 80%;
         margin: auto;
-        font-size: 44px;
+        font-size: 40px;
     }
 
     .row {
@@ -1513,12 +1515,13 @@ button:disabled {
     .main {
         width: 1100px;
         height: 650px;
+         
     }
 
     .question {
          width: 80%;
         margin: auto;
-        font-size: 44px;
+        font-size: 40px;
     }
 
     .left img {
@@ -1558,11 +1561,12 @@ button:disabled {
         max-width: 1350px;
         margin-left: 5%;
         height: 75vh;
+      
     }
 
     .question {
-        font-size: 44px;
-        
+        font-size: 40px;
+       
     }
 
     .row {
@@ -1603,7 +1607,7 @@ button:disabled {
     }
 
     .nav button {
-        font-size: 20px;
+        font-size: 16px;
         padding: 14px 28px;
     }
 }
@@ -1613,13 +1617,13 @@ button:disabled {
     .main {
         width: min(1350px, 98vw);
         height: 600px;
-    
+     
     }
 
     .question {
         width: 80%;
         margin: auto;
-        font-size: 44px;
+        font-size: 40px;
     }
 
     .left img {

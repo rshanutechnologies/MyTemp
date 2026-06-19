@@ -12,7 +12,7 @@ options: [
 { text: "Eighteen", img: "../assets/images/18.png" },
 { text: "Twenty two", img: "../assets/images/22.png" }
 ],
-answer: "22"
+answer: "Twenty two"
 },
 
 {

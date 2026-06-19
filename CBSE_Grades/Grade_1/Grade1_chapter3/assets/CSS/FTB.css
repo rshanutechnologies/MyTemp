@@ -138,6 +138,7 @@ body {
     font-size: 20px;
     font-weight: 400;
     color: #ffffff;
+    width: 150px;
     cursor: pointer;
     background-size: 200% 200%;
     transition: .15s ease;
@@ -267,11 +268,6 @@ body {
         max-width: 700px;
     }
 
-    .question-area h2 {
-        font-size: 24px;
-        height: auto;
-    }
-
     .image-area img {
         width: 280px;
         height: 180px;
@@ -299,10 +295,6 @@ body {
 
     .quiz-container {
         margin-top: 40px;
-    }
-
-    .question-area h2 {
-        font-size: 24px;
     }
 
     .image-area img {
@@ -422,6 +414,12 @@ body {
     .nav-buttons {
         gap: 20px;
     }
+
+    .nav-buttons button {
+        padding: 8px 20px;
+        font-size: 18px;
+        width: 120px;
+    }
 }
 
 /* ========================================
@@ -431,10 +429,6 @@ body {
 
     .main-container {
         width: 850px;
-    }
-
-    .question-area h2 {
-        font-size: 34px;
     }
 
     .image-area img {
@@ -495,7 +489,7 @@ body {
 
     .nav-buttons button {
         font-size: 22px;
-        padding: 14px 40px;
+        /* padding: 14px 40px; */
     }
 
 }
@@ -533,7 +527,7 @@ body {
 
     .nav-buttons button {
         font-size: 24px;
-        padding: 16px 44px;
+        /* padding: 16px 44px; */
     }
 
 }

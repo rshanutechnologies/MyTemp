@@ -165,44 +165,41 @@ popup.style.display="none";
 
 function check(i){
 
-if(answered[index]) return;
+    if(answered[index]) return;
 
-if(i===quiz[index].answer){
+    if(i === quiz[index].answer){
 
-showPopup(true);
-speak("Correct");
+        showPopup(true);
+        speak("Correct");
 
-answered[index]=true;
-score++;
+        answered[index] = true;
+        score++;
 
-next.disabled=false;
+        next.disabled = false;
 
-/* IF LAST QUESTION → SHOW FINAL POPUP */
+        // Reload so correctAnswer border is applied
+        load();
 
-if(index===quiz.length-1){
+        if(index === quiz.length - 1){
 
-setTimeout(()=>{
+            setTimeout(() => {
 
-document.getElementById("final").style.display="block";
-document.getElementById("score").innerText="Your Score "+score+"/5";
-launchConfetti(); 
-prev.disabled = true;  
-},1000);
+                document.getElementById("final").style.display = "block";
+                document.getElementById("score").innerText = "Your Score " + score + "/5";
 
-}else{
+                launchConfetti();
+                prev.disabled = true;
 
-load();
+            }, 1000);
 
-}
+        }
 
-}
-else{
+    } else {
 
-showPopup(false);
-speak("Wrong");
+        showPopup(false);
+        speak("Wrong");
 
-}
-
+    }
 }
 
 next.onclick=()=>{

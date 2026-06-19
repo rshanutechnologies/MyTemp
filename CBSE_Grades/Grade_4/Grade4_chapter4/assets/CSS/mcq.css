@@ -133,18 +133,19 @@ body {
 }
 
 .controls button {
-    padding: 9px 14px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 35px;
     border: 3px solid #ffffff;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     color: #ffffff;
     cursor: pointer;
     background-size: 200% 200%;
     transition: .15s ease;
+    width: clamp(110px, 14vw, 160px);
+    height: 44px;
 }
 
 .prev {
@@ -341,75 +342,15 @@ body {
         margin-top: 12px;
     }
 
-    .controls button {
-        font-size: 18px;
-        padding: 9px 20px;
-    }
-
 } 
 
-/* =========================================
-   TABLETS (≤ 900px)
-========================================= */
 
-/* @media (max-width: 900px) {
-
-    body {
-        align-items: center;
-        padding: 20px;
-        overflow: hidden;
-
-    }
-
-    .quiz {
-        width: 100%;
-        padding: 25px;
-        background-color: beige;
-    }
-
-    #question {
-        font-size: 26px;
-        height: auto;
-        padding: 10px;
-        text-align: left;
-    }
-
-    .options {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-    }
-
-    .option {
-        font-size: 18px;
-        padding: 12px;
-    }
-
-    .option-img {
-        width: 90px;
-        height: 70px;
-    }
-
-    .controls {
-        margin-top: 20px;
-    }
-
-    .final-kid-box {
-        width: 90%;
-        max-width: 340px;
-        padding: 22px;
-    }
-
-    .final-kid-box h2 { font-size: 1.8em; }
-    .final-kid-box p  { font-size: 1.1em; }
-    #stars { font-size: 1.8em; }
-
-} */
 
 /* =========================================
    MOBILE (≤ 768px)
 ========================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
     body {
         padding: 16px;
@@ -423,7 +364,6 @@ body {
     }
 
     #question {
-        font-size: 28px;
         height: auto;
     }
 
@@ -444,8 +384,9 @@ body {
     }
 
     .controls button {
-        padding: 6px 20px;
-        font-size: 18px;
+        width: 110px;
+        height: 44px;
+        font-size: 16px;
     }
 
 }
@@ -495,10 +436,9 @@ body {
     }
 
     .controls button {
-        width: 110px; /* more width for text in one line */
-        padding: 8px 12px; /* reduced padding */
-        font-size: 15px;
-        white-space: nowrap;
+        width: 90px;
+        height: 38px;
+        font-size: 13px;
     }
 
     .kid-card {
@@ -537,6 +477,13 @@ body {
         font-size: 0.9em;
     }
 }
+@media (min-width: 1024px) {
+    .controls button {
+        width: 140px;
+        height: 52px;
+        font-size: 20px;
+    }
+}
 
 /* =========================================
    Desktop (1025px – 1440px)
@@ -550,7 +497,6 @@ body {
     }
 
     #question {
-        font-size: 40px !important;
          min-height: 90px;
     }
 
@@ -582,9 +528,7 @@ body {
     }
 
     .controls button {
-        font-size: 20px;
         margin-top: 40px;
-      
     }
 
 }
@@ -623,10 +567,7 @@ body {
         height: 90px;
     }
 
-    .controls button {
-        font-size: 22px;
-        padding: 9px 20px;
-    }
+
 
 }
 
@@ -642,7 +583,7 @@ body {
     }
 
     #question {
-        font-size: 42px;
+        font-size: 40px;
     }
 
     .question-image img {
@@ -664,9 +605,16 @@ body {
         height: 100px;
     }
 
+}
+@media (min-width: 1920px) {
     .controls button {
-        font-size: 24px;
-        padding: 18px 44px;
+        width: 180px;
+        height: 65px;
+        font-size: 22px;
     }
-
+}
+@media (min-width: 1400px) {
+    #question {
+        font-size: 40px !important;
+    }
 } 

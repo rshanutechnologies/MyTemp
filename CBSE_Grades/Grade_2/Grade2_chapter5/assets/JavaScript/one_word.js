@@ -61,25 +61,25 @@ function speak(text) {
 
 const quizData = [
   {
-    q: "Q.1 Water that is safe for drinking",
+    q: "Q1. Water that is safe for drinking",
     a: "POTABLE",
     img: "../assets/images/PortableWak.png",
   },
 
   {
-    q: "Q.2 This makes the air around us fresh and clean",
+    q: "Q2. This makes the air around us fresh and clean",
     a: "Plants",
     img: "../assets/images/Treeak.png",
   },
 
   {
-    q: "Q.3 The rainwater that goes down into the soil",
+    q: "Q3. The rainwater that goes down into the soil",
     a: "GROUNDWATER",
     img: "../assets/images/RainWaterGoSoil.png",
   },
 
   {
-    q: "Q.4 People use this in villages to draw out ground water",
+    q: "Q4. People use this in villages to draw out ground water",
     a: "Handpump",
     img: "../assets/images/VillageHandpump.png",
   },

@@ -166,29 +166,37 @@ body{
 }
 
 button{
-  width:110px;
-    height:45px;
-
-  font-size: clamp(16px, 1.5vw, 22px);
+   width:150px;
+  height:48px;
   border:none;
   border-radius:40px;
 
-  font-size:clamp(16px,1.5vw,22px);
+  font-size:18px;
   font-weight:600;
 
   cursor:pointer;
   color:white;
+
+  transition:.3s;
 }
 
-/* colors */
-.prev{background:linear-gradient(135deg,#607d8b,#455a64);}
-.next{background:linear-gradient(135deg,#ff9800,#f57c00);}
+.prev{
+  background:linear-gradient(135deg,#607d8b,#455a64);
+}
+
+.next{
+  background:linear-gradient(135deg,#ff9800,#f57c00);
+}
+
+button:hover:not(:disabled){
+  transform:translateY(-3px);
+}
 
 button:disabled{
-  background:#cccccc !important;
+  background:#e0e0e0 !important;
+  color:#9e9e9e;
   cursor:not-allowed;
 }
-
 /* ================= POPUP ================= */
 
 .popup{
@@ -249,12 +257,12 @@ margin-bottom:15px;
 }
 
 .popup-content h2{
-font-size:clamp(18px,2vw,28px);
-margin-bottom:10px;
+  font-size:30px;
+  margin-bottom:10px;
 }
 
 .popup-content p{
-font-size:clamp(14px,1.5vw,20px);
+  font-size:clamp(18px, 2vw, 28px);
 }
 
 .play-again-btn{
@@ -273,10 +281,10 @@ font-weight:600;
 
 /* ================= MOBILE FIX ================= */
 
-@media (max-width:600px){
+@media (max-width:480px){
 
   .row{
-    flex-direction:column;   /* 🔥 stack vertically */
+    flex-direction:column;
     gap:clamp(20px,4vh,40px);
   }
 
@@ -290,14 +298,25 @@ font-weight:600;
   }
 
   .answer-box{
-    margin-bottom:20px;   /* 🔥 prevent overlap */
+    margin-bottom:20px;
   }
   .buttons{
     margin-top: -130px;
+    
   }
+  .button{
+    width:120px;
+    height:40px;
+    font-size: 15px;
+  }
+  #prevBtn,
+#nextBtn{
+  width:120px;
+  height:40px;
+  font-size:15px;
+}
   .question{
-   
-    font-size: 20px;
+    font-size:22px;
   }
   
 .image img{
@@ -308,24 +327,11 @@ font-weight:600;
 
 }
 
-@media (min-width:700px){
-
-  .question{
-    font-size: 30px;
-  }
-
-}
-
-@media screen and (max-width:768px){
-  .question{
-    font-size: 20px;
-  }
-}
 
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
-@media screen and (min-width:1100px) and (max-width:1440px){
+@media screen and (min-width:1125px) and (max-width:1440px){
 
   .quiz-container{
     max-width:1100px;
@@ -376,7 +382,7 @@ font-weight:600;
 
   /* QUESTION */
   .question{
-    font-size:44px;   /* 🔥 bigger */
+    font-size:40px;
     min-height:120px;
   }
 
@@ -423,7 +429,7 @@ font-weight:600;
 
   /* QUESTION */
   .question{
-    font-size:52px;
+    font-size:40px;
     min-height:140px;
   }
 
@@ -497,8 +503,10 @@ font-weight:600;
     font-size:13px;
     border-radius:20px;
   }
+  
 
 }
+
 </style>
 </head>
 
@@ -523,8 +531,8 @@ font-weight:600;
     </div>
   </div>
 <div class="buttons">
-  <button class="prev" id="prevBtn">Previous</button>
-  <button class="next" id="nextBtn" disabled>Next</button>
+  <button class="prev" id="prevBtn">← Prev</button>
+  <button class="next" id="nextBtn" disabled>Next →</button>
 </div>
 
 </div>
@@ -586,19 +594,17 @@ const popupEmoji = document.getElementById("popupEmoji");
 const playAgainBtn = document.getElementById("playAgainBtn");
 
 /* ===== UK TEXT TO SPEECH ===== */
-function speakText(text){
-  if(!('speechSynthesis' in window)) return;
+function speakText(t) {
+  speechSynthesis.cancel();
 
-  window.speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = "en-GB";
-  utter.volume = 0.25;
+  const msg = new SpeechSynthesisUtterance(t);
 
-  const voices = speechSynthesis.getVoices();
-  const ukVoice = voices.find(v => v.lang === "en-GB");
-  if(ukVoice) utter.voice = ukVoice;
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-  window.speechSynthesis.speak(utter);
+  speechSynthesis.speak(msg);
 }
 function fireConfetti(){
 

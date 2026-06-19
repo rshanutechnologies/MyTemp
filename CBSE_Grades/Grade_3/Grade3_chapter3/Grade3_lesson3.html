@@ -71,7 +71,7 @@ position:relative;
 border:none;
 padding:12px 24px;
 border-radius:30px;
-font-size:19px;
+font-size:18px;
 font-weight:600;
 display:flex;
 align-items:center;
@@ -99,6 +99,7 @@ justify-content:center;
 border-radius:50%;
 background:white;
 font-size:18px;
+font-weight:600;
 box-shadow:0 3px 6px rgba(0,0,0,0.1);
 }
 
@@ -216,19 +217,8 @@ display:block;
 /* MOBILE */
 /* HIDE SIDEBAR ON DESKTOP */
 
-@media (min-width:769px){
 
-.sidebar{
-display:none;
-}
-
-.overlay{
-display:none !important;
-}
-
-}
-
-@media(max-width:768px){
+@media(max-width:1150px){
 .main{
 margin-top:60px;
 }
@@ -246,25 +236,24 @@ padding:10px 16px;
 }
 
 }
-@media(max-width:768px){
+@media(max-width:1100px){
 
-  .sidebar{
-    left:auto !important;
-    right:-260px !important;
-  }
-
-  .sidebar.show{
-    left:auto !important;
-    right:0 !important;
-  }
-
-  .menu-btn{
-    left:auto !important;
-    right:15px;
-  }
-
+.sidebar{
+left:auto !important;
+right:-260px !important;
 }
 
+.sidebar.show{
+left:auto !important;
+right:0 !important;
+}
+
+.menu-btn{
+left:auto !important;
+right:15px;
+}
+
+}
 /* ============================= */
 /* Desktop / Monitor (1025px–1440px) */
 /* ============================= */
@@ -276,7 +265,7 @@ padding:10px 16px;
   }
 
   .quiz-btn{
-    font-size:22px;
+    font-size:18px;
     padding:12px 25px;
   }
 
@@ -439,7 +428,7 @@ toggleMenu()
 
 function toggleMenu(){
 
-if(window.innerWidth <= 768){
+if(window.innerWidth <= 1150){
 
 document.getElementById("sidebar").classList.toggle("show")
 document.getElementById("overlay").classList.toggle("show")

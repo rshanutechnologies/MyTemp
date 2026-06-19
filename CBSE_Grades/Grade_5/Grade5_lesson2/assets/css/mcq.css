@@ -211,9 +211,10 @@ body {
 
 .nav button {
 
-    padding: 12px 35px;
+   padding:14px 40px;
 
-    font-size: 22px;
+font-size:24px;
+width:170px;
 
     border: none;
 
@@ -459,7 +460,6 @@ button:disabled {
     }
 
     .question {
-        font-size: 26px;
         margin-top: -30%;
     }
 
@@ -498,12 +498,15 @@ button:disabled {
 
     .row {
 
-        flex-direction: column;
+        flex-direction: column-reverse;
 
-        gap: 30px;
+        gap: 0px;
         margin-top: -15px;
 
 
+    }
+    .options{
+        margin-top: -30px;
     }
 
     .option {
@@ -513,6 +516,7 @@ button:disabled {
         font-size: 18px;
 
         height: 60px;
+        
 
     }
 
@@ -543,7 +547,6 @@ button:disabled {
 
     /* QUESTION */
     .question {
-        font-size: 20px;
         margin-top: 10%;
         text-align: center;
     }
@@ -665,7 +668,8 @@ button:disabled {
 
         font-size: 16px;
 
-        padding: 12px 27px;
+        padding: 12px 23px;
+        width: 120px;
 
     }
 

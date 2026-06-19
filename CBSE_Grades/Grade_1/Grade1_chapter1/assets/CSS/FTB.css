@@ -173,6 +173,7 @@ input:focus {
     background: linear-gradient(#86cfe5, #66b6d2);
     border: none;
     padding: 12px 32px;
+    width: 150px;
     border-radius: 25px;
     color: white;
     font-size: 18px;
@@ -180,12 +181,14 @@ input:focus {
     cursor: pointer;
     box-shadow: 0 4px 0 #3e9dbb;
     border: 3px solid #fff;
+    padding-inline: 0px !important;
 }
 
 #nextBtn {
     background: linear-gradient(#ffc37a, #f7a24f);
     border: none;
     padding: 12px 32px;
+    width: 150px;
     border-radius: 25px;
     color: white;
     font-size: 18px;
@@ -392,16 +395,6 @@ input:focus {
         max-width: 800px;
     }
 
-    .question h2 {
-        font-size: 30px;
-        font-weight: 400;
-        height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-
     .answer-section {
         gap: 25px;
         /* margin-inline: 40px; */
@@ -448,11 +441,6 @@ input:focus {
     .heading h3 {
         font-size: 12px;
         padding: 10px 16px;
-    }
-
-    .question h2 {
-        font-size: 24px;
-        text-align: left;
     }
 
     .answer-section {
@@ -569,6 +557,7 @@ input:focus {
     #nextBtn {
         padding: 8px 20px;
         font-size: 18px;
+        width: 120px;
     }
 
     .kid-card {
@@ -600,10 +589,6 @@ input:focus {
 
 @media (max-width:360px) {
 
-    .question h2 {
-        font-size: 18px;
-    }
-
     .heading h3 {
         font-size: 11px;
     }
@@ -621,10 +606,6 @@ input:focus {
 
     .main-container {
         width: 850px;
-    }
-
-    .question h2 {
-        font-size: 34px;
     }
 
     input {
@@ -684,7 +665,7 @@ input:focus {
     #prevBtn,
     #nextBtn {
         font-size: 22px;
-        padding: 16px 40px;
+        /* padding: 16px 40px; */
     }
 
 }
@@ -722,7 +703,7 @@ input:focus {
     #prevBtn,
     #nextBtn {
         font-size: 24px;
-        padding: 18px 44px;
+        /* padding: 18px 44px; */
     }
 
 }

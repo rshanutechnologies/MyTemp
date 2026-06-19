@@ -9,8 +9,6 @@ body {
   overflow: hidden;
   font-family: "Livvic" !important;
   font-weight: 500;
-  /* background: radial-gradient(circle at top left,#b48cff,#a77cff,#caa8ff,#b087ff); */
-  /* background:#9adfd469; */
   background: transparent;
   display: flex;
   justify-content: center;
@@ -784,6 +782,12 @@ body::before {
    📱 MOBILE RESPONSIVE FIX
 ================================ */
 
+@media (max-width:480px) {
+  .title {
+    font-size: 22px;
+  }
+}
+
 @media (max-width:768px) {
 
   body {
@@ -808,7 +812,7 @@ body::before {
   .title {
     width: 100%;
     padding: 0px 20px;
-    font-size: 22px;
+    font-size: 30px;
     text-align: left;
     min-height: 70px;
     display: flex;
@@ -965,7 +969,7 @@ body::before {
 
   /* QUESTION TITLE */
   .title {
-    font-size: 44px;
+    font-size: 30px;
     min-height: 90px !important;
     width: 1000px;
     line-height: 1.4;
@@ -1041,6 +1045,13 @@ body::before {
 
 }
 
+/* Big desktops / monitors */
+@media (min-width: 1400px) {
+.title{
+    font-size:40px;
+}
+}
+
 /* Large desktops */
 @media (min-width: 1440px) {
   body {
@@ -1079,4 +1090,8 @@ body::before {
     margin-top: 4%;
 
   }
+
+.title{
+    font-size:40px;
+}
 }

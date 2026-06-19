@@ -52,31 +52,31 @@ function showFinal() {
 const questions = [
 
 {
-q: "Q.1 Air helps to move the blades of a __________.",
+q: "Q1. Air helps to move the blades of a __________.",
 a: "windmill",
 img: "../assets/images/windmill1.png"
 },
 
 {
-q: "Q.2 We get water in our houses through __________.",
+q: "Q2. We get water in our houses through __________.",
 a: "taps",
 img: "../assets/images/water.png"
 },
 
 {
-q: "Q.3 Fast and strong wind is called a  __________.",
+q: "Q3. Fast and strong wind is called a  __________.",
 a: "storm",
-img: "../assets/images/Stormak.png"
+img: "../assets/images/wind.png"
 },
 
 {
-q: "Q.4 Sometimes there are __________ germs in water.",
+q: "Q4. Sometimes there are __________ germs in water.",
 a: "tiny",
 img: "../assets/images/harmfulGemesak.png"
 },
 
 {
-q: "Q.5 We need __________ to put off fire.",
+q: "Q5. We need __________ to put off fire.",
 a: "water",
 img: "../assets/images/fire.png"
 }

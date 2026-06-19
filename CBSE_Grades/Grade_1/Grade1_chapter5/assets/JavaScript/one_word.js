@@ -1,16 +1,16 @@
 const quizData = [
   {
-    q: "Q.1 We need this every day to stay strong and healthy",
+    q: "Q1. We need this every day to stay strong and healthy",
     a: "FOOD",
     img: "../assets/images/Boyeatt.png",
   },
   {
-    q: "Q.2 It is the first meal of the day",
+    q: "Q2. It is the first meal of the day",
     a: "BREAKFAST",
     img: "../assets/images/Breakfastak.png",
   },
   {
-    q: "Q.3 The meal that we have in the afternoon",
+    q: "Q3. The meal that we have in the afternoon",
     a: "LUNCH",
     img: "../assets/images/Lunchakk.png",
   },

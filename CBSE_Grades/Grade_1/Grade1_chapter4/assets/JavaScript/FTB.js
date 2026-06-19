@@ -7,7 +7,7 @@ const questions = [
   {
     q: "Q2. We must wipe our body with a clean ______.",
     a: ["towel"],
-    img: "../assets/images/wipe-body.png",
+    img: "../assets/images/wet-body.png",
   },
   {
     q: "Q3. Eyes, ears, nose, tongue and skin are called the ______.",

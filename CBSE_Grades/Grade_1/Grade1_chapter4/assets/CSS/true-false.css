@@ -268,7 +268,6 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 24px;
         text-align: start;
     }
 
@@ -303,7 +302,6 @@ body {
     }
 
     .question-box {
-        font-size: 24px;
         height: auto;
         text-align: start;
     }
@@ -420,10 +418,6 @@ body {
         max-width: 1000px;
     }
 
-    .question-box {
-        font-size: 34px;
-    }
-
     .question-image img {
         width: 240px;
         height: 190px;
@@ -444,16 +438,16 @@ body {
     .nav button {
         width: 140px;
         height: 60px;
-        font-size: 22px;
+        font-size: 20px;
     }
 
 }
 
 
 /* ========================================
-   🖥️ Large Monitors (1441px – 1920px)
+   🖥️ Large Monitors / Desktop (1400px – 1920px)
 ======================================== */
-@media screen and (min-width: 1441px) and (max-width: 1920px) {
+@media screen and (min-width: 1400px) and (max-width: 1920px) {
 
     .quiz-container {
         max-width: 1100px;
@@ -481,9 +475,9 @@ body {
     }
 
     .nav button {
-        width: 150px;
-        height: 65px;
-        font-size: 24px;
+        width: 170px;
+        height: 60px;
+        font-size: 22px;
     }
 
 }
@@ -520,9 +514,9 @@ body {
     }
 
     .nav button {
-        width: 160px;
-        height: 70px;
-        font-size: 26px;
+        width: 170px;
+        height: 60px;
+        font-size: 24px;
     }
 
 }

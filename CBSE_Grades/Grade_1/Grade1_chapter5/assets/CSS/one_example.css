@@ -199,6 +199,7 @@ body {
     align-items: center;
     justify-content: center;
     border: 2px solid white;
+    width: 150px;
 }
 
 .prev {
@@ -375,7 +376,6 @@ body {
     }
 
     .question h2 {
-        font-size: 24px;
         height: auto;
         padding: 10px
     }
@@ -422,10 +422,6 @@ body {
 @media (max-width:768px) {
     .main {
         padding: 20px
-    }
-
-    .question h2 {
-        font-size: 24px
     }
 
     .image-container {
@@ -489,6 +485,12 @@ body {
         margin-top: 20px
     }
 
+     .controls button {
+        padding: 8px 20px;
+        font-size: 18px;
+        width: 120px;
+    }
+
     .kid-card {
         width: 260px;
         padding: 15px;
@@ -535,10 +537,6 @@ body {
         max-width: 1100px;
     }
 
-    .question h2 {
-        font-size: 34px;
-    }
-
     .image-container {
         gap: 50px;
     }
@@ -559,7 +557,7 @@ body {
     }
 
     .controls button {
-        font-size: 22px;
+        font-size: 20px;
         padding: 14px 36px;
     }
 
@@ -567,9 +565,9 @@ body {
 
 
 /* ========================================
-   🖥️ Large Monitors (1441px – 1920px)
+   🖥️ Large Monitors / Desktop (1400px – 1920px)
 ======================================== */
-@media screen and (min-width: 1441px) and (max-width: 1920px) {
+@media screen and (min-width: 1400px) and (max-width: 1920px) {
 
     .main {
         max-width: 1200px;
@@ -599,8 +597,8 @@ body {
     }
 
     .controls button {
-        font-size: 24px;
-        padding: 16px 40px;
+        font-size: 22px;
+        /* padding: 16px 40px; */
     }
 
 }
@@ -639,8 +637,8 @@ body {
     }
 
     .controls button {
-        font-size: 26px;
-        padding: 18px 44px;
+        font-size: 24px;
+        /* padding: 18px 44px; */
     }
 
 }

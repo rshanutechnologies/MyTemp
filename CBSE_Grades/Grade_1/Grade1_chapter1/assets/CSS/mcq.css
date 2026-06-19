@@ -35,7 +35,7 @@ body {
     font-weight: 400;
     color: #2f4f4f;
     text-align: start;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 /* ===== CONTENT ===== */
@@ -126,7 +126,7 @@ body {
 }
 
 .o3 {
-      --bg: linear-gradient(135deg, #fff2bf, #fcdf6f);
+    --bg: linear-gradient(135deg, #fff2bf, #fcdf6f);
 }
 
 .o4 {
@@ -176,18 +176,20 @@ body {
     width: 50%;
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .controls button {
     font-weight: 400;
     font-size: 18px;
+    width: 150px;
     border: none;
     padding: 12px 32px;
     border-radius: 25px;
     color: white;
     cursor: pointer;
     border: 3px solid #fff;
+    padding-inline: 0px !important;
 }
 
 .prev {
@@ -396,12 +398,6 @@ body {
         padding: 20px;
     }
 
-    .question-box {
-        font-size: 30px;
-        height: auto;
-        padding: 10px;
-    }
-
     .content {
         flex-direction: column;
         height: auto;
@@ -437,10 +433,6 @@ body {
 
     .quiz {
         padding: 16px;
-    }
-
-    .question-box {
-        font-size: 24px;
     }
 
     .image-card {
@@ -560,6 +552,7 @@ body {
         font-size: 18px;
         padding: 8px 20px;
         border-radius: 25px;
+        width: 120px;
     }
 
     .kid-card {
@@ -592,10 +585,6 @@ body {
 
     .quiz {
         max-width: 1400px;
-    }
-
-    .question-box {
-        font-size: 34px;
     }
 
     .content {
@@ -663,7 +652,7 @@ body {
 
     .controls button {
         font-size: 22px;
-        padding: 16px 40px;
+        /* padding: 16px 40px; */
     }
 
 }
@@ -705,7 +694,7 @@ body {
 
     .controls button {
         font-size: 24px;
-        padding: 18px 44px;
+        /* padding: 18px 44px; */
     }
 
 }

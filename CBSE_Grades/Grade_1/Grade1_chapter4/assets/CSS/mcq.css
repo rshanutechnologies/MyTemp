@@ -365,82 +365,77 @@
          grid-template-columns: 1fr;
      }
 
-     #question {
-         font-size: 24px;
-         height: auto;
-         padding: 10px;
-         text-align: left;
-     }
+      #question {
+          height: auto;
+          padding: 10px;
+          text-align: left;
+      }
 
-     .question-image img {
-         width: 240px;
-         height: 210px;
-     }
+      .question-image img {
+          width: 240px;
+          height: 210px;
+      }
 
-     .options {
-         grid-template-columns: 1fr 1fr;
-         gap: 16px;
-     }
+      .options {
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+      }
 
-     .option {
-         gap: 14px;
-     }
+      .option {
+          gap: 14px;
+      }
 
-     .option-img {
-         width: 90px;
-         height: 70px;
-     }
+      .option-img {
+          width: 90px;
+          height: 70px;
+      }
 
-     .option-text {
-         width: 160px;
-         height: 50px;
-         font-size: 18px;
-     }
+      .option-text {
+          width: 160px;
+          height: 50px;
+          font-size: 18px;
+      }
 
-     .controls {
-         margin-top: 25px;
-         gap: 120px;
-     }
+      .controls {
+          margin-top: 25px;
+          gap: 120px;
+      }
 
-     .controls button {
-         width: 150px;
-         height: 60px;
-         font-size: 25px;
-     }
+      .controls button {
+          width: 150px;
+          height: 60px;
+          font-size: 25px;
+      }
 
-     .final-kid-box {
-         width: 90%;
-         max-width: 340px;
-         padding: 22px;
-     }
+      .final-kid-box {
+          width: 90%;
+          max-width: 340px;
+          padding: 22px;
+      }
 
-     .final-kid-box h2 {
-         font-size: 1.8em;
-     }
+      .final-kid-box h2 {
+          font-size: 1.8em;
+      }
 
-     .final-kid-box p {
-         font-size: 1.1em;
-     }
+      .final-kid-box p {
+          font-size: 1.1em;
+      }
 
-     #stars {
-         font-size: 1.8em;
-     }
+      #stars {
+          font-size: 1.8em;
+      }
 
- }
+  }
 
- @media (max-width:768px) {
+  @media (max-width:768px) {
 
-     .quiz {
-         padding: 20px;
-     }
+      .quiz {
+          padding: 20px;
+      }
 
-     .quiz-layout {
-         grid-template-columns: 1fr;
-     }
-
-     #question {
-         font-size: 24px;
-     }
+      .quiz-layout {
+          grid-template-columns: 1fr;
+      }
 
      .question-image img {
          width: 200px;
@@ -582,43 +577,39 @@
          max-width: 1200px;
      }
 
-     #question {
-         font-size: 34px;
-     }
+      .question-image img {
+          width: 340px;
+          height: 300px;
+      }
 
-     .question-image img {
-         width: 340px;
-         height: 300px;
-     }
+      .option-img {
+          width: 100px;
+          height: 100px;
+      }
 
-     .option-img {
-         width: 100px;
-         height: 100px;
-     }
+      .option-text {
+          width: 200px;
+          height: 60px;
+          font-size: 20px;
+      }
 
-     .option-text {
-         width: 200px;
-         height: 60px;
-         font-size: 20px;
-     }
+      .controls {
+          gap: 160px;
+      }
 
-     .controls {
-         gap: 160px;
-     }
+      .controls button {
+          width: 140px;
+          height: 60px;
+          font-size: 20px;
+      }
 
-     .controls button {
-         width: 140px;
-         height: 60px;
-         font-size: 22px;
-     }
-
- }
+  }
 
 
- /* ========================================
-   🖥️ Large Monitors (1441px – 1920px)
+  /* ========================================
+    🖥️ Large Monitors / Desktop (1400px – 1920px)
 ======================================== */
- @media screen and (min-width: 1441px) and (max-width: 1920px) {
+  @media screen and (min-width: 1400px) and (max-width: 1920px) {
 
      .quiz {
          max-width: 1300px;
@@ -649,9 +640,9 @@
      }
 
      .controls button {
-         width: 150px;
-         height: 65px;
-         font-size: 24px;
+         width: 170px;
+         height: 60px;
+         font-size: 22px;
      }
 
  }
@@ -691,9 +682,9 @@
      }
 
      .controls button {
-         width: 160px;
-         height: 70px;
-         font-size: 26px;
+         width: 170px;
+         height: 60px;
+         font-size: 24px;
      }
 
  }

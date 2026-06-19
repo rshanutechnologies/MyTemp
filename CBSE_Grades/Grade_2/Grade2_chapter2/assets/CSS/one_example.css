@@ -159,15 +159,15 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.prev {
-  background-color: #ffeab1;
-  color: #8a6d4b;
-
+.prev{
+  background-color: #f8d167;
+  color:#8a6d4b;
+  /* border:2px solid #e7c87f; */
 }
 
-.next {
-  background: linear-gradient(145deg, #9be3d6, #6ccfd0);
-  color: #ffffff;
+.next{
+  background: linear-gradient(145deg,  #6ccfd0);
+  color:#ffffff;
 }
 
 /* ================= POPUP ================= */
@@ -551,6 +551,12 @@ button:disabled {
 
 /* ================= MOBILE RESPONSIVE ================= */
 
+@media (max-width:480px) {
+  .question {
+    font-size: 22px;
+  }
+}
+
 @media (max-width:768px) {
 
   html {
@@ -587,7 +593,7 @@ button:disabled {
 
   /* question text */
   .question {
-    font-size: 22px;
+    font-size: 30px;
     margin: 15px 0;
     margin-top: 12%;
     min-height: 50px;
@@ -852,7 +858,7 @@ button:disabled {
 
   /* ✅ QUESTION (BIG SYSTEM) */
   .question {
-    font-size: 44px;
+    font-size: 30px;
     min-height: 160px;
     max-width: 1000px;
     margin: 50px auto;
@@ -952,6 +958,13 @@ button:disabled {
 
 }
 
+/* Big desktops / monitors */
+@media (min-width: 1400px) {
+.question{
+    font-size:40px;
+}
+}
+
 /* Large desktops */
 @media (min-width: 1440px) {
   body {
@@ -974,4 +987,8 @@ button:disabled {
     margin-top: 1%;
 
   }
+
+.question{
+    font-size:40px;
+}
 }

@@ -271,6 +271,8 @@ body::before {
     font-size: 20px;
     color: white;
     cursor: pointer;
+    width: clamp(120px, 14vw, 160px);
+    height: clamp(44px, 6vh, 54px);
 }
 
 .prev { background: #f29b1d; color: white; }
@@ -454,7 +456,7 @@ body::before {
 
     .question-text,
     .question-text * {
-        font-size: 24px;
+        font-size: 30px;
         text-align: left;
         margin-top: -10px;
     }
@@ -494,6 +496,8 @@ body::before {
 
     .nav-btn {
         width: 130px;
+        height: 42px;
+        box-sizing: border-box;
         font-size: 16px;
         padding: 12px 30px;
     }
@@ -642,6 +646,7 @@ body::before {
         flex-wrap: nowrap;
         margin-top: -10px;
         align-items: stretch;
+       
     }
 
     .option {
@@ -671,6 +676,12 @@ body::before {
     }
 }
 
+
+@media (min-width: 1400px){
+    .question-text{
+        font-size: 40px;
+    }
+}
 
 /* ================================================= */
 /* ================ DESKTOP  1400px+ =============== */
@@ -723,7 +734,7 @@ body::before {
     }
 
     .option img {
-        width: 150px;
+    width: 150px;
         height: 150px;
         object-fit: contain;
         flex-shrink: 0;

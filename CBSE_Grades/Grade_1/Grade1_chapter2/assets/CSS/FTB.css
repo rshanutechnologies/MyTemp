@@ -168,6 +168,8 @@
 
         .nav-buttons button {
             padding: 13px 32px;
+            width: 150px;
+            padding-inline: 0px !important;
 
             display: flex;
             justify-content: center;
@@ -365,11 +367,6 @@
                 max-width: 700px;
             }
 
-            .question-area h2 {
-                font-size: 24px;
-                height: auto;
-            }
-
             .image-area img {
                 width: 280px;
                 height: 200px;
@@ -399,10 +396,6 @@
                 align-items: flex-start;
             }
 
-            .question-area h2 {
-                font-size: 24px;
-            }
-
             .image-area img {
                 width: 230px;
                 height: 170px;
@@ -425,7 +418,7 @@
             }
 
             .nav-buttons button {
-                padding: 6px 20px;
+                padding: 8px 20px;
                 font-size: 18px;
             }
 
@@ -437,7 +430,7 @@
 ================================= */
 
         @media (max-width:480px) {
-              body {
+            body {
                 padding: 50px 0px 10px;
                 align-items: flex-start;
             }
@@ -469,6 +462,8 @@
 
             .nav-buttons button {
                 font-size: 18px;
+                padding: 8px 20px;
+                width: 120px;
             }
 
         }
@@ -540,10 +535,6 @@
                 width: 850px;
             }
 
-            .question-area h2 {
-                font-size: 34px;
-            }
-
             .image-area img {
                 width: 380px;
                 height: 240px;
@@ -561,7 +552,7 @@
             }
 
             .nav-buttons button {
-                font-size: 22px;
+                font-size: 20px;
                 padding: 14px 36px;
             }
 
@@ -598,8 +589,8 @@
             }
 
             .nav-buttons button {
-                font-size: 24px;
-                padding: 16px 40px;
+                font-size: 22px;
+                /* padding: 16px 40px; */
             }
 
         }
@@ -635,8 +626,8 @@
             }
 
             .nav-buttons button {
-                font-size: 26px;
-                padding: 18px 44px;
+                font-size: 24px;
+                /* padding: 18px 44px; */
             }
 
         }
