@@ -85,7 +85,7 @@ const quizData = [
   {
     q: "Q5. An animal that lives in holes",
     a: "RABBIT",
-    img: "../assets/images/RabbittHole.png",
+    img: "../assets/images/hole.png",
   },
 ];
 
