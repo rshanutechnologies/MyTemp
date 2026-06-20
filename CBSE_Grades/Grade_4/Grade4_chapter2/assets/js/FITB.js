@@ -1,34 +1,34 @@
 const quiz = [
   {
-    q: "The natural home of a living organism is called its ___.",
+    q: "Q1. The natural home of a living organism is called its ___.",
     answer: "HABITAT",
     letters: ["H", "A", "B", "I", "T", "A", "T", "O", "L", "M"],
     img: "../assets/images/FIB-1.png",
   },
 
   {
-    q: "Plants that grow on land are called ______ plants.",
+    q: "Q2. Plants that grow on land are called ______ plants.",
     answer: "TERRESTRIAL",
     letters: ["T", "E", "R", "R", "E", "S", "T", "R", "I", "A", "L", "O", "P"],
     img: "../assets/images/FIB-2.png",
   },
 
   {
-    q: "Plants that grow in water are called ______ plants.",
+    q: "Q3. Plants that grow in water are called ______ plants.",
     answer: "AQUATIC",
     letters: ["A", "Q", "U", "A", "T", "I", "C", "L", "M", "N"],
     img: "../assets/images/FIB-3.png",
   },
 
   {
-    q: "______ trees do not shed their leaves throughout the year.",
+    q: "Q4. ______ trees do not shed their leaves throughout the year.",
     answer: "EVERGREEN",
     letters: ["E", "V", "E", "R", "G", "R", "E", "E", "N", "T", "S", "A"],
     img: "../assets/images/FIB-4.png",
   },
 
   {
-    q: "The leaves of submerged plants do not have ______.",
+    q: "Q5. The leaves of submerged plants do not have ______.",
     answer: "STOMATA",
     letters: ["S", "T", "O", "M", "A", "T", "A", "L", "R", "P"],
     img: "../assets/images/FIB-5.png",

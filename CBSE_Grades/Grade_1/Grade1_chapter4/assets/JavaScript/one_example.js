@@ -18,7 +18,7 @@ const quiz = [
   {
     q: "Q3. We must use this to blow our nose",
     img1: "../assets/images/shocks.png",
-    t1: "Shocks",
+    t1: "Socks",
     img2: "../assets/images/handkerchief.png",
     t2: "Handkerchief",
     a: "handkerchief",

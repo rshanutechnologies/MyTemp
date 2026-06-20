@@ -48,7 +48,7 @@
     .question {
       width: 100%;
       height: clamp(90px, 12vh, 110px);
-      font-size:30px;
+      font-size: 30px;
       color: #2f4f4f;
 
       display: flex;
@@ -117,14 +117,14 @@
     /* ✅ BUTTON SIZE */
     #prevBtn,
     #nextBtn {
-     width:150px;
-  height:48px;
+      width: 150px;
+      height: 48px;
     }
 
     #checkBtn1,
     #checkBtn2 {
-       width:150px;
-  height:48px;
+      width: 150px;
+      height: 48px;
     }
 
     /* ✅ BUTTON TEXT */
@@ -177,8 +177,8 @@
     /* Previous & Next */
     #prevBtn,
     #nextBtn {
-      width:150px;
-  height:48px;
+      width: 150px;
+      height: 48px;
 
 
       border: none;
@@ -547,7 +547,6 @@
       }
 
     }
-
   </style>
 </head>
 
@@ -589,27 +588,27 @@
   <script>
     const questions = [
       {
-        q: "Q1.Human beings have a pair of ________ to breathe.",
+        q: "Q1. Human beings have a pair of ________ to breathe.",
         answers: ["lungs"],
         img: "../images/human1.png"
       },
       {
-        q: "Q2.Living things have ________ in them.",
+        q: "Q2. Living things have ________ in them.",
         answers: ["life"],
         img: "../images/Mango.png"
       },
       {
-        q: "Q3.Rabbits ________ or ________ using their limbs.",
+        q: "Q3. Rabbits ________ or ________ using their limbs.",
         answers: ["hop", "leap"],
         img: "../images/rabbit.png"
       },
       {
-        q: "Q4.Earthworms use their ________ to slide or crawl.",
+        q: "Q4. Earthworms use their ________ to slide or crawl.",
         answers: ["muscles"],
         img: "../images/earthwarm-img.png"
       },
       {
-        q: "Q5.Fishes use their ________ to swim.",
+        q: "Q5. Fishes use their ________ to swim.",
         answers: ["tails"],
         img: "../images/fish.png"
       }
@@ -620,8 +619,6 @@
     let answeredCorrectly = Array(questions.length).fill(false);
 
     // ✅ NEW (for step checking)
-    let q3Step = 0;
-    let q3UsedWords = [];
 
     const qText = document.getElementById("questionText");
     const qImg = document.getElementById("questionImg");
@@ -639,39 +636,32 @@
 
       if (answeredCorrectly[index]) return;
 
-      const inputs = document.querySelectorAll("#inputArea input");
-      const btn1 = document.getElementById("checkBtn1");
-      if (index === 2) {
+      const btn = document.getElementById("checkBtn1");
 
-        const currentInput =
-          document.getElementById("input" + q3Step);
+      const inputs =
+        [...document.querySelectorAll("#inputArea input")]
 
-        if (currentInput &&
-          currentInput.value.trim() !== "") {
+          // only unlocked boxes
+          .filter(i => !i.disabled);
 
-          btn1.classList.add("active");
-          btn1.disabled = false;
+      let allFilled = true;
 
-        } else {
+      inputs.forEach(input => {
 
-          btn1.classList.remove("active");
-          btn1.disabled = true;
+        if (input.value.trim() === "") {
+
+          allFilled = false;
+
         }
 
-      } else {
+      });
 
-        let allFilled = true;
+      btn.disabled = !allFilled;
 
-        inputs.forEach((input) => {
-          if (input.value.trim() === "") {
-            allFilled = false;
-          }
-        });
+      btn.classList.toggle("active", allFilled);
 
-        btn1.disabled = !allFilled;
-        btn1.classList.toggle("active", allFilled);
-      }
     });
+
     function speak(t) {
       speechSynthesis.cancel();
 
@@ -708,18 +698,23 @@
 
       inputArea.innerHTML = "";
 
-      // ✅ RESET Q3 STEP
-      if (index === 2) {
-        q3Step = 0;
-        q3UsedWords = [];
-      }
-
       current.answers.forEach((ans, i) => {
 
         const input = document.createElement("input");
+
         input.type = "text";
         input.id = "input" + i;
         input.placeholder = "Enter answer";
+
+        input.addEventListener("input", () => {
+
+          if (!input.disabled) {
+
+            input.style.borderColor = "#ccc";
+
+          }
+
+        });
 
         if (userAnswers[index] && userAnswers[index][i]) {
           input.value = userAnswers[index][i];
@@ -771,88 +766,132 @@
       if (index === 2) {
 
         const validWords = ["hop", "leap"];
-        const inputField = document.getElementById("input" + q3Step);
-        const value = inputField.value.trim().toLowerCase();
 
-        if (value === "") {
-          correct = false;
-        }
-        if (!validWords.includes(value)) {
-          correct = false;
+        let completed = 0;
 
-          inputField.style.borderColor = "red";
+        let used = [];
 
-          setTimeout(() => {
-            inputField.value = "";
-            inputField.style.borderColor = "#ccc";
-          }, 800);
-        }
-        else if (q3UsedWords.includes(value)) {
-          correct = false;
+        const inputs =
+          [...document.querySelectorAll("#inputArea input")];
 
-          inputField.style.borderColor = "red";
+        // already locked words
+        inputs.forEach(input => {
 
-          setTimeout(() => {
-            inputField.value = "";
-            inputField.style.borderColor = "#ccc";
-          }, 800);
-        }
-        else {
+          if (input.disabled) {
 
-          inputField.value =
-            value.charAt(0).toUpperCase() +
-            value.slice(1).toLowerCase();
+            completed++;
 
-          inputField.style.borderColor = "green";
-          inputField.disabled = true;
+            used.push(
+              input.value.toLowerCase()
+            );
 
-          q3UsedWords.push(value);
-          q3Step++;
-
-          fireConfetti();
-          speak("Correct!");
-
-          // ✅ First correct word
-          if (q3Step < 2) {
-
-            const btn1 = document.getElementById("checkBtn1");
-            btn1.disabled = true;
-            btn1.classList.remove("active");
-
-            nextBtn.disabled = true;
-            return;
           }
 
-          // ✅ Both words correct
-          if (q3Step === 2) {
+        });
 
-            answeredCorrectly[index] = true;
-            nextBtn.disabled = false;
+        inputs.forEach(input => {
 
-            const btn1 = document.getElementById("checkBtn1");
-            btn1.disabled = true;
-            btn1.classList.remove("active");
+          if (input.disabled) return;
 
-            popupEmoji.textContent = "🎉";
-            popupTitle.textContent = "Correct!";
-            popupTitle.style.color = "green";
-            popupMessage.textContent = "Great job!";
-            popup.classList.remove("hidden");
+          let value =
+            input.value.trim().toLowerCase();
+
+          // wrong
+          if (
+            !validWords.includes(value)
+            ||
+            used.includes(value)
+          ) {
+
+            input.style.borderColor = "red";
 
             setTimeout(() => {
-              popup.classList.add("hidden");
 
-              if (index === questions.length - 1) {
-                showFinalPopup();
-              }
-            }, 1200);
+              input.value = "";
+
+            }, 300);
 
             return;
-          }
-        }
-      }
 
-      // =========================
+          }
+
+          // correct
+
+          used.push(value);
+
+          input.value =
+            value.charAt(0).toUpperCase()
+            + value.slice(1);
+
+          input.style.borderColor = "green";
+
+          input.disabled = true;
+
+          completed++;
+
+        });
+
+        // both finished
+        if (completed === 2) {
+
+          answeredCorrectly[index] = true;
+
+          nextBtn.disabled = false;
+
+          const btn =
+            document.getElementById("checkBtn1");
+
+          btn.disabled = true;
+
+          btn.classList.remove("active");
+
+          fireConfetti();
+
+          speak("Correct!");
+
+          popupEmoji.textContent = "🎉";
+
+          popupTitle.textContent = "Correct!";
+
+          popupTitle.style.color = "green";
+
+          popupMessage.textContent = "Great job!";
+
+          popup.classList.remove("hidden");
+
+          setTimeout(() => {
+
+            popup.classList.add("hidden");
+
+          }, 1200);
+
+        }
+
+        else {
+
+          speak("Wrong!");
+
+          popupEmoji.textContent = "❌";
+
+          popupTitle.textContent = "Wrong!";
+
+          popupTitle.style.color = "red";
+
+          popupMessage.textContent = "Try again!";
+
+          popup.classList.remove("hidden");
+
+          setTimeout(() => {
+
+            popup.classList.add("hidden");
+
+          }, 1200);
+
+        }
+
+        return;
+
+      }      // =========================
       // NORMAL QUESTIONS
       // =========================
       else {
@@ -864,8 +903,15 @@
           if (tempAnswers[i] !== ans) {
 
             correct = false;
-            inputField.value = "";
+
             inputField.style.borderColor = "red";
+
+            setTimeout(() => {
+
+              inputField.value = "";
+
+            }, 300);
+
           }
         });
       }

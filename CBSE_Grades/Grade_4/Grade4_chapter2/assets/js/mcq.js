@@ -1,7 +1,7 @@
 const quiz = [
 
 {
-q:"Cacti are _________________.",
+q:"Q1. Cacti are _________________.",
 options:[
 {text:"Mangroves",img:"../assets/images/option1-1.png"},
 {text:"Desert plants",img:"../assets/images/option1-2.png"},
@@ -13,7 +13,7 @@ img:"../assets/images/MCQ-1.png"
 },
 
 {
-q:"Coniferous trees have dark leaves to absorb more ____________.",
+q:"Q2. Coniferous trees have dark leaves to absorb more ____________.",
 options:[
 {text:"Rain",img:"../assets/images/option2-1.png"},
 {text:"Water",img:"../assets/images/option2-2.png"},
@@ -25,7 +25,7 @@ img:"../assets/images/mcq-2.png"
 },
 
 {
-q:"The roots of ________________ grow above the soil.",
+q:"Q3. The roots of ________________ grow above the soil.",
 options:[
 {text:"Coconut",img:"../assets/images/option3-1.png"},
 {text:"Cactus",img:"../assets/images/option3-2.png"},
@@ -37,7 +37,7 @@ img:"../assets/images/mcq3.png"
 },
 
 {
-q:"The stomata are on the upper surface of the leaves of _____________.",
+q:"Q4. The stomata are on the upper surface of the leaves of _____________.",
 options:[
 {text:"Mango",img:"../assets/images/option4-1.png"},
 {text:"Cherry",img:"../assets/images/option4-2.png"},
@@ -49,7 +49,7 @@ img:"../assets/images/mcq-4.png"
 },
 
 {
-q:"________________ take in carbon dioxide released by aquatic animals.",
+q:"Q5. ________________ take in carbon dioxide released by aquatic animals.",
 options:[
 {text:"Floating plants",img:"../assets/images/option5-1.png"},
 {text:"Fixed plants",img:"../assets/images/option5-2.png"},

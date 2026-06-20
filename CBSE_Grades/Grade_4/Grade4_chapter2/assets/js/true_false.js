@@ -1,31 +1,31 @@
 const quiz=[
 
 {
-q:"Hydrilla and tape grass are floating plants.",
+q:"Q1. Hydrilla and tape grass are floating plants.",
 answer:false,
 img:"../assets/images/TF-1.png"
 },
 
 {
-q:"Cacti plants grow in the coastal regions.",
+q:"Q2. Cacti plants grow in the coastal regions.",
 answer:false,
 img:"../assets/images/TF-2.png"
 },
 
 {
-q:"Terrestrial plants have flat leaves to trap sunlight.",
+q:"Q3. Terrestrial plants have flat leaves to trap sunlight.",
 answer:true,
 img:"../assets/images/FIB-3.png"
 },
 
 {
-q:"Deciduous trees shed their leaves twice in a year.",
+q:"Q4. Deciduous trees shed their leaves twice in a year.",
 answer:false,
 img:"../assets/images/TF-4.png"
 },
 
 {
-q:"Coniferous trees do not bear flowers.",
+q:"Q5. Coniferous trees do not bear flowers.",
 answer:true,
 img:"../assets/images/FIB-3.png"
 }
