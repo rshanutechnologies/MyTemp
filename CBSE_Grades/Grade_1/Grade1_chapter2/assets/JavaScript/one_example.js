@@ -33,7 +33,7 @@ const quiz = [
   },
   {
     q: "Q5. Give one example of a Vegetable",
-    img1: "../assets/images/carrot.png",
+    img1: "../assets/images/Carrot.png",
     t1: "Carrot",
     img2: "../assets/images/graps.png",
     t2: "Graps",
