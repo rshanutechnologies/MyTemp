@@ -70,6 +70,12 @@ input.addEventListener("input", () => {
   }
 });
 
+["dragover", "dragenter", "drop", "dragstart"].forEach(event => {
+  input.addEventListener(event, e => e.preventDefault());
+});
+
+input.setAttribute("draggable", "false");
+
 submitBtn.onclick = () => {
   const typedAnswer = input.value.trim();
 

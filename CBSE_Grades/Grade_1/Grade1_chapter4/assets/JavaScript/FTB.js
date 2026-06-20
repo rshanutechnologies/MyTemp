@@ -53,7 +53,7 @@ function smallConfetti() {
 }
 
 function bigConfetti() {
- confetti({ particleCount: 60, spread: 90, origin: { y: 0.7 } });
+  confetti({ particleCount: 60, spread: 90, origin: { y: 0.7 } });
 }
 
 function loadQuestion() {
@@ -74,6 +74,14 @@ function loadQuestion() {
     input.type = "text";
     input.placeholder = "Type here...";
     input.value = userAnswers[index].boxes[i].value;
+
+    input.addEventListener("dragover", (e) => e.preventDefault());
+
+    input.addEventListener("drop", (e) => {
+      e.preventDefault();
+    });
+
+    input.addEventListener("dragenter", (e) => e.preventDefault());
 
     const btn = document.createElement("button");
     btn.className = "check-btn";
