@@ -472,7 +472,7 @@ body{
 
 /* question */
 .question{
-  font-size:22px;
+  font-size:30px;
   padding:10px;
   text-align:center;
   min-height:100px;
@@ -599,11 +599,11 @@ body{
 
 }
 
-/* @media (max-width:1000px){
+ @media (max-width:600px){
   .question{
-    font-size: 3px;
+    font-size: 22px;
   }
-} */
+} 
 
 /* ================= 1025px — 1440px ================= */
 @media screen and (min-width:1425px) and (max-width:1640px){
