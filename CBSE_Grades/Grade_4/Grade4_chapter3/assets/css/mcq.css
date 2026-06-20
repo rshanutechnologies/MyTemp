@@ -443,6 +443,11 @@ canvas {
     height: 280px;
   }
 
+  .options {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px !important;
+  }
+
   .option-img {
     width: 160px;
     height: 160px;
