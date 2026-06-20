@@ -7,7 +7,7 @@ const questions = [
   {
     q: "Q2. Wild animals live in natural shelters like ______ and trees.",
     a: ["caves"],
-    img: "../assets/images/cave.png",
+    img: "../assets/images/ftb-2.png",
   },
   {
     q: "Q3. Sheep gives us ______ and ______.",
@@ -111,13 +111,22 @@ function checkAnswer(input, btn, box, i) {
 
   let isCorrect = false;
 
-  if (index === 3) {
+  // Q1 → force order
+  if (index === 0) {
+    isCorrect = value === answers[i];
+  }
+
+  // Q4 → allow six or 6
+  else if (index === 3) {
     isCorrect = value === "six" || value === "6";
-  } else {
+  }
+
+  // All other questions
+  else {
     isCorrect = answers.includes(value);
   }
 
-  if (isCorrect && !state.used.includes(value)) {
+  if (isCorrect && (index === 0 || !state.used.includes(value))) {
     box.classList.add("correct");
 
     input.disabled = true;

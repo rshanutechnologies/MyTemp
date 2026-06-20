@@ -134,9 +134,9 @@ icon-circle {
   object-fit: contain;
 }
 
-.question-text {
+/* .question-text {
   font-size: 18px;
-}
+} */
 
 #finalPopup {
   position: fixed;

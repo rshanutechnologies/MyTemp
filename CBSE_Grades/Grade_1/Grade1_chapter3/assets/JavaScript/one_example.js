@@ -3,8 +3,8 @@ const quiz = [
     q: "Q1. An animal that has scales or hard shells on its body",
     img1: "../assets/images/crocodile.png",
     t1: "Crocodile",
-    img2: "../assets/images/tf-1.png",
-    t2: "Crab",
+    img2: "../assets/images/octopus.png",
+    t2: "Octopus",
     a: "crocodile",
   },
 

@@ -1,6 +1,6 @@
 const quiz = [
   {
-    q: "1. Body parts that we must trim and keep short",
+    q: "Q1. Body parts that we must trim and keep short",
     img1: "../assets/images/nails2.png",
     t1: "Nails",
     img2: "../assets/images/tongue.png",
@@ -8,7 +8,7 @@ const quiz = [
     a: "nails",
   },
   {
-    q: "2. An object that we should not put into our ears",
+    q: "Q2. An object that we should not put into our ears",
     img1: "../assets/images/pin.png",
     t1: "Pin",
     img2: "../assets/images/earbuds.png",
@@ -16,7 +16,7 @@ const quiz = [
     a: "pin",
   },
   {
-    q: "3. We must use this to blow our nose",
+    q: "Q3. We must use this to blow our nose",
     img1: "../assets/images/shocks.png",
     t1: "Shocks",
     img2: "../assets/images/handkerchief.png",
@@ -24,7 +24,7 @@ const quiz = [
     a: "handkerchief",
   },
   {
-    q: "4. A body part that needs to be combed daily",
+    q: "Q4. A body part that needs to be combed daily",
     img1: "../assets/images/hair.png",
     t1: "Hair",
     img2: "../assets/images/teeth.png",
@@ -32,7 +32,7 @@ const quiz = [
     a: "hair",
   },
   {
-    q: "5. An activity that we do to keep our eyes healthy",
+    q: "Q5. An activity that we do to keep our eyes healthy",
     img1: "../assets/images/reading.png",
     t1: "Reading in proper light",
     img2: "../assets/images/rubbing-eyes.png",

@@ -279,6 +279,12 @@ color:white;
 font-weight:600;
 }
 
+.option-box.disabled{
+  opacity:0.4;
+  pointer-events:none;
+  
+  cursor:not-allowed;
+}
 /* ================= MOBILE FIX ================= */
 
 @media (max-width:480px){
@@ -584,6 +590,8 @@ let selectedAnswers = new Array(questions.length).fill(null);
 const questionEl = document.getElementById("question");
 const imgEl = document.getElementById("questionImg");
 const answerBox = document.getElementById("answerBox");
+const trueBox = document.querySelector(".true-box");
+const falseBox = document.querySelector(".false-box");
 const nextBtn = document.getElementById("nextBtn");
 const prevBtn = document.getElementById("prevBtn");
 
@@ -617,6 +625,15 @@ function fireConfetti(){
 
 }
 function loadQuestion(){
+  trueBox.classList.remove("disabled");
+falseBox.classList.remove("disabled");
+
+if(selectedAnswers[current] === "T"){
+  falseBox.classList.add("disabled");
+}
+else if(selectedAnswers[current] === "F"){
+  trueBox.classList.add("disabled");
+}
   confetti.reset();
   const q = questions[current];
   questionEl.textContent = q.q;
@@ -655,6 +672,11 @@ fireConfetti();
 
     selectedAnswers[current] = choice;
   answerBox.textContent = choice === "T" ? "True" : "False";
+  if(choice === "T"){
+  falseBox.classList.add("disabled");
+}else{
+  trueBox.classList.add("disabled");
+}
     nextBtn.disabled = false;
 
     popupEmoji.textContent = "🎉";

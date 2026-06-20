@@ -90,7 +90,7 @@
   border-radius:28px;
   border:5px solid #ffffff;
   /* background:linear-gradient(145deg,#6ec6ff,#42a5f5); */
-  color:white;
+  color:#0A3D62;
   cursor:pointer;
   /* box-shadow:0 6px 14px rgba(0,0,0,0.2); */
   transition:0.2s;
@@ -101,8 +101,8 @@
   transform:translateY(-3px);
 }
 
-    .true{background:#4caf50;}
-    .false{background:#f44336;}
+    .true{background:#7be27e;}
+    .false{background:#ea9791;}
 
     .correct{ border:2px solid white !important; pointer-events:none;background:#4caf50; }
     .disabled{ opacity:.45; pointer-events:none;  }

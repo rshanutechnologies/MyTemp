@@ -102,7 +102,7 @@ const quizData = [
 
       {
         text: "Don't grow",
-        img: "../assets/images/no-grow.png",
+        img: "../assets/images/dont-grow.png",
       },
 
       {

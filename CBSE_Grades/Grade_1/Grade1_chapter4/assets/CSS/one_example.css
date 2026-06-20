@@ -68,7 +68,7 @@ body {
 }
 
 .image-bottom {
-    padding: 14px 24px;
+    padding: 14px 15px;
     font-size: 20px;
     font-weight: 400;
     color: #2f4f4f;
@@ -92,7 +92,7 @@ body {
         } */
 
 .image-box.correct {
-    transform: scale(1.02);
+    /* transform: scale(1.02); */
     opacity: 1;
     border: 3px solid #71e08d;
     background: linear-gradient(145deg, #f3fff6, #d6ffe6);
@@ -543,7 +543,7 @@ body {
     }
 
     .image-box {
-        width: 280px;
+        width: 300px;
         padding: 26px 22px;
     }
 

@@ -302,6 +302,7 @@ RESPONSIVE (Same behavior as second CSS)
 
     .column {
         width: 150px;
+        gap: 30px 15px;
     }
 
     .item {
@@ -315,6 +316,44 @@ RESPONSIVE (Same behavior as second CSS)
     .right-img {
         width: 38px;
         height: 40px;
+    }
+
+    #line-canvas {
+        display: none;
+    }
+
+    .game-container {
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .item {
+        position: relative;
+    }
+
+    /* badge same style as MCQ */
+    .match-badge {
+        position: absolute;
+        bottom: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        background: #f4a23c;
+        color: #fff;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        padding: 6px 16px;
+
+        border-radius: 20px;
+
+        border: 2px solid #fff;
+
+        box-shadow: 0 6px 10px rgba(0, 0, 0, .15);
+
+        white-space: nowrap;
+        z-index: 5;
     }
 }
 

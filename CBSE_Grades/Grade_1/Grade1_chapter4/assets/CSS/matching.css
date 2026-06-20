@@ -474,8 +474,11 @@ h1 {
 
     .main-container {
         width: 1100px;
+        
     }
-
+    .game-container{
+        gap: 120px;
+    }
     .question-area h2 {
         font-size: 36px;
     }

@@ -6,7 +6,10 @@ const questions = [
   },
   {
     q: "Q2. We get milk from __________ and __________.",
-    a: ["cows", "buffaloes"],
+    a: [
+      ["cow", "cows"],
+      ["buffalo", "buffaloes"],
+    ],
     img: "../assets/images/milk.png",
   },
   {
@@ -99,11 +102,17 @@ function loadQuestion() {
 }
 
 function checkAnswer(input, btn, box, i) {
-  const value = input.value.trim().toLowerCase();
+  // const value = input.value.trim().toLowerCase();
   const answersList = questions[index].a;
   const state = answers[index];
 
-  if (answersList.includes(value) && !state.used.includes(value)) {
+  const value = input.value.trim().toLowerCase();
+
+  const validAnswers = Array.isArray(questions[index].a[i])
+    ? questions[index].a[i].map((v) => v.toLowerCase())
+    : [questions[index].a[i].toLowerCase()];
+
+  if (validAnswers.includes(value) && !state.used.includes(value)) {
     box.classList.add("correct");
 
     input.disabled = true;

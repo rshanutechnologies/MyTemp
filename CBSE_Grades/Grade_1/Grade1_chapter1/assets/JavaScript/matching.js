@@ -89,23 +89,51 @@ function bigConfetti() {
 }
 
 function handleMatch(leftEl, rightEl) {
+
   score++;
 
   leftEl.classList.add("matched");
   rightEl.classList.add("matched");
+
   leftEl.classList.remove("active");
+
   speak("Correct");
 
-  drawCurve(leftEl, rightEl);
+  // Desktop only
+  if (window.innerWidth > 600) {
 
-  connections.push({ from: leftEl, to: rightEl });
+    drawCurve(leftEl, rightEl);
+
+    connections.push({
+      from:leftEl,
+      to:rightEl
+    });
+
+  }
+
+  // Mobile badge
+  else {
+
+    const badge = document.createElement("span");
+
+    badge.className = "match-badge";
+
+    badge.textContent = rightEl.querySelector("span").textContent;
+
+    leftEl.appendChild(badge);
+
+  }
 
   selectedLeft = null;
+
   matchesFound++;
 
   if (matchesFound === leftData.length) {
-    setTimeout(showFinal, 700);
+
+    setTimeout(showFinal,700);
+
   }
+
 }
 
 function drawCurve(el1, el2) {

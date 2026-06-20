@@ -1,6 +1,6 @@
 const quizData = [
   {
-    q: "Q1: A living thing?",
+    q: "Q1. A living thing?",
     img: "../assets/images/owq-1.png",
     options: [
       { img: "../assets/images/dog-1.png", text: "Dog" },
@@ -10,7 +10,7 @@ const quizData = [
   },
 
   {
-    q: "Q2: A non-living thing?",
+    q: "Q2. A non-living thing?",
     img: "../assets/images/owq-2.png",
     options: [
       { img: "../assets/images/ftb-3.png", text: "Tree" },
@@ -20,7 +20,7 @@ const quizData = [
   },
 
   {
-    q: "Q3: A natural living thing?",
+    q: "Q3. A natural living thing?",
     img: "../assets/images/owq-3.png",
     options: [
       { img: "../assets/images/dog.png", text: "Dog" },
@@ -30,7 +30,7 @@ const quizData = [
   },
 
   {
-    q: "Q4: A human-made thing?",
+    q: "Q4. A human-made thing?",
     img: "../assets/images/owq-4.png",
     options: [
       { img: "../assets/images/table.png", text: "Table" },
