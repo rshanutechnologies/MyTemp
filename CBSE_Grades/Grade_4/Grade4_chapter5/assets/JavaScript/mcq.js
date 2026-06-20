@@ -1,6 +1,6 @@
 const quizData = [
   {
-    q: "1. ________ is the force that is applied to move things.",
+    q: "Q1. ________ is the force that is applied to move things.",
     img: "../assets/images/MCQ-Q1.png",
     options: [
       "../assets/images/Fulcrum.png|Fulcrum",
@@ -12,7 +12,7 @@ const quizData = [
   },
 
   {
-    q: "2. A fishing rod is an example of ____________.",
+    q: "Q2. A fishing rod is an example of ____________.",
     img: "../assets/images/MCQ-Q2.png",
     options: [
       "../assets/images/Class 3 leverr.png|class 3 lever",
@@ -24,7 +24,7 @@ const quizData = [
   },
 
   {
-    q: "3. ____________ is the ability to do work.",
+    q: "Q3. ____________ is the ability to do work.",
     img: "../assets/images/MCQ-Q3.png",
     options: [
       "../assets/images/Pressure.png|Pressure",
@@ -36,7 +36,7 @@ const quizData = [
   },
 
   {
-    q: "4. A ____________ is an example of a complex machine.",
+    q: "Q4. A ____________ is an example of a complex machine.",
     img: "../assets/images/Complx-Machine.png",
     options: [
       "../assets/images/Flag-Pole.png|flag pole",
@@ -48,7 +48,7 @@ const quizData = [
   },
 
   {
-    q: "5. The grooves in a screw are called ____________.",
+    q: "Q5. The grooves in a screw are called ____________.",
     img: "../assets/images/MCQ-Q5.png",
     options: [
       "../assets/images/pitches.png|pitches",

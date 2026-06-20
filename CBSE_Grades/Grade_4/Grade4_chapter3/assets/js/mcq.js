@@ -1,6 +1,6 @@
 const quizData = [
   {
-    q: "1. Which animal is called 'the ship of the desert'?",
+    q: "Q1. Which animal is called 'the ship of the desert'?",
     img: "../images/MCQ-1.png",
     options: [
       "../images/mcq1-1.png|Lizard",
@@ -12,11 +12,11 @@ const quizData = [
   },
 
   {
-    q: "2. ___________ animals have streamlined bodies.",
+    q: "Q2. ___________ animals have streamlined bodies.",
     img: "../images/MCQ-2.png",
     options: [
       "../images/mcq2-1.png|Terrestrial",
-      "../images/FIB-3.png|Aquatic",
+      "../images/aquatic.png|Aquatic",
       "../images/mcq1-2.png|Desert",
       "../images/mcq1-4.png|Arboreal",
     ],
@@ -24,7 +24,7 @@ const quizData = [
   },
 
   {
-    q: "3. Which is not an adaptive feature of a polar bear to live in extreme climatic conditions?",
+    q: "Q3. Which is not an adaptive feature of a polar bear to live in extreme climatic conditions?",
     img: "../images/MCQ2.png",
     options: [
       "../images/mcq3-1.png|Small ears",
@@ -36,7 +36,7 @@ const quizData = [
   },
 
   {
-    q: "4. Arboreal animals are mostly ___________.",
+    q: "Q4. Arboreal animals are mostly ___________.",
     img: "../images/MCQ-4.png",
     options: [
       "../images/mcq4-1.png| carnivores",
@@ -48,7 +48,7 @@ const quizData = [
   },
 
   {
-    q: "5. Which of these is the ability of an animal to blend with the surroundings?",
+    q: "Q5. Which of these is the ability of an animal to blend with the surroundings?",
     img: "../images/MCQ5.png",
     options: [
       "../images/mcq5-1.png|Camouflage",

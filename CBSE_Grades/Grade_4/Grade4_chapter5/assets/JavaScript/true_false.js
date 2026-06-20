@@ -1,26 +1,26 @@
 const questions = [
   {
-    q: "1. A wedge has two inclined planes joined back to back.",
+    q: "Q1. A wedge has two inclined planes joined back to back.",
     a: true,
     img: "../assets/images/TF-Q11.png",
   },
   {
-    q: "2. The less steep the slope, the less force we apply to push the load.",
+    q: "Q2. The less steep the slope, the less force we apply to push the load.",
     a: true,
     img: "../assets/images/TF-Q2.png",
   },
   {
-    q: "3. In class 1 lever, the load is in between the effort and the fulcrum.",
+    q: "Q3. In class 1 lever, the load is in between the effort and the fulcrum.",
     a: false,
     img: "../assets/images/TF-Q3.png",
   },
   {
-    q: "4. A nut cracker is an example of class 2 lever.",
+    q: "Q4. A nut cracker is an example of class 2 lever.",
     a: true,
     img: "../assets/images/TF-Q4.png",
   },
   {
-    q: "5. The wheel and axle arrangement is used in a sewing machine.",
+    q: "Q5. The wheel and axle arrangement is used in a sewing machine.",
     a: true,
     img: "../assets/images/TF-Q5.png",
   },

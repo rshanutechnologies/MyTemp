@@ -1,26 +1,26 @@
 const questions = [
   {
-    q: "1. There is less oxygen in high altitudes.",
+    q: "Q1. There is less oxygen in high altitudes.",
     a: true,
     img: "../images/TF-1.png",
   },
   {
-    q: "2. Chipmunks and bears hibernate during cold seasons.",
+    q: "Q2. Chipmunks and bears hibernate during cold seasons.",
     a: true,
     img: "../images/TF-2.png",
   },
   {
-    q: "3. Sharks and fishes move with the help of their flippers.",
+    q: "Q3. Sharks and fishes move with the help of their flippers.",
     a: false,
     img: "../images/TF-3.png",
   },
   {
-    q: "4. Desert animals have adaptive features like storing water in their bodies.",
+    q: "Q4. Desert animals have adaptive features like storing water in their bodies.",
     a: true,
     img: "../images/TF-4.png",
   },
   {
-    q: "5. Polar bears sleep during summer to save energy.",
+    q: "Q5. Polar bears sleep during summer to save energy.",
     a: false,
     img: "../images/TF-5.png",
   },

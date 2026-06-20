@@ -20,7 +20,7 @@ const quiz = [
   {
     q: "Q3. Give one example of a junk food",
     img1: "../assets/images/Pinaple.png",
-    t1: "Pinaple",
+    t1: "Pineapple",
     img2: "../assets/images/burger.png",
     t2: "Burger",
     a: "burger",
