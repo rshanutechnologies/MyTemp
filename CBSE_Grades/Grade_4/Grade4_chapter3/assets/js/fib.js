@@ -17,7 +17,7 @@ const questions = [
   {
     q: "Q4. _______ animals have wings to fly in air.",
     a: ["arboreal animals"],
-    img: "../images/FIB-4.png",
+    img: "../images/aerial.png",
   },
   {
     q: "Q5. The _____ of animals like porcupine and hedgehog protect them.",

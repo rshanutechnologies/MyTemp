@@ -42,9 +42,9 @@ margin-bottom:clamp(15px,3vh,30px);
 
 display:flex;
 align-items:center;
-justify-content:flex-start;
+justify-content:center;
 
-text-align:left;
+text-align:start;
 
  font-size: 30px;
 font-weight:500;
@@ -55,27 +55,25 @@ padding:clamp(8px,1vh,12px) clamp(10px,2vw,20px);
 
 /* CONTENT */
 .content{
-display:grid;
-grid-template-columns:1fr 1fr;
+
 align-items:center;
 gap:clamp(20px,5vw,60px);
 }
 
 /* IMAGE BOX */
 .image-box{
-width:clamp(250px,32vw,380px);
-height:clamp(190px,28vh,260px);
+width:150px;
+height:180px;
 margin:auto;
 
 display:flex;
 align-items:center;
 justify-content:center;
 
-background:white;
-border-radius:clamp(12px,2vw,18px);
-border:2px solid #56a1ec;
 
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
+border-radius:clamp(12px,2vw,18px);
+
+
 padding:clamp(8px,1vw,10px);
 }
 
@@ -96,8 +94,8 @@ flex-wrap:wrap;
 
 /* BUTTON */
 .option{
-width:clamp(140px,18vw,220px);
-height:clamp(110px,14vh,160px);
+width:170px;
+height:70px;
 
 font-size:clamp(16px,1.6vw + 0.6vh,26px);
 
@@ -105,7 +103,7 @@ border-radius:clamp(18px,2vw,28px);
 border:none;
 
 display:flex;
-flex-direction:column;
+
 align-items:center;
 justify-content:center;
 
@@ -140,6 +138,7 @@ animation-delay:0.4s;
 .option span{
 font-size:clamp(30px,4vw,50px);
 margin-bottom:clamp(6px,1.5vh,12px);
+display: none;
 }
 
 
@@ -259,8 +258,9 @@ body{
     gap:clamp(12px,2vh,20px);
   }
 .option{
-  width:clamp(140px,60%,220px);
-  height:clamp(80px,10vh,110px);
+  width:150px;
+  height:60px;
+  font-size: 16px;
 }
   .image-box{
     width:clamp(180px, 50vw, 240px);
@@ -281,17 +281,19 @@ body{
 /* Tablet (768px to 900px) */
 /* ============================= */
 @media screen and (min-width:700px) and (max-width:1000px){
-
+   body{
+    overflow: hidden;
+   }
   .quiz-container{
     width:min(95%,900px);
-   
+     
   }
 
   /* QUESTION */
   .question{
     font-size: 30px;
     min-height: 70px;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     padding: 8px 15px;
   }
 
@@ -302,8 +304,8 @@ body{
 
   /* IMAGE BOX */
   .image-box{
-    width: 280px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
   }
 
   .image-box img{
@@ -319,7 +321,7 @@ body{
 
   .option{
     width: 180px;
-    height: 130px;
+    height: 60px;
     font-size: 20px;
   }
 
@@ -347,6 +349,7 @@ body{
 
   .quiz-container{
     max-width:1100px;
+    margin-top: -30px;
   }
 
   /* QUESTION */
@@ -356,8 +359,8 @@ body{
 
   /* IMAGE */
   .image-box{
-    width:320px;
-    height:220px;
+    width:180px;
+    height:170px;
   }
 
   /* OPTIONS */
@@ -367,7 +370,7 @@ body{
 
   .option{
     width:200px;
-    height:140px;
+    height:70px;
     font-size:22px;
   }
 
@@ -420,12 +423,13 @@ object-fit:contain;
 
   .option{
     width:220px;
-    height:170px;
-    font-size:28px;
+    height:100px;
+    font-size:26px;
   }
 
   .option span{
-    font-size:60px;
+    font-size:26px;
+    display: none;
   }
 
   /* NAV BUTTONS */
@@ -433,6 +437,7 @@ object-fit:contain;
     width:160px;
     height:65px;
     font-size: 28px;
+    margin-top: 30px;
   }
 
 }

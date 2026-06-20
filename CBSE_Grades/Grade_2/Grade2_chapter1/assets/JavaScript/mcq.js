@@ -1,68 +1,67 @@
 /* ================= QUIZ DATA ================= */
 const quizData = [
+  {
+    title: "Q1. Carrot is a _________.",
+    image: "../assets/images/Carrotakc.png",
+    options: [
+      { text: "Stem", img: "../assets/images/stemM.png" },
+      { text: "Root", img: "../assets/images/RootM.png" },
+      { text: "Leaf", img: "../assets/images/leafak.png" },
+      { text: "Flower", img: "../assets/images/flowerak.png" },
+    ],
+    answer: "Root",
+  },
 
-{
-title: "Q1. Carrot is a _________.",
-image: "../assets/images/Carrotakc.png",
-options: [
-{ text: "Stem", img: "../assets/images/stemM.png" },
-{ text: "Root", img: "../assets/images/RootM.png" },
-{ text: "Leaf", img: "../assets/images/leafak.png" },
-{ text: "Flower", img: "../assets/images/flowerak.png" }
-],
-answer: "Root"
-},
+  {
+    title:
+      "Q2. The _______________ transports food and water to all the parts of a plant.",
+    image: "../assets/images/TransportFoot.png",
+    options: [
+      { text: "Stem", img: "../assets/images/stemM.png" },
+      { text: "Root", img: "../assets/images/RootM.png" },
+      { text: "Flower", img: "../assets/images/flowerak.png" },
+      { text: "Leaf", img: "../assets/images/leafak.png" },
+    ],
+    answer: "Stem",
+  },
 
-{
-title: "Q2. The _______________ transports food and water to all the parts of a plant.",
-image: "../assets/images/TransportFoot.png",
-options: [
-{ text: "Root", img: "../assets/images/RootM.png" },
-{ text: "Leaf", img: "../assets/images/leafak.png" },
-{ text: "Flower", img: "../assets/images/flowerak.png" },
-{ text: "Stem", img: "../assets/images/stemM.png" }
-],
-answer: "Stem"
-},
+  {
+    title: "Q3. We need _______ to make our clothes.",
+    image: "../assets/images/Clothesak.png",
+    options: [
+      { text: "Fibre", img: "../assets/images/fiberimg.png" },
+      { text: "Gum", img: "../assets/images/gumimg.png" },
+      { text: "Rubber", img: "../assets/images/ruberimg.png" },
+      { text: "Paper", img: "../assets/images/paperimg.png" },
+    ],
+    answer: "Fibre",
+  },
 
-{
-title: "Q3. We need _______ to make our clothes.",
-image: "../assets/images/Clothesak.png",
-options: [
-{ text: "Fibre", img: "../assets/images/fiberimg.png" },
-{ text: "Gum", img: "../assets/images/gumimg.png" },
-{ text: "Rubber", img: "../assets/images/ruberimg.png" },
-{ text: "Paper", img: "../assets/images/paperimg.png" }
-],
-answer: "Fibre"
-},
+  {
+    title:
+      "Q4. Plants that have weak stems and need support to grow are called _____________.",
+    image: "../assets/images/Climberakk.png",
+    options: [
+      { text: "Trees", img: "../assets/images/SoftStem.png" },
+      { text: "Climbers", img: "../assets/images/ClimbPlant.png" },
+      { text: "Herbs", img: "../assets/images/Herbsak.png" },
+      { text: "Shrubs", img: "../assets/images/Shrub.png" },
+    ],
+    answer: "Climbers",
+  },
 
-{
-title: "Q4. Plants that have weak stems and need support to grow are called _____________.",
-image: "../assets/images/Climberakk.png",
-options: [
-{ text: "Trees", img: "../assets/images/SoftStem.png" },
-{ text: "Climbers", img: "../assets/images/ClimbPlant.png" },
-{ text: "Herbs", img: "../assets/images/Herbsak.png" },
-{ text: "Shrubs", img: "../assets/images/Shrub.png" }
-],
-answer: "Climbers"
-},
-
-{
-title: "Q5. Mint plant is an example of a _____.",
-image: "../assets/images/MintPlant.png",
-options: [
-{ text: "Climber", img: "../assets/images/ClimbPlant.png" },
-{ text: "Herb", img: "../assets/images/Herbsak.png" },
-{ text: "Creeper", img: "../assets/images/Creeper.png" },
-{ text: "Shrub", img: "../assets/images/Shrub.png" }
-],
-answer: "Herb"
-}
-
+  {
+    title: "Q5. Mint plant is an example of a _____.",
+    image: "../assets/images/MintPlant.png",
+    options: [
+      { text: "Climber", img: "../assets/images/ClimbPlant.png" },
+      { text: "Herb", img: "../assets/images/Herbsak.png" },
+      { text: "Creeper", img: "../assets/images/Creeper.png" },
+      { text: "Shrub", img: "../assets/images/Shrub.png" },
+    ],
+    answer: "Herb",
+  },
 ];
-
 
 /* ================= STATE ================= */
 
@@ -72,7 +71,6 @@ let score = 0;
 const answerState = quizData.map(() => ({
   answered: false,
 }));
-
 
 /* ================= ELEMENTS ================= */
 
@@ -87,31 +85,28 @@ const nextBtn = document.getElementById("nextBtn");
 
 function speak(text) {
   speechSynthesis.cancel();
- 
-  const msg = new SpeechSynthesisUtterance(text);  
- 
-  msg.lang = "en-UK";  
-  msg.volume = 0.25;    
+
+  const msg = new SpeechSynthesisUtterance(text);
+
+  msg.lang = "en-UK";
+  msg.volume = 0.25;
   msg.rate = 1;
   msg.pitch = 1;
- 
-  speechSynthesis.speak(msg);  
-}
 
+  speechSynthesis.speak(msg);
+}
 
 /* ================= IMAGE PRELOAD ================= */
 
 function preloadImages() {
-  quizData.forEach(q => {
-
+  quizData.forEach((q) => {
     const img = new Image();
     img.src = q.image;
 
-    q.options.forEach(opt => {
+    q.options.forEach((opt) => {
       const optImg = new Image();
       optImg.src = opt.img;
     });
-
   });
 }
 
@@ -122,17 +117,17 @@ function loadQuestion() {
   const state = answerState[current];
 
   titleText.textContent = q.title;
-animalImg.src = q.image;
-animalImg.alt = "Plant Image";
-animalImg.loading = "eager";
-animalImg.decoding = "async";
+  animalImg.src = q.image;
+  animalImg.alt = "Plant Image";
+  animalImg.loading = "eager";
+  animalImg.decoding = "async";
 
   optionsBox.innerHTML = "";
 
   q.options.forEach((opt) => {
     const div = document.createElement("div");
     div.className = "option";
-div.innerHTML = `
+    div.innerHTML = `
 <img src="${opt.img}" class="option-img" loading="eager" decoding="async">
 <span class="label">${opt.text}</span>
 `;
@@ -152,7 +147,6 @@ div.innerHTML = `
   prevBtn.disabled = current === 0;
   nextBtn.disabled = !state.answered;
 }
-
 
 /* ================= CHECK ANSWER ================= */
 
@@ -176,12 +170,11 @@ function checkAnswer(optionDiv, selected) {
 
     speak("Correct");
     showPopup(true);
-fireConfetti();   // ⭐ add this
+    fireConfetti(); // ⭐ add this
 
     if (current === quizData.length - 1) {
       setTimeout(showFinal, 1600);
     }
-
   } else {
     speak("Wrong");
     optionDiv.classList.add("wrong-shake");
@@ -193,7 +186,6 @@ fireConfetti();   // ⭐ add this
   }
 }
 
-
 /* ================= POPUPS (NEW SYSTEM) ================= */
 
 function showPopup(isCorrect) {
@@ -202,9 +194,9 @@ function showPopup(isCorrect) {
   const title = document.getElementById("popupTitle");
   const msg = document.getElementById("popupMsg");
 
-    // 🔥 RESET animation (important)
+  // 🔥 RESET animation (important)
   icon.style.animation = "none";
-  void icon.offsetWidth; 
+  void icon.offsetWidth;
   icon.style.animation = "";
 
   popup.className = "popup " + (isCorrect ? "correct" : "wrong");
@@ -225,7 +217,6 @@ function showPopup(isCorrect) {
   }, 1200);
 }
 
-
 function showFinal() {
   const finalPopup = document.getElementById("finalPopup");
   finalPopup.style.display = "flex";
@@ -233,15 +224,9 @@ function showFinal() {
   document.getElementById("finalScore").textContent =
     `Score: ${score}/${quizData.length}`;
 
-  document.getElementById("stars").textContent =
-    "⭐".repeat(score);
-     fireConfettif(); 
-
- 
-
- 
+  document.getElementById("stars").textContent = "⭐".repeat(score);
+  fireConfettif();
 }
-
 
 /* ================= BUTTONS ================= */
 
@@ -263,14 +248,14 @@ function fireConfetti() {
   confetti({
     particleCount: 40,
     spread: 80,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
   });
 }
 function fireConfettif() {
   confetti({
     particleCount: 100,
     spread: 120,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
   });
 }
 
