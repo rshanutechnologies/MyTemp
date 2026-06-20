@@ -629,7 +629,7 @@ padding:18px 30px;
 
 
 /* ================= 1441px — 1920px ================= */
-@media screen and (min-width:1400px) and (max-width:1920px){
+@media screen and (min-width:1250px) and (max-width:1920px){
 
 .quiz{
 width:1200px;

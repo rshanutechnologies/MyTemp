@@ -614,7 +614,7 @@ body::before {
 
   /* ✅ QUESTION (IMPORTANT SYSTEM) */
   .title {
-    font-size: 40px;
+  
     min-height: 140px;
     width: 1000px;
     line-height: 1.4;

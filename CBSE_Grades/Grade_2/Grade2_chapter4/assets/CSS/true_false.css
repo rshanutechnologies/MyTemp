@@ -593,7 +593,7 @@ button:disabled {
 
   /* ✅ QUESTION (IMPORTANT SYSTEM + FIX ALIGNMENT) */
   .question {
-    font-size: 40px;
+    
     min-height: 140px;
     padding: 40px;
     margin-left: 0;

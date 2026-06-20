@@ -593,6 +593,10 @@ font-size:16px;
   .title{
     font-size: 40px;
   }
+
+  .option .label{
+    font-weight: 600;
+  }
 }
 
 /* Extra large screens */

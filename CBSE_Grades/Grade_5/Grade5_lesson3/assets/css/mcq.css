@@ -996,6 +996,9 @@ font-size:20px;
         margin-top: 0;
 
     }
+    .question{
+        margin-bottom: 0;
+    }
 
     .options {
         gap: 10px;
@@ -1037,14 +1040,17 @@ font-size:20px;
 
 
 /* ================= 1025px — 1440px ================= */
-@media screen and (min-width:1325px) and (max-width:1640px) {
+@media screen and (min-width:1225px) and (max-width:1600px) {
 
     .quiz {
         max-width: 1250px;
         margin-top: 1%;
-        
+     
     }
-
+ .question {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
     .options {
         grid-template-columns: repeat(4, 1fr);
         gap: 8px;
