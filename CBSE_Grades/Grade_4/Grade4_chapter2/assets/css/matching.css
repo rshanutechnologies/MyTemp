@@ -272,7 +272,7 @@ margin-left:auto;
 ══════════════════════════════════════ */
 @media (max-width: 600px) {
 
-    body { height: 100vh; overflow: hidden; }
+    body { height: 100vh; overflow: hidden;  }
 
     .container { height: 100vh; padding: 10px; align-items: flex-start; }
 
@@ -393,7 +393,7 @@ margin-left:auto;
 ══════════════════════════════════════ */
 @media (max-width: 400px) {
 
-    body { height: 100vh; overflow: hidden; }
+    body { height: 100vh; overflow: hidden;}
 
     .container { padding: 5px;  }
 
@@ -415,7 +415,7 @@ margin-left:auto;
 
     .left .box,
     .right .box {
-        font-size: 11px;
+        font-size: 14px;
         min-height: 58px !important;
         height: 58px !important;
         width: 100%;
@@ -442,6 +442,7 @@ margin-left:auto;
         display: flex !important;
         align-items: center;
         justify-content: center;
+        top:19px !important;
     }
 
     .final { width: 95%; padding: 15px; }
