@@ -182,7 +182,7 @@ body::before {
 button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
-  filter: grayscale(40%);
+  /* filter: grayscale(40%); */
   transform: none !important;
   box-shadow: none !important;
 }

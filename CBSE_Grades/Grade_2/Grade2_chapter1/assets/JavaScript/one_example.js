@@ -16,7 +16,7 @@ const quizData = [
   image: "../assets/images/ow2.png",
   options:[
     // { text:"Green gram", img:"../assets/images/GreenGram.png"},
-     { text:"Vegitables", img:"../assets/images/Vegitableakp.png"},
+     { text:"Vegetables", img:"../assets/images/Vegitableakp.png"},
     { text:"Rice", img:"../assets/images/Ricee.png"},
     { text:"Red gram", img:"../assets/images/RedGramsak1.png"}
   ],

@@ -51,7 +51,7 @@ answer: "Bones"
 },
 
 {
-title: "Q5. The ______ pumps blood to all the parts of body.",
+title: "Q5. The ______ pumps blood to all the parts of the body.",
 image: "../assets/images/heartking1.png",
 options: [
 { text: "Brain", img: "../assets/images/brain.png" },

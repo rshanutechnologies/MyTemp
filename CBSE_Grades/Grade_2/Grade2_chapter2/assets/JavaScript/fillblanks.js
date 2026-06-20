@@ -1,37 +1,35 @@
 /* ================= QUESTIONS ================= */
 
 const questions = [
+  {
+    q: "Q1. A frog can live both on ______ and in water.",
+    a: ["land"],
+    img: "../assets/images/FrogWater&Land.png",
+  },
 
-{
-q: "Q1. A frog can live both on ______ and in water.",
-a: ["land"],
-img: "../assets/images/FrogWater&Land.png"
-},
+  {
+    q: "Q2. Some animals like dogs live in ______ shelters.",
+    a: ["kennels"],
+    img: "../assets/images/Kennel.png",
+  },
 
-{
-q: "Q2. Some animals like dogs live in ______ shelters.",
-a: ["kennels"],
-img: "../assets/images/Kennel.png"
-},
+  {
+    q: "Q3. Aquatic animals live in ______.",
+    a: ["water"],
+    img: "../assets/images/AquaticTurtle2.png",
+  },
 
-{
-q: "Q3. Aquatic animals live in ______.",
-a: ["water"],
-img: "../assets/images/AquaticTurtle2.png"
-},
+  {
+    q: "Q4. Bears eat both ______ and ______.",
+    a: ["plants", "animals"],
+    img: "../assets/images/bear-img.png",
+  },
 
-{
-q: "Q4. Bears eat both ______ and ______.",
-a: ["plants","animals"],
-img: "../assets/images/bear-img.png"
-},
-
-{
-q: "Q5. The home of honeybees is called ______.",
-a: ["beehive"],
-img: "../assets/images/HoneyHome.png"
-}
-
+  {
+    q: "Q5. The home of honeybees is called ______.",
+    a: ["beehive"],
+    img: "../assets/images/HoneyHome.png",
+  },
 ];
 
 /* ================= VARIABLES ================= */
@@ -39,11 +37,11 @@ img: "../assets/images/HoneyHome.png"
 let index = 0;
 let score = 0;
 
-const answers = questions.map(q=>({
-used:[],
-correct:0,
-values:[],
-completed:false
+const answers = questions.map((q) => ({
+  used: [],
+  correct: 0,
+  values: [],
+  completed: false,
 }));
 
 /* ================= ELEMENTS ================= */
@@ -57,292 +55,260 @@ const scoreBox = document.getElementById("scoreBox");
 
 /* ================= SPEECH ================= */
 
-function speak(text){
+function speak(text) {
+  speechSynthesis.cancel();
 
-speechSynthesis.cancel();
+  const msg = new SpeechSynthesisUtterance(text);
 
-const msg = new SpeechSynthesisUtterance(text);
+  msg.lang = "en-UK";
+  msg.volume = 0.3;
+  msg.rate = 1;
+  msg.pitch = 1;
 
-msg.lang="en-UK";
-msg.volume=0.3;
-msg.rate=1;
-msg.pitch=1;
-
-speechSynthesis.speak(msg);
-
+  speechSynthesis.speak(msg);
 }
 
 /* ================= BUILD INPUTS ================= */
 
-function buildInputs(){
+function buildInputs() {
+  const q = questions[index];
+  const state = answers[index];
 
-const q = questions[index];
-const state = answers[index];
+  container.innerHTML = "";
 
-container.innerHTML="";
+  q.a.forEach((answer, i) => {
+    const box = document.createElement("div");
+    box.className = "input-box";
 
-q.a.forEach((answer,i)=>{
-
-const box = document.createElement("div");
-box.className="input-box";
-
-const input = document.createElement("input");
-input.placeholder="Type your answer...";
-// Prevent image/file drop
-input.addEventListener("dragover", (e) => {
-  e.preventDefault();
-});
-
-input.addEventListener("drop", (e) => {
-  e.preventDefault();
-});
-
-input.addEventListener("paste", (e) => {
-  const items = e.clipboardData.items;
-
-  for (let item of items) {
-    if (item.kind === "file") {
+    const input = document.createElement("input");
+    input.placeholder = "Type your answer...";
+    // Prevent image/file drop
+    input.addEventListener("dragover", (e) => {
       e.preventDefault();
-      return false;
+    });
+
+    input.addEventListener("drop", (e) => {
+      e.preventDefault();
+    });
+
+    input.addEventListener("paste", (e) => {
+      const items = e.clipboardData.items;
+
+      for (let item of items) {
+        if (item.kind === "file") {
+          e.preventDefault();
+          return false;
+        }
+      }
+    });
+    const btn = document.createElement("button");
+    btn.textContent = "Submit";
+    btn.className = "submit";
+    btn.disabled = true;
+
+    /* IF QUESTION ALREADY COMPLETED */
+
+    if (state.completed) {
+      input.value = state.values[i] || "";
+      input.disabled = true;
+      btn.style.display = "none";
+      box.classList.add("correct");
     }
+
+    /* enable button when typing */
+
+    input.addEventListener("input", () => {
+      // Allow only letters and spaces
+      input.value = input.value.replace(/[^a-zA-Z\s]/g, "");
+
+      // First letter capital, remaining small
+      input.value =
+        input.value.charAt(0).toUpperCase() +
+        input.value.slice(1).toLowerCase();
+
+      btn.disabled = input.value.trim() === "";
+    });
+
+    /* check answer */
+
+    btn.onclick = () => checkAnswer(input, btn, box, i);
+
+    box.append(input, btn);
+    container.appendChild(box);
+  });
+
+  /* enable next if completed */
+
+  if (state.completed) {
+    next.disabled = false;
+  } else {
+    next.disabled = true;
   }
-});
-const btn = document.createElement("button");
-btn.textContent="Submit";
-btn.className="submit";
-btn.disabled=true;
-
-/* IF QUESTION ALREADY COMPLETED */
-
-if(state.completed){
-
-input.value = state.values[i] || "";
-input.disabled = true;
-btn.style.display = "none";
-box.classList.add("correct");
-
-}
-
-/* enable button when typing */
-
-input.addEventListener("input",()=>{
-
-  // Allow only letters and spaces
-  input.value = input.value.replace(/[^a-zA-Z\s]/g, "");
-
-  // First letter capital, remaining small
-  input.value =
-    input.value.charAt(0).toUpperCase() +
-    input.value.slice(1).toLowerCase();
-
-  btn.disabled = input.value.trim() === "";
-
-});
-
-/* check answer */
-
-btn.onclick=()=>checkAnswer(input,btn,box,answer,i);
-
-box.append(input,btn);
-container.appendChild(box);
-
-});
-
-/* enable next if completed */
-
-if(state.completed){
-next.disabled=false;
-}else{
-next.disabled=true;
-}
-
 }
 
 /* ================= CHECK ANSWER ================= */
 
-function checkAnswer(input,btn,box,correctAnswer,i){
+function checkAnswer(input, btn, box, i) {
+  const guess = input.value.trim().toLowerCase();
 
-const guess=input.value.trim().toLowerCase();
+  const q = questions[index];
 
-const state = answers[index];
+  const state = answers[index];
 
-if(
-guess===correctAnswer.toLowerCase() &&
-!state.used.includes(guess)
-){
+  // already used
+  if (state.used.includes(guess)) {
+    showPopup(false);
 
-box.classList.add("correct");
+    speak("Already used");
 
-input.disabled=true;
-btn.style.display="none";
+    input.value = "";
 
-state.used.push(guess);
-state.values[i] =
-  guess.charAt(0).toUpperCase() +
-  guess.slice(1).toLowerCase();
-state.correct++;
+    return;
+  }
 
-showPopup(true);
-fireConfetti();
+  // check whether answer exists anywhere
+  if (q.a.map((a) => a.toLowerCase()).includes(guess)) {
+    box.classList.add("correct");
 
-speak("Correct");
+    input.disabled = true;
 
-/* IF ALL ANSWERS CORRECT */
+    btn.style.display = "none";
 
-if(state.correct===questions[index].a.length){
+    state.used.push(guess);
 
-state.completed=true;
+    // save value
+    state.values[i] = guess.charAt(0).toUpperCase() + guess.slice(1);
 
-next.disabled=false;
+    state.correct++;
 
-score++;
+    showPopup(true);
 
-updateScore();
+    fireConfetti();
 
-if(index===questions.length-1){
+    speak("Correct");
 
-setTimeout(showFinal,1600);
+    // all answers completed
+    if (state.correct === q.a.length) {
+      state.completed = true;
 
-}
+      next.disabled = false;
 
-}
+      score++;
 
-}else{
+      updateScore();
 
-input.value="";
-showPopup(false);
-speak("Wrong");
+      if (index === questions.length - 1) {
+        setTimeout(showFinal, 1600);
+      }
+    }
+  } else {
+    input.value = "";
 
-}
+    showPopup(false);
 
+    speak("Wrong");
+  }
 }
 
 /* ================= LOAD QUESTION ================= */
 
-function loadQuestion(){
+function loadQuestion() {
+  const q = questions[index];
 
-const q=questions[index];
+  qImgEl.src = q.img;
+  qTextEl.textContent = q.q;
 
-qImgEl.src=q.img;
-qTextEl.textContent=q.q;
+  buildInputs();
 
-buildInputs();
-
-prev.disabled=index===0;
-
+  prev.disabled = index === 0;
 }
 
 /* ================= SCORE ================= */
 
-function updateScore(){
-
-if(scoreBox){
-
-scoreBox.textContent="Score: "+score;
-
-}
-
+function updateScore() {
+  if (scoreBox) {
+    scoreBox.textContent = "Score: " + score;
+  }
 }
 
 /* ================= NAVIGATION ================= */
 
-prev.onclick=()=>{
+prev.onclick = () => {
+  if (index > 0) {
+    index--;
 
-if(index>0){
-
-index--;
-
-loadQuestion();
-
-}
-
+    loadQuestion();
+  }
 };
 
-next.onclick=()=>{
+next.onclick = () => {
+  if (index < questions.length - 1) {
+    index++;
 
-if(index<questions.length-1){
-
-index++;
-
-loadQuestion();
-
-}
-
+    loadQuestion();
+  }
 };
 
 /* ================= POPUP ================= */
 
-function showPopup(isCorrect){
+function showPopup(isCorrect) {
+  const popup = document.getElementById("answerPopup");
+  const icon = document.getElementById("popupIcon");
+  const title = document.getElementById("popupTitle");
+  const msg = document.getElementById("popupMsg");
 
-const popup=document.getElementById("answerPopup");
-const icon=document.getElementById("popupIcon");
-const title=document.getElementById("popupTitle");
-const msg=document.getElementById("popupMsg");
+  popup.className = "popup " + (isCorrect ? "correct" : "wrong");
 
-popup.className="popup "+(isCorrect?"correct":"wrong");
+  popup.style.display = "flex";
 
-popup.style.display="flex";
+  if (isCorrect) {
+    icon.textContent = "🎉";
+    title.textContent = "Correct!";
+    msg.textContent = "Well done!";
+    // speak("Correct");
+  } else {
+    icon.textContent = "😔";
+    title.textContent = "Wrong!";
+    msg.textContent = "Try again!";
+    // speak("Wrong");
+  }
 
-if(isCorrect){
-
-icon.textContent="🎉";
-title.textContent="Correct!";
-msg.textContent="Well done!";
-speak("Correct");
-
-}else{
-
-icon.textContent="😔";
-title.textContent="Wrong!";
-msg.textContent="Try again!";
-speak("Wrong");
-
-}
-
-setTimeout(()=>{
-popup.style.display="none";
-},1400);
-
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 1400);
 }
 
 /* ================= FINAL POPUP ================= */
 
-function showFinal(){
+function showFinal() {
+  const popup = document.getElementById("finalPopup");
 
-const popup=document.getElementById("finalPopup");
+  document.getElementById("finalScore").textContent =
+    `Your Score: ${score} / ${questions.length}`;
 
-document.getElementById("finalScore").textContent =
-`Your Score: ${score} / ${questions.length}`;
+  document.getElementById("stars").textContent = "⭐".repeat(score);
 
-document.getElementById("stars").textContent =
-"⭐".repeat(score);
+  popup.style.display = "flex";
 
-popup.style.display="flex";
-
-fireConfettif();
-
+  fireConfettif();
 }
 
 /* ================= CONFETTI ================= */
 
-function fireConfetti(){
-
-confetti({
-particleCount:40,
-spread:80,
-origin:{y:0.6}
-});
-
+function fireConfetti() {
+  confetti({
+    particleCount: 40,
+    spread: 80,
+    origin: { y: 0.6 },
+  });
 }
 
-function fireConfettif(){
-
-confetti({
-particleCount:100,
-spread:120,
-origin:{y:0.6}
-});
-
+function fireConfettif() {
+  confetti({
+    particleCount: 100,
+    spread: 120,
+    origin: { y: 0.6 },
+  });
 }
 
 /* ================= START ================= */

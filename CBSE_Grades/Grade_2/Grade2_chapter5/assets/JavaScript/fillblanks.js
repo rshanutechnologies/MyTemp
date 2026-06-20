@@ -20,7 +20,6 @@ function showPopup(isCorrect) {
 
     speak("Correct");
     fireConfetti();
-
   } else {
     icon.textContent = "😔";
     title.textContent = "Wrong!";
@@ -41,62 +40,57 @@ function showFinal() {
   document.getElementById("finalScore").textContent =
     `Score: ${score} / ${questions.length}`;
 
-  document.getElementById("stars").textContent =
-    "⭐".repeat(score);
+  document.getElementById("stars").textContent = "⭐".repeat(score);
 
   fireConfettif();
 }
 
-
 /* ================= QUESTIONS ================= */
 const questions = [
+  {
+    q: "Q1. Air helps to move the blades of a __________.",
+    a: "windmill",
+    img: "../assets/images/windmill1.png",
+  },
 
-{
-q: "Q1. Air helps to move the blades of a __________.",
-a: "windmill",
-img: "../assets/images/windmill1.png"
-},
+  {
+    q: "Q2. We get water in our houses through __________.",
+    a: ["tap", "taps"],
+    img: "../assets/images/water.png",
+  },
 
-{
-q: "Q2. We get water in our houses through __________.",
-a: "taps",
-img: "../assets/images/water.png"
-},
+  {
+    q: "Q3. Fast and strong wind is called  __________.",
+    a: "storm",
+    img: "../assets/images/wind.png",
+  },
 
-{
-q: "Q3. Fast and strong wind is called a  __________.",
-a: "storm",
-img: "../assets/images/wind.png"
-},
+  {
+    q: "Q4. Sometimes there are __________ germs in water.",
+    a: "tiny",
+    img: "../assets/images/harmfulGemesak.png",
+  },
 
-{
-q: "Q4. Sometimes there are __________ germs in water.",
-a: "tiny",
-img: "../assets/images/harmfulGemesak.png"
-},
-
-{
-q: "Q5. We need __________ to put off fire.",
-a: "water",
-img: "../assets/images/fire.png"
-}
-
+  {
+    q: "Q5. We need __________ to put off fire.",
+    a: "water",
+    img: "../assets/images/fire.png",
+  },
 ];
 
 let index = 0;
 let score = 0;
 const answers = Array(questions.length).fill(null);
 
-
 /* ================= ELEMENTS ================= */
 
-const qImgEl   = document.getElementById("qImg");
-const qTextEl  = document.getElementById("qText");
-const prev     = document.getElementById("prevBtn");
-const next     = document.getElementById("nextBtn");
+const qImgEl = document.getElementById("qImg");
+const qTextEl = document.getElementById("qText");
+const prev = document.getElementById("prevBtn");
+const next = document.getElementById("nextBtn");
 const scoreBox = document.getElementById("scoreBox");
 
-const input    = document.getElementById("answerInput");
+const input = document.getElementById("answerInput");
 /* ================= BLOCK IMAGE DROP & PASTE ================= */
 
 input.addEventListener("dragover", (e) => {
@@ -108,7 +102,6 @@ input.addEventListener("drop", (e) => {
 });
 
 input.addEventListener("paste", (e) => {
-
   const items = e.clipboardData?.items || [];
 
   for (let item of items) {
@@ -117,10 +110,8 @@ input.addEventListener("paste", (e) => {
       return false;
     }
   }
-
 });
-const submitBtn= document.getElementById("submitBtn");
-
+const submitBtn = document.getElementById("submitBtn");
 
 /* ================= FUNCTIONS ================= */
 
@@ -138,86 +129,87 @@ function speak(text) {
   speechSynthesis.speak(msg);
 }
 
-
 /* ================= CHECK ANSWER ================= */
 
-function checkAnswer(){
-
-  const correct = questions[index].a.toLowerCase();
+function checkAnswer() {
   const userAnswer = input.value.trim().toLowerCase();
 
-  if(userAnswer === correct){
+  const answer = questions[index].a;
 
+  let isCorrect = false;
+
+  // Multiple accepted answers
+  if (Array.isArray(answer)) {
+    isCorrect = answer.map((a) => a.toLowerCase()).includes(userAnswer);
+  }
+
+  // Single accepted answer
+  else {
+    isCorrect = userAnswer === answer.toLowerCase();
+  }
+
+  if (isCorrect) {
     score++;
+
     updateScore();
 
     showPopup(true);
 
-    answers[index] = correct;
+    answers[index] = userAnswer;
 
     input.disabled = true;
+
     submitBtn.disabled = true;
 
     next.disabled = false;
 
-    if(index === questions.length - 1){
-      setTimeout(showFinal,1600);
+    if (index === questions.length - 1) {
+      setTimeout(showFinal, 1600);
     }
-
-  }else{
-
+  } else {
     showPopup(false);
+
     input.value = "";
-
   }
-
 }
-
 
 /* ================= LOAD QUESTION ================= */
 
-function loadQuestion(){
-
+function loadQuestion() {
   const q = questions[index];
 
   qImgEl.src = q.img;
   qTextEl.textContent = q.q;
-input.value = "";
-input.disabled = false;
-submitBtn.style.display = "inline-block";
-submitBtn.disabled = true;
-
-  
+  input.value = "";
+  input.disabled = false;
+  submitBtn.style.display = "inline-block";
+  submitBtn.disabled = true;
 
   const alreadyCorrect = !!answers[index];
 
- if(alreadyCorrect){
+  if (alreadyCorrect) {
+    const displayAnswer = answers[index];
 
-  input.value =
-  q.a.charAt(0).toUpperCase() +
-  q.a.slice(1).toLowerCase();
-  input.disabled = true;
+    input.value =
+      displayAnswer.charAt(0).toUpperCase() +
+      displayAnswer.slice(1).toLowerCase();
+    input.disabled = true;
 
-  submitBtn.style.display = "none";   // hide submit button
-
-}
+    submitBtn.style.display = "none"; // hide submit button
+  }
   prev.disabled = index === 0;
   next.disabled = !alreadyCorrect;
-
 }
 
 input.addEventListener("input", () => {
-
   // Allow only letters and spaces
   input.value = input.value.replace(/[^a-zA-Z\s]/g, "");
 
   // First letter capital, remaining small
   input.value =
-    input.value.charAt(0).toUpperCase() +
-    input.value.slice(1).toLowerCase();
+    input.value.charAt(0).toUpperCase() + input.value.slice(1).toLowerCase();
 
   submitBtn.disabled = input.value.trim().length === 0;
-
 });
 
 /* ================= EVENTS ================= */
@@ -230,12 +222,11 @@ prev.onclick = () => {
 };
 
 next.onclick = () => {
-  if(index < questions.length - 1){
+  if (index < questions.length - 1) {
     index++;
     loadQuestion();
   }
 };
-
 
 /* ================= CONFETTI ================= */
 
@@ -243,7 +234,7 @@ function fireConfettif() {
   confetti({
     particleCount: 100,
     spread: 120,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
   });
 }
 
@@ -251,10 +242,9 @@ function fireConfetti() {
   confetti({
     particleCount: 40,
     spread: 80,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
   });
 }
-
 
 /* ================= START ================= */
 

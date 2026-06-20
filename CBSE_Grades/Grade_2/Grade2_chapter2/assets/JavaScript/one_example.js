@@ -73,13 +73,13 @@ const quizData = [
   {
     q: "Q3. An animal that lives in very cold places",
     a: "POLARBEAR",
-    img: "../assets/images/bear-img.png",
+    img: "../assets/images/snow.png",
   },
 
   {
     q: "Q4. An animal that lives in human-made shelters",
     a: "DOG",
-    img: "../assets/images/Kennel.png",
+    img: "../assets/images/Kennel1.png",
   },
 
   {

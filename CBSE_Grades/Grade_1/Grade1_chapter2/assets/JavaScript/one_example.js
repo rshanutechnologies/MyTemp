@@ -1,6 +1,6 @@
 const quiz = [
   {
-    q: "Q1. Give one example of a Big plant",
+    q: "Q1. Give one example of a big plant",
     img1: "../assets/images/mango1.png",
     t1: "Mango tree",
     img2: "../assets/images/rose1.png",
@@ -8,7 +8,7 @@ const quiz = [
     a: "mango tree",
   },
   {
-    q: "Q2. Give one example of a Small plant",
+    q: "Q2. Give one example of a small plant",
     img1: "../assets/images/neem-branch.png",
     t1: "Neem",
     img2: "../assets/images/mint-leaves.png",
@@ -16,7 +16,7 @@ const quiz = [
     a: "mint",
   },
   {
-    q: "Q3. Give one example of a Weak plant",
+    q: "Q3. Give one example of a weak plant",
     img1: "../assets/images/pumpkin1.png",
     t1: "Pumpkin",
     img2: "../assets/images/tomato.png",
@@ -24,7 +24,7 @@ const quiz = [
     a: "pumpkin",
   },
   {
-    q: "Q4. Give one example of a Cereal",
+    q: "Q4. Give one example of a cereal",
     img1: "../assets/images/rice1.png",
     t1: "Rice",
     img2: "../assets/images/tf-2.png",
@@ -32,7 +32,7 @@ const quiz = [
     a: "rice",
   },
   {
-    q: "Q5. Give one example of a Vegetable",
+    q: "Q5. Give one example of a vegetable",
     img1: "../assets/images/Carrot.png",
     t1: "Carrot",
     img2: "../assets/images/graps.png",
