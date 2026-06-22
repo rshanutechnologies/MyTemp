@@ -90,7 +90,7 @@
             cursor: pointer;
             transition: .2s;
     
-            background: linear-gradient(135deg, #eccb8d, #f1c481);
+            background: linear-gradient(135deg, #dc9223, #f1c481);
         }
 
         .letter-tile:hover {

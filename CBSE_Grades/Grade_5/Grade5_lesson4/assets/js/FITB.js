@@ -39,7 +39,7 @@ function showFinal() {
   finalPopup.style.display = "flex";
 
   document.getElementById("finalScore").textContent =
-    ` ${score} / ${questions.length}`;
+    `${score} / ${questions.length}`;
 
   document.getElementById("stars").textContent =
     "⭐".repeat(score);
