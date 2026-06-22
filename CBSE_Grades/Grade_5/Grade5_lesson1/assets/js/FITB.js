@@ -146,7 +146,7 @@ function check() {
         // speak("Congratulations. Your score is " + score + " out of five");
         prev.disabled = true;
         next.disabled = true;
-      }, 1000);
+      }, 1600);
     } else {
       nextBtn.disabled = false;
     }

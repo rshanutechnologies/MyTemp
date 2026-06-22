@@ -28,7 +28,7 @@ answer: "Lower jaw"
 },
 
 {
-title: "Q3. The first bone of the spine is the __________.",
+title: "Q3. The first bone of the spine is the _____.",
 image: "../assets/images/spine.png",
 options: [
 { text: "Rib cage", img: "../assets/images/ribcage.png" },
@@ -40,7 +40,7 @@ answer: "Atlas"
 },
 
 {
-title: "Q4. The floating ribs are found in the __________.",
+title: "Q4. The floating ribs are found in the ____.",
 image: "../assets/images/ribs.png",
 options: [
 { text: "Spine", img: "../assets/images/spine.png" },

@@ -93,6 +93,7 @@ slot.appendChild(cloneImg);
                 smallConfetti();
 
                 setTimeout(() => {
+                    fireConfettif();
                     scoreOverlay.style.visibility = "visible";
                 }, 800);
             }
@@ -161,12 +162,12 @@ function speak(text) {
 
 /* CONFETTI */
 
-function fireConfetti(){
-    confetti({
-        particleCount:120,
-        spread:100,
-        origin:{ y:0.6 }
-    });
+function fireConfettif() {
+  confetti({
+    particleCount: 100,
+    spread: 120,
+    origin: { y: 0.6 }
+  });
 }
 
 function smallConfetti(){

@@ -159,7 +159,7 @@ document.getElementById("score").innerText="Your Score "+score+"/5";
 launchConfetti(); 
 prev.disabled = true;
 next.disabled = true;
-},1000);
+},1600);
 
 }else{
 

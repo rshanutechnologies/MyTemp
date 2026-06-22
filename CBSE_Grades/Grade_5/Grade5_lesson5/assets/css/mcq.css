@@ -82,11 +82,11 @@ body {
     font-weight: 500;
     cursor: pointer;
       color: #2f4f4f;
-    border: 4px dotted #ffffff;
-    background: #f9fcffa2;
+     /* border: 4px dotted #ffffff; */
+    background: #f9fcff59; 
     /* box-shadow: 0 6px 0 rgba(0, 0, 0, .12); */
     transition: .25s;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .option:hover {

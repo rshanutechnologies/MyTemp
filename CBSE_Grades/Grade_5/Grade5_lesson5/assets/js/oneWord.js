@@ -27,7 +27,7 @@ const quizData = [
 {
     q: "Q5. The dome-shaped muscular part located below the lungs",
     a: "DIAPHRAGM",
-    img: "../assets/images/diaphragm.png"
+    img: "../assets/images/lungs1.png"
 }
 
 ];
@@ -167,29 +167,36 @@ function checkAnswer() {
 
     let guess = [...slots].map(s => s.textContent).join("");
 
-    if (guess === correctAnswer) {
+   if (guess === correctAnswer) {
 
-        quizScore++;
+    quizScore++;
 
-        showPopup(true);
-        speak("Correct");
-        smallConfetti();
-        answeredQuestions[currentQuestionIndex] = true;
-        storedAnswers[currentQuestionIndex] = guess;
+    showPopup(true);
+    speak("Correct");
+    smallConfetti();
 
-        slots.forEach(s => {
-            s.classList.add("locked");
-            s.classList.add("correct");
-            s.onclick = null;
-        });
+    answeredQuestions[currentQuestionIndex] = true;
+    storedAnswers[currentQuestionIndex] = guess;
 
-        nextButton.disabled = false;
+    slots.forEach(s => {
+        s.classList.add("locked");
+        s.classList.add("correct");
+        s.onclick = null;
+    });
 
-        if (currentQuestionIndex === quizData.length - 1) {
-            setTimeout(showFinal, 1600);
-        }
+    // Disable all letter tiles
+    letterTiles.forEach(tile => {
+        tile.classList.add("used");
+        tile.onclick = null;
+        tile.style.pointerEvents = "none";
+    });
 
-    } else {
+    nextButton.disabled = false;
+
+    if (currentQuestionIndex === quizData.length - 1) {
+        setTimeout(showFinal, 1600);
+    }
+} else {
 
         showPopup(false);
         speak("Wrong");
@@ -208,32 +215,26 @@ function checkAnswer() {
 
 }
 
-        function removeLastFilledSlot() {
+        function removeLetterFromSlot(slot) {
 
-            const slots = document.querySelectorAll(".answer-slot");
+    if (answeredQuestions[currentQuestionIndex]) return;
 
-            const filled = [...slots].filter(s => s.textContent);
+    if (slot.classList.contains("locked")) return;
 
-            if (filled.length === 0) return;
+    const letter = slot.textContent;
+    if (!letter) return;
 
-            const last = filled[filled.length - 1];
+    slot.textContent = "";
 
-            const letter = last.textContent;
+    const tile = letterTiles.find(t =>
+        t.textContent === letter && t.classList.contains("used")
+    );
 
-            last.textContent = "";
-
-            const tile = letterTiles.find(t => t.textContent === letter && t.classList.contains("used"));
-
-            if (tile) {
-
-                tile.classList.remove("used");
-                tile.onclick = () => insertLetterIntoSlot(tile, letter);
-
-            }
-
-           // submitButton.disabled = true;
-
-        }
+    if (tile) {
+        tile.classList.remove("used");
+        tile.onclick = () => insertLetterIntoSlot(tile, letter);
+    }
+}
 
 
         function showPopup(isCorrect) {
@@ -302,6 +303,7 @@ function checkAnswer() {
                 letterTiles.forEach(tile => {
                     tile.classList.add("used");
                     tile.onclick = null;
+                    tile.style.pointerEvents = "none";
                 });
 
                // submitButton.disabled = true;

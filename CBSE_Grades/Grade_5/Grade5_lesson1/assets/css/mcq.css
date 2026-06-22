@@ -103,7 +103,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: start;
-  padding-left:170px ;
+  padding-left:140px ;
   gap: 12px;
 }
 
@@ -127,6 +127,7 @@ body {
   align-items: center;
   height: 300px;
   margin-top: -40px;
+  margin-left: 20px;
 
 }
 
@@ -141,7 +142,7 @@ body {
 .nav {
   position: absolute;
   bottom: 0px;
-  left: 61%;
+  left: 60%;
   display: flex;
   gap: 40px;
 
@@ -450,6 +451,7 @@ display:none;
   .quiz {
     max-width: 950px;
     margin-left: 5%;
+   
   }
 
   .row {
@@ -535,6 +537,7 @@ display:none;
   .option {
     font-size: 18px;
     padding: 12px;
+     
   }
 
   .opt-img {
@@ -617,6 +620,7 @@ display:none;
   .option {
     font-size: 18px;
     padding: 12px;
+   
   }
 
   .opt-img {
@@ -924,7 +928,7 @@ display:none;
 
   .quiz {
     max-width: 1200px;
-    margin-left: 6%;
+    margin-left: 2%;
    
   }
 

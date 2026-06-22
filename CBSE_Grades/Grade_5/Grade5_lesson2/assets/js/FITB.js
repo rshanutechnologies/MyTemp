@@ -223,7 +223,7 @@ next.disabled=false;
 if(index===quiz.length-1){
 
 setTimeout(()=>{
-
+launchConfetti(); 
 document.getElementById("final").style.display="block";
 document.getElementById("score").innerText="Your Score "+score+"/5";
 prev.disabled = true;  
@@ -302,11 +302,11 @@ index++;
 load();
 
 }else{
-
+launchConfetti(); 
 document.getElementById("final").style.display="block";
 
 document.getElementById("score").innerText="Your Score "+score+"/5";
-launchConfetti(); 
+
 }
 
 }

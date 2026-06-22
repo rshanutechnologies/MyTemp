@@ -170,7 +170,8 @@ next.disabled=false;
 /* IF LAST QUESTION → SHOW FINAL POPUP */
 
 if(index===quiz.length-1){
-
+answered[index] = true;
+load();
 setTimeout(()=>{
 
 document.getElementById("final").style.display="block";

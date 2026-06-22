@@ -180,7 +180,7 @@ function check(i) {
         launchConfetti();
         prev.disabled = true;
         next.disabled = true;
-      }, 1000);
+      }, 1600);
     }
   } else {
     showPopup(false);

@@ -6,33 +6,33 @@ const quiz = [
     img: "../assets/images/FIB-1.png",
   },
 
-  {
-    q: "Q2. Plants that grow on land are called ______ plants.",
-    answer: "TERRESTRIAL",
-    letters: ["T", "E", "R", "R", "E", "S", "T", "R", "I", "A", "L", "O", "P"],
-    img: "../assets/images/FIB-2.png",
-  },
+  // {
+  //   q: "Q2. Plants that grow on land are called ______ plants.",
+  //   answer: "TERRESTRIAL",
+  //   letters: ["T", "E", "R", "R", "E", "S", "T", "R", "I", "A", "L", "O", "P"],
+  //   img: "../assets/images/FIB-2.png",
+  // },
 
-  {
-    q: "Q3. Plants that grow in water are called ______ plants.",
-    answer: "AQUATIC",
-    letters: ["A", "Q", "U", "A", "T", "I", "C", "L", "M", "N"],
-    img: "../assets/images/FIB-3.png",
-  },
+  // {
+  //   q: "Q3. Plants that grow in water are called ______ plants.",
+  //   answer: "AQUATIC",
+  //   letters: ["A", "Q", "U", "A", "T", "I", "C", "L", "M", "N"],
+  //   img: "../assets/images/FIB-3.png",
+  // },
 
-  {
-    q: "Q4. ______ trees do not shed their leaves throughout the year.",
-    answer: "EVERGREEN",
-    letters: ["E", "V", "E", "R", "G", "R", "E", "E", "N", "T", "S", "A"],
-    img: "../assets/images/FIB-4.png",
-  },
+  // {
+  //   q: "Q4. ______ trees do not shed their leaves throughout the year.",
+  //   answer: "EVERGREEN",
+  //   letters: ["E", "V", "E", "R", "G", "R", "E", "E", "N", "T", "S", "A"],
+  //   img: "../assets/images/FIB-4.png",
+  // },
 
-  {
-    q: "Q5. The leaves of submerged plants do not have ______.",
-    answer: "STOMATA",
-    letters: ["S", "T", "O", "M", "A", "T", "A", "L", "R", "P"],
-    img: "../assets/images/FIB-5.png",
-  },
+  // {
+  //   q: "Q5. The leaves of submerged plants do not have ______.",
+  //   answer: "STOMATA",
+  //   letters: ["S", "T", "O", "M", "A", "T", "A", "L", "R", "P"],
+  //   img: "../assets/images/FIB-5.png",
+  // },
 ];
 
 let index = 0;
@@ -303,7 +303,7 @@ next.onclick = function () {
     document.getElementById("final").style.display = "block";
 
     document.getElementById("score").innerText = "Your Score " + score + "/5";
-   
+    launchConfetti();
   }
 };
 

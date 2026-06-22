@@ -3,12 +3,12 @@ const quiz = [
     q: "Q1. In which of the following cases will the seeds germinate?",
     options: [
       { text: "Roasted seeds", img: "../assets/images/mcq1.png" },
-      { text: "Seeds in moist soil", img: "../assets/images/mcq34.png" },
+      { text: "Seeds in moist soil", img: "../assets/images/mcq32.png" },
       { text: "Seeds submerged in water", img: "../assets/images/mcq3.png" },
       { text: "Seeds kept in refrigerator", img: "../assets/images/mcq4.png" },
     ],
     answer: 1,
-    img: "../assets/images/seedGrow.png",
+    img: "../assets/images/mcq-1.png",
   },
 
   {
@@ -26,10 +26,10 @@ const quiz = [
   {
     q: "Q3. Unscramble the letters and find out the one that is part of a seed.",
     options: [
-      { text: "oncodltey", img: "../assets/images/mcq31.png" },
-      { text: "rmgeinoatin", img: "../assets/images/mcq32.png" },
-      { text: "oplungghi", img: "../assets/images/mcq33.png" },
-      { text: "deirsapsl", img: "../assets/images/mcq34.png" },
+      { text: "Oncodltey", img: "../assets/images/mcq31.png" },
+      { text: "Rmgeinoatin", img: "../assets/images/mcq32.png" },
+      { text: "Oplungghi", img: "../assets/images/mcq33.png" },
+      { text: "Deirsapsl", img: "../assets/images/mcq34.png" },
     ],
     answer: 0,
     img: "../assets/images/mcq_3.png",
