@@ -22,7 +22,7 @@ const questions = [
   {
     q: "Q5. The air that we breathe out also contains ______ and ______.",
     a: ["carbon dioxide", "water vapour"],
-    img: "../assets/images/exhalation1.png",
+    img: "../assets/images/breathing.png",
   },
 ];
 

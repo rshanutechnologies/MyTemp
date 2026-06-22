@@ -5,7 +5,7 @@ const quiz = [
       { text: "Stigma", img: "../assets/images/stigmaak.png" },
       { text: "Style", img: "../assets/images/MCQStyle.png" },
       { text: "Ovules", img: "../assets/images/ovulesap.png" },
-      { text: "Ovary", img: "../assets/images/ovaryak.png" },
+      { text: "Petals", img: "../assets/images/petals.png" },
     ],
     answer: 2,
     img: "../assets/images/MQ3.png",
@@ -48,7 +48,7 @@ const quiz = [
   },
 
   {
-    q: "Q5. Each carpel contains three parts - the ovary, the style and",
+    q: "Q5. Each carpel contains three parts - the ovary, the style and the___.",
     options: [
       { text: "Petal", img: "../assets/images/petals.png" },
       { text: "Pistil", img: "../assets/images/pistilak.png" },

@@ -9,7 +9,7 @@ const quizData = [
 {
     q: "Q2. The organ that pumps blood throughout the body",
     a: "HEART",
-    img: "../assets/images/heart.png"
+    img: "../assets/images/1.png"
 },
 
 {
@@ -21,7 +21,7 @@ const quizData = [
 {
     q: "Q4. The soft, spongy and delicate organs in our body",
     a: "LUNGS",
-    img: "../assets/images/Lungs.png"
+    img: "../assets/images/circulatory-system.png"
 },
 
 {

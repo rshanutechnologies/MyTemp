@@ -419,6 +419,7 @@ canvas {
  #question {
     font-size: 40px !important;
     line-height: 1.4;
+    margin-top: 20px;
   }
 
 }

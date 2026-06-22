@@ -425,7 +425,7 @@ iframe {
         });
         
         // optional: store current
-        sessionStorage.setItem("lastQuizTab", index);
+        // sessionStorage.setItem("lastQuizTab", index);
     }
     
     // attach event listeners to desktop tabs
@@ -517,19 +517,9 @@ iframe {
     });
     
     // set default active tab: if there is no active yet, set first active
-    function setInitialActive() {
-        const saved = sessionStorage.getItem("lastQuizTab");
-        let startIdx = 0;
-        if (saved !== null && !isNaN(parseInt(saved,10))) {
-            startIdx = parseInt(saved,10);
-            if (startIdx >=0 && startIdx < pages.length) {
-                openPage(startIdx);
-                return;
-            }
-        }
-        // otherwise default first tab
-        openPage(0);
-    }
+   function setInitialActive() {
+    openPage(0);
+}
     
     // minor fix: ensure both active classes init
     setInitialActive();

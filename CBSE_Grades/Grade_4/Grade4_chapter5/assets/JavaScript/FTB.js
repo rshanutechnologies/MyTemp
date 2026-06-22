@@ -6,12 +6,12 @@ const questions = [
   },
   {
     q: "Q2. There are _______ types of simple machines.",
-    a: ["6"],
+    a: ["6", "six"],
     img: "../assets/images/FTB_Q2.png",
   },
   {
     q: "Q3. A nail clipper is an example of a _________.",
-    a: ["compound machine"],
+    a: ["class 1 lever"],
     img: "../assets/images/FTB_Q3.png",
   },
   {
@@ -34,9 +34,9 @@ const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const inputsRow = document.getElementById("inputsContainer");
 
-const userAnswers = questions.map((q) => ({
+const userAnswers = questions.map(() => ({
   used: [],
-  boxes: q.a.map(() => ({ value: "", correct: false })),
+  boxes: [{ value: "", correct: false }],
 }));
 
 function speak(t) {
@@ -114,12 +114,17 @@ function checkAnswer(input, btn, box, i) {
 
   if (answers.includes(value) && !state.used.includes(value)) {
     box.classList.add("correct");
-    input.value = input.value.toUpperCase();
+    const formattedValue =
+      value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+
+    input.value = formattedValue;
     input.disabled = true;
     btn.disabled = true;
-
     state.used.push(value);
-    state.boxes[i] = { value, correct: true };
+    state.boxes[i] = {
+      value: formattedValue,
+      correct: true,
+    };
 
     speak("Correct");
     smallConfetti();

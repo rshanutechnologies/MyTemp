@@ -10,7 +10,7 @@ const quizData = [
     answered: false
   },
   {
-    q: "Q2.Stomata help in trapping the sunlight.",
+    q: "Q2. Stomata help in trapping the sunlight.",
     a: false,
     img: "../assets/images/TF2.png",
     answered: false
@@ -72,6 +72,7 @@ function showPopup(html, final = false){
     }
   }, 1000);
 }
+
 function launchConfetti() {
   confetti({
     particleCount: 120,
@@ -132,23 +133,24 @@ if(index === 4){ // Q5
   prevBtn.disabled = index === 0;
   nextBtn.disabled = !q.answered;
 }
+
 function launchFinalConfetti() {
-  const duration = 3000;
+  const duration = 1000;
   const end = Date.now() + duration;
 
   (function frame() {
     confetti({
-      particleCount: 8,
+      particleCount: 5,
       angle: 60,
-      spread: 70,
-      origin: { x: 0 }
+      spread: 50,
+      origin: { x: 0 },
     });
 
     confetti({
-      particleCount: 8,
+      particleCount: 5,
       angle: 120,
-      spread: 70,
-      origin: { x: 1 }
+      spread: 50,
+      origin: { x: 1 },
     });
 
     if (Date.now() < end) {

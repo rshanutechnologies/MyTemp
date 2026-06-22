@@ -65,6 +65,15 @@ function speak(t) {
  
   speechSynthesis.speak(msg);  
 }
+
+
+function launchConfetti() {
+  confetti({
+    particleCount: 120,
+    spread: 70,
+    origin: { y: 0.6 },
+  });
+}
 /* LOAD QUESTION */
 
 function load() {
@@ -227,13 +236,15 @@ function checkWord() {
       /* LAST QUESTION FINAL POPUP */
 
       if (index === quiz.length - 1) {
+        
         setTimeout(() => {
+          launchConfetti();
           document.getElementById("final").style.display = "block";
           document.getElementById("score").innerText =
             "Your Score " + score + "/5";
           prev.disabled = true;
 
-          launchConfetti();
+          
         }, 1000);
       }
     } else {
@@ -252,13 +263,7 @@ function checkWord() {
   }
 }
 
-function launchConfetti() {
-  confetti({
-    particleCount: 120,
-    spread: 70,
-    origin: { y: 0.6 },
-  });
-}
+
 
 /* POPUP */
 
@@ -298,7 +303,7 @@ next.onclick = function () {
     document.getElementById("final").style.display = "block";
 
     document.getElementById("score").innerText = "Your Score " + score + "/5";
-    launchConfetti();
+   
   }
 };
 

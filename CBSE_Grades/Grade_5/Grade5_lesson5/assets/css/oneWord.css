@@ -33,6 +33,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
+            text-align: start;
         }
 
         #questionImage {
@@ -409,11 +410,13 @@
           }
             .question-title {
                 font-size: 22px;
+                text-align: start;
             }
 
             #questionImage {
                 width: 150px;
                 height: 120px;
+                margin-top: 4%;
             }
 
             .answer-slots {
@@ -482,6 +485,7 @@
             #questionImage {
                 width: 150px;
                 height: 100px;
+                margin-top: 3%;
             }
 
             .answer-slots {
@@ -557,7 +561,7 @@ font-size:40px;
 #questionImage{
 width:300px;
 height:300px;
-margin-top: 5%;
+margin-top: 2%;
 }
 /*
 .answer-slot{

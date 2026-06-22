@@ -1,6 +1,6 @@
 let popupTimer = null;
 // ================= QUESTIONS =================
-const quizData= [
+const quizData = [
   {
     q: "Q1. The gaseous exchange takes place with the help of _____ in the leaves.",
     a: "stomata",
@@ -43,68 +43,91 @@ const prevBtn = document.getElementById("prev");
 const popup = document.getElementById("popup");
 const popupText = document.getElementById("popupText");
 
-
 input.addEventListener("input", () => {
   submitBtn.disabled = input.value.trim() === "";
 });
+
+function launchFinalConfetti() {
+  const duration = 1000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 50,
+      origin: { x: 0 },
+    });
+
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 50,
+      origin: { x: 1 },
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+}
+
 function launchConfetti() {
   confetti({
     particleCount: 120,
     spread: 90,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
   });
 }
-
 // function speak(t){
 //   speechSynthesis.cancel();
 //   speechSynthesis.speak(new SpeechSynthesisUtterance(t));
 // }
 
 function speak(t) {
-  speechSynthesis.cancel();   // optional but recommended
-
+  speechSynthesis.cancel(); // optional but recommended
 
   const msg = new SpeechSynthesisUtterance(t);
-    msg.lang = "en-UK";  
-  msg.volume = 0.25;   // 🔉 lower volume (0 to 1)
+  msg.lang = "en-UK";
+  msg.volume = 0.25; // 🔉 lower volume (0 to 1)
   msg.rate = 1;
   msg.pitch = 1;
 
   speechSynthesis.speak(msg);
 }
-function showPopup(html, final = false){
+function showPopup(html, final = false) {
   popup.style.display = "flex";
   popupText.className = final ? "popup-box popup-final" : "popup-box";
   popupText.innerHTML = html;
 
-  if(popupTimer) clearTimeout(popupTimer);
+  if (popupTimer) clearTimeout(popupTimer);
 
-  if(!final){
-    popupTimer = setTimeout(()=>{
+  if (!final) {
+    popupTimer = setTimeout(() => {
       popup.style.display = "none";
     }, 1000);
   }
 }
 
 /* 🔄 LOAD QUESTION */
-function loadQuestion(){
+function loadQuestion() {
   const q = quizData[current];
-    input.classList.remove("correct-answer");
+  input.classList.remove("correct-answer");
 
   qEl.textContent = q.q;
 
   /* ✅ SET IMAGE */
   imgEl.src = q.img;
   imgEl.style.display = "block";
-  if(answered[current]){
-  input.classList.add("correct-answer");
-} else {
-  input.classList.remove("correct-answer");
-}
+  if (answered[current]) {
+    input.classList.add("correct-answer");
+  } else {
+    input.classList.remove("correct-answer");
+  }
 
   input.value = userAnswers[current] || "";
   input.disabled = answered[current];
-submitBtn.disabled = answered[current] || input.value.trim() === "";
+  submitBtn.disabled = answered[current] || input.value.trim() === "";
 
   prevBtn.disabled = current === 0;
   nextBtn.disabled = !answered[current];
@@ -112,11 +135,10 @@ submitBtn.disabled = answered[current] || input.value.trim() === "";
 
 /* ✅ SUBMIT */
 submitBtn.onclick = () => {
-
   const userAnsRaw = input.value.trim();
 
   // 🚫 STEP 1: STOP if input is empty
-  if(userAnsRaw === ""){
+  if (userAnsRaw === "") {
     showPopup(`
       <div class="popup-wrong">
         <div>⚠️ Please enter an answer</div>
@@ -125,23 +147,23 @@ submitBtn.onclick = () => {
     return;
   }
 
-  if(answered[current]) return;
+  if (answered[current]) return;
 
   const userAns = userAnsRaw.toLowerCase();
   const correctAns = quizData[current].a.toLowerCase();
 
-  if(userAns === correctAns){
+  if (userAns === correctAns) {
     // find this block
-answered[current] = true;
-userAnswers[current] =
-  quizData[current].a.charAt(0).toUpperCase() +
-  quizData[current].a.slice(1);
+    answered[current] = true;
+    userAnswers[current] =
+      quizData[current].a.charAt(0).toUpperCase() +
+      quizData[current].a.slice(1);
 
-// add this line right after
-input.value = userAnswers[current];
+    // add this line right after
+    input.value = userAnswers[current];
     score++;
-     input.classList.add("correct-answer");
-     launchConfetti();
+    input.classList.add("correct-answer");
+    launchConfetti();
     speak("Correct");
 
     showPopup(`
@@ -154,31 +176,15 @@ input.value = userAnswers[current];
 
     nextBtn.disabled = false;
 
-    if(current === quizData.length - 1){
+    if (current === quizData.length - 1) {
       const duration = 3000;
-const end = Date.now() + duration;
+      const end = Date.now() + duration;
 
-(function frame() {
-  confetti({
-    particleCount: 6,
-    angle: 60,
-    spread: 55,
-    origin: { x: 0 }
-  });
-
-  confetti({
-    particleCount: 6,
-    angle: 120,
-    spread: 55,
-    origin: { x: 1 }
-  });
-
-  if (Date.now() < end) {
-    requestAnimationFrame(frame);
-  }
-})();
-      setTimeout(()=>{
-        showPopup(`
+      
+      setTimeout(() => {
+        launchFinalConfetti();
+        showPopup(
+          `
           <div class="popup-final-content">
             <div>🎉 Congratulations!</div>
             <span class="emoji">🏆</span>
@@ -195,13 +201,14 @@ const end = Date.now() + duration;
            
             </div>
           </div>
-        `, true);
+        `,
+          true,
+        );
 
         nextBtn.disabled = true;
         prevBtn.disabled = true;
       }, 800);
     }
-
   } else {
     speak("Wrong");
 

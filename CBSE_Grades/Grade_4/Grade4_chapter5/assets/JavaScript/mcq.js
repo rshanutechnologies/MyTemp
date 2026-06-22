@@ -32,7 +32,7 @@ const quizData = [
       "../assets/images/Pressure.png|Pressure",
       "../assets/images/Machine.png|Machine",
     ],
-    a: 3, // Energy
+    a: 1, // Energy
   },
 
   {
@@ -56,7 +56,7 @@ const quizData = [
       "../assets/images/Wheels.png|Wheels",
       "../assets/images/axles.png|Axles",
     ],
-    a: 2, // threads
+    a: 1, // threads
   },
 ];
 

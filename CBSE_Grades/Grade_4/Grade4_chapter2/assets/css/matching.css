@@ -79,7 +79,40 @@ object-fit:contain;
 margin-right:10px;
 flex-shrink:0;
 }
+.right .box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    position:relative;
+    padding:10px 10px 10px 10px;
+}
 
+.right img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+    margin-left: 30px;
+    flex-shrink:0;
+}
+
+.right .label{
+    flex:1;
+    text-align:left;
+}
+
+.right .dot{
+    position:absolute;
+    right:18px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+/* Left side text center */
+.left .box{
+    justify-content:start;
+    text-align:center;
+    padding-left:40px;
+}
 /* ── RIGHT column ── */
 .right{
 flex:0 0 360px;
@@ -110,7 +143,7 @@ flex-shrink:0;
 .right .label{
 display:block;
 width:100%;
-text-align:center;
+text-align:start;
 }
 
 /* ── shared dot style ── */
@@ -302,11 +335,13 @@ margin-left:auto;
         align-items: center;
         line-height: 1.2;
     }
-
+     .left .label{
+        padding-left: 20px;
+     }
     .left .box { padding: 6px 28px 6px 4px; gap: 3px; }
     .right .box { padding: 6px 6px 6px 18px; }
 
-    .left img { width: 40px; height: 40px; object-fit: contain; margin-right: 2px; }
+    .right img { width: 40px; height: 40px; object-fit: contain; margin-left: 2px; }
 
     .dot { width: 7px; height: 7px; }
     .left .dot { right: 6px; }
@@ -397,7 +432,7 @@ margin-left:auto;
 
     .container { padding: 5px;  }
 
-    .matching { gap: 10px; justify-content: center; margin-top: 80px !important; }
+    .matching { gap: 10px;  margin-top: 80px !important; }
 
     .left {
         flex: 0 0 calc(50% - 5px);
@@ -412,7 +447,9 @@ margin-left:auto;
         margin-left: 0;
         padding: 0;
     }
-
+  .left .label{
+    text-align: center;
+     }
     .left .box,
     .right .box {
         font-size: 14px;
@@ -420,14 +457,14 @@ margin-left:auto;
         height: 58px !important;
         width: 100%;
         display: flex;
-        align-items: center;
+      
         line-height: 1.1;
     }
-
-    .left .box { padding: 5px 24px 5px 3px; gap: 2px; }
+      
+    .left .box { padding: 4px 17px 4px 22px; gap: 2px; }
     .right .box { padding: 5px 5px 5px 16px; }
 
-    .left img { width: 34px; height: 34px; object-fit: contain; margin-right: 1px; }
+    /* .left img { width: 34px; height: 34px; object-fit: contain; margin-right: 1px; } */
 
     .dot { width: 6px; height: 6px; }
     .left .dot { right: 5px; }
@@ -506,7 +543,9 @@ margin-left:auto;
         flex:0 0 500px;
         width:500px;
     }
-
+.left .box{
+        padding-left: 80px !important;
+      }
     .left .box,
     .right .box,
     .box{
@@ -519,7 +558,7 @@ margin-left:auto;
         align-items:center;
     }
 
-    .left img{ width:65px; height:65px; }
+    .right img{ width:65px; height:65px; }
 
     .right{ padding:0; }
 
