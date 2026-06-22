@@ -37,7 +37,7 @@ display:flex;
 align-items:center;
 padding:10px 10px;
 border-radius:16px;
-font-size:24px;
+font-size:22px;
 font-weight:400;
 color:#2f4f4f;
 box-shadow:0 5px 10px rgba(0,0,0,0.25);
@@ -58,7 +58,7 @@ gap:12px;
 
 .left .box{
 position:relative;
-padding:10px 40px 20px 10px;
+padding:10px 10px 20px 10px;
 line-height:2;
 min-height:68px;
 height:72px;
@@ -122,7 +122,7 @@ background:#999;
 }
 
 .selected{
-outline:4px solid #ffffff;
+outline:4px solid #7bf363;
 }
 
 .matched{
@@ -510,7 +510,7 @@ margin-left:auto;
     .left .box,
     .right .box,
     .box{
-        font-size:35px;
+        font-size:32px;
         min-height:110px !important;
         height:110px !important;
         padding:14px;

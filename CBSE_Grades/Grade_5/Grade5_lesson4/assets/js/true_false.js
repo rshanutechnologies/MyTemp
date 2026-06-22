@@ -37,7 +37,7 @@ function showFinal() {
   finalPopup.style.display = "flex";
 
   document.getElementById("finalScore").textContent =
-  `Score: ${score} / ${quizData.length}`
+  ` ${score} / ${quizData.length}`
 
   document.getElementById("stars").textContent =
     "⭐".repeat(score);

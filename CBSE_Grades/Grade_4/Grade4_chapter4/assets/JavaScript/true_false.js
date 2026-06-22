@@ -51,18 +51,14 @@ function render() {
   falseBtn.classList.remove("correct");
 
   if (answers[index] !== null) {
-
     if (answers[index] === true) {
-
       // restart animation every time question is rendered
       trueBtn.classList.remove("correct");
       void trueBtn.offsetWidth;
       trueBtn.classList.add("correct");
 
       falseBtn.disabled = true;
-
     } else {
-
       // restart animation every time question is rendered
       falseBtn.classList.remove("correct");
       void falseBtn.offsetWidth;
@@ -72,11 +68,8 @@ function render() {
     }
 
     nextBtn.disabled = false;
-
   } else {
-
     nextBtn.disabled = true;
-
   }
 
   prevBtn.disabled = index === 0;
@@ -96,28 +89,7 @@ function smallConfetti() {
 }
 
 function bigConfetti() {
-  const duration = 500;
-  const end = Date.now() + duration;
-
-  (function frame() {
-    confetti({
-      particleCount: 7,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
-      zIndex: 5000  // ✅ FIX
-    });
-
-    confetti({
-      particleCount: 7,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 },
-      zIndex: 5000  // ✅ FIX
-    });
-
-    if (Date.now() < end) requestAnimationFrame(frame);
-  })();
+  confetti({ particleCount: 60, spread: 90, origin: { y: 0.7 } });
 }
 
 function answer(val) {
@@ -131,7 +103,7 @@ function answer(val) {
 
     // 🎉 CONFETTI FIX (ADDED)
     // if (typeof confetti !== "undefined") {
-      smallConfetti();
+    smallConfetti();
     //   setTimeout(() => bigConfetti(), 200);
     // }
 
@@ -156,7 +128,6 @@ function answer(val) {
         showFinal();
       }, 1600);
     }
-
   } else {
     speak("Wrong");
     showPopup(false);
@@ -214,5 +185,4 @@ function showFinal() {
   popup.style.display = "flex";
   bigConfetti();
 }
-
 render();

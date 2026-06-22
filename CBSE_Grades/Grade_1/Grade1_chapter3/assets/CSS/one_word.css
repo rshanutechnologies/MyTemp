@@ -423,6 +423,7 @@ body {
     body {
         padding: 25px 0 10px;
         align-items: flex-start;
+        margin-top: 20px;
     }
 
     .quiz-container {
@@ -431,6 +432,7 @@ body {
 
     .question-title {
         font-size: 22px;
+        margin-bottom: 10px;
     }
 
     #questionImage {

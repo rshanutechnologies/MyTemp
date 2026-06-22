@@ -385,7 +385,7 @@ canvas {
   /* Options */
   .options {
     gap: 10px;
-    margin-top: -20px; /* pull options closer to image */
+    margin-top: 5px; /* pull options closer to image */
   }
 
   /* Option image */
@@ -397,7 +397,7 @@ canvas {
   /* Option text */
   .option-text {
     width: 120px;
-    height: 35px;
+    /* height: 35px; */
     font-size: 14px;
     padding: 6px 10px;
     border-radius: 25px;

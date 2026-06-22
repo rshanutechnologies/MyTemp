@@ -513,7 +513,7 @@ button:disabled {
 
 
 /* Large Desktop */
-@media (min-width: 1600px) {
+@media (min-width: 1400px) {
 
   .quiz {
     width: 1300px;
@@ -540,6 +540,11 @@ button:disabled {
   #answerInput::placeholder {
     font-size: 28px;
   }
+
+  
+    #answerInput{
+      font-size: 30px !important;
+    }
 
   .nav {
     gap: 80px;

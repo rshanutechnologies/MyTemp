@@ -30,7 +30,8 @@ body {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: stretch;       /* equal height both columns */
+    align-items: stretch;
+    /* equal height both columns */
     gap: 100px;
 }
 
@@ -50,7 +51,8 @@ body {
     max-width: 420px;
     display: flex;
     flex-direction: column;
-    justify-content: center;    /* center items vertically */
+    justify-content: center;
+    /* center items vertically */
     gap: 14px;
     z-index: 1;
 }
@@ -60,7 +62,8 @@ body {
     width: 100%;
     /* flex: 1;                     */
     min-height: 72px;
-    height: auto;               /* text can wrap */
+    height: auto;
+    /* text can wrap */
 
     background: #ffefef;
     box-shadow: 0 5px 14px rgba(0, 0, 0, .08);
@@ -107,7 +110,6 @@ body {
     flex-shrink: 0;
 }
 
-/* FINAL POPUP */
 #finalPopup {
     position: fixed;
     inset: 0;
@@ -123,21 +125,59 @@ body {
     border-radius: 35px;
     text-align: center;
     width: 450px;
-    box-shadow: 0 20px 0 #ffd43b, 0 30px 50px rgba(0, 0, 0, .2);
+    animation: finalBounce 0.8s ease;
+    box-shadow: 0 20px 0 #ffd43b, 0 30px 50px rgba(0, 0, 0, 0.2);
 }
 
-.final-kid-box h2 { margin-bottom: 18px; }
-.final-kid-box p  { margin-bottom: 14px; }
-#stars            { margin: 14px 0 18px; }
+.final-kid-box h2 {
+    font-size: 2.2em;
+    font-family: "Livvic";
+    color: #2f9e44;
+    margin-bottom: 10px;
+}
+
+.final-kid-box p {
+    font-size: 1.3em;
+    font-family: "Livvic";
+    font-weight: 600;
+}
+
+#stars {
+    font-size: 2.3em;
+    margin: 12px 0;
+}
 
 .playAgain-btn {
-    background: #22c55e;
-    color: #ffffff;
+    background: #ffac30;
+    color: white;
     border: none;
-    padding: 12px 28px;
-    border-radius: 50px;
-    font-size: 18px;
+    padding: 14px 34px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: 400;
     cursor: pointer;
+    margin-top: 12px;
+}
+
+.playAgain-btn:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 #1c7ed6;
+}
+
+@keyframes finalBounce {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 
@@ -171,11 +211,11 @@ body {
         max-width: 38%;
         gap: 20px;
         justify-content: center;
-         padding:10px 0;
-    
+        padding: 10px 0;
+
     }
 
-    
+
 
 
 }
@@ -200,7 +240,8 @@ body {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: stretch;       /* equal height both columns */
+    align-items: stretch;
+    /* equal height both columns */
     gap: 100px;
 }
 
@@ -220,7 +261,8 @@ body {
     max-width: 420px;
     display: flex;
     flex-direction: column;
-    justify-content: center;    /* center items vertically */
+    justify-content: center;
+    /* center items vertically */
     gap: 14px;
     z-index: 1;
 }
@@ -230,7 +272,8 @@ body {
     width: 100%;
     /* flex: 1;                     */
     min-height: 72px;
-    height: auto;               /* text can wrap */
+    height: auto;
+    /* text can wrap */
 
     background: #ffefef;
     box-shadow: 0 5px 14px rgba(0, 0, 0, .08);
@@ -296,9 +339,17 @@ body {
     box-shadow: 0 20px 0 #ffd43b, 0 30px 50px rgba(0, 0, 0, .2);
 }
 
-.final-kid-box h2 { margin-bottom: 18px; }
-.final-kid-box p  { margin-bottom: 14px; }
-#stars            { margin: 14px 0 18px; }
+.final-kid-box h2 {
+    margin-bottom: 18px;
+}
+
+.final-kid-box p {
+    margin-bottom: 14px;
+}
+
+#stars {
+    margin: 14px 0 18px;
+}
 
 .playAgain-btn {
     background: #22c55e;
@@ -332,7 +383,8 @@ body {
 
     .game-container {
         gap: 40px;
-        align-items: center; /* both columns start at same line */
+        align-items: center;
+        /* both columns start at same line */
     }
 
     .column {
@@ -341,8 +393,9 @@ body {
         max-width: none;
         gap: 24px;
         padding: 10px 0;
-        justify-content: center; /* start from top */
-         align-items: center;
+        justify-content: center;
+        /* start from top */
+        align-items: center;
     }
 
     .item {
@@ -368,23 +421,25 @@ body {
         flex-shrink: 0;
     }
 }
- 
-    
 
 
- 
+
+
+
 
 @media (max-width: 480px) {
 
     .game-container {
         /* margin-top:10px; */
-        gap: 60px; /* middle gap */
+        gap: 60px;
+        /* middle gap */
         padding: 8px 6px;
         align-items: stretch;
-          margin-top: -60px;
+        margin-top: -60px;
         /* background-color: #ffa4a4; */
     }
-     #leftColumn .item {
+
+    #leftColumn .item {
         flex-direction: column;
         justify-content: center;
         text-align: center;
@@ -394,7 +449,8 @@ body {
     .column {
         flex: 1;
         width: 50%;
-        gap: 8px; /* same gap between boxes */
+        gap: 8px;
+        /* same gap between boxes */
         justify-content: center;
     }
 
@@ -413,7 +469,8 @@ body {
 
     /* LEFT COLUMN ONLY */
     .left-column .item {
-        flex-direction: column; /* image above text */
+        flex-direction: column;
+        /* image above text */
         justify-content: center;
         text-align: center;
     }
@@ -430,10 +487,34 @@ body {
         height: 28px;
         flex-shrink: 0;
     }
+
     #line-canvas line,
-#line-canvas path {
-    stroke-width: 1px !important;
-}
+    #line-canvas path {
+        stroke-width: 1px !important;
+    }
+
+    .final-kid-box {
+        width: 90%;
+        max-width: 300px;
+        padding: 20px;
+    }
+
+    .final-kid-box h2 {
+        font-size: 1.5em;
+    }
+
+    .final-kid-box p {
+        font-size: 1em;
+    }
+
+    #stars {
+        font-size: 1.6em;
+    }
+
+    .playAgain-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
 }
 
 
@@ -510,7 +591,7 @@ body {
     }
 }
 
- @media (min-width: 1600px) {
+@media (min-width: 1600px) {
 
     .main {
         width: min(1400px, 98vw);

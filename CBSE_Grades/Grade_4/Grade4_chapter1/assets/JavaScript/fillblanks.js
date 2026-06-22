@@ -17,7 +17,7 @@ const quizData= [
     img: "../assets/images/Reticulate.png",
   },
   {
-    q: "Q4. sunlight is trapped by the _____________________ present in the leaves.",
+    q: "Q4. Sunlight is trapped by the _____________________ present in the leaves.",
     a: "chlorophyll",
     img: "../assets/images/FIB4.png",
   },

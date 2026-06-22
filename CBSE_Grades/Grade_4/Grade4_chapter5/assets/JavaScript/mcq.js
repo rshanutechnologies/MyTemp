@@ -15,10 +15,10 @@ const quizData = [
     q: "Q2. A fishing rod is an example of ____________.",
     img: "../assets/images/MCQ-Q2.png",
     options: [
-      "../assets/images/Class 3 leverr.png|class 3 lever",
-      "../assets/images/Class 1 lever.png|class 1 lever",
-      "../assets/images/class 2 leverr.png|class 2 lever",
-      "../assets/images/Inclined plane.png|inclined plane",
+      "../assets/images/Class 1 lever.png|Class 1 lever",
+      "../assets/images/Class 3 leverr.png|Class 3 lever",
+      "../assets/images/class 2 leverr.png|Class 2 lever",
+      "../assets/images/Inclined plane.png|Inclined plane",
     ],
     a: 1, // class 3 lever
   },
@@ -27,10 +27,10 @@ const quizData = [
     q: "Q3. ____________ is the ability to do work.",
     img: "../assets/images/MCQ-Q3.png",
     options: [
+      "../assets/images/Forc.png|Force",
+      "../assets/images/Energy.png|Energy",
       "../assets/images/Pressure.png|Pressure",
       "../assets/images/Machine.png|Machine",
-      "../assets/images/Force.png|Force",
-      "../assets/images/Energy.png|Energy",
     ],
     a: 3, // Energy
   },
@@ -39,10 +39,10 @@ const quizData = [
     q: "Q4. A ____________ is an example of a complex machine.",
     img: "../assets/images/Complx-Machine.png",
     options: [
-      "../assets/images/Flag-Pole.png|flag pole",
-      "../assets/images/Bicycle.png|bicycle",
-      "../assets/images/Bolt&Nut.png|bolt and nut",
-      "../assets/images/chaku.png|knife",
+      "../assets/images/Flag-Pole.png|Flag pole",
+      "../assets/images/Bicycle.png|Bicycle",
+      "../assets/images/Bolt&Nut.png|Bolt and nut",
+      "../assets/images/chaku.png|Knife",
     ],
     a: 1, // bicycle
   },
@@ -51,10 +51,10 @@ const quizData = [
     q: "Q5. The grooves in a screw are called ____________.",
     img: "../assets/images/MCQ-Q5.png",
     options: [
-      "../assets/images/pitches.png|pitches",
-      "../assets/images/Wheels.png|wheels",
-      "../assets/images/Thread.png|threads",
-      "../assets/images/axles.png|axles",
+      "../assets/images/pitches.png|Pitches",
+      "../assets/images/Thread.png|Threads",
+      "../assets/images/Wheels.png|Wheels",
+      "../assets/images/axles.png|Axles",
     ],
     a: 2, // threads
   },

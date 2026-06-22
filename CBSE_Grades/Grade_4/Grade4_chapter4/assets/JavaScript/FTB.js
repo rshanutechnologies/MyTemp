@@ -12,7 +12,8 @@ const questions = [
   },
 
   {
-    question: "Q3. About ____________ % of the Earth’s surface is covered with water.",
+    question:
+      "Q3. About ____________ % of the Earth’s surface is covered with water.",
     answer: "71",
     image: "../assets/images/FB-3.png",
   },
@@ -81,28 +82,7 @@ function smallConfetti() {
 }
 
 function bigConfetti() {
-  const duration = 500;
-  const end = Date.now() + duration;
-
-  (function frame() {
-    confetti({
-      particleCount: 7,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
-      zIndex: 5000  // ✅ FIX
-    });
-
-    confetti({
-      particleCount: 7,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 },
-      zIndex: 5000  // ✅ FIX
-    });
-
-    if (Date.now() < end) requestAnimationFrame(frame);
-  })();
+  confetti({ particleCount: 60, spread: 90, origin: { y: 0.7 } });
 }
 
 submitBtn.onclick = function () {
@@ -120,7 +100,7 @@ submitBtn.onclick = function () {
 
     // 🎉 CONFETTI FIX (ADD THIS)
     // if (typeof confetti !== "undefined") {
-      smallConfetti();
+    smallConfetti();
     //   setTimeout(() => bigConfetti(), 200);
     // }
 
@@ -134,7 +114,6 @@ submitBtn.onclick = function () {
         showFinal();
       }, 1600);
     }
-
   } else {
     input.classList.remove("input-correct");
     input.classList.add("input-wrong");
@@ -194,11 +173,11 @@ function showFinal() {
 
   document.getElementById("finalScore").textContent =
     `Your Score: ${score} / ${questions.length}`;
+
   document.getElementById("stars").textContent = "⭐".repeat(score);
 
   popup.style.display = "flex";
   bigConfetti();
-
 }
 
 loadQuestion();

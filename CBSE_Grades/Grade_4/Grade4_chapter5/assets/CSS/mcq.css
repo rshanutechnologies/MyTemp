@@ -111,7 +111,7 @@ height: clamp(80px, 10vw, 150px);
 }
 
 .option-text {
-    width: clamp(140px, 16vw, 200px);
+    width: clamp(140px, 18vw, 200px);
 height: clamp(42px, 6vh, 62px);
 
     display: flex;
@@ -123,8 +123,8 @@ height: clamp(42px, 6vh, 62px);
 
     border-radius: 40px;
     font-size: 22px !important;
-    font-weight: 500;
-
+    font-weight: 400;
+    color: #2f4f4f;
     background: #e8f5ff;
     border: 3px solid #ffffff;
     box-shadow: 0 6px 0 rgba(0, 0, 0, .12);
@@ -353,7 +353,7 @@ height: clamp(42px, 6vh, 62px);
 
     .option-text {
         width: 120px;
-        height: 40px;
+        /* height: 40px; */
         font-size: 16px !important;
     }
 
@@ -380,7 +380,7 @@ height: clamp(42px, 6vh, 62px);
 
     .option-text {
         width: 150px;
-        height: 48px;
+        /* height: 48px; */
         font-size: 20px;
     }
 }

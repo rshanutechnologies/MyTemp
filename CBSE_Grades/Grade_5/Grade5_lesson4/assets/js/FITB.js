@@ -39,7 +39,7 @@ function showFinal() {
   finalPopup.style.display = "flex";
 
   document.getElementById("finalScore").textContent =
-    `Score: ${score} / ${questions.length}`;
+    ` ${score} / ${questions.length}`;
 
   document.getElementById("stars").textContent =
     "⭐".repeat(score);
@@ -72,7 +72,7 @@ img: "../assets/images/ligaments1.png"
 {
 q: "Q4. The __________ protects the vital internal organs of our body.",
 a: ["rib cage"],
-img: "../assets/images/ribcage.png"
+img: "../assets/images/ribs3.png"
 },
 
 {

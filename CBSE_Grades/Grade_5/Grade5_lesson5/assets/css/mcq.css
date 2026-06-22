@@ -194,12 +194,14 @@ body {
 
 .kid-card h3 {
     font-size: 2em;
+    font-weight: 400 !important;
     font-family: "Livvic";
     margin-bottom: 8px;
 }
 
 .kid-card p {
     font-size: 1.2em;
+    font-weight: 400 !important;
     font-family: "Livvic";
 }
 
@@ -210,11 +212,11 @@ body {
 }
 
 .kid-correct h3 {
-    color: #2f9e44;
+    color: #000000;
 }
 
 .kid-correct p {
-    color: #1c7c54;
+    color: #000000;
 }
 
 /* Wrong */
@@ -224,11 +226,11 @@ body {
 }
 
 .kid-wrong h3 {
-    color: #e03131;
+    color: #000000;
 }
 
 .kid-wrong p {
-    color: #c92a2a;
+    color: #000000;
 }
 
 /* Animations */

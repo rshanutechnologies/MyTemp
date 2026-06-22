@@ -31,36 +31,36 @@ answer: "Lower jaw"
 title: "Q3. The first bone of the spine is the __________.",
 image: "../assets/images/spine.png",
 options: [
-{ text: "rib cage", img: "../assets/images/ribcage.png" },
-{ text: "atlas", img: "../assets/images/atlas.png" },
-{ text: "sternum", img: "../assets/images/sternum.png" },
-{ text: "cranium", img: "../assets/images/cranium.png" }
+{ text: "Rib cage", img: "../assets/images/ribcage.png" },
+{ text: "Atlas", img: "../assets/images/atlas.png" },
+{ text: "Sternum", img: "../assets/images/sternum.png" },
+{ text: "Cranium", img: "../assets/images/cranium.png" }
 ],
-answer: "atlas"
+answer: "Atlas"
 },
 
 {
 title: "Q4. The floating ribs are found in the __________.",
 image: "../assets/images/ribs.png",
 options: [
-{ text: "spine", img: "../assets/images/spine.png" },
-{ text: "rib cage", img: "../assets/images/ribcage.png" },
-{ text: "limbs", img: "../assets/images/limbs.png" },
-{ text: "skull", img: "../assets/images/skull.png" }
+{ text: "Spine", img: "../assets/images/spine.png" },
+{ text: "Rib cage", img: "../assets/images/ribcage.png" },
+{ text: "Limbs", img: "../assets/images/limbs.png" },
+{ text: "Skull", img: "../assets/images/skull.png" }
 ],
-answer: "rib cage"
+answer: "Rib cage"
 },
 
 {
 title: "Q5. How many pairs of ribs are attached to the vertebral column?",
 image: "../assets/images/ribs1.png",
 options: [
-{ text: "12", img: "../assets/images/12.png" },
-{ text: "2", img: "../assets/images/2.png" },
-{ text: "10", img: "../assets/images/10.png" },
-{ text: "22", img: "../assets/images/22.png" }
+{ text: "Twelve", img: "../assets/images/12.png" },
+{ text: "Two", img: "../assets/images/2.png" },
+{ text: "Ten", img: "../assets/images/10.png" },
+{ text: "Twenty two", img: "../assets/images/22.png" }
 ],
-answer: "12"
+answer: "Twelve"
 }
 
 ];
@@ -221,7 +221,7 @@ function showFinal() {
   finalPopup.style.display = "flex";
 
   document.getElementById("finalScore").textContent =
-    `Score: ${score}/${quizData.length}`;
+    `${score}/${quizData.length}`;
 
   document.getElementById("stars").textContent =
     "⭐".repeat(score);

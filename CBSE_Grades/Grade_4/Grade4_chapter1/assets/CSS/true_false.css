@@ -82,7 +82,7 @@ body::before {
 
 .question-img {
   display: block;
-  margin: 0 auto 10px;
+  margin: 15px auto 15px;
   max-width: 320px;
   height: 200px;
   /* width: 200px; */
@@ -543,6 +543,7 @@ button:disabled {
   .question-img {
     max-width: 200px;
     height: 160px;
+    margin-block: 20px;
   }
 
   .tf-buttons {
@@ -597,7 +598,7 @@ button:disabled {
   .question-img {
     width: 280px;
     height: 200px;
-    margin: 0 auto 10px;
+    margin: 15px auto 15px;
   }
 
   .tf-buttons {
@@ -691,7 +692,7 @@ button:disabled {
   .question-img {
     width: 250px;
     height: 250px;
-    margin-bottom: 10px;       /* ← was 35px */
+    margin-block: 20px;       /* ← was 35px */
   }
 
   .tf-buttons {

@@ -85,7 +85,7 @@ slot.appendChild(cloneImg);
             if (score === targets.length) {
 
                 document.getElementById("scoreText").textContent =
-                    "score: " + score + " / " + targets.length;
+                    score + " / " + targets.length;
 
                 document.getElementById("stars").textContent =
                     "⭐".repeat(score);
@@ -99,7 +99,7 @@ slot.appendChild(cloneImg);
 
         } else {
 
-            speak("Try again");
+            speak("wrong");
 
             selectedItem.classList.add("shake");
 
@@ -145,11 +145,18 @@ function restart() {
 /* SPEAK */
 
 function speak(text) {
-    speechSynthesis.cancel();
-    speechSynthesis.speak(
-        new SpeechSynthesisUtterance(text)
-    );
+  speechSynthesis.cancel();
+ 
+  const msg = new SpeechSynthesisUtterance(text);  
+ 
+  msg.lang = "en-UK";  
+  msg.volume = 0.25;    
+  msg.rate = 1;
+  msg.pitch = 1;
+ 
+  speechSynthesis.speak(msg);  
 }
+
 
 
 /* CONFETTI */

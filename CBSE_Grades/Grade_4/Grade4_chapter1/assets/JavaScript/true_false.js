@@ -4,7 +4,7 @@ let finalPopupShown = false;
 
 const quizData = [
   {
-    q: "Q1. Plants move around in search of food",
+    q: "Q1. Plants move around in search of food.",
     a: false,
     img: "../assets/images/TF1.png",
     answered: false
@@ -16,7 +16,7 @@ const quizData = [
     answered: false
   },
   {
-    q: "Q3. The pitcher plant obtains all the required nutrients from insects",
+    q: "Q3. The pitcher plant obtains all the required nutrients from insects.",
     a: false,
     img: "../assets/images/TF3.png",
     answered: false
@@ -28,7 +28,7 @@ const quizData = [
     answered: false
   },
   {
-    q: "Q5. The transport of water, minerals and food takes place through the network of veins and the stem",
+    q: "Q5. The transport of water, minerals and food takes place through the network of veins and the stem.",
     a: true,
     img: "../assets/images/TF.png",
     answered: false

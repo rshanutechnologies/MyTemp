@@ -28,10 +28,10 @@ const quizData = [
   image: "../assets/images/leafakk.png",
   options:[
     // { text:"Cabbage", img:"../assets/images/Cabbageak.png"},
-    { text:" Oleander", img:"../assets/images/Oleander.png"},
+    { text:"Mango", img:"../assets/images/mangoleaf.png"},
    
     { text:"Mint", img:"../assets/images/MintPlant.png"},
-    { text:"Castor Plant", img:"../assets/images/CastorPlant.png"},
+    { text:"Banana", img:"../assets/images/bananaleaf.png"},
   ],
   answer: "Mint"
 },
@@ -42,8 +42,8 @@ const quizData = [
   options:[
     { text:"Carrot", img:"../assets/images/Carrotakc.png"},
     // { text:"Radish", img:"../assets/images/Radishakk.png"},
-      { text:" Monkshood", img:"../assets/images/Monkshood.png"},
-       { text:"Manchineel", img:"../assets/images/ManchineelTree.png"}
+      { text:"Mango", img:"../assets/images/mangoroot.png"},
+       { text:"Coconut", img:"../assets/images/coconuttree.png"}
     // { text:"Beetroot", img:"../assets/images/Radishak.png"}
   ],
   answer: "Carrot"

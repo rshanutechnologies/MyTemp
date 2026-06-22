@@ -53,24 +53,18 @@ let usedTiles = [];
 
 /* TEXT SPEECH */
 
-function speak(text) {
-  if (!window.speechSynthesis) return;
-
-  const msg = new SpeechSynthesisUtterance(text);
-
-  msg.lang = "en-US"; // better support
-  msg.volume = 1;
+function speak(t) {
+  speechSynthesis.cancel();
+ 
+  const msg = new SpeechSynthesisUtterance(t);  
+ 
+  msg.lang = "en-UK";  
+  msg.volume = 0.25;    
   msg.rate = 1;
   msg.pitch = 1;
-
-  // 🔥 important fix
-  speechSynthesis.cancel();
-
-  setTimeout(() => {
-    speechSynthesis.speak(msg);
-  }, 100);
+ 
+  speechSynthesis.speak(msg);  
 }
-
 /* LOAD QUESTION */
 
 function load() {

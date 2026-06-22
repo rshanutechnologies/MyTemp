@@ -109,40 +109,12 @@ function speak(t) {
   speechSynthesis.speak(msg);
 }
 
-/* 🔥 SMALL CONFETTI (for each correct match) */
 function smallConfetti() {
-  confetti({
-    particleCount: 50,
-    spread: 80,
-    origin: { y: 0.6 },
-    zIndex: 5000
-  });
+  confetti({ particleCount: 40, spread: 70, origin: { y: 0.7 } });
 }
 
-/* 🔥 BIG CONFETTI (already exists, unchanged) */
 function bigConfetti() {
-  const duration = 500;
-  const end = Date.now() + duration;
-
-  (function frame() {
-    confetti({
-      particleCount: 7,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
-      zIndex: 5000
-    });
-
-    confetti({
-      particleCount: 7,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 },
-      zIndex: 5000
-    });
-
-    if (Date.now() < end) requestAnimationFrame(frame);
-  })();
+  confetti({ particleCount: 60, spread: 90, origin: { y: 0.7 } });
 }
 
 function handleMatch(leftEl, rightEl) {
@@ -198,15 +170,17 @@ function drawCurve(el1, el2) {
   svg.appendChild(path);
 }
 
+
 function showFinal() {
+  const popup = document.getElementById("finalPopup");
+
   document.getElementById("finalScore").textContent =
     `Your Score: ${score} / ${leftData.length}`;
 
   document.getElementById("stars").textContent = "⭐".repeat(score);
 
-  document.getElementById("finalPopup").style.display = "flex";
-
-  // (optional) you can add bigConfetti(); here if needed
+  popup.style.display = "flex";
+  bigConfetti();
 }
 
 window.addEventListener("resize", () => {

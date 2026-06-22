@@ -225,7 +225,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: -1%;
+    margin-top: -25px;
 }
 
 .nav button {

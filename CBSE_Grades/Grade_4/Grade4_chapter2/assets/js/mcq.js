@@ -42,7 +42,7 @@ options:[
 {text:"Mango",img:"../assets/images/option4-1.png"},
 {text:"Cherry",img:"../assets/images/option4-2.png"},
 {text:"Water lily",img:"../assets/images/option4-3.png"},
-{text:"Tea",img:"../assets/images/option4-4.png"}
+{text:"Teak",img:"../assets/images/teak.png"}
 ],
 answer:2,
 img:"../assets/images/mcq-4.png"

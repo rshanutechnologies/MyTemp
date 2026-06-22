@@ -195,11 +195,13 @@
 
         .kid-card h3 {
             font-size: 2em;
+            font-weight: 500;
             margin-bottom: 8px;
         }
 
         .kid-card p {
             font-size: 1.2em;
+            font-weight: 500;
         }
 
         .kid-correct .kid-card {

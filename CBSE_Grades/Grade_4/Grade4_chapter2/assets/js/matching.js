@@ -124,7 +124,7 @@ C${x1 + offset},${y1}
 `;
 
   path.setAttribute("d", curve);
-  path.setAttribute("stroke", "#fff4f4");
+  path.setAttribute("stroke", "#86d35c");
   path.setAttribute("stroke-width", "4");
   path.setAttribute("fill", "none");
 
