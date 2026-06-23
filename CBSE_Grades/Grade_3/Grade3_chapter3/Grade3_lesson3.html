@@ -1,453 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Grade3_Lesson3</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Livvic';
-}
-
-body{
-height:100vh;
-background:#EAFBF0;
-display:flex;
-flex-direction:column;
-overflow:hidden;
-}
-
-/* TOP BAR */
-
-.header{
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-margin-top:15px;
-}
-.menu-btn{
-  position:fixed;
-  top:15px;
-  right:15px;
-
-   padding:6px 12px;
-
-  display:none; 
-  align-items:center;
-  justify-content:center;
-
- font-size:22px;
-background:#5AC85A;
-font-weight: 600;
-border:none;
-padding:6px 12px;
-  color:black;
-
-  border:none;
-  border-radius:18px;
-
-  cursor:pointer;
-  z-index:2000;
-
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-/* NAV */
-
-.top-nav{
-margin:10px auto;
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-justify-content:center;
-margin-top: -5px;
-}
-
-/* PLAYFUL BUTTON */
-
-.quiz-btn{
-position:relative;
-border:none;
-padding:12px 24px;
-border-radius:30px;
-font-size:18px;
-font-weight:600;
-display:flex;
-align-items:center;
-gap:10px;
-cursor:pointer;
-color:#444;
-transition:.25s;
-
-box-shadow:
-0 4px 0 rgba(0,0,0,0.15),
-0 10px 20px rgba(0,0,0,0.08);
-}
-
-/* DOT */
-
-
-/* ICON */
-
-.quiz-btn .icon{
-width:36px;
-height:36px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-background:white;
-font-size:18px;
-font-weight:600;
-box-shadow:0 3px 6px rgba(0,0,0,0.1);
-}
-
-/* COLORS */
-.quiz-btn{
-
-background:linear-gradient(
-135deg,
-#D6EEFF,
-#EAF7FF
-);
-
-border:3px solid #B8DEFF;
-
-position:relative;
-border-radius:30px;
-color:#444;
-
-box-shadow:
-0 4px 0 rgba(0,0,0,0.10),
-0 10px 20px rgba(0,0,0,0.06);
-
-transition:.25s;
-}
-
-/* HOVER */
-
-.quiz-btn:hover{
-transform:translateY(-3px) scale(1.04);
-box-shadow:
-0 6px 0 rgba(0,0,0,0.18),
-0 14px 24px rgba(0,0,0,0.12);
-}
-
-/* ACTIVE */
-
-.quiz-btn.active{
-outline:4px solid #ffffff;
-transform:scale(1.05);
-}
-.quiz-btn.active{
-
-background:linear-gradient(
-135deg,
-#E5D8FF,
-#F3ECFF
-);
-
-border:3px solid #C9B0FF;
-
-outline:4px solid #ffffff;
-
-transform:scale(1.05);
-}
-.quiz-btn{
-opacity:0.85;
-}
-
-.quiz-btn.active{
-opacity:1;
-}
-/* MAIN AREA */
-
-.main{
-flex:1;
-width:100%;
-}
-
-iframe{
-width:100%;
-height:100%;
-border:none;
-}
-
-/* OFFCANVAS */
-
-.sidebar{
-position:fixed;
-top:0;
-left:-260px;
-width:240px;
-height:100%;
-background:white;
-padding:20px;
-box-shadow:5px 0 20px rgba(0,0,0,0.15);
-transition:.3s;
-z-index:1000;
-
-display:flex;
-flex-direction:column;
-gap:20px;
-}
-
-.sidebar.show{
-left:0;
-}
-
-/* OVERLAY */
-
-.overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.25);
-display:none;
-z-index:999;
-}
-
-.overlay.show{
-display:block;
-}
-
-/* MOBILE */
-/* HIDE SIDEBAR ON DESKTOP */
-
-
-@media(max-width:1150px){
-.main{
-margin-top:60px;
-}
-.menu-btn{
-display:block;
-}
-
-.top-nav{
-display:none;
-}
-
-.quiz-btn{
-font-size:16px;
-padding:10px 16px;
-}
-
-}
-@media(max-width:1100px){
-
-.sidebar{
-left:auto !important;
-right:-260px !important;
-}
-
-.sidebar.show{
-left:auto !important;
-right:0 !important;
-}
-
-.menu-btn{
-display:flex;
-right:15px;
-top:15px;
-}
-.sidebar{
-    padding-top:90px;
-  }
-}
-/* ============================= */
-/* Desktop / Monitor (1025px–1440px) */
-/* ============================= */
-@media screen and (min-width:1025px) and (max-width:1440px){
-
-  .top-nav{
-    gap:24px;
-  
-  }
-
-  .quiz-btn{
-    font-size:18px;
-    padding:12px 25px;
-  }
-
-  .quiz-btn .icon{
-    width:35px;
-    height:35px;
-    font-size:20px;
-  }
-
-  .header{
-    margin-top:20px;
-  }
-
-  .main{
-    padding-top:10px;
-  }
-
-}
-
-/* ============================= */
-/* Large Monitors (1441px–1920px) */
-/* ============================= */
-@media screen and (min-width:1441px) and (max-width:1920px){
-
-  .top-nav{
-    gap:30px;
-  
-  }
-
-  .quiz-btn{
-    font-size:28px;          /* 🔥 bigger text */
-    padding:12px 25px;       /* 🔥 bigger button */
-    border-radius:36px;
-  }
-
-  .quiz-btn .icon{
-    width:48px;
-    height:48px;
-    font-size:22px;
-  }
-
-  .main{
-    padding-top:20px;
-  }
-
-}
-
-/* ============================= */
-/* Extra Large Screens / 4K (1921px+) */
-/* ============================= */
-@media screen and (min-width:1921px){
-
-  .top-nav{
-    gap:40px;
-    
-  }
-
-  .quiz-btn{
-    font-size:28px;
-    padding:22px 44px;
-    border-radius:40px;
-  }
-
-  .quiz-btn .icon{
-    width:55px;
-    height:55px;
-    font-size:26px;
-  }
-
-  .header{
-    margin-top:40px;
-  }
-
-  .main{
-    padding-top:25px;
-  }
-
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Grade3_Lesson3</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Livvic';
+    }
+
+    body {
+      height: 100vh;
+      background: #EAFBF0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* TOP BAR */
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-top: 15px;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+
+      padding: 6px 12px;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 22px;
+      background: #5AC85A;
+      font-weight: 600;
+      border: none;
+      padding: 6px 12px;
+      color: black;
+
+      border: none;
+      border-radius: 18px;
+
+      cursor: pointer;
+      z-index: 2000;
+
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* NAV */
+
+    .top-nav {
+      margin: 10px auto;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: -5px;
+    }
+
+    /* PLAYFUL BUTTON */
+
+    .quiz-btn {
+      position: relative;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      color: #444;
+      transition: .25s;
+
+      box-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.15),
+        0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* DOT */
+
+
+    /* ICON */
+
+    .quiz-btn .icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: white;
+      font-size: 18px;
+      font-weight: 600;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* COLORS */
+    .quiz-btn {
+
+      background: linear-gradient(135deg,
+          #D6EEFF,
+          #EAF7FF);
+
+      border: 3px solid #B8DEFF;
+
+      position: relative;
+      border-radius: 30px;
+      color: #444;
+
+      box-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.10),
+        0 10px 20px rgba(0, 0, 0, 0.06);
+
+      transition: .25s;
+    }
+
+    /* HOVER */
+
+    .quiz-btn:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow:
+        0 6px 0 rgba(0, 0, 0, 0.18),
+        0 14px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    /* ACTIVE */
+
+    .quiz-btn.active {
+      outline: 4px solid #ffffff;
+      transform: scale(1.05);
+    }
+
+    .quiz-btn.active {
+
+      background: linear-gradient(135deg,
+          #E5D8FF,
+          #F3ECFF);
+
+      border: 3px solid #C9B0FF;
+
+      outline: 4px solid #ffffff;
+
+      transform: scale(1.05);
+    }
+
+    .quiz-btn {
+      opacity: 0.85;
+    }
+
+    .quiz-btn.active {
+      opacity: 1;
+    }
+
+    /* MAIN AREA */
+
+    .main {
+      flex: 1;
+      width: 100%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* OFFCANVAS */
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 240px;
+      height: 100%;
+      background: white;
+      padding: 20px;
+      box-shadow: 5px 0 20px rgba(0, 0, 0, 0.15);
+      transition: .3s;
+      z-index: 1000;
+
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar.show {
+      left: 0;
+    }
+
+    /* OVERLAY */
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      display: none;
+      z-index: 999;
+    }
+
+    .overlay.show {
+      display: block;
+    }
+
+    /* MOBILE */
+    /* HIDE SIDEBAR ON DESKTOP */
+
+
+    @media(max-width:1150px) {
+      .main {
+        margin-top: 60px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .top-nav {
+        display: none;
+      }
+
+      .quiz-btn {
+        font-size: 16px;
+        padding: 10px 12px;
+      }
+
+    }
+
+    @media(max-width:1100px) {
+
+      .sidebar {
+        left: auto !important;
+        right: -260px !important;
+      }
+
+      .sidebar.show {
+        left: auto !important;
+        right: 0 !important;
+      }
+
+      .menu-btn {
+        display: flex;
+        right: 15px;
+        top: 15px;
+      }
+
+      .sidebar {
+        padding-top: 90px;
+      }
+    }
+
+    /* ============================= */
+    /* Desktop / Monitor (1025px–1440px) */
+    /* ============================= */
+    @media screen and (min-width:1025px) and (max-width:1440px) {
+
+      .top-nav {
+        gap: 24px;
+
+      }
+
+      .quiz-btn {
+        font-size: 18px;
+        padding: 12px 8px;
+      }
+
+      .quiz-btn .icon {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+      }
+
+      .header {
+        margin-top: 20px;
+      }
+
+      .main {
+        padding-top: 10px;
+      }
+
+    }
+
+    /* ============================= */
+    /* Large Monitors (1441px–1920px) */
+    /* ============================= */
+    @media screen and (min-width:1441px) and (max-width:1920px) {
+
+      .top-nav {
+        gap: 30px;
+
+      }
+
+      .quiz-btn {
+        font-size: 28px;
+        /* 🔥 bigger text */
+        padding: 12px 25px;
+        /* 🔥 bigger button */
+        border-radius: 36px;
+      }
+
+      .quiz-btn .icon {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+      }
+
+      .main {
+        padding-top: 20px;
+      }
+
+    }
+
+    /* ============================= */
+    /* Extra Large Screens / 4K (1921px+) */
+    /* ============================= */
+    @media screen and (min-width:1921px) {
+
+      .top-nav {
+        gap: 40px;
+
+      }
+
+      .quiz-btn {
+        font-size: 28px;
+        padding: 22px 44px;
+        border-radius: 40px;
+      }
+
+      .quiz-btn .icon {
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+      }
+
+      .header {
+        margin-top: 40px;
+      }
+
+      .main {
+        padding-top: 25px;
+      }
+
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="header">
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
-</div>
+  <div class="header">
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </div>
 
-<!-- OFFCANVAS SIDEBAR -->
+  <!-- OFFCANVAS SIDEBAR -->
 
-<div class="sidebar" id="sidebar">
+  <div class="sidebar" id="sidebar">
 
-<button class="quiz-btn mcq active" data-file="./exercise/mcq.html">
-<span class="icon">🧠</span>
-Choose Answer
-</button>
+    <button class="quiz-btn mcq active" data-file="./exercise/mcq.html">
+      <span class="icon">🧠</span>
+      Choose Option
+    </button>
 
-<button class="quiz-btn tf" data-file="./exercise/truefalse.html">
-<span class="icon">🤔</span>
-True / False
-</button>
+    <button class="quiz-btn tf" data-file="./exercise/truefalse.html">
+      <span class="icon">🤔</span>
+      True / False
+    </button>
 
-<button class="quiz-btn match" data-file="./exercise/matching.html">
-<span class="icon">🧩</span>
-Picture Match
-</button>
+    <button class="quiz-btn match" data-file="./exercise/matching.html">
+      <span class="icon">🧩</span>
+      Picture Match
+    </button>
 
-</div>
+  </div>
 
-<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+  <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-<!-- DESKTOP NAV -->
+  <!-- DESKTOP NAV -->
 
-<div class="top-nav">
+  <div class="top-nav">
 
-<button class="quiz-btn mcq active" data-file="./exercise/mcq.html">
-<span class="icon">🧠</span>
-Choose Option
-</button>
+    <button class="quiz-btn mcq active" data-file="./exercise/mcq.html">
+      <span class="icon">🧠</span>
+      Choose Option
+    </button>
 
-<button class="quiz-btn tf" data-file="./exercise/truefalse.html">
-<span class="icon">🤔</span>
-True / False
-</button>
+    <button class="quiz-btn tf" data-file="./exercise/truefalse.html">
+      <span class="icon">🤔</span>
+      True / False
+    </button>
 
-<button class="quiz-btn match" data-file="./exercise/matching.html">
-<span class="icon">🧩</span>
-Picture Match
-</button>
+    <button class="quiz-btn match" data-file="./exercise/matching.html">
+      <span class="icon">🧩</span>
+      Picture Match
+    </button>
 
-</div>
+  </div>
 
-<div class="main">
-<iframe id="quizFrame" src="./exercise/mcq.html"></iframe>
-</div>
+  <div class="main">
+    <iframe id="quizFrame" src="./exercise/mcq.html"></iframe>
+  </div>
 
-<script>
+  <script>
 
-const buttons=document.querySelectorAll(".quiz-btn")
-const frame=document.getElementById("quizFrame")
+    const buttons = document.querySelectorAll(".quiz-btn")
+    const frame = document.getElementById("quizFrame")
 
-buttons.forEach(btn=>{
+    buttons.forEach(btn => {
 
-btn.addEventListener("click",()=>{
+      btn.addEventListener("click", () => {
 
-buttons.forEach(b=>b.classList.remove("active"))
+        buttons.forEach(b => b.classList.remove("active"))
 
-btn.classList.add("active")
+        btn.classList.add("active")
 
-const file=btn.dataset.file
+        const file = btn.dataset.file
 
-if(file){
-frame.src=file
-}
+        if (file) {
+          frame.src = file
+        }
 
-toggleMenu()
+        toggleMenu()
 
-})
+      })
 
-})
+    })
 
-function toggleMenu(){
+    function toggleMenu() {
 
-if(window.innerWidth <= 1150){
+      if (window.innerWidth <= 1150) {
 
-document.getElementById("sidebar").classList.toggle("show")
-document.getElementById("overlay").classList.toggle("show")
+        document.getElementById("sidebar").classList.toggle("show")
+        document.getElementById("overlay").classList.toggle("show")
 
-}
+      }
 
-}
+    }
 
-</script>
+  </script>
 
 </body>
+
 </html>

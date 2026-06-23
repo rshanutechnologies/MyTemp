@@ -88,9 +88,18 @@ function load() {
 
 // ===== HANDLE INPUT =====
 function handleInput() {
-  const val = answerInput.value.trim();
+  let val = answerInput.value;
+
+  // First letter uppercase, everything else lowercase
+  if (val.length > 0) {
+    val = val.toLowerCase();
+    val = val.charAt(0).toUpperCase() + val.slice(1);
+  }
+
+  answerInput.value = val;
   userAnswers[index] = val;
-  checkBtn.disabled = answered[index] || val.length === 0;
+
+  checkBtn.disabled = answered[index] || val.trim().length === 0;
 }
 
 // ===== CONFETTI =====
@@ -135,13 +144,14 @@ function checkAnswer() {
   if (answered[index]) return;
 
   // Get user answer and capitalize first letter
-  let userAns = userAnswers[index].trim();
-  // Capitalize first letter of each word (for multi-word answers like "Pollen tube")
-  userAns = userAns.replace(/\b\w/g, (char) => char.toUpperCase());
+let userAns = userAnswers[index].trim().toLowerCase();
 
-  const correctAns = quiz[index].a.trim();
+// First letter uppercase, remaining letters lowercase
+userAns = userAns.charAt(0).toUpperCase() + userAns.slice(1);
 
-  if (userAns === correctAns) {
+const correctAns = quiz[index].a.trim();
+
+if (userAns === correctAns) {
     showPopup("correct");
     speak("Correct");
 
