@@ -4,84 +4,1399 @@
 <head>
     <meta charset="UTF-8">
     <title>Fill in the Blank</title>
-<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/FITB.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Livvic' !important;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            overflow: hidden;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .main {
+            position: relative;
+            width: 920px;
+            height: 580px;
+            border-radius: 22px;
+            margin-top: -15px;
+        }
+
+        .quiz-header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-bottom: -20px;
+            margin-top: 2%;
+            display: none;
+        }
+
+        .quiz-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 600;
+            color: #3c5e3c;
+        }
+
+        .quiz-subtitle {
+            font-size: 18px;
+            margin-top: 4px;
+            color: #5c7a5c;
+        }
+
+        .score-box {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: #e98a9d;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .question {
+            height: 120px;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: start;
+            padding-inline: 15px;
+            color: #0A3D62;
+        }
+
+        .left {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -5%;
+            margin-left: 30%;
+        }
+
+        .left img {
+            width: 160px;
+            height: 160px;
+            margin-block: 2%;
+        }
+
+        /* ===== INPUT BOX CONTAINER ===== */
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .input-row {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid #cfd8dc;
+            border-radius: 40px;
+            background: #fff;
+            padding: 5px;
+            transition: 0.3s ease;
+        }
+
+        .input-row:focus-within {
+            border: 2px solid transparent;
+            background:
+                linear-gradient(#fff, #fff) padding-box,
+                linear-gradient(120deg, #66bb6a) border-box;
+        }
+
+        .input-row input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 22px;
+            padding: 10px 15px;
+            background: transparent;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .input-row input:not(:placeholder-shown) {
+            color: #0A3D62;
+            font-weight: 400 !important;
+            font-size: 25px;
+        }
+
+        .input-row input:disabled {
+            background: #f0f0f0;
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .input-row button {
+            border: none;
+            background: #1fb36b;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .input-row button:hover:not(:disabled) {
+            background: #43a047;
+            transform: scale(1.05);
+        }
+
+        .input-row button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Hide second input by default */
+        #inputRow2 {
+            display: none;
+        }
+
+        .quiz-nav {
+            margin-top: auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 70%;
+            padding: 20px 0;
+            margin-bottom: 5%;
+        }
+
+        .prev {
+            background: #8fb1e8;
+        }
+        .next {
+            background: #f29b1d;
+        }
+        .prev,
+        .next {
+            width: 80px;
+            height: 80px;
+            border: none;
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            color: white;
+            margin-top: -40px;
+        }
+
+        button:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        /* ===== POPUPS ===== */
+        .popup {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 255, 240, 0.98) 100%);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            backdrop-filter: blur(15px);
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .popup-icon {
+            font-size: 70px;
+            margin-bottom: 10px;
+            animation: emojiBounce 0.8s ease;
+        }
+
+      @keyframes emojiBounce {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    25% {
+        transform: translateY(-25px) scale(1.2);
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.1);
+    }
+
+    75% {
+        transform: translateY(-20px) scale(1.15);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+        .popup-content h3 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .popup-content p {
+            font-size: 1.3em;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .popup.correct .popup-icon {
+            animation: iconBounce 0.8s ease, correctSpin 0.8s ease;
+        }
+        .popup.wrong .popup-icon {
+            animation: iconBounce 0.8s ease, wrongShake 0.6s ease;
+        }
+
+        .popup.correct .popup-content {
+            background-color: #ffffff;
+        }
+        .popup.wrong .popup-content {
+            background-color: #ffffff;
+        }
+
+        .popup.correct h3 {
+            color: #22543d;
+        }
+        .popup.wrong h3 {
+            color: #742a2a;
+        }
+        .popup.correct p {
+            color: #276749;
+        }
+        .popup.wrong p {
+            color: #9b2c2c;
+        }
+
+        @keyframes correctSpin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.3);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        @keyframes wrongShake {
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: rotate(-15deg);
+            }
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: rotate(15deg);
+            }
+        }
+
+        /* ===== FINAL POPUP ===== */
+        #finalPopup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .final-box {
+            background: #ffffff;
+            padding: 10px 10px;
+            border-radius: 30px;
+            text-align: center;
+            width: 400px;
+            color: white;
+            animation: popIn 0.4s ease;
+        }
+
+        .trophy {
+            font-size: 80px;
+            animation: trophyBounce 1s infinite alternate;
+        }
+
+        .final-title {
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1fb36b;
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: white;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: 400;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .star-row {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+      .playAgain-btn {
+    background: #ff9d2e;
+    border: none;
+    padding: 14px 30px;
+    font-size: 18px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.playAgain-btn:hover {
+    transform: scale(1.05);
+    background: #ff8c1a;
+}
+
+@keyframes trophyBounce {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-12px);
+    }
+}
+        /* ============================================================
+           RESPONSIVE MEDIA QUERIES
+           ============================================================ */
+
+        /* Mobile (≤480px) */
+        @media (max-width: 480px) {
+            .question {
+                font-size: 22px;
+            }
+            .input-container {
+                width: 95% !important;
+            }
+            .input-row {
+                height: 50px;
+            }
+            .input-row input {
+                font-size: 14px;
+            }
+            .input-row button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .quiz-nav {
+                gap: 35%;
+            }
+            .prev,
+            .next {
+                width: 70px;
+                height: 70px;
+                font-size: 15px;
+                margin-top: 30px;
+            }
+        }
+
+        /* 320px - 350px */
+        @media (min-width: 320px) and (max-width: 350px) {
+            body {
+                overflow: hidden;
+                margin-top: 15%;
+            }
+            .main {
+                width: 95%;
+                height: auto;
+                padding: 10px;
+            }
+            .question {
+                height: auto;
+                min-height: 80px;
+                font-size: 18px;
+            }
+            .left img {
+                width: 100px;
+                height: 100px;
+            }
+            .input-container {
+                width: 95% !important;
+                display: flex;
+                 flex-wrap: wrap;
+            }
+            .input-row {
+                height: 45px;
+            }
+            .input-row input {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
+            .input-row button {
+                font-size: 10px;
+                padding: 5px 10px;
+            }
+            .quiz-nav {
+                gap: 30%;
+            }
+            .prev,
+            .next {
+                width: 70px;
+                height: 70px;
+                font-size: 15px;
+                margin-top: 25px;
+            }
+            .popup-content {
+                padding: 15px;
+                width: 95%;
+            }
+            .popup-icon {
+                font-size: 40px;
+            }
+            .popup-title {
+                font-size: 18px;
+            }
+            .final-box {
+                width: 95%;
+                padding: 15px;
+            }
+            .score-circle {
+                width: 70px;
+                height: 70px;
+                font-size: 18px;
+            }
+        }
+
+        /* 351px - 430px */
+        @media (min-width: 351px) and (max-width: 430px) {
+            body {
+                overflow: hidden;
+                margin-top: 10%;
+            }
+            .main {
+                width: 95%;
+                height: auto;
+                padding: 12px;
+            }
+            .question {
+                height: auto;
+                font-size: 22px;
+            }
+            .left img {
+                width: 120px;
+                height: 120px;
+            }
+            .input-container {
+                width: 95% !important;
+                flex-wrap: wrap;
+            }
+            .input-row {
+                height: 50px;
+            }
+            .input-row input {
+                font-size: 15px;
+            }
+            .input-row button {
+                font-size: 13px;
+                padding: 8px 14px;
+            }
+            .quiz-nav {
+                gap: 38%;
+            }
+            .prev,
+            .next {
+                width: 70px;
+                height: 70px;
+                font-size: 15px;
+                margin-top: 30px;
+            }
+            .score-circle {
+                width: 80px;
+                height: 80px;
+                font-size: 22px;
+            }
+        }
+
+        /* 431px - 600px */
+        @media (min-width: 431px) and (max-width: 600px) {
+            body {
+                overflow: hidden;
+                margin-top: 8%;
+            }
+            .main {
+                width: 92%;
+                height: auto;
+                padding: 15px;
+            }
+            .question {
+                height: auto;
+                font-size: 22px;
+            }
+            .left img {
+                width: 140px;
+                height: 140px;
+            }
+            .input-container {
+                width: 90% !important;
+            }
+            .input-row {
+                height: 55px;
+            }
+            .input-row input {
+                font-size: 17px;
+            }
+            .input-row button {
+                font-size: 15px;
+                padding: 8px 16px;
+            }
+            .quiz-nav {
+                gap: 42%;
+            }
+            .prev,
+            .next {
+                width: 70px;
+                height: 70px;
+                font-size: 15px;
+                margin-top: 35px;
+            }
+            .score-circle {
+                width: 80px;
+                height: 80px;
+                font-size: 22px;
+            }
+        }
+
+        /* 601px - 768px */
+        @media (min-width: 601px) and (max-width: 768px) {
+            body {
+                overflow: auto;
+                margin-top: 6%;
+            }
+            .main {
+                width: 90%;
+                height: auto;
+                padding: 15px;
+            }
+            .question {
+                height: auto;
+                min-height: 100px;
+                font-size: 28px;
+            }
+            .left {
+                width: 100%;
+                margin: 0;
+            }
+            .left img {
+                width: 150px;
+                height: 150px;
+            }
+            .input-container {
+                width: 90% !important;
+            }
+            .input-row {
+                height: 55px;
+            }
+            .input-row input {
+                font-size: 18px;
+            }
+            .input-row button {
+                font-size: 15px;
+                padding: 8px 16px;
+            }
+            .quiz-nav {
+                gap: 50%;
+            }
+            .prev,
+            .next {
+                width: 75px;
+                height: 75px;
+                font-size: 16px;
+                margin-top: 40px;
+            }
+            .score-box {
+                display: none;
+            }
+            .quiz-title {
+                font-size: 22px;
+            }
+            .quiz-subtitle {
+                font-size: 14px;
+            }
+            .popup-content {
+                width: 90%;
+                padding: 25px;
+            }
+            .popup-title {
+                font-size: 22px;
+            }
+            .final-box {
+                width: 90%;
+                padding: 20px 15px;
+            }
+            .trophy {
+                font-size: 55px;
+            }
+            .final-title {
+                font-size: 22px;
+            }
+            .score-circle {
+                width: 80px;
+                height: 80px;
+                font-size: 22px;
+            }
+            .star-row {
+                font-size: 28px;
+            }
+        }
+
+        /* 769px - 900px */
+        @media (min-width: 769px) and (max-width: 900px) {
+            body {
+                overflow: auto;
+                margin-top: 5%;
+            }
+            .main {
+                width: 88%;
+                height: auto;
+                padding: 18px;
+            }
+            .left {
+                width: 100%;
+                margin: 0;
+                margin-top: -10px;
+            }
+            .left img {
+                width: 160px;
+                height: 160px;
+            }
+            .question {
+                height: auto;
+                font-size: 30px;
+            }
+            .input-container {
+                width: 80% !important;
+            }
+            .input-row {
+                height: 58px;
+            }
+            .input-row input {
+                font-size: 19px;
+            }
+            .prev,
+            .next {
+                width: 80px;
+                height: 80px;
+                font-size: 16px;
+            }
+        }
+
+        /* 901px - 1100px */
+        @media (min-width: 901px) and (max-width: 1100px) {
+            body {
+                margin-top: 0px;
+            }
+            .main {
+                width: 90%;
+                height: auto;
+                padding: 20px;
+            }
+            .left {
+                width: 100%;
+                margin: 0;
+                margin-top: -20px;
+            }
+            .left img {
+                width: 140px;
+                height: 140px;
+            }
+            .question {
+                height: auto;
+                margin-top: 20px;
+                min-height: 80px;
+                font-size: 30px;
+            }
+            .input-container {
+                width: 60% !important;
+               margin: auto;
+                
+            }
+            .input-row {
+                height: 60px;
+               
+            }
+            .input-row input {
+                font-size: 20px;
+            }
+            .quiz-nav {
+                gap: 60%;
+                margin-bottom: 3%;
+            }
+            .prev,
+            .next {
+                width: 80px;
+                height: 80px;
+                font-size: 16px;
+                margin-top: 20px;
+            }
+            .quiz-title {
+                font-size: 26px;
+            }
+            .score-box {
+                font-size: 16px;
+                padding: 6px 15px;
+                position: relative;
+                margin-top: 10px;
+            }
+            .popup-content {
+                width: 85%;
+                max-width: 380px;
+                padding: 30px;
+            }
+            .final-box {
+                width: 50%;
+                padding: 25px 20px;
+            }
+            .trophy {
+                font-size: 65px;
+            }
+            .final-title {
+                font-size: 26px;
+            }
+            .score-circle {
+                width: 90px;
+                height: 90px;
+                font-size: 26px;
+            }
+        }
+
+        /* 1101px - 1325px */
+        @media (min-width: 1101px) and (max-width: 1325px) {
+            .main {
+                width: 95%;
+                max-width: 1000px;
+                height: auto;
+            }
+           
+            .left img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .input-container {
+                width: 50%;
+            }
+            .prev,
+            .next {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        /* 1325px - 1440px */
+        @media screen and (min-width: 1325px) and (max-width: 1440px) {
+            .question {
+                width: 80%;
+                margin: auto;
+                font-size: 40px;
+            }
+            .left img {
+                width: 240px;
+                height: 240px;
+            }
+            .input-container {
+                width: 60%;
+            }
+            .input-row {
+                height: 65px;
+            }
+            .input-row input {
+                font-size: 22px;
+            }
+            .input-row button {
+                font-size: 18px;
+                padding: 12px 22px;
+            }
+            .nav {
+                left: 64%;
+                gap: 30px;
+            }
+            .nav button {
+                font-size: 20px;
+                padding: 20px 30px;
+            }
+        }
+
+        /* 1441px - 1540px */
+        @media (min-width: 1441px) and (max-width: 1540px) {
+            .main {
+                width: 1100px;
+                height: 650px;
+            }
+            .question {
+                width: 80%;
+                margin: auto;
+                font-size: 40px;
+            }
+            .left img {
+                width: 260px;
+                height: 260px;
+            }
+            .input-container {
+                width: 55%;
+            }
+            .input-row {
+                height: 70px;
+            }
+            .input-row input {
+                font-size: 24px;
+            }
+            .input-row button {
+                font-size: 20px;
+                padding: 12px 24px;
+            }
+            .quiz-nav {
+                gap: 70%;
+            }
+            .prev,
+            .next {
+                width: 90px;
+                height: 90px;
+                font-size: 20px;
+            }
+        }
+   
+        /* 1650px - 1920px */
+        @media screen and (min-width: 1541px) and (max-width: 1920px) {
+            .main {
+                width: min(1350px, 98vw);
+                height: 600px;
+            }
+            .question {
+                width: 80%;
+                margin: auto;
+                font-size: 40px;
+            }
+            .left img {
+                width: 280px;
+                height: 280px;
+                margin-top: 60px;
+            }
+            .input-container {
+                width: 45%;
+            }
+            .input-row {
+                height: 65px;
+            }
+            .input-row input {
+                font-size: 24px;
+            }
+            .input-row button {
+                font-size: 18px;
+                padding: 12px 22px;
+            }
+            .quiz-nav {
+                gap: 65%;
+            }
+            .prev,
+            .next {
+                width: 100px;
+                height: 100px;
+                font-size: 22px;
+            }
+        }
+
+        /* 1921px and above */
+        @media screen and (min-width: 1921px) {
+            .main {
+                width: 1250px;
+                height: 720px;
+            }
+            .question {
+                font-size: 40px;
+            }
+            .left img {
+                width: 320px;
+                height: 320px;
+            }
+            .input-container {
+                width: 55%;
+            }
+            .input-row {
+                height: 75px;
+            }
+            .input-row input {
+                font-size: 26px;
+            }
+            .input-row button {
+                font-size: 22px;
+                padding: 14px 28px;
+            }
+            .quiz-nav {
+                gap: 75%;
+            }
+            .prev,
+            .next {
+                width: 110px;
+                height: 110px;
+                font-size: 24px;
+            }
+        }
+
+        /* Mobile Responsive Fix for Input */
+        @media screen and (min-width: 220px) and (max-width: 700px) {
+            .main {
+                padding: 0px !important;
+            }
+            .input-container {
+                width: 100% !important;
+            }
+            .input-row input::placeholder {
+                font-size: 14px !important;
+            }
+            .input-row input:not(:placeholder-shown) {
+                color: #0A3D62;
+                font-weight: 400 !important;
+                font-size: 18px;
+            }
+            .input-row button {
+                font-size: 13px !important;
+                padding: 8px 14px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-   <div class="main">
+    <div class="main">
 
-    <!-- HEADER -->
-    <div class="quiz-header">
-        <div class="quiz-title">
-            🌱 Plant World Quiz
-            <div class="quiz-subtitle">
-                Let's explore the world of plants!
+        <!-- HEADER -->
+        <div class="quiz-header">
+            <div class="quiz-title">
+                🌱 Plant World Quiz
+                <div class="quiz-subtitle">
+                    Let's explore the world of plants!
+                </div>
+            </div>
+            <div class="score-box" id="scoreBox">
+                Score: 0
             </div>
         </div>
 
-        <div class="score-box" id="scoreBox">
-            Score: 0
-        </div>
-    </div>
-
-    <!-- CONTENT -->
-    <div class="question" id="qText"></div>
+        <!-- CONTENT -->
+        <div class="question" id="qText"></div>
         <div class="left">
             <img id="qImg" src="../assests/images/q5-img.png">
         </div>
-         <div class="input-box">
 
-<input id="answerInput1" type="text" placeholder="Type answer">
+        <!-- INPUT CONTAINER -->
+        <div class="input-container">
+            <!-- Row 1 -->
+            <div class="input-row" id="inputRow1">
+                <input id="answerInput1" type="text" placeholder="Type answer ">
+                <button id="submitBtn1">Submit</button>
+            </div>
+            <!-- Row 2 (hidden by default) -->
+            <div class="input-row" id="inputRow2">
+                <input id="answerInput2" type="text" placeholder="Type answer ">
+                <button id="submitBtn2">Submit</button>
+            </div>
+        </div>
 
-<input id="answerInput2" type="text" placeholder="Second answer"
-style="display:none;">
+        <nav class="quiz-nav">
+            <button class="prev" id="prevBtn">◀ Prev</button>
+            <button class="next" id="nextBtn">Next ▶</button>
+        </nav>
 
-<button id="submitBtn">Submit</button>
+        <!-- ANSWER POPUP -->
+        <div id="answerPopup" class="popup">
+            <div class="popup-content">
+                <div id="popupIcon" class="popup-icon"></div>
+                <div id="popupTitle" class="popup-title"></div>
+                <div id="popupMsg" class="popup-msg"></div>
+            </div>
+        </div>
 
-</div>
-    
-
-
-          <nav class="quiz-nav">
-    <button class="prev" id="prevBtn">◀ Prev</button>
-    <button class="next" id="nextBtn">Next  ▶</button>
-</nav>
-
- <!-- ANSWER POPUP -->
-<div id="answerPopup" class="popup">
-  <div class="popup-content">
-    <div id="popupIcon" class="popup-icon"></div>
-    <div id="popupTitle" class="popup-title"></div>
-    <div id="popupMsg" class="popup-msg"></div>
-  </div>
-</div>
-
-<!-- FINAL POPUP -->
-<div id="finalPopup" class="popup final-popup">
-  <div class="final-box">
-
-    <div class="trophy">🏆</div>
-
-    <h2 class="final-title">Quiz Completed!</h2>
-
-    <div class="score-circle">
-      <span id="finalScore"></span>
+        <!-- FINAL POPUP -->
+        <div id="finalPopup" class="popup final-popup">
+            <div class="final-box">
+                <div class="trophy">🏆</div>
+                <h2 class="final-title">Quiz Completed!</h2>
+                <div class="score-circle">
+                    <span id="finalScore"></span>
+                </div>
+                <div id="stars" class="star-row"></div>
+                <button class="playAgain-btn" onclick="location.reload()">
+                    🔁 Play Again
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div id="stars" class="star-row"></div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js">
+    </script>
+    <script>
+        // ================= POPUP SYSTEM =================
+        function showPopup(isCorrect) {
+            const popup = document.getElementById("answerPopup");
+            const icon = document.getElementById("popupIcon");
+            const title = document.getElementById("popupTitle");
+            const msg = document.getElementById("popupMsg");
 
-    <button class="playAgain-btn" onclick="location.reload()">
-      🔁 Play Again
-    </button>
+            icon.style.animation = "none";
+            void icon.offsetWidth;
+            icon.style.animation = "";
 
-  </div>
-</div>
+            popup.className = "popup " + (isCorrect ? "correct" : "wrong");
+            popup.style.display = "flex";
 
+            if (isCorrect) {
+                icon.textContent = "🥳";
+                title.textContent = "Correct!";
+                msg.textContent = "Well done!";
+                speak("Correct");
+                fireConfetti();
+            } else {
+                icon.textContent = "😒";
+                title.textContent = "Wrong!";
+                msg.textContent = "Try again!";
+                speak("Wrong");
+            }
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 1400);
+        }
 
-    <script src="../assets/js/FITB.js"></script>
+        function showFinal() {
+            const finalPopup = document.getElementById("finalPopup");
+            finalPopup.style.display = "flex";
+            document.getElementById("finalScore").textContent =
+                `${score} / ${questions.length}`;
+            document.getElementById("stars").textContent = "⭐".repeat(score);
+            fireConfettif();
+        }
+
+        // ================= QUESTIONS =================
+        const questions = [{
+            q: "Q1. The upper arm is made of a long bone called the __________.",
+            a: ["humerus"],
+            img: "../assets/images/humerus1.png",
+        },
+         {
+            q: "Q2. The lower leg has two bones namely __________ and __________.",
+            a: ["tibia", "fibula"],
+            img: "../assets/images/legbones.png",
+        }, {
+            q: "Q3. Bones are held together at joints by __________.",
+            a: ["ligaments"],
+            img: "../assets/images/ligaments1.png",
+        }, {
+            q: "Q4. The __________ protects the vital internal organs of our body.",
+            a: ["rib cage"],
+            img: "../assets/images/ribs3.png",
+        }, {
+            q: "Q5. The __________ acts as a cushion and reduces friction between the bones.",
+            a: ["cartilage"],
+            img: "../assets/images/Cartilage1.png",
+        },
+           ];
+
+        let index = 0;
+        let score = 0;
+        const answers = Array(questions.length).fill(null);
+
+        // ================= ELEMENTS =================
+        const qImgEl = document.getElementById("qImg");
+        const qTextEl = document.getElementById("qText");
+        const prev = document.getElementById("prevBtn");
+        const next = document.getElementById("nextBtn");
+        const scoreBox = document.getElementById("scoreBox");
+        const input1 = document.getElementById("answerInput1");
+        const input2 = document.getElementById("answerInput2");
+        const submitBtn1 = document.getElementById("submitBtn1");
+        const submitBtn2 = document.getElementById("submitBtn2");
+        const row1 = document.getElementById("inputRow1");
+        const row2 = document.getElementById("inputRow2");
+
+        // ================= BLOCK IMAGE DROP & PASTE =================
+        [input1, input2].forEach((inp) => {
+            inp.addEventListener("dragover", (e) => e.preventDefault());
+            inp.addEventListener("drop", (e) => e.preventDefault());
+            inp.addEventListener("paste", (e) => {
+                const items = e.clipboardData?.items || [];
+                for (let item of items) {
+                    if (item.kind === "file") {
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+            });
+        });
+
+        // ================= FUNCTIONS =================
+        function updateScore() {
+            scoreBox.textContent = "Score: " + score;
+        }
+
+        function speak(text) {
+            speechSynthesis.cancel();
+            const msg = new SpeechSynthesisUtterance(text);
+            msg.lang = "en-UK";
+            msg.volume = 0.3;
+            msg.rate = 1.0;
+            msg.pitch = 1.0;
+            speechSynthesis.speak(msg);
+        }
+
+        // ================= CHECK ANSWER =================
+        function checkAnswer(btnNumber) {
+            const correctAnswers = questions[index].a;
+            const user1 = input1.value.trim().toLowerCase();
+            const user2 = input2.value.trim().toLowerCase();
+
+            // ===== TWO ANSWERS QUESTION =====
+            if (correctAnswers.length === 2) {
+                let correct1 = false;
+                let correct2 = false;
+
+                if (user1 === correctAnswers[0] || user1 === correctAnswers[1]) {
+                    correct1 = true;
+                }
+                if (user2 === correctAnswers[0] || user2 === correctAnswers[1]) {
+                    correct2 = true;
+                }
+
+                // Check which button was clicked
+                if (btnNumber === 1) {
+                    // Check answer 1
+                    if (correct1) {
+                        // Answer 1 is correct, disable it
+                        input1.disabled = true;
+                        submitBtn1.disabled = true;
+                        // Check if answer 2 is already correct
+                        if (input2.disabled) {
+                            // Both correct!
+                            score++;
+                            updateScore();
+                            showPopup(true);
+                            answers[index] = [
+                                input1.value.charAt(0).toUpperCase() + input1.value.slice(1).toLowerCase(),
+                                input2.value.charAt(0).toUpperCase() + input2.value.slice(1).toLowerCase()
+                            ];
+                            submitBtn1.disabled = true;
+                            submitBtn2.disabled = true;
+                            next.disabled = false;
+                            if (index === questions.length - 1) {
+                                setTimeout(showFinal, 1600);
+                            }
+                        } else {
+                            // Only answer 1 correct, show popup but don't increment score
+                            showPopup(true);
+                            // Don't increment score yet, wait for both
+                        }
+                    } else {
+                        // Answer 1 is wrong
+                        showPopup(false);
+                        input1.value = "";
+                    }
+                } else if (btnNumber === 2) {
+                    // Check answer 2
+                    if (correct2) {
+                        input2.disabled = true;
+                        submitBtn2.disabled = true;
+                        if (input1.disabled) {
+                            // Both correct!
+                            score++;
+                            updateScore();
+                            showPopup(true);
+                            answers[index] = [
+                                input1.value.charAt(0).toUpperCase() + input1.value.slice(1).toLowerCase(),
+                                input2.value.charAt(0).toUpperCase() + input2.value.slice(1).toLowerCase()
+                            ];
+                            submitBtn1.disabled = true;
+                            submitBtn2.disabled = true;
+                            next.disabled = false;
+                            if (index === questions.length - 1) {
+                                setTimeout(showFinal, 1600);
+                            }
+                        } else {
+                            showPopup(true);
+                        }
+                    } else {
+                        showPopup(false);
+                        input2.value = "";
+                    }
+                }
+            } else {
+                // ===== SINGLE ANSWER QUESTION =====
+                if (user1 === correctAnswers[0] ||
+                    user1.replace(/\s+/g, "") === correctAnswers[0].replace(/\s+/g, "")) {
+                    score++;
+                    updateScore();
+                    showPopup(true);
+                    answers[index] = [
+                        input1.value.charAt(0).toUpperCase() + input1.value.slice(1).toLowerCase()
+                    ];
+                    input1.disabled = true;
+                    submitBtn1.disabled = true;
+                    next.disabled = false;
+                    if (index === questions.length - 1) {
+                        setTimeout(showFinal, 1600);
+                    }
+                } else {
+                    showPopup(false);
+                    input1.value = "";
+                }
+            }
+        }
+
+        // ================= LOAD QUESTION =================
+        function loadQuestion() {
+            const q = questions[index];
+            qImgEl.src = q.img;
+            qTextEl.textContent = q.q;
+            input1.value = "";
+            input2.value = "";
+            input1.disabled = false;
+            input2.disabled = false;
+            submitBtn1.disabled = true;
+            submitBtn2.disabled = true;
+
+            if (q.a.length === 2) {
+                row2.style.display = "flex";
+                input2.placeholder = "Type answer ";
+            } else {
+                row2.style.display = "none";
+            }
+
+            const alreadyCorrect = answers[index];
+            if (alreadyCorrect) {
+                input1.value = alreadyCorrect[0];
+                if (q.a.length === 2) {
+                    input2.value = alreadyCorrect[1] || "";
+                }
+                input1.disabled = true;
+                input2.disabled = true;
+                submitBtn1.disabled = true;
+                submitBtn2.disabled = true;
+            }
+
+            prev.disabled = index === 0;
+            next.disabled = !alreadyCorrect;
+
+            // Enable submit buttons when input has text
+            if (!alreadyCorrect) {
+                input1.addEventListener("input", function() {
+                    this.value = this.value.replace(/[^a-zA-Z\s]/g, "");
+                    this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1).toLowerCase();
+                    submitBtn1.disabled = this.value.trim().length === 0;
+                });
+                input2.addEventListener("input", function() {
+                    this.value = this.value.replace(/[^a-zA-Z\s]/g, "");
+                    this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1).toLowerCase();
+                    submitBtn2.disabled = this.value.trim().length === 0;
+                });
+            }
+        }
+
+        // ================= EVENTS =================
+        submitBtn1.onclick = () => checkAnswer(1);
+        submitBtn2.onclick = () => checkAnswer(2);
+
+        prev.onclick = () => {
+            index--;
+            loadQuestion();
+        };
+        next.onclick = () => {
+            if (index < questions.length - 1) {
+                index++;
+                loadQuestion();
+            }
+        };
+
+        // ================= CONFETTI =================
+        function fireConfettif() {
+            confetti({
+                particleCount: 100,
+                spread: 120,
+                origin: { y: 0.6 },
+            });
+        }
+
+        function fireConfetti() {
+            confetti({
+                particleCount: 40,
+                spread: 80,
+                origin: { y: 0.6 },
+            });
+        }
+
+        // ================= START =================
+        updateScore();
+        loadQuestion();
+    </script>
 </body>
 
 </html>

@@ -505,7 +505,7 @@ animation:shake .3s;
 
     .item, .target {
         width: 100%;
-        min-height: 70px;
+        min-height: 75px;
         padding: 8px 10px;
         font-size: 11px;
         gap: 6px;

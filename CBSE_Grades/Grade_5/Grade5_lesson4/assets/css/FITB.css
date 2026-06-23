@@ -247,32 +247,34 @@ button:disabled {
     }
 }
 
-.popup-icon {
-    font-size: 5.5em;
+/* .popup-icon {
+    font-size: 60px;
     margin-bottom: 10px;
-    animation: iconBounce 0.8s ease;
-    /* filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)); */
+    animation: emojiBounce 0.8s ease;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
 }
 
-@keyframes iconBounce {
-
-    0%,
-    100% {
-        transform: translateY(0) scale(1) rotate(0deg);
+@keyframes emojiBounce {
+    0% {
+        transform: translateY(0) scale(1);
     }
 
     25% {
-        transform: translateY(-30px) scale(1.2) rotate(-10deg);
+        transform: translateY(-25px) scale(1.2);
     }
 
     50% {
-        transform: translateY(-15px) scale(1.1) rotate(10deg);
+        transform: translateY(-10px) scale(1.1);
     }
 
     75% {
-        transform: translateY(-25px) scale(1.15) rotate(-5deg);
+        transform: translateY(-20px) scale(1.15);
     }
-}
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+} */
 
 .popup-content h3 {
     font-family: "Livvic";
@@ -947,13 +949,13 @@ button:disabled {
     }
 .quiz-nav {
 
-    gap: 42%;
+    gap: 35%;
 
     }
     .prev, .next {
-        width: 60px;
-        height: 60px;
-        font-size: 12px;
+        width: 70px;
+        height: 70px;
+        font-size: 15px;
         margin-top: 30px;
     }
 
@@ -1025,7 +1027,7 @@ button:disabled {
     .prev, .next {
         width: 70px;
         height: 70px;
-        font-size: 14px;
+        font-size: 15px;
         margin-top: 35px;
     }
      .score-circle {

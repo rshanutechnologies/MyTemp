@@ -1,106 +1,111 @@
+// ===== QUIZ DATA =====
 const quiz = [
   {
     q: "Q1. Petals enclose and protect the ______ parts of a flower.",
     a: "Reproductive",
-    options: ["Colorful", "Green", "Leaf", "Reproductive"],
     img: "../assets/images/reproductiveak.png",
   },
   {
     q: "Q2. Flowers in which both the male and the female parts are present on the same flower are called ______ flowers.",
     a: "Bisexual",
-    options: ["Bisexual", "Red", "Small", "Green"],
     img: "../assets/images/bisexualf.png",
   },
   {
     q: "Q3. The process by which the pollen grains get transferred from the anther to the stigma is called ______.",
     a: "Pollinating",
-    options: ["Running", "Jumping", "Pollinating", "Singing"],
     img: "../assets/images/pollinating.png",
   },
   {
     q: "Q4. When a pollen grain falls on the stigma of a flower, it develops a long tube called the ______.",
     a: "Pollen tube",
-    options: ["Pollen tube", "Flower stem", "Stick", "Magic"],
     img: "../assets/images/Pollengrains.png",
   },
   {
     q: "Q5. The fertilised female reproductive cell or zygote develops into a ______.",
     a: "Seed",
-    options: ["Cake", "Seed", "Ball", "Toy"],
     img: "../assets/images/seed.png",
   },
 ];
 
+// ===== STATE =====
 let index = 0;
 let score = 0;
 let answered = Array(quiz.length).fill(false);
 let userAnswers = Array(quiz.length).fill("");
 
+// DOM refs
 const questionEl = document.getElementById("question");
-const wordBank = document.getElementById("wordBank");
+const answerInput = document.getElementById("answerInput");
 const checkBtn = document.getElementById("checkBtn");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
 const questionImg = document.getElementById("questionImage");
 
+const blockedEvents = [
+  "dragstart",
+  "dragenter",
+  "dragover",
+  "dragleave",
+  "drop",
+];
+
+blockedEvents.forEach((event) => {
+  answerInput.addEventListener(event, (e) => {
+    e.preventDefault();
+  });
+});
+
+// ===== SPEECH (sounds) =====
 function speak(t) {
   speechSynthesis.cancel();
-
   const msg = new SpeechSynthesisUtterance(t);
-
   msg.lang = "en-UK";
   msg.volume = 0.25;
   msg.rate = 1;
   msg.pitch = 1;
-
   speechSynthesis.speak(msg);
 }
 
+// ===== LOAD QUESTION =====
 function load() {
   const current = quiz[index];
-
-  questionEl.innerHTML = current.q.replace(
-    "______",
-    `<span class="blank">${userAnswers[index] || "______"}</span>`,
-  );
-
-  wordBank.innerHTML = "";
-  current.options.forEach((word) => {
-    const btn = document.createElement("button");
-    btn.className = "word-btn";
-    btn.textContent = word;
-    if (answered[index]) {
-      btn.classList.add("used");
-      btn.disabled = true;
-    }
-    btn.onclick = () => selectWord(word);
-    wordBank.appendChild(btn);
-  });
+  questionEl.textContent = current.q;
 
   questionImg.src = current.img;
   questionImg.alt = "Illustration for question " + (index + 1);
 
-  checkBtn.disabled = !userAnswers[index] || answered[index];
+  answerInput.value = userAnswers[index] || "";
+  answerInput.disabled = answered[index];
+
+  const hasText = answerInput.value.trim().length > 0;
+  checkBtn.disabled = answered[index] || !hasText;
+
   prevBtn.disabled = index === 0;
   nextBtn.disabled = !answered[index];
+
+  if (!answered[index]) answerInput.focus();
 }
 
-function selectWord(word) {
-  if (answered[index]) return;
-  userAnswers[index] = word;
-  document.querySelector(".blank").textContent = word;
-  checkBtn.disabled = false;
+// ===== HANDLE INPUT =====
+function handleInput() {
+  const val = answerInput.value.trim();
+  userAnswers[index] = val;
+  checkBtn.disabled = answered[index] || val.length === 0;
 }
 
+// ===== CONFETTI =====
 function launchConfetti() {
-  confetti({
-    particleCount: 120,
-    spread: 70,
-    origin: { y: 0.6 },
-  });
+  if (typeof confetti === "function") {
+    confetti({
+      particleCount: 120,
+      spread: 70,
+      origin: { y: 0.6 },
+    });
+  }
 }
 
-function popup(type) {
+// ===== POPUP =====
+function showPopup(type) {
   const popup = document.getElementById("popup");
   const icon = document.getElementById("popupIcon");
   const title = document.getElementById("popupTitle");
@@ -125,53 +130,76 @@ function popup(type) {
   }, 1200);
 }
 
-function check() {
-  const value = userAnswers[index].toLowerCase().trim();
-  const correct = quiz[index].a.toLowerCase().trim();
+// ===== CHECK ANSWER =====
+function checkAnswer() {
+  if (answered[index]) return;
 
-  if (value === correct) {
-    popup("correct");
+  // Get user answer and capitalize first letter
+  let userAns = userAnswers[index].trim();
+  // Capitalize first letter of each word (for multi-word answers like "Pollen tube")
+  userAns = userAns.replace(/\b\w/g, (char) => char.toUpperCase());
+
+  const correctAns = quiz[index].a.trim();
+
+  if (userAns === correctAns) {
+    showPopup("correct");
     speak("Correct");
 
     answered[index] = true;
     score++;
-
+    answerInput.disabled = true;
     checkBtn.disabled = true;
+    nextBtn.disabled = false;
 
     if (index === quiz.length - 1) {
       setTimeout(() => {
         document.getElementById("final").style.display = "block";
         document.getElementById("score").textContent = `Your Score: ${score}/5`;
         launchConfetti();
-        // speak("Congratulations. Your score is " + score + " out of five");
-        prev.disabled = true;
-        next.disabled = true;
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
       }, 1600);
-    } else {
-      nextBtn.disabled = false;
     }
   } else {
-    popup("wrong");
+    showPopup("wrong");
     speak("wrong");
   }
 }
 
-nextBtn.onclick = () => {
+// ===== NAVIGATION =====
+function goNext() {
   if (index < quiz.length - 1) {
     index++;
     load();
   }
-};
+}
 
-prevBtn.onclick = () => {
+function goPrev() {
   if (index > 0) {
     index--;
     load();
   }
-};
+}
 
+// ===== PLAY AGAIN =====
 function playAgain() {
   location.reload();
 }
 
+// ===== EVENT LISTENERS =====
+answerInput.addEventListener("input", handleInput);
+checkBtn.addEventListener("click", checkAnswer);
+nextBtn.addEventListener("click", goNext);
+prevBtn.addEventListener("click", goPrev);
+
+answerInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !checkBtn.disabled) {
+    checkAnswer();
+  }
+});
+
+// ===== INIT =====
 load();
+
+// Expose for onclick
+window.playAgain = playAgain;

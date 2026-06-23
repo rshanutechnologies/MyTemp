@@ -822,7 +822,7 @@ body::before {
 
 
 /* ================= 1025px — 1440px ================= */
-@media screen and (min-width:1225px) and (max-width:1640px) {
+@media screen and (min-width:1325px) and (max-width:1640px) {
 
     /* .template{
 width:min(1200px,98vw);
