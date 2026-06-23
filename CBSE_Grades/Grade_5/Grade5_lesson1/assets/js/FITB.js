@@ -163,6 +163,8 @@ function checkAnswer() {
   } else {
     showPopup("wrong");
     speak("wrong");
+    answerInput.value="";
+    checkBtn.disabled=true;
   }
 }
 
