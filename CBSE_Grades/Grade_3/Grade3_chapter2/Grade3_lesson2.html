@@ -275,6 +275,12 @@ border:2px solid rgba(0,0,0,0.08);
 box-shadow:0 3px 6px rgba(0,0,0,0.15);
 
 transition:.25s;
+
+overflow:hidden;
+flex-shrink:0;
+}
+.label{
+white-space:nowrap;
 }
 /* ICON COLORS */
 .icon-mcq{
@@ -514,19 +520,19 @@ flex-shrink:0;
 <div class="menu">
 
 <button class="mcq active" data-file="./exercise/mcq.html">
-<span class="icon icon-mcq">📝</span> MCQ
+<span class="icon icon-mcq">📝</span><span class="label">MCQ</span>
 </button>
 
 <button class="fill" data-file="./exercise/fillintheblanks.html">
-<span class="icon icon-fill">✏️</span> Fill in the Blanks
+<span class="icon icon-fill">✏️</span><span class="label">Fill in the Blanks</span>
 </button>
 
 <button class="tf" data-file="./exercise/truefalse.html">
-<span class="icon icon-tf">⚖️</span> True / False
+<span class="icon icon-tf">⚖️</span><span class="label">True / False</span>
 </button>
 
 <button class="match" data-file="./exercise/matching.html">
-<span class="icon icon-match">🧩</span> Matching
+<span class="icon icon-match">🧩</span><span class="label">Matching</span>
 </button>
 
 </div>

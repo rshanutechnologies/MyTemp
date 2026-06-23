@@ -425,12 +425,15 @@
         height: auto;
         overflow-y: auto;
         overflow-x: hidden;
+        display: flex;
+        align-items: center;
       }
       .quiz {
         width: 100%;
         max-width: 100%;
         padding: 10px;
         gap: 10px;
+        margin-top: 50px;
       }
       .main-content {
         flex-direction: column;
@@ -499,6 +502,8 @@
         font-size: 16px;
       }
     }
+
+
 
     @media screen and (min-width: 200px) and (max-width: 320px) {
       html,

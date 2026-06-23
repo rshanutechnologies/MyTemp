@@ -906,7 +906,15 @@ button:disabled {
 }
     
 } 
+@media screen and (min-width:900px) and (max-width:1300px) {
+ .nav button {
+        font-size: 24px;
+        padding: 14px 40px;
+        width: 170px !important;
 
+        
+    }
+}
 /* ================= 1025px — 1440px ================= */
 @media screen and (min-width:1325px) and (max-width:1440px) {
 

@@ -518,11 +518,16 @@ button:disabled {
 
 /* ===== MOBILE (max-width: 480px) ===== */
 @media (max-width: 480px) {
+  body{
+    display: flex;
+    align-items: flex-start;
+  }
   .quiz {
     height: auto;
 
     width: 95%;
     padding: 20px;
+    margin-top: 40px;
     justify-content: flex-start;
   }
 
