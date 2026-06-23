@@ -83,7 +83,9 @@ function load() {
   prevBtn.disabled = index === 0;
   nextBtn.disabled = !answered[index];
 
-  if (!answered[index]) answerInput.focus();
+if (!answered[index]) {
+  answerInput.blur();
+}
 }
 
 // ===== HANDLE INPUT =====

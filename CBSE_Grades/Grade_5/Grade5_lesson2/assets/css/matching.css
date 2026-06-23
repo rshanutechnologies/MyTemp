@@ -279,7 +279,6 @@ svg {
     justify-content: center;
     font-size: 14px;
     margin-left: auto;
-    flex-shrink: 0;
 }
 
 /* MOBILE */

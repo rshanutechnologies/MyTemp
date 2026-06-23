@@ -329,6 +329,10 @@ body::before {
   margin-top: 10px;
   cursor: pointer;
 }
+.playAgain-btn:hover {
+   background:#ff8c1a;
+    transform: scale(1.05);
+}
 
 /* ===============================
    POPUP BASE

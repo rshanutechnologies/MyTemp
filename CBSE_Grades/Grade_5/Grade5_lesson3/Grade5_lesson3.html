@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grade5_lesson3</title>
     <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
         * {
             margin: 0;
@@ -48,7 +48,7 @@
             gap: 12px;
             font-size: 20px !important;
             font-weight: 600;
-            padding: 14px 22px;
+            padding: 14px 18px;
             border: none;
             border-radius: 40px;
             cursor: pointer;
@@ -190,7 +190,7 @@ gap:20px;
 
 .nav-btn{
 font-size:22px;
-padding:14px 22px;
+padding:14px 18px;
 }
 
 .content{
@@ -243,19 +243,19 @@ flex:1;
     <!-- LEFT NAVBAR -->
     <div class="side-nav" id="navbar">
         <button class="nav-btn mcq active" onclick="openPage('./exercises/MCQ.html', this)">
-             Choose Option
+             <i class="fa-solid fa-circle-check"></i>Choose Option
         </button>
 
         <button class="nav-btn fill" onclick="openPage('./exercises/FITB.html', this)">
-             Fill in the Blanks
+             <i class="fa-solid fa-pen"></i>Fill in the Blanks
         </button>
 
         <button class="nav-btn true" onclick="openPage('./exercises/True_false.html', this)">
-             True / False
+            <i class="fa-solid fa-check-double"></i> True / False
         </button>
 
         <button class="nav-btn match" onclick="openPage('./exercises/matching.html', this)">
-             Matching
+            <i class="fa-solid fa-link"></i> Matching
         </button>
 
         <!-- <button class="nav-btn one" onclick="openPage('./exercises/oneExample.html', this)">

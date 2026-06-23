@@ -322,6 +322,9 @@ body::before{
     margin-top:10px;
     cursor:pointer;
 }
+#finalPopup button:hover {
+  background: #ff8c1a;
+}
 /* ===============================
    POPUP BASE
 ================================ */

@@ -89,7 +89,13 @@
 .item img,
 .label img{
     width:100px;
-    height:100px;
+    height:70px;
+    object-fit:contain;
+}
+
+.label img{
+    width:70px;
+    height:70px;
     object-fit:contain;
 }
 
@@ -239,7 +245,7 @@ animation:shake .3s;
 .slot img{
     width:100%;
     max-width:100px;
-    height:auto;
+    height:80px;
     object-fit:contain;
     display:block;
     margin:auto;

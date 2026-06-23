@@ -400,9 +400,10 @@ button:disabled {
 }
 
 .playAgain-btn:hover {
-    background: #43a047;
+   background:#ff8c1a;
     transform: scale(1.05);
 }
+
 
 .home-btn {
     padding: 10px 18px;
