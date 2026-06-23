@@ -303,7 +303,7 @@ next.onclick = function () {
     document.getElementById("final").style.display = "block";
 
     document.getElementById("score").innerText = "Your Score " + score + "/5";
-    launchConfetti();
+   
   }
 };
 

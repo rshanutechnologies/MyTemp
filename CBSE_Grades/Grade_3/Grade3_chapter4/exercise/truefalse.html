@@ -621,12 +621,21 @@ loadQuestion()
 /* ================= RESULT ================= */
 
 function showResult(){
-finalConfetti()
 
-document.getElementById("resultBox").classList.add("show")
+  finalConfetti();
 
-document.getElementById("scoreText").innerText =
-"Your Score: "+score+" / "+quiz.length
+  // Disable navigation
+  document.getElementById("prevBtn").disabled = true;
+  document.getElementById("nextBtn").disabled = true;
+
+  // Disable answer buttons
+  document.querySelector(".true-btn").style.pointerEvents = "none";
+  document.querySelector(".false-btn").style.pointerEvents = "none";
+
+  document.getElementById("resultBox").classList.add("show");
+
+  document.getElementById("scoreText").innerText =
+    "Your Score: " + score + " / " + quiz.length;
 }
 
 loadQuestion()

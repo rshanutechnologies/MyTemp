@@ -682,13 +682,20 @@ loadQ()
 
 function showResult(){
 
-finalConfetti()
+  finalConfetti();
 
-document.getElementById("resultBox").classList.add("show")
+  // Disable navigation buttons
+  document.getElementById("prevBtn").disabled = true;
+  document.getElementById("nextBtn").disabled = true;
+  document.getElementById("checkBtn").disabled = true;
 
-document.getElementById("scoreText").innerText=
-"Your Score: "+score+" / "+quiz.length
+  // Disable input
+  document.getElementById("answer").disabled = true;
 
+  document.getElementById("resultBox").classList.add("show");
+
+  document.getElementById("scoreText").innerText =
+    "Your Score: " + score + " / " + quiz.length;
 }
 
 loadQ()

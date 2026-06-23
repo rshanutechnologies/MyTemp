@@ -1,6 +1,6 @@
 const quizData = [
   {
-    q: "Q1. ___is necessary for burning things.",
+    q: "Q1. _____ is necessary for burning things.",
     img: "../assets/images/mcq-1.png",
     options: [
       "../assets/images/mcq1-1.png|Carbon dioxide",
@@ -12,7 +12,7 @@ const quizData = [
   },
 
   {
-    q: "Q2. Nitrogen constitutes ____of the atmosphere.",
+    q: "Q2. Nitrogen constitutes ____ of the atmosphere.",
     img: "../assets/images/mcq-2.png",
     options: [
       "../assets/images/mcq2-1.png|21%",
@@ -36,7 +36,7 @@ const quizData = [
   },
 
   {
-    q: "Q4. Water is also called a universal __ as many things dissolve in it.",
+    q: "Q4. Water is also called a universal ____ as many things dissolve in it.",
     img: "../assets/images/mcq-4.png",
     options: [
       "../assets/images/mcq4-1.png|Solution",
@@ -48,7 +48,7 @@ const quizData = [
   },
 
   {
-    q: "Q5. ___is the droplets of water found on the leaves and flowers.",
+    q: "Q5. ____ is the droplets of water found on the leaves and flowers.",
     img: "../assets/images/mcq5.png",
     options: [
       "../assets/images/fog.png|Fog",
