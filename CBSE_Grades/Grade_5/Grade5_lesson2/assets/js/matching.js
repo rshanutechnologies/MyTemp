@@ -118,7 +118,7 @@ const path=document.createElementNS("http://www.w3.org/2000/svg","path")
 const curve=`M${x1},${y1} C${x1+150},${y1} ${x2-150},${y2} ${x2},${y2}`
 
 path.setAttribute("d",curve)
-path.setAttribute("stroke","#fff4f4")
+path.setAttribute("stroke","#95f07a")
 path.setAttribute("stroke-width","4")
 path.setAttribute("fill","none")
 

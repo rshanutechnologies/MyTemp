@@ -279,6 +279,7 @@ svg {
     justify-content: center;
     font-size: 14px;
     margin-left: auto;
+    flex-shrink: 0;
 }
 
 /* MOBILE */
@@ -548,8 +549,8 @@ min-height:45px;
 
     /* BOX */
     .box {
-        font-size: 16px;
-        padding-left: 10px;
+        font-size: 14px;
+        padding-left: 5px;
         min-height: 35px;
         line-height: 1.1;
     }
@@ -591,6 +592,7 @@ min-height:45px;
         justify-content: center;
         font-size: 12px;
         margin-left: auto;
+        flex-shrink: 0;
     }
 
     /* FINAL POPUP */
