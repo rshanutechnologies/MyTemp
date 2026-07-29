@@ -14,7 +14,7 @@ img:"../assets/images/mammals.png"
 
 {
 q:"Q3. In the adult stage, the male chickens become ______.",
-a:"roosters",
+a:"rooster",
 img:"../assets/images/roosters1.png"
 },
 
