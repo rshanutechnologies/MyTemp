@@ -74,7 +74,7 @@ const questions = [
 
   {
     q: "Q5. The lungs are known as the _ _ _ _ _ _ _.",
-    a: "breathing",
+    a: "respiratory organs",
     img: "../assets/images/Lungs.png",
   },
 ];
