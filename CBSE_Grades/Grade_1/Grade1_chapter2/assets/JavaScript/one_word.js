@@ -6,7 +6,7 @@ const quizData = [
   },
   {
     q: "Q2. Plants that live for few years",
-    a: "PLANTS",
+    a: "GRAPES",
     img: "../assets/images/ow-12.png",
   },
   {

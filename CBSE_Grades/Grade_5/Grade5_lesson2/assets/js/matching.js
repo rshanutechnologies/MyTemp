@@ -65,9 +65,9 @@ selected.classList.add("matched")
 r.classList.add("matched")
 
 /* DRAW LINE ONLY DESKTOP */
-if(window.innerWidth > 900){
+
 drawLine(selected, r)
-}
+
 
 score++;
 
@@ -78,15 +78,17 @@ document.getElementById("score").innerText="Your Score 5/5"
 launchConfetti(); 
 },1000)
 }
-}else{
 
+selected.classList.remove("selected")
+selected=null
+
+}else{
 
 speak("Wrong")
 
 }
-
-selected.classList.remove("selected")
-selected=null
+// selected.classList.remove("selected")
+// selected=null
 
 }
 
@@ -107,7 +109,7 @@ const rectB=b.querySelector(".dot").getBoundingClientRect()
 
 const svgRect=svg.getBoundingClientRect()
 
-const x1=rectA.left-svgRect.left
+const x1=rectA.right-svgRect.left
 const y1=rectA.top-svgRect.top+7
 
 const x2=rectB.left-svgRect.left

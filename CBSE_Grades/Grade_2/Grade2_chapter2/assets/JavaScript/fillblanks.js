@@ -9,7 +9,7 @@ const questions = [
 
   {
     q: "Q2. Some animals like dogs live in ______ shelters.",
-    a: ["kennels"],
+    a: ["human made"],
     img: "../assets/images/Kennel.png",
   },
 

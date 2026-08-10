@@ -23,11 +23,11 @@ const questions = [
     image: "../assets/images/rg-gram.png",
   },
 
-  {
-    question: "Q5. ______ has a trunk.",
-    answer: "mango tree",
-    image: "../assets/images/trunk.png",
-  },
+{
+  question: "Q5. ______ has a trunk.",
+  answer: ["trees", "tree"],
+  image: "../assets/images/trunk.png",
+}
 ];
 
 let currentQuestion = 0;
@@ -94,39 +94,50 @@ function bigConfetti() {
 }
 
 submitBtn.onclick = function () {
-  const userAnswer = input.value.trim().toLowerCase();
-  const correctAnswer = questions[currentQuestion].answer.toLowerCase();
+    const userAnswer = input.value.trim().toLowerCase();
+    const correctAnswer = questions[currentQuestion].answer;
 
-  if (userAnswer === correctAnswer) {
-    answers[currentQuestion] = userAnswer;
-    score++;
+    let isCorrect = false;
 
-    input.classList.remove("input-wrong");
-    input.classList.add("input-correct");
-
-    speak("Correct");
-    smallConfetti();
-    showPopup(true);
-
-    loadQuestion();
-
-    if (answers.every((a) => a !== null)) {
-      setTimeout(showFinal, 1600);
+    if (Array.isArray(correctAnswer)) {
+        isCorrect = correctAnswer.some(
+            ans => ans.toLowerCase() === userAnswer
+        );
+    } else {
+        isCorrect = correctAnswer.toLowerCase() === userAnswer;
     }
-  } else {
-    input.classList.remove("input-correct");
-    input.classList.add("input-wrong");
 
-    showPopup(false);
-    speak("Wrong");
+    if (isCorrect) {
+        answers[currentQuestion] = userAnswer;
+        score++;
 
-    setTimeout(() => {
-      input.classList.remove("input-wrong");
-    }, 600);
+        input.classList.remove("input-wrong");
+        input.classList.add("input-correct");
 
-    input.value = "";
-    submitBtn.disabled = true;
-  }
+        speak("Correct");
+        smallConfetti();
+        showPopup(true);
+
+        loadQuestion();
+
+        if (answers.every((a) => a !== null)) {
+            setTimeout(showFinal, 1600);
+        }
+
+    } else {
+        input.classList.remove("input-correct");
+        input.classList.add("input-wrong");
+
+        showPopup(false);
+        speak("Wrong");
+
+        setTimeout(() => {
+            input.classList.remove("input-wrong");
+        }, 600);
+
+        input.value = "";
+        submitBtn.disabled = true;
+    }
 };
 
 nextBtn.onclick = function () {

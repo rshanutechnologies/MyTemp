@@ -15,7 +15,7 @@ img:"../assets/images/TFQQ2.png"
 
 {
 q:"Q3. The swollen bottom part of the carpel is stigma.",
-a:true,
+a:false,
 img:"../assets/images/stigmaak1.png"
 },
 

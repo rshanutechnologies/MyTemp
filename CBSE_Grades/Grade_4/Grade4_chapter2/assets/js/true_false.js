@@ -15,7 +15,7 @@ img:"../assets/images/TF-2.png"
 {
 q:"Q3. Terrestrial plants have flat leaves to trap sunlight.",
 answer:true,
-img:"../assets/images/FIB-3.png"
+img:"../assets/images/terrestrial.png"
 },
 
 {
@@ -27,7 +27,7 @@ img:"../assets/images/TF-4.png"
 {
 q:"Q5. Coniferous trees do not bear flowers.",
 answer:true,
-img:"../assets/images/FIB-3.png"
+img:"../assets/images/mcq-2.png"
 }
 
 ];

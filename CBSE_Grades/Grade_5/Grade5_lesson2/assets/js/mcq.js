@@ -55,7 +55,7 @@ const quiz = [
         img: "../assets/images/mcq44.png",
       },
     ],
-    answer: 3,
+    answer: 0,
     img: "../assets/images/mcq_4.png",
   },
 

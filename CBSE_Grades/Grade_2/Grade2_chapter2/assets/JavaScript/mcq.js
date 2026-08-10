@@ -48,7 +48,7 @@ answer: "Leather"
 {
 title: "Q5. Birds have ________ on their bodies.",
 options: [
-{ text: "Hair", img: "../assets/images/BirdHair.png" },
+{ text: "Hair", img: "../assets/images/hair.png" },
 { text: "Fur", img: "../assets/images/BirdFur.png" },
 { text: "Feathers", img: "../assets/images/BirdFeather.png" },
 { text: "Scales", img: "../assets/images/BirdScales.png" }

@@ -31,7 +31,7 @@ const quiz = [
       { text: "Sepal", img: "../assets/images/sepalsak.png" },
       { text: "Style", img: "../assets/images/style.png" },
     ],
-    answer: 3,
+    answer: 1,
     img: "../assets/images/pistilap.png",
   },
 
