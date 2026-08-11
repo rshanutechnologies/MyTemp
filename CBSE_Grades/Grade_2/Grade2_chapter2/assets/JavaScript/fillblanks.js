@@ -116,18 +116,30 @@ function buildInputs() {
     }
 
     /* enable button when typing */
+/* enable button when typing */
 
-    input.addEventListener("input", () => {
-      // Allow only letters and spaces
-      input.value = input.value.replace(/[^a-zA-Z\s]/g, "");
+input.addEventListener("input", () => {
+  let value = input.value;
 
-      // First letter capital, remaining small
-      input.value =
-        input.value.charAt(0).toUpperCase() +
-        input.value.slice(1).toLowerCase();
+  // Allow only letters and hyphen
+  value = value.replace(/[^a-zA-Z-]/g, "");
 
-      btn.disabled = input.value.trim() === "";
-    });
+  // Convert "human" to "Human-" automatically
+  if (value.toLowerCase() === "human") {
+    value = "Human-";
+  }
+
+  // Keep first letter capital
+  if (value.length > 0) {
+    value =
+      value.charAt(0).toUpperCase() +
+      value.slice(1).toLowerCase();
+  }
+
+  input.value = value;
+
+  btn.disabled = input.value.trim() === "";
+});
 
     /* check answer */
 
@@ -149,11 +161,14 @@ function buildInputs() {
 /* ================= CHECK ANSWER ================= */
 
 function checkAnswer(input, btn, box, i) {
-  const guess = input.value.trim().toLowerCase();
+const guess = input.value.trim().toLowerCase();
 
-  const q = questions[index];
+const q = questions[index];
 
-  const state = answers[index];
+const state = answers[index];
+
+// Normalize spaces and hyphens for checking
+const normalizedGuess = guess.replace(/[\s-]/g, "");
 
   // already used
   if (state.used.includes(guess)) {
@@ -167,8 +182,12 @@ function checkAnswer(input, btn, box, i) {
   }
 
   // check whether answer exists anywhere
-  if (q.a.map((a) => a.toLowerCase()).includes(guess)) {
-    box.classList.add("correct");
+if (
+  q.a.some(
+    (answer) =>
+      answer.toLowerCase().replace(/[\s-]/g, "") === normalizedGuess
+  )
+) {    box.classList.add("correct");
 
     input.disabled = true;
 

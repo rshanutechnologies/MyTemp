@@ -17,7 +17,7 @@ const quizData = [
     q: "Q2.Which is the only movable joint in the skull?",
     options: [
   { text: "Lower jaw", img: "../assets/images/lowerjaw.png" },
-  { text:  "Upper jaw", img: "../assets/images/upperjaw.png" },
+  { text:  "Upper jaw", img: "../assets/images/upperjaw12.png" },
   { text: "Vertebrae", img: "../assets/images/vertebrae.png" },
   { text: "Sternum", img: "../assets/images/sternum.png" }
 ],

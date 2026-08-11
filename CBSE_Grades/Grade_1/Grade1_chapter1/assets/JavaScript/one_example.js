@@ -31,7 +31,7 @@ const quizData = [
 
   {
     q: "Q4. A human-made thing?",
-    img: "../assets/images/owq-4.png",
+    img: "../assets/images/ow-4.png",
     options: [
       { img: "../assets/images/table.png", text: "Table" },
       { img: "../assets/images/flowers.png", text: "Flowers" },

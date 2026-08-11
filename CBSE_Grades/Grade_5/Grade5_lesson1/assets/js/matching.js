@@ -79,7 +79,9 @@ launchConfetti();
 
 
 speak("Wrong")
+  selected.classList.add("selected")
 
+  return
 }
 
 selected.classList.remove("selected")

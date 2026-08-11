@@ -1,882 +1,954 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Match the Following</title>
+  <meta charset="UTF-8">
+  <title>Match the Following</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Livvic';
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Livvic';
+    }
 
-body{
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-overflow:hidden;
-}
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
 
-/* ================= CONTAINER ================= */
+    /* ================= CONTAINER ================= */
 
-.container{
-width:900px;
-padding:clamp(20px, 3vw, 40px);
-border-radius:24px;
- margin-top: 10px;
-}
+    .container {
+      width: 900px;
+      padding: clamp(20px, 3vw, 40px);
+      border-radius: 24px;
+      margin-top: 10px;
+    }
 
-/* ================= TITLE ================= */
+    /* ================= TITLE ================= */
 
-h1{
-text-align:center;
-margin-bottom:clamp(20px, 4vh, 40px);
-font-size:clamp(22px, 3vw, 36px);
-color:#374151;
-}
+    h1 {
+      text-align: center;
+      margin-bottom: clamp(20px, 4vh, 40px);
+      font-size: clamp(22px, 3vw, 36px);
+      color: #374151;
+    }
 
-/* ================= GAME AREA ================= */
+    /* ================= GAME AREA ================= */
 
-.game{
-position:relative;
-display:flex;
-justify-content:center;
-gap:130px;
-}
+    .game {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 130px;
+    }
 
-/* ================= COLUMNS ================= */
+    /* ================= COLUMNS ================= */
 
-.column{
-width:clamp(160px, 45vw, 420px);
-display:flex;
-flex-direction:column;
-gap:clamp(10px, 2vh, 20px);
-z-index:2;
-}
+    .column {
+      width: clamp(160px, 45vw, 420px);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(10px, 2vh, 20px);
+      z-index: 2;
+    }
 
-/* ================= ITEM CARDS ================= */
+    /* ================= ITEM CARDS ================= */
 
-.item{
-width:100%;
-height:80px;
+    .item {
+      width: 100%;
+      height: 80px;
 
-display:flex;
-align-items:center;
-gap:clamp(8px, 1.5vw, 16px);
+      display: flex;
+      align-items: center;
+      gap: clamp(8px, 1.5vw, 16px);
 
-padding:clamp(10px, 2vw, 18px) clamp(12px, 3vw, 24px);
+      padding: clamp(10px, 2vw, 18px) clamp(12px, 3vw, 24px);
 
-border-radius:22px;
+      border-radius: 22px;
 
-background:#f8fafc;
+      background: #f8fafc;
 
-font-size:20px;
+      font-size: 20px;
 
-
-cursor:pointer;
 
-border:2px solid transparent;
-
-box-shadow:0 8px 18px rgba(0,0,0,0.08);
-
-transition:0.25s;
-}
-
-.item:hover{
-transform:translateY(-3px);
-}
-
-/* ================= COLORS ================= */
+      cursor: pointer;
 
-.left .item:nth-child(1){background:#ffe4ec;}
-.left .item:nth-child(2){background:#e0f4ff;}
-.left .item:nth-child(3){background:#fff5d6;}
-.left .item:nth-child(4){background:#e6ffe8;}
-.left .item:nth-child(5){background:#f2e8ff;}
+      border: 2px solid transparent;
 
-.right .item:nth-child(1){background:#ffe4ec;}
-.right .item:nth-child(2){background:#e0f4ff;}
-.right .item:nth-child(3){background:#fff5d6;}
-.right .item:nth-child(4){background:#e6ffe8;}
-.right .item:nth-child(5){background:#f2e8ff;}
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 
-.item.active{
-border-color:#6366f1;
-}
+      transition: 0.25s;
+    }
 
-.item.matched{
-opacity:0.6;
-cursor:default;
-}
-
-/* ================= IMAGE ================= */
+    .item:hover {
+      transform: translateY(-3px);
+    }
 
-.left img{
-width:clamp(26px, 4vw, 44px);
-height:clamp(26px, 4vw, 44px);
-object-fit:contain;
-}
-
-/* ================= TEXT ================= */
+    /* ================= COLORS ================= */
 
-.text{
-flex:1;
-}
+    .left .item:nth-child(1) {
+      background: #ffe4ec;
+    }
 
-/* ================= DOT ================= */
-
-.dot{
-width:clamp(8px, 1.5vw, 16px);
-height:clamp(8px, 1.5vw, 16px);
-border-radius:50%;
-}
-
-/* ================= DOT COLORS ================= */
-
-.pink{background:#ff7ab6;}
-.blue{background:#60a5fa;}
-.yellow{background:#fbbf24;}
-.green{background:#34d399;}
-.purple{background:#a78bfa;}
-
-/* ================= ANCHOR ================= */
-
-.anchor{
-width:clamp(8px, 1.5vw, 14px);
-height:clamp(8px, 1.5vw, 14px);
-background:#94a3b8;
-border-radius:50%;
-margin-left:auto;
-}
-
-/* ================= SVG ================= */
-
-svg{
-position:absolute;
-width:100%;
-height:100%;
-pointer-events:none;
-}
-
-svg path{
-transition:0.4s;
-stroke-dasharray:6 6;
-}
-
-/* ================= POPUP ================= */
-
-.popup{
-position:fixed;
-inset:0;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:1000;
-}
-
-.hidden{
-display:none;
-}
-.popup-content{
-  background:#FFF7F7;
-  border:5px solid #FFB4B4;
-
-  box-shadow:
-    0 0 0 8px #FFEAEA,
-    0 12px 25px rgba(0,0,0,0.10);
-
-  border-radius:35px;    /* soft cream */
-
-  padding:35px 55px;
-
-  border-radius:35px;
-
- 
-
-  text-align:center;
-
-  min-width:280px;
-  max-width:450px;
-
-
-  animation:pop 0.3s ease;
-}
-.popup-content{
-  background:#FCF8FF;
-  border:5px solid #D9C2FF;
-
-  box-shadow:
-    0 0 0 8px #F3ECFF,
-    0 12px 25px rgba(0,0,0,0.10);
-
-  border-radius:35px;
-}
-
-@keyframes pop{
-from{ transform:scale(0.8); opacity:0; }
-to{ transform:scale(1); opacity:1; }
-}
-
-.popup-emoji{
-font-size:clamp(35px, 5vw, 60px);
-margin-bottom:15px;
-}
-
-.popup-content h2{
-font-size:clamp(18px, 2vw, 28px);
-margin-bottom:10px;
-}
-
-.popup-content p{
-font-size:clamp(14px, 1.5vw, 20px);
-}
-
-.play-again-btn{
-margin-top:20px;
-padding:clamp(10px, 1vw, 14px) clamp(18px, 2vw, 28px);
-font-size:clamp(14px, 1.2vw, 16px);
-border:none;
-border-radius:30px;
-cursor:pointer;
-background:linear-gradient(135deg,#4caf50,#2e7d32);
-color:white;
-font-weight:600;
-transition:0.3s;
-}
-
-.play-again-btn:hover{
-transform:translateY(-3px);
-}
-
-
-
-/* slightly improve small screen text scaling */
-@media (max-width:600px){
-
-  .item{
-   height: clamp(80px, 14vh, 110px);
-    font-size:clamp(12px, 3vw, 22px);
-    padding:clamp(8px, 2vw, 12px);
-  }
-  
-
-
-}
-
-/* ============================= */
-/* Desktop / Monitor (1025px–1440px) */
-/* ============================= */
-@media screen and (min-width:1100px) and (max-width:1440px){
-
-  .container{
-    width:1100px;
-  }
-
-  .game{
-    gap:150px;
-  }
-
-  .column{
-    width:400px;
-  }
-
-  .item{
-    height:100px;
-    font-size:25px;
-    padding:16px 20px;
-  }
-
-  .left img{
-    width:55px;
-    height:55px;
-  }
-
-}
-
-/* ============================= */
-/* Large Monitors (1441px–1920px) */
-/* ============================= */
-@media screen and (min-width:1441px) and (max-width:1920px){
-
-  .container{
-    width:1300px;
-  }
-
-  .game{
-    gap:180px;   /* 🔥 balanced spacing */
-  }
-
-  .column{
-    width:420px;
-  }
-
-  .item{
-    height:110px;
-    font-size:30px;   /* 🔥 bigger text */
-    padding:18px 26px;
-    border-radius:26px;
-  }
-
-  .left img{
-    width:75px;
-    height:75px;
-  }
-
-}
-
-/* ============================= */
-/* Extra Large Screens / 4K (1921px+) */
-/* ============================= */
-@media screen and (min-width:1921px){
-
-  .container{
-    width:1500px;
-  }
-
-  .game{
-    gap:240px;
-  }
-
-  .column{
-    width:500px;
-  }
-
-  .item{
-    height:120px;
-    font-size:34px;
-    padding:22px 30px;
-  }
-
-  .left img{
-    width:80px;
-    height:80px;
-  }
-
-}
-@media screen and (max-width:600px){
-
-.game{
-    gap:50px;
-    align-items:flex-start;
-}
-
-.column{
-    width:42%;
-    gap:8px;
-}
-
-.item{
-    height:96px;           /* fixed height */
-    padding:8px;
-    display:flex;
-    align-items:center;    /* center vertically */
-}
-
-  .item{
-    gap:0px;
-  }
-.left img{
-    width:70px;
-    height:70px;
-    flex-shrink:0;
-}
-
-.text{
-    font-size:15px;
-    line-height:1.15;
-    display:flex;
-    align-items:center;
-    height:100%;
-}
-
-.right .item{
-    justify-content:flex-start;
-}
-
-svg{
-    display:block;
-}
-.dot{
-  visibility:hidden;
-}
-
-.anchor{
-  visibility:hidden;
-}
-}
-
-@media screen and (max-width:480px){
-
-.game{
-    gap:50px;
-}
-
-.column{
-    width:50%;
-}
-
-.item{
-    height:100px;
-    padding:3px;
-}
-
-  .item{
-    gap:0px;
-  }
-.text{
-    font-size:15px;
-}
-.dot{
-  visibility:hidden;
-}
-
-.anchor{
-  visibility:hidden;
-}
-}
-
-/* ========================= */
-/* TABLET RESPONSIVE */
-/* ========================= */
-@media screen and (min-width:601px) and (max-width:800px){
-
-  .container{
-    width:100%;
-    padding:20px;
-   
-  }
-
-  .game{
-    gap:80px;      /* enough space for lines */
-    justify-content:center;
-  }
-
-  .column{
-    width:42%;
-    gap:12px;
-  }
-
-  .item{
-    height:88px;
-    padding:10px;
-    font-size:18px;
-  }
-
-  .left img{
-    width:42px;
-    height:42px;
-  }
-
-  .text{
-    font-size:16px;
-    line-height:1.2;
-  }
-
-  .dot{
-    width:12px;
-    height:12px;
-  }
-
-  .anchor{
-    width:12px;
-    height:12px;
-  }
-
-  svg{
-    display:block;
-  }
-
-}
-
-@media (max-width:600px){
-
-  .popup-content{
-    width:70%;
-    max-width:250px;
-    min-width:220px;
-
-    padding:16px 18px;
-
-    border:4px solid #D9C2FF;
-
-    box-shadow:
-      0 0 0 5px #F3ECFF,
-      0 8px 18px rgba(0,0,0,0.08);
-
-    border-radius:25px;
-  }
-
-  .popup-emoji{
-    font-size:32px;
-    margin-bottom:5px;
-  }
-
-  .popup-content h2{
-    font-size:18px;
-    margin-bottom:4px;
-  }
-
-  .popup-content p{
-    font-size:14px;
-    line-height:1.3;
-  }
-
-  .play-again-btn{
-    margin-top:10px;
-    padding:8px 16px;
-    font-size:13px;
-    border-radius:20px;
-  }
-
-}
-
-/* ========================= */
-/* TABLET RESPONSIVE */
-/* ========================= */
-@media screen and (min-width:601px) and (max-width:800px){
-
-  .container{
-    width:100%;
-    max-width:950px;
-    padding:20px;
-  }
-
-  .game{
-    gap:90px;
-    justify-content:center;
-  }
-
-  .column{
-    width:42%;
-    gap:12px;
-  }
-
-  .item{
-    height:70px;
-    padding:12px;
-    font-size:18px;
-  }
-
-  .left img{
-    width:45px;
-    height:45px;
-  }
-
-  .text{
-    font-size:16px;
-    line-height:1.2;
-  }
-
-  .dot{
-    width:10px;
-    height:10px;
-  }
-
-  .anchor{
-    width:10px;
-    height:10px;
-  }
-
-  svg{
-    display:block;
-  }
-
-  .popup-content{
-    max-width:340px;
-    padding:25px 35px;
-  }
-
-  .popup-content h2{
-    font-size:24px;
-  }
-
-  .popup-content p{
-    font-size:18px;
-  }
-}
-</style>
+    .left .item:nth-child(2) {
+      background: #e0f4ff;
+    }
+
+    .left .item:nth-child(3) {
+      background: #fff5d6;
+    }
+
+    .left .item:nth-child(4) {
+      background: #e6ffe8;
+    }
+
+    .left .item:nth-child(5) {
+      background: #f2e8ff;
+    }
+
+    .right .item:nth-child(1) {
+      background: #ffe4ec;
+    }
+
+    .right .item:nth-child(2) {
+      background: #e0f4ff;
+    }
+
+    .right .item:nth-child(3) {
+      background: #fff5d6;
+    }
+
+    .right .item:nth-child(4) {
+      background: #e6ffe8;
+    }
+
+    .right .item:nth-child(5) {
+      background: #f2e8ff;
+    }
+
+    .item.active {
+      border-color: #6366f1;
+    }
+
+    .item.matched {
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    /* ================= IMAGE ================= */
+
+    .left img {
+      width: clamp(26px, 4vw, 44px);
+      height: clamp(26px, 4vw, 44px);
+      object-fit: contain;
+    }
+
+    /* ================= TEXT ================= */
+
+    .text {
+      flex: 1;
+    }
+
+    /* ================= DOT ================= */
+
+    .dot {
+      width: clamp(8px, 1.5vw, 16px);
+      height: clamp(8px, 1.5vw, 16px);
+      border-radius: 50%;
+    }
+
+    /* ================= DOT COLORS ================= */
+
+    .pink {
+      background: #ff7ab6;
+    }
+
+    .blue {
+      background: #60a5fa;
+    }
+
+    .yellow {
+      background: #fbbf24;
+    }
+
+    .green {
+      background: #34d399;
+    }
+
+    .purple {
+      background: #a78bfa;
+    }
+
+    /* ================= ANCHOR ================= */
+
+    .anchor {
+      width: clamp(8px, 1.5vw, 14px);
+      height: clamp(8px, 1.5vw, 14px);
+      background: #94a3b8;
+      border-radius: 50%;
+      margin-left: auto;
+    }
+
+    /* ================= SVG ================= */
+
+    svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    svg path {
+      transition: 0.4s;
+      stroke-dasharray: 6 6;
+    }
+
+    /* ================= POPUP ================= */
+
+    .popup {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .popup-content {
+      background: #FFF7F7;
+      border: 5px solid #FFB4B4;
+
+      box-shadow:
+        0 0 0 8px #FFEAEA,
+        0 12px 25px rgba(0, 0, 0, 0.10);
+
+      border-radius: 35px;
+      /* soft cream */
+
+      padding: 35px 55px;
+
+      border-radius: 35px;
+
+
+
+      text-align: center;
+
+      min-width: 280px;
+      max-width: 450px;
+
+
+      animation: pop 0.3s ease;
+    }
+
+    .popup-content {
+      background: #FCF8FF;
+      border: 5px solid #D9C2FF;
+
+      box-shadow:
+        0 0 0 8px #F3ECFF,
+        0 12px 25px rgba(0, 0, 0, 0.10);
+
+      border-radius: 35px;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .popup-emoji {
+      font-size: clamp(35px, 5vw, 60px);
+      margin-bottom: 15px;
+    }
+
+    .popup-content h2 {
+      font-size: clamp(18px, 2vw, 28px);
+      margin-bottom: 10px;
+    }
+
+    .popup-content p {
+      font-size: clamp(14px, 1.5vw, 20px);
+    }
+
+    .play-again-btn {
+      margin-top: 20px;
+      padding: clamp(10px, 1vw, 14px) clamp(18px, 2vw, 28px);
+      font-size: clamp(14px, 1.2vw, 16px);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #4caf50, #2e7d32);
+      color: white;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .play-again-btn:hover {
+      transform: translateY(-3px);
+    }
+
+
+
+    /* slightly improve small screen text scaling */
+    @media (max-width:600px) {
+
+      .item {
+        height: clamp(80px, 14vh, 110px);
+        font-size: clamp(12px, 3vw, 22px);
+        padding: clamp(8px, 2vw, 12px);
+      }
+
+
+
+    }
+
+    /* ============================= */
+    /* Desktop / Monitor (1025px–1440px) */
+    /* ============================= */
+    @media screen and (min-width:1100px) and (max-width:1440px) {
+
+      .container {
+        width: 1100px;
+      }
+
+      .game {
+        gap: 150px;
+      }
+
+      .column {
+        width: 400px;
+      }
+
+      .item {
+        height: 100px;
+        font-size: 25px;
+        padding: 16px 20px;
+      }
+
+      .left img {
+        width: 55px;
+        height: 55px;
+      }
+
+    }
+
+    /* ============================= */
+    /* Large Monitors (1441px–1920px) */
+    /* ============================= */
+    @media screen and (min-width:1441px) and (max-width:1920px) {
+
+      .container {
+        width: 1300px;
+      }
+
+      .game {
+        gap: 180px;
+        /* 🔥 balanced spacing */
+      }
+
+      .column {
+        width: 420px;
+      }
+
+      .item {
+        height: 110px;
+        font-size: 30px;
+        /* 🔥 bigger text */
+        padding: 18px 26px;
+        border-radius: 26px;
+      }
+
+      .left img {
+        width: 75px;
+        height: 75px;
+      }
+
+    }
+
+    /* ============================= */
+    /* Extra Large Screens / 4K (1921px+) */
+    /* ============================= */
+    @media screen and (min-width:1921px) {
+
+      .container {
+        width: 1500px;
+      }
+
+      .game {
+        gap: 240px;
+      }
+
+      .column {
+        width: 500px;
+      }
+
+      .item {
+        height: 120px;
+        font-size: 34px;
+        padding: 22px 30px;
+      }
+
+      .left img {
+        width: 80px;
+        height: 80px;
+      }
+
+    }
+
+    @media screen and (max-width:600px) {
+
+      .game {
+        gap: 50px;
+        align-items: flex-start;
+      }
+
+      .column {
+        width: 42%;
+        gap: 8px;
+      }
+
+      .item {
+        height: 96px;
+        /* fixed height */
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        /* center vertically */
+      }
+
+      .item {
+        gap: 0px;
+      }
+
+      .left img {
+        width: 70px;
+        height: 70px;
+        flex-shrink: 0;
+      }
+
+      .text {
+        font-size: 15px;
+        line-height: 1.15;
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+
+      .right .item {
+        justify-content: flex-start;
+      }
+
+      svg {
+        display: block;
+      }
+
+      .dot {
+        visibility: hidden;
+      }
+
+      .anchor {
+        visibility: hidden;
+      }
+    }
+
+    @media screen and (max-width:480px) {
+
+      .game {
+        gap: 50px;
+      }
+
+      .column {
+        width: 50%;
+      }
+
+      .item {
+        height: 100px;
+        padding: 3px;
+      }
+
+      .item {
+        gap: 0px;
+      }
+
+      .text {
+        font-size: 15px;
+      }
+
+      .dot {
+        visibility: hidden;
+      }
+
+      .anchor {
+        visibility: hidden;
+      }
+    }
+
+    /* ========================= */
+    /* TABLET RESPONSIVE */
+    /* ========================= */
+    @media screen and (min-width:601px) and (max-width:800px) {
+
+      .container {
+        width: 100%;
+        padding: 20px;
+
+      }
+
+      .game {
+        gap: 80px;
+        /* enough space for lines */
+        justify-content: center;
+      }
+
+      .column {
+        width: 42%;
+        gap: 12px;
+      }
+
+      .item {
+        height: 88px;
+        padding: 10px;
+        font-size: 18px;
+      }
+
+      .left img {
+        width: 42px;
+        height: 42px;
+      }
+
+      .text {
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+      }
+
+      .anchor {
+        width: 12px;
+        height: 12px;
+      }
+
+      svg {
+        display: block;
+      }
+
+    }
+
+    @media (max-width:600px) {
+
+      .popup-content {
+        width: 70%;
+        max-width: 250px;
+        min-width: 220px;
+
+        padding: 16px 18px;
+
+        border: 4px solid #D9C2FF;
+
+        box-shadow:
+          0 0 0 5px #F3ECFF,
+          0 8px 18px rgba(0, 0, 0, 0.08);
+
+        border-radius: 25px;
+      }
+
+      .popup-emoji {
+        font-size: 32px;
+        margin-bottom: 5px;
+      }
+
+      .popup-content h2 {
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+
+      .popup-content p {
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      .play-again-btn {
+        margin-top: 10px;
+        padding: 8px 16px;
+        font-size: 13px;
+        border-radius: 20px;
+      }
+
+    }
+
+    /* ========================= */
+    /* TABLET RESPONSIVE */
+    /* ========================= */
+    @media screen and (min-width:601px) and (max-width:800px) {
+
+      .container {
+        width: 100%;
+        max-width: 950px;
+        padding: 20px;
+      }
+
+      .game {
+        gap: 90px;
+        justify-content: center;
+      }
+
+      .column {
+        width: 42%;
+        gap: 12px;
+      }
+
+      .item {
+        height: 70px;
+        padding: 12px;
+        font-size: 18px;
+      }
+
+      .left img {
+        width: 45px;
+        height: 45px;
+      }
+
+      .text {
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+      }
+
+      .anchor {
+        width: 10px;
+        height: 10px;
+      }
+
+      svg {
+        display: block;
+      }
+
+      .popup-content {
+        max-width: 340px;
+        padding: 25px 35px;
+      }
+
+      .popup-content h2 {
+        font-size: 24px;
+      }
+
+      .popup-content p {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
-
-
-
-<div class="game">
-
-<svg id="lines"></svg>
-
-<!-- LEFT SIDE -->
-
-<div class="column left">
-
-<div class="item" data-match="d">
-<div class="dot pink"></div>
-<img src="../images/flowerak.png">
-<div class="text">Flower</div>
-<div class="anchor"></div>
-</div>
-
-<div class="item" data-match="a">
-<div class="dot blue"></div>
-<img src="../images/roots.png">
-<div class="text">Roots</div>
-<div class="anchor"></div>
-</div>
-
-<div class="item" data-match="b">
-<div class="dot yellow"></div>
-<img src="../images/shoot.png">
-<div class="text">Shoot</div>
-<div class="anchor"></div>
-</div>
+  <div class="container">
+
+
+
+    <div class="game">
+
+      <svg id="lines"></svg>
+
+      <!-- LEFT SIDE -->
+
+      <div class="column left">
+
+        <div class="item" data-match="d">
+          <div class="dot pink"></div>
+          <img src="../images/flowerak.png">
+          <div class="text">Flower</div>
+          <div class="anchor"></div>
+        </div>
+
+        <div class="item" data-match="a">
+          <div class="dot blue"></div>
+          <img src="../images/roots.png">
+          <div class="text">Roots</div>
+          <div class="anchor"></div>
+        </div>
+
+        <div class="item" data-match="b">
+          <div class="dot yellow"></div>
+          <img src="../images/shoot.png">
+          <div class="text">Shoot</div>
+          <div class="anchor"></div>
+        </div>
+
+        <div class="item" data-match="e">
+          <div class="dot green"></div>
+          <img src="../images/seeds.png">
+          <div class="text">Seed</div>
+          <div class="anchor"></div>
+        </div>
+
+        <div class="item" data-match="c">
+          <div class="dot purple"></div>
+          <img src="../images/leaf.png">
+          <div class="text">Leaf</div>
+          <div class="anchor"></div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE -->
+
+      <div class="column right">
+
+        <div class="item" data-match="a">
+          <div class="dot pink"></div>
+          <div class="text">They absorb water and minerals
+            from the soil</div>
+          <div class="anchor"></div>
+        </div>
+
+        <div class="item" data-match="b">
+          <div class="dot blue"></div>
+          <div class="text"> It grows above the ground</div>
+          <div class="anchor"></div>
+        </div>
+
+        <div class="item" data-match="c">
+          <div class="dot yellow"></div>
+          <div class="text">It prepares food for the plant</div>
+          <div class="anchor"></div>
+        </div>
+
+        <div class="item" data-match="d">
+          <div class="dot green"></div>
+          <div class="text">It develops into a fruit</div>
+          <div class="anchor"></div>
+        </div>
+
+        <div class="item" data-match="e">
+          <div class="dot purple"></div>
+          <div class="text">It grows into a new plant</div>
+          <div class="anchor"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <div id="popupEmoji" class="popup-emoji"></div>
+      <h2 id="popupTitle"></h2>
+      <p id="popupMessage"></p>
+
+      <button id="playAgainBtn" class="play-again-btn hidden">
+        🔄 Play Again
+      </button>
+    </div>
+  </div>
+
+  <script>
 
-<div class="item" data-match="e">
-<div class="dot green"></div>
-<img src="../images/seeds.png">
-<div class="text">Seed</div>
-<div class="anchor"></div>
-</div>
+    let selected = null
+    let score = 0
+    let matched = 0
 
-<div class="item" data-match="c">
-<div class="dot purple"></div>
-<img src="../images/leaf.png">
-<div class="text">Leaf</div>
-<div class="anchor"></div>
-</div>
+    const left = document.querySelectorAll(".left .item")
+    const right = document.querySelectorAll(".right .item")
+    const svg = document.getElementById("lines")
 
-</div>
+    const popup = document.getElementById("popup")
+    const popupTitle = document.getElementById("popupTitle")
+    const popupMessage = document.getElementById("popupMessage")
+    const playAgainBtn = document.getElementById("playAgainBtn")
+    function speak(t) {
+      speechSynthesis.cancel();
 
-<!-- RIGHT SIDE -->
+      const msg = new SpeechSynthesisUtterance(t);
 
-<div class="column right">
+      msg.lang = "en-UK";
+      msg.volume = 0.25;
+      msg.rate = 1;
+      msg.pitch = 1;
 
-<div class="item" data-match="a">
-<div class="dot pink"></div>
-<div class="text">They absorb water and minerals
-from the soil</div>
-<div class="anchor"></div>
-</div>
-
-<div class="item" data-match="b">
-<div class="dot blue"></div>
-<div class="text"> It grows above the ground</div>
-<div class="anchor"></div>
-</div>
-
-<div class="item" data-match="c">
-<div class="dot yellow"></div>
-<div class="text">It  prepares food for the plant</div>
-<div class="anchor"></div>
-</div>
-
-<div class="item" data-match="d">
-<div class="dot green"></div>
-<div class="text">It  develops into a fruit</div>
-<div class="anchor"></div>
-</div>
-
-<div class="item" data-match="e">
-<div class="dot purple"></div>
-<div class="text">It grows into a new plant</div>
-<div class="anchor"></div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div id="popup" class="popup hidden">
- <div class="popup-content">
-  <div id="popupEmoji" class="popup-emoji"></div>
-  <h2 id="popupTitle"></h2>
-  <p id="popupMessage"></p>
-
-  <button id="playAgainBtn" class="play-again-btn hidden">
-    🔄 Play Again
-  </button>
-</div>
-</div>
-
-<script>
-
-let selected=null
-let score=0
-let matched=0
-
-const left=document.querySelectorAll(".left .item")
-const right=document.querySelectorAll(".right .item")
-const svg=document.getElementById("lines")
-
-const popup=document.getElementById("popup")
-const popupTitle=document.getElementById("popupTitle")
-const popupMessage=document.getElementById("popupMessage")
-const playAgainBtn=document.getElementById("playAgainBtn")
-function speak(t) {
-  speechSynthesis.cancel();
-
-  const msg = new SpeechSynthesisUtterance(t);
-
-  msg.lang = "en-UK";
-  msg.volume = 0.25;
-  msg.rate = 1;
-  msg.pitch = 1;
-
-  speechSynthesis.speak(msg);
-}
-
-left.forEach(l=>{
-
-l.onclick=()=>{
-
-if(l.classList.contains("matched")) return
-
-left.forEach(i=>i.classList.remove("active"))
-
-l.classList.add("active")
-
-selected=l
-
-}
-
-})
-
-right.forEach(r=>{
-
-r.onclick=()=>{
-
-if(!selected || r.classList.contains("matched")) return
-
-if(selected.dataset.match===r.dataset.match){
-
-    drawLine(selected,r)
-
-    selected.classList.add("matched")
-    r.classList.add("matched")
-
-    /* Mobile friendly colour mapping */
-    const leftColor = getComputedStyle(selected).backgroundColor;
-
-    selected.style.border = "3px solid #22c55e";
-    r.style.border = "3px solid #22c55e";
-
-    r.style.background = leftColor;
-
-    confetti({
-      particleCount:40,
-      spread:70,
-      origin:{y:0.6}
-    });
-
-    speak("Correct");
-
-    score++;
-    matched++;
-}else{
-
-speak("Wrong")
-
-}
-
-selected.classList.remove("active")
-selected=null
-
-if(matched===5){
-setTimeout(showResult,800)
-}
-
-}
-
-})
-
-function drawLine(l,r){
-
-const svgRect = svg.getBoundingClientRect();
-
-const leftRect = l.getBoundingClientRect();
-const rightRect = r.getBoundingClientRect();
-
-/* Start from right center of left card */
-const x1 = leftRect.right - svgRect.left - 10;
-const y1 = leftRect.top + leftRect.height/2 - svgRect.top;
-
-/* End at left center of right card */
-const x2 = rightRect.left - svgRect.left + 10;
-const y2 = rightRect.top + rightRect.height/2 - svgRect.top;
-
-const curve =
-window.innerWidth <= 480 ? 25 :
-window.innerWidth <= 768 ? 40 :
-120;
-
-const path = document.createElementNS(
-"http://www.w3.org/2000/svg",
-"path"
-);
-
-path.setAttribute(
-"d",
-`M ${x1} ${y1}
-C ${x1+curve} ${y1},
-${x2-curve} ${y2},
-${x2} ${y2}`
-);
-
-path.setAttribute("stroke","#22c55e");
-path.setAttribute("stroke-width","5");
-path.setAttribute("fill","none");
-path.setAttribute("stroke-linecap","round");
-
-svg.appendChild(path);
-}
-
-function fireFinalConfetti(){
-
-  const duration = 2500;
-  const animationEnd = Date.now() + duration;
-
-  const interval = setInterval(function () {
-
-    if (Date.now() > animationEnd) {
-      clearInterval(interval);
-      return;
+      speechSynthesis.speak(msg);
     }
 
-    confetti({
-      particleCount: 60,
-      spread: 120,
-      startVelocity: 45,
-      scalar: 1.1,
-      origin: { x: Math.random(), y: Math.random() - 0.2 }
-    });
+    left.forEach(l => {
 
-  }, 250);
+      l.onclick = () => {
 
-}
-function showResult(){
-  fireFinalConfetti();
+        if (l.classList.contains("matched")) return
 
-popup.classList.remove("hidden")
+        left.forEach(i => i.classList.remove("active"))
 
-popupTitle.textContent="Quiz Completed 🎉"
-popupMessage.textContent="Score : "+score+" / 5"
+        l.classList.add("active")
 
-/* show play again button */
-playAgainBtn.classList.remove("hidden")
+        selected = l
 
-}
-playAgainBtn.onclick = () => {
-  location.reload();
-}
-</script>
+      }
+
+    })
+
+    right.forEach(r => {
+
+  r.onclick = () => {
+
+    if (!selected || r.classList.contains("matched")) return;
+
+    if (selected.dataset.match === r.dataset.match) {
+
+      // Correct answer
+      drawLine(selected, r);
+
+      selected.classList.add("matched");
+      r.classList.add("matched");
+
+      const leftColor = getComputedStyle(selected).backgroundColor;
+
+      selected.style.border = "3px solid #22c55e";
+      r.style.border = "3px solid #22c55e";
+
+      r.style.background = leftColor;
+
+      confetti({
+        particleCount: 40,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      speak("Correct");
+
+      score++;
+      matched++;
+
+      // Clear selection ONLY after a correct answer
+      selected.classList.remove("active");
+      selected = null;
+
+      if (matched === 5) {
+        setTimeout(showResult, 800);
+      }
+
+    } else {
+
+      // Wrong answer
+      speak("Wrong");
+
+      // Keep the left option active
+      selected.classList.add("active");
+
+      // Do NOT set selected = null
+      // Do NOT remove the active class
+    }
+
+  }
+
+});
+
+    function drawLine(l, r) {
+
+      const svgRect = svg.getBoundingClientRect();
+
+      const leftRect = l.getBoundingClientRect();
+      const rightRect = r.getBoundingClientRect();
+
+      /* Start from right center of left card */
+      const x1 = leftRect.right - svgRect.left - 10;
+      const y1 = leftRect.top + leftRect.height / 2 - svgRect.top;
+
+      /* End at left center of right card */
+      const x2 = rightRect.left - svgRect.left + 10;
+      const y2 = rightRect.top + rightRect.height / 2 - svgRect.top;
+
+      const curve =
+        window.innerWidth <= 480 ? 25 :
+          window.innerWidth <= 768 ? 40 :
+            120;
+
+      const path = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "path"
+      );
+
+      path.setAttribute(
+        "d",
+        `M ${x1} ${y1}
+C ${x1 + curve} ${y1},
+${x2 - curve} ${y2},
+${x2} ${y2}`
+      );
+
+      path.setAttribute("stroke", "#22c55e");
+      path.setAttribute("stroke-width", "5");
+      path.setAttribute("fill", "none");
+      path.setAttribute("stroke-linecap", "round");
+
+      svg.appendChild(path);
+    }
+
+    function fireFinalConfetti() {
+
+      const duration = 2500;
+      const animationEnd = Date.now() + duration;
+
+      const interval = setInterval(function () {
+
+        if (Date.now() > animationEnd) {
+          clearInterval(interval);
+          return;
+        }
+
+        confetti({
+          particleCount: 60,
+          spread: 120,
+          startVelocity: 45,
+          scalar: 1.1,
+          origin: { x: Math.random(), y: Math.random() - 0.2 }
+        });
+
+      }, 250);
+
+    }
+    function showResult() {
+      fireFinalConfetti();
+
+      popup.classList.remove("hidden")
+
+      popupTitle.textContent = "Quiz Completed 🎉"
+      popupMessage.textContent = "Score : " + score + " / 5"
+
+      /* show play again button */
+      playAgainBtn.classList.remove("hidden")
+
+    }
+    playAgainBtn.onclick = () => {
+      location.reload();
+    }
+  </script>
 
 </body>
+
 </html>

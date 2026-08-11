@@ -80,6 +80,9 @@ right.forEach(r => {
 
     } else {
       speak("Wrong");
+        selected.classList.add("selected");
+
+  return;
     }
 
     selected.classList.remove("selected");

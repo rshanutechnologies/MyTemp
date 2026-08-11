@@ -178,8 +178,8 @@ svg {
   stroke: #4caf50;
   stroke-width: 5;
   stroke-linecap: round;
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
+  stroke-dasharray: 350;
+  stroke-dashoffset: 350;
   animation: drawLine .6s ease forwards;
 }
 
@@ -509,6 +509,13 @@ svg {
     gap: 120px;
     /* slightly more space */
   }
+
+  
+.match-line
+{
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+}
 
   .card {
     height: 120px;
